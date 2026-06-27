@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>半導体主要株 株価比較（直近3ヶ月）</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0f1117; color: #e0e0e0; font-family: 'Segoe UI', sans-serif; padding: 24px; }
+  h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 4px; color: #fff; }
+  .subtitle { font-size: 0.8rem; color: #888; margin-bottom: 24px; }
+  .chart-wrap { background: #1a1d27; border-radius: 12px; padding: 24px; }
+  canvas { max-height: 520px; }
+  .legend { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 0.82rem; }
+  .legend-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+  .country-tag { font-size: 0.7rem; color: #888; }
+  .note { font-size: 0.72rem; color: #666; margin-top: 16px; }
+</style>
+</head>
+<body>
+<h1>半導体主要株 — 株価相対推移（直近3ヶ月）</h1>
+<div class="subtitle">基準日の終値を100として正規化 ／ 取得：2026/6/21 13:37:45 JST</div>
+<div class="chart-wrap">
+  <canvas id="chart"></canvas>
+  <div class="legend">
+    
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#e63946"></div>
+      <span>東京エレクトロン (8035)</span>
+      <span class="country-tag">[日本]</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#f4a261"></div>
+      <span>アドバンテスト (6857)</span>
+      <span class="country-tag">[日本]</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#2a9d8f"></div>
+      <span>サムスン電子</span>
+      <span class="country-tag">[韓国]</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#57cc99"></div>
+      <span>SKハイニックス</span>
+      <span class="country-tag">[韓国]</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#6a4c93"></div>
+      <span>TSMC (2330)</span>
+      <span class="country-tag">[台湾]</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#76b900"></div>
+      <span>NVIDIA</span>
+      <span class="country-tag">[米国]</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#0077b6"></div>
+      <span>Micron</span>
+      <span class="country-tag">[米国]</span>
+    </div>
+  </div>
+  <div class="note">※ 各銘柄の直近終値ベース。正規化により通貨・株価水準の違いを排除して騰落率を比較。出所：Yahoo Finance</div>
+</div>
+<script>
+const ctx = document.getElementById('chart').getContext('2d');
+new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: ["2026-03-18","2026-03-19","2026-03-20","2026-03-23","2026-03-24","2026-03-25","2026-03-26","2026-03-27","2026-03-30","2026-03-31","2026-04-01","2026-04-02","2026-04-03","2026-04-06","2026-04-07","2026-04-08","2026-04-09","2026-04-10","2026-04-13","2026-04-14","2026-04-15","2026-04-16","2026-04-17","2026-04-20","2026-04-21","2026-04-22","2026-04-23","2026-04-24","2026-04-27","2026-04-28","2026-04-29","2026-04-30","2026-05-01","2026-05-04","2026-05-05","2026-05-06","2026-05-07","2026-05-08","2026-05-11","2026-05-12","2026-05-13","2026-05-14","2026-05-15","2026-05-18","2026-05-19","2026-05-20","2026-05-21","2026-05-22","2026-05-25","2026-05-26","2026-05-27","2026-05-28","2026-05-29","2026-06-01","2026-06-02","2026-06-03","2026-06-04","2026-06-05","2026-06-08","2026-06-09","2026-06-10","2026-06-11","2026-06-12","2026-06-15","2026-06-16","2026-06-17","2026-06-18","2026-06-19"],
+    datasets: [{"label":"東京エレクトロン (8035)","data":[null,100,null,97.38,99.49,102.62,103.05,99.9,98.75,94.66,99.87,96.67,97.69,97.56,97.74,107.83,107.27,111.98,107.96,111.11,110.6,116.5,111.9,112.51,116.4,115.69,115.64,116.58,119.76,114.8,null,112.87,120.65,null,null,null,131.5,133.36,132.42,132.62,130.54,130.18,127.87,125.25,119.91,117.21,124.08,126.7,132.67,130.74,133.49,133.03,133.28,134.91,136.56,154.84,161.86,151.16,139.89,152.35,157.21,161.2,172.9,185,180.17,184.69,193.44,191.61],"borderColor":"#e63946","backgroundColor":"#e6394622","borderWidth":2,"pointRadius":0,"tension":0.1,"spanGaps":true},{"label":"アドバンテスト (6857)","data":[null,100,null,94.79,93.18,97.69,95.77,92.04,87.26,84.78,93.83,88.09,89.89,91.45,92.58,105.17,103.42,104.21,103.75,112.59,115.03,119.37,116.22,113.01,113.43,116.35,116.35,122.77,131.36,124.06,null,117.85,115.99,null,null,null,123.92,124.62,120.02,119.7,117.97,119.33,109.92,109.05,105.46,106.86,111.53,111.95,115.74,108.74,113.14,109.84,109.13,107.07,109.76,115.35,117.47,111.61,105.23,109.8,105.23,104.98,113.95,122.69,126.52,125.35,126.36,132.36],"borderColor":"#f4a261","backgroundColor":"#f4a26122","borderWidth":2,"pointRadius":0,"tension":0.1,"spanGaps":true},{"label":"サムスン電子","data":[null,100,99.45,92.92,94.61,94.26,89.83,89.83,87.93,83.39,94.59,88.98,92.87,96.31,98,104.99,101.75,102.74,100.25,102.99,105.24,108.48,107.73,106.98,109.23,108.48,111.97,109.48,111.97,110.72,112.72,109.98,null,115.96,null,132.67,135.41,133.92,142.39,139.15,141.65,147.63,134.91,140.15,137.41,137.66,149.38,145.89,null,149.13,153.12,149.38,158.1,174.06,179.8,null,175.31,164.09,147.38,160.6,150.87,149.13,160.85,168.08,171.07,172.82,180.8,176.56],"borderColor":"#2a9d8f","backgroundColor":"#2a9d8f22","borderWidth":2,"pointRadius":0,"tension":0.1,"spanGaps":true},{"label":"SKハイニックス","data":[null,100,99.41,92.1,97.33,98.22,92.1,92.1,86.18,79.66,88.55,81.93,86.48,87.46,90.42,101.97,98.52,101.38,102.67,108.88,112.14,114.02,111.35,115.1,120.83,120.73,120.93,120.63,127.54,128.33,127.64,126.95,null,142.84,null,158.05,163.28,166.44,185.59,181.15,195.06,194.47,179.57,181.64,172.26,172.26,191.51,191.61,null,202.57,221.42,225.96,230.31,233.27,232.97,null,226.85,204.34,188.65,218.66,202.17,207.4,212.24,225.86,235.14,248.86,265.05,272.85],"borderColor":"#57cc99","backgroundColor":"#57cc9922","borderWidth":2,"pointRadius":0,"tension":0.1,"spanGaps":true},{"label":"TSMC (2330)","data":[100,97.11,96.59,95.01,95.01,96.85,96.59,95.54,93.44,92.39,97.38,95.01,null,null,97.64,102.36,102.62,104.99,104.46,107.87,109.19,109.45,106.56,106.3,107.61,107.61,109.19,114.7,118.9,116.27,114.44,112.07,null,119.42,118.11,118.11,121.26,120.21,117.32,118.37,116.54,119.16,118.9,117.59,115.75,114.7,117.06,118.37,121.26,119.16,120.73,120.47,123.62,123.62,124.93,127.3,125.2,124.15,120.47,121,118.37,118.11,121.26,124.67,125.98,125.2,126.51,null],"borderColor":"#6a4c93","backgroundColor":"#6a4c9322","borderWidth":2,"pointRadius":0,"tension":0.1,"spanGaps":true},{"label":"NVIDIA","data":[null,100,96.72,98.36,98.12,100.07,95.9,93.82,92.5,97.67,98.43,99.34,null,99.48,99.74,101.97,103,105.64,106.02,110.05,111.37,111.08,112.95,113.16,111.94,113.41,111.81,116.64,121.31,119.38,117.19,111.77,111.14,111.16,110.05,116.39,118.45,120.52,122.89,123.64,126.47,132.02,126.19,124.51,123.55,125.15,122.93,120.59,null,120.33,119.06,119.99,118.25,125.65,124.79,120.27,122.46,114.86,116.85,116.59,112.24,114.73,114.91,118.98,116.16,114.61,117.99,null],"borderColor":"#76b900","backgroundColor":"#76b90022","borderWidth":2,"pointRadius":0,"tension":0.1,"spanGaps":true},{"label":"Micron","data":[null,100,95.19,91.01,89.03,86,80.01,80.41,72.43,76.04,82.8,82.44,null,85.03,84.99,91.55,94.88,94.67,96.01,104.81,102.69,102.92,102.43,100.93,101.15,109.73,108.43,111.81,118.07,113.51,116.7,116.41,122.05,129.75,144.1,150.04,145.55,168.1,179.02,172.55,180.89,174.67,163.11,153.41,157.28,164.76,171.54,169.04,null,201.65,208.97,207.87,218.56,233.08,239.52,243,224.19,194.48,213.67,210.66,200.75,224.16,220.95,244.89,229.76,234.81,255.25,null],"borderColor":"#0077b6","backgroundColor":"#0077b622","borderWidth":2,"pointRadius":0,"tension":0.1,"spanGaps":true}],
+  },
+  options: {
+    responsive: true,
+    interaction: { mode: 'index', intersect: false },
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        backgroundColor: '#1e2130',
+        borderColor: '#333',
+        borderWidth: 1,
+        callbacks: {
+          label: ctx => ` ${ctx.dataset.label}: ${ctx.parsed.y?.toFixed(1) ?? 'N/A'}`,
+        }
+      }
+    },
+    scales: {
+      x: {
+        ticks: {
+          color: '#888',
+          maxTicksLimit: 12,
+          maxRotation: 0,
+        },
+        grid: { color: '#ffffff0d' },
+      },
+      y: {
+        ticks: {
+          color: '#888',
+          callback: v => v.toFixed(0),
+        },
+        grid: { color: '#ffffff12' },
+        title: { display: true, text: '相対株価（基準日=100）', color: '#888', font: { size: 11 } },
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>
