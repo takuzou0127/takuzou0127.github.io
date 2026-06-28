@@ -3,75 +3,244 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>半導体主要株 株価比較（直近3ヶ月）</title>
+<title>AIエコシステム株価ダッシュボード</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: #0f1117; color: #e0e0e0; font-family: 'Segoe UI', sans-serif; padding: 24px; }
-  h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: 4px; color: #fff; }
-  .subtitle { font-size: 0.8rem; color: #888; margin-bottom: 24px; }
-  .chart-wrap { background: #1a1d27; border-radius: 12px; padding: 24px; }
-  canvas { max-height: 520px; }
-  .legend { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
-  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 0.82rem; }
-  .legend-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
-  .country-tag { font-size: 0.7rem; color: #888; }
-  .note { font-size: 0.72rem; color: #666; margin-top: 16px; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #0f1117; color: #e0e0e0; font-family: 'Segoe UI', sans-serif; padding: 24px; max-width: 1200px; margin: 0 auto; }
+
+h1 { font-size: 1.3rem; font-weight: 600; color: #fff; margin-bottom: 4px; }
+.subtitle { font-size: 0.78rem; color: #888; margin-bottom: 20px; }
+
+/* セクション共通 */
+.section { background: #1a1d27; border-radius: 12px; padding: 24px 28px; margin-bottom: 20px; }
+.section h2 { font-size: 1rem; font-weight: 600; color: #fff; margin-bottom: 16px; border-left: 3px solid #4a9eff; padding-left: 10px; }
+.section h3 { font-size: 0.85rem; font-weight: 600; color: #c0d8ff; margin: 16px 0 8px; }
+.section p { font-size: 0.82rem; color: #b0b8cc; line-height: 1.75; }
+.section ul { padding-left: 18px; }
+.section ul li { font-size: 0.82rem; color: #b0b8cc; line-height: 1.75; margin-bottom: 3px; }
+
+/* エコシステム図 */
+.eco-diagram { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
+.eco-row { display: flex; align-items: stretch; gap: 10px; }
+.eco-label { font-size: 0.72rem; color: #7888aa; writing-mode: horizontal-tb; display: flex; align-items: center; justify-content: flex-end; min-width: 90px; text-align: right; padding-right: 10px; }
+.eco-nodes { display: flex; flex-wrap: wrap; gap: 8px; flex: 1; }
+.eco-node { border-radius: 8px; padding: 8px 14px; font-size: 0.8rem; font-weight: 500; border: 1px solid; display: flex; align-items: center; gap: 8px; }
+.eco-node .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.eco-node .pf-badge { font-size: 0.65rem; padding: 2px 6px; border-radius: 3px; margin-left: 4px; }
+.eco-arrow { display: flex; align-items: center; justify-content: center; font-size: 1.1rem; color: #3a4060; padding: 0 4px; }
+
+/* チャート */
+.chart-wrap canvas { max-height: 500px; }
+.legend-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.legend-item { display: flex; align-items: center; gap: 6px; font-size: 0.78rem; background: #12151f; padding: 4px 10px; border-radius: 6px; border: 1px solid #252a3a; }
+.legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.legend-group { font-size: 0.65rem; color: #666; margin-left: 2px; }
+.note { font-size: 0.7rem; color: #555; margin-top: 14px; }
+
+/* ポートフォリオ */
+.pf-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; margin-top: 12px; }
+.pf-card { border-radius: 8px; padding: 14px 16px; border: 1px solid #252a3a; background: #12151f; }
+.pf-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.pf-dot { width: 10px; height: 10px; border-radius: 50%; }
+.pf-name { font-size: 0.88rem; font-weight: 600; color: #e0e6f0; }
+.pf-status { margin-left: auto; font-size: 0.68rem; padding: 2px 8px; border-radius: 10px; }
+.pf-desc { font-size: 0.78rem; color: #8899bb; line-height: 1.6; }
+
+/* ステータス別色 */
+.status-hold { background: #0077b630; color: #4ab0f0; border: 1px solid #0077b640; }
+.status-watch { background: #57cc9930; color: #57cc99; border: 1px solid #57cc9940; }
+.status-consider { background: #e6394630; color: #e87080; border: 1px solid #e6394640; }
+
+/* レスポンシブ */
+@media (max-width: 600px) {
+  .eco-label { min-width: 60px; font-size: 0.65rem; }
+  .eco-node { font-size: 0.72rem; padding: 6px 10px; }
+}
 </style>
 </head>
 <body>
-<h1>半導体主要株 — 株価相対推移（直近3ヶ月）</h1>
-<div class="subtitle">基準日の終値を100として正規化 ／ 取得：2026/6/21 13:37:45 JST</div>
-<div class="chart-wrap">
-  <canvas id="chart"></canvas>
-  <div class="legend">
-    
-    <div class="legend-item">
-      <div class="legend-dot" style="background:#e63946"></div>
-      <span>東京エレクトロン (8035)</span>
-      <span class="country-tag">[日本]</span>
+
+<!-- ===== エコシステム全体図 ===== -->
+<div class="section">
+  <h2>AIチップ エコシステム全体図</h2>
+  <p>ハイパースケーラーがNVIDIA GPUと自社カスタムチップ（AVGO経由ASIC）の両方を使い分ける構造。メモリ・装置は全方向に供給する。</p>
+
+  <div class="eco-diagram" style="margin-top:16px;">
+    <!-- 需要側 -->
+    <div class="eco-row">
+      <div class="eco-label">需要側<br>ハイパースケーラー</div>
+      <div class="eco-nodes">
+        <div class="eco-node" style="background:#0082fb12;border-color:#0082fb40;color:#6ab0ff;"><span class="dot" style="background:#0082fb"></span>Meta</div>
+        <div class="eco-node" style="background:#ff990012;border-color:#ff990040;color:#ffb84d;"><span class="dot" style="background:#ff9900"></span>Amazon</div>
+        <div class="eco-node" style="background:#34a85312;border-color:#34a85340;color:#5ec47a;"><span class="dot" style="background:#34a853"></span>Alphabet</div>
+        <div class="eco-node" style="background:#00a4ef12;border-color:#00a4ef40;color:#4dc8ff;"><span class="dot" style="background:#00a4ef"></span>Microsoft</div>
+      </div>
     </div>
-    <div class="legend-item">
-      <div class="legend-dot" style="background:#f4a261"></div>
-      <span>アドバンテスト (6857)</span>
-      <span class="country-tag">[日本]</span>
+
+    <!-- 矢印行 -->
+    <div class="eco-row">
+      <div class="eco-label"></div>
+      <div style="display:flex;gap:40px;padding:0 10px;font-size:0.72rem;color:#4a6080;">
+        <span>↓ NVIDIA GPU購入</span>
+        <span>↓ カスタムASIC発注</span>
+      </div>
     </div>
-    <div class="legend-item">
-      <div class="legend-dot" style="background:#2a9d8f"></div>
-      <span>サムスン電子</span>
-      <span class="country-tag">[韓国]</span>
+
+    <!-- 供給側：GPU & ASIC -->
+    <div class="eco-row">
+      <div class="eco-label">チップ供給</div>
+      <div class="eco-nodes">
+        <div class="eco-node" style="background:#76b90018;border-color:#76b90050;color:#76b900;"><span class="dot" style="background:#76b900"></span>NVIDIA（GPU）</div>
+        <div class="eco-node" style="background:#cc000018;border-color:#cc000050;color:#ff6666;"><span class="dot" style="background:#cc0000"></span>Broadcom（カスタムASIC）</div>
+        <div class="eco-node" style="background:#a484e018;border-color:#a484e050;color:#a484e0;"><span class="dot" style="background:#a484e0"></span>TSMC（製造受託）</div>
+      </div>
     </div>
-    <div class="legend-item">
-      <div class="legend-dot" style="background:#57cc99"></div>
-      <span>SKハイニックス</span>
-      <span class="country-tag">[韓国]</span>
+
+    <!-- 矢印 -->
+    <div class="eco-row">
+      <div class="eco-label"></div>
+      <div style="padding:0 10px;font-size:0.72rem;color:#4a6080;">↓ HBMメモリ需要（全チップ共通）</div>
     </div>
-    <div class="legend-item">
-      <div class="legend-dot" style="background:#6a4c93"></div>
-      <span>TSMC (2330)</span>
-      <span class="country-tag">[台湾]</span>
+
+    <!-- メモリ層 -->
+    <div class="eco-row">
+      <div class="eco-label">HBMメモリ</div>
+      <div class="eco-nodes">
+        <div class="eco-node" style="background:#57cc9918;border-color:#57cc9950;color:#57cc99;"><span class="dot" style="background:#57cc99"></span>SK Hynix <span class="pf-badge status-watch">狙い中</span></div>
+        <div class="eco-node" style="background:#0077b618;border-color:#0077b650;color:#4ab0f0;"><span class="dot" style="background:#0077b6"></span>Micron <span class="pf-badge status-hold">保有×2</span></div>
+      </div>
     </div>
-    <div class="legend-item">
-      <div class="legend-dot" style="background:#76b900"></div>
-      <span>NVIDIA</span>
-      <span class="country-tag">[米国]</span>
+
+    <!-- 矢印 -->
+    <div class="eco-row">
+      <div class="eco-label"></div>
+      <div style="padding:0 10px;font-size:0.72rem;color:#4a6080;">↓ 製造装置・エッチング</div>
     </div>
-    <div class="legend-item">
-      <div class="legend-dot" style="background:#0077b6"></div>
-      <span>Micron</span>
-      <span class="country-tag">[米国]</span>
+
+    <!-- 装置層 -->
+    <div class="eco-row">
+      <div class="eco-label">製造装置</div>
+      <div class="eco-nodes">
+        <div class="eco-node" style="background:#e6394618;border-color:#e6394650;color:#e87080;"><span class="dot" style="background:#e63946"></span>Lam Research <span class="pf-badge status-consider">検討中</span></div>
+        <div class="eco-node" style="background:#f4a26118;border-color:#f4a26150;color:#f4c080;"><span class="dot" style="background:#f4a261"></span>Applied Materials</div>
+        <div class="eco-node" style="background:#e8708018;border-color:#e8708050;color:#e87080;"><span class="dot" style="background:#e87080"></span>東京エレクトロン</div>
+        <div class="eco-node" style="background:#ffd16618;border-color:#ffd16650;color:#ffd166;"><span class="dot" style="background:#ffd166"></span>アドバンテスト</div>
+      </div>
     </div>
   </div>
-  <div class="note">※ 各銘柄の直近終値ベース。正規化により通貨・株価水準の違いを排除して騰落率を比較。出所：Yahoo Finance</div>
 </div>
+
+<!-- ===== 選定ロジック ===== -->
+<div class="section">
+  <h2>なぜこの構成か — 投資ロジック</h2>
+
+  <h3>ハイパースケーラーの「NVIDIA離れ」動向</h3>
+  <p>Meta・Amazon・Google・Microsoftはそれぞれ独自のAIチップ開発を進めている。GoogleのTPU、AmazonのTrainium/Inferentia、MetaのMTIA、MicrosoftのMaia。これらの設計をBroadcom（AVGO）が受託する構図が拡大中。ただしNVIDIAのソフトウェアエコシステム（CUDA）の優位性は短期では崩れず、当面は「併用」が現実的。</p>
+
+  <h3>HBM Thesis — なぜメモリが本命か</h3>
+  <ul>
+    <li>NVIDIAのBlackwell世代もカスタムASICも、どちらもHBMを大量消費する構造は変わらない</li>
+    <li>「誰が勝っても HBMメーカーが勝つ」という非常にクリーンなロジック</li>
+    <li>SK Hynix（HBM3E供給の過半）と Micron（唯一の米国勢・CHIPS法補助対象）が中心</li>
+    <li>Lam Researchはエッチング装置でHBM積層プロセスに不可欠 → さらに川上</li>
+  </ul>
+
+  <h3>ポートフォリオの現在地</h3>
+  <ul>
+    <li><strong style="color:#4ab0f0;">Micron ×2（保有中）</strong> — HBM thesisの米国株版。直接エクスポージャー確立済み</li>
+    <li><strong style="color:#57cc99;">SK Hynix（狙い中）</strong> — HBM最強プレイヤーへの直接投資。韓国株口座または米ADR(HXSCL)経由で検討</li>
+    <li><strong style="color:#e87080;">Lam Research（検討中）</strong> — メモリ装置の川上。HBM thesis をさらに補強する選択肢</li>
+  </ul>
+</div>
+
+<!-- ===== チャート ===== -->
+<h1>AIエコシステム — 株価相対推移（直近3ヶ月）</h1>
+<div class="subtitle">基準日の終値を100として正規化 ／ 取得：2026/06/28 09:57:11 JST</div>
+
+<div class="section">
+  <canvas id="chart"></canvas>
+  <div class="legend-grid" id="legend"></div>
+  <div class="note">※ 正規化により通貨・株価水準の違いを排除して騰落率を比較。出所：Yahoo Finance (yfinance)</div>
+</div>
+
+<!-- ===== ポートフォリオ ===== -->
+<div class="section">
+  <h2>現在のポートフォリオ状況</h2>
+  <div class="pf-grid">
+    <div class="pf-card">
+      <div class="pf-header">
+        <span class="pf-dot" style="background:#0077b6;"></span>
+        <span class="pf-name">Micron (MU)</span>
+        <span class="pf-status status-hold">保有中 ×2株</span>
+      </div>
+      <div class="pf-desc">HBM thesis の本命・米国株版。唯一の米国DRAMメーカーとしてCHIPS法補助の恩恵を受ける。HBM3Eの量産立ち上げでSK Hynixを追走中。</div>
+    </div>
+    <div class="pf-card">
+      <div class="pf-header">
+        <span class="pf-dot" style="background:#57cc99;"></span>
+        <span class="pf-name">SK Hynix (000660.KS)</span>
+        <span class="pf-status status-watch">狙い中</span>
+      </div>
+      <div class="pf-desc">HBM市場シェア過半。NVIDIA H200/B200の唯一の公認HBMサプライヤー。HBM4でもリード継続中。韓国株口座またはADR経由での取得を検討。</div>
+    </div>
+    <div class="pf-card">
+      <div class="pf-header">
+        <span class="pf-dot" style="background:#e63946;"></span>
+        <span class="pf-name">Lam Research (LRCX)</span>
+        <span class="pf-status status-consider">検討中</span>
+      </div>
+      <div class="pf-desc">HBM積層に必須のエッチング装置メーカー。メモリ設備投資の増加を川上で取る選択肢。MU・SKHYY後の余力資金での追加検討。</div>
+    </div>
+  </div>
+</div>
+
 <script>
+const LABELS = ["2026-03-26", "2026-03-27", "2026-03-30", "2026-03-31", "2026-04-01", "2026-04-02", "2026-04-03", "2026-04-06", "2026-04-07", "2026-04-08", "2026-04-09", "2026-04-10", "2026-04-13", "2026-04-14", "2026-04-15", "2026-04-16", "2026-04-17", "2026-04-20", "2026-04-21", "2026-04-22", "2026-04-23", "2026-04-24", "2026-04-27", "2026-04-28", "2026-04-29", "2026-04-30", "2026-05-01", "2026-05-04", "2026-05-05", "2026-05-06", "2026-05-07", "2026-05-08", "2026-05-11", "2026-05-12", "2026-05-13", "2026-05-14", "2026-05-15", "2026-05-18", "2026-05-19", "2026-05-20", "2026-05-21", "2026-05-22", "2026-05-25", "2026-05-26", "2026-05-27", "2026-05-28", "2026-05-29", "2026-06-01", "2026-06-02", "2026-06-03", "2026-06-04", "2026-06-05", "2026-06-08", "2026-06-09", "2026-06-10", "2026-06-11", "2026-06-12", "2026-06-15", "2026-06-16", "2026-06-17", "2026-06-18", "2026-06-19", "2026-06-22", "2026-06-23", "2026-06-24", "2026-06-25", "2026-06-26"];
+const DATASETS_RAW = [{"symbol": "META", "label": "Meta", "group": "hyperscaler", "color": "#0082fb", "data": [null, 100.0, 102.03, 108.83, 110.18, 109.27, null, 109.0, 109.38, 116.49, 119.53, 119.81, 120.7, 126.02, 127.74, 128.75, 130.97, 127.62, 127.22, 128.34, 125.38, 128.4, 129.08, 127.7, 127.28, 116.39, 115.79, 116.11, 115.07, 116.58, 117.33, 115.96, 113.91, 114.7, 117.29, 117.63, 116.84, 116.26, 114.63, 115.09, 115.53, 116.08, null, 116.48, 120.84, 120.84, 120.31, 114.22, 113.68, 118.5, 119.37, 112.8, 111.35, 111.2, 108.61, 108.12, 107.85, 112.99, 114.27, 108.06, 109.9, null, 107.35, 107.04, 106.18, 103.36, 104.76], "portfolio": null}, {"symbol": "AMZN", "label": "Amazon", "group": "hyperscaler", "color": "#ff9900", "data": [null, 100.0, 100.81, 104.48, 105.63, 105.23, null, 106.75, 107.24, 110.99, 117.21, 119.58, 120.34, 124.92, 124.66, 125.26, 125.69, 124.55, 125.37, 128.1, 127.96, 132.43, 130.99, 130.28, 131.96, 132.97, 134.57, 136.48, 137.23, 137.95, 136.03, 136.79, 134.94, 133.35, 135.51, 134.05, 132.51, 132.87, 130.1, 132.94, 134.67, 133.6, null, 133.08, 136.38, 137.45, 135.77, 131.06, 128.68, 125.42, 127.32, 123.42, 123.02, 122.5, 119.39, 121.15, 119.67, 123.42, 123.41, 119.14, 122.6, null, 116.78, 117.44, 117.52, 113.88, 116.73], "portfolio": null}, {"symbol": "GOOGL", "label": "Alphabet", "group": "hyperscaler", "color": "#34a853", "data": [null, 100.0, 99.69, 104.82, 108.4, 107.81, null, 109.35, 111.34, 115.67, 116.09, 115.64, 117.12, 121.35, 122.88, 122.48, 124.55, 122.99, 121.12, 123.69, 123.53, 125.54, 127.7, 127.5, 127.56, 140.26, 140.59, 139.7, 141.59, 145.09, 145.07, 146.1, 141.66, 141.19, 146.76, 146.19, 144.63, 144.69, 141.31, 141.76, 141.31, 139.6, null, 141.75, 141.73, 142.21, 138.64, 137.19, 131.9, 130.86, 135.67, 134.33, 132.51, 132.86, 129.98, 130.49, 131.19, 134.71, 136.14, 132.68, 134.23, null, 127.54, 126.24, 125.94, 125.36, 123.06], "portfolio": null}, {"symbol": "MSFT", "label": "Microsoft", "group": "hyperscaler", "color": "#00a4ef", "data": [null, 100.0, 100.61, 103.76, 103.53, 104.68, null, 104.52, 104.35, 104.92, 104.57, 103.95, 107.74, 110.19, 115.26, 117.8, 118.5, 117.18, 118.89, 121.34, 116.53, 119.02, 119.07, 120.32, 118.97, 114.3, 116.16, 115.93, 115.31, 116.03, 117.94, 116.36, 115.67, 114.29, 113.58, 114.76, 118.26, 118.72, 117.0, 118.02, 117.72, 117.58, null, 116.86, 115.92, 119.94, 126.47, 129.36, 123.96, 120.04, 120.24, 117.04, 115.66, 113.32, 111.62, 109.65, 109.76, 112.29, 110.63, 106.44, 106.57, null, 103.19, 105.04, 102.66, 99.11, 104.77], "portfolio": null}, {"symbol": "AVGO", "label": "Broadcom", "group": "custom_asic", "color": "#cc0000", "data": [null, 100.0, 97.58, 102.94, 104.26, 104.61, null, 104.57, 111.07, 116.61, 118.04, 123.57, 126.3, 126.64, 131.94, 132.52, 135.21, 132.91, 133.75, 140.56, 139.66, 140.6, 139.08, 132.98, 134.84, 138.83, 140.11, 138.52, 142.13, 141.49, 137.21, 143.01, 142.49, 139.45, 138.62, 146.27, 141.41, 139.92, 136.71, 138.94, 137.88, 137.73, null, 140.35, 140.3, 141.87, 148.59, 152.98, 160.16, 159.38, 139.32, 128.29, 131.9, 130.42, 123.75, 128.23, 127.07, 131.02, 125.29, 130.67, 136.81, null, 130.62, 126.63, 127.27, 126.22, 121.59], "portfolio": null}, {"symbol": "NVDA", "label": "NVIDIA", "group": "gpu", "color": "#76b900", "data": [null, 100.0, 98.6, 104.11, 104.91, 105.89, null, 106.04, 106.32, 108.69, 109.78, 112.6, 113.01, 117.31, 118.71, 118.4, 120.39, 120.62, 119.32, 120.88, 119.17, 124.33, 129.3, 127.25, 124.91, 119.13, 118.46, 118.48, 117.3, 124.06, 126.25, 128.46, 130.99, 131.79, 134.81, 140.72, 134.5, 132.71, 131.69, 133.4, 131.04, 128.54, null, 128.26, 126.91, 127.9, 126.04, 133.93, 133.01, 128.19, 130.68, 122.58, 124.69, 124.42, 119.78, 122.44, 122.63, 126.97, 123.96, 122.31, 125.92, null, 124.7, 119.55, 118.93, 116.98, 115.06], "portfolio": null}, {"symbol": "MU", "label": "Micron", "group": "memory", "color": "#0077b6", "data": [null, 100.0, 90.12, 94.61, 103.02, 102.57, null, 105.79, 105.74, 113.91, 118.05, 117.79, 119.46, 130.41, 127.77, 128.05, 127.45, 125.58, 125.85, 136.52, 134.91, 139.11, 146.91, 141.23, 145.2, 144.83, 151.85, 161.44, 179.29, 186.68, 181.09, 209.15, 222.74, 214.69, 225.06, 217.33, 202.95, 190.87, 195.69, 205.0, 213.43, 210.32, null, 250.9, 260.01, 258.64, 271.94, 290.0, 298.01, 302.34, 278.94, 241.97, 265.85, 262.1, 249.78, 278.9, 274.91, 304.7, 285.87, 292.15, 317.58, null, 339.26, 294.56, 293.64, 339.87, 317.12], "portfolio": {"shares": 2, "status": "\u4fdd\u6709\u4e2d"}}, {"symbol": "000660.KS", "label": "SK Hynix", "group": "memory", "color": "#57cc99", "data": [100.0, 100.0, 93.57, 86.5, 96.14, 88.96, 93.89, 94.96, 98.18, 110.72, 106.97, 110.08, 111.47, 118.22, 121.76, 123.79, 120.9, 124.97, 131.19, 131.08, 131.3, 130.98, 138.48, 139.34, 138.59, 137.83, null, 155.09, null, 171.6, 177.28, 180.71, 201.5, 196.68, 211.79, 211.15, 194.96, 197.21, 187.03, 187.03, 207.93, 208.04, null, 219.94, 240.41, 245.38, 250.1, 253.31, 252.99, null, 246.34, 221.9, 204.86, 237.45, 219.54, 225.23, 230.48, 245.27, 255.35, 270.25, 287.83, 296.3, 312.91, 273.89, 280.97, 312.7, 286.54], "portfolio": {"shares": null, "status": "\u72d9\u3044\u4e2d"}}, {"symbol": "LRCX", "label": "Lam Research", "group": "equipment", "color": "#e63946", "data": [null, 100.0, 94.57, 101.06, 105.01, 103.33, null, 104.37, 106.12, 116.59, 122.4, 124.72, 126.45, 128.85, 125.42, 123.44, 126.58, 124.48, 122.21, 125.61, 122.3, 126.66, 122.73, 118.84, 117.66, 121.97, 121.43, 122.31, 130.46, 140.57, 135.53, 139.09, 140.04, 136.81, 139.75, 141.5, 134.68, 131.48, 129.31, 138.16, 142.96, 144.43, null, 152.63, 150.86, 150.42, 150.5, 150.0, 158.18, 162.58, 159.13, 143.46, 153.47, 154.75, 152.22, 171.48, 173.51, 183.96, 174.7, 177.12, 184.15, null, 193.85, 175.77, 177.41, 190.2, 179.44], "portfolio": {"shares": null, "status": "\u691c\u8a0e\u4e2d"}}, {"symbol": "AMAT", "label": "Applied Materials", "group": "equipment", "color": "#f4a261", "data": [null, 100.0, 95.83, 101.37, 104.93, 103.35, null, 104.58, 105.08, 114.4, 117.98, 118.48, 117.37, 117.34, 116.93, 115.64, 117.73, 116.15, 116.95, 119.67, 119.79, 123.69, 120.08, 113.03, 113.47, 117.0, 115.4, 116.08, 121.84, 127.12, 121.79, 129.15, 131.57, 127.89, 129.49, 130.66, 129.5, 122.66, 120.68, 126.6, 126.91, 128.33, null, 135.08, 133.11, 133.53, 133.65, 136.06, 145.52, 148.71, 148.98, 134.52, 146.15, 148.24, 147.59, 164.11, 168.45, 173.95, 168.74, 176.07, 183.25, null, 190.1, 173.98, 174.9, 198.37, 186.14], "portfolio": null}, {"symbol": "8035.T", "label": "\u6771\u4eac\u30a8\u30ec\u30af\u30c8\u30ed\u30f3", "group": "equipment", "color": "#e87080", "data": [100.0, 96.94, 96.73, 92.72, 97.82, 94.68, 95.68, 95.56, 95.73, 105.62, 105.07, 109.68, 105.74, 108.83, 108.33, 114.11, 109.6, 110.2, 114.01, 113.31, 113.26, 114.18, 117.3, 112.44, null, 110.55, 118.17, null, null, null, 128.8, 130.62, 129.7, 129.9, 127.86, 127.51, 125.24, 122.68, 117.45, 114.81, 121.53, 124.1, 129.95, 128.06, 130.74, 130.3, 130.55, 132.14, 133.76, 151.66, 158.54, 148.05, 137.02, 149.22, 153.98, 157.89, 169.35, 181.2, 176.47, 180.9, 189.47, 187.68, 193.75, 181.7, 174.08, 187.63, 181.6], "portfolio": null}, {"symbol": "6857.T", "label": "\u30a2\u30c9\u30d0\u30f3\u30c6\u30b9\u30c8", "group": "equipment", "color": "#ffd166", "data": [100.0, 96.1, 91.24, 88.65, 98.11, 92.11, 93.99, 95.62, 96.8, 109.97, 108.14, 108.97, 108.49, 117.73, 120.28, 124.82, 121.52, 118.17, 118.6, 121.65, 121.65, 128.37, 137.35, 129.72, null, 123.22, 121.28, null, null, null, 129.57, 130.31, 125.49, 125.16, 123.36, 124.77, 114.94, 114.02, 110.27, 111.73, 116.62, 117.05, 121.02, 113.7, 118.3, 114.85, 114.11, 111.95, 114.77, 120.61, 122.83, 116.71, 110.03, 114.81, 110.03, 109.77, 119.15, 128.28, 132.29, 131.07, 132.12, 138.4, 140.27, 137.05, 136.04, 156.54, 141.45], "portfolio": null}, {"symbol": "TSM", "label": "TSMC", "group": "foundry", "color": "#a484e0", "data": [null, 100.0, 96.87, 103.43, 104.51, 103.76, null, 104.6, 105.69, 111.99, 111.86, 113.42, 113.11, 116.27, 114.8, 111.2, 113.39, 112.09, 112.65, 118.58, 117.11, 123.17, 123.95, 120.08, 120.53, 121.22, 121.71, 122.91, 120.71, 128.39, 126.75, 126.0, 123.81, 121.59, 122.36, 127.84, 123.75, 121.18, 120.16, 122.92, 124.61, 123.8, null, 126.19, 129.38, 130.03, 128.07, 133.33, 136.71, 133.65, 136.17, 127.06, 130.62, 130.97, 125.1, 129.17, 130.05, 135.41, 130.63, 132.57, 141.76, null, 143.47, 133.87, 135.23, 133.44, 132.63], "portfolio": null}, {"symbol": "005930.KS", "label": "\u30b5\u30e0\u30b9\u30f3\u96fb\u5b50", "group": "memory", "color": "#2a9d8f", "data": [100.0, 100.0, 98.09, 93.03, 105.52, 99.26, 103.6, 107.44, 109.33, 117.12, 113.5, 114.62, 111.84, 114.9, 117.4, 121.02, 120.18, 119.35, 121.85, 121.02, 124.91, 122.13, 124.91, 123.52, 125.75, 122.69, null, 129.36, null, 148.0, 151.06, 149.39, 158.85, 155.23, 158.02, 164.69, 150.51, 156.35, 153.29, 153.57, 166.64, 162.75, null, 166.36, 170.81, 166.64, 176.38, 194.18, 200.58, null, 195.57, 183.05, 164.42, 179.16, 168.31, 166.36, 179.44, 187.51, 190.84, 192.79, 201.69, 196.96, 196.69, 172.48, 189.45, 199.47, 188.9], "portfolio": null}];
+
+const GROUP_NAMES = {
+  hyperscaler: "ハイパースケーラー",
+  custom_asic: "カスタムASIC",
+  gpu: "GPU",
+  memory: "メモリ",
+  equipment: "製造装置",
+  foundry: "ファウンドリ",
+};
+
+const GROUP_DASH = {
+  hyperscaler: [],
+  custom_asic: [8, 4],
+  gpu: [],
+  memory: [5, 3],
+  equipment: [2, 3],
+  foundry: [6, 2],
+};
+
+const GROUP_WIDTH = {
+  hyperscaler: 1.8, custom_asic: 2.2, gpu: 3,
+  memory: 2, equipment: 1.5, foundry: 2,
+};
+
+const chartDatasets = DATASETS_RAW.map(d => ({
+  label: d.label,
+  data: d.data,
+  borderColor: d.color,
+  backgroundColor: d.color + "18",
+  borderWidth: GROUP_WIDTH[d.group] || 2,
+  borderDash: GROUP_DASH[d.group] || [],
+  pointRadius: 0,
+  tension: 0.1,
+  spanGaps: true,
+  segment: d.portfolio ? {
+    borderWidth: ctx => 3,
+  } : {},
+}));
+
 const ctx = document.getElementById('chart').getContext('2d');
 new Chart(ctx, {
   type: 'line',
-  data: {
-    labels: ["2026-03-18","2026-03-19","2026-03-20","2026-03-23","2026-03-24","2026-03-25","2026-03-26","2026-03-27","2026-03-30","2026-03-31","2026-04-01","2026-04-02","2026-04-03","2026-04-06","2026-04-07","2026-04-08","2026-04-09","2026-04-10","2026-04-13","2026-04-14","2026-04-15","2026-04-16","2026-04-17","2026-04-20","2026-04-21","2026-04-22","2026-04-23","2026-04-24","2026-04-27","2026-04-28","2026-04-29","2026-04-30","2026-05-01","2026-05-04","2026-05-05","2026-05-06","2026-05-07","2026-05-08","2026-05-11","2026-05-12","2026-05-13","2026-05-14","2026-05-15","2026-05-18","2026-05-19","2026-05-20","2026-05-21","2026-05-22","2026-05-25","2026-05-26","2026-05-27","2026-05-28","2026-05-29","2026-06-01","2026-06-02","2026-06-03","2026-06-04","2026-06-05","2026-06-08","2026-06-09","2026-06-10","2026-06-11","2026-06-12","2026-06-15","2026-06-16","2026-06-17","2026-06-18","2026-06-19"],
-    datasets: [{"label":"東京エレクトロン (8035)","data":[null,100,null,97.38,99.49,102.62,103.05,99.9,98.75,94.66,99.87,96.67,97.69,97.56,97.74,107.83,107.27,111.98,107.96,111.11,110.6,116.5,111.9,112.51,116.4,115.69,115.64,116.58,119.76,114.8,null,112.87,120.65,null,null,null,131.5,133.36,132.42,132.62,130.54,130.18,127.87,125.25,119.91,117.21,124.08,126.7,132.67,130.74,133.49,133.03,133.28,134.91,136.56,154.84,161.86,151.16,139.89,152.35,157.21,161.2,172.9,185,180.17,184.69,193.44,191.61],"borderColor":"#e63946","backgroundColor":"#e6394622","borderWidth":2,"pointRadius":0,"tension":0.1,"spanGaps":true},{"label":"アドバンテスト (6857)","data":[null,100,null,94.79,93.18,97.69,95.77,92.04,87.26,84.78,93.83,88.09,89.89,91.45,92.58,105.17,103.42,104.21,103.75,112.59,115.03,119.37,116.22,113.01,113.43,116.35,116.35,122.77,131.36,124.06,null,117.85,115.99,null,null,null,123.92,124.62,120.02,119.7,117.97,119.33,109.92,109.05,105.46,106.86,111.53,111.95,115.74,108.74,113.14,109.84,109.13,107.07,109.76,115.35,117.47,111.61,105.23,109.8,105.23,104.98,113.95,122.69,126.52,125.35,126.36,132.36],"borderColor":"#f4a261","backgroundColor":"#f4a26122","borderWidth":2,"pointRadius":0,"tension":0.1,"spanGaps":true},{"label":"サムスン電子","data":[null,100,99.45,92.92,94.61,94.26,89.83,89.83,87.93,83.39,94.59,88.98,92.87,96.31,98,104.99,101.75,102.74,100.25,102.99,105.24,108.48,107.73,106.98,109.23,108.48,111.97,109.48,111.97,110.72,112.72,109.98,null,115.96,null,132.67,135.41,133.92,142.39,139.15,141.65,147.63,134.91,140.15,137.41,137.66,149.38,145.89,null,149.13,153.12,149.38,158.1,174.06,179.8,null,175.31,164.09,147.38,160.6,150.87,149.13,160.85,168.08,171.07,172.82,180.8,176.56],"borderColor":"#2a9d8f","backgroundColor":"#2a9d8f22","borderWidth":2,"pointRadius":0,"tension":0.1,"spanGaps":true},{"label":"SKハイニックス","data":[null,100,99.41,92.1,97.33,98.22,92.1,92.1,86.18,79.66,88.55,81.93,86.48,87.46,90.42,101.97,98.52,101.38,102.67,108.88,112.14,114.02,111.35,115.1,120.83,120.73,120.93,120.63,127.54,128.33,127.64,126.95,null,142.84,null,158.05,163.28,166.44,185.59,181.15,195.06,194.47,179.57,181.64,172.26,172.26,191.51,191.61,null,202.57,221.42,225.96,230.31,233.27,232.97,null,226.85,204.34,188.65,218.66,202.17,207.4,212.24,225.86,235.14,248.86,265.05,272.85],"borderColor":"#57cc99","backgroundColor":"#57cc9922","borderWidth":2,"pointRadius":0,"tension":0.1,"spanGaps":true},{"label":"TSMC (2330)","data":[100,97.11,96.59,95.01,95.01,96.85,96.59,95.54,93.44,92.39,97.38,95.01,null,null,97.64,102.36,102.62,104.99,104.46,107.87,109.19,109.45,106.56,106.3,107.61,107.61,109.19,114.7,118.9,116.27,114.44,112.07,null,119.42,118.11,118.11,121.26,120.21,117.32,118.37,116.54,119.16,118.9,117.59,115.75,114.7,117.06,118.37,121.26,119.16,120.73,120.47,123.62,123.62,124.93,127.3,125.2,124.15,120.47,121,118.37,118.11,121.26,124.67,125.98,125.2,126.51,null],"borderColor":"#6a4c93","backgroundColor":"#6a4c9322","borderWidth":2,"pointRadius":0,"tension":0.1,"spanGaps":true},{"label":"NVIDIA","data":[null,100,96.72,98.36,98.12,100.07,95.9,93.82,92.5,97.67,98.43,99.34,null,99.48,99.74,101.97,103,105.64,106.02,110.05,111.37,111.08,112.95,113.16,111.94,113.41,111.81,116.64,121.31,119.38,117.19,111.77,111.14,111.16,110.05,116.39,118.45,120.52,122.89,123.64,126.47,132.02,126.19,124.51,123.55,125.15,122.93,120.59,null,120.33,119.06,119.99,118.25,125.65,124.79,120.27,122.46,114.86,116.85,116.59,112.24,114.73,114.91,118.98,116.16,114.61,117.99,null],"borderColor":"#76b900","backgroundColor":"#76b90022","borderWidth":2,"pointRadius":0,"tension":0.1,"spanGaps":true},{"label":"Micron","data":[null,100,95.19,91.01,89.03,86,80.01,80.41,72.43,76.04,82.8,82.44,null,85.03,84.99,91.55,94.88,94.67,96.01,104.81,102.69,102.92,102.43,100.93,101.15,109.73,108.43,111.81,118.07,113.51,116.7,116.41,122.05,129.75,144.1,150.04,145.55,168.1,179.02,172.55,180.89,174.67,163.11,153.41,157.28,164.76,171.54,169.04,null,201.65,208.97,207.87,218.56,233.08,239.52,243,224.19,194.48,213.67,210.66,200.75,224.16,220.95,244.89,229.76,234.81,255.25,null],"borderColor":"#0077b6","backgroundColor":"#0077b622","borderWidth":2,"pointRadius":0,"tension":0.1,"spanGaps":true}],
-  },
+  data: { labels: LABELS, datasets: chartDatasets },
   options: {
     responsive: true,
     interaction: { mode: 'index', intersect: false },
@@ -82,29 +251,32 @@ new Chart(ctx, {
         borderColor: '#333',
         borderWidth: 1,
         callbacks: {
-          label: ctx => ` ${ctx.dataset.label}: ${ctx.parsed.y?.toFixed(1) ?? 'N/A'}`,
+          label: c => ` ${c.dataset.label}: ${c.parsed.y?.toFixed(1) ?? 'N/A'}`,
         }
       }
     },
     scales: {
       x: {
-        ticks: {
-          color: '#888',
-          maxTicksLimit: 12,
-          maxRotation: 0,
-        },
+        ticks: { color: '#888', maxTicksLimit: 12, maxRotation: 0 },
         grid: { color: '#ffffff0d' },
       },
       y: {
-        ticks: {
-          color: '#888',
-          callback: v => v.toFixed(0),
-        },
+        ticks: { color: '#888', callback: v => v.toFixed(0) },
         grid: { color: '#ffffff12' },
         title: { display: true, text: '相対株価（基準日=100）', color: '#888', font: { size: 11 } },
       }
     }
   }
+});
+
+// 凡例を動的生成
+const legend = document.getElementById('legend');
+DATASETS_RAW.forEach(d => {
+  const item = document.createElement('div');
+  item.className = 'legend-item';
+  const pf = d.portfolio ? ` <span style="font-size:0.65rem;color:#aaa;">[${d.portfolio.status}]</span>` : '';
+  item.innerHTML = `<span class="legend-dot" style="background:${d.color}"></span><span>${d.label}${pf}</span><span class="legend-group">${GROUP_NAMES[d.group] || ''}</span>`;
+  legend.appendChild(item);
 });
 </script>
 </body>
