@@ -6,27 +6,44 @@
 <title>My Daily Dashboard</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:#0f1117;color:#e0e0e0;font-family:'Segoe UI',sans-serif;padding:24px;max-width:480px;margin:0 auto}
-h1{font-size:1.2rem;color:#fff;margin-bottom:4px}
-.sub{font-size:0.78rem;color:#555;margin-bottom:28px}
-.card{display:block;background:#13161f;border-radius:14px;padding:20px 22px;margin-bottom:14px;text-decoration:none;border-left:4px solid #333;transition:opacity 0.15s}
-.card:active{opacity:0.7}
+body{background:#0f1117;color:#e0e0e0;font-family:'Segoe UI',sans-serif;padding:20px;max-width:480px;margin:0 auto}
+h1{font-size:1.2rem;color:#fff;margin-bottom:3px}
+.sub{font-size:0.76rem;color:#444;margin-bottom:24px}
+.card{display:block;background:#13161f;border-radius:14px;padding:18px 20px;margin-bottom:12px;text-decoration:none;border-left:4px solid #333}
+.card:active{opacity:0.65}
 .card.br{border-color:#4a9eff}
 .card.nw{border-color:#bc8cff}
 .card.sc{border-color:#3fb950}
-.card h2{font-size:1rem;margin-bottom:4px}
+.card h2{font-size:0.97rem;margin-bottom:4px}
 .card.br h2{color:#4a9eff}
 .card.nw h2{color:#bc8cff}
 .card.sc h2{color:#3fb950}
-.card p{font-size:0.8rem;color:#777;line-height:1.5}
-.badge{font-size:0.7rem;background:#1a1d27;color:#555;padding:2px 8px;border-radius:10px;float:right;margin-top:2px}
-.update{font-size:0.72rem;color:#333;text-align:center;margin-top:24px}
+.card p{font-size:0.78rem;color:#666;line-height:1.5}
+.badge{font-size:0.68rem;background:#1a1d27;color:#555;padding:2px 7px;border-radius:10px;float:right;margin-top:1px}
+
+/* コンテキストコピーボタン */
+.copy-section{background:#13161f;border-radius:14px;padding:18px 20px;margin-bottom:12px;border-left:4px solid #e3b341}
+.copy-section h2{font-size:0.97rem;color:#e3b341;margin-bottom:6px}
+.copy-section p{font-size:0.78rem;color:#666;margin-bottom:14px;line-height:1.5}
+#copyBtn{
+  width:100%;padding:13px;border:none;border-radius:9px;
+  background:#e3b341;color:#0f1117;font-size:0.95rem;font-weight:700;
+  cursor:pointer;letter-spacing:0.03em
+}
+#copyBtn:active{opacity:0.7}
+#copyBtn.done{background:#3fb950;color:#fff}
+#copyStatus{font-size:0.78rem;color:#3fb950;margin-top:8px;min-height:18px;text-align:center}
+
+.divider{border:none;border-top:1px solid #1a1d27;margin:6px 0 14px}
+.update{font-size:0.7rem;color:#2a2a3a;text-align:center;margin-top:18px}
 </style>
 </head>
 <body>
+
 <h1>&#x1F4CA; My Daily Dashboard</h1>
 <div class="sub" id="dt"></div>
 
+<!-- ナビゲーション -->
 <a class="card br" href="briefing.html">
   <span class="badge">毎朝5:00更新</span>
   <h2>&#x1F4C8; 今日の棚卸（半導体ブリーフィング）</h2>
@@ -45,13 +62,52 @@ h1{font-size:1.2rem;color:#fff;margin-bottom:4px}
   <p>AIチップ2軸収束モデル・株価チャート・ポジション表示</p>
 </a>
 
-<div class="update">&#x1F504; 毎朝6時までに自動更新 &nbsp;|&nbsp; takuzou0127.github.io</div>
+<hr class="divider">
+
+<!-- Claude.aiへのコンテキストコピー -->
+<div class="copy-section">
+  <h2>&#x1F916; Claude.ai で棚卸を話し合う</h2>
+  <p>ボタンをタップ → Claude.aiを開く → 長押しでペースト → <strong style="color:#e3b341">「棚卸よろしく」</strong>と送信</p>
+  <button id="copyBtn" onclick="copyContext()">&#x1F4CB; コンテキストをコピー</button>
+  <div id="copyStatus"></div>
+</div>
+
+<div class="update">&#x1F504; 毎朝6時までに自動更新 ｜ takuzou0127.github.io</div>
 
 <script>
+// 日付表示
 const d = new Date();
+const days = ['日','月','火','水','木','金','土'];
 document.getElementById('dt').textContent =
-  d.getFullYear() + '年' + (d.getMonth()+1) + '月' + d.getDate() + '日（' +
-  ['日','月','火','水','木','金','土'][d.getDay()] + '）';
+  d.getFullYear() + '年' + (d.getMonth()+1) + '月' + d.getDate() +
+  '日（' + days[d.getDay()] + '）';
+
+// コンテキストコピー
+async function copyContext() {
+  const btn = document.getElementById('copyBtn');
+  const status = document.getElementById('copyStatus');
+  btn.textContent = '読み込み中...';
+  btn.disabled = true;
+  try {
+    const res = await fetch('context.json?t=' + Date.now());
+    const data = await res.json();
+    await navigator.clipboard.writeText(data.context);
+    btn.textContent = '✅ コピーしました！';
+    btn.classList.add('done');
+    status.textContent = 'Claude.aiを開いて長押し→ペーストしてください';
+    setTimeout(() => {
+      btn.textContent = '📋 コンテキストをコピー';
+      btn.classList.remove('done');
+      btn.disabled = false;
+      status.textContent = '';
+    }, 4000);
+  } catch(e) {
+    btn.textContent = '📋 コンテキストをコピー';
+    btn.disabled = false;
+    status.textContent = '⚠️ コピーできませんでした。ブラウザの設定を確認してください。';
+    setTimeout(() => { status.textContent = ''; }, 4000);
+  }
+}
 </script>
 </body>
 </html>
