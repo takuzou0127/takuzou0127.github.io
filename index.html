@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Daily Dashboard</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0f1117;color:#e0e0e0;font-family:'Segoe UI',sans-serif;padding:24px;max-width:480px;margin:0 auto}
+h1{font-size:1.2rem;color:#fff;margin-bottom:4px}
+.sub{font-size:0.78rem;color:#555;margin-bottom:28px}
+.card{display:block;background:#13161f;border-radius:14px;padding:20px 22px;margin-bottom:14px;text-decoration:none;border-left:4px solid #333;transition:opacity 0.15s}
+.card:active{opacity:0.7}
+.card.br{border-color:#4a9eff}
+.card.nw{border-color:#bc8cff}
+.card.sc{border-color:#3fb950}
+.card h2{font-size:1rem;margin-bottom:4px}
+.card.br h2{color:#4a9eff}
+.card.nw h2{color:#bc8cff}
+.card.sc h2{color:#3fb950}
+.card p{font-size:0.8rem;color:#777;line-height:1.5}
+.badge{font-size:0.7rem;background:#1a1d27;color:#555;padding:2px 8px;border-radius:10px;float:right;margin-top:2px}
+.update{font-size:0.72rem;color:#333;text-align:center;margin-top:24px}
+</style>
+</head>
+<body>
+<h1>&#x1F4CA; My Daily Dashboard</h1>
+<div class="sub" id="dt"></div>
+
+<a class="card br" href="briefing.html">
+  <span class="badge">毎朝5:00更新</span>
+  <h2>&#x1F4C8; 今日の棚卸（半導体ブリーフィング）</h2>
+  <p>エコシステム図・株価一覧・MU/SKHY判断・本日の考察</p>
+</a>
+
+<a class="card nw" href="news.html">
+  <span class="badge">毎朝5:30更新</span>
+  <h2>&#x1F4F0; 今日のニュース</h2>
+  <p>Bloomberg・Yahoo Finance・日経新聞・政治・MLB・Dodgers</p>
+</a>
+
+<a class="card sc" href="semiconductor_stocks.html">
+  <span class="badge">手動更新</span>
+  <h2>&#x1F5FA; 半導体エコシステム図</h2>
+  <p>AIチップ2軸収束モデル・株価チャート・ポジション表示</p>
+</a>
+
+<div class="update">&#x1F504; 毎朝6時までに自動更新 &nbsp;|&nbsp; takuzou0127.github.io</div>
+
+<script>
+const d = new Date();
+document.getElementById('dt').textContent =
+  d.getFullYear() + '年' + (d.getMonth()+1) + '月' + d.getDate() + '日（' +
+  ['日','月','火','水','木','金','土'][d.getDay()] + '）';
+</script>
+</body>
+</html>
