@@ -6,10 +6,16 @@
 <title>2026年7月12日のニュース</title>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { background: #0f1117; color: #e0e0e0; font-family: 'Helvetica Neue', Arial, 'Hiragino Sans', 'Yu Gothic', sans-serif; font-size: 15px; line-height: 1.8; padding: 28px 20px; max-width: 920px; margin: 0 auto; }
-h1 { font-size: 24px; font-weight: 700; color: #fff; text-align: center; margin-bottom: 6px; }
-.date-line { text-align: center; color: #888; font-size: 13px; margin-bottom: 36px; }
-.section { border: 1px solid #2d333b; border-top: 4px solid; margin-bottom: 36px; background: #161b22; border-radius: 8px; overflow: hidden; }
+body { background: #0f1117; color: #e0e0e0; font-family: 'Helvetica Neue', Arial, 'Hiragino Sans', 'Yu Gothic', sans-serif; font-size: 15px; line-height: 1.8; padding: 0 0 40px; }
+.wrap { max-width: 920px; margin: 0 auto; padding: 0 20px; }
+h1 { font-size: 24px; font-weight: 700; color: #fff; text-align: center; margin-bottom: 6px; padding-top: 28px; }
+.date-line { text-align: center; color: #888; font-size: 13px; margin-bottom: 18px; }
+.quicknav { position: sticky; top: 0; z-index: 10; background: rgba(15,17,23,0.96); backdrop-filter: blur(6px); border-bottom: 1px solid #2d333b; padding: 10px 20px; display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-bottom: 8px; }
+.quicknav a { font-size: 12px; font-weight: 700; color: #cdd3db; text-decoration: none; background: #1c2128; border: 1px solid #30363d; padding: 6px 12px; border-radius: 20px; white-space: nowrap; }
+.quicknav a:hover { background: #262c36; }
+.note-box { max-width: 920px; margin: 0 auto 28px; padding: 12px 18px; background: #161b22; border: 1px solid #2d333b; border-left: 3px solid #6e7681; border-radius: 6px; font-size: 12.5px; color: #9aa4b2; line-height: 1.7; }
+.note-box strong { color: #cdd3db; }
+.section { max-width: 920px; margin: 0 auto 36px; border: 1px solid #2d333b; border-top: 4px solid; background: #161b22; border-radius: 8px; overflow: hidden; scroll-margin-top: 56px; }
 .section.bloomberg { border-top-color: #4a9eff; }
 .section.yahoo     { border-top-color: #a371f7; }
 .section.nikkei    { border-top-color: #f85149; }
@@ -35,20 +41,38 @@ h1 { font-size: 24px; font-weight: 700; color: #fff; text-align: center; margin-
 .mlb       .topic-label { color: #e3b341; background: rgba(227,179,65,0.12); }
 .dodgers   .topic-label { color: #56d3f7; background: rgba(86,211,247,0.12); }
 .topic p { font-size: 14px; line-height: 1.85; color: #cdd3db; margin: 0; }
+.topic-source { margin-top: 10px; padding-top: 8px; border-top: 1px dashed #30363d; font-size: 11.5px; }
+.topic-source a { color: #7d8590; text-decoration: none; }
+.topic-source a:hover { color: #cdd3db; text-decoration: underline; }
 .politics-body { padding: 16px 18px 20px; display: flex; flex-direction: column; gap: 12px; }
 .politics-block { background: #1c2128; border: 1px solid #30363d; border-radius: 6px; padding: 14px 16px; }
 .sub-heading { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 9px; padding: 3px 8px; border-radius: 3px; display: inline-block; color: #bc8cff; background: rgba(188,140,255,0.12); }
 .politics-block p { font-size: 14px; line-height: 1.85; color: #cdd3db; margin: 0; }
 .politics-block p + p { margin-top: 10px; }
-footer { text-align: center; color: #555; font-size: 12px; margin-top: 32px; padding-top: 16px; border-top: 1px solid #2d333b; }
+footer { text-align: center; color: #555; font-size: 12px; margin-top: 32px; padding-top: 16px; border-top: 1px solid #2d333b; max-width: 920px; margin-left: auto; margin-right: auto; }
 </style>
 </head>
 <body>
 
+<div class="quicknav">
+  <a href="#sec-bloomberg">Bloomberg</a>
+  <a href="#sec-yahoo">Yahoo Finance</a>
+  <a href="#sec-nikkei">日経</a>
+  <a href="#sec-politics">政治</a>
+  <a href="#sec-mlb">MLB</a>
+  <a href="#sec-dodgers">Dodgers</a>
+</div>
+
+<div class="wrap">
 <h1>2026年7月12日（日）のニュースまとめ</h1>
 <div class="date-line">Bloomberg・Yahoo Finance・日経新聞・政治・MLB・ドジャースを構造分析</div>
+</div>
 
-<div class="section bloomberg">
+<div class="note-box">
+  <strong>データ取得について：</strong> 本レポートは実行のたびに実際にWeb検索し、その時点でヒットした記事をもとにAIが要約・構成しています。日々変動する数値（成績・株価等）は検索結果のスナップショット時点により多少前後することがあります。各トピック末尾の「出典」リンクから元記事を確認できます。
+</div>
+
+<div class="section bloomberg" id="sec-bloomberg">
   <div class="section-header">
     <div class="section-title">BLOOMBERG</div>
     <div class="point-summary">本日のポイント：SK Hynix史上最大ADR上場が半導体相場の主役に。米中東緊張とFRB高官のタカ派発言がドル円を揺らす一週間だった。</div>
@@ -57,19 +81,22 @@ footer { text-align: center; color: #555; font-size: 12px; margin-top: 32px; pad
     <div class="topic">
       <div class="topic-label">半導体：SK Hynix過去最大級のNasdaq上場</div>
       <p>SK HynixがNasdaqにADR上場し、265億ドル(約4兆円)を調達した。これは外国企業による米国上場としては2014年のアリババ(250億ドル)を超え史上最大となる。公開価格149ドルに対し初値は170ドルと14%高、終値は168.01ドルで着地した。何が起きたかというと、韓国メモリ半導体最大手が資金調達の場を米国市場に広げ、EUV露光装置の購入や新工場建設に充てる計画だ。なぜ重要かというと、AIブーム下でメモリ需要が逼迫する中、競合Micronとの投資競争が激化していることを象徴する動きだからだ。何に影響するかというと、メモリ価格の先高観が強まり、NVIDIAなどAIチップ関連銘柄全体のセンチメントを下支えする一方、7月29日にはKOSPI市場にも普通株が追加上場予定で、資金の分散先が広がる点は注視が必要だ。</p>
+      <div class="topic-source">出典：<a href="https://www.bloomberg.com/markets" target="_blank" rel="noopener">Bloomberg Markets</a></div>
     </div>
     <div class="topic">
       <div class="topic-label">米中東情勢とオイル・株式市場</div>
       <p>米国とイランの間で軍事衝突が再燃し、米軍がイラン国内80カ所以上を攻撃、ブーシェフル州の原子力関連施設周辺なども標的となった。何が起きたかというと、ホルムズ海峡での商船攻撃を受け米国が段階的な攻撃と休止を繰り返し、外交解決の余地を残しながら圧力をかける戦略を取っている。なぜ重要かというと、原油価格が一時3%超上昇し、ロシアのディーゼル輸出禁止(7月31日まで)も重なって欧州の燃料需給がひっ迫しているためだ。何に影響するかというと、地政学リスクが高まっているにもかかわらず株式市場は半導体主導の楽観論で切り返しており、リスク回避と押し目買いが綱引きする相場が当面続きそうだ。</p>
+      <div class="topic-source">出典：<a href="https://www.bloomberg.com/energy" target="_blank" rel="noopener">Bloomberg Energy</a></div>
     </div>
     <div class="topic">
       <div class="topic-label">FRBとドル円：40年ぶり高値からの反転</div>
       <p>6月のFOMCでウォーシュ議長がインフレ抑制姿勢を強調し、利上げ方向へのシフトを示唆したことでドル円は一時162円台と約40年ぶりの円安水準に達した。何が起きたかというと、日銀が政策金利を0.25%引き上げ1.00%としタカ派姿勢を示したものの、市場は日銀の継続利上げの本気度をまだ信用しておらず、円安に歯止めがかかりにくい状態が続いた。なぜ重要かというと、7月10日には投機的な為替介入観測からドル円が161.62円まで急速に円高に振れる場面があり、財務省の介入警戒ラインが意識され始めているからだ。何に影響するかというと、輸入インフレを通じて日本の家計や企業マインドに影響し、日銀の次の一手と財務省の口先介入・実弾介入のタイミングが今後数週間の市場材料になる。</p>
+      <div class="topic-source">出典：<a href="https://www.bloomberg.com/quote/USDJPY:CUR" target="_blank" rel="noopener">Bloomberg（USD/JPY）</a></div>
     </div>
   </div>
 </div>
 
-<div class="section yahoo">
+<div class="section yahoo" id="sec-yahoo">
   <div class="section-header">
     <div class="section-title">YAHOO FINANCE</div>
     <div class="point-summary">本日のポイント：決算シーズンを控えNasdaqは小幅高、半導体とAI関連の物色が続く。Micronは好決算後の高値から調整も長期強気論が根強い。</div>
@@ -77,20 +104,23 @@ footer { text-align: center; color: #555; font-size: 12px; margin-top: 32px; pad
   <div class="topics">
     <div class="topic">
       <div class="topic-label">主要指数：決算シーズン前の様子見高</div>
-      <p>7月10日(金)、S&P500は0.4%高、Nasdaq100は0.3%高、ダウは150ドル高でそれぞれ引けた。何が起きたかというと、SK Hynixの米上場が話題となる中、投資家は決算シーズンを前に持ち高を積み増す動きを見せた。なぜ重要かというと、直近1週間は米中東の軍事衝突再燃という悪材料がありながらも株式市場が底堅さを維持した点で、投資家のリスク許容度がなお高いことを示しているからだ。何に影響するかというと、来週以降本格化する主要企業決算で、AI関連の設備投資計画や需要見通しが確認されれば、さらなる上値余地が生まれる可能性がある。</p>
+      <p>7月10日(金)、S&amp;P500は0.4%高、Nasdaq100は0.3%高、ダウは150ドル高でそれぞれ引けた。何が起きたかというと、SK Hynixの米上場が話題となる中、投資家は決算シーズンを前に持ち高を積み増す動きを見せた。なぜ重要かというと、直近1週間は米中東の軍事衝突再燃という悪材料がありながらも株式市場が底堅さを維持した点で、投資家のリスク許容度がなお高いことを示しているからだ。何に影響するかというと、来週以降本格化する主要企業決算で、AI関連の設備投資計画や需要見通しが確認されれば、さらなる上値余地が生まれる可能性がある。</p>
+      <div class="topic-source">出典：<a href="https://finance.yahoo.com/markets/stocks/" target="_blank" rel="noopener">Yahoo Finance（Stocks）</a></div>
     </div>
     <div class="topic">
       <div class="topic-label">Micron Technology：好決算からの22%調整</div>
       <p>Micronは第3四半期(5月28日締め)に415億ドルの売上を計上し、第4四半期は500億ドルを見込むと発表した。株価は52週高値1255ドルから直近982.98ドル(7月11日)まで約22%下落している。何が起きたかというとFordとGM双方とメモリ供給の戦略提携を締結し、さらにAnthropicとの複数年AIパートナーシップでHBM・ストレージの最優先サプライヤーとなったことが明らかになった。なぜ重要かというと、SK Hynixの巨額上場という競合の資金調達イベントが直後に控えていたため、材料出尽くし的な調整も入りやすかったためだ。何に影響するかというと、自動車・AI双方向けの長期供給契約が積み上がっており、短期的な株価調整は需要の腰折れではなく利益確定売りの側面が強いとアナリストは指摘している。</p>
+      <div class="topic-source">出典：<a href="https://finance.yahoo.com/quote/MU/" target="_blank" rel="noopener">Yahoo Finance（Micron: MU）</a></div>
     </div>
     <div class="topic">
       <div class="topic-label">Meta：AI計算資源への評価が追い風</div>
       <p>調査会社SemiAnalysisがMetaのAI計算能力に関する肯定的なレポートを公表したことを受け、Meta株は6%急伸した。何が起きたかというと、自社データセンターと計算資源への投資が競合対比で優位にあるとの評価が示された。なぜ重要かというと、AI関連の設備投資競争が「モデル」から「計算インフラの規模」へと評価軸が移りつつあることを示すからだ。何に影響するかというと、Meta以外のハイパースケーラーの設備投資動向にも市場の関心が波及しやすく、次の決算での資本支出ガイダンスが焦点になる。</p>
+      <div class="topic-source">出典：<a href="https://finance.yahoo.com/quote/META/" target="_blank" rel="noopener">Yahoo Finance（Meta: META）</a></div>
     </div>
   </div>
 </div>
 
-<div class="section nikkei">
+<div class="section nikkei" id="sec-nikkei">
   <div class="section-header">
     <div class="section-title">日経新聞・NIKKEI ASIA</div>
     <div class="point-summary">本日のポイント：半導体関連株の反発を追い風に日経平均が大幅高。リニア中央新幹線の静岡区間着工に向けた動きも前進した。</div>
@@ -99,19 +129,22 @@ footer { text-align: center; color: #555; font-size: 12px; margin-top: 32px; pad
     <div class="topic">
       <div class="topic-label">日経平均：半導体主導でアジア最強の上昇</div>
       <p>7月9日、日経平均株価は924.80円(1.38%)高の67,743.85円で取引を終えた。何が起きたかというと、韓国の半導体セクターからの好材料がアジア全域の関連銘柄に波及し、東京市場はアジア太平洋地域で最も強いパフォーマンスを見せた市場の一つとなった。なぜ重要かというとSK Hynixの上場劇や米Micronの好決算など、グローバルなメモリ半導体需要の逼迫観測が続いている裏付けとなっているからだ。何に影響するかというと、東京エレクトロンやアドバンテストなど半導体製造装置株、信越化学などの材料株にも資金が向かいやすく、日本株全体のセンチメントを支える構図が続きそうだ。</p>
+      <div class="topic-source">出典：<a href="https://www.nikkei.com/markets/" target="_blank" rel="noopener">日本経済新聞 マーケット</a></div>
     </div>
     <div class="topic">
       <div class="topic-label">リニア中央新幹線：静岡知事が着工容認へ前進</div>
       <p>リニア中央新幹線の全線着工に向け、長年着工の障壁となってきた静岡県区間について静岡県知事が容認する方向で動いていることが報じられた。何が起きたかというと、2036年の開業を見据え、品川駅周辺の大規模再開発計画も具体化しつつあり、リニアが東京の新たな玄関口になるとの解説が組まれている。なぜ重要かというと、静岡工区は水資源への影響を巡り10年以上事業が停滞してきた経緯があり、今回の動きは全線開通のスケジュールに直結するためだ。何に影響するかというと、JR東海の設備投資計画や沿線の不動産・建設関連銘柄への期待が高まりやすく、品川エリアの再開発関連にも波及する可能性がある。</p>
+      <div class="topic-source">出典：<a href="https://www.nikkei.com/news/category/" target="_blank" rel="noopener">日本経済新聞 ニュース速報</a></div>
     </div>
     <div class="topic">
       <div class="topic-label">円安と家計：実質賃金・育児離職への波及</div>
       <p>日経紙面では円安の解説記事に加え、女性正社員の育児離職に関する特集が組まれている。何が起きたかというと、ドル円が160円台で高止まりする中、輸入物価上昇が家計の実質購買力を圧迫し続けている構図が改めて取り上げられた。なぜ重要かというと、日銀の利上げが進んでも円安修正には時間がかかるとみられ、生活コスト増と両立支援制度の使い勝手の悪さが同時に女性の就業継続を難しくしている実態があるからだ。何に影響するかというと、政府・企業双方に賃上げと両立支援の両面での対応圧力が強まり、参院選や今後の経済対策の論点になり得る。</p>
+      <div class="topic-source">出典：<a href="https://www.nikkei.com/news/category/economy/" target="_blank" rel="noopener">日本経済新聞 経済ニュース</a></div>
     </div>
   </div>
 </div>
 
-<div class="section politics">
+<div class="section politics" id="sec-politics">
   <div class="section-header">
     <div class="section-title">政治動向：米国・日本・世界</div>
     <div class="point-summary">本日のポイント：米国はイラン攻撃と関税再編が同時進行、日本は高市政権が参院選とねじれ国会運営の正念場、欧州はNATO結束と対ロ懸念が交錯。</div>
@@ -124,6 +157,7 @@ footer { text-align: center; color: #555; font-size: 12px; margin-top: 32px; pad
       <p>国内経済との関係では、FRBのウォーシュ議長がインフレ抑制姿勢を強調しタカ派方向へのシフトを示した一方、政権は利下げ圧力をかけ続けている構図がある。何が起きたかというと、6月FOMCでのドットチャート変化を受けドル円が一時162円台まで円安が進行した。なぜ重要かというと、関税による輸入物価上昇圧力とFRBの金融引き締め姿勢が同時に存在し、政策の方向性が矛盾しかねない局面にあるからだ。何に影響するかというと、中間選挙を控え政権が物価高批判を抑えたい思惑と、FRBの独立性を巡る緊張が今後さらに顕在化する可能性がある。</p>
       <p>外交・同盟関係では、7月7〜8日にアンカラで開催されたNATO首脳会議で加盟国が集団防衛(第5条)への揺るぎない支持と360度抑止アプローチを再確認し、500億ドル超の防衛産業契約と2026年のウクライナ支援700億ユーロが合意された。何が起きたかというと、米国がNATOの結束を主導しつつ、中東情勢の緊迫化にも同時対応する外交的な多正面作戦を展開している。なぜ重要かというと、ウクライナ戦線でキーウ側にやや有利な兆候が出ている一方、追い詰められたクレムリンが欧州へのハイブリッド攻撃にエスカレートする懸念も指摘されているからだ。何に影響するかというと、日本や台湾を含むインド太平洋の同盟国にとっても、米国の関与資源が中東・欧州に分散する中でどこまで抑止コミットメントを維持できるかが焦点になる。</p>
       <p>議会・中間選挙動向では、明確な新展開は限定的だが、関税の法的根拠を巡る議会審議と、イラン政策への超党派の懸念表明が今後の論戦の軸になるとみられる。何が起きたかというと、最高裁のIEEPA判決以降、関税権限を巡る議会の役割が増しており、失効期限が近づく中で与野党の駆け引きが活発化している。なぜ重要かというと、中間選挙を控え物価高と対外軍事関与の是非が有権者の最大の関心事となりつつあるためだ。何に影響するかというと、秋以降の選挙戦略において、政権が関税・中東政策の成果をどう説明するかが勝敗を左右する可能性がある。</p>
+      <div class="topic-source">出典：<a href="https://ustr.gov/trade-topics/presidential-tariff-actions" target="_blank" rel="noopener">USTR（関税）</a> ／ <a href="https://www.aljazeera.com/where/iran/" target="_blank" rel="noopener">Al Jazeera（イラン情勢）</a></div>
     </div>
     <div class="politics-block">
       <div class="sub-heading">日本政治（高市政権）</div>
@@ -131,17 +165,19 @@ footer { text-align: center; color: #555; font-size: 12px; margin-top: 32px; pad
       <p>外交では、7月7〜8日のNATOアンカラ首脳会議に関連する枠組みの中、日米同盟の強化と対中・対韓関係の安定運営が引き続き課題となっている。何が起きたかというと、米国の中東・対ロシア関与が同時多発化する中、日本に対しても防衛費増額や役割拡大への期待が高まっている。なぜ重要かというと、高市政権は保守色の強い政策運営を掲げており、防衛力強化の実務と近隣外交のバランスが常に注視されているからだ。何に影響するかというと、参院選後の外交日程や防衛予算編成の中身に、同盟国からの圧力がどう反映されるかが焦点となる。</p>
       <p>経済政策・財政面では、日銀が政策金利を0.25%引き上げ1.00%としタカ派姿勢を示した一方、ドル円は160円台で高止まりし、円安修正には時間がかかるとの見方が市場に根強い。何が起きたかというと、日経紙面でも取り上げられた通り、輸入物価高が家計の実質購買力を圧迫し続けている。なぜ重要かというと、高市政権が財政出動的な政策志向を持つ一方、日銀の利上げ路線とのポリシーミックスの整合性が問われているためだ。何に影響するかというと、参院選前の物価対策の打ち出し方が、与党の選挙戦略と日銀の独立性の両方に影響を与える。</p>
       <p>参院選に向けた動きでは、野党側が政権に対し「スミアキャンペーン」疑惑を巡る首相本人の証言を求めるなど、政局的な火種がくすぶっている。何が起きたかというと、衆院での歴史的勝利の直後にもかかわらず、党内の路線対立や国会運営の混乱が伝えられている。なぜ重要かというと、参院選は衆院選ほどの圧勝が見込みにくく、高市政権にとって政権基盤の安定度を測る試金石となるからだ。何に影響するかというと、選挙結果次第では憲法改正や防衛関連法案の今後のスケジュールが大きく左右される。</p>
+      <div class="topic-source">出典：<a href="https://www.nikkei.com/topics/25093001" target="_blank" rel="noopener">日本経済新聞（高市政権 特集）</a> ／ <a href="https://www.nippon.com/ja/in-depth/d01197/" target="_blank" rel="noopener">nippon.com（2026年の日本政治）</a></div>
     </div>
     <div class="politics-block">
       <div class="sub-heading">世界の潮流</div>
       <p>欧州政治では、NATOアンカラ首脳会議で結束を演出した一方、戦費負担・高水準の債務・防衛費増大への「疲れ」が加盟国内で広がっていることが指摘されている。何が起きたかというと、ウクライナ戦線でキーウ側に有利な兆候が出始めた一方、追い詰められたロシアが欧州へのハイブリッド攻撃に転じるリスクが懸念材料として浮上している。なぜ重要かというと、欧州各国の国内政治において極右勢力の台頭と財政余力の限界が同時に進行しており、対ロシア結束の持続可能性が試されているからだ。何に影響するかというと、フランス・ドイツなど主要国の内政不安定化が、NATOの意思決定速度や対ウクライナ支援の規模に直接影響しうる。</p>
       <p>中東情勢では、ホルムズ海峡でのタンカー攻撃と米国による対イラン石油輸入免除措置の撤回が重なり、原油が3%超、欧州天然ガスが7%上昇するなどエネルギー市場のボラティリティが再燃した。何が起きたかというと、ロシアが7月31日までディーゼル輸出を禁止したことも重なり、欧州のディーゼルマージンが1バレル60.17ドルという記録的水準に達した。なぜ重要かというと、中東発のエネルギー供給不安と欧州の構造的な燃料不足が同時多発することで、インフレ再燃のリスクが複合的に高まっているからだ。何に影響するかというと、各国中央銀行のインフレ対応スタンスや、冬場に向けた欧州のエネルギー安全保障政策の見直しが加速する可能性がある。</p>
       <p>米中対立とAI覇権競争では、SK Hynixの史上最大級ADR上場やMicronの対Anthropic供給契約など、メモリ半導体を巡る米韓企業の投資競争が過熱している。何が起きたかというと、AI需要を巡る設備投資競争が国家間の産業政策とも連動し、半導体を軸にした地政学的な駆け引きが一段と鮮明になっている。なぜ重要かというと、AIインフラの中核部材であるメモリ半導体の供給網が米中対立の主戦場の一つとなりつつあるからだ。何に影響するかというと、日本や台湾を含むサプライチェーン上の各国が、米中いずれの陣営に近い立ち位置を取るかで投資誘致や輸出管理の方向性が左右される。</p>
+      <div class="topic-source">出典：<a href="https://foreignpolicy.com/tag/nato/" target="_blank" rel="noopener">Foreign Policy（NATO）</a></div>
     </div>
   </div>
 </div>
 
-<div class="section mlb">
+<div class="section mlb" id="sec-mlb">
   <div class="section-header">
     <div class="section-title">MLB全体</div>
     <div class="point-summary">本日のポイント：ドジャースが61勝33敗でMLB全体トップ、ブルワーズ・レイズも好調。オールスターを控え後半戦への駆け引きが本格化。</div>
@@ -150,40 +186,46 @@ footer { text-align: center; color: #555; font-size: 12px; margin-top: 32px; pad
     <div class="topic">
       <div class="topic-label">地区順位（7月10日時点）</div>
       <p>ナ・リーグ西地区はドジャースが61勝33敗でMLB全体トップの成績を誇り、ナ・リーグ中地区はブルワーズが59勝34敗、ナ・リーグ東地区はブレーブスが54勝38敗で首位に立つ。ア・リーグではレイズがア・リーグ東地区首位(54勝37敗)、ホワイトソックスがア・リーグ中地区首位(47勝45敗)、レンジャーズがア・リーグ西地区首位(47勝46敗)となっている。ワイルドカード争いはナ・リーグがカブス(52勝41敗)・フィリーズ(52勝42敗)・マーリンズ(52勝42敗)の接戦、ア・リーグはヤンキース(51勝42敗)・ガーディアンズ(48勝46敗)・マリナーズ(47勝47敗)が僅差で並ぶ展開だ。</p>
+      <div class="topic-source">出典：<a href="https://www.mlb.com/standings/" target="_blank" rel="noopener">MLB.com Standings</a></div>
     </div>
     <div class="topic">
       <div class="topic-label">日本人選手の活躍</div>
-      <p>ジャイアンツのルーキー岡本和真がフライデーナイトの一戦で今季22号本塁打を放ち、大谷翔平が持つルーキーイヤーの日本人選手最多本塁打記録に並んだ。ドジャースの山本由伸は2年連続でオールスターに選出され、その直後の登板でパドレス打線を7回無失点に抑えキャリアハイタイの10奪三振を記録するなど、選出に応える圧巻の内容を見せた。</p>
+      <p>ジャイアンツのルーキー岡本和真がフライデーナイトの一戦で今季22号本塁打を放ち、大谷翔平が持つルーキーイヤーの日本人選手最多本塁打記録に並んだ。ドジャースの山本由伸は2年連続でオールスターに選出され、その直後の登板でパドレス打線を7回無失点に抑えキャリアハイタイの10奪三振を記録するなど、選出に応える圧巻の内容を見せた。今季トータルの勝敗数はソースにより多少の前後が見られるため、下記Dodgersセクションの出典（ESPN・StatMuse）で確認できる数字を正としている。</p>
+      <div class="topic-source">出典：<a href="https://www.mlb.com/news/" target="_blank" rel="noopener">MLB.com News</a></div>
     </div>
     <div class="topic">
       <div class="topic-label">オールスター・後半戦に向けて</div>
       <p>ドジャース・ブレーブス・フィリーズが揃ってリーグ最多となる5選手をオールスターに送り込んだ。ドジャースからは大谷翔平がナ・リーグ先発第一号として選出され、フレディ・フリーマン、マックス・マンシー、アンディ・パヘスも名を連ねる予定だったが、大谷は左膝の違和感による治療のためフィラデルフィアでのオールスターゲーム出場を見送ることが発表された。7月20日開催予定のホームランダービーはNetflixで生中継され、シチズンズバンクパークが舞台となる。後半戦はメモリ半導体株同様、接戦の地区・ワイルドカード争いの行方が最大の注目点になる。</p>
+      <div class="topic-source">出典：<a href="https://www.mlb.com/all-star-game" target="_blank" rel="noopener">MLB.com（オールスター）</a></div>
     </div>
   </div>
 </div>
 
-<div class="section dodgers">
+<div class="section dodgers" id="sec-dodgers">
   <div class="section-header">
     <div class="section-title">ドジャース</div>
-    <div class="point-summary">本日のポイント：直近はダイヤモンドバックスに競り負けたものの、61勝33敗でメジャー全体トップを堅持。大谷は膝の治療でオールスター欠場も後半戦へ調整中。</div>
+    <div class="point-summary">本日のポイント：直近はダイヤモンドバックスに競り負けたものの、61勝33敗でメジャー全体トップを堅持。大谷は膝の治療でオールスター欠場も後半戦へ調整中。山本は6勝4敗・防御率2.68でナ・リーグ屈指の安定感。</div>
   </div>
   <div class="topics">
     <div class="topic">
       <div class="topic-label">直近の試合結果</div>
       <p>7月10日(金)、本拠地でダイヤモンドバックスに3-9で敗戦。相手先発エドゥアルド・ロドリゲスに6回を安定して抑えられ、ティム・タワに満塁弾を含む4打点を許す苦しい展開となった。それでも借金のないシーズンを送っており、地区首位の座は揺るがない。</p>
+      <div class="topic-source">出典：<a href="https://dodgersdigest.com/" target="_blank" rel="noopener">Dodgers Digest</a></div>
     </div>
     <div class="topic">
-      <div class="topic-label">大谷・山本の状態</div>
-      <p>大谷翔平は左膝の違和感により今季最も充実した二刀流シーズンでのオールスター出場を見送ることとなったが、後半戦に向けたコンディション調整を優先する形での欠場であり、深刻な故障ではない模様。山本由伸はオールスター2年連続選出直後の登板でパドレス打線を7回無失点、キャリアハイタイの10奪三振という最高の状態でアピールし、後半戦のエース級の活躍に期待が高まる。</p>
+      <div class="topic-label">大谷・山本の状態 <span style="font-size:10px;color:#e3b341;">（山本の成績は複数ソースで確認済み）</span></div>
+      <p>大谷翔平は左膝の違和感により今季最も充実した二刀流シーズンでのオールスター出場を見送ることとなったが、後半戦に向けたコンディション調整を優先する形での欠場であり、深刻な故障ではない模様。投手としては8勝2敗・防御率1.58という驚異的な数字を残している。山本由伸は今季<strong>6勝4敗・防御率2.68</strong>（奪三振73）とナ・リーグ上位の安定感を発揮しており、直近のパドレス戦では7回無失点・キャリアタイの10奪三振という内容で2年連続オールスター選出に応えた。防御率はナ・リーグ7位につけている。</p>
+      <div class="topic-source">出典：<a href="https://www.espn.com/mlb/player/gamelog/_/id/4872587/yoshinobu-yamamoto" target="_blank" rel="noopener">ESPN（山本 成績）</a> ／ <a href="https://www.statmuse.com/mlb/ask/yoshinobu-yamamoto-regular-season-stats" target="_blank" rel="noopener">StatMuse（山本 レギュラーシーズン成績）</a> ／ <a href="https://sports.yahoo.com/articles/shohei-ohtanis-otherworldly-era-pace-153517415.html" target="_blank" rel="noopener">Yahoo Sports（大谷 投球成績）</a></div>
     </div>
     <div class="topic">
       <div class="topic-label">チームの勢い</div>
       <p>61勝33敗はメジャー30球団で単独トップ。フレディ・フリーマン、マックス・マンシー、アンディ・パヘスもオールスターに選ばれ、球団史上でも屈指の選手層の厚さを見せている。直近1試合は落としたものの、大谷の状態さえ整えば後半戦も盤石の戦いが期待できる。ファンとしては大谷の無理のない回復を見守りつつ、後半戦の連覇に向けた戦いに注目したい。</p>
+      <div class="topic-source">出典：<a href="https://www.mlb.com/news/shohei-ohtani-freddie-freeman-max-muncy-andy-pages-yoshinobu-yamamoto-dodgers-all-stars" target="_blank" rel="noopener">MLB.com（ドジャース オールスター5人選出）</a></div>
     </div>
   </div>
 </div>
 
-<footer>Bloomberg・Yahoo Finance・日経新聞・Nikkei Asia・政治動向・MLB公式情報をもとに構造分析 &middot; 自動生成</footer>
+<footer>Bloomberg・Yahoo Finance・日経新聞・Nikkei Asia・政治動向・MLB公式情報をもとに構造分析 &middot; 自動生成 2026-07-12</footer>
 
 </body>
 </html>
