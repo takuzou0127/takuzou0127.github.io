@@ -2,201 +2,298 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>半導体投資 戦略ブリーフィング 2026-07-18</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>半導体投資ブリーフィング 2026-07-20</title>
 <style>
-  body { background:#0f1117; color:#e6e6e6; font-family:"Segoe UI","Hiragino Kaku Gothic ProN",sans-serif; line-height:1.7; max-width:980px; margin:0 auto; padding:24px; }
-  h1 { color:#fff; border-bottom:2px solid #333; padding-bottom:10px; font-size:1.6em; }
-  h2 { color:#7dd3fc; margin-top:40px; border-left:4px solid #7dd3fc; padding-left:10px; }
-  h3 { color:#e3b341; margin-top:24px; }
-  table { width:100%; border-collapse:collapse; margin:14px 0; }
-  th, td { text-align:left; padding:8px 10px; border-bottom:1px solid #2a2d36; font-size:0.95em; }
-  th { color:#9aa4b2; font-weight:600; background:#161922; }
-  .up { color:#3fb950; font-weight:600; }
-  .down { color:#f85149; font-weight:600; }
-  .flat { color:#9aa4b2; font-weight:600; }
-  .box { background:#161922; border:1px solid #2a2d36; border-radius:8px; padding:16px 20px; margin:16px 0; }
-  .diagram { background:#0b0d12; border:1px solid #2a2d36; border-radius:8px; padding:18px; font-family:"Consolas","Courier New",monospace; white-space:pre; overflow-x:auto; font-size:0.85em; color:#c9d1d9; }
-  .tag { display:inline-block; padding:2px 8px; border-radius:4px; font-size:0.8em; margin-right:6px; }
-  .tag-buy { background:#1a3d2a; color:#3fb950; }
-  .tag-wait { background:#3d3a1a; color:#e3b341; }
-  .tag-hold { background:#1a2d3d; color:#7dd3fc; }
-  .footer { color:#666; font-size:0.85em; margin-top:40px; border-top:1px solid #2a2d36; padding-top:14px; }
-  .oneliner { font-size:1.1em; font-style:italic; color:#e3b341; background:#161922; padding:16px 20px; border-left:4px solid #e3b341; border-radius:6px; }
-  .src { color:#666; font-size:0.8em; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0f1117; color: #c9d1d9; font-family: 'Segoe UI', 'Noto Sans JP', sans-serif; line-height: 1.75; padding: 24px; max-width: 980px; margin: 0 auto; }
+  h1 { color: #58a6ff; border-bottom: 2px solid #30363d; padding-bottom: 12px; margin-bottom: 8px; font-size: 1.55em; }
+  .meta { color: #8b949e; font-size: 0.82em; margin-bottom: 28px; }
+  h2 { color: #79c0ff; border-left: 4px solid #58a6ff; padding-left: 12px; margin: 28px 0 14px; font-size: 1.1em; }
+  h3 { color: #d2a8ff; margin: 18px 0 8px; font-size: 0.95em; }
+  .section { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 18px 22px; margin-bottom: 20px; }
+  pre { background: #0d1117; border: 1px solid #30363d; border-radius: 6px; padding: 14px; overflow-x: auto; font-size: 12px; color: #c9d1d9; font-family: 'Cascadia Code', 'Consolas', monospace; line-height: 1.6; }
+  table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+  th { background: #21262d; color: #8b949e; padding: 8px 12px; text-align: left; font-size: 11.5px; border-bottom: 1px solid #30363d; }
+  td { padding: 8px 12px; border-bottom: 1px solid #1c2128; font-size: 13px; }
+  tr:hover td { background: #1c2128; }
+  .up { color: #3fb950; font-weight: bold; }
+  .down { color: #f85149; font-weight: bold; }
+  .flat { color: #8b949e; }
+  .highlight { background: #1c2128; border-left: 3px solid #f0883e; padding: 10px 14px; margin: 10px 0; border-radius: 0 4px 4px 0; }
+  .tag { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 11px; margin-left: 6px; font-weight: bold; }
+  .tag-hold { background: #1f6feb; color: #fff; }
+  .tag-wait { background: #388bfd22; color: #58a6ff; border: 1px solid #388bfd; }
+  .tag-skip { background: #30363d; color: #8b949e; }
+  .tag-split { background: #23863622; color: #3fb950; border: 1px solid #238636; }
+  .layer { background: #0d1117; border: 1px solid #21262d; border-radius: 6px; padding: 12px 16px; margin: 8px 0; }
+  .layer-num { color: #f0883e; font-weight: bold; margin-right: 6px; }
+  p { margin-bottom: 10px; font-size: 13.5px; }
+  .verdict-box { background: #0d1117; border: 1px solid #30363d; border-radius: 6px; padding: 14px 18px; margin-top: 12px; }
+  .cat-header { background: #0d1117; color: #58a6ff; font-size: 11px; padding: 6px 12px; letter-spacing: 0.05em; }
+  .footer { color: #8b949e; font-size: 11px; text-align: center; margin-top: 36px; border-top: 1px solid #30363d; padding-top: 14px; line-height: 2.2; }
+  strong { color: #e6edf3; }
+  .orange { color: #f0883e; }
 </style>
 </head>
 <body>
 
-<h1>半導体投資 戦略ブリーフィング — 2026年7月18日</h1>
+<h1>🔬 半導体投資 デイリーブリーフィング</h1>
+<div class="meta">
+  2026年7月20日（月）｜データ基準日: 2026-07-17（前週末終値・アフターマーケット除外）｜JSONデータ生成: 2026-07-20 04:55 JST
+</div>
 
-<h2>⓪ AIチップ エコシステム図（2026-07-18）</h2>
-<div class="diagram">【AIチップ エコシステム】2026-07-18
+<!-- ⓪ エコシステム図 -->
+<div class="section">
+<h2>⓪ AIチップ エコシステム図【2026-07-20更新】</h2>
+<pre>
+【AIチップ エコシステム】2026-07-20
 
 ハイパースケーラー（META / AMZN / GOOGL / MSFT）
-    │ 自社チップ化（NVIDIA脱却）        │ NVIDIA GPU購入継続
-    ↓                                    ↓
-  AVGO（カスタムASIC）                 NVIDIA
-  +本日の動き：Metaの新AIチップ「Iris」   +本日の動き：中国Moonshot AIが
-   がテスト完了、9月量産開始（TSMC製造）。 「Kimi K3」(2.8兆パラメータ・オープン
-   BroadcomはMeta/Google系に続き3社目の   ウェイト)を発表、米トップモデルとの差
-   顧客向けカスタム設計体制へ拡大         縮小と評価されNVDA -1.9%。DeepSeekが
-                                          独自AIチップ開発中との報道も重なる
-            ↘                                  ↙
-        ★ HBMメモリ ★（両軸の収束点）
-           SK Hynix / MU / [新規注目：CXMT(中国)]
-           +本日の動き：SK HynixがHBM4増産を意図的に
-            減速し、利益率の高い通常DRAMへ生産を再配分
-            していたことが判明。市場は「AI需要減速」と
-            誤読し、メモリ株が記録的なベア相場入り
-            （SK Hynix韓国株-11.5%、Samsung-8.8%）
-                    ↓
-          製造装置（LRCX / AMAT / TEL / ASML）
-          +本日の動き：メモリ懸念の連鎖で装置株が全面安。
-           AMAT・TEL・ASMLとも急落（詳細は②参照）
+  2026E AI Capex合計: $700B〜$725B（前年比 +77%）
+    │ 自社カスタムチップ化（NVIDIA脱却軸）        │ NVIDIA GPU購入軸
+    ↓                                             ↓
+  AVGO（カスタムASIC設計）                     NVIDIA
+  ＋META: 1GW超カスタムシリコン with AVGO      ＋Blackwell sold out through 2026
+  ＋AMZN: Trainium ARR $50B（+40% QoQ）        ＋$1T確定需要 2027年まで予約済
+  ＋MSFT: Maia 200（コスト効率 前比+30%）      ＋今週 -2.21%（全体売りに巻込み）
+  ＋GOOGL: TPU 内製継続（Cloud成長牽引）
+                ↘                              ↙
+            ★★ HBMメモリ ★★（両軸の絶対的収束点）
+               SK Hynix(56%) / MU(22%) / Samsung(22%)
+               ＋SKHY ADR: +1.13%（韓国本家 -11.53%と大幅乖離・要注視）
+               ＋MU: -0.50%（全体安の中で顕著な耐性を発揮）
+               ＋中国CXMT: 2026年量産 約200万スタック → 三社寡占モート維持
+                        ↓
+              製造装置（LRCX / AMAT / TEL / ASML）
+              ＋今週の動き: AMAT -5.57% / TEL -8.17% / KLAC -3.02% / ASML -2.09%
+              ＋ASML Q2決算 beat（€43-45B ガイダンス引上）→ 逆利食いで下落
+              ＋TSMC Capex再上方修正 $60-64B（需要底堅さ確認）
 
 【あなたのポジション】
- 保有中   → MU  ×2   （$855.18　+0.23%）
- 最優先   → SKHY　（上場済み・7/10 IPO、$153.51　+0.79%）
- 検討中   → LRCX（優先度低、$313.52　-2.32%）</div>
+ 保有中 → MU ×2   $848.95 ｜ アナリスト目標 $1,316 ｜ 乖離 +55%
+ 保有中 → SKHY    $154.03 ｜ 分割購入中 ｜ 7/10 Nasdaq上場済
+ 検討中 → LRCX    $313.30 ｜ 優先度低・待機中 ｜ 目標 $404 ｜ 乖離 +29%
+</pre>
+</div>
 
+<!-- ① マクロ・世界情勢 -->
+<div class="section">
 <h2>① マクロ・世界情勢</h2>
-<div class="box">
-<p><b>中東・地政学：</b>トランプ大統領が7月14日にイランへのホルムズ海峡封鎖を再発動と伝えられ、原油価格は+9%超急騰。エネルギーコスト懸念が株式市場にも波及している。</p>
-<p><b>NATO：</b>アンカラでの首脳会合を経てNATOの結束は維持されたが、米軍のNATO戦力モデル縮小観測を背景に、欧州は独自の長距離打撃能力整備を急いでいる。</p>
-<p><b>為替：</b>ドル円は162.37円（前日比-0.02%）。1ヶ月で-0.62%、年間では-9.12%の円安。輸出型の日本半導体装置株（TEL等）には円安が業績面での下支え要因となる一方、本日は需給パニックが優先し株価は下落。</p>
-<p><b>米経済指標：</b>6月の米小売売上高は+0.2%（市場予想上回る）、5月分も+1%に上方修正。BofAファンドマネージャー調査では「景気は問題なし、しかしAI設備投資には懸念」との声が広がり、AI関連クレジットへの信認低下が株式市場のボラティリティ要因になっている。</p>
-<p><b>中国AI・国産HBM動向（層4関連）：</b>中国のDRAM大手CXMTが7月16日にSTAR市場（上海）でIPO申込を開始。ただしHBM3量産は当初予定（2026年内）から後ろ倒し傾向で、全生産能力265kwspmのうちHBM向けは現状わずか5kwspm、年末でも30kwspm、2027年末で55kwspm程度の見通し。SK Hynix・Micron・Samsungの3社寡占モートは依然として量的優位が大きく、CXMTの脅威は「資金調達の勢い」はあるが「量産実績」はまだ乏しい段階。一方、DeepSeekが独自AIチップ開発によるNVIDIA/Huawei依存低減を狙っているとの報道もあり、コスパ面での競争圧力は着実に強まっている。</p>
+
+<h3>📉 今週のセクター全面安：「完璧な決算で下落」が意味すること</h3>
+<p>ASMLがQ2決算でガイダンスを€36-40Bから<strong>€43-45B</strong>へ年内2度目の大幅上方修正しながら株価が下落したことが今週の半導体セルオフの象徴だ。SOX指数は週間-10%超（SOXX ETF基準）を記録。これは需要消失ではなく「バリュエーション調整」と「2027年以降のAI Capex持続性への懐疑」が引き金。市場は現在、最も高いバリュエーションが付いた装置株から資金を引き上げ、エコシステムのボトルネック側（HBMメモリ）へと評価を絞り込んでいる。</p>
+
+<h3>💰 ハイパースケーラー AI Capex：$725Bの確定と持続性問題</h3>
+<p>META・AMZN・GOOGL・MSFTの2026年合算AI Capexは<strong>$700B〜$725B（前年比+77%）</strong>で確定した。Microsoft CFOが「メモリチップ・コンポーネントコストだけで$25B」と言及したことは、HBM調達コストがP&Lを直撃し始めている証拠だ。METAがAVGOと1GWのカスタムシリコンを開発中、AmazonのTrainiumが$50B ARR達成という事実は、「NVIDIA依存軸」と「自社チップ軸」が並行加速していることを確認させる。どちらの軸もHBMを必要とするという構造は変わらない。</p>
+
+<h3>🌐 地政学・米中・関税</h3>
+<p>EU-US通商合意が7/1施行（EU輸入品は15%関税で落着）。USMCA更新見送りが決定。<strong>7/24にTrump Section 122関税（10%）の期限切れ</strong>を迎える予定で、半導体輸入コスト構造への変化に要注意。米イラン間の軍事的緊張再燃で原油は$80超に回帰しインフレ再燃懸念が浮上。中国向け輸出規制は継続しているが、DeepSeek-Ascend連携の進展で中国のAI自立化が加速している。</p>
+
+<h3>💴 日本市場・円相場</h3>
+<p>ドル円162.5円付近と40年ぶりの円安水準を維持。東京エレクトロン（TEL）が-8.17%と装置内最大の下落を記録した背景には、半導体全体の売り圧力に加えて円安によるドル換算バリュエーションの割高感がある。日経平均は7/16に2,200円超の急落を経験。機械受注5月予想比大幅減・貿易収支赤字-3,790億円（ドル高による輸入コスト増）と日本の経済指標にも陰りが見える。</p>
+
+<h3>🇨🇳 中国AI動向（層4：三社寡占モート検証）</h3>
+<p>DeepSeek V4（4月24日プレビュー）がHuawei Ascendチップへの最適化を正式宣言し「中国国内AIはAscendネイティブ」という構造が確立しつつある。ただしHBM供給が根本的ボトルネックとして機能：<strong>CXMTの2026年HBM量産は約200万スタック</strong>（Ascend換算25-30万枚程度）にとどまるのに対し、SIMCはAscendダイを年産100万枚超製造可能という非対称が続く。「チップは作れるがHBMが追いつかない」という構造的制約が、MU・SKHYの寡占モートを2026年中は確実に守っている。</p>
 </div>
 
-<h2>② 株価一覧</h2>
-<p class="src">※データソース：stock_data.json（2026-07-17時点の実測値）。アフターマーケット除外。</p>
-
-<h3>インデックス</h3>
+<!-- ② 株価一覧 -->
+<div class="section">
+<h2>② 株価一覧（2026-07-17終値・アフターマーケット除外）</h2>
 <table>
-<tr><th></th><th>指標</th><th>株価</th><th>前日比</th></tr>
-<tr><td class="down">🔴</td><td>SOX指数</td><td>11,709.07</td><td class="down">-1.33%</td></tr>
-<tr><td class="down">🔴</td><td>NASDAQ</td><td>25,551.85</td><td class="down">-1.28%</td></tr>
-<tr><td class="down">🔴</td><td>S&P 500</td><td>7,462.99</td><td class="down">-0.94%</td></tr>
-</table>
+<tr><th>カテゴリ</th><th>銘柄</th><th>株価</th><th>前日比</th><th>コメント</th></tr>
 
-<h3>川上：装置</h3>
-<table>
-<tr><th></th><th>銘柄</th><th>株価</th><th>前日比</th><th>備考</th></tr>
-<tr><td class="down">🔴</td><td>ASML</td><td>$1,751.55</td><td class="down">-1.87%</td><td>SK Hynix連鎖安の巻き添え</td></tr>
-<tr><td class="down">🔴</td><td>AMAT</td><td>$530.47</td><td class="down">-5.43%</td><td>報道ベースでは一時-11%超の場面も（要因は下記③参照）</td></tr>
-<tr><td class="down">🔴</td><td>LRCX★</td><td>$313.52</td><td class="down">-2.32%</td><td>決算発表7/29予定｜本日判断：見送り（決算待ち）</td></tr>
-<tr><td class="down">🔴</td><td>KLAC</td><td>$213.25</td><td class="down">-2.79%</td><td></td></tr>
-<tr><td class="flat">⚪</td><td>TEL（東京エレク）</td><td>データ未取得</td><td>データ未取得</td><td>JSON取得失敗。参考報道では-8.66%（¥64,750）との情報あり、未確認</td></tr>
-</table>
+<tr><td colspan="5" class="cat-header">▌ インデックス</td></tr>
+<tr><td>指数</td><td><strong>SOX指数</strong></td><td>$11,673.89</td><td class="down">🔴 -1.63%</td><td>週間-10%超の急落後。利食い主導セルオフ</td></tr>
+<tr><td>指数</td><td><strong>NASDAQ</strong></td><td>$25,520.24</td><td class="down">🔴 -1.40%</td><td>AI懸念・ハイテク売りで続落</td></tr>
+<tr><td>指数</td><td><strong>S&amp;P 500</strong></td><td>$7,457.69</td><td class="down">🔴 -1.01%</td><td>幅広い下落。銀行はQ2好決算</td></tr>
 
-<h3>川中：ファブレス設計</h3>
-<table>
-<tr><th></th><th>銘柄</th><th>株価</th><th>前日比</th><th>備考</th></tr>
-<tr><td class="down">🔴</td><td>NVDA</td><td>$203.42</td><td class="down">-1.92%</td><td>Moonshot「Kimi K3」・DeepSeek独自チップ報道で下落</td></tr>
-<tr><td class="down">🔴</td><td>AMD</td><td>$498.67</td><td class="down">-0.45%</td><td></td></tr>
-<tr><td class="down">🔴</td><td>AVGO</td><td>$371.90</td><td class="down">-0.68%</td><td>Meta「Iris」チップ設計で存在感拡大</td></tr>
-<tr><td class="up">🟢</td><td>ARM</td><td>$268.05</td><td class="up">+2.31%</td><td></td></tr>
-<tr><td class="up">🟢</td><td>QCOM</td><td>$172.01</td><td class="up">+0.82%</td><td></td></tr>
-</table>
+<tr><td colspan="5" class="cat-header">▌ 川上：装置</td></tr>
+<tr><td>装置</td><td>ASML</td><td>$1,747.58</td><td class="down">🔴 -2.09%</td><td>決算beat→逆に利食い売り。目標: $--- （未取得）</td></tr>
+<tr><td>装置</td><td>AMAT</td><td>$529.66</td><td class="down">🔴 -5.57%</td><td>装置内最大下落の一つ。バリュエーション調整局面</td></tr>
+<tr><td>装置</td><td><strong>LRCX ★</strong></td><td>$313.30</td><td class="down">🔴 -2.39%</td><td>目標$404（乖離+29%）｜本日判断: <span class="tag tag-wait">待機</span></td></tr>
+<tr><td>装置</td><td>KLAC</td><td>$212.75</td><td class="down">🔴 -3.02%</td><td>プロセス制御装置。全体安に連動</td></tr>
+<tr><td>装置</td><td>TEL（東京エレク）</td><td>¥65,100</td><td class="down">🔴 -8.17%</td><td>円安+半導体売りの二重打撃。装置内最大下落</td></tr>
 
-<h3>川中：IDM</h3>
-<table>
-<tr><th></th><th>銘柄</th><th>株価</th><th>前日比</th></tr>
-<tr><td class="down">🔴</td><td>INTC</td><td>$95.28</td><td class="down">-1.75%</td></tr>
-<tr><td class="down">🔴</td><td>TXN</td><td>$284.81</td><td class="down">-2.20%</td></tr>
-<tr><td class="down">🔴</td><td>STM</td><td>$62.50</td><td class="down">-0.43%</td></tr>
-</table>
+<tr><td colspan="5" class="cat-header">▌ 川中：ファブレス設計</td></tr>
+<tr><td>設計</td><td>NVDA</td><td>$202.81</td><td class="down">🔴 -2.21%</td><td>Blackwell sold out・$1T需要予約済みも全体売りに巻き込まれ</td></tr>
+<tr><td>設計</td><td>AMD</td><td>$495.76</td><td class="down">🔴 -1.03%</td><td>GPUサーバー市場でシェア拡大継続も売り優勢</td></tr>
+<tr><td>設計</td><td>AVGO</td><td>$370.83</td><td class="down">🔴 -0.97%</td><td>Meta 1GWカスタムシリコン契約が中長期カタリスト。小幅安</td></tr>
+<tr><td>設計</td><td>ARM</td><td>$267.19</td><td class="up">🟢 +1.98%</td><td>全体安の中で逆行高。設計IPの独占モートが評価され資金流入</td></tr>
+<tr><td>設計</td><td>QCOM</td><td>$171.78</td><td class="up">🟢 +0.69%</td><td>エッジAI・モバイル需要で底堅い。NVIDIA非依存</td></tr>
 
-<h3>川下：ファウンドリ</h3>
-<table>
-<tr><th></th><th>銘柄</th><th>株価</th><th>前日比</th><th>備考</th></tr>
-<tr><td class="down">🔴</td><td>TSMC</td><td>$397.86</td><td class="down">-2.90%</td><td>株価は連鎖安だが、Q2決算は過去最高（詳細④参照）</td></tr>
-</table>
+<tr><td colspan="5" class="cat-header">▌ 川中：IDM</td></tr>
+<tr><td>IDM</td><td>INTC</td><td>$95.04</td><td class="down">🔴 -2.00%</td><td>ファウンドリ戦略の行方が引き続き懸念材料</td></tr>
+<tr><td>IDM</td><td>TXN</td><td>$284.02</td><td class="down">🔴 -2.47%</td><td>産業用半導体需要回復を待ちながら続落</td></tr>
+<tr><td>IDM</td><td>STM</td><td>$62.06</td><td class="down">🔴 -1.13%</td><td>欧州IDM。自動車・産業向け</td></tr>
 
-<h3>川下：メモリ・HBM</h3>
-<table>
-<tr><th></th><th>銘柄</th><th>株価</th><th>前日比</th><th>備考</th></tr>
-<tr><td class="up">🟢</td><td>MU★</td><td>$855.18</td><td class="up">+0.23%</td><td>アナリスト目標$1,268〜1,569（乖離+48〜+83%）｜本日判断：ホールド継続</td></tr>
-<tr><td class="up">🟢</td><td>SKHY★</td><td>$153.51</td><td class="up">+0.79%</td><td>IPO価格$149→初日終値$168.01（+13%）から調整中｜本日判断：様子見（下記⑥）</td></tr>
-<tr><td class="down">🔴</td><td>SK Hynix（韓国）</td><td>₩1,842,000</td><td class="down">-11.53%</td><td>2026-07-16時点データ。記録的急落</td></tr>
-<tr><td class="down">🔴</td><td>Samsung</td><td>₩255,000</td><td class="down">-8.77%</td><td>2026-07-16時点データ</td></tr>
-</table>
+<tr><td colspan="5" class="cat-header">▌ 川下：ファウンドリ</td></tr>
+<tr><td>ファウンドリ</td><td>TSMC（ADR）</td><td>$398.37</td><td class="down">🔴 -2.77%</td><td>Capex $60-64B（再上方修正）・Arizona $100B追加。AI需要底堅さ確認</td></tr>
 
-<h3>NVDA以外の注目</h3>
-<table>
-<tr><th></th><th>銘柄</th><th>株価</th><th>前日比</th></tr>
-<tr><td class="up">🟢</td><td>COHR（光配線）</td><td>$279.21</td><td class="up">+0.81%</td></tr>
-<tr><td class="up">🟢</td><td>MRVL</td><td>$189.46</td><td class="up">+0.62%</td></tr>
-<tr><td class="up">🟢</td><td>AMKR（先端パッケージング）</td><td>$63.19</td><td class="up">+0.28%</td></tr>
-</table>
+<tr><td colspan="5" class="cat-header">▌ 川下：メモリ・HBM</td></tr>
+<tr><td>メモリ</td><td><strong>MU ★保有×2</strong></td><td>$848.95</td><td class="down">🔴 -0.50%</td><td>目標$1,316（乖離+55%）｜本日判断: <span class="tag tag-hold">ホールド継続</span></td></tr>
+<tr><td>メモリ</td><td><strong>SKHY ★最優先</strong></td><td>$154.03</td><td class="up">🟢 +1.13%</td><td>7/10上場・分割購入中。韓国本家-11.53%との乖離に要注意</td></tr>
+<tr><td>メモリ</td><td>SK Hynix（KRX）</td><td>₩1,842,000</td><td class="down">🔴 -11.53%</td><td>韓国市場で急落。データ基準日 2026-07-16</td></tr>
+<tr><td>メモリ</td><td>Samsung（KRX）</td><td>₩255,000</td><td class="down">🔴 -8.77%</td><td>データ基準日 2026-07-16</td></tr>
 
-<h2>③ バリューチェーン動向</h2>
-<div class="box">
-<p><b>装置層：</b>AMATはJSONベースで-5.43%だが、報道ベースでは一時-11.2%まで売られる場面もあった。震源は「SK HynixがHBM4増産を減速している」という早期の報道で、これが「AI需要そのものの減速」と市場に誤読され、ASML(-5%）、Infineon・ASMI・STMicro(-5〜8%)、Intel(-10%)、AMD(-8%)へと連鎖。SOX指数はこの数日で年初来最高値からベア相場入りの水準まで急落した。</p>
-<p><b>設計層：</b>NVDAは中国Moonshot AIの新モデル「Kimi K3」(2.8兆パラメータ・オープンウェイト、米トップモデルとの性能差縮小と評価)発表を受け下落。「低コストなトークンがハイパースケーラーの設備投資を抑制する」との懸念が波及。AVGOはMetaの新AIチップ「Iris」の設計を担い、9月量産開始予定。Broadcomはこれで複数のハイパースケーラー向けカスタムチップを同時設計する体制となった。</p>
-<p><b>メモリ・HBM：</b>本日最大の構造的ニュースはSK Hynixの「HBM4減速→通常DRAM増産」シフト。理由はHBMより通常DRAMの営業利益率が高くなっているため合理的な経営判断だが、市場はAI需要減速シグナルとして反応し、SK Hynix株は史上最大級の急落（-15%）、Samsungも連れ安（-11%）となり、韓国KOSPI全体が10%近く下げてサーキットブレーカーが発動した。MUは同日+0.23%と底堅く、この点は「MU固有の需給とSK Hynixの経営判断ニュースは別物」と市場が区別し始めている可能性を示唆する。</p>
-<p><b>ファウンドリ：</b>TSMCは株価こそ連鎖安で-2.90%となったが、Q2決算は売上・利益率とも過去最高を更新し、通期売上成長率ガイダンスを+30%超から+40%超へ、設備投資ガイダンスを$52-56Bから$60-64Bへ引き上げた（詳細④）。</p>
+<tr><td colspan="5" class="cat-header">▌ NVDA以外の注目</td></tr>
+<tr><td>注目</td><td>COHR</td><td>$277.60</td><td class="up">🟢 +0.23%</td><td>光配線・光インターコネクト。電力密度上昇で需要拡大期待</td></tr>
+<tr><td>注目</td><td>MRVL</td><td>$188.68</td><td class="up">🟢 +0.20%</td><td>カスタムASIC設計受託。Amazon等オリジナルチップ案件が収益化</td></tr>
+<tr><td>注目</td><td>AMKR</td><td>$62.94</td><td class="flat">⚪ -0.13%</td><td>先端パッケージング（CoWoS代替）。ほぼ横ばい</td></tr>
+</table>
 </div>
 
+<!-- ③ バリューチェーン動向 -->
+<div class="section">
+<h2>③ バリューチェーン動向（川上〜川下）</h2>
+
+<h3>川上：装置セクター（全面安・深さに差）</h3>
+<p>AMAT -5.57%・TEL -8.17%が装置内で突出。ASMLが「完璧な決算」を出しても-2.09%となったことが市場心理への波及は大きかった。ただしTSMCが年内2度目のCapex上方修正（$60-64B）を行った事実は、装置の受注残が消えたわけではないことを示す。セルオフは「需要消失」でなく「バリュエーション修正」の性格が強く、TELの-8.17%は円安効果も加わった過剰反応の可能性がある。</p>
+
+<h3>川中：設計（ARM・QCOMが逃避先に）</h3>
+<p>ARM +1.98%・QCOM +0.69%という「NVIDIA非依存の設計会社」への資金移動が鮮明だった。AVGO -0.97%は小幅安にとどまり、Meta 1GWカスタムシリコン契約という中長期カタリストが下支えした。MRVL +0.20%も底堅く、Amazon Trainium等のAI ASIC受託設計収益化が進んでいる。「NVIDIAを中心に見ると見えない」多極化した設計エコシステムへの評価が高まりつつある。</p>
+
+<h3>川下：メモリ・HBM（今週最も耐性の高いセクター）</h3>
+<p>MU -0.50%とSKHY +1.13%という「ほぼ無傷」の動きが今週の最大シグナルだ。SOX全体-1.63%・装置-2〜-8%の中でメモリだけが耐えた。一方、韓国KRXのSK Hynix -11.53%・Samsung -8.77%（7/16）という急落は看過できない。SKHY ADRと韓国本株の乖離は①ADRの流動性が上場10日目でまだ薄い②韓国市場固有の調整要因がある、という二重の要因が考えられる。</p>
+
+<h3>光配線・先端パッケージング</h3>
+<p>COHR +0.23%・AMKR -0.13%と全体下落の中で際立って安定。データセンターの電力密度上昇と帯域幅問題が次のボトルネックとして認識され始めており、装置セクターの売りが波及しにくい位置にある。</p>
+</div>
+
+<!-- ④ フォーカス企業 -->
+<div class="section">
 <h2>④ 本日フォーカス企業</h2>
 
-<h3>🔴 TSMC — ファンダメンタルズとセンチメントの乖離</h3>
-<div class="box">
-<p>Q2 2026決算：売上高NT$1,270.38B（前年比+36.0%）、純利益+77.4%、粗利益率67.7%・営業利益率60.3%はいずれも過去最高。先端技術（7nm以下）が売上の77%を占め、AIアクセラレータ需要とエージェント型AI向けCPU需要の増加を理由に、通期売上成長率ガイダンスを「30%超」から「40%超」へ、設備投資ガイダンスを「$52-56B」から「$60-64B」へ引き上げた。</p>
-<p><b>期待値ギャップ象限：</b>「製品最強＝ファンダメンタルズ最強」なのに株価は連鎖安で-2.90%——これは典型的な「センチメント主導の売り」であり、企業固有の需要実態とは逆方向に動いている珍しい局面。SK Hynixの経営判断（HBM4→DRAM）がAI需要減速の代理シグナルとして誤って解釈された結果、TSMCという需要の実測値そのものが無視されている状態と言える。</p>
+<h3>🎯 MU（マイクロン）：乖離+55%という「期待値ギャップの構造」</h3>
+<div class="highlight">
+  <strong>現値 $848.95 ｜ アナリスト平均目標 $1,316（Strong Buy、29社合意）｜ 乖離 +55.0%</strong>
+</div>
+<p>FY Q3決算では売上$41.46B・グロスマージン84.9%・データセンター売上前年比<strong>+650%</strong>という歴史的な好決算を達成済み。にもかかわらず今週の全体安の中で-0.50%に留まったことは、ホルダーにとって「耐性の証明」だ。「製品最強≠株価最強」の逆読みで言えば、MUは今「ファンダメンタルが最強 × 株価がまだ追いついていない」象限にいる。乖離+55%はHBMサイクルの継続に対して市場がまだ疑念を持っていることの裏返しであり、7/29のSK Hynix Q2決算がその疑念を払拭する試金石になる。</p>
+<p>期待値ギャップ行列の象限：<strong>「高ファンダメンタル × 一時的な低モメンタム」</strong> → 継続保有の最も強い根拠。</p>
+
+<h3>🎯 SKHY（SK Hynix ADR）：ADRと韓国本株の乖離が発するシグナル</h3>
+<div class="highlight">
+  <strong>SKHY ADR $154.03（+1.13%）｜ SK Hynix KRX ₩1,842,000（-11.53%、7/16）</strong>
+</div>
+<p>SKHYは2026年7月10日に<strong>$26.5B</strong>という米国史上最大の外国企業Nasdaq上場を達成し10日が経過した。ADRが+1.13%を保つ一方で韓国本株が-11.53%急落した乖離を3つの観点から読む：① 上場10日のADR市場はまだ新規需要が本体を超えて集まっており独自の値付けをしている、② 韓国市場全体の週間調整がKOSPIを巻き込んだ、③ 基準日のずれ（本株7/16・ADR7/17）。HBMの56%市場シェアという競争優位は変わらない。7/29決算（過去最高営業利益63.45兆ウォン予想）通過後のADR価格動向が最初のチェックポイント。</p>
 </div>
 
-<h3>🔴 NVDA — 「妄信しない」視点の実地検証</h3>
-<div class="box">
-<p>現値$203.42（-1.92%）。下落要因は中国Moonshot AIの「Kimi K3」（オープンウェイト・2.8兆パラメータ）が米トップモデルとの性能差を縮めたとの評価、および低コストトークンがハイパースケーラーの設備投資意欲を削ぐとの懸念。加えてDeepSeekが独自AIチップ開発中との報道も重なった。</p>
-<p><b>製品最強≠株価最強の観点：</b>NVDAは日本での「Cosmos 3 Edge」発表や国家AIインフラ展開など製品面では前進を続けているが、株価は「代替技術の進歩」という期待値の相対的な低下に反応している。ナンバーワンであることと株価が最強であることは別問題、という本ブリーフィングの基本軸がそのまま表れた1日。</p>
+<!-- ⑤ 本日の考察 -->
+<div class="section">
+<h2>⑤ 本日の考察（5層フレームワーク）</h2>
+
+<div class="layer">
+  <span class="layer-num">層1</span><strong>マクロ・サイクル</strong>
+  <p style="margin:6px 0 0;">AI Capexは$725Bが2026年に確定し後戻りできない規模に達しているが、「2027年以降も継続するか」という問いが今週のセルオフの本質だ。TSMCのCapex再上方修正はサイクル上昇継続を示す一方、原油$80超・インフレ懸念が短期リスクとして浮上。SOX週間-10%はバリュエーション修正局面と判断するが、7/24の関税期限切れも含め変数が多い週明けとなる。</p>
 </div>
 
-<h2>⑤ 本日の考察</h2>
-<div class="box">
-<p>今日の相場を5層フレームワークで整理すると、震源は層1（マクロ・サイクル）というより層5（経時変化・モメンタム）に近い。SK Hynixの「HBM4→通常DRAM」への生産シフトは、実態としては<b>利益率を追求する合理的な経営判断</b>であり、AI需要そのものが消えたわけではない。にもかかわらず市場はこれを「需要減速シグナル」と解釈し、装置・メモリ・ファウンドリ全体を巻き込むパニック的な連鎖安を引き起こした。</p>
-<p>この読み違いを裏付けるのがTSMCの決算だ。売上・利益率が過去最高を更新し、設備投資ガイダンスまで上方修正されたという「一次データ」は、AI関連の実需が縮小していないことを直接示している。NVDAを中心に見ていると「代替モデルの登場＝NVIDIA終了」という短絡に陥りやすいが、TSMCの数字は「誰のチップが勝つか」に関わらず先端製造能力そのものへの需要が旺盛であることを教えてくれる。人間がナンバーワンを必ずしも必要としないのと同様、AI計算基盤の需要も「NVIDIA一強」でなくても拡大し続けうる——この視点はMU・SKHYのようなHBM収束点のポジションにとって、むしろ安心材料になる。</p>
-<p>一方でボトルネックは資金調達サイドに移りつつある。ハイパースケーラーの年間債券発行額が$175B→$300B規模へ拡大する見通しの中、投資家のAI関連クレジットへの需要は明らかに鈍化しており（Amazonが利回り上乗せを強いられた例など）、ファンドマネージャー調査でも「AI設備投資が信用イベントの震源になる」との回答が最多（48%）となった。ここは今後継続的に注視すべき層1のリスク要因。</p>
+<div class="layer">
+  <span class="layer-num">層2</span><strong>バリューチェーン・ボトルネック</strong>
+  <p style="margin:6px 0 0;">今週の教訓は明確：川上（装置）ほど売られ、川下（HBMメモリ）ほど耐性があった。ボトルネックの本質はHBM生産能力にあり、装置メーカーがいくら高いバリュエーションで評価されようとHBMを握るSK Hynix・MUの交渉力は変わらない。お金が向かっているのはエコシステムの「詰まっている場所」。次のボトルネック候補は電力インフラ・光インターコネクト（COHR・AMKR）。</p>
 </div>
 
+<div class="layer">
+  <span class="layer-num">層3</span><strong>期待値ギャップ</strong>
+  <p style="margin:6px 0 0;">MU乖離+55%・LRCX乖離+29%。市場は装置よりメモリに対してより大きなポジティブギャップを認識している。ASMLは決算後に売られた（期待が現実を上回るマイナスギャップ状態に入った）。一方MUは依然として大きなプラスの乖離を持つ。このギャップが縮まるためには7/29 SK Hynix決算でHBMサイクル継続が実証される必要がある。</p>
+</div>
+
+<div class="layer">
+  <span class="layer-num">層4</span><strong>サバイバル・モート（中国AI動向含む）</strong>
+  <p style="margin:6px 0 0;">CXMTのHBM量産は2026年で約200万スタック。三社寡占（SK Hynix 56%・MU 22%・Samsung 22%）のモートは2026年中は安全圏内と判断する。DeepSeek V4がAscend最適化を宣言してもHBMなしではAscendの性能は引き出せない。「チップは作れるがHBMが作れない」という中国の構造的制約が、MU・SKHYの長期競争優位を最も確かに裏付ける材料だ。CXMTの量産進捗は継続監視する。</p>
+</div>
+
+<div class="layer">
+  <span class="layer-num">層5</span><strong>経時変化・モメンタム</strong>
+  <p style="margin:6px 0 0;">SKHY ADRのポジティブモメンタム（+1.13%）と韓国本家の急落(-11.53%)の乖離は短期的な裁定の歪みの可能性。ARM +1.98%の逆行高は「NVIDIAを中心に見ると見えないもの」として重要：設計IP層でのアーキテクチャ多様化（ARM・RISC-V等）が加速している。この多様化はHBMの需要を減らさない——むしろ多軸からの需要が積み上がることでHBMの需要は底上げされる。</p>
+</div>
+
+<div class="highlight" style="margin-top:14px;">
+  <strong class="orange">NVDAを中心に見ると見えなくなるもの：</strong><br><br>
+  AVGOがMeta 1GWのカスタムシリコンを設計し、AmazonがTrainium $50B ARRを達成した2026年は「NVIDIAが独占する市場」から「NVIDIAが最大手だが多軸競争が並走する市場」への転換点だ。どの軸が勝ってもHBMは必須であり続ける。「人間はナンバーワンを必ずしも必要としない」——ハイパースケーラーが自社チップを持っても、それでもHBMは絶対に必要。この収束構造こそがMU・SKHYのポジションを守っている最も根本的な理由だ。
+</div>
+</div>
+
+<!-- ⑥ 保有・購入候補 専用判断 -->
+<div class="section">
 <h2>⑥ 保有・購入候補 専用判断</h2>
 
-<h3>🟢 MU（マイクロン）★保有中×2</h3>
-<div class="box">
-<p>現値$855.18（+0.23%）。アナリスト目標はKeyBanc$1,750（+95%）からGoldman$400（-53%）まで大きく分散しており、市場全体が「HBM需要は本物かサイクル的な過熱か」で見方を割っている状況を映している。本日、SK Hynix・Samsungが2桁下落する中でMUだけが小幅プラスを維持した点は、少なくとも米国市場はMU固有の需給を韓国発の経営判断ニュースと切り離して評価している可能性を示す。</p>
-<p><span class="tag tag-hold">判断：ホールド継続</span> — 今回の連鎖安はSK Hynixの生産ミックス変更が起点であり、MU自身のファンダメンタルズに変化はない。TSMCの決算がAI実需の底堅さを裏付けている点も踏まえ、パニック時の狼狽売りをする理由はない。</p>
+<h3>🔴 MU（マイクロン）★保有中×2</h3>
+<div class="verdict-box">
+<table>
+<tr><th>項目</th><th>数値・評価</th></tr>
+<tr><td>現値</td><td>$848.95</td></tr>
+<tr><td>アナリスト平均目標</td><td>$1,316（Strong Buy、29アナリスト）</td></tr>
+<tr><td>乖離</td><td class="up">+55.0%</td></tr>
+<tr><td>目標レンジ</td><td>$361（Goldman, 慎重）〜 $2,200（Cantor Fitzgerald, 強気）</td></tr>
+<tr><td>直近決算（FY Q3）</td><td>売上 $41.46B ｜ GM 84.9% ｜ DC売上 前年比+650%</td></tr>
+<tr><td>HBMサイクル位置</td><td>上昇中盤。UBS：業界$992B・供給不足2028年まで継続予測</td></tr>
+<tr><td>今週の相対パフォーマンス</td><td class="up">SOX -1.63% の中で -0.50%（顕著な耐性）</td></tr>
+<tr><td>判断</td><td><span class="tag tag-hold">ホールド継続</span></td></tr>
+</table>
+<p style="margin-top:12px;">全体安でも耐性を示し、乖離+55%という大きなギャップが残っている。7/29 SK Hynix決算でサイクル継続を確認した後、追加購入タイミングを検討する。現在の売りは需要消失でなくバリュエーション調整であり、ポジションを乱す理由はない。$800サポートラインの維持を確認しながら継続保有。</p>
 </div>
 
-<h3>🟢 SKHY ★最優先（7月10日Nasdaq上場済み）</h3>
-<div class="box">
-<p>7/10にADRとして$149でIPO、初日+13%で$168.01まで上昇。その後、韓国本体（SK Hynix, 000660.KS）の記録的急落（-15%、2営業日換算では30%超の高値からの調整）に連れ安する形で、SKHYも直近$153.51まで下落——依然IPO価格は上回っているが、上場直後としてはボラティリティが非常に高い状態が続いている。</p>
-<p><span class="tag tag-wait">判断：様子見（数日）</span> — 下落の震源はHBM4→DRAMという意図的な生産ミックス変更であり需要蒸発ではないため、パニックが一巡すれば戻りが期待できる可能性がある。ただし上場直後で値動きの荒さが大きく、「良い決算を見てから買う」という基本方針とも整合的に、次の決算・IRイベントでHBM戦略の説明を確認してからのエントリーが無難。急落を「押し目」と見るなら分割で様子を見ながらの打診も選択肢だが、積極的に飛びつく場面ではない。</p>
+<h3>🟢 SKHY（SK Hynix ADR）★最優先購入候補（上場済・分割購入中）</h3>
+<div class="verdict-box">
+<table>
+<tr><th>項目</th><th>数値・評価</th></tr>
+<tr><td>ADR現値</td><td>$154.03</td></tr>
+<tr><td>ADR前日比</td><td class="up">+1.13%（全体安の中でプラス維持）</td></tr>
+<tr><td>韓国本株（KRX、7/16）</td><td class="down">₩1,842,000（-11.53%）</td></tr>
+<tr><td>上場日</td><td>2026年7月10日（Nasdaq）</td></tr>
+<tr><td>IPO規模・意義</td><td>$26.5B 米国史上最大の外国企業Nasdaq上場（申込超過7倍超）</td></tr>
+<tr><td>HBM市場シェア</td><td>56%（世界首位・構造的優位）</td></tr>
+<tr><td>次の決算</td><td>2026年7月29日（営業利益過去最高 63.45兆ウォン予想）</td></tr>
+<tr><td>判断</td><td><span class="tag tag-split">分割購入ペース維持</span></td></tr>
+</table>
+<p style="margin-top:12px;">ADR +1.13%は韓国本株の急落と対照的で、短期的な乖離に注意が必要。ただし56%のHBMシェアという競争優位は変わらない。7/29決算通過後に次のロットの購入判断を行う。記録的なIPO需要（7倍超の超過申込）は長期的な機関投資家の評価の高さを示している。</p>
 </div>
 
 <h3>⚪ LRCX（ラムリサーチ）※優先度低</h3>
-<div class="box">
-<p>現値$313.52（-2.32%）、直近1ヶ月で-17.5%。決算発表は7月29日（米国時間14:00 PT）に確定。Morgan Stanleyは会社予想$70億を上回る売上$74億を予想しており、過去5四半期平均で市場予想を+9%上回ってきた実績もある。</p>
-<p><span class="tag tag-wait">判断：見送り継続</span> — 優先度は引き続き低いまま。決算内容次第でWFEサイクルの見立てが変わる可能性はあるため、7/29の決算は一応チェックポイントとして記録。</p>
+<div class="verdict-box">
+<table>
+<tr><th>項目</th><th>数値・評価</th></tr>
+<tr><td>現値</td><td>$313.30</td></tr>
+<tr><td>アナリスト目標（中央値）</td><td>$404（Morgan Stanley等、レンジ $400〜$500）</td></tr>
+<tr><td>乖離</td><td class="up">+29.0%</td></tr>
+<tr><td>今週の動き</td><td class="down">-2.39%（装置内では比較的小幅）</td></tr>
+<tr><td>WFEサイクル位置</td><td>TSMCのCapex上方修正は追い風だが市場の懐疑が先行</td></tr>
+<tr><td>判断</td><td><span class="tag tag-skip">待機</span></td></tr>
+</table>
+<p style="margin-top:12px;">乖離+29%はあるが、装置セクター全体に対する市場の懐疑が解けるまで積極的には推さない。大きなカタリスト（WFE受注急増の明確なサイン・中国輸出規制緩和）があれば再評価する。</p>
+</div>
 </div>
 
+<!-- ⑦ 今週・明日のシグナル -->
+<div class="section">
 <h2>⑦ 今週・明日見ておくべきシグナル</h2>
-<div class="box">
-<ul>
-<li><b>7月29日：</b>Lam Research（LRCX）6月四半期決算発表（米国時間14:00 PT）</li>
-<li><b>継続監視：</b>CXMT（中国DRAM大手）のSTAR市場IPO動向とHBM3量産進捗</li>
-<li><b>継続監視：</b>SOX指数がベア相場水準（高値から-20%目安）にどこまで接近するか、11,700ライン周辺の値動き</li>
-<li><b>継続監視：</b>ハイパースケーラーの社債発行状況（AI関連クレジットへの投資家需要の強弱）</li>
-<li><b>継続監視：</b>SKHY／SK Hynix本体のHBM4戦略に関する追加のIR説明</li>
-</ul>
+<table>
+<tr><th>日付</th><th>イベント</th><th>重要度</th><th>注目ポイント</th></tr>
+<tr><td>7/24（金）</td><td>Trump Section 122 関税10% 期限切れ</td><td class="down">🔴 高</td><td>半導体輸入コスト変化の可能性。MU調達コストへの影響</td></tr>
+<tr><td>7/29（火）</td><td><strong>SK Hynix Q2決算</strong>（期待: 過去最高営業利益63.45兆ウォン）</td><td class="down">🔴 最重要</td><td>HBMサイクル継続の試金石。MU追加購入タイミングの判断材料</td></tr>
+<tr><td>今週</td><td>TSMC Q2決算（日程要確認）</td><td class="down">🔴 高</td><td>AI需要底堅さの再確認。装置株リバウンド判断材料</td></tr>
+<tr><td>今週</td><td>SOX 11,673 → 11,000 サポートライン</td><td style="color:#f0883e;">🟡 中</td><td>サポート割れなら追加セルオフリスク</td></tr>
+<tr><td>今週</td><td>MU $848 → $800 サポートライン</td><td style="color:#f0883e;">🟡 中</td><td>$800割れなら短期追加下落リスク。乖離+55%は変わらない</td></tr>
+<tr><td>継続監視</td><td>SKHY ADR vs SK Hynix KRX 乖離幅</td><td style="color:#f0883e;">🟡 中</td><td>縮小→ADRリスクオフシグナル。拡大継続→ADR独自需要強い</td></tr>
+<tr><td>継続監視</td><td>ドル円 162.5円 → 163円突破の有無</td><td style="color:#f0883e;">🟡 中</td><td>円高転換ならTEL等にリバウンド。円安継続なら引き続き重荷</td></tr>
+<tr><td>継続監視</td><td>CXMT HBM量産進捗（中国リスク指標）</td><td style="color:#f0883e;">🟡 中</td><td>200万スタック突破報道があれば層4モートの再評価が必要</td></tr>
+</table>
 </div>
 
-<h2>今日の一言</h2>
-<div class="oneliner">
-パニックの震源は「需要の消失」ではなく「利益率を追った生産ミックスの変更」——SK Hynixの合理的な経営判断が市場に誤読されて全面安を招いた一方、TSMCの過去最高決算がAI実需の底堅さを静かに証明していた1日。
+<!-- 今日の一言 -->
+<div class="section" style="border-color: #f0883e; border-width: 2px;">
+<h2 style="color: #f0883e; border-color: #f0883e;">📌 今日の一言</h2>
+<p style="font-size: 1.12em; color: #f0883e; font-weight: bold; margin-bottom: 10px;">
+  「ASMLが完璧な決算を出して株が下がった日に、HBMは緑だった。」
+</p>
+<p>川上が叩き売られ川下のメモリだけが耐えた今週の構造は、エコシステムのどこにボトルネックが宿っているかを市場自身が証明した一週間だ。MU -0.50%・SKHY +1.13%という数字は、ハイパースケーラーの$725BがNVIDIA軸・自社チップ軸どちらを通っても最後は必ずHBMに集約するという2軸収束モデルが機能していることを示す最も雄弁な証拠だった。7/29のSK Hynix決算が次のテスト。</p>
 </div>
 
 <div class="footer">
-本ブリーフィングは投資助言ではありません。株価データはstock_data.json（2026-07-17時点取得）に基づく実測値。ニュース・分析情報はBloomberg / Yahoo Finance / 日経新聞等のWeb検索結果に基づく。
+  本ブリーフィングは投資助言ではありません。個人学習・情報収集目的のみ。<br>
+  株価データ: Yahoo Finance API（stock_data.json 2026-07-20 04:55 JST生成）<br>
+  ニュースソース: Bloomberg / Yahoo Finance / Nikkei / Seeking Alpha / The Motley Fool / CNBC / UncoverAlpha<br>
+  アナリスト目標: MarketBeat / TipRanks / StockAnalysis（参照日 2026-07-20）
 </div>
 
 </body>
