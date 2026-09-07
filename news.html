@@ -3,69 +3,249 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=960">
-<title>今日のニュース棚卸し 2026-09-07</title>
+<title>今日のニュース - 2026年9月8日（火）</title>
 <style>
-  body{background:#0f1117;color:#e6edf3;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;line-height:1.8;max-width:960px;margin:0 auto;padding:24px;}
-  h1{font-size:22px;border-bottom:2px solid #2f81f7;padding-bottom:8px;}
-  h2{font-size:18px;padding:10px 14px;border-radius:6px;margin-top:32px;color:#0f1117;}
-  .bloomberg h2{background:#4a9eff;}
-  .yahoo h2{background:#a371f7;}
-  .nikkei h2{background:#f85149;}
-  .politics h2{background:#bc8cff;}
-  .mlb h2{background:#e3b341;}
-  .dodgers h2{background:#56d3f7;}
-  section{margin-bottom:8px;}
-  p{margin:12px 0;font-size:14.5px;}
-  .note{color:#9aa4b2;font-size:12.5px;}
-  .disclaimer{color:#6e7681;font-size:12px;margin-top:40px;border-top:1px solid #30363d;padding-top:12px;}
-  a{color:#79c0ff;}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #0f1117; color: #e0e0e0; font-family: 'Helvetica Neue', Arial, 'Hiragino Sans', 'Yu Gothic', sans-serif; font-size: 15px; line-height: 1.8; padding: 0 0 40px; }
+.wrap { max-width: 920px; margin: 0 auto; padding: 0 20px; }
+h1 { font-size: 24px; font-weight: 700; color: #fff; text-align: center; margin-bottom: 6px; padding-top: 28px; }
+.date-line { text-align: center; color: #888; font-size: 13px; margin-bottom: 18px; }
+.quicknav { position: sticky; top: 0; z-index: 10; background: rgba(15,17,23,0.96); backdrop-filter: blur(6px); border-bottom: 1px solid #2d333b; padding: 10px 20px; display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-bottom: 8px; }
+.quicknav a { font-size: 12px; font-weight: 700; color: #cdd3db; text-decoration: none; background: #1c2128; border: 1px solid #30363d; padding: 6px 12px; border-radius: 20px; white-space: nowrap; }
+.quicknav a:hover { background: #262c36; }
+.note-box { max-width: 920px; margin: 0 auto 28px; padding: 12px 18px; background: #161b22; border: 1px solid #2d333b; border-left: 3px solid #6e7681; border-radius: 6px; font-size: 12.5px; color: #9aa4b2; line-height: 1.7; }
+.note-box strong { color: #cdd3db; }
+.section { max-width: 920px; margin: 0 auto 36px; border: 1px solid #2d333b; border-top: 4px solid; background: #161b22; border-radius: 8px; overflow: hidden; scroll-margin-top: 56px; }
+.section.bloomberg { border-top-color: #4a9eff; }
+.section.yahoo     { border-top-color: #a371f7; }
+.section.nikkei    { border-top-color: #f85149; }
+.section.politics  { border-top-color: #bc8cff; }
+.section.mlb       { border-top-color: #e3b341; }
+.section.dodgers   { border-top-color: #56d3f7; }
+.section-header { padding: 16px 22px 14px; border-bottom: 1px solid #2d333b; }
+.section-title { font-size: 16px; font-weight: 700; letter-spacing: 0.04em; margin-bottom: 6px; }
+.bloomberg .section-title { color: #4a9eff; }
+.yahoo     .section-title { color: #a371f7; }
+.nikkei    .section-title { color: #f85149; }
+.politics  .section-title { color: #bc8cff; }
+.mlb       .section-title { color: #e3b341; }
+.dodgers   .section-title { color: #56d3f7; }
+.point-summary { font-size: 13px; font-style: italic; color: #aaa; line-height: 1.6; }
+.topics { padding: 16px 18px 20px; display: flex; flex-direction: column; gap: 12px; }
+.topic { background: #1c2128; border: 1px solid #30363d; border-radius: 6px; padding: 14px 16px; }
+.topic-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 9px; padding: 3px 8px; border-radius: 3px; display: inline-block; }
+.bloomberg .topic-label { color: #4a9eff; background: rgba(74,158,255,0.12); }
+.yahoo     .topic-label { color: #a371f7; background: rgba(163,113,247,0.12); }
+.nikkei    .topic-label { color: #f85149; background: rgba(248,81,73,0.12); }
+.politics  .topic-label { color: #bc8cff; background: rgba(188,140,255,0.12); }
+.mlb       .topic-label { color: #e3b341; background: rgba(227,179,65,0.12); }
+.dodgers   .topic-label { color: #56d3f7; background: rgba(86,211,247,0.12); }
+.topic p { font-size: 14px; line-height: 1.85; color: #cdd3db; margin: 0; }
+.topic-source { margin-top: 10px; padding-top: 8px; border-top: 1px dashed #30363d; font-size: 11.5px; }
+.topic-source a { color: #7d8590; text-decoration: none; }
+.topic-source a:hover { color: #cdd3db; text-decoration: underline; }
+.politics-body { padding: 16px 18px 20px; display: flex; flex-direction: column; gap: 12px; }
+.politics-block { background: #1c2128; border: 1px solid #30363d; border-radius: 6px; padding: 14px 16px; }
+.sub-heading { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 9px; padding: 3px 8px; border-radius: 3px; display: inline-block; color: #bc8cff; background: rgba(188,140,255,0.12); }
+.politics-block p { font-size: 14px; line-height: 1.85; color: #cdd3db; margin: 0; }
+.politics-block p + p { margin-top: 10px; }
+footer { text-align: center; color: #555; font-size: 12px; margin-top: 32px; padding-top: 16px; border-top: 1px solid #2d333b; max-width: 920px; margin-left: auto; margin-right: auto; }
+@media screen and (max-width: 1024px) {
+  body { font-size: 17px; }
+  .topic p { font-size: 16px; line-height: 1.9; }
+  .politics-block p { font-size: 16px; line-height: 1.9; }
+  .point-summary { font-size: 15px; }
+  .section-title { font-size: 18px; }
+  .topic-label { font-size: 12px; }
+  .sub-heading { font-size: 12px; }
+  .section-header { padding: 16px 18px 14px; }
+  .topics { padding: 14px 14px 18px; }
+  .politics-body { padding: 14px 14px 18px; }
+  .note-box { font-size: 14px; }
+}
+@media screen and (max-width: 480px) {
+  body { font-size: 16px; }
+  .topic p { font-size: 15px; }
+  .politics-block p { font-size: 15px; }
+  h1 { font-size: 20px; }
+  .quicknav { padding: 8px 12px; gap: 6px; }
+  .quicknav a { font-size: 11px; padding: 5px 10px; }
+}
 </style>
 </head>
 <body>
 
-<h1>今日のニュース棚卸し — 2026年9月7日（日）</h1>
-<p class="note">週末（9/5〜9/7）を中心に、Bloomberg・Yahoo Finance・日経新聞・政治・MLB・ドジャース関連ニュースを構造的に整理。</p>
+<div class="quicknav">
+  <a href="#sec-bloomberg">Bloomberg</a>
+  <a href="#sec-yahoo">Yahoo Finance</a>
+  <a href="#sec-nikkei">日経</a>
+  <a href="#sec-politics">政治</a>
+  <a href="#sec-mlb">MLB</a>
+  <a href="#sec-dodgers">Dodgers</a>
+</div>
+<div class="wrap">
+<h1>今日のニュース</h1>
+<div class="date-line">2026年9月8日（火）</div>
+</div>
+<div class="note-box">
+  <strong>データ取得について：</strong> 本レポートは実行のたびに実際にWeb検索し、その時点でヒットした記事をもとにAIが要約・構成しています。日々変動する数値（成績・株価等）は検索結果のスナップショット時点により多少前後することがあります。各トピック末尾の「出典」リンクから元記事を確認できます。
+</div>
 
-<section class="bloomberg">
-<h2>Bloomberg：マクロ・金利・地政学・AI投資</h2>
-<p>8月の米雇用統計は+16.2万人増（予想+5.3万人）と大幅に上振れ、失業率は4.1%で横ばい。労働市場の底堅さが改めて示されたことで、9月FOMC（15〜16日）での「利上げ」観測が市場織り込みで約52%から62%に急上昇したと報じられている。FRB内部でも見解は割れており、ウォーシュ議長はインフレの根強さを理由に引き締め方向を示唆する一方、バンス副大統領は住宅取得のしやすさを理由に利下げを求めるなど、政権とFRBの綱引きが表面化している。来週発表のCPI・PPIが最終的な判断材料になるとの見方が優勢だ。</p>
-<p>AI投資の動きはむしろ加速している。NVIDIAは他社への出資（equity investments）残高を$990億まで拡大しており、2026年だけで$400億超を投じたと報じられている。さらにOpenAIとは10ギガワット規模のNVIDIAシステム導入で戦略提携し、段階的に最大$1,000億を投資する計画も発表された——GPUを「売る」だけでなく、購入側の資本そのものに出資することで需要を作り出す構図が一段と鮮明になっている。この動きは、NVIDIAの実質的な収益がどこまで自己循環的な資金供給に支えられているかという論点を投資家に突きつけるものでもある。</p>
-<p>地政学では、ドイツ・ザクセン＝アンハルト州議会選挙（9/6投開票）で極右政党AfDが44.5%を獲得し、第二次大戦後のドイツで極右政党が州レベルの政権に最も近づいた歴史的な結果となった（CDUは18.5%）。単独過半数には届かず組閣は不透明だが、2029年の連邦選挙に向けた「第一歩」と位置づけられている。一方、米特使ウィトコフ氏・クシュナー氏は9/5にモスクワでプーチン大統領、9/6にキーウでゼレンスキー大統領とそれぞれ会談し、大規模停戦ではないものの会談期間中は双方の首都への空爆停止に合意した。数週間以内に「次のステップ」が発表される見通しで、地政学リスクプレミアムがやや後退する材料となっている。</p>
-</section>
+<div class="section bloomberg" id="sec-bloomberg">
+  <div class="section-header">
+    <div class="section-title">BLOOMBERG</div>
+    <div class="point-summary">本日のポイント：9月FOMCの利上げ観測が急速に強まる中、米イラン紛争の再燃が原油高とインフレ懸念を増幅させている</div>
+  </div>
+  <div class="topics">
+    <div class="topic">
+      <div class="topic-label">米国市場・金利・ドル円</div>
+      <p>8月の米雇用統計で非農業部門雇用者数が16.2万人増と市場予想（5.3万人）を大幅に上回ったことを受け、株式相場と短期債が下落し、投資家はFRBが9月15〜16日のFOMCで利上げに動くとの見方を強めている。市場はすでに25bpの利上げ確率を6割前後で織り込んでおり、政策金利は現行の3.50〜3.75%から3.75〜4.00%へ引き上げられる可能性がある。トランプ大統領やヴァンス副大統領、ベッセント財務長官らは利上げ阻止に向けてFRBに圧力をかけているが、8月の賃金伸び率が前年比3.1%と5年ぶりの低水準にとどまる一方でインフレ率がそれを上回る状態が4カ月連続しており、FRBは利上げか据え置きかの判断を9月11日発表予定のCPI統計に委ねる構えだ。この綱引きの結果次第で、年末にかけての米長期金利とドル円相場の方向性が大きく左右される。</p>
+      <div class="topic-source">出典：<a href="https://www.bloomberg.com/news/articles/2026-09-06/stock-market-today-dow-s-p-live-updates" target="_blank" rel="noopener">Bloomberg</a> / <a href="https://www.cnbc.com/2026/09/05/trump-warsh-fed-september-rate-hike.html" target="_blank" rel="noopener">CNBC</a></div>
+    </div>
+    <div class="topic">
+      <div class="topic-label">地政学・貿易・米中関係</div>
+      <p>イランが米国の攻撃への報復として、ホルムズ海峡付近で3隻のタンカーを標的にしたと表明したことを受け、原油市場が再び緊張している。WTIは1バレル90ドル超で3営業日続伸、ブレントは7月末以来初めて95ドルを上回った。米イラン間では今年4月と6月に二度にわたり停戦・覚書合意が成立したものの、7月にイランが承認ルートを外れた商船を攻撃したことで協議は破綻し、9月時点でも交渉が続く不安定な状況にある。エネルギー価格の高止まりは原油輸入国である日本を含む世界経済にとってインフレ再燃のリスク要因となっており、FRBの利上げ判断にも影響を与えている。</p>
+      <div class="topic-source">出典：<a href="https://www.bloomberg.com/news/articles/2026-09-01/latest-oil-market-news-and-analysis-for-sept-2" target="_blank" rel="noopener">Bloomberg</a> / <a href="https://en.wikipedia.org/wiki/2026_Strait_of_Hormuz_crisis" target="_blank" rel="noopener">Wikipedia</a></div>
+    </div>
+    <div class="topic">
+      <div class="topic-label">AI・テクノロジー</div>
+      <p>エヌビディアがAIスタートアップのハギングフェイスを約129億ドル（株主向け119億ドル＋従業員向け株式10億ドル）で買収することで合意した。ハギングフェイスは1800万人超の開発者が利用し、300万モデル・50万データセットを抱えるAI開発の中核プラットフォームであり、エヌビディアはこの買収でAIエコシステムの掌握をさらに強める狙いがある。あわせてS&P500種指数では9月21日付でブルームエナジー、イルミナ、エバープアが新規採用され、モルソン・クアーズ、トレードデスク、ビルダーズ・ファーストソースが除外される定期入れ替えが発表された。台湾の鴻海（ホンハイ）はAIサーバー需要の拡大で売上高が前年比52%増となるなど、AI関連投資の裾野は半導体からサーバー、データセンターへと広がり続けている。</p>
+      <div class="topic-source">出典：<a href="https://www.bloomberg.com/news/articles/2026-09-04/bloom-energy-illumina-everpure-to-join-s-p-500-in-september" target="_blank" rel="noopener">Bloomberg</a> / <a href="https://blogs.nvidia.com/blog/nvidia-to-acquire-hugging-face/" target="_blank" rel="noopener">NVIDIA Blog</a></div>
+    </div>
+  </div>
+</div>
 
-<section class="yahoo">
-<h2>Yahoo Finance：株式市場・指数・経済指標</h2>
-<p>9月4日（金）の取引は雇用統計の上振れを受けてダウ・S&amp;P500・ナスダックがそろって下落して終えた（S&amp;P500は7,718.60、ナスダックは26,506.99）。平均時給は前月比+0.3%（$37.75）・前年比+3.1%と、労働市場は「安定」と評価されつつも、インフレ粘着性への警戒感も同時に意識されている。週を通じてはS&amp;P500が史上最高値から1%以内のレンジで推移し、下落局面では押し目買いが入る底堅い展開が続いた。</p>
-<p>個別材料としては、トランプ大統領が9/4〜5にかけて牛肉の「クオータ超過」関税を90日間一時停止する大統領令に署名。最大30万トンの輸入枠を優遇関税で認め、消費者物価の抑制と国内畜産業の再建時間の確保を狙うとされる。関税政策は貿易分野ごとに緩急をつけた運用が続いており、通商政策トラッカーも随時更新されている。9月7日（月）は経済指標72件・決算発表2件・株式分割18件が予定されているとYahoo Financeの経済カレンダーは伝えており、米国はレイバーデー休場明けの週として動意づきやすい週明けになりそうだ。</p>
-</section>
+<div class="section yahoo" id="sec-yahoo">
+  <div class="section-header">
+    <div class="section-title">YAHOO FINANCE</div>
+    <div class="point-summary">本日のポイント：良すぎる雇用統計が「利上げ観測→株安・金利高」を招く一方、AI関連の大型M&Aと暗号資産関連株が個別に物色されている</div>
+  </div>
+  <div class="topics">
+    <div class="topic">
+      <div class="topic-label">主要指数（S&P500・NASDAQ・ダウ）</div>
+      <p>9月に入り相場は乱高下している。9月1日には米10年国債利回りが2025年1月以来の高水準に達し、原油が95ドルを超えたことでダウ・S&P500・ナスダックがそろって下落した。9月2日には中東での戦闘再燃が原油高と世界的な国債利回りの上昇（一部は数十年ぶりの高水準）を招き、株式相場をさらに圧迫した。一方で9月3日には長期金利の低下を受けて2営業日連続で主要指数が上昇に転じるなど、方向感の乏しい展開が続いている。9月4日の雇用統計発表前にはナスダック100先物が0.33%高となるなど、統計結果を見極めたい投資家の様子見姿勢がうかがえた。</p>
+      <div class="topic-source">出典：<a href="https://finance.yahoo.com/markets/live/stock-market-today-tuesday-september-1-dow-sp-500-nasdaq-080617884.html" target="_blank" rel="noopener">Yahoo Finance</a> / <a href="https://finance.yahoo.com/markets/stocks/articles/stock-market-today-major-indexes-103053131.html" target="_blank" rel="noopener">Yahoo Finance</a></div>
+    </div>
+    <div class="topic">
+      <div class="topic-label">注目企業の動き</div>
+      <p>最大の話題はエヌビディアによるハギングフェイス買収（約129億ドル）で、発表翌日には市場の関心が一気に集まった。もう一つの注目テーマは暗号資産関連株の急騰で、ビットコインが8万ドルの大台を突破したことを背景に、ロビンフッド・マーケッツが15%高、コインベース・グローバルが10%高と、S&P500構成銘柄の上昇率上位を独占した。さらに9月1日には、バンク・オブ・アメリカ、ゴールドマン・サックス、シティグループなど大手金融機関21社が共同でステーブルコインを発行する計画を進めていることも明らかになり、伝統的金融機関による暗号資産分野への本格参入が進んでいる。</p>
+      <div class="topic-source">出典：<a href="https://finance.yahoo.com/markets/stocks/articles/stock-market-today-sept-2-134032621.html" target="_blank" rel="noopener">Yahoo Finance</a></div>
+    </div>
+    <div class="topic">
+      <div class="topic-label">経済指標（雇用・インフレ・小売等）</div>
+      <p>8月の雇用統計は非農業部門雇用者数が16.2万人増と、市場予想の5.3万人増を3倍以上上回る「爆発的」な内容となり、失業率は4.1%で横ばいだった。飲食・バーなどの分野が雇用を牽引した一方、AI投資の影響とみられる情報関連セクターでは雇用が減少した。賃金の伸びは前年比3.1%と5年ぶりの低水準に鈍化し、物価上昇に賃金が追いつかない状態が4カ月連続で続いている。9月11日発表予定のCPIは前月比0.4%上昇（前年比3.4%）、コア指数は前月比0.2%上昇（前年比2.3%に鈍化）が予想されており、この結果が9月FOMCの最終判断を左右する重要な材料になるとみられている。</p>
+      <div class="topic-source">出典：<a href="https://www.cnbc.com/2026/09/04/jobs-report-august-2026.html" target="_blank" rel="noopener">CNBC</a> / <a href="https://www.nbcnews.com/business/economy/august-jobs-report-trump-inflation-rcna595974" target="_blank" rel="noopener">NBC News</a></div>
+    </div>
+  </div>
+</div>
 
-<section class="nikkei">
-<h2>日経新聞：日本経済・円相場・アジア</h2>
-<p>日経平均は前日比882円57銭（1.31%）安の66,588円12銭で続落したと報じられている（日付表記は「9/5」だが、日本市場が休場となる曜日との整合性については確認が取れておらず、直近取引日の値動きとして参考的に扱いたい）。報道によれば、米フィラデルフィア半導体株指数（SOX）が2%超下落した流れを受け、AI・半導体関連株に利益確定売りが波及したとされ、そのきっかけとしてブロードコム（AVGO）がAI半導体の売上高見通しを据え置いたことが挙げられている。好決算（AI半導体売上3倍超）が出てもガイダンスが上方修正されなければ売られる、という「期待値ギャップ」の典型例が日本市場にも波及した形で、資金の物色先は金融・内需株にシフトしたと分析されている。</p>
-<p>政治面では、高市早苗首相が9月中旬〜下旬（早ければ16日）に内閣改造・党役員人事を実施する方針を固めたと報じられている。唯一の派閥を率いる麻生太郎副総裁を軸とした体制を維持し、2027年の総裁再選を見据えた布陣との見方が強い。片山さつき財務・金融相は消費減税関連法案の担当継続とベッセント米財務長官との関係維持を理由に留任の方向、茂木敏充外相・鈴木俊一幹事長・木原稔官房長官も留任が有力視されている。今週の日本市場は日米の金融政策見極め（FOMCの利上げ観測 vs 日銀の動向）が焦点となり、上値の重い展開が予想されている。9月13日には沖縄県知事選挙も控えており、政治日程の多い一週間になりそうだ。</p>
-</section>
+<div class="section nikkei" id="sec-nikkei">
+  <div class="section-header">
+    <div class="section-title">日経新聞</div>
+    <div class="point-summary">本日のポイント：円が半年ぶりに155円台に接近する中、AI・半導体関連株が日経平均を押し上げている</div>
+  </div>
+  <div class="topics">
+    <div class="topic">
+      <div class="topic-label">日本経済・円相場・日銀動向</div>
+      <p>9月1日の東京市場では米国の金利上昇や米財務長官による日銀の利上げ促進とも取れる発言を受けて国内長期金利が上昇し、日経平均は取引序盤に一時700円超下落、終値は前日比96円安の6万6215円で取引を終えた。その後、円は対ドルで一時154円台まで下落し、半年ぶりに「155円の壁」に迫る場面があった。市場では日銀が9月の金融政策決定会合で利上げに動くとの観測が広がっており、根強いインフレと円安が日銀の判断材料として注視されている。円安は輸出企業の業績を押し上げる一方、輸入物価を通じて家計や中小企業のコスト負担を増す二面性を持つ。</p>
+      <div class="topic-source">出典：<a href="https://s.kabutan.jp/news/n202609010925/" target="_blank" rel="noopener">株探ニュース</a></div>
+    </div>
+    <div class="topic">
+      <div class="topic-label">日本企業の動き（半導体）</div>
+      <p>東京エレクトロンは2027年3月期第1四半期に、AI向け半導体製造装置の投資拡大を背景に売上高が前年同期比33.3%増の7324億円、営業利益が46.1%増の2114億円、最終利益が39.5%増の1643億円という大幅な増収増益を記録した。同社株は9月4日にかけて5.53%下落したものの、9月7日には4.73%反発している。半導体テスタ大手のアドバンテストも同期に売上高が前年同期比39.3%増の3675億円、営業利益が53.3%増の1900億円、四半期利益が93.8%増の1748億円と、いずれも四半期ベースで過去最高を更新した。AI関連の設備投資需要が両社の業績を強力に押し上げている構図が鮮明になっている。</p>
+      <div class="topic-source">出典：<a href="https://www.nikkei.com/article/DGXZQOUB271KG0X20C26A7000000/" target="_blank" rel="noopener">日本経済新聞</a></div>
+    </div>
+    <div class="topic">
+      <div class="topic-label">アジア経済・中国動向</div>
+      <p>9月7日の日経平均は前週末比で約2%上昇し、6万6300円台を回復した。前日の米半導体株高を受け、キオクシアホールディングス、ソフトバンクグループ、アドバンテスト、フジクラ、東京エレクトロンなどAI・半導体関連銘柄が軒並み買われたことが牽引役となった。一方で、米国とイランの間で週末に艦船を巡る攻撃の応酬があったことで原油高が改めて意識され、インフレ再燃への警戒感も市場に残っている。米中間では9月下旬に予定される首脳会談を前にAI分野を巡る協議が本格化する見通しで、日本企業にとっても半導体・AIサプライチェーンの行方を左右する重要な局面となっている。</p>
+      <div class="topic-source">出典：<a href="https://sundayguardianlive.com/business/nikkei-225-today-september-7-2026-index-jumps-nearly-2-above-66300-check-why-japanese-stocks-are-rising-top-gainers-market-trends-and-key-factors-279001/" target="_blank" rel="noopener">Sunday Guardian Live</a></div>
+    </div>
+  </div>
+</div>
 
-<section class="politics">
-<h2>政治動向：米国・日本・世界</h2>
-<p><b>米国：</b>トランプ大統領は牛肉の「クオータ超過」関税を90日間一時停止する大統領令に署名し、国内畜産業の再建時間確保と消費者物価の抑制を狙った。米特使ウィトコフ氏・クシュナー氏は9/5モスクワでプーチン氏、9/6キーウでゼレンスキー氏とそれぞれ会談し、米英仏独の国家安全保障顧問も交えた3回目の会合が行われた。大規模停戦合意には至っていないが、会談期間中の相互の首都への空爆停止で合意し、冬までの交渉打開を目指す方針が示されている。最大の注目点は9月24日にホワイトハウスで予定されるトランプ・習近平首脳会談で、AI・貿易・台湾が主要議題となる見通し。会談前から米中の制裁応酬が続いており、半導体輸出規制の方向性を左右しうる分水嶺として位置づけられる。</p>
-<p><b>日本：</b>高市首相の内閣改造は9月中旬〜下旬（早ければ16日）が焦点で、麻生氏を軸とした体制固めが2027年の総裁再選をにらんだ布石との見方が強い。片山財務相・茂木外相・鈴木幹事長・木原官房長官と主要ポストの留任が有力視されており、政策の継続性を重視した布陣とみられる。9月13日の沖縄県知事選挙、税制改正パッケージの9月中旬採択など、実務的な政治日程も立て込んでいる。なお検索結果に混在していた「石破首相が総裁辞任を表明」という情報は2025年9月の過去の出来事（当時の政権交代の経緯）に関するものであり、現在の高市政権下の最新ニュースではない点に注意が必要。</p>
-<p><b>世界：</b>ドイツ・ザクセン＝アンハルト州議会選挙で極右AfDが44.5%を獲得する歴史的勝利を収めた一方、単独過半数には届かず組閣の見通しは不透明。ウクライナ・ロシア間では米特使の仲介により部分的な相互攻撃停止が成立し、和平交渉の枠組みが継続している。9月24日の米中首脳会談は、5月の北京会談で確立した「建設的な戦略的安定」路線の延長として位置づけられている。欧州・中国間ではEV・風力部品・太陽光・成熟ノード半導体を巡る中国の過剰生産能力に対する緊張も高まっており、AI・半導体競争の裏側にある産業政策の対立軸として注視したい。</p>
-</section>
+<div class="section politics" id="sec-politics">
+  <div class="section-header">
+    <div class="section-title">政治動向（米国・日本・世界）</div>
+    <div class="point-summary">本日のポイント：米国は関税を巡る最高裁判断後の立て直しと9月利上げ観測、日本は消費税減税と内閣改造、世界はドイツ極右の躍進と米中AI協議が焦点</div>
+  </div>
+  <div class="politics-body">
+    <div class="politics-block">
+      <div class="sub-heading">米国政治（トランプ政権）</div>
+      <p>2月20日、連邦最高裁は「Learning Resources v. Trump」訴訟で6対3の判断を下し、国際緊急経済権限法（IEEPA）を根拠にした大統領の包括的関税賦課は違法であると認定した。これにより「解放の日」関税を含むIEEPA関税は法的根拠を失い、1600億ドル超がすでに違法に徴収されたとされ、最大1750億ドル規模の還付が発生する可能性がある。トランプ政権はこれを受けて通商法232条・122条など別の法的根拠に基づく関税へと切り替えを進めており、232条関税だけで今後10年間に6350億ドルの税収が見込まれる一方、IEEPA分の税収は今後半減する見通しだ。</p>
+      <p>中東ではイランとの戦争が長期化している。2月末の米・イスラエルによる対イラン攻撃（最高指導者暗殺を含む）に端を発した戦闘は、4月と6月の二度の停戦・覚書合意にもかかわらず、7月にイランが商船を攻撃したことで再燃し、9月に入ってもホルムズ海峡でのタンカー攻撃の応酬が続いている。経済面では8月の雇用統計が16.2万人増と大幅な上振れを見せた一方、賃金の伸びがインフレに追いつかない状態が続いており、トランプ政権はFRBに利上げを見送るよう強く働きかけている。外交面では9月下旬に予定される習近平国家主席の訪米・首脳会談を控え、AI・輸出管理を巡る米中協議が焦点となっているほか、国務長官ルビオ氏は9月8〜10日にコロンビア・エクアドル・ペルーを歴訪し対麻薬・対テロ協力を強化する。11月3日の中間選挙に向けては、8月31日に主要な予備選が終了し本選挙戦に突入しており、世論調査・予測市場ではトランプ政権への不満を背景に民主党が上下両院で優勢との見方が広がる一方、上院は共和党が議席を維持する可能性が高いとされている。</p>
+      <div class="topic-source">出典：<a href="https://taxfoundation.org/blog/supreme-court-trump-tariffs-ruling/" target="_blank" rel="noopener">Tax Foundation</a> / <a href="https://en.wikipedia.org/wiki/2026_Iran_war_ceasefire" target="_blank" rel="noopener">Wikipedia</a> / <a href="https://ballotpedia.org/United_States_Congress_elections,_2026" target="_blank" rel="noopener">Ballotpedia</a></div>
+    </div>
+    <div class="politics-block">
+      <div class="sub-heading">日本政治（高市政権）</div>
+      <p>高市早苗首相は昨年10月の就任以来初となる内閣改造を9月中旬から下旬にかけて実施する方針で、片山さつき財務相、小泉進次郎防衛相、茂木敏充外相ら主要閣僚は続投させ「継続性」を重視する布陣になる見通しだ。経済対策としては、8月5日の臨時閣議で飲食料品の消費税率を現行8%から2027年4月から2年間限定で1%に引き下げる方針を決定しており、残る1%相当は中低所得層への現金給付で補い「実質ゼロ化」を目指す。実現すれば1989年の消費税導入以来初の税率引き下げとなり、9月の税制改正大綱決定を経て秋の臨時国会に関連法案が提出される見通しだ。防衛・経済安保面では、FY2026の防衛予算が9.04兆円（対GDP比約1.9%）に達し、当初は慎重に扱われてきた2%の水準に事実上到達しつつある。</p>
+      <p>高市首相は2月の衆院選での自民党の圧倒的勝利を受けて憲法改正への意欲を重ねて表明しており、4月の党大会では2027年を目標とする改正案を示唆した。外交面では、9月8日から始まる国連総会（ニューヨーク）や、11月に中国・深圳で開かれるAPEC首脳会議、12月に米フロリダで開催されるG20など、秋以降相次ぐ国際会議の機会を通じてトランプ大統領との接触を模索し、米中首脳会談の前後に日米間の認識をすり合わせる考えだ。米朝協議や国際刑事裁判所（ICC）を巡る米国の制裁方針など懸案も多い。国内政治日程では、与党が重視する沖縄県知事選が9月13日に予定されており、内閣改造・税制改正とあわせて政権運営の試金石となる。</p>
+      <div class="topic-source">出典：<a href="https://www.bloomberg.com/news/articles/2026-09-07/japan-pm-takaichi-to-prioritize-continuity-in-cabinet-reshuffle" target="_blank" rel="noopener">Bloomberg</a> / <a href="https://www.jiji.com/jc/article?k=2026080500718&g=pol" target="_blank" rel="noopener">時事ドットコム</a> / <a href="https://www.nikkei.com/article/DGXZQOUA278DK0X20C26A8000000/" target="_blank" rel="noopener">日本経済新聞</a></div>
+    </div>
+    <div class="politics-block">
+      <div class="sub-heading">世界の潮流</div>
+      <p>欧州では極右勢力の台頭が加速している。9月6日のドイツ・ザクセン・アンハルト州議会選挙で、極右政党「ドイツのための選択肢（AfD）」が43.8%の得票率を獲得し、メルツ首相率いる与党キリスト教民主同盟（17.2%）に歴史的な大差をつけて圧勝した。国内情報機関からは「右翼過激派」団体に指定されているAfDの躍進に対し、メルツ首相は「深く衝撃を受けた」とコメントしており、連邦政府への圧力が強まっている。中東では、2月末に始まった米・イスラエル対イランの戦争が、4月と6月の二度の停戦合意を経てもなお決着せず、9月にはホルムズ海峡でのタンカー攻撃の応酬が続き、原油価格の高止まりを通じて世界経済にインフレ圧力を及ぼしている。</p>
+      <p>米中間では、AI覇権を巡る競争が新たな緊張の焦点になっている。5月の北京での米中首脳会談を受け、9月にはAI分野の高官協議が予定されており、9月24日にはXi国家主席が訪米して再度トランプ大統領と会談する計画だ。中国が7月に上海で開いた「世界人工知能会議（WAIC）」でグローバルサウス28カ国とAI協力を締結したことが、米国側の危機感を強めた背景とされる。米国は先端AI半導体の対中輸出規制を維持しつつ、中国製オープンウェイトAIモデルの米国内利用制限も検討している。多国間の枠組みでは、9月8日から22日まで第81回国連総会がニューヨークで開催され、9月21日には総会の場でG7外相の非公式会合も予定されているなど、秋は主要国首脳が一堂に会する外交シーズンを迎えている。</p>
+      <div class="topic-source">出典：<a href="https://www.france24.com/en/europe/20260907-live-europe-reacts-to-germany-far-right-afd-worrying-electoral-victory" target="_blank" rel="noopener">France24</a> / <a href="https://asiatimes.com/2026/07/ai-race-loss-fears-behind-trumps-planned-september-hosting-of-xi/" target="_blank" rel="noopener">Asia Times</a></div>
+    </div>
+  </div>
+</div>
 
-<section class="mlb">
-<h2>MLB：全体順位・話題</h2>
-<p>2026年レギュラーシーズンは9月27日終了予定で、残り約3週間の終盤戦に入っている。現時点で仮にシーズンが終了した場合のプレーオフ進出チームは、ア・リーグがレイズ（東地区）・ホワイトソックス（中地区、残り20試合を残し大きくリード）・アストロズ（西地区）で、ワイルドカードはヤンキース・レッドソックス・ブルージェイズ（ブルージェイズは対戦成績のタイブレークでガーディアンズを上回り71勝71敗で枠内につけている大混戦）。ナ・リーグはブルワーズ（中地区）・ドジャース（西地区首位を維持）・ブレーブス（東地区）が地区首位で、ワイルドカードはカブス・フィリーズ（ともに5ゲーム差の余裕で上位独走）・ダイヤモンドバックス（パドレスを0.5ゲーム差で追走、マイアミ・セントルイス・ピッツバーグ・シンシナティも6ゲーム差以内で射程圏）という混戦模様だ。個別ではジャイアンツがメッツを9-5で撃破し、ラファエル・デバースが直近46打数19安打（.413）・本塁打7本と絶好調を維持している。</p>
-</section>
+<div class="section mlb" id="sec-mlb">
+  <div class="section-header">
+    <div class="section-title">MLB</div>
+    <div class="point-summary">本日のポイント：レギュラーシーズン終盤（9月27日終了）に入り、ワイルドカード争いが接戦。山本由伸は投手三冠2年連続を達成</div>
+  </div>
+  <div class="topics">
+    <div class="topic">
+      <div class="topic-label">地区順位表</div>
+      <p>9月7日時点で、アメリカンリーグはタンパベイ・レイズがAL東地区首位（83勝57敗）、シカゴ・ホワイトソックスがAL中地区首位（73勝67敗）、ヒューストン・アストロズがAL西地区首位（72勝69敗）に立っている。ワイルドカード争いはヤンキース・レッドソックス・ガーディアンズが現在3枠を占め、テキサス・レンジャーズがボーダーラインから1ゲーム差に迫る混戦となっている。ナショナルリーグでは、ブレワーズ（NL中地区）とドジャース（NL西地区）が優勝に向けてほぼ独走状態にある一方、ブレーブスはフィリーズとの4連戦で競り勝ちNL東地区の接戦を制しつつある展開だ。</p>
+      <div class="topic-source">出典：<a href="https://www.mlb.com/standings" target="_blank" rel="noopener">MLB.com</a> / <a href="https://www.cbssports.com/mlb/news/2026-mlb-playoff-picture-standings-bracket/" target="_blank" rel="noopener">CBS Sports</a></div>
+    </div>
+    <div class="topic">
+      <div class="topic-label">ワイルドカード争い</div>
+      <p>NLワイルドカードはカブスとフィリーズが首位枠を巡って激しく争っており、僅差の戦いが続いている。最後の1枠を巡ってはダイヤモンドバックスがパドレスに0.5ゲーム差をつけてリードする展開で、9月27日のレギュラーシーズン終了まで最後の1週間で決着がもつれ込む可能性が高い。現時点でのポストシーズン進出候補は、ブレワーズ・ドジャース・ブレーブス（地区優勝）、カブス・フィリーズ・ダイヤモンドバックス（ワイルドカード）の顔ぶれとなっている。</p>
+      <div class="topic-source">出典：<a href="https://www.mlb.com/news/mlb-playoff-picture-and-bracket-2026" target="_blank" rel="noopener">MLB.com</a></div>
+    </div>
+    <div class="topic">
+      <div class="topic-label">スター選手の成績・話題</div>
+      <p>日本人選手では、カブスの鈴木誠也が126試合出場で打率.271、24本塁打、80打点、OPS.850と安定した成績を残しシーズン終盤の重要な戦いに臨んでいる。本塁打王争いでは、シーズン序盤にカイル・シュワーバーが32本でリーグをリードし、ヤンキースのアーロン・ジャッジはそれを追う展開だった。ジャッジは自身3度目となるシーズン50本塁打の可能性を視野に入れており、その場合は史上最多となる50本塁打シーズンの記録更新に挑むことになる。</p>
+      <div class="topic-source">出典：<a href="https://www.mlb.com/news/aaron-judge-on-pace-for-home-run-history-2026" target="_blank" rel="noopener">MLB.com</a> / <a href="https://www.baseball-reference.com/players/s/suzukse01.shtml" target="_blank" rel="noopener">Baseball-Reference</a></div>
+    </div>
+    <div class="topic">
+      <div class="topic-label">投手陣・後半戦の注目</div>
+      <p>ドジャースの山本由伸は2026年シーズンにオールスターへ選出されたうえ、2年連続で投手三冠（勝利数・防御率・奪三振の3部門制覇）を達成する快投を見せている。チームはタリク・スクバル、山本、ブレイク・スネル、タイラー・グラスノーの4人による強力な先発ローテーションを組んでおり、投打がかみ合えばポストシーズンでも上位進出が期待される布陣だ。レギュラーシーズンは9月27日に終了予定で、各地区・ワイルドカードとも残り3週間弱で最終順位が固まっていく。</p>
+      <div class="topic-source">出典：<a href="https://en.wikipedia.org/wiki/Yoshinobu_Yamamoto" target="_blank" rel="noopener">Wikipedia</a></div>
+    </div>
+  </div>
+</div>
 
-<section class="dodgers">
-<h2>ドジャース：大谷翔平・山本由伸</h2>
-<p>大谷翔平選手は9月5日（日本時間6日）のナショナルズ戦でドジャース移籍後初となる3試合連続スタメン外れとなった。右上腕二頭筋の張りに加え首付近にも違和感があるとされ、エンゼルス時代の2023年9月（右脇腹痛）以来3年ぶりの3試合連続ベンチ入りだという。ロバーツ監督は「打撃練習後の状態を見て翌日の対応を決める」と説明し、故障者リスト（IL）入りの可能性は低いとしつつも状況次第では選択肢になりうるとの姿勢を示している。大谷選手は6月以降左膝の痛みも抱えており（7月3日以来投手として登板なし）、二刀流としての負担が蓄積している様子がうかがえる——連覇のかかる終盤戦だけに、無理をさせず10月へ向けて状態を整えられるかが最大の注目点だ。チーム自体はドジャースが9/4に5-3、9/5に6-5でナショナルズに連勝しており、大谷選手不在でも白星を積み重ねている。</p>
-<p>投手陣では山本由伸投手が直近登板で5回2/3を無失点に抑え、7月4日以来となる無失点登板を記録した。シーズンERA2.65を維持しており、ナ・リーグ上位の安定感を保っている。一方で別の登板ではジャイアンツ相手に3本塁打を許す被弾もあり、相手によって明暗が分かれる展開も見られる。チームはナ・リーグ西地区首位をキープしており、大谷選手の状態管理と山本投手のローテーション最終調整が、ポストシーズンに向けたこれからの数週間の最大の焦点になりそうだ。</p>
-</section>
+<div class="section dodgers" id="sec-dodgers">
+  <div class="section-header">
+    <div class="section-title">DODGERS</div>
+    <div class="point-summary">本日のポイント：大谷は今季の登板を断念しDH専念へ、山本は投手三冠と絶好調。チームはNL西地区優勝へ独走中</div>
+  </div>
+  <div class="topics">
+    <div class="topic">
+      <div class="topic-label">大谷翔平</div>
+      <p>大谷翔平は左膝の炎症と右上腕二頭筋の張り、さらにシーズンを通して悩まされてきた首の張りが完治しておらず、球団は今季残りの登板を事実上断念し、今後はDHに専念させる方針を固めた。9月7日時点で4試合を欠場していたが、月曜（9月8日）の試合から打線復帰が見込まれている。打者としては117試合で打率.294、133安打、30本塁打、80打点、82得点という好成績を残しており、投打二刀流を封印してもチームの中軸としての存在感は健在だ。前季の自己最多55本塁打には届かないペースだが、故障を抱えながらの数字としては高水準を維持している。</p>
+      <div class="topic-source">出典：<a href="https://www.mlbtraderumors.com/2026/09/shohei-ohtani-not-likely-to-pitch-again-in-2026.html" target="_blank" rel="noopener">MLB Trade Rumors</a> / <a href="https://dodgerblue.com/dodgers-shut-down-shohei-ohtani-from-pitching-again-this-season/2026/09/07/" target="_blank" rel="noopener">Dodger Blue</a></div>
+    </div>
+    <div class="topic">
+      <div class="topic-label">山本由伸・チーム状況</div>
+      <p>投手陣の柱となっているのが山本由伸で、今季はオールスターに選出されたのに加え、2年連続で投手三冠（防御率・勝利数・奪三振の3部門制覇）という快挙を達成した。スクバル、スネル、グラスノーを含む4人ローテーションは今のところリーグでも屈指の陣容で、チームはNL西地区で独走状態にあり、地区優勝がほぼ確実視されている情勢だ。明るい話題が続く一方で、大谷の投手復帰断念は今後の運用方針にも影響しそうだ。</p>
+      <div class="topic-source">出典：<a href="https://en.wikipedia.org/wiki/Yoshinobu_Yamamoto" target="_blank" rel="noopener">Wikipedia</a> / <a href="https://www.cbssports.com/mlb/news/2026-mlb-playoff-picture-standings-bracket/" target="_blank" rel="noopener">CBS Sports</a></div>
+    </div>
+    <div class="topic">
+      <div class="topic-label">ロースター動向</div>
+      <p>9月6日には、右肩を故障していたボビー・ミラー投手を故障者リスト（60日IL）から復帰させるため、好投を続けていたカイル・ハート投手（オールスター後11試合登板で防御率2.92、WHIP1.30）を3Aオクラホマシティへ降格させる決断が下された。あわせて外野手トーマス選手も40人枠を空けるためDFA（譲渡指名）となった。週末のナショナルズ戦では、ラッシング選手が右肘の違和感で、マンシー選手が体調不良でそれぞれ試合直前にスタメンを外れ、代わりにエルナンデスが三塁に入るなど、終盤戦らしい細かなやり繰りが続いている。</p>
+      <div class="topic-source">出典：<a href="https://www.mlb.com/dodgers/news" target="_blank" rel="noopener">MLB.com Dodgers</a></div>
+    </div>
+  </div>
+</div>
 
-<p class="note">※日経の日付表記（「9/5」に半導体株急落の記述）および日本政治セクションの「石破氏辞任」情報は、記事の日付・時系列に確認しきれない点があったため、参考情報として注記した上で採用しています。一次ソースへの直接アクセスができない項目は「情報なし」または注記を付しています。</p>
-
-<p class="disclaimer">*本ページは情報整理を目的としたものであり、投資助言ではありません。</p>
+<footer>
+  今日のニュース digest — AIによる自動生成・要約レポート
+</footer>
 
 </body>
 </html>
