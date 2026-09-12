@@ -110,6 +110,30 @@ a{color:#56d3f7;}
 <p>各社が軒並みメモリ帯域・容量を最優先で強化している(②のスコアボード参照)ことが示す通り、モデルの長文脈化・エージェント化によって「一度に保持しておくべき情報量(KVキャッシュ)」が増え続けている。これは演算性能そのものより、<b>メモリとのやり取りの速さと量がボトルネックになっている</b>ことの技術的な裏付け。HBMの世代交代(HBM3E→HBM4)がこれまでよりずっと早いペースで進んでいるのも、この要求水準の変化に各社が追われている結果であり、MU・SKHYにとっては「どちらのGPU/ASIC陣営が勝つか」に関わらずHBM需要そのものは増え続ける、という構造は変わっていない。</p>
 </div>
 
+<h3>⑤-B 推論適性ジャッジ（色分け）</h3>
+<div class="section">
+<table>
+<tr><th>チップ</th><th>判定</th><th>根拠</th></tr>
+<tr><td>NVIDIA(Blackwell/GB300)</td><td class="up">🟢 実証済み・高水準</td><td>FP4ネイティブ、GB300 NVL72で$0.12/百万トークン、Hopper比35倍のコスト効率改善。学習・推論どちらも強い汎用性</td></tr>
+<tr><td>Google TPU v7 Ironwood</td><td class="up">🟢 実証済み・最高水準</td><td>設計思想自体が「推論の時代」向け。100トークン/秒あたり18.1セントとBlackwell超のコスト効率を実測ベンチマークで確認済み。ただしFP4非対応で精度面はNVIDIAに一歩譲る</td></tr>
+<tr><td>AWS Trainium3</td><td class="blue">🟡 有望だが検証途上</td><td>スペック上は良好(Trainium2比4.4倍)だが、独立した第三者ベンチマークが限定的で「実証済み」とまでは言い切れない</td></tr>
+<tr><td>Microsoft Maia 200</td><td class="down">🔴 未検証の自己申告</td><td>「TPU・Trainium比3倍性能」は自社発表のみで第三者検証なし。話半分に見るべき段階</td></tr>
+<tr><td>Meta MTIA v3</td><td>⚪ 判定対象外</td><td>そもそも一般的な推論(LLM)向けではなく、レコメンド特化。同じ土俵で比較すること自体が不適切</td></tr>
+</table>
+</div>
+
+<h3>⑤-C SKHY・MU・Samsungの違い（推論需要への対応力という軸）</h3>
+<div class="section">
+<table>
+<tr><th></th><th>SK Hynix</th><th>Samsung</th><th>Micron</th></tr>
+<tr><td>ベースダイ</td><td>TSMC N12(外部委託)</td><td class="up">自社4nmロジックで内製(3社で唯一)</td><td>TSMCのN12FFC+/N5(外部委託、HBM4Eから)</td></tr>
+<tr><td>歩留まり</td><td>約80%到達との報道</td><td class="up">量産開始(2月)から半年で80%到達、目標を4ヶ月前倒し</td><td>非公開</td></tr>
+<tr><td>確定した顧客</td><td class="up">Microsoft Maia 200の単独supplier(HBM3E 216GB)、NVIDIA Vera Rubin配分も最大</td><td>NVIDIA・AMD向けに供給開始</td><td>16件の長期契約(顧客分散、$1,000億規模)</td></tr>
+<tr><td>ポジションの性格</td><td>「量」で先行するトップ、ただし認証遅延懸念で今後シェアを削られるリスクも指摘されている</td><td class="blue">急追する挑戦者、内製力を武器に猛烈な追い上げ</td><td>「特定の勝ち馬に依存しない」分散戦略</td></tr>
+</table>
+<p class="note">業界全体が「カスタムHBM」(TPU専用スタック、Trainium専用スタックのように、ベースダイのロジックを顧客ごとに作り分ける)に向かっているため、今後「どのメモリ会社が強いか」は「どのチップに供給しているか」とセットでしか語れなくなる。SK HynixはMaia向けで独占的地位、Samsungは自社完結力でNVIDIA/AMD向けに食い込み中、Micronは特定の1社に依存しない分散戦略——3社とも勝ち方の方向性自体が違う。</p>
+</div>
+
 <h2>⑥ 来週以降の注目イベント</h2>
 <div class="section">
 <ul>
