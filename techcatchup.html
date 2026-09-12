@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=960">
+<title>AIチップ技術キャッチアップ — 2026年9月12日(土)試運転版</title>
+<style>
+body{background:#0f1117;color:#e6e9ef;font-family:"Segoe UI","Hiragino Kaku Gothic ProN",sans-serif;margin:0;padding:24px;line-height:1.7;}
+h1{font-size:22px;border-bottom:2px solid #56d3f7;padding-bottom:8px;}
+h2{font-size:18px;color:#56d3f7;margin-top:32px;border-left:4px solid #56d3f7;padding-left:10px;}
+h3{font-size:15px;color:#9aa4b2;margin-top:20px;}
+.box{background:#141826;border:1px solid #2a2e3a;border-radius:10px;padding:16px 18px;margin:10px 0;}
+.section{background:#141826;border:1px solid #2a2e3a;border-radius:10px;padding:18px 20px;margin:14px 0;}
+table{border-collapse:collapse;width:100%;margin:10px 0;font-size:13.5px;}
+th,td{border:1px solid #2a2e3a;padding:8px 10px;text-align:left;}
+th{background:#1b2030;color:#9aa4b2;font-weight:normal;}
+.up{color:#3fb950;font-weight:bold;}
+.down{color:#f85149;font-weight:bold;}
+.blue{color:#56d3f7;font-weight:bold;}
+.tag{display:inline-block;background:#1b2030;color:#56d3f7;font-size:11px;padding:2px 8px;border-radius:4px;margin-right:6px;}
+.conclusion{background:#141826;border:2px solid #56d3f7;border-radius:10px;padding:22px 24px;margin:16px 0;}
+.conclusion-label{color:#56d3f7;font-size:12px;font-weight:bold;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px;}
+.conclusion-headline{font-size:26px;font-weight:bold;color:#ffffff;line-height:1.35;margin-bottom:10px;}
+.conclusion-body{font-size:14.5px;color:#c3c8d4;line-height:1.7;}
+.note{color:#9aa4b2;font-size:12.5px;}
+footer{color:#6b7280;font-size:12px;margin-top:40px;border-top:1px solid #2a2e3a;padding-top:12px;}
+a{color:#56d3f7;}
+.trial-badge{display:inline-block;background:#3a2e0f;color:#e3b341;border:1px solid #e3b341;border-radius:6px;padding:4px 10px;font-size:12px;margin-bottom:14px;}
+</style>
+</head>
+<body>
+
+<div class="trial-badge">⚠ 試運転版（本番の自動実行は明日9/13(日)10:00から）</div>
+<h1>🧠 AIチップ技術キャッチアップ — 2026年9月12日(土)</h1>
+
+<h2>① 今週の縮図</h2>
+<div class="conclusion">
+  <div class="conclusion-label">★ 今週の縮図</div>
+  <div class="conclusion-headline">NVIDIAが「買収」で守り、3社が「量産台数」で攻める一週間</div>
+  <div class="conclusion-body">NVIDIAはHugging Face買収($129.3億)というソフトウェア面の防衛策を進める一方、Google(今年300万台超・2028年に1,200〜1,500万台目標)・Amazon(Trainium2だけで約100万個稼働)・Microsoft(Maia 300を300,000個規模でTSMCに交渉中)という3社が、性能競争よりまず「量」で存在感を作りにいっている。これは技術の巧拙より前に、まず「量産できるかどうか」で参入障壁の高さを試す段階に業界全体が入ったことを示している——半導体という装置産業の本質(規模がなければ何も始まらない)が、AIチップ競争でもそのまま繰り返されている。</div>
+</div>
+
+<h2>② スコアボード（現在地の横並び比較）</h2>
+<div class="box">
+<table>
+<tr><th>項目</th><th>NVIDIA</th><th>Google TPU</th><th>AWS Trainium</th><th>Microsoft Maia</th><th>Meta MTIA</th></tr>
+<tr><td>最新/主力</td><td>Blackwell Ultra(GB300)</td><td>v7 Ironwood</td><td>Trainium3</td><td>Maia 200<span class="blue">(300近日?)</span></td><td>v3 Iris</td></tr>
+<tr><td>プロセス</td><td>TSMC(先端)</td><td>非公開(TSMC系)</td><td>TSMC 3nm</td><td>TSMC N3P</td><td>TSMC 3nm</td></tr>
+<tr><td>メモリ</td><td>HBM3e 288GB</td><td>HBM 192GB</td><td>HBM3e 144GB</td><td>HBM3e 216GB/7TB/s</td><td>HBM3E×8/3.5TB/s超</td></tr>
+<tr><td>精度対応</td><td>FP4ネイティブ</td><td>FP8まで(FP4非対応)</td><td>FP8(次世代でFP4)</td><td>FP8/FP4ネイティブ</td><td>非公開</td></tr>
+<tr><td>推論コスト目安</td><td class="up">$0.12/百万トークン(GB300 NVL72)</td><td>100tok/s=18.1セント</td><td>公開ベンチマーク限定的</td><td>非公開(自社主張3倍性能)</td><td>非公開(自社ワークロード専用)</td></tr>
+<tr><td>量産・導入規模</td><td>市場シェア約70〜81%</td><td class="blue">今年300万台超→2028年1,200〜1,500万台目標</td><td class="blue">Trainium2だけで約100万個稼働中</td><td>Maia 300へ30万個規模を交渉中(2027年納入目標)</td><td>2027年までに7GW→14GWへ倍増</td></tr>
+</table>
+<div class="note">Microsoftの「Maia 200はTPU・Trainium比3倍性能」は自社発表ベースの主張で第三者ベンチマークでの裏付けは未確認。参考情報として記載。</div>
+</div>
+
+<h2>②-B 潮目ログ（累積・今回は新規追加なし）</h2>
+<div class="box">
+<table>
+<tr><th>時期</th><th>何が変わったか</th><th>もう使われなくなったもの</th><th>どこが強くなったか</th></tr>
+<tr><td>2026年9月時点(進行中)</td><td>「NVHBM」構想でHBMベースダイの設計主導権がメモリメーカーからNVIDIAへ移り始めた</td><td>各メモリメーカーが独自のカスタムHBMをバラバラに設計する旧方式</td><td>NVIDIA(設計主導権)。メモリメーカーは製造実行力へ差別化軸がシフト</td></tr>
+<tr><td>2026年半ば</td><td>精度規格がFP8からFP4へ実用段階でシフト</td><td>FP8を上限とした従来の推論設計の一部</td><td>NVIDIA(Blackwellが先行、TPU v7はまだFP4非対応)</td></tr>
+<tr><td>2026年前半</td><td>NVIDIA GPU一強から「GPU＋各社カスタムASIC」の二正面構造が本格定着</td><td>「AIアクセラレータ＝NVIDIA GPU一択」という業界の暗黙の前提</td><td>Google・Amazonが実行面で先行、Microsoftは苦戦、Metaは自社特化</td></tr>
+<tr><td>2025年後半</td><td>HBMベースダイの製造がDRAM工程から先端ロジック工程へ移行開始</td><td>メモリメーカーが設計〜製造まで完全内製するモデル</td><td>Samsung(自社4nmロジックで内製完結できる唯一の存在)</td></tr>
+<tr><td>2024〜2025年</td><td>ボトルネックの主役が「GPU計算性能」から「メモリ帯域・容量」へ交代</td><td>GPU単体の性能表だけで強さを判断する考え方</td><td>SK Hynix・Micron・Samsung(HBM3社寡占)</td></tr>
+</table>
+<div class="note">今回のWebSearchでは業界の前提を覆すレベルの新しい転換点は確認できず、追加なし。ただしGroq社が新アーキテクチャ(LPU)で「HBM型GPU比35倍のワット当たり推論スループット」を主張しており、これが実証されれば次回以降ログ入りする可能性がある候補として注視。</div>
+</div>
+
+<h2>③ 各社の思惑と技術</h2>
+
+<div class="section">
+<h3>NVIDIA — 買収でハードの外側を固める</h3>
+<p><span class="tag">Hugging Face買収($129.3億、9/2発表)</span>AI開発者コミュニティの中心的プラットフォームを取り込み、ハードウェア面の優位だけでなく「開発者がどこに集まるか」まで押さえにいく動き。$0.25配当(権利落ち9/10)など株主還元も継続しており、守りの手を緩めていない。</p>
+</div>
+
+<div class="section">
+<h3>Google TPU — 「量」で殴る戦略が数字に出た</h3>
+<p><span class="tag">2026年300万台超、2028年に1,200〜1,500万台目標</span>性能競争と並行して、生産台数そのものを2年で4〜5倍に増やす計画を持っていることが分かった。Anthropicのような大口外部顧客を確保できているのも、この量産計画があってこそ。「TPUは技術で勝つ」より「TPUを大量に確保できる体制を先に作る」ことを優先している思惑が透けて見える。</p>
+</div>
+
+<div class="section">
+<h3>AWS Trainium — Claudeという"自社ヘビーユーザー"を囲い込む</h3>
+<p><span class="tag">Trainium2だけで約100万個が稼働、Project RainierでClaudeを支える</span>Amazon自身が親会社出資先であるAnthropicのClaudeを大量のTrainium2で支えている構図が明確になった。Trainium3はTSMC 3nm、Trainium4は2026年末までに2nmへ進む計画。「まず自社の巨大な顧客(Anthropic)で実績を作ってから外販する」という手堅い思惑が見える。</p>
+</div>
+
+<div class="section">
+<h3>Microsoft Maia — 出遅れを一気に取り返しに来た</h3>
+<p><span class="tag">Maia 300を9月にも発表？TSMCに30万個規模を交渉中(2027年納入)</span>Maia 100の苦戦・Maia 200の1年遅延という出遅れを踏まえ、次世代Maia 300で一気に規模を確保しにいく動き。自社発表では「TPU・Trainium比3倍性能」を主張しているが、第三者検証はまだない点は割り引いて見る必要がある。「性能を誇張してでも存在感を示したい」という焦りとも読める。</p>
+</div>
+
+<div class="section">
+<h3>Meta MTIA — 汎用競争から降りて自社特化に全振り</h3>
+<p><span class="tag">2027年までに容量を7GW→14GWへ倍増</span>他3社が汎用LLM学習・推論での存在感を競う中、Metaは一貫してReels・Instagramのレコメンドという自社の収益源に特化。汎用性で戦わない代わりに、確実に投資回収できる場所に絞る、最も守りに徹した思惑。</p>
+</div>
+
+<h2>④ コストパフォーマンスの決着点</h2>
+<div class="section">
+<p>業界全体で見ると、トークン単価は2023年3月比で<b>84%下落</b>(2026年9月時点、21モデル平均で1M トークンあたり$6.00)。ハードウェア側の押し下げ効果も大きく、NVIDIAのGB300 NVL72は1Mトークンあたり<b>$0.12</b>、Hopper世代比で<b>35倍のコスト効率改善</b>を達成。TPU v7 Ironwoodは100トークン/秒あたり18.1セントとBlackwell Ultra比で最大50%良好という以前の分析と合わせると、<b>「学習はNVIDIA、超大規模推論はTPU」という住み分けがコスト面でも裏付けられつつある</b>。なお、GTC 2026でGroq社が発表した新アーキテクチャ「LPU」は、HBM型GPU比35倍のワット当たり推論スループットを主張しており、もしこれが実証されれば③の勢力図とは全く別の第三極として②-Bの潮目ログ入りする可能性がある。</p>
+</div>
+
+<h2>⑤ 推論で要求される性能水準の変化</h2>
+<div class="section">
+<p>各社が軒並みメモリ帯域・容量を最優先で強化している(②のスコアボード参照)ことが示す通り、モデルの長文脈化・エージェント化によって「一度に保持しておくべき情報量(KVキャッシュ)」が増え続けている。これは演算性能そのものより、<b>メモリとのやり取りの速さと量がボトルネックになっている</b>ことの技術的な裏付け。HBMの世代交代(HBM3E→HBM4)がこれまでよりずっと早いペースで進んでいるのも、この要求水準の変化に各社が追われている結果であり、MU・SKHYにとっては「どちらのGPU/ASIC陣営が勝つか」に関わらずHBM需要そのものは増え続ける、という構造は変わっていない。</p>
+</div>
+
+<h2>⑥ 来週以降の注目イベント</h2>
+<div class="section">
+<ul>
+<li>Microsoft Maia 300の正式発表があるか(9月中の可能性、TSMC 30万個交渉の行方)</li>
+<li>Groq LPUの第三者ベンチマーク検証が出るか(「35倍」主張の裏付け)</li>
+<li>NVIDIA Hugging Face買収の規制当局審査の進捗(クロージング予定2027年初頭)</li>
+<li>Google TPUの2026年内300万台達成ペースの確認</li>
+</ul>
+</div>
+
+<footer>
+本ページは投資助言ではなく、技術トレンドを追う学びの場です。<br>
+生成：2026-09-12(試運転)｜データソース：各社公式発表・WebSearch各種
+</footer>
+
+</body>
+</html>
