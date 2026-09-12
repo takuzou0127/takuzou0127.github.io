@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=960">
+<title>AI技術の序列 — この1〜2年で何が急激に進化したか</title>
+<style>
+body{background:#0f1117;color:#e6e9ef;font-family:"Segoe UI","Hiragino Kaku Gothic ProN",sans-serif;margin:0;padding:24px;line-height:1.8;}
+h1{font-size:22px;border-bottom:2px solid #a371f7;padding-bottom:8px;}
+h2{font-size:19px;color:#a371f7;margin-top:36px;border-left:4px solid #a371f7;padding-left:10px;}
+h3{font-size:15px;color:#c3c8d4;margin-top:20px;}
+.box{background:#141826;border:1px solid #2a2e3a;border-radius:10px;padding:16px 18px;margin:10px 0;}
+.section{background:#141826;border:1px solid #2a2e3a;border-radius:10px;padding:20px 22px;margin:16px 0;}
+.rank{display:inline-block;font-size:15px;font-weight:bold;border-radius:20px;padding:4px 14px;margin-bottom:10px;}
+.rank1{background:#3a2e0f;color:#e3b341;border:1px solid #e3b341;}
+.rank2{background:#1b2a3a;color:#9aa4b2;border:1px solid #9aa4b2;}
+.rank3{background:#2a1f14;color:#d29154;border:1px solid #d29154;}
+.rank4{background:#141826;color:#56d3f7;border:1px solid #56d3f7;}
+.tag{display:inline-block;background:#1b2030;color:#a371f7;font-size:11px;padding:2px 8px;border-radius:4px;margin-right:6px;}
+table{border-collapse:collapse;width:100%;margin:12px 0;font-size:13.5px;}
+th,td{border:1px solid #2a2e3a;padding:8px 10px;text-align:left;}
+th{background:#1b2030;color:#9aa4b2;font-weight:normal;}
+.up{color:#3fb950;font-weight:bold;}
+.note{color:#9aa4b2;font-size:12.5px;}
+.conclusion{background:#141826;border:2px solid #a371f7;border-radius:10px;padding:22px 24px;margin:20px 0;}
+.conclusion-label{color:#a371f7;font-size:12px;font-weight:bold;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px;}
+footer{color:#6b7280;font-size:12px;margin-top:40px;border-top:1px solid #2a2e3a;padding-top:12px;}
+a{color:#a371f7;}
+code{background:#1b2030;padding:1px 6px;border-radius:4px;font-size:12.5px;color:#56d3f7;}
+</style>
+</head>
+<body>
+
+<h1>🧬 AI技術の序列 — この1〜2年で何が急激に進化したか</h1>
+<p class="note">これはハイパースケーラーやチップメーカーという「企業」ではなく、AIそのものの「技術」を主役に、進化の度合いでランキングした独立ページです。AnthropicもOpenAIも、体感的な進化の速さの正体は、この4つの技術がほぼ同時に噛み合ったことにあります。</p>
+
+<div class="conclusion">
+<div class="conclusion-label">★ 結論を先に</div>
+推論(1位)がより多くの計算を要求し、エージェント化(2位)がその推論をより長い作業に応用し、長コンテキスト(3位)がより多くの情報を一度に扱えるようにし、MoE(4位)がそれら全部のコストを現実的な水準に抑え込む——技術的には全く別の4つのブレイクスルーが、この1〜2年でほぼ同時に噛み合った。
+</div>
+
+<h2><span class="rank rank1">🥇 第1位</span> 推論(Reasoning)/テスト時間スケーリング——これが全ての起点</h2>
+
+<div class="section">
+<h3>何が起きたか</h3>
+<p>2024年9月のOpenAI o1登場が本当の分水嶺だった。それまでのAIの進化は「事前学習(トレーニング)にどれだけ計算資源を注ぎ込むか」という一本道で決まっていたが、o1は<b>「答える瞬間にどれだけ長く"考える"か」</b>という全く別の軸を切り開いた。10秒間"考える"ことを許された小さいモデルが、即答する自分の14倍のサイズのモデルを性能で上回るという実験結果まで報告されている。</p>
+
+<h3>技術的にどう動いているか</h3>
+<p>核となる手法は<b>RLVR(Reinforcement Learning with Verifiable Rewards、検証可能な報酬による強化学習)</b>。数学の証明問題やテスト可能なコードのように「答えが機械的に正誤判定できる」タスクに対し、モデルに長い思考過程(Chain-of-Thought)を生成させ、最終的な正解率を報酬として強化学習で鍛える。ここで使われる代表的なアルゴリズムが<code>GRPO(Group Relative Policy Optimization)</code>——PPOという既存手法を土台に、同じ問題に対する複数の解答例をグループ化し、その中の相対的な優劣から学習信号を計算することで、従来より遥かに効率よく訓練できるようにした手法で、これがDeepSeekの大きな貢献の一つ。</p>
+<p>さらに<b>PRM(Process Reward Model、過程報酬モデル)</b>という"検証者"が、最終的な答えだけでなく、思考過程の一歩一歩を採点する。これにより「たまたま正解にたどり着いたが、途中の論理は間違っている」ような紛らわしいケースも検出できる。</p>
+
+<h3>数字で見る衝撃度</h3>
+<table>
+<tr><th>出来事</th><th>意味</th></tr>
+<tr><td>OpenAI o3：ARC-AGIで87.5%</td><td>長年「AIには解けない」とされてきたベンチマークを突破</td></tr>
+<tr><td>DeepSeek-R1(2025年1月)</td><td>純粋な強化学習だけでo1に匹敵する推論能力を<span class="up">70%低いコスト</span>で実現。「巨大企業だけが最先端モデルを作れる」という前提を崩した</td></tr>
+<tr><td>Jensen Huang発言</td><td>次世代推論モデルは<span class="up">最大100倍の計算資源</span>を要求すると明言</td></tr>
+</table>
+<p class="note">なぜ第1位か：この技術の急伸がそのまま「なぜAIチップとHBMがこれほど必要とされるのか」という、これまでの全ての半導体需要の議論の根っこにある。アナリストは2030年までに推論が全AI計算資源の75%を占めると予測——単なるモデルの進化ではなく、半導体需要の構造そのものを作り変えた技術。</p>
+</div>
+
+<h2><span class="rank rank2">🥈 第2位</span> エージェント化——「答える」AIから「実行する」AIへ</h2>
+
+<div class="section">
+<h3>何が起きたか</h3>
+<p>AnthropicのClaude computer use(2026年3月発表)は、ユーザーがスマホから頼んだタスクを、AIが実際にアプリを開き・ブラウザを操作し・スプレッドシートに入力して完結させる。Claude Opus 4.6はコンピュータ操作の業界標準ベンチマークOSWorldで<b>72.7%——ほぼ人間と同水準</b>のスコアを記録した。OpenAIのOperator、Model Context Protocol(MCP、2026年3月時点で導入9,700万件超)も同じ潮流。</p>
+
+<h3>技術的にどう動いているか</h3>
+<p>コンピュータ操作エージェントの基本構造は<b>「知覚→推論→実行」のループ</b>。具体的には：①画面のスクリーンショットを撮る→②視覚言語モデル(VLM)がそれを解釈する→③「座標(432, 187)をクリック」「'hello'と入力」のように次の一手を決める→④実行する→⑤また新しいスクリーンショットを撮る、をタスク完了までひたすら繰り返す。</p>
+<p>設計には2つの流派がある。<b>End-to-End型</b>は1つのVLMが知覚から実行判断まで全部を担う一気通貫の設計。<b>Composed型</b>は、画面上のボタンやテキスト欄を検出する専用モデルなど、工程ごとに別々のモデル・サブシステムに分業させる設計。いずれも、あらかじめ決められた手順通りにしか動かない従来の自動化ツールと違い、自然言語で与えられた目標をもとに、画面レイアウトの変化にも動的に適応できる点が本質的な違い。</p>
+
+<h3>なぜこれが重要か</h3>
+<p>これはAIが「質問に答える道具」から「仕事を代行する存在」へと役割そのものが変わった転換点。AnthropicもOpenAIも、この1〜2年でモデルの「賢さ」だけでなく「実際に手を動かせるか」という全く新しい能力軸で急成長した。</p>
+</div>
+
+<h2><span class="rank rank3">🥉 第3位</span> コンテキストウィンドウの拡大——記憶できる量が桁違いに</h2>
+
+<div class="section">
+<h3>何が起きたか</h3>
+<p>数年前は4,000〜32,000トークン程度だった記憶容量が、Gemini 2.5 Proでは<b>200万トークン</b>——小説30冊分、動画12時間分、あるいはコードベース全体を一度に読み込める水準まで拡大した。Claudeも2026年3月に100万トークンを一般提供開始。</p>
+
+<h3>技術的にどう動いているか</h3>
+<p>土台にあるのは<b>RoPE(Rotary Position Embeddings、回転位置埋め込み)</b>という仕組み。単語の"位置情報"を、クエリ・キーというベクトルを周波数に応じて回転させることで埋め込む方式で、絶対的な位置ではなく「相対的にどれだけ離れているか」を基準にするため、本来なら長い文章への汎化がしやすい。ただしRoPEは学習した長さを超えると性能が急落する弱点があり、これを補うために<code>YaRN</code>や<code>LongRoPE</code>、<code>NTK-aware Scaled RoPE</code>といった拡張手法が、位置情報の"間隔"を伸縮させることで、訓練時より遥かに長い文章にも対応できるようにしている。</p>
+<p>もう一つの要が<b>Ring Attention</b>。長い文章を小さなブロックに分割し、複数の計算装置を"輪"のように並べて、各装置が担当ブロックを処理しながら次の装置へ情報を渡していく——リレー方式で全体を処理することで、1台のメモリに全文章を載せる必要がなくなり、超長文の並列処理が可能になる。</p>
+
+<h3>各社の設計思想の違い</h3>
+<table>
+<tr><th>会社</th><th>アプローチ</th></tr>
+<tr><td>OpenAI</td><td>マルチモーダルストリーミング重視</td></tr>
+<tr><td>Anthropic</td><td>精度と整合性重視(long-in-the-middle耐性が相対的に強いとされる)</td></tr>
+<tr><td>Google</td><td>スパースルーティングと検索融合による極限のスケーラビリティ</td></tr>
+</table>
+<p class="note">注意点：「Lost in the middle」現象——長文の"真ん中あたり"の情報が見落とされやすく、大規模になるほど最大40%の性能劣化が報告されている。記憶容量が増えても、常に完璧に使いこなせているわけではない。</p>
+</div>
+
+<h2><span class="rank rank4">4位</span> MoE(専門家混合)アーキテクチャ——静かな革命</h2>
+
+<div class="section">
+<h3>何が起きたか</h3>
+<p>派手さはないが、上記3つを"経済的に成立させている"縁の下の技術。2025年時点ではまだ主流だった「密な(dense)」モデル設計から、2026年半ばには主要なオープンウェイトモデルの<b>60%以上がMoE方式</b>に転換した。</p>
+
+<h3>技術的にどう動いているか</h3>
+<p>MoEは、入力されたトークンごとに、モデル全体の中から一部の"専門家(エキスパート)"だけを選んで処理させる設計。選ぶ役目を担うのが<b>ルーター(ゲーティングネットワーク)</b>——小さな線形層とソフトマックス関数だけで構成され、各トークンについて全エキスパートに"スコア"をつけ、スコア上位のいくつか(top-k)だけを実際に動かす。</p>
+<p>具体例として<b>DeepSeek-V3</b>：総パラメータ数は6,710億(6710億)という巨大さだが、1トークンあたり実際に動くのはわずか<b>370億(37B)</b>——全体の5.5%程度。内訳は256個の"専門家"のうち8個だけをルーターが動的に選んで動かす「ルーテッドエキスパート」と、どんなトークンでも必ず動く「シェアードエキスパート」(基本的な言語パターンを担当)の組み合わせ。</p>
+
+<h3>なぜこれが重要か</h3>
+<p>MoEは「モデル全体の知識量(総パラメータ数)」と「1回の処理にかかるコスト(実際に動くパラメータ数)」を切り離した。これにより、モデルは巨大に(＝賢く)なり続けられるのに、動かすコストは一部分だけで済む。同等性能のモデル比で計算コストを最大70%削減できるとされ、<b>推論モデル(1位)がどれだけ計算資源を食おうとも、MoEがなければ今のAIの価格でサービス提供すること自体が成立しない</b>——4つの技術の中で唯一、他の3つを"支える"役割を担っている。</p>
+</div>
+
+<h2>まとめ：4つがどう噛み合っているか</h2>
+<div class="section">
+<p>推論(1位)がより多くの計算を要求し、エージェント化(2位)がその推論をより長い一連の作業に応用し、長コンテキスト(3位)がより多くの情報を一度に扱えるようにし、MoE(4位)がそれら全部のコストを現実的な水準に抑え込む——技術的には全く別々の4つのブレイクスルーが、この1〜2年でほぼ同時に噛み合ったことが、AnthropicやOpenAIの体感的な進化速度の正体だと思われる。半導体需要という観点では、この4つすべてが「より多くのメモリ帯域・容量」を要求する方向に一致して働いており、GPU/ASICどちらの陣営が勝つかに関わらずHBM需要が増え続ける、という構造的な結論を技術の根っこから裏付けている。</p>
+</div>
+
+<footer>
+本ページは投資助言ではなく、AI技術そのものの進化を追う学びの場です。<br>
+生成：2026-09-12｜データソース：各種論文・技術ブログ・企業発表(WebSearch)
+</footer>
+
+</body>
+</html>
