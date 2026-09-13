@@ -20,12 +20,37 @@ th{background:#1b2030;color:#9aa4b2;font-weight:normal;}
 .tag{display:inline-block;background:#1b2030;color:#56d3f7;font-size:11px;padding:2px 8px;border-radius:4px;margin-right:6px;}
 .conclusion{background:#141826;border:2px solid #56d3f7;border-radius:10px;padding:22px 24px;margin:16px 0;}
 .conclusion-label{color:#56d3f7;font-size:12px;font-weight:bold;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px;}
-.conclusion-headline{font-size:26px;font-weight:bold;color:#ffffff;line-height:1.35;margin-bottom:10px;}
+.conclusion-headline{font-size:24px;font-weight:bold;color:#ffffff;line-height:1.4;margin-bottom:10px;}
 .conclusion-body{font-size:14.5px;color:#c3c8d4;line-height:1.7;}
 .note{color:#9aa4b2;font-size:12.5px;}
 footer{color:#6b7280;font-size:12px;margin-top:40px;border-top:1px solid #2a2e3a;padding-top:12px;}
 a{color:#56d3f7;}
 .new{background:#1b2030;color:#e3b341;font-size:11px;padding:2px 6px;border-radius:4px;margin-left:6px;}
+
+/* 実力ティア */
+.tierwrap{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 6px;}
+.tiercard{flex:1 1 160px;background:#0f1117;border-radius:10px;padding:13px 15px;border-left:4px solid #444;}
+.tiercard .tlabel{font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;font-weight:bold;margin-bottom:5px;}
+.tiercard .tcompany{font-size:15px;font-weight:bold;color:#fff;margin-bottom:5px;}
+.tiercard .twhy{font-size:12px;color:#9aa4b2;line-height:1.55;}
+.tier-s{border-color:#e3b341;} .tier-s .tlabel{color:#e3b341;}
+.tier-a{border-color:#3fb950;} .tier-a .tlabel{color:#3fb950;}
+.tier-b{border-color:#f0883e;} .tier-b .tlabel{color:#f0883e;}
+.tier-c{border-color:#f85149;} .tier-c .tlabel{color:#f85149;}
+.tier-x{border-color:#6b7280;} .tier-x .tlabel{color:#9aa4b2;}
+
+/* 会社ヘッダーのDNAバッジ */
+.dna{display:inline-block;font-size:10.5px;font-weight:bold;padding:2px 9px;border-radius:10px;margin-left:8px;vertical-align:middle;color:#0f1117;}
+.dna-s{background:#e3b341;}
+.dna-a{background:#3fb950;}
+.dna-b{background:#f0883e;}
+.dna-c{background:#f85149;}
+.dna-x{background:#6b7280;color:#fff;}
+
+/* 位置マップ凡例 */
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:12px;color:#9aa4b2;margin:10px 2px 4px;}
+.legend span.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px;}
+.metabox{background:#0f1117;border:1px dashed #444;border-radius:10px;padding:10px 14px;margin-top:10px;font-size:12.5px;color:#9aa4b2;}
 </style>
 </head>
 <body>
@@ -35,11 +60,87 @@ a{color:#56d3f7;}
 <h2>① 今週の縮図</h2>
 <div class="conclusion">
   <div class="conclusion-label">★ 今週の縮図</div>
-  <div class="conclusion-headline">NVIDIAが次世代Rubinで「性能5倍・コスト10分の1」の跳躍を見せた週、追う4社は揃って"量産"の入口に立った</div>
-  <div class="conclusion-body">NVIDIAのVera Rubinプラットフォームは、GB300比で推論スループット5倍・トークン単価10分の1・電力あたり性能30倍(SemiAnalysis AgentXベンチマーク、9/8)という跳躍を実測レベルで示した。ちょうど同じ週に、Google TPU v7の公開価格表発表、AWS Trainium3の正式GA、Meta MTIA v3の量産入り、Microsoft Maia 300のTSMC 30万個発注という「追う側4社が揃って量産フェーズの入口に立つ」ニュースが重なった。前回は「性能より量で存在感を作る段階」と書いたが、今回はその非対称性がより鮮明になった——NVIDIAは量だけでなく性能の跳躍幅そのものを作り直し、追う側はやっと量産という土台を固めた段階にいる。ハイパースケーラーの資本(Capex)は依然この両方の陣営に流れ込んでおり、CUDAという"事業の堀"は揺らいでいないが、独占ではなく優位というその性質(いつでも技術で追い越される可能性を残す優位)は、Rubinの跳躍そのものが体現している。</div>
+  <div class="conclusion-headline">「5社が揃って量産に入った」は表面の話——実力を証明し終えているのは、まだNVIDIAとGoogleの2社だけ</div>
+  <div class="conclusion-body">今週はNVIDIA・Google・AWS・Microsoft・Metaが揃って"量産"関連のニュースを出し、一見5社が横並びで前進したように見える。だが「その数字を誰が裏付けているか」まで踏み込むと景色は一変する。NVIDIAはSemiAnalysisの独立ベンチマーク(AgentX)でGB300比・電力あたり性能30倍を第三者実証、Google TPUはAnthropicが単独で100万台超・1GW超を実際に発注するという形で"賭けの本気度"を証明した。この2社だけが実証済みの実力者だ。AWS Trainium3は数字の大半が自社ベンチマークで第三者検証はまだ限定的、Microsoft Maiaに至っては「トークン/ドル30%改善」という自社発表が唯一の根拠で外部検証はゼロ。Meta MTIAはそもそも推論チップ競争とは別の土俵(レコメンド特化)で戦っており、同じ物差しで比べること自体が誤り。つまり今週は「5社が同じ速度で前進した週」ではなく、「NVIDIAが跳躍を続け、Googleだけがそれを実証データで追走し、残り3社はまだ量産という土台作りの途中にいる週」だった。この非対称性を②で可視化する。</div>
 </div>
 
-<h2>② スコアボード（現在地の横並び比較）</h2>
+<h2>② 実力ティア分け（証明済みか、まだ自己申告か）</h2>
+<p class="note">①の結論の根拠。各社を項目別スペックの横並びではなく、「量産・導入規模」×「性能の証明度（自己申告か、第三者実証か）」の2軸で位置づけ直した。③のスペック表だけを見ると5社が並列に見えてしまうのは、この"証明の重み"が数字の羅列からは伝わらないため。</p>
+
+<div class="tierwrap">
+  <div class="tiercard tier-s">
+    <div class="tlabel">S格・独走</div>
+    <div class="tcompany">NVIDIA</div>
+    <div class="twhy">第三者ベンチマークで性能もコストも裏付け済み。市場シェア70〜81%で量・質ともに独走。</div>
+  </div>
+  <div class="tiercard tier-a">
+    <div class="tlabel">A格・実証済み挑戦者</div>
+    <div class="tcompany">Google TPU</div>
+    <div class="twhy">シェアはまだ6〜8%と小さいが、Anthropicが単独で100万台超・1GW超を実発注。"口だけ"ではない裏付けがある。</div>
+  </div>
+  <div class="tiercard tier-b">
+    <div class="tlabel">B格・有望だが検証途上</div>
+    <div class="tcompany">AWS Trainium</div>
+    <div class="twhy">Trainium2比4.4倍などの数字は自社ベンチマーク中心。UltraServerは稼働開始したが第三者裏付けはまだ薄い。</div>
+  </div>
+  <div class="tiercard tier-c">
+    <div class="tlabel">C格・自己申告のみ</div>
+    <div class="tcompany">Microsoft Maia</div>
+    <div class="twhy">「トークン/ドル30%改善」はSatya Nadella氏の発言のみ。生産規模も30万個をまだ交渉中の段階。</div>
+  </div>
+  <div class="tiercard tier-x">
+    <div class="tlabel">番外・別競技</div>
+    <div class="tcompany">Meta MTIA</div>
+    <div class="twhy">レコメンド特化で自社ワークロード専用。そもそも同じ推論チップ競争に参戦していない。</div>
+  </div>
+</div>
+
+<div class="box">
+<svg viewBox="0 0 860 420" style="width:100%;height:auto;display:block;">
+  <!-- 軸線 -->
+  <line x1="70" y1="20" x2="70" y2="380" stroke="#2a2e3a" stroke-width="1.5"/>
+  <line x1="70" y1="380" x2="790" y2="380" stroke="#2a2e3a" stroke-width="1.5"/>
+  <!-- 中央の点線（中央値の目安） -->
+  <line x1="430" y1="20" x2="430" y2="380" stroke="#2a2e3a" stroke-width="1" stroke-dasharray="4 5"/>
+  <line x1="70" y1="200" x2="790" y2="200" stroke="#2a2e3a" stroke-width="1" stroke-dasharray="4 5"/>
+  <!-- 象限キャプション -->
+  <text x="778" y="38" text-anchor="end" font-size="11" fill="#3fb950">証明された強者ゾーン</text>
+  <text x="82" y="368" text-anchor="start" font-size="11" fill="#6b7280">未証明・小規模ゾーン</text>
+  <!-- 軸ラベル -->
+  <text x="430" y="406" text-anchor="middle" font-size="12.5" fill="#9aa4b2">量産・導入規模 →（小さい ⇔ 大きい）</text>
+  <text x="26" y="200" text-anchor="middle" font-size="12.5" fill="#9aa4b2" transform="rotate(-90 26 200)">性能の証明度 →（自己申告 ⇔ 第三者実証）</text>
+
+  <!-- NVIDIA -->
+  <circle cx="754" cy="38" r="11" fill="#e3b341"/>
+  <text x="744" y="24" text-anchor="end" font-size="14" font-weight="bold" fill="#e3b341">NVIDIA</text>
+  <text x="744" y="58" text-anchor="end" font-size="11" fill="#9aa4b2">S格・独走</text>
+
+  <!-- Google TPU -->
+  <circle cx="466" cy="74" r="10" fill="#3fb950"/>
+  <text x="476" y="70" text-anchor="start" font-size="14" font-weight="bold" fill="#3fb950">Google TPU</text>
+  <text x="476" y="90" text-anchor="start" font-size="11" fill="#9aa4b2">A格・実証済み挑戦者</text>
+
+  <!-- AWS Trainium -->
+  <circle cx="416" cy="229" r="9" fill="#f0883e"/>
+  <text x="416" y="212" text-anchor="middle" font-size="14" font-weight="bold" fill="#f0883e">AWS Trainium</text>
+  <text x="416" y="252" text-anchor="middle" font-size="11" fill="#9aa4b2">B格・検証途上</text>
+
+  <!-- Microsoft Maia -->
+  <circle cx="214" cy="326" r="9" fill="#f85149"/>
+  <text x="224" y="322" text-anchor="start" font-size="14" font-weight="bold" fill="#f85149">Microsoft Maia</text>
+  <text x="224" y="342" text-anchor="start" font-size="11" fill="#9aa4b2">C格・自己申告のみ</text>
+</svg>
+<div class="legend">
+  <span><span class="dot" style="background:#e3b341"></span>S格：実証済み・独走</span>
+  <span><span class="dot" style="background:#3fb950"></span>A格：実証済み・挑戦者</span>
+  <span><span class="dot" style="background:#f0883e"></span>B格：有望・検証途上</span>
+  <span><span class="dot" style="background:#f85149"></span>C格：自己申告のみ</span>
+</div>
+<div class="metabox">⚪ <b>Meta MTIA</b>：この図には載せていない。レコメンド特化の自社専用チップで、推論チップとしての「性能証明度」という軸自体が成立しないため——量産規模だけで測ると見誤る典型例。</div>
+</div>
+
+<h2>③ スコアボード（参考：項目別の横並び比較）</h2>
+<p class="note">ここから先は項目ごとの数字の総論。ただしこの表だけを見ると5社が並列に前進しているように見えてしまう——実際の実力差は②のティア分けを参照。</p>
 <div class="box">
 <table>
 <tr><th>項目</th><th>NVIDIA</th><th>Google TPU</th><th>AWS Trainium</th><th>Microsoft Maia</th><th>Meta MTIA</th></tr>
@@ -53,7 +154,7 @@ a{color:#56d3f7;}
 <div class="note">太字/色付きセルが前回(9/12)からの更新箇所。NVIDIAのRubin関連数値・Google TPUの公開価格・AWS Trainium3のGA・Meta MTIA v3の量産入りはいずれも今回新規確認。</div>
 </div>
 
-<h2>②-B 潮目ログ（累積・新規1件追加）</h2>
+<h2>③-B 潮目ログ（累積・新規1件追加）</h2>
 <div class="box">
 <table>
 <tr><th>時期</th><th>何が変わったか</th><th>もう使われなくなったもの</th><th>どこが強くなったか</th></tr>
@@ -66,50 +167,50 @@ a{color:#56d3f7;}
 </table>
 </div>
 
-<h2>③ 各社の思惑と技術（アーキテクチャの差別化を深掘り）</h2>
-<p class="note">②のスコアボードは「数字の総論」。ここでは「なぜその数字になるのか」を、設計思想のレベルまで掘り下げる。</p>
+<h2>④ 各社の思惑と技術（アーキテクチャの差別化を深掘り）</h2>
+<p class="note">③のスコアボードは「数字の総論」、②は「証明度の格付け」。ここでは「なぜその数字・その格になるのか」を設計思想のレベルまで掘り下げる。</p>
 
 <div class="section">
-<h3>NVIDIA — 柔軟性を最優先し、複雑さは自動化で隠す</h3>
+<h3>NVIDIA — 柔軟性を最優先し、複雑さは自動化で隠す<span class="dna dna-s">S格・独走</span></h3>
 <p><span class="tag">事実：Vera Rubin NVL72がQ3出荷開始</span>HBM4を採用し帯域は22TB/s(Blackwellの8TB/sから2.8倍)、NVFP4推論性能は1ラックあたり3,600PFLOPSでBlackwell比5倍、コストは1トークンあたり10分の1。SemiAnalysisの独立ベンチマーク(AgentX)でも電力あたり性能30倍を確認済みで、自社主張だけでなく外部データでも裏付けが取れている点が他社と一線を画す。</p>
 <p><span class="tag">技術：SIMTアーキテクチャ＋Transformer Engine</span>NVIDIA GPUの根幹はSIMT(Single Instruction Multiple Thread)方式——プログラマーは1本のスカラーコードを書くだけで、ハードウェア側が自動的に大量並列化してくれる。この「書きやすさ」こそがCUDAエコシステムの強さの源泉で、不規則なアルゴリズムや日々変化する最新の研究手法にも柔軟に対応できる。代償はプログラミング・システム設計の複雑さだが、これをTransformer Engineというソフト+ハードの合わせ技で吸収している。Transformer Engineは、行列積(GEMM)を実行する直前に、そのテンソルの過去の最大値の履歴からスケール係数を自動計算し、実際の数値をFP8やFP4という粗い表現形式の範囲に安全に収める——いわばカメラの自動露出調整に近い仕組み。BlackwellのTensor CoreはこのFP4(NVFP4、E2M1形式)にネイティブ対応した第5世代で、Rubinはこの路線をさらに一段推し進めた設計。<b>まとめると、NVIDIAは「何でもできる柔軟さ」を武器にしており、専用設計の効率では後述のTPUに劣る場面があっても、汎用性の高さと世代ごとの跳躍幅の大きさで市場の7〜8割を握っている。</b></p>
 </div>
 
 <div class="section">
-<h3>Google TPU — 汎用性を捨てて専用回路の効率を取る</h3>
+<h3>Google TPU — 汎用性を捨てて専用回路の効率を取る<span class="dna dna-a">A格・実証済み挑戦者</span></h3>
 <p><span class="tag">事実：v7 Ironwoodの公開価格が判明(9/8)</span>Iowaで$12.00/chip時間、ロンドンで$13.20/chip時間。GA(2026年4月)から約3ヶ月、公開価格を出さずに大口顧客と個別交渉していた期間があり、Anthropicには1時間$1.60程度という報道もある——量産規模の顧客には大幅ディスカウント、という価格戦略が透けて見える。Anthropicは単独で100万台規模・1GW超のTPU容量を確保。</p>
 <p><span class="tag">技術：シストリックアレイ(systolic array)</span>TPUの心臓部は、数千個の積和演算(MAC)ユニットを隣り合う者同士で直接配線した「シストリックアレイ」という構造。名前の由来は心臓の拍動——データが心臓の血流のようにアレイの中をリズミカルに流れていき、各ユニットは外部メモリに都度アクセスする必要がない。この「データが勝手に流れてくる」設計により、3方式の中で最もMAC密度が高く、電力あたりの効率も優れる。ただしTPUは行列・テンソルそのものを演算の基本単位として扱うため、CPU/GPUのようなスカラー・ベクトル演算とは実行モデルが根本から異なり、不規則な処理や新しいアルゴリズムへの対応は苦手。<b>この「専用性の高さゆえの効率」が、Transformerモデルの反復的で密な行列演算が支配する大規模推論という土俵で、TPUのコスト効率をNVIDIAに対抗できる水準まで押し上げている理由そのものになっている。</b>市場シェアは深部FLOPSベースで6〜8%程度とまだ小さいが、Anthropicのような大口顧客を確保できているのは、この専用効率と量産計画があってこそ。</p>
 </div>
 
 <div class="section">
-<h3>AWS Trainium — GPUとTPUの"いいとこ取り"を狙うハイブリッド</h3>
+<h3>AWS Trainium — GPUとTPUの"いいとこ取り"を狙うハイブリッド<span class="dna dna-b">B格・検証途上</span></h3>
 <p><span class="tag">事実：Trainium3が正式GA</span>Trn3 UltraServerは最大144個のTrainium3チップを1システムに統合し、Trainium2 UltraServer比4.4倍の計算性能。GPT-OSSモデルでチップあたりスループット3倍・応答速度4倍、出力トークン/メガワットは5倍と、電力効率を軸にした改善が目立つ。次世代Trainium4はFP4性能6倍・FP8性能3倍・メモリ帯域4倍を目標に開発中で、NVIDIAのNVLink Fusionにも対応予定——これはNVIDIA陣営のラックにTrainiumを混在させる布石でもある。</p>
-<p><span class="tag">技術：NeuronCore——4つの専門エンジンの非同期並列</span>最新のNeuronCore-v4は、Tensor・Vector・Scalar・GPSIMDという4種類の独立したエンジンで構成され、それぞれが自前の命令シーケンサを持ち、4本の命令ストリームを非同期・並列に実行するヘテロジニアス(異種混合)設計。注目すべきはTensor Engine自体が「電力最適化されたシストリックアレイ」であること——つまりTPUが得意とする効率の良い行列演算の仕組みを内部に取り込みつつ、それ以外の柔軟な処理は別の専用エンジン群に任せる、いわば<b>GPUの柔軟性とTPUの効率を足して2で割るハイブリッド設計</b>。オンチップの高速メモリ(SBUF、32MiB)にデータを置いてHBMとの往復を減らす工夫も、この「効率と柔軟性の両立」という思想の表れ。</p>
+<p><span class="tag">技術：NeuronCore——4つの専門エンジンの非同期並列</span>最新のNeuronCore-v4は、Tensor・Vector・Scalar・GPSIMDという4種類の独立したエンジンで構成され、それぞれが自前の命令シーケンサを持ち、4本の命令ストリームを非同期・並列に実行するヘテロジニアス(異種混合)設計。注目すべきはTensor Engine自体が「電力最適化されたシストリックアレイ」であること——つまりTPUが得意とする効率の良い行列演算の仕組みを内部に取り込みつつ、それ以外の柔軟な処理は別の専用エンジン群に任せる、いわば<b>GPUの柔軟性とTPUの効率を足して2で割るハイブリッド設計</b>。オンチップの高速メモリ(SBUF、32MiB)にデータを置いてHBMとの往復を減らす工夫も、この「効率と柔軟性の両立」という思想の表れ。ただし②で見た通り、これらの数字はまだ自社ベンチマーク中心で、第三者検証という一段はGoogleに一歩譲る。</p>
 </div>
 
 <div class="section">
-<h3>Microsoft Maia — チップの中身より"繋ぎ方"で勝負</h3>
-<p><span class="tag">事実：Maia 300を9月中に発表予定、TSMCに30万個超を交渉中</span>Maia 100の苦戦・Maia 200の1年遅延という出遅れを踏まえ、次世代で規模を確保しにいく動き。将来的には100万個規模の生産能力確保も視野に入れているが、部材供給とパッケージング交渉が制約になり得る。自社発表の「トークン/ドル30%改善」(Satya Nadella氏)は第三者検証がまだない点は割り引いて見る必要がある。</p>
-<p><span class="tag">技術：全イーサネット化という賭け</span>NVIDIAはチップ同士を直結する最も高速な層(スケールアップ)に自社の独自規格NVLinkを使い、イーサネットは複数ラックをまたぐ層(スケールアウト)に限定して使う。Microsoftはこれと逆に、本来最もレイテンシに厳しいはずのスケールアップ層にまで、自社開発の「AI Transport Layer(ATL)」という<b>全イーサネットベース</b>のプロトコルを適用する設計に踏み切った。標準規格のイーサネット物理層・スイッチング基盤の上に、パケットスプレーイング・マルチパスルーティング・輻輳耐性のあるフロー制御といったAI特化の工夫を自前のソフトウェアで載せている。これは「チップの演算性能」でNVIDIA・Google・Amazonに勝負を挑むのではなく、「NVIDIAの独自規格(NVLink)に依存しないネットワーク層を作れるか」という、一段違う土俵での差別化を狙った設計思想と読める。</p>
+<h3>Microsoft Maia — チップの中身より"繋ぎ方"で勝負<span class="dna dna-c">C格・自己申告のみ</span></h3>
+<p><span class="tag">事実：Maia 300を9月中に発表予定、TSMCに30万個超を交渉中</span>Maia 100の苦戦・Maia 200の1年遅延という出遅れを踏まえ、次世代で規模を確保しにいく動き。将来的には100万個規模の生産能力確保も視野に入れているが、部材供給とパッケージング交渉が制約になり得る。自社発表の「トークン/ドル30%改善」(Satya Nadella氏)は第三者検証がまだない点は割り引いて見る必要がある——②のティアで唯一「C格」に置かれているのはこのため。</p>
+<p><span class="tag">技術：全イーサネット化という賭け</span>NVIDIAはチップ同士を直結する最も高速な層(スケールアップ)に自社の独自規格NVLinkを使い、イーサネットは複数ラックをまたぐ層(スケールアウト)に限定して使う。Microsoftはこれと逆に、本来最もレイテンシに厳しいはずのスケールアップ層にまで、自社開発の「AI Transport Layer(ATL)」という<b>全イーサネットベース</b>のプロトコルを適用する設計に踏み切った。標準規格のイーサネット物理層・スイッチング基盤の上に、パケットスプレーイング・マルチパスルーティング・輻輳耐性のあるフロー制御といったAI特化の工夫を自前のソフトウェアで載せている。これは「チップの演算性能」でNVIDIA・Google・Amazonに勝負を挑むのではなく、「NVIDIAの独自規格(NVLink)に依存しないネットワーク層を作れるか」という、一段違う土俵での差別化を狙った設計思想と読める——裏を返せば、チップ単体の実力勝負ではまだ語れるものが少ない、という現在地でもある。</p>
 </div>
 
 <div class="section">
-<h3>Meta MTIA — そもそも解いている問題が違う</h3>
+<h3>Meta MTIA — そもそも解いている問題が違う<span class="dna dna-x">番外・別競技</span></h3>
 <p><span class="tag">事実：v3「Iris」が9月に量産入り</span>Broadcomと共同設計し、TSMC 3nmプロセスで製造。テスト工程はわずか6週間で大きな問題なく完了し、6年以上苦戦してきた自社チップ計画としては珍しく順調な立ち上がり。2027年までにデータセンター全体の計算容量を7GW→14GWへ倍増する計画の中核を担う。</p>
-<p><span class="tag">技術：埋め込みテーブル特化——演算より"メモリアクセスの不規則さ"が主戦場</span>Metaの主力ワークロードであるランキング・レコメンド(DLRM)は、他社が競っている「密な行列演算」とは全く性質が異なる負荷で、演算量よりも<b>メモリアクセスそのものがボトルネック</b>になる。時に数百GBに達する巨大な「埋め込みテーブル」への疎(スパース)で不規則なアクセスが特徴で、しかもアクセス頻度はべき乗則に従う偏り方をする(例えばテーブル全体のわずか10%のエントリが、全アクセスの94%を占めるという報告もある)。このような負荷には、NVIDIA・Google・Amazonが最適化してきた「密な行列演算を高速化する」設計はむしろ不向き。MTIAが持つ「Table Branch Embedding(TBE)」という独自機構は、まさにこの埋め込みテーブルへのアクセスパターンに特化した工夫で、実行速度を2〜3倍改善するとされる。<b>つまりMetaが汎用AIチップ競争に本気で参戦しないのは、及び腰なのではなく、そもそも解いている技術的な問題の種類自体が他社と違うから、という必然性がある。</b></p>
+<p><span class="tag">技術：埋め込みテーブル特化——演算より"メモリアクセスの不規則さ"が主戦場</span>Metaの主力ワークロードであるランキング・レコメンド(DLRM)は、他社が競っている「密な行列演算」とは全く性質が異なる負荷で、演算量よりも<b>メモリアクセスそのものがボトルネック</b>になる。時に数百GBに達する巨大な「埋め込みテーブル」への疎(スパース)で不規則なアクセスが特徴で、しかもアクセス頻度はべき乗則に従う偏り方をする(例えばテーブル全体のわずか10%のエントリが、全アクセスの94%を占めるという報告もある)。このような負荷には、NVIDIA・Google・Amazonが最適化してきた「密な行列演算を高速化する」設計はむしろ不向き。MTIAが持つ「Table Branch Embedding(TBE)」という独自機構は、まさにこの埋め込みテーブルへのアクセスパターンに特化した工夫で、実行速度を2〜3倍改善するとされる。<b>つまりMetaが汎用AIチップ競争に本気で参戦しないのは、及び腰なのではなく、そもそも解いている技術的な問題の種類自体が他社と違うから、という必然性がある。</b>だからこそ②では「番外・比較対象外」として別枠にしている。</p>
 </div>
 
-<h2>④ コストパフォーマンスの決着点</h2>
+<h2>⑤ コストパフォーマンスの決着点</h2>
 <div class="section">
 <p>推論コストの世界は「二極化」が進んでいる。下限は崩壊し続けており、GPT-4級の能力が2023年3月時点で1Mトークン$30.00だったのに対し、2026年7月時点でDeepSeek V4-Flashが$0.14/1Mトークンを実現(214倍の低下、40ヶ月)。一方で最先端モデルは2026年1月以降ブレンド単価が100%上昇しており、「安いモデルはさらに安く、最先端モデルはさらに高く」というねじれが起きている。この上限側のコストを押し下げる主役がハードウェアの世代交代で、NVIDIA Vera Rubin NVL72はGB300比でトークン単価10分の1を実現する設計。Trainium3もメガワットあたり出力トークン5倍(Trainium2比)を打ち出しており、<b>「モデル単価の二極化」と「ハードウェア世代交代によるコスト圧縮」が同時並行で起きている</b>のが2026年9月の構図。なお推論コストが下がる一方で企業のAI GPU支出の55〜80%は依然推論に費やされており、単価低下がそのままAI予算縮小にはつながっていない。</p>
 </div>
 
-<h2>⑤ 推論で要求される性能水準の変化</h2>
+<h2>⑥ 推論で要求される性能水準の変化</h2>
 <div class="section">
 <p>NVIDIAがRubin世代で「Rubin Ultra(HBM4E 1TB、帯域重視)」と「Rubin CPX(GDDR7またはHBM4、演算重視のプリフィル専用)」という2種類のチップに分化させたことが象徴的で、<b>推論ワークロードそのものが「長文脈の一括処理(プリフィル)」と「逐次生成(デコード)」に構造分解され、それぞれ別チップで最適化する時代に入った</b>。これは演算性能そのものより、メモリとのやり取りの速さと量、そして用途に応じたメモリ種別の使い分けがボトルネックになっていることの技術的な裏付け。HBM4(帯域22TB/s、Blackwell世代のHBM3eから2.8倍)への世代交代がこれまでよりずっと早いペースで進んでいるのも、この要求水準の変化に各社が追われている結果であり、MU・SKHYにとっては「どちらのGPU/ASIC陣営が勝つか」に関わらずHBM需要そのものは増え続ける、という構造は変わっていない。</p>
 </div>
 
-<h3>⑤-B 推論適性ジャッジ（色分け）</h3>
+<h3>⑥-B 推論適性ジャッジ（色分け／②の根拠データ）</h3>
 <div class="section">
 <table>
 <tr><th>チップ</th><th>判定</th><th>根拠</th></tr>
@@ -119,10 +220,10 @@ a{color:#56d3f7;}
 <tr><td>Microsoft Maia 200/300</td><td class="down">🔴 未検証の自己申告</td><td>「トークン/ドル30%改善」はSatya Nadella氏の自社発表のみで第三者検証なし。外部顧客への展開も進んでおらず話半分に見るべき段階</td></tr>
 <tr><td>Meta MTIA v3</td><td>⚪ 判定対象外</td><td>そもそも一般的な推論(LLM)向けではなく、レコメンド特化。同じ土俵で比較すること自体が不適切</td></tr>
 </table>
-<div class="note">参考：Groq LPU(HBM不使用の第三極)は今回初めてArtificial Analysisの第三者ベンチマークで実測(3,431 tok/s、次点比約4倍)が確認された。ただし上記5社と量産規模が全く異なるため本表には含めず、②-Bの潮目ログで別枠管理する。</div>
+<div class="note">参考：Groq LPU(HBM不使用の第三極)は今回初めてArtificial Analysisの第三者ベンチマークで実測(3,431 tok/s、次点比約4倍)が確認された。ただし上記5社と量産規模が全く異なるため本表には含めず、③-Bの潮目ログで別枠管理する。</div>
 </div>
 
-<h3>⑤-C SKHY・MU・Samsungの違い（推論需要への対応力という軸）</h3>
+<h3>⑥-C SKHY・MU・Samsungの違い（推論需要への対応力という軸）</h3>
 <div class="section">
 <table>
 <tr><th></th><th>SK Hynix</th><th>Samsung</th><th>Micron</th></tr>
@@ -165,7 +266,7 @@ a{color:#56d3f7;}
 <h2>⑧ 来週以降の注目イベント</h2>
 <div class="section">
 <ul>
-<li>Microsoft Maia 300の正式発表(9月中の見通し、TSMC 30万個超交渉の行方)</li>
+<li>Microsoft Maia 300の正式発表(9月中の見通し、TSMC 30万個超交渉の行方)——ここでC格から脱せるかが焦点</li>
 <li>NVIDIA Rubin(NVL72)のQ3出荷ペース・追加ベンチマークの公表</li>
 <li>NVIDIA Hugging Face買収の米欧規制当局レビューの進捗(クロージング目標2027年前半)</li>
 <li>SamsungのHBM4量産拡大ペース、Q4シェア40%接近の実現度</li>
