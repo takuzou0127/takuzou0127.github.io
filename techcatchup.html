@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=960">
-<title>AIチップ技術キャッチアップ — 2026年9月12日(土)試運転版</title>
+<title>AIチップ技術キャッチアップ — 2026年9月13日(日)10時</title>
 <style>
 body{background:#0f1117;color:#e6e9ef;font-family:"Segoe UI","Hiragino Kaku Gothic ProN",sans-serif;margin:0;padding:24px;line-height:1.7;}
 h1{font-size:22px;border-bottom:2px solid #56d3f7;padding-bottom:8px;}
@@ -25,46 +25,45 @@ th{background:#1b2030;color:#9aa4b2;font-weight:normal;}
 .note{color:#9aa4b2;font-size:12.5px;}
 footer{color:#6b7280;font-size:12px;margin-top:40px;border-top:1px solid #2a2e3a;padding-top:12px;}
 a{color:#56d3f7;}
-.trial-badge{display:inline-block;background:#3a2e0f;color:#e3b341;border:1px solid #e3b341;border-radius:6px;padding:4px 10px;font-size:12px;margin-bottom:14px;}
+.new{background:#1b2030;color:#e3b341;font-size:11px;padding:2px 6px;border-radius:4px;margin-left:6px;}
 </style>
 </head>
 <body>
 
-<div class="trial-badge">⚠ 試運転版（本番の自動実行は明日9/13(日)10:00から）</div>
-<h1>🧠 AIチップ技術キャッチアップ — 2026年9月12日(土)</h1>
+<h1>🧠 AIチップ技術キャッチアップ — 2026年9月13日(日)</h1>
 
 <h2>① 今週の縮図</h2>
 <div class="conclusion">
   <div class="conclusion-label">★ 今週の縮図</div>
-  <div class="conclusion-headline">NVIDIAが「買収」で守り、3社が「量産台数」で攻める一週間</div>
-  <div class="conclusion-body">NVIDIAはHugging Face買収($129.3億)というソフトウェア面の防衛策を進める一方、Google(今年300万台超・2028年に1,200〜1,500万台目標)・Amazon(Trainium2だけで約100万個稼働)・Microsoft(Maia 300を300,000個規模でTSMCに交渉中)という3社が、性能競争よりまず「量」で存在感を作りにいっている。これは技術の巧拙より前に、まず「量産できるかどうか」で参入障壁の高さを試す段階に業界全体が入ったことを示している——半導体という装置産業の本質(規模がなければ何も始まらない)が、AIチップ競争でもそのまま繰り返されている。</div>
+  <div class="conclusion-headline">NVIDIAが次世代Rubinで「性能5倍・コスト10分の1」の跳躍を見せた週、追う4社は揃って"量産"の入口に立った</div>
+  <div class="conclusion-body">NVIDIAのVera Rubinプラットフォームは、GB300比で推論スループット5倍・トークン単価10分の1・電力あたり性能30倍(SemiAnalysis AgentXベンチマーク、9/8)という跳躍を実測レベルで示した。ちょうど同じ週に、Google TPU v7の公開価格表発表、AWS Trainium3の正式GA、Meta MTIA v3の量産入り、Microsoft Maia 300のTSMC 30万個発注という「追う側4社が揃って量産フェーズの入口に立つ」ニュースが重なった。前回は「性能より量で存在感を作る段階」と書いたが、今回はその非対称性がより鮮明になった——NVIDIAは量だけでなく性能の跳躍幅そのものを作り直し、追う側はやっと量産という土台を固めた段階にいる。ハイパースケーラーの資本(Capex)は依然この両方の陣営に流れ込んでおり、CUDAという"事業の堀"は揺らいでいないが、独占ではなく優位というその性質(いつでも技術で追い越される可能性を残す優位)は、Rubinの跳躍そのものが体現している。</div>
 </div>
 
 <h2>② スコアボード（現在地の横並び比較）</h2>
 <div class="box">
 <table>
 <tr><th>項目</th><th>NVIDIA</th><th>Google TPU</th><th>AWS Trainium</th><th>Microsoft Maia</th><th>Meta MTIA</th></tr>
-<tr><td>最新/主力</td><td>Blackwell Ultra(GB300)</td><td>v7 Ironwood</td><td>Trainium3</td><td>Maia 200<span class="blue">(300近日?)</span></td><td>v3 Iris</td></tr>
+<tr><td>最新/主力</td><td class="up">Vera Rubin NVL72<span class="new">世代交代中</span>(GB300から移行、Q3出荷開始)</td><td>v7 Ironwood(公開価格が判明)</td><td class="up">Trainium3<span class="new">正式GA</span></td><td>Maia 200稼働中、<span class="blue">300を9月中に発表予定</span></td><td class="up">v3 Iris<span class="new">量産入り(9月)</span></td></tr>
 <tr><td>プロセス</td><td>TSMC(先端)</td><td>非公開(TSMC系)</td><td>TSMC 3nm</td><td>TSMC N3P</td><td>TSMC 3nm</td></tr>
-<tr><td>メモリ</td><td>HBM3e 288GB</td><td>HBM 192GB</td><td>HBM3e 144GB</td><td>HBM3e 216GB/7TB/s</td><td>HBM3E×8/3.5TB/s超</td></tr>
-<tr><td>精度対応</td><td>FP4ネイティブ</td><td>FP8まで(FP4非対応)</td><td>FP8(次世代でFP4)</td><td>FP8/FP4ネイティブ</td><td>非公開</td></tr>
-<tr><td>推論コスト目安</td><td class="up">$0.12/百万トークン(GB300 NVL72)</td><td>100tok/s=18.1セント</td><td>公開ベンチマーク限定的</td><td>非公開(自社主張3倍性能)</td><td>非公開(自社ワークロード専用)</td></tr>
-<tr><td>量産・導入規模</td><td>市場シェア約70〜81%</td><td class="blue">今年300万台超→2028年1,200〜1,500万台目標</td><td class="blue">Trainium2だけで約100万個稼働中</td><td>Maia 300へ30万個規模を交渉中(2027年納入目標)</td><td>2027年までに7GW→14GWへ倍増</td></tr>
+<tr><td>メモリ帯域</td><td class="up">HBM4 22TB/s(Blackwell比2.8倍)</td><td>HBM 192GB</td><td>HBM3e 144GB</td><td>HBM3e 216GB/7TB/s</td><td>HBM3E×8/3.5TB/s超</td></tr>
+<tr><td>精度対応</td><td>NVFP4ネイティブ(3,600PFLOPS/ラック)</td><td>FP8まで(FP4非対応)</td><td>FP8(Trainium4でFP4対応、Trainium3比6倍)</td><td>FP8/FP4ネイティブ</td><td>非公開</td></tr>
+<tr><td>推論コスト目安</td><td class="up">GB300比コスト10分の1(NVL72)</td><td>公開価格$12/chip時間(米)</td><td>Trainium2比出力トークン/MW5倍</td><td>自社主張「トークン/ドル30%改善」</td><td>非公開(自社ワークロード専用)</td></tr>
+<tr><td>量産・導入規模</td><td>市場シェア約70〜81%</td><td class="blue">Anthropicに単独で100万台超・1GW超規模を契約</td><td class="up">Trn3 UltraServer最大144チップ構成が稼働開始</td><td>Maia 300へ30万個規模をTSMCに交渉中(2027年納入)</td><td class="blue">2027年までに7GW→14GWへ倍増目標</td></tr>
 </table>
-<div class="note">Microsoftの「Maia 200はTPU・Trainium比3倍性能」は自社発表ベースの主張で第三者ベンチマークでの裏付けは未確認。参考情報として記載。</div>
+<div class="note">太字/色付きセルが前回(9/12)からの更新箇所。NVIDIAのRubin関連数値・Google TPUの公開価格・AWS Trainium3のGA・Meta MTIA v3の量産入りはいずれも今回新規確認。</div>
 </div>
 
-<h2>②-B 潮目ログ（累積・今回は新規追加なし）</h2>
+<h2>②-B 潮目ログ（累積・新規1件追加）</h2>
 <div class="box">
 <table>
 <tr><th>時期</th><th>何が変わったか</th><th>もう使われなくなったもの</th><th>どこが強くなったか</th></tr>
+<tr><td class="up">2026年9月(Hot Chips 2026)<span class="new">NEW</span></td><td>Groq LPU(HBM不使用・SRAM主体設計)の推論性能が、初めて自社発表ではなく第三者機関(Artificial Analysis)の継続ベンチマークで裏付けられた——Groq 3 LPXラックが100kコンテキストのGemma 4 31Bで3,431 tok/s、次点の公開エンドポイント比約4倍を実測</td><td>「推論チップの優劣は自社発表の数字でしか語れない」という状態。前回ログで「実証されれば候補」としていた話が今回実際に検証段階へ進んだ</td><td>Groq(NVIDIA・ASICどちらの陣営にも属さない"第三極"としての立場を初めて外部データで確立。ただし量産規模は両陣営に遠く及ばない)</td></tr>
 <tr><td>2026年9月時点(進行中)</td><td>「NVHBM」構想でHBMベースダイの設計主導権がメモリメーカーからNVIDIAへ移り始めた</td><td>各メモリメーカーが独自のカスタムHBMをバラバラに設計する旧方式</td><td>NVIDIA(設計主導権)。メモリメーカーは製造実行力へ差別化軸がシフト</td></tr>
 <tr><td>2026年半ば</td><td>精度規格がFP8からFP4へ実用段階でシフト</td><td>FP8を上限とした従来の推論設計の一部</td><td>NVIDIA(Blackwellが先行、TPU v7はまだFP4非対応)</td></tr>
 <tr><td>2026年前半</td><td>NVIDIA GPU一強から「GPU＋各社カスタムASIC」の二正面構造が本格定着</td><td>「AIアクセラレータ＝NVIDIA GPU一択」という業界の暗黙の前提</td><td>Google・Amazonが実行面で先行、Microsoftは苦戦、Metaは自社特化</td></tr>
 <tr><td>2025年後半</td><td>HBMベースダイの製造がDRAM工程から先端ロジック工程へ移行開始</td><td>メモリメーカーが設計〜製造まで完全内製するモデル</td><td>Samsung(自社4nmロジックで内製完結できる唯一の存在)</td></tr>
 <tr><td>2024〜2025年</td><td>ボトルネックの主役が「GPU計算性能」から「メモリ帯域・容量」へ交代</td><td>GPU単体の性能表だけで強さを判断する考え方</td><td>SK Hynix・Micron・Samsung(HBM3社寡占)</td></tr>
 </table>
-<div class="note">今回のWebSearchでは業界の前提を覆すレベルの新しい転換点は確認できず、追加なし。ただしGroq社が新アーキテクチャ(LPU)で「HBM型GPU比35倍のワット当たり推論スループット」を主張しており、これが実証されれば次回以降ログ入りする可能性がある候補として注視。</div>
 </div>
 
 <h2>③ 各社の思惑と技術（アーキテクチャの差別化を深掘り）</h2>
@@ -72,107 +71,111 @@ a{color:#56d3f7;}
 
 <div class="section">
 <h3>NVIDIA — 柔軟性を最優先し、複雑さは自動化で隠す</h3>
-<p><span class="tag">事実：Hugging Face買収($129.3億、9/2発表)</span>AI開発者コミュニティの中心的プラットフォームを取り込み、ハードウェアの優位だけでなく「開発者がどこに集まるか」まで押さえにいく動き。</p>
-<p><span class="tag">技術：SIMTアーキテクチャ＋Transformer Engine</span>NVIDIA GPUの根幹はSIMT(Single Instruction Multiple Thread)方式——プログラマーは1本のスカラーコードを書くだけで、ハードウェア側が自動的に大量並列化してくれる。この「書きやすさ」こそがCUDAエコシステムの強さの源泉で、不規則なアルゴリズムや日々変化する最新の研究手法にも柔軟に対応できる。代償はプログラミング・システム設計の複雑さだが、これをTransformer Engineというソフト+ハードの合わせ技で吸収している。Transformer Engineは、行列積(GEMM)を実行する直前に、そのテンソルの過去の最大値の履歴からスケール係数を自動計算し、実際の数値をFP8やFP4という粗い表現形式の範囲に安全に収める——いわばカメラの自動露出調整に近い仕組み。これにより精度を落として速度を稼ぐFP8/FP4運用を、人手でチューニングせず安全に実行できる。BlackwellのTensor CoreはこのFP4(NVFP4、E2M1形式)にネイティブ対応した第5世代。<b>まとめると、NVIDIAは「何でもできる柔軟さ」を武器にしており、専用設計の効率では後述のTPUに劣る場面があっても、汎用性の高さで市場の8割を握っている。</b></p>
+<p><span class="tag">事実：Vera Rubin NVL72がQ3出荷開始</span>HBM4を採用し帯域は22TB/s(Blackwellの8TB/sから2.8倍)、NVFP4推論性能は1ラックあたり3,600PFLOPSでBlackwell比5倍、コストは1トークンあたり10分の1。SemiAnalysisの独立ベンチマーク(AgentX)でも電力あたり性能30倍を確認済みで、自社主張だけでなく外部データでも裏付けが取れている点が他社と一線を画す。</p>
+<p><span class="tag">技術：SIMTアーキテクチャ＋Transformer Engine</span>NVIDIA GPUの根幹はSIMT(Single Instruction Multiple Thread)方式——プログラマーは1本のスカラーコードを書くだけで、ハードウェア側が自動的に大量並列化してくれる。この「書きやすさ」こそがCUDAエコシステムの強さの源泉で、不規則なアルゴリズムや日々変化する最新の研究手法にも柔軟に対応できる。代償はプログラミング・システム設計の複雑さだが、これをTransformer Engineというソフト+ハードの合わせ技で吸収している。Transformer Engineは、行列積(GEMM)を実行する直前に、そのテンソルの過去の最大値の履歴からスケール係数を自動計算し、実際の数値をFP8やFP4という粗い表現形式の範囲に安全に収める——いわばカメラの自動露出調整に近い仕組み。BlackwellのTensor CoreはこのFP4(NVFP4、E2M1形式)にネイティブ対応した第5世代で、Rubinはこの路線をさらに一段推し進めた設計。<b>まとめると、NVIDIAは「何でもできる柔軟さ」を武器にしており、専用設計の効率では後述のTPUに劣る場面があっても、汎用性の高さと世代ごとの跳躍幅の大きさで市場の7〜8割を握っている。</b></p>
 </div>
 
 <div class="section">
 <h3>Google TPU — 汎用性を捨てて専用回路の効率を取る</h3>
-<p><span class="tag">事実：2026年300万台超、2028年に1,200〜1,500万台目標</span>性能競争と並行して、生産台数そのものを2年で4〜5倍に増やす計画。Anthropicのような大口外部顧客を確保できているのも、この量産計画があってこそ。</p>
-<p><span class="tag">技術：シストリックアレイ(systolic array)</span>TPUの心臓部は、数千個の積和演算(MAC)ユニットを隣り合う者同士で直接配線した「シストリックアレイ」という構造。名前の由来は心臓の拍動——データが心臓の血流のようにアレイの中をリズミカルに流れていき、各ユニットは外部メモリに都度アクセスする必要がない。この「データが勝手に流れてくる」設計により、3方式の中で最もMAC密度が高く、電力あたりの効率も優れる。ただしTPUは行列・テンソルそのものを演算の基本単位として扱うため、CPU/GPUのようなスカラー・ベクトル演算とは実行モデルが根本から異なり、不規則な処理や新しいアルゴリズムへの対応は苦手。<b>この「専用性の高さゆえの効率」が、Transformerモデルの反復的で密な行列演算が支配する大規模推論という土俵で、TPUがコスト効率(100トークン/秒あたり18.1セント)でBlackwellを上回る理由そのものになっている。</b>逆に言えば、TPUが強いのは「決まった形の計算を大量にこなす」場面に限られる。</p>
+<p><span class="tag">事実：v7 Ironwoodの公開価格が判明(9/8)</span>Iowaで$12.00/chip時間、ロンドンで$13.20/chip時間。GA(2026年4月)から約3ヶ月、公開価格を出さずに大口顧客と個別交渉していた期間があり、Anthropicには1時間$1.60程度という報道もある——量産規模の顧客には大幅ディスカウント、という価格戦略が透けて見える。Anthropicは単独で100万台規模・1GW超のTPU容量を確保。</p>
+<p><span class="tag">技術：シストリックアレイ(systolic array)</span>TPUの心臓部は、数千個の積和演算(MAC)ユニットを隣り合う者同士で直接配線した「シストリックアレイ」という構造。名前の由来は心臓の拍動——データが心臓の血流のようにアレイの中をリズミカルに流れていき、各ユニットは外部メモリに都度アクセスする必要がない。この「データが勝手に流れてくる」設計により、3方式の中で最もMAC密度が高く、電力あたりの効率も優れる。ただしTPUは行列・テンソルそのものを演算の基本単位として扱うため、CPU/GPUのようなスカラー・ベクトル演算とは実行モデルが根本から異なり、不規則な処理や新しいアルゴリズムへの対応は苦手。<b>この「専用性の高さゆえの効率」が、Transformerモデルの反復的で密な行列演算が支配する大規模推論という土俵で、TPUのコスト効率をNVIDIAに対抗できる水準まで押し上げている理由そのものになっている。</b>市場シェアは深部FLOPSベースで6〜8%程度とまだ小さいが、Anthropicのような大口顧客を確保できているのは、この専用効率と量産計画があってこそ。</p>
 </div>
 
 <div class="section">
 <h3>AWS Trainium — GPUとTPUの"いいとこ取り"を狙うハイブリッド</h3>
-<p><span class="tag">事実：Trainium2だけで約100万個が稼働、Project RainierでClaudeを支える</span>Amazon自身が出資するAnthropicのClaudeを大量のTrainium2で支えている構図。Trainium3はTSMC 3nm、Trainium4は2026年末までに2nmへ進む計画。</p>
+<p><span class="tag">事実：Trainium3が正式GA</span>Trn3 UltraServerは最大144個のTrainium3チップを1システムに統合し、Trainium2 UltraServer比4.4倍の計算性能。GPT-OSSモデルでチップあたりスループット3倍・応答速度4倍、出力トークン/メガワットは5倍と、電力効率を軸にした改善が目立つ。次世代Trainium4はFP4性能6倍・FP8性能3倍・メモリ帯域4倍を目標に開発中で、NVIDIAのNVLink Fusionにも対応予定——これはNVIDIA陣営のラックにTrainiumを混在させる布石でもある。</p>
 <p><span class="tag">技術：NeuronCore——4つの専門エンジンの非同期並列</span>最新のNeuronCore-v4は、Tensor・Vector・Scalar・GPSIMDという4種類の独立したエンジンで構成され、それぞれが自前の命令シーケンサを持ち、4本の命令ストリームを非同期・並列に実行するヘテロジニアス(異種混合)設計。注目すべきはTensor Engine自体が「電力最適化されたシストリックアレイ」であること——つまりTPUが得意とする効率の良い行列演算の仕組みを内部に取り込みつつ、それ以外の柔軟な処理は別の専用エンジン群に任せる、いわば<b>GPUの柔軟性とTPUの効率を足して2で割るハイブリッド設計</b>。オンチップの高速メモリ(SBUF、32MiB)にデータを置いてHBMとの往復を減らす工夫も、この「効率と柔軟性の両立」という思想の表れ。</p>
 </div>
 
 <div class="section">
 <h3>Microsoft Maia — チップの中身より"繋ぎ方"で勝負</h3>
-<p><span class="tag">事実：Maia 300を9月にも発表？TSMCに30万個規模を交渉中(2027年納入)</span>Maia 100の苦戦・Maia 200の1年遅延という出遅れを踏まえ、次世代で規模を確保しにいく動き。自社発表の「TPU・Trainium比3倍性能」は第三者検証がまだない点は割り引いて見る必要がある。</p>
+<p><span class="tag">事実：Maia 300を9月中に発表予定、TSMCに30万個超を交渉中</span>Maia 100の苦戦・Maia 200の1年遅延という出遅れを踏まえ、次世代で規模を確保しにいく動き。将来的には100万個規模の生産能力確保も視野に入れているが、部材供給とパッケージング交渉が制約になり得る。自社発表の「トークン/ドル30%改善」(Satya Nadella氏)は第三者検証がまだない点は割り引いて見る必要がある。</p>
 <p><span class="tag">技術：全イーサネット化という賭け</span>NVIDIAはチップ同士を直結する最も高速な層(スケールアップ)に自社の独自規格NVLinkを使い、イーサネットは複数ラックをまたぐ層(スケールアウト)に限定して使う。Microsoftはこれと逆に、本来最もレイテンシに厳しいはずのスケールアップ層にまで、自社開発の「AI Transport Layer(ATL)」という<b>全イーサネットベース</b>のプロトコルを適用する設計に踏み切った。標準規格のイーサネット物理層・スイッチング基盤の上に、パケットスプレーイング・マルチパスルーティング・輻輳耐性のあるフロー制御といったAI特化の工夫を自前のソフトウェアで載せている。これは「チップの演算性能」でNVIDIA・Google・Amazonに勝負を挑むのではなく、「NVIDIAの独自規格(NVLink)に依存しないネットワーク層を作れるか」という、一段違う土俵での差別化を狙った設計思想と読める。</p>
 </div>
 
 <div class="section">
 <h3>Meta MTIA — そもそも解いている問題が違う</h3>
-<p><span class="tag">事実：2027年までに容量を7GW→14GWへ倍増</span>他3社が汎用LLM学習・推論での存在感を競う中、Metaは一貫してReels・Instagramのレコメンドという自社の収益源に特化。</p>
+<p><span class="tag">事実：v3「Iris」が9月に量産入り</span>Broadcomと共同設計し、TSMC 3nmプロセスで製造。テスト工程はわずか6週間で大きな問題なく完了し、6年以上苦戦してきた自社チップ計画としては珍しく順調な立ち上がり。2027年までにデータセンター全体の計算容量を7GW→14GWへ倍増する計画の中核を担う。</p>
 <p><span class="tag">技術：埋め込みテーブル特化——演算より"メモリアクセスの不規則さ"が主戦場</span>Metaの主力ワークロードであるランキング・レコメンド(DLRM)は、他社が競っている「密な行列演算」とは全く性質が異なる負荷で、演算量よりも<b>メモリアクセスそのものがボトルネック</b>になる。時に数百GBに達する巨大な「埋め込みテーブル」への疎(スパース)で不規則なアクセスが特徴で、しかもアクセス頻度はべき乗則に従う偏り方をする(例えばテーブル全体のわずか10%のエントリが、全アクセスの94%を占めるという報告もある)。このような負荷には、NVIDIA・Google・Amazonが最適化してきた「密な行列演算を高速化する」設計はむしろ不向き。MTIAが持つ「Table Branch Embedding(TBE)」という独自機構は、まさにこの埋め込みテーブルへのアクセスパターンに特化した工夫で、実行速度を2〜3倍改善するとされる。<b>つまりMetaが汎用AIチップ競争に本気で参戦しないのは、及び腰なのではなく、そもそも解いている技術的な問題の種類自体が他社と違うから、という必然性がある。</b></p>
 </div>
 
 <h2>④ コストパフォーマンスの決着点</h2>
 <div class="section">
-<p>業界全体で見ると、トークン単価は2023年3月比で<b>84%下落</b>(2026年9月時点、21モデル平均で1M トークンあたり$6.00)。ハードウェア側の押し下げ効果も大きく、NVIDIAのGB300 NVL72は1Mトークンあたり<b>$0.12</b>、Hopper世代比で<b>35倍のコスト効率改善</b>を達成。TPU v7 Ironwoodは100トークン/秒あたり18.1セントとBlackwell Ultra比で最大50%良好という以前の分析と合わせると、<b>「学習はNVIDIA、超大規模推論はTPU」という住み分けがコスト面でも裏付けられつつある</b>。なお、GTC 2026でGroq社が発表した新アーキテクチャ「LPU」は、HBM型GPU比35倍のワット当たり推論スループットを主張しており、もしこれが実証されれば③の勢力図とは全く別の第三極として②-Bの潮目ログ入りする可能性がある。</p>
+<p>推論コストの世界は「二極化」が進んでいる。下限は崩壊し続けており、GPT-4級の能力が2023年3月時点で1Mトークン$30.00だったのに対し、2026年7月時点でDeepSeek V4-Flashが$0.14/1Mトークンを実現(214倍の低下、40ヶ月)。一方で最先端モデルは2026年1月以降ブレンド単価が100%上昇しており、「安いモデルはさらに安く、最先端モデルはさらに高く」というねじれが起きている。この上限側のコストを押し下げる主役がハードウェアの世代交代で、NVIDIA Vera Rubin NVL72はGB300比でトークン単価10分の1を実現する設計。Trainium3もメガワットあたり出力トークン5倍(Trainium2比)を打ち出しており、<b>「モデル単価の二極化」と「ハードウェア世代交代によるコスト圧縮」が同時並行で起きている</b>のが2026年9月の構図。なお推論コストが下がる一方で企業のAI GPU支出の55〜80%は依然推論に費やされており、単価低下がそのままAI予算縮小にはつながっていない。</p>
 </div>
 
 <h2>⑤ 推論で要求される性能水準の変化</h2>
 <div class="section">
-<p>各社が軒並みメモリ帯域・容量を最優先で強化している(②のスコアボード参照)ことが示す通り、モデルの長文脈化・エージェント化によって「一度に保持しておくべき情報量(KVキャッシュ)」が増え続けている。これは演算性能そのものより、<b>メモリとのやり取りの速さと量がボトルネックになっている</b>ことの技術的な裏付け。HBMの世代交代(HBM3E→HBM4)がこれまでよりずっと早いペースで進んでいるのも、この要求水準の変化に各社が追われている結果であり、MU・SKHYにとっては「どちらのGPU/ASIC陣営が勝つか」に関わらずHBM需要そのものは増え続ける、という構造は変わっていない。</p>
+<p>NVIDIAがRubin世代で「Rubin Ultra(HBM4E 1TB、帯域重視)」と「Rubin CPX(GDDR7またはHBM4、演算重視のプリフィル専用)」という2種類のチップに分化させたことが象徴的で、<b>推論ワークロードそのものが「長文脈の一括処理(プリフィル)」と「逐次生成(デコード)」に構造分解され、それぞれ別チップで最適化する時代に入った</b>。これは演算性能そのものより、メモリとのやり取りの速さと量、そして用途に応じたメモリ種別の使い分けがボトルネックになっていることの技術的な裏付け。HBM4(帯域22TB/s、Blackwell世代のHBM3eから2.8倍)への世代交代がこれまでよりずっと早いペースで進んでいるのも、この要求水準の変化に各社が追われている結果であり、MU・SKHYにとっては「どちらのGPU/ASIC陣営が勝つか」に関わらずHBM需要そのものは増え続ける、という構造は変わっていない。</p>
 </div>
 
 <h3>⑤-B 推論適性ジャッジ（色分け）</h3>
 <div class="section">
 <table>
 <tr><th>チップ</th><th>判定</th><th>根拠</th></tr>
-<tr><td>NVIDIA(Blackwell/GB300)</td><td class="up">🟢 実証済み・高水準</td><td>FP4ネイティブ、GB300 NVL72で$0.12/百万トークン、Hopper比35倍のコスト効率改善。学習・推論どちらも強い汎用性</td></tr>
-<tr><td>Google TPU v7 Ironwood</td><td class="up">🟢 実証済み・最高水準</td><td>設計思想自体が「推論の時代」向け。100トークン/秒あたり18.1セントとBlackwell超のコスト効率を実測ベンチマークで確認済み。ただしFP4非対応で精度面はNVIDIAに一歩譲る</td></tr>
-<tr><td>AWS Trainium3</td><td class="blue">🟡 有望だが検証途上</td><td>スペック上は良好(Trainium2比4.4倍)だが、独立した第三者ベンチマークが限定的で「実証済み」とまでは言い切れない</td></tr>
-<tr><td>Microsoft Maia 200</td><td class="down">🔴 未検証の自己申告</td><td>「TPU・Trainium比3倍性能」は自社発表のみで第三者検証なし。話半分に見るべき段階</td></tr>
+<tr><td>NVIDIA(Blackwell→Rubin)</td><td class="up">🟢 実証済み・高水準</td><td>SemiAnalysis AgentXという独立ベンチマークでGB300比30倍の電力あたり性能を確認済み。NVFP4ネイティブ、HBM4 22TB/sで学習・推論どちらも強い汎用性</td></tr>
+<tr><td>Google TPU v7 Ironwood</td><td class="up">🟢 実証済み・高水準</td><td>設計思想自体が「推論の時代」向け。Anthropicが100万台超規模で採用しており実運用での裏付けが厚い。ただしFP4非対応で精度面はNVIDIAに一歩譲る</td></tr>
+<tr><td>AWS Trainium3</td><td class="blue">🟡 有望だが検証途上</td><td>Trainium2比4.4倍などの数値はAWS自身の発表・自社ベンチマーク(GPT-OSS使用)が中心で、独立した第三者ベンチマークはまだ限定的</td></tr>
+<tr><td>Microsoft Maia 200/300</td><td class="down">🔴 未検証の自己申告</td><td>「トークン/ドル30%改善」はSatya Nadella氏の自社発表のみで第三者検証なし。外部顧客への展開も進んでおらず話半分に見るべき段階</td></tr>
 <tr><td>Meta MTIA v3</td><td>⚪ 判定対象外</td><td>そもそも一般的な推論(LLM)向けではなく、レコメンド特化。同じ土俵で比較すること自体が不適切</td></tr>
 </table>
+<div class="note">参考：Groq LPU(HBM不使用の第三極)は今回初めてArtificial Analysisの第三者ベンチマークで実測(3,431 tok/s、次点比約4倍)が確認された。ただし上記5社と量産規模が全く異なるため本表には含めず、②-Bの潮目ログで別枠管理する。</div>
 </div>
 
 <h3>⑤-C SKHY・MU・Samsungの違い（推論需要への対応力という軸）</h3>
 <div class="section">
 <table>
 <tr><th></th><th>SK Hynix</th><th>Samsung</th><th>Micron</th></tr>
-<tr><td>ベースダイ</td><td>TSMC N12(外部委託)</td><td class="up">自社4nmロジックで内製(3社で唯一)</td><td>TSMCのN12FFC+/N5(外部委託、HBM4Eから)</td></tr>
-<tr><td>歩留まり</td><td>約80%到達との報道</td><td class="up">量産開始(2月)から半年で80%到達、目標を4ヶ月前倒し</td><td>非公開</td></tr>
-<tr><td>確定した顧客</td><td class="up">Microsoft Maia 200の単独supplier(HBM3E 216GB)、NVIDIA Vera Rubin配分も最大</td><td>NVIDIA・AMD向けに供給開始</td><td>16件の長期契約(顧客分散、$1,000億規模)</td></tr>
-<tr><td>ポジションの性格</td><td>「量」で先行するトップ、ただし認証遅延懸念で今後シェアを削られるリスクも指摘されている</td><td class="blue">急追する挑戦者、内製力を武器に猛烈な追い上げ</td><td>「特定の勝ち馬に依存しない」分散戦略</td></tr>
+<tr><td>ベースダイ</td><td>TSMC N12(外部委託)</td><td class="up">自社4nmロジック+1cDRAMで内製(3社で唯一)</td><td>TSMCのN12FFC+/N5(外部委託、HBM4Eから)</td></tr>
+<tr><td>HBM市場シェア(2026年Q2)</td><td>50%(Q1の58%から低下)</td><td class="up">33%(Q1の21%から急伸、Q4に40%接近見込み)</td><td>18%</td></tr>
+<tr><td>Rubin HBM4の配分見込み</td><td class="up">約60〜70%(先行して量産中)</td><td>約25〜30%(2月に業界最速でHBM4量産開始)</td><td>残り(主にRubin CPXなど中位推論向け)</td></tr>
+<tr><td>確定した顧客</td><td class="up">Microsoft Maia 200の単独supplier(HBM3E 216GB)、NVIDIA Vera Rubin配分も最大</td><td class="blue">NVIDIA・AMD向けに供給開始、HBM4量産で先陣</td><td>16件の長期契約(顧客分散、$1,000億規模)、Rubin CPX向け中心</td></tr>
+<tr><td>ポジションの性格</td><td>「量」で先行するトップ、ただしシェアはQ1→Q2で8pt低下し追われる立場に変化</td><td class="up">急追する挑戦者、内製力を武器に1四半期で+12ptの猛烈な追い上げ</td><td>「特定の勝ち馬に依存しない」分散戦略</td></tr>
 </table>
-<p class="note">業界全体が「カスタムHBM」(TPU専用スタック、Trainium専用スタックのように、ベースダイのロジックを顧客ごとに作り分ける)に向かっているため、今後「どのメモリ会社が強いか」は「どのチップに供給しているか」とセットでしか語れなくなる。SK HynixはMaia向けで独占的地位、Samsungは自社完結力でNVIDIA/AMD向けに食い込み中、Micronは特定の1社に依存しない分散戦略——3社とも勝ち方の方向性自体が違う。</p>
+<p class="note">業界全体が「カスタムHBM」(TPU専用スタック、Trainium専用スタックのように、ベースダイのロジックを顧客ごとに作り分ける)に向かっているため、今後「どのメモリ会社が強いか」は「どのチップに供給しているか」とセットでしか語れなくなる。今回の最大の変化はSamsungの急追——自社内製力を武器に1四半期でシェアを12pt伸ばし、SK Hynixとの差を37ptから17ptまで縮めた。SK Hynixは依然トップだが、シェアそのものは初めて明確に削られ始めている。</p>
 </div>
 
 <h2>⑦ 会社×今や欠かせない技術</h2>
-<p class="note">半導体業界に絞り、保有株(SK Hynix・Micron)を含めた「この会社のこの技術がここ数年で本当に欠かせなくなった」というリスト。ローテーションではなく複数社を並べる形式に変更。</p>
+<p class="note">半導体業界に絞り、保有株(SK Hynix・Micron)を含めた「この会社のこの技術がここ数年で本当に欠かせなくなった」というリスト。固定枠2社＋ローテーション2社。</p>
 
 <div class="section">
 <h3>SK Hynix — MR-MUF(HBM実装技術) ★保有株</h3>
-<p><span class="tag">なぜ今なくてはならないか</span>HBMは複数のDRAMを積み重ねる構造だが、積層するたびに個別接着する従来方式(TC-NCF)では、層が増えるほど熱がこもる問題があった。SK Hynixが2019年(HBM2E開発時)に導入したMR-MUFは、<b>積み上げた全層を一度に接続・加熱するボンディング方式</b>で、放熱用の"熱バンプ"がTC-NCF比で3倍——例えるなら、1階ずつ別々に接着していたビルを、骨組みごと一気に流し込んで固める工法に変えたようなもの。次世代HBM4Eでも、DRAMウェハーをわずか30μm(髪の毛の半分以下)まで薄くして業界規格の高さ制限(775μm)をクリアするために、この技術が引き続き必須。ハイブリッドボンディングという次の技術への移行はHBM5からで、<b>今のところMR-MUFなしにSK HynixのHBM4E量産は成立しない</b>。</p>
-<p><span class="tag">事業成果への表れ</span>この放熱優位が、SK HynixがHBM市場で50〜60%台のシェアを長年維持してきた技術的な裏付けになっている。</p>
+<p><span class="tag">なぜ今なくてはならないか</span>HBMは複数のDRAMを積み重ねる構造だが、積層するたびに個別接着する従来方式(TC-NCF)では、層が増えるほど熱がこもる問題があった。SK Hynixが2019年(HBM2E開発時)に導入したMR-MUFは、<b>積み上げた全層を一度に接続・加熱するボンディング方式</b>で、放熱用の"熱バンプ"がTC-NCF比で3倍——例えるなら、1階ずつ別々に接着していたビルを、骨組みごと一気に流し込んで固める工法に変えたようなもの。次世代HBM4Eでも、DRAMウェハーをわずか30μm(髪の毛の半分以下)まで薄くして業界規格の高さ制限(775μm)をクリアするために、この技術が引き続き必須。ハイブリッドボンディングという次の技術への移行はHBM5からで、<b>今のところMR-MUFなしにSK HynixのHBM4量産は成立しない</b>。</p>
+<p><span class="tag">事業成果への表れ</span>この放熱優位が、SK HynixのHBM市場シェア50%(2026年Q2、依然トップ)を支える技術的な裏付けになっている。ただしSamsungの追い上げでQ1の58%からは低下しており、優位は絶対ではなくなってきている。</p>
 </div>
 
 <div class="section">
 <h3>Micron — 1γ(1ガンマ)DRAM with EUV ★保有株</h3>
-<p><span class="tag">なぜ今なくてはならないか</span>EUV露光を使い、業界最小のDRAMセルを実現する製造プロセス。前世代比でウェハー1枚から取れるビット数が30%以上増加、速度は9200MT/s(15%高速化)、消費電力は20%削減。例えるなら、同じ大きさの本棚に、これまでより3割多くの本を、しかも取り出しやすく並べ直せるようになったようなもの。CEOのサンジェイ・メロートラ氏は「社史上最速のペースで立ち上がっている」と述べており、2026年半ばにはMicronのDRAM出荷の<b>過半数</b>がこの技術に置き換わる見通し。</p>
-<p><span class="tag">事業成果への表れ</span>派手さはないが、Micronが「AI銘柄なのに予想PERが割安」と評価される収益力の裏側には、この製造効率の高さがある。</p>
+<p><span class="tag">なぜ今なくてはならないか</span>EUV露光を使い、業界最小のDRAMセルを実現する製造プロセス。前世代比でウェハー1枚から取れるビット数が30%以上増加、速度は9200MT/s(15%高速化)、消費電力は20%削減。例えるなら、同じ大きさの本棚に、これまでより3割多くの本を、しかも取り出しやすく並べ直せるようになったようなもの。2026年半ばにはMicronのDRAM出荷の<b>過半数</b>がこの技術に置き換わる見通し。</p>
+<p><span class="tag">事業成果への表れ</span>Micronは月間HBM生産能力を2026年末までに約10万ウェハーへ倍増予定で、そのうち最大50%がNVIDIA Rubin向け12層HBM4になる計画。派手さはないが、Micronが「AI銘柄なのに予想PERが割安」と評価される収益力の裏側には、この製造効率の高さがある。</p>
 </div>
 
 <div class="section">
-<h3>Applied Materials — ハイブリッドボンディング(MR-MUFの次に来る本命)</h3>
-<p><span class="tag">なぜ今注目か</span>銅と銅を直接接合する(はんだを使わない)次世代の実装技術。Applied Materialsは450nmピッチ・2,000万接合で<b>98%の歩留まり</b>を達成したと発表。SK HynixのMR-MUFがHBM5世代で置き換わる先の技術で、Besi社とAI向けハイブリッドボンディング装置市場を握る提携を結んでいる。</p>
-<p><span class="tag">位置づけ</span>今日のSK Hynixの技術(MR-MUF)の"次"を作っているのがこの会社——半導体の実装技術は数年単位で世代交代しており、今の主役と次の主役を両方押さえておくと理解が深まる。</p>
+<h3>Samsung — HBM4ベースダイの自社内製(3社で唯一)</h3>
+<p><span class="tag">なぜ今注目か</span>HBMのベースダイ(制御層)を自社の4nmロジック工程+1cDRAM技術で完全内製できるのはSamsungだけ——SK Hynix・MicronはいずれもTSMCなど外部ファウンドリに委託している。例えるなら、他社が外部の内装業者に頼んで建物の配線を仕上げるのに対し、Samsungだけが自社の電気工事チームを持っているようなもので、設計変更や歩留まり改善のたびに外部との調整コスト・時間を挟まずに済む。この内製力を武器に、2026年2月に業界最速でHBM4量産を開始した。</p>
+<p><span class="tag">事業成果への表れ</span>この結果、SamsungのHBM市場シェアはわずか1四半期(Q1→Q2)で21%→33%へ+12pt上昇し、SK Hynixとの差を37ptから17ptまで縮めた。KB証券はQ3のHBM4売上が前四半期比3倍以上、Q4のシェアは40%接近を予測している。</p>
 </div>
 
 <div class="section">
-<h3>光インターコネクト(Co-Packaged Optics) — 新しく浮上しているボトルネック</h3>
-<p><span class="tag">なぜ今注目か</span>AIデータセンターの通信量が増えすぎて、電気信号による配線ではそもそも限界が見え始めている。CPO(Co-Packaged Optics)はスイッチASICに光エンジンを直接統合する技術で、業界では「AIワークロードの構造的な前提条件になりつつある」と評されている。前回スポットライトしたBroadcomやAstera Labsもこの領域に絡んでおり、次に伸びる技術として注視に値する。</p>
+<h3>Broadcom — カスタムASIC設計の"通訳者"</h3>
+<p><span class="tag">なぜ今なくてはならないか</span>Google・OpenAIのような企業は「どんな計算をしたいか」は分かっていても、それを実際に動くシリコンに落とし込む設計力(SerDes・パッケージング・製造との橋渡し)までは持っていない。Broadcomはこの"翻訳"を担う唯一無二の存在で、Googleとは2014年から数えて7世代のTPUを共同設計、契約は2031年まで延長済み。OpenAIとは2025年10月に10GW規模の新規契約を締結し、2026年後半から3nm・2nm設計での初出荷が始まる予定。</p>
+<p><span class="tag">事業成果への表れ</span>AI半導体収益は2026年Q1に$84億(前年比+106%)、バックログは$730億に達し、Hock Tan CEOは「2027年にAI収益$1,000億超が視野に入る」と発言。GoogleのTPU・OpenAIの自社チップという、NVIDIAへの対抗軸そのものがBroadcomなしには存在しない。</p>
 </div>
 
 <h2>⑧ 来週以降の注目イベント</h2>
 <div class="section">
 <ul>
-<li>Microsoft Maia 300の正式発表があるか(9月中の可能性、TSMC 30万個交渉の行方)</li>
-<li>Groq LPUの第三者ベンチマーク検証が出るか(「35倍」主張の裏付け)</li>
-<li>NVIDIA Hugging Face買収の規制当局審査の進捗(クロージング予定2027年初頭)</li>
-<li>Google TPUの2026年内300万台達成ペースの確認</li>
+<li>Microsoft Maia 300の正式発表(9月中の見通し、TSMC 30万個超交渉の行方)</li>
+<li>NVIDIA Rubin(NVL72)のQ3出荷ペース・追加ベンチマークの公表</li>
+<li>NVIDIA Hugging Face買収の米欧規制当局レビューの進捗(クロージング目標2027年前半)</li>
+<li>SamsungのHBM4量産拡大ペース、Q4シェア40%接近の実現度</li>
+<li>Groq LPUの追加の第三者ベンチマーク(Artificial Analysisの継続計測)</li>
 </ul>
 </div>
 
 <footer>
 本ページは投資助言ではなく、技術トレンドを追う学びの場です。<br>
-生成：2026-09-12(試運転)｜データソース：各社公式発表・WebSearch各種
+生成：2026-09-13｜データソース：各社公式発表・WebSearch各種
 </footer>
 
 </body>
