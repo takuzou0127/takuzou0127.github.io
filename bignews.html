@@ -5,205 +5,123 @@
 <meta name="viewport" content="width=960">
 <title>半導体ビッグニュース 2026-09-15</title>
 <style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { background: #0f1117; color: #e0e0e0; font-family: 'Helvetica Neue', Arial, 'Hiragino Sans', 'Yu Gothic', sans-serif; font-size: 15px; line-height: 1.8; padding: 0 0 40px; }
-.wrap { max-width: 920px; margin: 0 auto; padding: 0 20px; }
-h1 { font-size: 22px; font-weight: 700; color: #fff; text-align: center; margin-bottom: 6px; padding-top: 28px; }
-.date-line { text-align: center; color: #888; font-size: 13px; margin-bottom: 18px; }
-.quicknav { position: sticky; top: 0; z-index: 10; background: rgba(15,17,23,0.96); backdrop-filter: blur(6px); border-bottom: 1px solid #2d333b; padding: 10px 20px; display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-bottom: 8px; }
-.quicknav a { font-size: 12px; font-weight: 700; color: #cdd3db; text-decoration: none; background: #1c2128; border: 1px solid #30363d; padding: 6px 12px; border-radius: 20px; white-space: nowrap; }
-.quicknav a:hover { background: #262c36; }
-.note-box { max-width: 920px; margin: 0 auto 28px; padding: 12px 18px; background: #161b22; border: 1px solid #2d333b; border-left: 3px solid #e3b341; border-radius: 6px; font-size: 12.5px; color: #9aa4b2; line-height: 1.7; }
-.note-box strong { color: #e3b341; }
-.section { max-width: 920px; margin: 0 auto 28px; border: 1px solid #2d333b; border-top: 4px solid #4a9eff; background: #161b22; border-radius: 8px; overflow: hidden; scroll-margin-top: 56px; }
-.section-header { padding: 14px 22px 12px; border-bottom: 1px solid #2d333b; }
-.section-title { font-size: 16px; font-weight: 700; letter-spacing: 0.04em; color: #4a9eff; }
-.topics { padding: 16px 18px 20px; display: flex; flex-direction: column; gap: 12px; }
-.topic { background: #1c2128; border: 1px solid #30363d; border-radius: 6px; padding: 14px 16px; }
-.topic-label { font-size: 11px; font-weight: 700; letter-spacing: 0.04em; margin-bottom: 9px; padding: 3px 8px; border-radius: 3px; display: inline-block; color: #4a9eff; background: rgba(74,158,255,0.12); }
-.topic p { font-size: 14px; line-height: 1.85; color: #cdd3db; margin: 0; }
-.topic-source { margin-top: 10px; padding-top: 8px; border-top: 1px dashed #30363d; font-size: 11.5px; }
-.topic-source a { color: #7d8590; text-decoration: none; }
-.topic-source a:hover { color: #cdd3db; text-decoration: underline; }
-.noflow { font-size: 14px; color: #9aa4b2; padding: 4px 0 12px; }
-footer { text-align: center; color: #555; font-size: 12px; margin-top: 32px; padding-top: 16px; border-top: 1px solid #2d333b; max-width: 920px; margin-left: auto; margin-right: auto; }
-@media screen and (max-width: 1024px) {
-  body { font-size: 17px; }
-  .topic p { font-size: 16px; line-height: 1.9; }
-  .section-title { font-size: 18px; }
-  .topic-label { font-size: 12px; }
-  .note-box { font-size: 14px; }
-}
-@media screen and (max-width: 480px) {
-  body { font-size: 16px; }
-  .topic p { font-size: 15px; }
-  h1 { font-size: 19px; }
-  .quicknav { padding: 8px 12px; gap: 6px; }
-  .quicknav a { font-size: 11px; padding: 5px 10px; }
-}
+  body{background:#0f1117;color:#e6e6e6;font-family:"Segoe UI","Hiragino Kaku Gothic ProN",sans-serif;padding:20px;line-height:1.6;max-width:820px;margin:0 auto;}
+  h1{font-size:22px;border-bottom:2px solid #2a2e3a;padding-bottom:8px;}
+  h2{font-size:17px;color:#4a9eff;margin-top:28px;border-left:4px solid #4a9eff;padding-left:8px;}
+  h3{font-size:15px;margin:0 0 6px;}
+  .note{color:#9aa4b2;font-size:12.5px;}
+  .note-box{background:#181b24;border:1px solid #2a2e3a;border-left:3px solid #e3b341;border-radius:8px;padding:12px 16px;margin:12px 0 20px;font-size:13px;color:#c3c8d4;}
+  .section{background:#181b24;border:1px solid #2a2e3a;border-radius:8px;padding:14px 16px;margin:10px 0;}
+  .tag{display:inline-block;background:#22283a;color:#4a9eff;border-radius:4px;padding:2px 8px;font-size:12px;margin-bottom:6px;font-weight:bold;}
+  .src{color:#6b7280;font-size:11px;margin-top:16px;text-align:center;}
+  .src a{color:#6b7280;}
 </style>
 </head>
 <body>
 
-<div class="quicknav">
-  <a href="#sec-tsmc">TSMC</a>
-  <a href="#sec-nvidia">NVIDIA</a>
-  <a href="#sec-amd">AMD</a>
-  <a href="#sec-asml">ASML</a>
-  <a href="#sec-broadcom">Broadcom</a>
-  <a href="#sec-amazon">Amazon</a>
-  <a href="#sec-meta">Meta</a>
-  <a href="#sec-apple">Apple</a>
-  <a href="#sec-other">その他</a>
-</div>
-<div class="wrap">
-<h1>半導体ビッグニュース</h1>
-<div class="date-line">2026年9月15日（火）12時更新</div>
-</div>
+<h1>半導体ビッグニュース — 2026年9月15日（火）19時更新</h1>
+<div class="note">TSMC・NVIDIA・AMD・ASML・Broadcom・Amazon・Meta・Appleなどの大型ニュースを網羅的にまとめた、会話ネタ用の速報集です。</div>
+
 <div class="note-box">
-  <strong>これは投資判断のための資料ではありません。</strong> TSMC・NVIDIA・AMD・ASML・Broadcom・Amazon・Meta・Appleなど半導体・AIビッグテック業界の大きな動きを、人と話す時のネタ用に網羅的にまとめたものです。毎日12:00・19:00に自動更新されます。各トピック末尾の出典リンクから元記事を確認できます。
+<strong>これは投資判断のためのものではありません。</strong> 保有銘柄への影響分析は別の朝ブリーフィングで扱っており、ここでは「何が起きたか」「なぜ話題になるか」だけを短くまとめています。人と話すときのネタとしてお使いください。毎日12:00・19:00に自動更新されます。
 </div>
 
-<div class="section" id="sec-tsmc">
-  <div class="section-header"><div class="section-title">TSMC</div></div>
-  <div class="topics">
-    <div class="topic">
-      <div class="topic-label">好調持続でアナリストは2027年末600ドル予想、配当権利落ちも9/16に</div>
-      <p>TSMC（ADR）は9月4日時点で428.91ドルで取引を終え、アナリストの一部は2027年末までに600ドルへ到達すると予想している。1株1.114ドルの配当は9月16日が権利落ち日。AI向け先端チップの特需による最高値更新ラッシュが、決算だけでなく配当のような地味な指標にも表れている形で、「まだ上がる余地があるのか」という会話のネタになりやすい。</p>
-      <div class="topic-source">出典：<a href="https://finance.yahoo.com/markets/stocks/articles/taiwan-semiconductor-manufacturing-company-tsm-142602670.html" target="_blank" rel="noopener">Yahoo Finance</a></div>
-    </div>
-  </div>
+<h2>TSMC</h2>
+<div class="section">
+<span class="tag">8月売上高が前年比53%増で過去最高を更新</span>
+<p>TSMCの8月単月売上高が前年同月比53%超という大幅増収で過去最高を記録したと9月10日に発表された。AI向け先端チップの受注が想定を上回るペースで積み上がっていることを裏付ける数字で、四半期決算を待たずに月次データだけで「AI特需が続いている」ことが分かる珍しいケース。</p>
+<div class="src">出典：<a href="https://www.digitimes.com/tag/tsmc/001264.html" target="_blank" rel="noopener">DIGITIMES</a></div>
+</div>
+<div class="section">
+<span class="tag">ASMLと次世代フォトマスクで業界横断イニシアチブ（9/7）</span>
+<p>TSMCとASMLは9月7日、次世代のHigh-NA EUV露光に対応する「12インチ大判フォトマスク」への業界移行を主導する共同イニシアチブを発表した。2031年に12インチマスクのパイロットラインを立ち上げ、2033年までに量産投入を目指すという長期ロードマップで、微細化競争がすでに2030年代前半を見据えたフェーズに入っていることを示す。なお1株1.114ドルの配当は9月16日が権利落ち日。</p>
+<div class="src">出典：<a href="https://www.asml.com/en/news/press-releases/2026/tsmc-and-asml-announce-industry-transition-to-large-format-photomasks-for-high-na-euv" target="_blank" rel="noopener">ASML公式発表</a></div>
 </div>
 
-<div class="section" id="sec-nvidia">
-  <div class="section-header"><div class="section-title">NVIDIA</div></div>
-  <div class="topics">
-    <div class="topic">
-      <div class="topic-label">量子コンピューティング向け「CUDA-Q」を拡張（9/9）</div>
-      <p>NVIDIAは9月9日、誤り耐性のある量子コンピューティング向けオープンソースプラットフォーム「CUDA-Q」の機能拡張を発表した。GPUの巨人として知られるNVIDIAが、量子コンピューティングという次世代分野の基盤ソフトウェアにまで手を伸ばしており、「結局あらゆる次世代コンピューティングの土台を握りに行く」という評判が定着しつつある。</p>
-      <div class="topic-source">出典：<a href="https://nvidianews.nvidia.com/news/latest" target="_blank" rel="noopener">NVIDIA Newsroom</a></div>
-    </div>
-    <div class="topic">
-      <div class="topic-label">時価総額5.27兆ドル前後、今週は半導体株全体に一服感</div>
-      <p>NVIDIAの時価総額は約5兆2700億ドルと世界最大級を維持しているが、今週は半導体株全体に売り圧力がかかり、NVIDIAも調整色を強めている。次回決算は11月17日予定。「絶好調に見える会社でも足元では踊り場に入ることがある」という値動きの生々しさが話題になりやすい。</p>
-      <div class="topic-source">出典：<a href="https://www.cnn.com/markets/stocks/NVDA" target="_blank" rel="noopener">CNN Business</a></div>
-    </div>
-  </div>
+<h2>NVIDIA</h2>
+<div class="section">
+<span class="tag">Hugging Faceを129.3億ドルで買収へ（9/3発表）</span>
+<p>NVIDIAは9月3日、AIモデル共有プラットフォーム「Hugging Face」を約129.3億ドル（現金約119億ドル＋株式最大10億ドル）で買収すると発表した。Hugging Faceは1800万人超の開発者が利用し、300万を超えるモデル・50万件のデータセットが集まる「AI版GitHub」的存在。GPUというハードウェアの頂点から、モデルが集まる場そのものまでを一社で押さえる垂直統合の一手で、Groq資産買収（200億ドル）に次ぐ同社史上2番目に大きな買収となった。買収完了は2027年前半の見込み。</p>
+<div class="src">出典：<a href="https://blogs.nvidia.com/blog/nvidia-to-acquire-hugging-face/" target="_blank" rel="noopener">NVIDIA公式ブログ</a></div>
+</div>
+<div class="section">
+<span class="tag">2028年度に前年比70%成長という初の年間見通しを提示</span>
+<p>NVIDIAは今回初めて、2028会計年度に前年比70%の売上成長を見込むという年間ガイダンスを示した。四半期ごとの数字を追うのが通例だった同社が複数年先の成長率まで言及したのは異例で、AI設備投資ブームが一時的な特需ではなく数年単位で続くとの自信の表れとして注目されている。</p>
+<div class="src">出典：<a href="https://www.cnbc.com/quotes/NVDA" target="_blank" rel="noopener">CNBC</a></div>
 </div>
 
-<div class="section" id="sec-amd">
-  <div class="section-header"><div class="section-title">AMD</div></div>
-  <div class="topics">
-    <div class="topic">
-      <div class="topic-label">Cisco・HUMAINと組みサウジアラビアでAI基盤が稼働開始</div>
-      <p>AMDはCiscoおよびサウジアラビアのAI企業HUMAINと共同で、AMD Instinct MI355X GPUとCisco Silicon Oneベースのネットワーキングを組み合わせたAIインフラをサウジアラビアで稼働開始したと発表した。石油マネーが最先端AI半導体インフラの誘致に本格的に動いている実例として、地政学がらみで話しやすい題材になっている。</p>
-      <div class="topic-source">出典：<a href="https://newsroom.amd.com/news-types/news/" target="_blank" rel="noopener">AMD Newsroom</a></div>
-    </div>
-    <div class="topic">
-      <div class="topic-label">デリー大学で最大1万人にAI人材育成プログラム</div>
-      <p>AMDはデリー大学と連携し、最大1万人の学生にハンズオンでAIスキルを教える「AI Engageデベロッパープログラム」を展開すると発表した。半導体メーカーが自社エコシステムの裾野を広げるため、大学教育に直接投資する動きが世界的に広がっている一例。</p>
-      <div class="topic-source">出典：<a href="https://newsroom.amd.com/news-types/news/" target="_blank" rel="noopener">AMD Newsroom</a></div>
-    </div>
-  </div>
+<h2>AMD</h2>
+<div class="section">
+<span class="tag">サウジ主催「LEAP 2026」で中東AIインフラ構築をアピール（9/14）</span>
+<p>AMDは9月14日、サウジアラビアで開催された技術カンファレンス「LEAP 2026」で、同国を含む中東地域のオープンなAIインフラ構築における自社の役割を紹介した。石油マネーがAI半導体インフラの誘致に積極的に動く中、AMDがNVIDIA一強とされる市場で存在感を示そうとしている構図。</p>
+<div class="src">出典：<a href="https://newsroom.amd.com/news-types/news/" target="_blank" rel="noopener">AMD Newsroom</a></div>
+</div>
+<div class="section">
+<span class="tag">AIエネルギー効率、2024年比で4倍に到達</span>
+<p>AMDは2024年から2026年にかけてAI処理のエネルギー効率を4倍に高めたと明らかにした。2030年までにラックスケールで20倍の効率化を目指す長期目標に向けた通過点で、AI電力消費の急拡大が社会問題化する中、性能競争と同時に「省電力競争」も業界の重要な物差しになりつつあることを示す数字。</p>
+<div class="src">出典：<a href="https://www.amd.com/en.html" target="_blank" rel="noopener">AMD公式</a></div>
 </div>
 
-<div class="section" id="sec-asml">
-  <div class="section-header"><div class="section-title">ASML</div></div>
-  <div class="topics">
-    <div class="topic">
-      <div class="topic-label">Morgan Stanleyが目標株価引き下げ（€1930→€1700）も強気維持</div>
-      <p>9月8日、Morgan StanleyはASMLの目標株価を1930ユーロから1700ユーロへ引き下げた一方、投資判断「オーバーウェイト」は維持した。半導体装置トップ企業でも目標株価の見直しが相次いでおり、AI投資ブームの中で評価が揺れ動いている様子がうかがえる。次回決算は10月14日予定。</p>
-      <div class="topic-source">出典：<a href="https://www.ad-hoc-news.de/boerse/news/corporate-news/asml-holding-stock-holds-gains-as-analysts-adjust-price-targets/70095575" target="_blank" rel="noopener">Ad-Hoc News</a></div>
-    </div>
-    <div class="topic">
-      <div class="topic-label">Samsungとの戦略提携を拡大（9/8）</div>
-      <p>ASMLは9月8日、Samsung Electronicsとの長年の戦略提携を拡大すると発表し、High-NA EUV露光技術を軸に先端製造での協業を深めるとした。TSMC・Intelに続きSamsungとも足並みを揃えたことで、ファウンドリ3強すべてとの結びつきを同時期に強化した形になった。</p>
-      <div class="topic-source">出典：<a href="https://news.samsung.com/global/samsung-electronics-and-asml-expand-strategic-collaboration-for-next-generation-semiconductor-manufacturing" target="_blank" rel="noopener">Samsung Newsroom</a></div>
-    </div>
-  </div>
+<h2>ASML</h2>
+<div class="section">
+<span class="tag">Samsungとの戦略的提携を拡大（9/8）</span>
+<p>ASMLは9月8日、Samsung Electronicsとの長年の戦略提携拡大を発表し、High-NA EUV露光技術を軸に先端製造での協業を深めるとした。すでにTSMC・Intelとも同様の協業関係にあり、EUV露光装置を事実上独占するASMLが主要ファウンドリ3社すべてと足並みを揃えた形になる。</p>
+<div class="src">出典：<a href="https://news.samsung.com/global/samsung-electronics-and-asml-expand-strategic-collaboration-for-next-generation-semiconductor-manufacturing" target="_blank" rel="noopener">Samsung Newsroom</a></div>
 </div>
 
-<div class="section" id="sec-broadcom">
-  <div class="section-header"><div class="section-title">Broadcom</div></div>
-  <div class="topics">
-    <div class="topic">
-      <div class="topic-label">OpenAI向け"Jalapeño"出荷開始、2028年に5GW超が視野に</div>
-      <p>Broadcom CEOのホック・タン氏は、OpenAI向けカスタムAIチップ「Jalapeño」の出荷を開始し、2027年に1.3ギガワット、2028年には5ギガワット超の展開が視野に入っていると明らかにした。後継チップはテープアウト目前で、すでに次々世代の設計にも着手済みという。「NVIDIA一強」に見える市場で、カスタムチップ勢が着実に規模を積み上げている実例。</p>
-      <div class="topic-source">出典/参考：<a href="https://www.nextplatform.com/connect/2026/09/10/broadcom-rides-rocketing-trend-for-custom-ai-accelerators/5295681" target="_blank" rel="noopener">The Next Platform</a></div>
-    </div>
-    <div class="topic">
-      <div class="topic-label">Metaにも3世代分のMTIAを供給、「2027年にAI売上1000億ドル超」目標</div>
-      <p>Broadcomは2027会計年度末までにMeta向けにMTIAの3世代分のチップを供給し、2028年度には3ギガワット規模の容量を見込むと説明した。CEOは「2027年にAIチップ由来の売上高が1000億ドルを超える視界に入った」と発言しており、OpenAI・Google・Metaという複数の巨大顧客を同時に抱える強さが際立っている。</p>
-      <div class="topic-source">出典：<a href="https://www.fool.com/investing/2026/09/09/broadcoms-artificial-intelligence-ai-chip-revenue/" target="_blank" rel="noopener">The Motley Fool</a></div>
-    </div>
-  </div>
+<h2>Broadcom</h2>
+<div class="section">
+<span class="tag">決算で2027年115億→2028年230億ドルのAI収益見通しを提示（9/2）</span>
+<p>Broadcomは9月2日の第3四半期決算発表で、AI半導体事業の収益見通しを2027年に1150億ドル、2028年には2300億ドルまで拡大すると説明した。これまで四半期ごとの数字にとどめていた説明を、顧客名を挙げた複数年の受注スケジュールにまで踏み込んで開示した点が異例で、AlphabetやMeta、Anthropic、OpenAIといった名だたるハイパースケーラーが軒並みBroadcomへの発注を増やしていることが背景にある。</p>
+<div class="src">出典：<a href="https://www.nextplatform.com/connect/2026/09/10/broadcom-rides-rocketing-trend-for-custom-ai-accelerators/5295681" target="_blank" rel="noopener">The Next Platform</a></div>
+</div>
+<div class="section">
+<span class="tag">OpenAI向けカスタムチップ「Jalapeño」出荷開始</span>
+<p>Broadcom CEOのホック・タン氏は決算説明で、OpenAI向けカスタムAIチップ「Jalapeño」の出荷を今四半期中に開始し、2027年に1.3ギガワット、2028年には5ギガワット超の展開を計画していると明らかにした。NVIDIA一強だったAIチップ市場で、顧客企業が自前設計のチップに切り替える動きがいよいよ量産規模で実行段階に入ったことを示す象徴的な案件。</p>
+<div class="src">出典：<a href="https://www.fool.com/investing/2026/09/09/broadcoms-artificial-intelligence-ai-chip-revenue/" target="_blank" rel="noopener">The Motley Fool</a></div>
 </div>
 
-<div class="section" id="sec-amazon">
-  <div class="section-header"><div class="section-title">Amazon（AWS/Trainium）</div></div>
-  <div class="topics">
-    <div class="topic">
-      <div class="topic-label">Trainium3が実運用開始、Uberが配車AIの学習に採用</div>
-      <p>AWSの最新AIチップ「Trainium3」はTrainium2比で最大40%の価格性能改善を実現しており、配車サービスのUberが自社AIモデルの学習に採用していることが分かった。144チップ構成の「ウルトラサーバー」はNVIDIA最新のBlackwell NVL72に匹敵する処理性能とされ、NVIDIA以外の選択肢が実際に大手企業で使われ始めている実例として注目される。</p>
-      <div class="topic-source">出典：<a href="https://newsletter.semianalysis.com/p/amazons-ai-resurgence-aws-anthropics-multi-gigawatt-trainium-expansion" target="_blank" rel="noopener">SemiAnalysis</a></div>
-    </div>
-    <div class="topic">
-      <div class="topic-label">大学向けに1.1億ドルのTrainium研究支援プログラム</div>
-      <p>Amazonは大学の研究者がTrainiumチップを利用できるようにする「Build on Trainium」プログラムに1億1000万ドルを投じており、UCバークレー・MIT・カーネギーメロン・UCLAなどで成果が出始めている。自社チップのエコシステムを学術研究の裾野から広げようとする長期戦略が透ける。</p>
-      <div class="topic-source">出典：<a href="https://www.aboutamazon.com/news/aws/amazon-trainium-investment-university-ai-research" target="_blank" rel="noopener">About Amazon</a></div>
-    </div>
-  </div>
+<h2>Amazon（AWS/Trainium）</h2>
+<div class="section">
+<span class="tag">Trainium3が実運用開始、Uberが配車AIの学習に採用</span>
+<p>AWSの最新AIチップ「Trainium3」はTrainium2比で30〜40%の価格性能改善を実現しており、配車サービスのUberが自社AIモデルの学習に採用していることが分かった。144チップ構成の「ウルトラサーバー」はNVIDIA最新のBlackwell NVL72に匹敵する処理性能とされ、Amazonは既に2250億ドル超のTrainium関連の受注残を抱えていることも判明している。</p>
+<div class="src">出典：<a href="https://newsletter.semianalysis.com/p/amazons-ai-resurgence-aws-anthropics-multi-gigawatt-trainium-expansion" target="_blank" rel="noopener">SemiAnalysis</a></div>
+</div>
+<div class="section">
+<span class="tag">大学向けに1.1億ドルのTrainium研究支援プログラム</span>
+<p>Amazonは大学の研究者がTrainiumチップを利用できるようにする「Build on Trainium」プログラムに1億1000万ドルを投じており、UCバークレー・MIT・カーネギーメロン・UCLAなどで成果が出始めている。自社製チップの裾野を学術界にまで広げ、NVIDIAのCUDAエコシステムに対抗する「開発者を囲い込む」布石とも言える動き。</p>
+<div class="src">出典：<a href="https://www.aboutamazon.com/news/aws/amazon-trainium-investment-university-ai-research" target="_blank" rel="noopener">About Amazon</a></div>
 </div>
 
-<div class="section" id="sec-meta">
-  <div class="section-header"><div class="section-title">Meta</div></div>
-  <div class="topics">
-    <div class="topic">
-      <div class="topic-label">MTIA、2028年まで半年ごとの新世代ロードマップを提示</div>
-      <p>自社製AIチップ「Iris」（MTIA v3）の量産開始に続き、2027年に「Santa Barbara」（v4）・「Olympus」（v5）、2028年に「Universal Core」（v6）と、約半年ごとに新世代を投入するロードマップが明らかになった。Metaは自社チップの活用でデータセンターの総保有コストを40〜44%削減できるとしており、他社に先駆けた開発ペースの速さが際立っている。</p>
-      <div class="topic-source">出典：<a href="https://www.electronicsweekly.com/news/business/meta-2026-07/" target="_blank" rel="noopener">Electronics Weekly</a></div>
-    </div>
-  </div>
+<h2>Meta</h2>
+<div class="section">
+<span class="tag">自社AIチップ「Iris」が9月に量産開始、2027年に14GW視野</span>
+<p>Meta独自開発のAIチップ「Iris」（MTIA v3）が、予告通り9月に量産段階へ入った。TSMCの3nmプロセスで製造され、Broadcomと共同設計。6週間のテストで大きな問題は見つからなかったという。Metaは2027年までに全体の計算能力を14ギガワットまで拡大する計画で、自社チップの活用によりデータセンターの総保有コストを40〜44%削減できるとしている。2027年に「Santa Barbara」（v4）・「Olympus」（v5）、2028年に「Universal Core」（v6）と、半年ごとに新世代を投入する異例のハイペースなロードマップも明らかになっている。</p>
+<div class="src">出典：<a href="https://tech-insider.org/meta-iris-ai-chip-mtia-production-2026/" target="_blank" rel="noopener">Tech Insider</a></div>
 </div>
 
-<div class="section" id="sec-apple">
-  <div class="section-header"><div class="section-title">Apple（対中国戦略）</div></div>
-  <div class="topics">
-    <div class="topic">
-      <div class="topic-label">中国CXMTのDRAM調達で米政権に正式に許可申請</div>
-      <p>Appleは、米国防総省が軍事関連企業に指定している中国の半導体メーカーCXMTからDRAMチップを購入する許可を、トランプ政権に正式に要請したと報じられた。米大手ハイテク企業がこの種の申請を行うのは初めてとされる。CXMTは9月上旬にLPDDR6メモリの量産も開始しており、半導体調達という一企業の事情が米中間の政治問題に発展している構図が続いている。</p>
-      <div class="topic-source">出典：<a href="https://www.techpowerup.com/350346/apple-seeks-u-s-approval-to-use-sanctioned-chinese-memory-maker-cxmt" target="_blank" rel="noopener">TechPowerUp</a></div>
-    </div>
-    <div class="topic">
-      <div class="topic-label">TSMCとの新型チップ発表で"相思相愛"関係が改めて話題に</div>
-      <p>9月12日付の報道では、AppleとTSMCが最先端チップに関する発表を行い、両社の長年のパートナーシップが改めて注目された。iPhone・Mac向け先端チップのほぼ全量が台湾に集中しているという構造的リスクを抱えながら、同時に中国製メモリの調達検討という形で供給網の分散も進めている、という二正面の動きが対照的で話しやすい。</p>
-      <div class="topic-source">出典：<a href="https://www.fool.com/investing/2026/09/12/apple-and-taiwan-semiconductor-manufacturing-just/" target="_blank" rel="noopener">The Motley Fool</a></div>
-    </div>
-  </div>
+<h2>Apple（対中国戦略）</h2>
+<div class="section">
+<span class="tag">中国CXMTのDRAM調達、トランプ政権が可否を検討中</span>
+<p>Appleが米国防総省の「軍事関連企業」リストに載る中国メモリメーカーCXMTからDRAMを調達する許可を求めている件について、トランプ政権内で検討が続いていることが分かった。背景にはCXMTがフル稼働状態にあるほど世界的なメモリ不足が深刻化している事情がある。一方で7月には米上院議員の超党派グループがAppleに対し「中国製チップの採用を見送るべきだ」とする書簡を送っており、安全保障と供給網確保がせめぎ合う異例の政治案件になっている。米ハイテク大手がこの種の許可申請を行うのは初とされる。</p>
+<div class="src">出典：<a href="https://www.digitimes.com/news/a20260826PD207/apple-cxmt-capacity-supply-chain-chips.html" target="_blank" rel="noopener">DIGITIMES</a></div>
 </div>
 
-<div class="section" id="sec-other">
-  <div class="section-header"><div class="section-title">その他（OpenAI/Anthropic×Samsung・Arm）</div></div>
-  <div class="topics">
-    <div class="topic">
-      <div class="topic-label">OpenAIがSamsungとの半導体協業を深化（9/9）</div>
-      <p>OpenAI Korea幹部は9月9日、次世代チップの共同生産・研究について「Samsung Electronicsとの協業が最も進んでおり、最も評価を得ている」と発言した。TSMCとの提携に加えてSamsungとの二重調達体制を敷くことで、莫大な生産量を確保しようとする狙いが透けて見える。</p>
-      <div class="topic-source">出典：<a href="https://www.bnnbloomberg.ca/business/artificial-intelligence/2026/09/09/openai-says-working-with-samsung-on-next-generation-chips-deepening-cooperation/" target="_blank" rel="noopener">BNN Bloomberg</a></div>
-    </div>
-    <div class="topic">
-      <div class="topic-label">AnthropicもSamsungとカスタムチップで初期協議</div>
-      <p>Anthropicも自社カスタムAIチップの製造パートナーとしてSamsungと初期段階の協議を進めていると報じられた。OpenAI・Meta・Amazon/Googleに続きAnthropicも自社シリコン開発に動き出したことで、主要AIラボが軒並み「脱NVIDIA」の自社チップ戦略を持つという流れがほぼ出そろった形になっている。</p>
-      <div class="topic-source">出典：<a href="https://chipbriefing.substack.com/p/daily-early-anthropic-samsung-talks" target="_blank" rel="noopener">Chip Briefing</a></div>
-    </div>
-    <div class="topic">
-      <div class="topic-label">OpenAIがArm（SoftBank傘下）とCPU開発でも協業</div>
-      <p>OpenAIはSoftBank傘下のArmと共同でCPUチップを開発していると報じられている。Broadcom主導のカスタムAIチップ計画の一環とみられ、GPUだけでなくCPUの領域でもNVIDIA依存から脱却しようとする動きが加速している。</p>
-      <div class="topic-source">出典：<a href="https://seekingalpha.com/news/4503967-openai-reportedly-partners-with-arm-in-broadcom-led-ai-chip-effort" target="_blank" rel="noopener">Seeking Alpha</a></div>
-    </div>
-  </div>
+<h2>その他（Qualcomm・Samsung・OpenAI/Anthropic）</h2>
+<div class="section">
+<span class="tag">Qualcomm・ArmがAIデータセンター市場に本格参入</span>
+<p>QualcommとArmが相次いで新型チップやM&Aを通じてAIデータセンター市場に参入し、NVIDIA・Intel・AMDに挑戦する構えを見せている。スマホ向けチップの巨人だった2社が、スマホの外側＝データセンターという最大の成長市場に軸足を広げようとしている動きとして注目される。あわせてQualcommは9月1日付で二桁%規模のチップ値上げに踏み切っており、AI向け需要が半導体・メモリの供給網全体を逼迫させ、一般消費者向けガジェットの価格にまで波及し始めていることも分かる。</p>
+<div class="src">出典：<a href="https://en.sedaily.com/international/2026/09/01/qualcomm-and-arm-push-into-data-centers-rattling-nvidia-and" target="_blank" rel="noopener">Seoul Economic Daily</a></div>
+</div>
+<div class="section">
+<span class="tag">OpenAI・AnthropicともにSamsungとの半導体協業を深化</span>
+<p>OpenAI Korea幹部は9月9日、ソウルでの記者会見で「次世代チップの共同研究・生産で最も進んでいるのがSamsung Electronicsとの協業」と述べた。AnthropicもSamsungとの間で2nmプロセスを軸としたカスタムAIチップ製造について初期協議を進めていると報じられている。主要AIラボが軒並み「脱NVIDIA」の自社チップ戦略を進める中、韓国Samsungがその製造パートナーとしての存在感を急速に高めている。</p>
+<div class="src">出典：<a href="https://www.investing.com/news/stock-market-news/openai-says-working-with-samsung-on-nextgeneration-chips-deepening-cooperation-4895150" target="_blank" rel="noopener">Reuters via Investing.com</a></div>
 </div>
 
-<footer>本ページは会話ネタ用に自動生成されたもので、投資助言ではありません。各トピックの出典リンクから元記事を確認してください。</footer>
+<div class="src" style="margin-top:24px;">
+本ページは投資助言ではなく、会話ネタ用にWeb検索結果をAIが要約したものです。各トピック末尾のリンクから元記事を確認できます。
+</div>
 
 </body>
 </html>
