@@ -13,8 +13,30 @@ h1 { font-size: 24px; font-weight: 700; color: #fff; text-align: center; margin-
 .quicknav { position: sticky; top: 0; z-index: 10; background: rgba(15,17,23,0.96); backdrop-filter: blur(6px); border-bottom: 1px solid #2d333b; padding: 10px 20px; display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-bottom: 8px; }
 .quicknav a { font-size: 12px; font-weight: 700; color: #cdd3db; text-decoration: none; background: #1c2128; border: 1px solid #30363d; padding: 6px 12px; border-radius: 20px; white-space: nowrap; }
 .quicknav a:hover { background: #262c36; }
-.note-box { max-width: 920px; margin: 0 auto 28px; padding: 12px 18px; background: #161b22; border: 1px solid #2d333b; border-left: 3px solid #6e7681; border-radius: 6px; font-size: 12.5px; color: #9aa4b2; line-height: 1.7; }
+.note-box { max-width: 920px; margin: 0 auto 22px; padding: 12px 18px; background: #161b22; border: 1px solid #2d333b; border-left: 3px solid #6e7681; border-radius: 6px; font-size: 12.5px; color: #9aa4b2; line-height: 1.7; }
 .note-box strong { color: #cdd3db; }
+
+/* ハイライト（俯瞰）グリッド */
+.hl-heading { max-width: 920px; margin: 0 auto 10px; padding: 0 20px; font-size: 13px; font-weight: 700; letter-spacing: 0.08em; color: #7d8590; }
+.hl-grid { max-width: 920px; margin: 0 auto 32px; padding: 0 20px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.hl-card { display: flex; align-items: center; gap: 10px; background: #161b22; border: 1px solid #2d333b; border-left: 4px solid; border-radius: 8px; padding: 12px 12px; text-decoration: none; transition: background 0.15s; }
+.hl-card:hover { background: #1c2128; }
+.hl-card.bloomberg { border-left-color: #4a9eff; }
+.hl-card.yahoo     { border-left-color: #a371f7; }
+.hl-card.nikkei    { border-left-color: #f85149; }
+.hl-card.politics  { border-left-color: #bc8cff; }
+.hl-card.mlb       { border-left-color: #e3b341; }
+.hl-card.dodgers   { border-left-color: #56d3f7; }
+.hl-icon { font-size: 26px; width: 40px; text-align: center; flex-shrink: 0; }
+.hl-title { font-size: 11.5px; font-weight: 700; letter-spacing: 0.05em; margin-bottom: 3px; }
+.hl-card.bloomberg .hl-title { color: #4a9eff; }
+.hl-card.yahoo     .hl-title { color: #a371f7; }
+.hl-card.nikkei    .hl-title { color: #f85149; }
+.hl-card.politics  .hl-title { color: #bc8cff; }
+.hl-card.mlb       .hl-title { color: #e3b341; }
+.hl-card.dodgers   .hl-title { color: #56d3f7; }
+.hl-desc { font-size: 12.5px; color: #b7bdc6; line-height: 1.5; }
+
 .section { max-width: 920px; margin: 0 auto 36px; border: 1px solid #2d333b; border-top: 4px solid; background: #161b22; border-radius: 8px; overflow: hidden; scroll-margin-top: 56px; }
 .section.bloomberg { border-top-color: #4a9eff; }
 .section.yahoo     { border-top-color: #a371f7; }
@@ -22,7 +44,14 @@ h1 { font-size: 24px; font-weight: 700; color: #fff; text-align: center; margin-
 .section.politics  { border-top-color: #bc8cff; }
 .section.mlb       { border-top-color: #e3b341; }
 .section.dodgers   { border-top-color: #56d3f7; }
-.section-header { padding: 16px 22px 14px; border-bottom: 1px solid #2d333b; }
+.section-header { padding: 16px 22px 14px; border-bottom: 1px solid #2d333b; display: flex; gap: 12px; align-items: flex-start; }
+.icon-badge { flex-shrink: 0; width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 19px; background: rgba(255,255,255,0.06); }
+.bloomberg .icon-badge { background: rgba(74,158,255,0.14); }
+.yahoo     .icon-badge { background: rgba(163,113,247,0.14); }
+.nikkei    .icon-badge { background: rgba(248,81,73,0.14); }
+.politics  .icon-badge { background: rgba(188,140,255,0.14); }
+.mlb       .icon-badge { background: rgba(227,179,65,0.14); }
+.dodgers   .icon-badge { background: rgba(86,211,247,0.14); }
 .section-title { font-size: 16px; font-weight: 700; letter-spacing: 0.04em; margin-bottom: 6px; }
 .bloomberg .section-title { color: #4a9eff; }
 .yahoo     .section-title { color: #a371f7; }
@@ -31,6 +60,66 @@ h1 { font-size: 24px; font-weight: 700; color: #fff; text-align: center; margin-
 .mlb       .section-title { color: #e3b341; }
 .dodgers   .section-title { color: #56d3f7; }
 .point-summary { font-size: 13px; font-style: italic; color: #aaa; line-height: 1.6; }
+
+/* 数値チップ */
+.stat-chips { padding: 14px 22px 0; display: flex; flex-wrap: wrap; gap: 7px; }
+.chip { font-size: 12px; font-weight: 700; padding: 5px 11px; border-radius: 20px; background: #1c2128; border: 1px solid #30363d; color: #cdd3db; white-space: nowrap; }
+.chip.down::before { content: "▼ "; color: #f85149; }
+.chip.up::before   { content: "▲ "; color: #3fb950; }
+.chip.warn::before { content: "⚠ "; color: #e3b341; }
+.chip.flat::before { content: "● "; color: #7d8590; }
+
+/* チャートボックス */
+.chart-box { margin: 16px 22px 0; padding: 14px 16px; background: #1c2128; border: 1px solid #30363d; border-radius: 6px; }
+.chart-title { font-size: 11.5px; font-weight: 700; color: #7d8590; letter-spacing: 0.06em; margin-bottom: 12px; text-transform: uppercase; }
+.bar-chart { display: flex; flex-direction: column; gap: 9px; }
+.bar-row { display: grid; grid-template-columns: 108px 1fr 66px; align-items: center; gap: 10px; }
+.bar-label { font-size: 12px; color: #b7bdc6; }
+.bar-track { height: 10px; background: #0f1117; border-radius: 5px; overflow: hidden; }
+.bar-fill { height: 100%; border-radius: 5px; }
+.bar-fill.down { background: linear-gradient(90deg,#f85149,#ff8a80); }
+.bar-fill.up   { background: linear-gradient(90deg,#2ea043,#56d364); }
+.bar-value { font-size: 12px; font-weight: 700; text-align: right; }
+.bar-value.down { color: #f85149; }
+.bar-value.up   { color: #3fb950; }
+
+/* レンジゲージ（為替など） */
+.gauge-wrap { margin: 16px 22px 0; padding: 14px 16px; background: #1c2128; border: 1px solid #30363d; border-radius: 6px; }
+.gauge-title { font-size: 11.5px; font-weight: 700; color: #7d8590; letter-spacing: 0.06em; margin-bottom: 14px; text-transform: uppercase; }
+.gauge-track { position: relative; height: 10px; background: #0f1117; border-radius: 5px; margin-bottom: 8px; }
+.gauge-band { position: absolute; top: 0; bottom: 0; background: rgba(248,81,73,0.28); border-radius: 5px; }
+.gauge-marker { position: absolute; top: -5px; width: 3px; height: 20px; background: #f0f6fc; border-radius: 2px; }
+.gauge-marker::after { content: attr(data-label); position: absolute; top: -22px; left: 50%; transform: translateX(-50%); font-size: 11px; font-weight: 700; color: #f0f6fc; white-space: nowrap; }
+.gauge-scale { display: flex; justify-content: space-between; font-size: 10.5px; color: #6e7681; }
+.gauge-note { margin-top: 10px; font-size: 12px; color: #9aa4b2; }
+
+/* ギャップバー（ゲーム差など） */
+.gap-chart { margin: 16px 22px 0; padding: 14px 16px; background: #1c2128; border: 1px solid #30363d; border-radius: 6px; }
+.gap-title { font-size: 11.5px; font-weight: 700; color: #7d8590; letter-spacing: 0.06em; margin-bottom: 12px; text-transform: uppercase; }
+.gap-row { display: grid; grid-template-columns: 150px 1fr 56px; align-items: center; gap: 10px; margin-bottom: 9px; }
+.gap-row:last-child { margin-bottom: 0; }
+.gap-label { font-size: 12px; color: #b7bdc6; }
+.gap-track { height: 10px; background: #0f1117; border-radius: 5px; overflow: hidden; }
+.gap-fill { height: 100%; border-radius: 5px; background: linear-gradient(90deg,#e3b341,#f2cc60); }
+.gap-value { font-size: 12px; font-weight: 700; color: #e3b341; text-align: right; }
+
+/* 勝率バー */
+.winrate-wrap { margin: 16px 22px 0; padding: 14px 16px; background: #1c2128; border: 1px solid #30363d; border-radius: 6px; }
+.winrate-title { font-size: 11.5px; font-weight: 700; color: #7d8590; letter-spacing: 0.06em; margin-bottom: 10px; text-transform: uppercase; }
+.winrate-track { height: 22px; background: #0f1117; border-radius: 11px; overflow: hidden; position: relative; margin-bottom: 6px; }
+.winrate-fill { height: 100%; border-radius: 11px; background: linear-gradient(90deg,#1f6feb,#56d3f7); display: flex; align-items: center; justify-content: flex-end; padding-right: 10px; }
+.winrate-fill span { font-size: 11.5px; font-weight: 700; color: #fff; }
+.winrate-caption { font-size: 12px; color: #9aa4b2; }
+
+/* クリンチ済みバッジグリッド */
+.badge-grid { margin: 16px 22px 0; padding: 14px 16px; background: #1c2128; border: 1px solid #30363d; border-radius: 6px; }
+.badge-grid-title { font-size: 11.5px; font-weight: 700; color: #7d8590; letter-spacing: 0.06em; margin-bottom: 12px; text-transform: uppercase; }
+.badge-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.badge-item { font-size: 12px; font-weight: 700; padding: 6px 12px; border-radius: 6px; background: rgba(63,185,80,0.12); border: 1px solid rgba(63,185,80,0.35); color: #56d364; }
+.badge-item.wc { background: rgba(227,179,65,0.1); border-color: rgba(227,179,65,0.3); color: #e3b341; }
+.badge-item::before { content: "✓ "; }
+.badge-item.wc::before { content: "○ "; }
+
 .topics { padding: 16px 18px 20px; display: flex; flex-direction: column; gap: 12px; }
 .topic { background: #1c2128; border: 1px solid #30363d; border-radius: 6px; padding: 14px 16px; }
 .topic-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 9px; padding: 3px 8px; border-radius: 3px; display: inline-block; }
@@ -47,6 +136,7 @@ h1 { font-size: 24px; font-weight: 700; color: #fff; text-align: center; margin-
 .politics-body { padding: 16px 18px 20px; display: flex; flex-direction: column; gap: 12px; }
 .politics-block { background: #1c2128; border: 1px solid #30363d; border-radius: 6px; padding: 14px 16px; }
 .sub-heading { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 9px; padding: 3px 8px; border-radius: 3px; display: inline-block; color: #bc8cff; background: rgba(188,140,255,0.12); }
+.sub-heading .flag { font-size: 12px; margin-right: 4px; }
 .politics-block p { font-size: 14px; line-height: 1.85; color: #cdd3db; margin: 0; }
 .politics-block p + p { margin-top: 10px; }
 footer { text-align: center; color: #555; font-size: 12px; margin-top: 32px; padding-top: 16px; border-top: 1px solid #2d333b; max-width: 920px; margin-left: auto; margin-right: auto; }
@@ -62,6 +152,8 @@ footer { text-align: center; color: #555; font-size: 12px; margin-top: 32px; pad
   .topics { padding: 14px 14px 18px; }
   .politics-body { padding: 14px 14px 18px; }
   .note-box { font-size: 14px; }
+  .chip { font-size: 13px; padding: 6px 12px; }
+  .bar-label, .gap-label { font-size: 13px; }
 }
 @media screen and (max-width: 480px) {
   body { font-size: 16px; }
@@ -70,6 +162,9 @@ footer { text-align: center; color: #555; font-size: 12px; margin-top: 32px; pad
   h1 { font-size: 20px; }
   .quicknav { padding: 8px 12px; gap: 6px; }
   .quicknav a { font-size: 11px; padding: 5px 10px; }
+  .hl-grid { grid-template-columns: repeat(2, 1fr); }
+  .bar-row { grid-template-columns: 84px 1fr 54px; gap: 6px; }
+  .gap-row { grid-template-columns: 96px 1fr 46px; gap: 6px; }
 }
 </style>
 </head>
@@ -90,10 +185,74 @@ footer { text-align: center; color: #555; font-size: 12px; margin-top: 32px; pad
   <strong>データ取得について：</strong> 本レポートは実行のたびに実際にWeb検索し、その時点でヒットした記事をもとにAIが要約・構成しています。日々変動する数値（成績・株価等）は検索結果のスナップショット時点により多少前後することがあります。各トピック末尾の「出典」リンクから元記事を確認できます。
 </div>
 
+<div class="hl-heading">📌 今日のハイライト（タップでジャンプ）</div>
+<div class="hl-grid">
+  <a class="hl-card bloomberg" href="#sec-bloomberg">
+    <div class="hl-icon">📈</div>
+    <div><div class="hl-title">BLOOMBERG</div><div class="hl-desc">米国株続落、10年債利回り5%超え</div></div>
+  </a>
+  <a class="hl-card yahoo" href="#sec-yahoo">
+    <div class="hl-icon">💹</div>
+    <div><div class="hl-title">YAHOO FINANCE</div><div class="hl-desc">FOMC待ちで3指数続落、半導体軟調</div></div>
+  </a>
+  <a class="hl-card nikkei" href="#sec-nikkei">
+    <div class="hl-icon">💴</div>
+    <div><div class="hl-title">日経</div><div class="hl-desc">日銀会合迫る、円は154円台</div></div>
+  </a>
+  <a class="hl-card politics" href="#sec-politics">
+    <div class="hl-icon">🏛️</div>
+    <div><div class="hl-title">政治</div><div class="hl-desc">米中首脳会談9/24、日本は内閣改造</div></div>
+  </a>
+  <a class="hl-card mlb" href="#sec-mlb">
+    <div class="hl-icon">⚾</div>
+    <div><div class="hl-title">MLB</div><div class="hl-desc">レイズ・ブリュワーズが両リーグ首位</div></div>
+  </a>
+  <a class="hl-card dodgers" href="#sec-dodgers">
+    <div class="hl-icon">🔵</div>
+    <div><div class="hl-title">DODGERS</div><div class="hl-desc">4-1でレッズ撃破、14年連続PO進出</div></div>
+  </a>
+</div>
+
 <div class="section bloomberg" id="sec-bloomberg">
   <div class="section-header">
-    <div class="section-title">BLOOMBERG</div>
-    <div class="point-summary">本日のポイント：FOMC結果発表を翌日に控え米国株が続落。AI安全性懸念と原油高が重荷に。米中は9月24日の首脳会談へ関税協議を継続。</div>
+    <div class="icon-badge">📈</div>
+    <div>
+      <div class="section-title">BLOOMBERG</div>
+      <div class="point-summary">本日のポイント：FOMC結果発表を翌日に控え米国株が続落。AI安全性懸念と原油高が重荷に。米中は9月24日の首脳会談へ関税協議を継続。</div>
+    </div>
+  </div>
+  <div class="stat-chips">
+    <span class="chip down">NYダウ 52,093.11（-0.63%）</span>
+    <span class="chip down">S&amp;P500 7,585.73（-0.45%）</span>
+    <span class="chip down">ナスダック 25,981.57（-0.78%）</span>
+    <span class="chip warn">10年国債利回り 5%超え</span>
+    <span class="chip down">フィラデルフィア半導体指数（-5.9%）</span>
+    <span class="chip flat">ドル円 154円台</span>
+  </div>
+  <div class="chart-box">
+    <div class="chart-title">9月15日 主要指数 前日比</div>
+    <div class="bar-chart">
+      <div class="bar-row">
+        <div class="bar-label">NYダウ</div>
+        <div class="bar-track"><div class="bar-fill down" style="width:11%"></div></div>
+        <div class="bar-value down">-0.63%</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">S&amp;P500</div>
+        <div class="bar-track"><div class="bar-fill down" style="width:8%"></div></div>
+        <div class="bar-value down">-0.45%</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">ナスダック</div>
+        <div class="bar-track"><div class="bar-fill down" style="width:13%"></div></div>
+        <div class="bar-value down">-0.78%</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">半導体指数</div>
+        <div class="bar-track"><div class="bar-fill down" style="width:98%"></div></div>
+        <div class="bar-value down">-5.90%</div>
+      </div>
+    </div>
   </div>
   <div class="topics">
     <div class="topic">
@@ -116,8 +275,39 @@ footer { text-align: center; color: #555; font-size: 12px; margin-top: 32px; pad
 
 <div class="section yahoo" id="sec-yahoo">
   <div class="section-header">
-    <div class="section-title">YAHOO FINANCE</div>
-    <div class="point-summary">本日のポイント：主要3指数がFOMC待ちで続落。個別ではヘルスケア・金融株が堅調、半導体株が軟調。雇用は堅調・インフレは鈍化基調で綱引き。</div>
+    <div class="icon-badge">💹</div>
+    <div>
+      <div class="section-title">YAHOO FINANCE</div>
+      <div class="point-summary">本日のポイント：主要3指数がFOMC待ちで続落。個別ではヘルスケア・金融株が堅調、半導体株が軟調。雇用は堅調・インフレは鈍化基調で綱引き。</div>
+    </div>
+  </div>
+  <div class="stat-chips">
+    <span class="chip up">ResMed（+5%）</span>
+    <span class="chip up">バンカメ 目標株価67ドル（+12.7%余地）</span>
+    <span class="chip down">エヌビディア（-3.4%）</span>
+    <span class="chip down">インテル（-5.6%）</span>
+    <span class="chip flat">CPI（前年比） 3.4%</span>
+    <span class="chip up">非農業部門雇用者数 +16.2万人</span>
+  </div>
+  <div class="chart-box">
+    <div class="chart-title">米経済指標の推移（前月→今月）</div>
+    <div class="bar-chart">
+      <div class="bar-row">
+        <div class="bar-label">CPI 前年比</div>
+        <div class="bar-track"><div class="bar-fill down" style="width:57%"></div></div>
+        <div class="bar-value down">3.4%</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">雇用者増（7月）</div>
+        <div class="bar-track"><div class="bar-fill up" style="width:13%"></div></div>
+        <div class="bar-value up">+2.1万人</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">雇用者増（8月）</div>
+        <div class="bar-track"><div class="bar-fill up" style="width:100%"></div></div>
+        <div class="bar-value up">+16.2万人</div>
+      </div>
+    </div>
   </div>
   <div class="topics">
     <div class="topic">
@@ -140,8 +330,27 @@ footer { text-align: center; color: #555; font-size: 12px; margin-top: 32px; pad
 
 <div class="section nikkei" id="sec-nikkei">
   <div class="section-header">
-    <div class="section-title">日経</div>
-    <div class="point-summary">本日のポイント：日銀は9/17-18に会合、円は154円台まで下落。半導体・自動車部材は需給正常化の兆し。中国は内需低迷でGDP成長4.4%程度に減速見通し。</div>
+    <div class="icon-badge">💴</div>
+    <div>
+      <div class="section-title">日経</div>
+      <div class="point-summary">本日のポイント：日銀は9/17-18に会合、円は154円台まで下落。半導体・自動車部材は需給正常化の兆し。中国は内需低迷でGDP成長4.4%程度に減速見通し。</div>
+    </div>
+  </div>
+  <div class="stat-chips">
+    <span class="chip flat">ドル円 154円台</span>
+    <span class="chip warn">日銀会合 9/17-18</span>
+    <span class="chip up">日経平均 63,700円台（+0.4%）</span>
+    <span class="chip up">半導体製造装置販売 +23%（前年比）</span>
+    <span class="chip down">中国GDP成長見通し 4.4%</span>
+  </div>
+  <div class="gauge-wrap">
+    <div class="gauge-title">ドル円レート vs 9月想定レンジ</div>
+    <div class="gauge-track">
+      <div class="gauge-band" style="left:40%; width:40%;"></div>
+      <div class="gauge-marker" style="left:26.7%;" data-label="現在 154円"></div>
+    </div>
+    <div class="gauge-scale"><span>150円</span><span>156円</span><span>162円</span><span>165円</span></div>
+    <div class="gauge-note">赤帯＝市場が意識する9月想定レンジ（156〜162円）。現在値はレンジの手前で、日米金利差の縮小ペース次第でレンジ入りするかが焦点。</div>
   </div>
   <div class="topics">
     <div class="topic">
@@ -164,12 +373,21 @@ footer { text-align: center; color: #555; font-size: 12px; margin-top: 32px; pad
 
 <div class="section politics" id="sec-politics">
   <div class="section-header">
-    <div class="section-title">政治</div>
-    <div class="point-summary">本日のポイント：米国は最高裁判断後も関税攻防継続、イラン戦争は中間選挙後の終結を模索。日本は9/17-18に内閣改造。欧州は極右台頭でNATO結束に揺らぎ。</div>
+    <div class="icon-badge">🏛️</div>
+    <div>
+      <div class="section-title">政治</div>
+      <div class="point-summary">本日のポイント：米国は最高裁判断後も関税攻防継続、イラン戦争は中間選挙後の終結を模索。日本は9/17-18に内閣改造。欧州は極右台頭でNATO結束に揺らぎ。</div>
+    </div>
+  </div>
+  <div class="stat-chips">
+    <span class="chip warn">米中首脳会談 9/24（ワシントン）</span>
+    <span class="chip warn">日本 内閣改造 9/17-18</span>
+    <span class="chip flat">中間選挙 11/3</span>
+    <span class="chip up">AfD（独ザクセン＝アンハルト） 得票率44%</span>
   </div>
   <div class="politics-body">
     <div class="politics-block">
-      <div class="sub-heading">米国政治（トランプ政権）</div>
+      <div class="sub-heading"><span class="flag">🇺🇸</span>米国政治（トランプ政権）</div>
       <p>関税政策では、最高裁が6対3の判断でカナダ・中国・メキシコおよび全世界向けの一括関税の大半を違憲・違法として退けたが、トランプ政権はただちに1974年通商法122条に基づく新たな関税措置で応戦した。この条項は税率上限15%、150日を超える延長には議会承認が必要という制約があり、選挙を控えた共和党議員に難しい判断を迫っている。9月8日にはカナダ向けに5件の新たな大統領布告に署名し、一部品目の禁輸と関税品目の見直しを行った。世論調査では関税に反対する有権者が賛成の2倍に上っており、僅差の多数派を握る共和党にとって関税の恒久化は政治的リスクとなっている。</p>
       <p>中東ではイラン戦争が2月末の開戦から半年以上続いており、9月初旬にはクウェートがイランからのミサイル・ドローン攻撃を受け、米軍はホルムズ海峡で報復として複数のタンカーを攻撃、イランの石油インフラにも打撃を与えた。トランプ大統領は「戦争は中間選挙後、11月中に終結する」との見通しを示しつつ、直近では「中間選挙前に終わる可能性もある」とも発言するなど時期についての発言が揺れている。政権内ではすでにイラン後の中東戦略の策定が始まっており、イランを封じ込める地域安全保障の枠組み構築、ガザ・イスラエル-シリア間の安全保障合意、サウジアラビアとイスラエルの国交正常化を含むアブラハム合意の拡大が3本柱として検討されている。</p>
       <p>国内経済面では、8月の非農業部門雇用者数が16.2万人増と大幅に加速する一方、7月のCPIは前年比3.4%と2ヶ月連続で鈍化した。しかしFRB議長ケビン・ウォーシュ氏のタカ派的発言を受けて9月利上げ観測が再燃しており、9月16日のFOMC結果発表が焦点となっている。関税による物価押し上げ効果とインフレ鈍化基調がせめぎ合う中、FRBの判断は政権運営への評価にも直結する。</p>
@@ -177,14 +395,14 @@ footer { text-align: center; color: #555; font-size: 12px; margin-top: 32px; pad
       <div class="topic-source">出典：<a href="https://www.axios.com/2026/09/04/trump-middle-east-iran-post-war-strategy" target="_blank" rel="noopener">Axios</a> / <a href="https://www.tradecomplianceresourcehub.com/2026/09/10/trump-2-0-tariff-tracker/" target="_blank" rel="noopener">Trade Compliance Resource Hub</a> / <a href="https://www.internationalnewsandviews.com/us-midterms-2026-trump-congress-election-407946-2/" target="_blank" rel="noopener">International News and Views</a></div>
     </div>
     <div class="politics-block">
-      <div class="sub-heading">日本政治（高市政権）</div>
+      <div class="sub-heading"><span class="flag">🇯🇵</span>日本政治（高市政権）</div>
       <p>高市政権は9月17日に自民党役員人事、18日に内閣改造を実施する方針で、政権発足から2年目に入るにあたり「継続性」を重視した布陣とする見通しだ。片山さつき財務相、小泉進次郎防衛相、茂木敏充外相ら主要閣僚は留任する公算が大きい。防衛面では防衛費をGDP比3.5%まで引き上げる中期目標が検討されており、NATO基準や米国からの圧力に足並みを揃える動きとなっている。経済安全保障では重点17分野の戦略に基づき、「危機管理投資」をキーワードとした経済構造改革が進められている。</p>
       <p>外交面では、高市政権は防衛・経済産業・財務など各省の政務三役を総動員し、自由で開かれたインド太平洋（FOIP）、拉致問題、重要鉱物の確保といったテーマで各国との連携拡大を図っている。9月下旬には国連総会出席のため訪米が予定されており、地域の連携強化を進める方針だ。</p>
       <p>経済政策では、増税なき税収増を目指す「危機管理投資」路線のもと財政運営の手腕が問われている。防衛費増額の財源確保と物価高対策の両立が課題となっており、ブルームバーグは米国からの圧力で財政運営が試される局面にあると指摘している。9月13日には沖縄県知事選が実施され、与党にとって参院選に向けた地方選挙の試金石と位置づけられていた。内閣改造の時期もこの知事選や国連総会日程を踏まえて調整されており、高市氏は2027年の自民党総裁選での再選に向けた地盤固めを進めている。</p>
       <div class="topic-source">出典：<a href="https://www.bloomberg.com/news/articles/2026-09-07/japan-pm-takaichi-to-prioritize-continuity-in-cabinet-reshuffle" target="_blank" rel="noopener">Bloomberg</a> / <a href="https://www.nippon.com/en/news/yjj2026091500106/" target="_blank" rel="noopener">Nippon.com</a></div>
     </div>
     <div class="politics-block">
-      <div class="sub-heading">世界の潮流</div>
+      <div class="sub-heading"><span class="flag">🌍</span>世界の潮流</div>
       <p>欧州では極右・ポピュリスト勢力の台頭が加速している。9月6日のドイツ・ザクセン＝アンハルト州議会選挙では「ドイツのための選択肢（AfD）」が得票率約44%を獲得し前回から倍増、メルツ首相率いるキリスト教民主同盟（CDU）を大きく引き離した。「極右」とされる政党が州政権の一角を担いうる初のケースであり、CDUはAfDとの連携を禁じる「防火壁（Brandmauer）」原則を堅持する構えだが持続可能性が問われ始めている。フランスでも国民連合のマリーヌ・ルペン氏が来春の大統領選に向け支持を広げ、党首ジョルダン・バルデラ氏はウクライナ支援への資金拠出停止に言及するなど、対ウクライナ支援やNATOを巡る欧州内のコンセンサスに亀裂が生じている。</p>
       <p>中東では2月末開戦のイラン戦争がなお継続中で、9月にはクウェートへの攻撃やホルムズ海峡での軍事衝突が続いている。トランプ政権はイラン後の地域秩序構築に着手しており、アブラハム合意拡大によるサウジ・イスラエル国交正常化を軸とした新秩序の模索が本格化している。</p>
       <p>米中間ではAI覇権を巡る競争が激化する一方、対話の窓口も維持されている。9月24日の習近平氏訪米を前に両国はAI分野での協議を進めており、背景には中国のDeepSeek・智譜AI・月之暗面などが低コスト・高性能モデルでOpenAIやAnthropicに対抗しつつある状況がある。6月のG7サミットでは中国不在のままAI安全設計や協調行動での合意が形成され、7月には国連主催のAIサミットが190カ国超の参加でジュネーブで開催されるなど、多国間の枠組み作りも並行して進んでいる。</p>
@@ -195,8 +413,28 @@ footer { text-align: center; color: #555; font-size: 12px; margin-top: 32px; pad
 
 <div class="section mlb" id="sec-mlb">
   <div class="section-header">
-    <div class="section-title">MLB</div>
-    <div class="point-summary">本日のポイント：レイズ・ブリュワーズが両リーグトップ。ヤンキース、ブリュワーズ・ドジャース・ブレーブスがポストシーズン進出確定。タイトル争いは最終盤までもつれる。</div>
+    <div class="icon-badge">⚾</div>
+    <div>
+      <div class="section-title">MLB</div>
+      <div class="point-summary">本日のポイント：レイズ・ブリュワーズが両リーグトップ。ヤンキース、ブリュワーズ・ドジャース・ブレーブスがポストシーズン進出確定。タイトル争いは最終盤までもつれる。</div>
+    </div>
+  </div>
+  <div class="stat-chips">
+    <span class="chip up">ALトップ レイズ</span>
+    <span class="chip up">NLトップ ブリュワーズ</span>
+    <span class="chip flat">ミシオロウスキー 200奪三振（史上2番目の速さ）</span>
+  </div>
+  <div class="badge-grid">
+    <div class="badge-grid-title">ポストシーズン進出状況</div>
+    <div class="badge-row">
+      <span class="badge-item">ヤンキース（AL）</span>
+      <span class="badge-item">ブリュワーズ（NL）</span>
+      <span class="badge-item">ドジャース（NL）</span>
+      <span class="badge-item">ブレーブス（NL）</span>
+      <span class="badge-item wc">D-backs（NL WC争い）</span>
+      <span class="badge-item wc">パドレス（NL WC争い）</span>
+      <span class="badge-item wc">ガーディアンズ他（AL WC争い）</span>
+    </div>
   </div>
   <div class="topics">
     <div class="topic">
@@ -219,8 +457,43 @@ footer { text-align: center; color: #555; font-size: 12px; margin-top: 32px; pad
 
 <div class="section dodgers" id="sec-dodgers">
   <div class="section-header">
-    <div class="section-title">DODGERS</div>
-    <div class="point-summary">本日のポイント：レッズ戦を4-1で制し91勝59敗、14年連続プレーオフ進出確定。大谷は故障者リスト入りで9/26復帰見込み、山本は安定感抜群！</div>
+    <div class="icon-badge">🔵</div>
+    <div>
+      <div class="section-title">DODGERS</div>
+      <div class="point-summary">本日のポイント：レッズ戦を4-1で制し91勝59敗、14年連続プレーオフ進出確定。大谷は故障者リスト入りで9/26復帰見込み、山本は安定感抜群！</div>
+    </div>
+  </div>
+  <div class="stat-chips">
+    <span class="chip up">91勝59敗（勝率.607）</span>
+    <span class="chip up">14年連続プレーオフ進出</span>
+    <span class="chip warn">大谷 故障者リスト入り（9/26復帰見込み）</span>
+    <span class="chip up">大谷 打率.284・30本塁打</span>
+    <span class="chip up">山本 防御率2点台半ば</span>
+  </div>
+  <div class="winrate-wrap">
+    <div class="winrate-title">シーズン成績</div>
+    <div class="winrate-track">
+      <div class="winrate-fill" style="width:60.7%"><span>91勝</span></div>
+    </div>
+    <div class="winrate-caption">91勝59敗・勝率.607　NL西地区首位を独走中</div>
+  </div>
+  <div class="gap-chart">
+    <div class="gap-title">上位シード争い（ゲーム差）</div>
+    <div class="gap-row">
+      <div class="gap-label">vs ブリュワーズ</div>
+      <div class="gap-track"><div class="gap-fill" style="width:14%"></div></div>
+      <div class="gap-value">1.5G差</div>
+    </div>
+    <div class="gap-row">
+      <div class="gap-label">vs ブレーブス（1回戦シード）</div>
+      <div class="gap-track"><div class="gap-fill" style="width:29%"></div></div>
+      <div class="gap-value">3G差</div>
+    </div>
+    <div class="gap-row">
+      <div class="gap-label">D-backs/パドレスとの差（地区首位）</div>
+      <div class="gap-track"><div class="gap-fill" style="width:100%"></div></div>
+      <div class="gap-value">10.5G</div>
+    </div>
   </div>
   <div class="topics">
     <div class="topic">
