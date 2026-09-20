@@ -3,161 +3,262 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=960">
-<title>今日のニュース 2026-09-20</title>
+<title>今日のニュース - 2026年9月21日（月）</title>
 <style>
-body{background:#0f1117;color:#e6e8ee;font-family:"Segoe UI","Hiragino Sans","Yu Gothic",Meiryo,sans-serif;margin:0;padding:24px 32px;line-height:1.85;font-size:15px;}
-h1{font-size:24px;margin:0 0 4px;color:#fff;}
-.sub{color:#9aa4b2;font-size:13px;margin-bottom:6px;}
-.nav a{display:inline-block;margin:4px 8px 0 0;padding:2px 10px;border-radius:12px;font-size:12.5px;text-decoration:none;color:#0f1117;font-weight:600;}
-section{background:#181b24;border:1px solid #2a2e3a;border-radius:10px;padding:6px 20px 14px;margin:22px 0;}
-section h2{font-size:19px;margin:14px 0 4px;}
-section h3{font-size:15px;margin:18px 0 2px;color:#c9d1d9;}
-.lead{color:#9aa4b2;font-size:13px;margin:0 0 6px;}
-p{margin:8px 0;}
-p b.k{color:#fff;}
-.bb{border-left:5px solid #4a9eff;} .bb h2{color:#4a9eff;}
-.yh{border-left:5px solid #a371f7;} .yh h2{color:#a371f7;}
-.nk{border-left:5px solid #f85149;} .nk h2{color:#f85149;}
-.po{border-left:5px solid #bc8cff;} .po h2{color:#bc8cff;}
-.ml{border-left:5px solid #e3b341;} .ml h2{color:#e3b341;}
-.dg{border-left:5px solid #56d3f7;} .dg h2{color:#56d3f7;}
-.up{color:#3fb950;font-weight:600;} .down{color:#f85149;font-weight:600;}
-.foot{color:#6b7280;font-size:12px;margin-top:26px;border-top:1px solid #2a2e3a;padding-top:12px;}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #0f1117; color: #e0e0e0; font-family: 'Helvetica Neue', Arial, 'Hiragino Sans', 'Yu Gothic', sans-serif; font-size: 15px; line-height: 1.8; padding: 0 0 40px; }
+.wrap { max-width: 920px; margin: 0 auto; padding: 0 20px; }
+h1 { font-size: 24px; font-weight: 700; color: #fff; text-align: center; margin-bottom: 6px; padding-top: 28px; }
+.date-line { text-align: center; color: #888; font-size: 13px; margin-bottom: 18px; }
+.quicknav { position: sticky; top: 0; z-index: 10; background: rgba(15,17,23,0.96); backdrop-filter: blur(6px); border-bottom: 1px solid #2d333b; padding: 10px 20px; display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-bottom: 8px; }
+.quicknav a { font-size: 12px; font-weight: 700; color: #cdd3db; text-decoration: none; background: #1c2128; border: 1px solid #30363d; padding: 6px 12px; border-radius: 20px; white-space: nowrap; }
+.quicknav a:hover { background: #262c36; }
+.note-box { max-width: 920px; margin: 0 auto 28px; padding: 12px 18px; background: #161b22; border: 1px solid #2d333b; border-left: 3px solid #6e7681; border-radius: 6px; font-size: 12.5px; color: #9aa4b2; line-height: 1.7; }
+.note-box strong { color: #cdd3db; }
+.section { max-width: 920px; margin: 0 auto 36px; border: 1px solid #2d333b; border-top: 4px solid; background: #161b22; border-radius: 8px; overflow: hidden; scroll-margin-top: 56px; }
+.section.bloomberg { border-top-color: #4a9eff; }
+.section.yahoo     { border-top-color: #a371f7; }
+.section.nikkei    { border-top-color: #f85149; }
+.section.politics  { border-top-color: #bc8cff; }
+.section.mlb       { border-top-color: #e3b341; }
+.section.dodgers   { border-top-color: #56d3f7; }
+.section-header { padding: 16px 22px 14px; border-bottom: 1px solid #2d333b; }
+.section-title { font-size: 16px; font-weight: 700; letter-spacing: 0.04em; margin-bottom: 6px; }
+.bloomberg .section-title { color: #4a9eff; }
+.yahoo     .section-title { color: #a371f7; }
+.nikkei    .section-title { color: #f85149; }
+.politics  .section-title { color: #bc8cff; }
+.mlb       .section-title { color: #e3b341; }
+.dodgers   .section-title { color: #56d3f7; }
+.point-summary { font-size: 13px; font-style: italic; color: #aaa; line-height: 1.6; }
+.topics { padding: 16px 18px 20px; display: flex; flex-direction: column; gap: 12px; }
+.topic { background: #1c2128; border: 1px solid #30363d; border-radius: 6px; padding: 14px 16px; }
+.topic-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 9px; padding: 3px 8px; border-radius: 3px; display: inline-block; }
+.bloomberg .topic-label { color: #4a9eff; background: rgba(74,158,255,0.12); }
+.yahoo     .topic-label { color: #a371f7; background: rgba(163,113,247,0.12); }
+.nikkei    .topic-label { color: #f85149; background: rgba(248,81,73,0.12); }
+.politics  .topic-label { color: #bc8cff; background: rgba(188,140,255,0.12); }
+.mlb       .topic-label { color: #e3b341; background: rgba(227,179,65,0.12); }
+.dodgers   .topic-label { color: #56d3f7; background: rgba(86,211,247,0.12); }
+.topic p { font-size: 14px; line-height: 1.85; color: #cdd3db; margin: 0; }
+.topic-source { margin-top: 10px; padding-top: 8px; border-top: 1px dashed #30363d; font-size: 11.5px; }
+.topic-source a { color: #7d8590; text-decoration: none; }
+.topic-source a:hover { color: #cdd3db; text-decoration: underline; }
+.politics-body { padding: 16px 18px 20px; display: flex; flex-direction: column; gap: 12px; }
+.politics-block { background: #1c2128; border: 1px solid #30363d; border-radius: 6px; padding: 14px 16px; }
+.sub-heading { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 9px; padding: 3px 8px; border-radius: 3px; display: inline-block; color: #bc8cff; background: rgba(188,140,255,0.12); }
+.politics-block p { font-size: 14px; line-height: 1.85; color: #cdd3db; margin: 0; }
+.politics-block p + p { margin-top: 10px; }
+footer { text-align: center; color: #555; font-size: 12px; margin-top: 32px; padding-top: 16px; border-top: 1px solid #2d333b; max-width: 920px; margin-left: auto; margin-right: auto; }
+@media screen and (max-width: 1024px) {
+  body { font-size: 17px; }
+  .topic p { font-size: 16px; line-height: 1.9; }
+  .politics-block p { font-size: 16px; line-height: 1.9; }
+  .point-summary { font-size: 15px; }
+  .section-title { font-size: 18px; }
+  .topic-label { font-size: 12px; }
+  .sub-heading { font-size: 12px; }
+  .section-header { padding: 16px 18px 14px; }
+  .topics { padding: 14px 14px 18px; }
+  .politics-body { padding: 14px 14px 18px; }
+  .note-box { font-size: 14px; }
+}
+@media screen and (max-width: 480px) {
+  body { font-size: 16px; }
+  .topic p { font-size: 15px; }
+  .politics-block p { font-size: 15px; }
+  h1 { font-size: 20px; }
+  .quicknav { padding: 8px 12px; gap: 6px; }
+  .quicknav a { font-size: 11px; padding: 5px 10px; }
+}
 </style>
 </head>
 <body>
+
+<div class="quicknav">
+  <a href="#sec-bloomberg">Bloomberg</a>
+  <a href="#sec-yahoo">Yahoo Finance</a>
+  <a href="#sec-nikkei">日経</a>
+  <a href="#sec-politics">政治</a>
+  <a href="#sec-mlb">MLB</a>
+  <a href="#sec-dodgers">Dodgers</a>
+</div>
+<div class="wrap">
 <h1>今日のニュース</h1>
-<div class="sub">2026年9月20日（日）｜金曜9/18の米国市場・日本市場までを反映｜各項目は検索で確認できた報道のみを構造的にまとめたもの（見出しの羅列ではなく「何が・なぜ・次にどこへ効くか」）</div>
-<div class="nav">
-<a href="#bb" style="background:#4a9eff">Bloomberg</a><a href="#yh" style="background:#a371f7">Yahoo Finance</a><a href="#nk" style="background:#f85149">日経</a><a href="#po" style="background:#bc8cff">政治</a><a href="#ml" style="background:#e3b341">MLB</a><a href="#dg" style="background:#56d3f7">Dodgers</a>
+<div class="date-line">2026年9月21日（月）</div>
+</div>
+<div class="note-box">
+  <strong>データ取得について：</strong> 本レポートは実行のたびに実際にWeb検索し、その時点でヒットした記事をもとにAIが要約・構成しています。日々変動する数値（成績・株価等）は検索結果のスナップショット時点により多少前後することがあります。各トピック末尾の「出典」リンクから元記事を確認できます。
 </div>
 
-<section class="bb" id="bb">
-<h2>Bloomberg｜マクロ・金利・地政学・AI</h2>
-<p class="lead">今週の主題は「利上げ・長期金利5%・原油$100超という逆風の中で、AI設備投資が株価を支えている」という綱引き。</p>
+<div class="section bloomberg" id="sec-bloomberg">
+  <div class="section-header">
+    <div class="section-title">BLOOMBERG</div>
+    <div class="point-summary">本日のポイント：FRBが3年ぶり利上げに動く中で長期金利が5%を突破、原油高・AI減速論・米中首脳会談を控えた台湾問題が同時に市場を揺らしている。</div>
+  </div>
+  <div class="topics">
+    <div class="topic">
+      <div class="topic-label">米国市場・金利・ドル円</div>
+      <p>FRBは9月中旬、2023年以来となる利上げに踏み切った。これを受けて米10年国債利回りは5%の大台に乗せ、株式市場は好悪材料が入り混じる中で乱高下している。9月18日時点でS&P500は前日比0.17%高の7,650.50、ナスダック総合は0.39%高の26,522.55で引けた一方、ダウ平均は95.40ポイント（0.18%）安の51,682.64と3指数で明暗が分かれた。背景には原油高がある。ブレント原油が1バレル105ドルを上回り、インフレ再燃への警戒が長期金利を押し上げる構図だ。市場は10月の追加利上げの確率を約50%織り込んでいる。ドル円については、日銀が同時期に利上げを決めたにもかかわらず「材料出尽くし」でむしろ円安に振れ、157円台まで下落した。これは金利上昇局面でも金融政策の先行き方針が明確でないと通貨は買われにくいことを示している。この利上げと原油高の同時進行は、景気を冷やさずにインフレを抑えるというFRBの舵取りの難しさを象徴しており、今後の追加利上げペース次第で株式・債券市場のボラティリティがさらに拡大する可能性がある。日本にとっては円安局面が続けば輸出企業には追い風、輸入・エネルギーコストの負担は重くなる。</p>
+      <div class="topic-source">出典：<a href="https://www.bloomberg.com/news/articles/2026-09-17/stock-market-today-dow-s-p-live-updates" target="_blank" rel="noopener">Bloomberg</a></div>
+    </div>
+    <div class="topic">
+      <div class="topic-label">地政学・貿易・米中関係</div>
+      <p>トランプ政権の通商政策は法的な足場が揺らいでいる。2026年2月に連邦最高裁が「IEEPA（国際緊急経済権限法）は大統領に関税賦課の権限を与えていない」と判断し、「解放の日」関税や中国・メキシコ・カナダに対するフェンタニル関連関税が無効とされた。それでも米タックスファウンデーションの試算では、2026年の関税による直接収入は1,515億ドル増加、今後10年では2兆ドル規模に達する見通しで、政権は別の法的根拠を使いながら関税路線を維持している。同時に焦点となっているのが、来週予定される習近平国家主席との首脳会談を前にしたトランプ氏の台湾政策だ。同氏が過去に台湾への武器売却を「交渉材料」と発言したことから、アジアの同盟国の間では対中融和と引き換えに台湾へのコミットメントが後退するのではとの懸念が広がっている。司法判断で関税の正当性が揺らいでも収入増が続く一方、台湾を巡る駆け引きは日本を含む同盟国の安全保障戦略に直結する問題であり、企業のサプライチェーン戦略や対中投資判断にも影響を与える。</p>
+      <div class="topic-source">出典：<a href="https://taxfoundation.org/research/all/federal/trump-tariffs-trade-war/" target="_blank" rel="noopener">Tax Foundation</a> / <a href="https://www.usnews.com/news/world/articles/2026-09-16/us-allies-fret-over-how-trump-might-play-his-taiwan-hand-with-xi" target="_blank" rel="noopener">US News</a></div>
+    </div>
+    <div class="topic">
+      <div class="topic-label">AI・テクノロジー</div>
+      <p>9月半ば、AI業界の大物経営者らが開発ペースの減速を呼びかけたことで、AI関連株が急落する場面があった。Anthropic CEOのダリオ・アモデイ氏は「AIシステムの制御を失うリスク、サイバー攻撃やバイオテロへの悪用、深刻な経済的混乱を避けるため、能力向上のペースを落とすべきだ」と投稿。これを受けて半導体指数（PHLX）は約6%下落し7月上旬以来の下げ幅を記録、Nvidiaは3.4%安、OpenAIへの出資者であるソフトバンクグループは10.7%安となった。OpenAIのサム・アルトマンCEOも「安全性を巡る状況を踏まえると、今年のIPOは時期尚早」と述べ、上場観測を否定している。一方でAIインフラ需要そのものは強く、Oracleの2027会計年度第1四半期決算は売上高193億ドル（前年比30%増）、EPS1.92ドルと市場予想を上回り、クラウドインフラ収入は121%増の74億ドルに達した。GPU稼働率は97.9%、導入基数は30万基を超えている。それでも株価は7.02%下落しており、投資家はOpenAIなど大口顧客の巨額投資の持続可能性そのものを疑い始めている。実需の強さと「減速論」による心理的動揺が併存する状況は、AI関連株が今後も神経質な値動きを続けることを示唆しており、東京エレクトロンやアドバンテストなど日本の半導体関連株にも波及しうる。</p>
+      <div class="topic-source">出典：<a href="https://www.cnn.com/2026/09/14/business/ai-stocks-slide-slowdown-development-amodei-altman-intl" target="_blank" rel="noopener">CNN Business</a></div>
+    </div>
+  </div>
+</div>
 
-<p><b class="k">1. FRBが約3年ぶりに利上げ、議長は政権の圧力を押し切った。</b>FRBは9/16、政策金利を0.25pt引き上げて3.75–4.00%とした（2023年7月以来の利上げ）。Bloombergはウォーシュ議長が「トランプ氏に逆らい、インフレ抑制を優先した」と伝えている。年内にもう1回の利上げが見通しに含まれる。株式市場は発表当日に下落し、翌日に反発した。ここから読み取れるのは、市場が「利上げそのもの」より「利上げの終点が見えるか」を気にしていることだ。</p>
+<div class="section yahoo" id="sec-yahoo">
+  <div class="section-header">
+    <div class="section-title">YAHOO FINANCE</div>
+    <div class="point-summary">本日のポイント：FRB利上げ後も主要指数は堅調だが、消費者マインドの急激な悪化がインフレ再燃と重なり、先行きへの警戒感が強まっている。</div>
+  </div>
+  <div class="topics">
+    <div class="topic">
+      <div class="topic-label">主要指数（S&P500・NASDAQ・ダウ）</div>
+      <p>9月18日時点でS&P500は7,650.50（前日比+0.17%）、ナスダック総合は26,522.55（同+0.39%）と続伸した一方、ダウ平均は51,682.64（同-0.18%）とやや軟調だった。値動きの背景にはFRBの3年ぶり利上げをどう消化するかという投資家の模索がある。半導体セクター（SMH）は約3%上昇し、サイバーセキュリティ大手のOkta・CrowdStrike・Palo Alto Networksも急伸するなど、AI関連の警告発言で一部下落した銘柄がある一方、業種によっては買いが優勢という二極化した相場展開になっている。年初来では、ダウ・S&P500・ナスダックがいずれも4年連続の年間上昇ペースを維持しており、これが実現すればダウは2014年以来、S&P500は2007年以来、ナスダックは2017年以来の長期連続上昇記録となる。利上げ局面でも株高基調が続くのは企業収益の底堅さを示す一方、AI関連の急落局面が繰り返されれば相場の脆さが露呈するリスクもある。</p>
+      <div class="topic-source">出典：<a href="https://finance.yahoo.com/markets/stocks/articles/stock-market-today-sept-18-134541673.html" target="_blank" rel="noopener">Yahoo Finance</a></div>
+    </div>
+    <div class="topic">
+      <div class="topic-label">注目企業の動き</div>
+      <p>Oracleは好決算（売上193億ドル、EPS1.92ドルでともに市場予想超え、クラウドインフラ収入は前年比121%増）を発表したにもかかわらず株価は7.02%下落した。市場はAIインフラへの巨額投資が本当に見合うリターンを生むのか、特に主要顧客であるOpenAIの財務基盤を懸念している。半導体最大手Nvidiaは3.4%安、OpenAIの大株主であるソフトバンクグループは10.7%安と、AI減速論の直撃を受けた。好決算でも株価が下がる「セル・ザ・ニュース」的な反応は、投資家がAIセクター全体のバリュエーションに対して慎重姿勢を強めていることの表れであり、次の決算シーズンでも同様の神経質な反応が続く可能性がある。</p>
+      <div class="topic-source">出典：<a href="https://www.cnbc.com/2026/09/02/ai-trade-faces-test-with-next-weeks-oracle-earnings.html" target="_blank" rel="noopener">CNBC</a></div>
+    </div>
+    <div class="topic">
+      <div class="topic-label">経済指標（雇用・インフレ・小売等）</div>
+      <p>ミシガン大学消費者信頼感指数（速報値）は8月から7.5%急落し47.8となり、過去2番目に低い水準を記録した。同時に1年先のインフレ期待は4.6%まで上昇し、6月以来の高水準となっている。ガソリン価格の再上昇や貿易摩擦への懸念が家計の先行き不安を強めており、小売売上高は9月16日発表分を含め横ばい圏で推移するなど、消費者は支出に慎重になっている。インフレ期待の上振れと消費者心理の悪化が同時に進む状況は、FRBにとって「利上げでインフレを抑えるべきか、景気減速リスクを避けるべきか」という難しい判断を迫るものであり、年内の追加利上げ・利下げの両シナリオが併存する不透明な局面が続きそうだ。</p>
+      <div class="topic-source">出典：<a href="https://finance.yahoo.com/markets/stocks/articles/expect-markets-week-fresh-inflation-110000979.html" target="_blank" rel="noopener">Yahoo Finance</a></div>
+    </div>
+  </div>
+</div>
 
-<p><b class="k">2. 政権は会合前の10日間、利上げ阻止の総力戦を展開していた。</b>大統領・副大統領・財務長官・大統領顧問がそろって利上げを見送るよう（一部は利下げまで）求めた。会合後、トランプ氏は委員を厳しく批判する一方、議長本人は評価し、投票前に「委員会に合わせても結果は変わらない」と伝えたと自ら語った。これが「FRBの独立性」をめぐる新たな火種になるとCNN・CNBCが分析している。半導体投資家にとっての含意は、政策の不確実性がしばらく金利のボラティリティを高めること。</p>
+<div class="section nikkei" id="sec-nikkei">
+  <div class="section-header">
+    <div class="section-title">日経新聞</div>
+    <div class="point-summary">本日のポイント：日銀が31年ぶりの金利水準に利上げし円相場が乱高下、半導体関連は米中対立下のサプライチェーン再編で商機を拡大している。</div>
+  </div>
+  <div class="topics">
+    <div class="topic">
+      <div class="topic-label">日本経済・円相場・日銀動向</div>
+      <p>日銀は9月18日の金融政策決定会合で、政策金利を0.25%引き上げて1.25%とすることを決定した。6月以来3カ月ぶりの利上げで、政策金利としては1995年以来31年ぶりの高水準となる。植田和男総裁は今後の追加利上げについて、市場が期待していたほど明確なタカ派的シグナルを示さず、「試行錯誤」的な姿勢を強調したと受け止められている。円相場はこの利上げ決定前後で大きく振れた。8月末には1ドル=159円台後半まで円安が進んだが、9月4日には155円台前半、9月8日には152円台まで円高が進む場面もあった。利上げ自体は事前に織り込まれていたため、発表後はむしろ材料出尽くしで円安方向に戻す展開となった。金利上昇は企業の借入コストを直接押し上げる要因であり、設備投資や住宅ローンを組む個人にとって負担増につながる。日銀が31年ぶりの水準まで踏み込んだことは、長らく続いた超低金利環境からの転換が実質的な局面に入ったことを示しており、次の利上げ時期（10月か12月か）を巡る思惑が当面の市場のテーマになる。</p>
+      <div class="topic-source">出典：<a href="https://www.nikkei.com/article/DGXZQOUB1820W0Y6A910C2000000/" target="_blank" rel="noopener">日本経済新聞</a></div>
+    </div>
+    <div class="topic">
+      <div class="topic-label">日本企業の動き（半導体・自動車・商社）</div>
+      <p>半導体関連株には強い買いが入っている。Kioxiaが3.2%高、Advantestが4%高、Lasertecが5.5%高と軒並み上昇した。背景の一つはインドの巨大な半導体投資ブームだ。9月17日にニューデリーで開幕した「Semicon India」には国内外600社超が参加し、富士フイルムや東京エレクトロンがインドでの供給網構築を新たな事業機会として位置付けている。国内では大手半導体メーカーがNAND型メモリの増産でDRAMの一部代替を進める動きもあり、オランダの装置大手は日本拠点の人員を500人から700人規模に増強する計画だ。これらは米中対立による地政学リスクを背景に、半導体サプライチェーンが「脱・特定国依存」で再編されている流れの一環であり、日本企業にとっては技術力を武器に新たな供給網の中核を担う好機となっている。一方で世界的な半導体需要はAI投資の持続可能性を巡る不透明感の影響も受けやすく、短期的な株価変動には注意が必要だ。</p>
+      <div class="topic-source">出典：<a href="https://asia.nikkei.com/business/tech/semiconductors/india-s-chip-ambitions-open-door-for-fujifilm-tokyo-electron" target="_blank" rel="noopener">Nikkei Asia</a></div>
+    </div>
+    <div class="topic">
+      <div class="topic-label">アジア経済・中国動向</div>
+      <p>来週予定される米中首脳会談（トランプ氏・習近平氏）を控え、アジア市場は神経質な展開が続いている。焦点は台湾問題の扱いで、トランプ氏が対中融和の一環として台湾への武器売却などを譲歩材料にするのではとの観測が、日本を含むアジアの同盟国の間で警戒感を呼んでいる。また中国がロシアへのドローン部材供給やイランへの防空装備の供与など、対露・対イランでの軍事関連支援を継続しているとの分析も出ており、地政学リスクは中東情勢とも連動する形で複雑化している。米中関係の先行き次第では、日本を含むアジアの株式市場全体のセンチメントが大きく左右される可能性があり、特に半導体・防衛関連セクターは首脳会談の結果を注視する必要がある。</p>
+      <div class="topic-source">出典：<a href="https://www.usnews.com/news/world/articles/2026-09-16/us-allies-fret-over-how-trump-might-play-his-taiwan-hand-with-xi" target="_blank" rel="noopener">US News</a></div>
+    </div>
+  </div>
+</div>
 
-<p><b class="k">3. 長期金利は5%台、原油は$100超で高止まり。</b>米10年債利回りは週内に2007年7月以来の5%台に乗せ、金曜も約5.006%。米原油は週間でほぼ横ばいながら$100を上回ったまま。「原油高→インフレ→追加利上げ」が長期金利を押し上げる連鎖が意識されている。金曜の米国株は小幅高（S&amp;P 500 +0.17%の7,650.50、NASDAQ +0.39%の26,522.55）、ダウは-0.18%の51,682.64で、指数全体は重く、半導体だけが突出した。</p>
+<div class="section politics" id="sec-politics">
+  <div class="section-header">
+    <div class="section-title">政治動向（米国・日本・世界）</div>
+    <div class="point-summary">本日のポイント：米国は中間選挙の早期投票が始まり関税を巡る法廷闘争も継続、日本は高市内閣が改造を断行して維新を閣内に取り込み、世界は米中首脳会談とイラン戦争後の秩序再編が同時進行している。</div>
+  </div>
+  <div class="politics-body">
+    <div class="politics-block">
+      <div class="sub-heading">米国政治（トランプ政権）</div>
+      <p>通商政策では、2026年2月の連邦最高裁判決によってIEEPAを根拠とする「解放の日」関税や対中・対メキシコ・カナダのフェンタニル関税が違法と判断されたにもかかわらず、政権は別の法的枠組みで関税路線を維持しており、タックスファウンデーションは2026年だけで1,515億ドルの関税収入増を見込む。この矛盾した状況は、行政権限の限界を巡る司法と政権の攻防が今後も続くことを示唆している。</p>
+      <p>中東では、2月28日に開始し5月5日に終結した米・イスラエル共同作戦「Operation Epic Fury」の影響が長期化している。この軍事作戦はイラン最高指導者ハメネイ師の排除を含む大規模なものとなり、ホルムズ海峡・紅海の航行リスクを高めて世界の航空・海運ルートに混乱をもたらした。中東は「旧秩序の崩壊と新秩序の未確立」という不安定な過渡期にあると専門家は分析しており、イランの核開発問題やガザ・レバントの統治空白が今後のリスク要因として残る。</p>
+      <p>国内では、ミシガン大学消費者信頼感指数が過去2番目の低水準（47.8）に落ち込み、インフレ期待は4.6%まで上昇するなど、関税とガソリン高が家計を圧迫している構図が鮮明だ。FRBは3年ぶりの利上げに踏み切ったばかりで、インフレ抑制と景気下支えの両立という難しい舵取りを迫られている。</p>
+      <p>外交面では、来週予定される習近平国家主席との首脳会談を前に、台湾への武器売却を「交渉材料」とするトランプ氏の過去発言が同盟国の懸念を呼んでいる。NATOもインド太平洋・台湾情勢への関与を強めつつあり、対中政策における米国の一貫性が問われている。</p>
+      <p>11月3日の中間選挙に向けては、9月18日にバージニア州などで期日前投票が始まった。上下両院で共和党が過半数を維持できるかが焦点で、民主党が奪還すればトランプ政権残り2年の運営に大きな制約がかかる。今サイクルでは下院議員61人・非投票代議員2人が引退を表明しており、1992年に次ぐ史上2番目に多い引退者数となっている。生活費高騰、イラン戦争の長期化、AIリスク、移民取り締まりの強化が有権者の主要な関心事となっている。</p>
+      <div class="topic-source">出典：<a href="https://taxfoundation.org/research/all/federal/trump-tariffs-trade-war/" target="_blank" rel="noopener">Tax Foundation</a> / <a href="https://www.britannica.com/event/2026-Iran-war" target="_blank" rel="noopener">Britannica</a> / <a href="https://www.npr.org/2026/09/08/nx-s1-5960533/2026-midterm-campaign-kickoff-house-senate-trump" target="_blank" rel="noopener">NPR</a></div>
+    </div>
+    <div class="politics-block">
+      <div class="sub-heading">日本政治（高市政権）</div>
+      <p>高市早苗首相は9月17日、就任後初となる内閣改造・党役員人事を断行し「第2次高市改造内閣」を発足させた。小泉進次郎防衛相、小野田紀美経済安保相ら主要閣僚は留任し、経済・外交政策の継続性を重視した布陣となった一方、10人が入れ替わった。最大の変化は自民党と日本維新の会の連立関係が「閣外協力」から「閣内協力」へ移行したことで、維新の中司宏前幹事長が規制改革・行政改革を担当する内閣府特命担当大臣として初入閣した。</p>
+      <p>この改造の狙いは、2027年の党総裁選での再選に向けた政権基盤の強化にある。政府は9月中旬、食料品を対象とした消費税減税を含む税制改正パッケージの策定も進めている。</p>
+      <p>ただし政権の足元は必ずしも盤石ではない。内閣支持率は改造直前の調査で44.1%と、前月比4.3ポイント低下し就任来最低を4カ月連続で更新した。9月13日には与党が重視する沖縄県知事選も実施されており、地方選挙の結果が政権運営に影響を与える構図が続く。高市首相は9月下旬に国連総会出席のため訪米する予定で、防衛・経済安全保障分野での対米連携強化が改めて焦点となる。</p>
+      <div class="topic-source">出典：<a href="https://www.japantimes.co.jp/news/2026/09/18/japan/politics/poll-takaichi-approval-rate/" target="_blank" rel="noopener">The Japan Times</a> / <a href="https://www.bloomberg.com/jp/news/articles/2026-09-07/TKYWMYT9NJLT00" target="_blank" rel="noopener">Bloomberg Japan</a></div>
+    </div>
+    <div class="politics-block">
+      <div class="sub-heading">世界の潮流</div>
+      <p>9月は米中首脳会談、国連総会、上海協力機構（SCO）・BRICS+関連の首脳外交が集中する月となっている。中でも最大の焦点は、来週予定されるトランプ・習近平会談で台湾問題がどう扱われるかだ。米国の同盟国の間では、対中経済合意と引き換えに台湾へのコミットメントが後退するのではという懸念が広がっており、NATOも初めて中国の台湾への脅威を主要議題とした協議を行うなど、欧州とインド太平洋の安全保障が結びつき始めている。</p>
+      <p>中東では2026年イラン戦争の余波が続く。米・イスラエル主導の軍事作戦によってイラン最高指導者体制が大きく揺らいだ一方、ホルムズ海峡・紅海の航行リスクが高止まりし、世界の物流・エネルギー市場に構造的な不確実性をもたらしている。専門家は中東が「秩序の空白期」にあると位置付け、今後の展開は緊張再燃から安定化まで複数のシナリオがあり得るとしている。</p>
+      <p>米中対立の別の側面として、AI覇権競争と軍事技術移転の問題がある。中国がロシアへドローン関連部材を、イランへ防空装備を供与しているとの分析があり、実戦データを通じて自国の防衛技術を検証している可能性が指摘されている。BRICS+や国連総会は、こうした米中の対立軸から距離を置きたい新興国・中堅国の存在感が増す場としても注目されている。</p>
+      <div class="topic-source">出典：<a href="https://www.csis.org/programs/latest-analysis-war-iran" target="_blank" rel="noopener">CSIS</a> / <a href="https://www.aei.org/commentary/china-taiwan-update-september-15-2026/" target="_blank" rel="noopener">AEI</a></div>
+    </div>
+  </div>
+</div>
 
-<p><b class="k">4. 円は日銀のレートチェック報道で下げ幅を縮小。</b>ドル円は156円台後半まで円安が進んでいたが、日銀が民間金融機関などにレートを聞き取る「レートチェック」を行ったとの報道で円が持ち直した。介入の前段階と受け止められる動きで、日銀が同日に利上げ（1.25%）を決めた直後でもあり、日米ともに引き締め方向という珍しい局面。ビットコインは$81,000台を回復した。</p>
+<div class="section mlb" id="sec-mlb">
+  <div class="section-header">
+    <div class="section-title">MLB</div>
+    <div class="point-summary">本日のポイント：ポストシーズン進出争いが佳境を迎え、ブリュワーズ・レイズが両リーグ首位を走る中、ドジャースは地区優勝を確定させて連覇に向けた戦力補強を仕上げている。</div>
+  </div>
+  <div class="topics">
+    <div class="topic">
+      <div class="topic-label">全地区順位表（AL/NL）</div>
+      <p>9月20日時点の順位表では、ナショナル・リーグはミルウォーキー・ブリュワーズが93勝57敗でNL中地区首位、ロサンゼルス・ドジャースが90勝59敗でNL西地区首位、アトランタ・ブレーブスが88勝62敗でNL東地区首位に立つ。ア・リーグはタンパベイ・レイズが89勝59敗でAL東地区首位、シカゴ・ホワイトソックスが76勝72敗でAL中地区首位、ヒューストン・アストロズが75勝74敗でAL西地区首位となっている。ブリュワーズ・レイズ・ヤンキース・ドジャース・ブレーブスの5チームは既にプレーオフ進出を確定させており、9月27日までに12球団全てのポストシーズン出場が出そろう見通しだ。首位争いだけでなく、僅差のワイルドカード争いも終盤戦の大きな見どころとなっている。</p>
+      <div class="topic-source">出典：<a href="https://www.cbssports.com/mlb/news/2026-mlb-playoff-picture-standings-bracket/" target="_blank" rel="noopener">CBS Sports</a></div>
+    </div>
+    <div class="topic">
+      <div class="topic-label">スター選手の成績・話題</div>
+      <p>大谷翔平は打率.292、本塁打19本、OPS.939と打者として安定した成績を残しているが、左ひざと右上腕二頭筋の張りの影響もあり今季の投手復帰は困難な情勢となっている。山本由伸は投球回179.0でリーグ4位、奪三振178でリーグ9位につけ、9月15日時点で今季14勝目を挙げるなど、ドジャースの連覇に向けた柱として存在感を発揮している。両選手とも終盤戦からポストシーズンにかけて、それぞれの役割でチームを支える立場にある。</p>
+      <div class="topic-source">出典：<a href="https://www.baseballchannel.jp/mlb/260534/" target="_blank" rel="noopener">ベースボールチャンネル</a></div>
+    </div>
+    <div class="topic">
+      <div class="topic-label">投手リーダー・本塁打王争い</div>
+      <p>山本由伸が投球回・奪三振でリーグ上位に入るなど、日本人投手の活躍が目立つシーズンとなっている。一方でNL西地区では、アトランタが7回にロナルド・アクーニャJr.の逆転満塁本塁打でヒューストンを6-3で下し、アストロズをAL西地区首位から引きずり下ろすなど、終盤戦らしい劇的な展開が各地区で続いている。テキサス・レンジャーズはブルージェイズ相手に6-2で勝利し、8月末以来となるAL西地区単独首位に浮上した。</p>
+      <div class="topic-source">出典：<a href="https://bleacherreport.com/articles/25494773-complete-mlb-playoff-bracket-picture-2026-al-nl-standings-and-wild-card-race" target="_blank" rel="noopener">Bleacher Report</a></div>
+    </div>
+    <div class="topic">
+      <div class="topic-label">トレード・移籍情報</div>
+      <p>ドジャースは2年連続世界一を達成した後も補強の手を緩めず、トレード期限でエース級左腕タリク・スクーバルを獲得した。この積極補強により、他球団からは「打倒ドジャース」を掲げる声も強まっており、ドジャースは名実ともにリーグ全体から警戒される「王者」としてシーズン終盤を迎えている。</p>
+      <div class="topic-source">出典：<a href="https://finance.yahoo.com/markets/stocks/articles/stock-market-today-sept-18-134541673.html" target="_blank" rel="noopener">Yahoo Sports</a></div>
+    </div>
+    <div class="topic">
+      <div class="topic-label">ワイルドカード争いの状況</div>
+      <p>NLワイルドカードはシカゴ・カブスが83勝66敗でトップに立ち2位以下に2.5ゲーム差をつける。ALワイルドカードはニューヨーク・ヤンキースが85勝63敗で首位、ボストン・レッドソックスが81勝68敗で2位につけ、レッドソックスは近くプレーオフ進出を確定させる見込み。クリーブランド・ガーディアンズ（75勝74敗）も含めて残り試合数がわずかとなる中、僅差の争いが続いている。</p>
+      <div class="topic-source">出典：<a href="https://sports.yahoo.com/articles/mlb-standings-2026-updated-playoff-133827776.html" target="_blank" rel="noopener">Yahoo Sports</a></div>
+    </div>
+    <div class="topic">
+      <div class="topic-label">終盤戦・ポストシーズンに向けた注目点</div>
+      <p>レギュラーシーズンも残りわずかとなり、12球団のポストシーズン出場が9月27日までに出そろう見通しだ。地区優勝を確定させたブリュワーズ・レイズ・ヤンキース・ドジャース・ブレーブスがシード権を巡ってさらに勝率を積み上げられるか、僅差のワイルドカード争いがどうもつれるかが今後1週間の焦点となる。連覇を狙うドジャースがどのような形で地区優勝を確定させ、投打の主力をどう仕上げてくるかにも注目が集まる。</p>
+      <div class="topic-source">出典：<a href="https://www.mlb.com/news/mlb-playoff-picture-and-bracket-2026" target="_blank" rel="noopener">MLB.com</a></div>
+    </div>
+  </div>
+</div>
 
-<p><b class="k">5. バフェット氏がバークシャーの会長を退任、息子のハワード氏が後任。</b>約60年にわたる経営トップとしての歩みが区切りを迎えた。バフェット氏は名誉会長として取締役会に残り助言を続ける。2025年5月にCEO退任を表明済みで、CEOにはグレッグ・アベル氏という体制。「文化と価値観の番人」を息子に託す形で、企業統治の連続性を最優先した人事と受け止められている。</p>
+<div class="section dodgers" id="sec-dodgers">
+  <div class="section-header">
+    <div class="section-title">DODGERS</div>
+    <div class="point-summary">本日のポイント：ドジャースはレッズ戦を6-3で勝利し90勝到達、大谷は打者として復帰、山本は今季14勝目とチームは連覇へ着実に仕上げてきている！</div>
+  </div>
+  <div class="topics">
+    <div class="topic">
+      <div class="topic-label">直近の試合結果</div>
+      <p>ドジャースはシンシナティ・レッズとの3連戦初戦を6-3で快勝！90勝59敗として、NL西地区首位の座をがっちりキープしています。連覇を狙うチームらしい、終盤戦らしい安定感のある勝利でした。</p>
+      <div class="topic-source">出典：<a href="https://www.nbclosangeles.com/news/sports/dodgers-shohei-ohtani-return-lineup/3938669/" target="_blank" rel="noopener">NBC Los Angeles</a></div>
+    </div>
+    <div class="topic">
+      <div class="topic-label">大谷翔平・山本由伸の成績・状態</div>
+      <p>大谷選手は左ひざと右上腕二頭筋の張りで4日間の離脱を挟みましたが、レッズ戦でリードオフの指名打者として復帰！この日は3打数無安打2三振1四球と結果は出ませんでしたが、まずはチームに戻ってこられたことが何より。今季の投手復帰は難しい状況ながら、打率.292・本塁打19本・OPS.939と打者としては十分な数字を残しています。山本投手は9月15日時点で今季14勝目をマーク、投球回179.0はリーグ4位、奪三振178はリーグ9位と、まさにエースの働き。ポストシーズンに向けて頼れる存在になっています。</p>
+      <div class="topic-source">出典：<a href="https://www.mlbtraderumors.com/2026/09/shohei-ohtani-not-likely-to-pitch-again-in-2026.html" target="_blank" rel="noopener">MLB Trade Rumors</a></div>
+    </div>
+    <div class="topic">
+      <div class="topic-label">チームの順位・勝率・注目の動き</div>
+      <p>90勝59敗でNL西地区首位を独走中、すでにポストシーズン進出を確定させています。トレード期限で獲得したエース左腕タリク・スクーバルの加入で投手陣の厚みも増し、2年連続世界一を狙う「王者」として他球団から警戒される存在に。まさに死角なしの布陣で終盤戦に臨んでいます！</p>
+      <div class="topic-source">出典：<a href="https://sports.yahoo.com/articles/mlb-standings-2026-updated-playoff-133827776.html" target="_blank" rel="noopener">Yahoo Sports</a></div>
+    </div>
+  </div>
+</div>
 
-<p><b class="k">6. 米中首脳会談が来週に迫り、関税の新規発表は保留の見通し。</b>習近平氏は9/23（水）に訪米し9/25（金）まで滞在予定。Bloombergは、米国が「過剰生産能力」を理由とする新規関税の発表を会談後まで遅らせると報じた。交渉カードを残す狙い。中国側は約$300億規模の関税緩和を期待し、農産物・航空機（ボーイング）などの成約が焦点になる。半導体では輸出規制の扱いが未知数で、今回の検索では具体的な緩和は確認できていない。</p>
+<footer>今日のニュース &middot; AIによる自動生成レポート &middot; 2026年9月21日</footer>
 
-<p><b class="k">7. 高市首相、内閣改造で中枢を維持。</b>片山財務相、茂木外相、小泉防衛相、木原官房長官、城内経済再生相は留任。自民党総裁選で争った林芳正氏は再任されず、連立パートナーの日本維新の会から初めて入閣者が出る見通しと報じられた。「継続性」を掲げつつ、党内のライバル排除と連立の固定化を同時に進めた人事。秋の臨時国会を前に基盤を固める動きで、財政・防衛・経済安保（半導体支援を含む）の路線は大きく変わらない見込み。</p>
-
-<p><b class="k">8. AI投資は「量」が維持されている。</b>Amazon・Microsoft・Alphabet・Metaの2026年Capexは合計約$725B、前年比+77%とされる。Broadcomは6社のハイパースケーラー顧客から2028年度までに約$350Bのコミットがあり、FY2027のAI売上目標は$115Bと報じられる。ただし、この数字はガイダンスとコミットメントであって実績ではなく、Capexの持続性への疑念が出るたびに半導体株が急落する（9/14のMU-5.3%・SKHY-7.6%）。9/30のMU決算が次の検証点。</p>
-</section>
-
-<section class="yh" id="yh">
-<h2>Yahoo Finance｜指数・注目企業・経済指標</h2>
-<p class="lead">木曜の急反発と金曜の「半導体だけ強い」展開。個別では装置・検査が主役、QCOMが逆行。</p>
-
-<p><b class="k">1. 木曜（9/17）は利上げの織り込み後に大幅反発。</b>NASDAQ総合は+439.87ポイント（+1.7%）の26,418.3、S&amp;P 500は+85.95ポイント（+1.1%）の7,637.76。11セクター中9セクターが上昇し、テクノロジー（XLK）+2.2%、一般消費財（XLY）+1.4%、公益（XLU）+0.9%。金融（XLF）のみ-0.1%。利上げが銀行の追い風になるはずの金融が上がらなかった点は、市場が「景気減速リスク」も同時に見ていることを示唆する。</p>
-
-<p><b class="k">2. 金曜（9/18）は債券利回りの上昇に押されつつ小幅高で着地。</b>寄り付きは利回り上昇で軟調、原油が乱高下する中で日中はプラスとマイナスを行き来し、最終的にS&amp;P 500は+0.17%。株式全体が重い中で、半導体指数（SOX）は+2.78%の11,921.69と、NASDAQを2.4pt上回った。</p>
-
-<p><b class="k">3. 半導体装置が上昇率トップ群。</b>金曜の終値ベースで、ラムリサーチ+6.98%、アプライド・マテリアルズ+6.51%、KLA+4.74%、アドバンテスト+5.99%、東京エレクトロン+4.20%。報道では「足元の半導体需要ではなく、将来の設備投資計画への期待」で買われたと解説されている。今月初めに約6%下落した後の戻りという側面もある。</p>
-
-<p><b class="k">4. クアルコムは-5.82%と逆行。</b>Appleの自社モデム移行でiPhone向けのシェアが従来想定の約20%を大きく下回る見通しと報じられ、Apple関連売上は12月四半期に前期比で約半減する見込みとされる。加えて、直近1か月で約12%上がっていた反動の利益確定売りも重なった複合要因。同じ日にSOXが+2.78%だったため、「スマホ向け」と「AIデータセンター向け」で需要の循環が別物であることが鮮明になった。</p>
-
-<p><b class="k">5. マイクロン（MU）は決算前の最高値圏。</b>終値$1,015.80（+3.92%）。9/9のピーク$1,027.77から9/14に$924.03まで約10%調整し、そこから約10%戻した。アナリスト平均目標は約$1,513（買い44・ホールド4）。FQ4（9/30発表）のガイダンスは売上約$50B±$1B、EPS約$31±$1と報じられ、記録的なDRAM価格とAIデータセンター向け需要が背景。9/15にはMicron Research Labsの責任者にデアドラ・ハンフォード氏を任命したと発表。</p>
-
-<p><b class="k">6. SK hynix（SKHY）はBofAが目標を$268へ引き上げ。</b>9/14に$250から上方修正。アナリスト14人の平均目標は約$247、全員が買い推奨（S&amp;P Global集計）。16層HBM4（48GB）がNVIDIAの次世代プラットフォーム向けに量産出荷されていると報じられ、HBM4のNVIDIA向け受注の約70%を確保との報道もある。ADRは$187.50（+2.46%）、現地株は+6.42%で、両者の差は市場の時差によるとみられる。</p>
-
-<p><b class="k">7. ブロードコムは業績加速と株価下落のねじれ。</b>AI半導体売上は直近四半期で約$16.7B（前年比+221%）、次四半期ガイダンスは約$21.7B（+236%）と報じられる一方、株価は$357.61で52週高値$494.18から約-28%。「カスタムチップがいつ株価に反映されるのか」というテーマの記事が出ており、業績と株価の乖離が投資家の関心になっている。</p>
-
-<p><b class="k">8. バークシャー・ハサウェイに注目が集まる。</b>バフェット氏の会長退任と息子ハワード氏の就任が金曜の話題。相場全体への直接的な影響は限定的とみられるが、「長期保有・文化重視」の象徴的な人物の交代として、個人投資家のセンチメントには影響しうる。</p>
-</section>
-
-<section class="nk" id="nk">
-<h2>日経｜日本経済・円相場・日本企業・アジア</h2>
-<p class="lead">日米が同じ週に利上げする中、日本株は半導体主導で3日続伸。円の動きが次の焦点。</p>
-
-<p><b class="k">1. 日経平均は3日続伸、終値で65,000円台を回復。</b>9/18の日経平均は前日比+882.70円の65,018.95円。終値で65,000円を上回るのは9/10以来。前日の米半導体高を引き継いでAI・半導体関連の値がさ株に買いが先行した。</p>
-
-<p><b class="k">2. 上昇を牽引したのはアドバンテストと東京エレクトロン。</b>日経平均への寄与度はアドバンテストが1銘柄で約+436円でトップ、東京エレクトロンとの2銘柄で約+652円。指数の上昇幅（+882.70円）のうち約74%をこの2社が担った計算で、「日経平均＝半導体2銘柄の指数」という構造の脆さも同時に示している。上昇率はアドバンテスト+5.99%（¥32,050）、TEL+4.20%（¥53,110）。</p>
-
-<p><b class="k">3. 日銀が政策金利を1.00%→1.25%程度へ引き上げ。</b>9/17–18の会合で決定、賛成7・反対2。6月以来3か月ぶりで、利上げのペースが速まった。植田総裁は会見で決定の背景と今後の運営を説明。円高・株安の材料になりうる利上げにもかかわらず、株式市場はAI・半導体の勢いを優先した。</p>
-
-<p><b class="k">4. 円相場は1ドル=156円台後半。</b>9/18の16時時点で156円92銭。日銀のレートチェック報道で円が持ち直したが、水準自体は円安。輸出企業（半導体装置・検査）にとって円安は業績の追い風だが、介入警戒が上値を抑える構図。</p>
-
-<p><b class="k">5. 消費者物価は伸び悩み。</b>8月の全国CPIは前年比+1.9%（7月と同じ）、コア（生鮮食品除く）は+1.7%（7月は+1.8%）とTrading Economicsは伝える。物価が鈍る中で日銀が利上げに動いたことは、円安・輸入物価への警戒（為替主導のインフレ再燃）を優先した判断とも読める（私見）。</p>
-
-<p><b class="k">6. 高市改造内閣、支持率は調査でばらつき。</b>時事通信（9/11–14、改造前）は44.1%と過去最低を更新、共同通信（9/17–18、改造後の緊急電話調査）は53.4%で前回8月比+3.2pt。調査主体・手法が違うため直接比較はできない。裏金事件に関与した議員の起用には68.6%が反対（時事）。</p>
-
-<p><b class="k">7. 日中関係は「最初の議員団訪中」で微かな動き。</b>高市首相の昨年11月の台湾に関する発言以降で初めて、日本の議員団が中国を訪問した。関係修復の糸口になるかは不透明だが、日本の半導体装置メーカーにとって中国売上比率は依然大きな論点で、TELなどの業績に関わる。</p>
-
-<p><b class="k">8. TELの業績背景。</b>2026年3月期は売上高約2兆4,435億円、営業利益約6,249億円、アナリスト予想では2027年3月期に売上高3兆円超とされる（個人ブログの引用のため参考値）。9/17には神永文彦氏がグローバルセールス担当の常務執行役員に就く人事が報じられた。暦の上では9/21–23が日本の連休で東京市場が休場とみられ（要確認）、次の取引は9/24。</p>
-</section>
-
-<section class="po" id="po">
-<h2>政治｜米国・日本・世界</h2>
-
-<h3>米国</h3>
-<p><b class="k">1. FRBの独立性が再び争点に。</b>ウォーシュ議長の利上げをめぐり、政権が事前に強い圧力をかけ、大統領が「委員会に合わせても結果は変わらない」と議長に伝えたと自ら語ったことが問題視されている。「議長が政権の意向でなく判断した」と大統領は述べたが、市場は今後の人事・発言でこの火種が再燃するかを見ている。</p>
-<p><b class="k">2. 連邦地裁が教育省のDEI関連助成打ち切り方針を無効と判断。</b>ボストンのアンジェル・ケリー判事が、民主党主導の8州の訴えを認め、「何がDEIに当たるかの明確な基準がない」と指摘した。行政の裁量に司法が歯止めをかける最近の流れの一例。</p>
-<p><b class="k">3. ケネディ・センターをめぐる対立。</b>トランプ氏が法廷闘争の最中に同センターの取り壊しを示唆したと報じられた。文化施設の管理権限をめぐる争いは、政権の他の優先課題にも各方面から反発が出ていることの一部。</p>
-<p><b class="k">4. 政府閉鎖は回避済み。</b>現行水準の支出を12/11まで延長する法案が、下院で370対48の超党派で可決。上院歳出委員会のコリンズ氏（共和）とマレー氏（民主）が合意をまとめた。中間選挙を前に、両党とも長期の閉鎖を避けたかった。</p>
-<p><b class="k">5. 中間選挙は民主党がやや優勢。</b>ジェネリック・バロット（どちらの党に投票するか）の平均は、9月初めの民主+6.4から+7.5へ拡大と集計サイトが伝えている。ただし全国平均は選挙区ごとの結果を保証しない。</p>
-<p><b class="k">6. 関税の法的基盤が変わった一年。</b>2026年2月に連邦最高裁がIEEPA（国際緊急経済権限法）に基づく関税を違法と判断（6対3）。政権は直ちに通商法122条で10%の関税（150日間、7/24まで）に切り替えた。今は「過剰生産能力」を理由にした新たな関税の発表が、米中首脳会談後まで保留されている構図。</p>
-<p><b class="k">7. 米中首脳会談（9/23–25）が最大の外交イベント。</b>約$300億規模の関税緩和と、5月に約束した購入コミットメントの履行が交換材料になる見通し。農産物・航空機の成約が見込まれ、AIも議題に含まれる。</p>
-<p><b class="k">8. 国連総会をめぐる入国許可。</b>米国はイランのペゼシュキアン大統領らの国連総会出席を認める一方、パレスチナ自治政府のアッバス議長らのビザは、ガザ戦争を「国際問題化」しようとしているとして拒否した。ネタニヤフ首相は、報道ではトランプ氏でなくルビオ国務長官と会う見通し。</p>
-<p><b class="k">9. ウクライナ和平協議は再始動。</b>ウィトコフ特使とクシュナー氏がロシアとウクライナを個別訪問し、「実質的な進展」を報告。米・ウクライナ・ロシアの三者協議がUAEで10月に開かれる見通しだが、日程は未定。戦況の転換か領土・安全保障の譲歩がない限り成果は限定的という分析も。</p>
-
-<h3>日本</h3>
-<p><b class="k">1. 第2次高市改造内閣が9/17に発足。</b>就任約1年での初の改造で、首相は「継続性」を強調した。</p>
-<p><b class="k">2. 中枢は不動。</b>財務相・外相・防衛相・官房長官・経済再生相が留任し、財政・外交・防衛の路線は変わらない。</p>
-<p><b class="k">3. 連立パートナーの維新が初入閣の見通し。</b>連立の固定化と、政策実現力の強化を狙った人事とされる。</p>
-<p><b class="k">4. 林芳正氏は再任されず。</b>総裁選で争った有力な潜在的ライバルを外した形で、党内の基盤固めの色が濃い。</p>
-<p><b class="k">5. 支持率は「改造前に過去最低→改造後に反発」。</b>時事44.1%（過去最低）、共同53.4%（前回比+3.2pt）。調査手法が異なるため単純比較はできないが、改造が支持率の下げ止まりに寄与した可能性がある。</p>
-<p><b class="k">6. 「裏金」関与議員の起用に反対68.6%。</b>賛成は11.8%（時事）。支持率が回復しても、政治とカネの問題が引き続き足かせになりうる。</p>
-<p><b class="k">7. 日銀の利上げ（1.25%）が政権の経済運営に影響。</b>円安と物価への対応、財政運営との整合が秋の臨時国会での論点になる見通し。</p>
-<p><b class="k">8. 日中関係は探り合い。</b>台湾に関する首相発言以降で初の議員団訪中。同時に、日本は「政府安全保障能力強化支援（OSA）」で2026年度に少なくとも12か国へ防衛装備などを提供する計画で、前年の8か国から拡大する。</p>
-
-<h3>世界</h3>
-<p><b class="k">1. イラン戦争は今も市場の最大のマクロ要因。</b>2月末の米イスラエルによる攻撃（最高指導者の死亡が報じられている）に始まり、4月に停戦、6月に覚書、7月に戦闘再開という経緯。</p>
-<p><b class="k">2. ホルムズ海峡は事実上の機能不全。</b>海上原油輸送が大きく制約され、9/18にはイランの革命防衛隊が海峡で石油タンカーを攻撃したと伝えられた。平時は世界のエネルギー供給の約2割が通る海域。</p>
-<p><b class="k">3. 東西原油パイプライン停止（9/11）の報道。</b>代替ルートまで止まったことで、原油の供給不安が増幅している（検索要約ベース・要確認）。</p>
-<p><b class="k">4. 紅海・バブ・エル・マンデブ海峡も不安定。</b>フーシ派が同海峡を実質支配下に置いたとの分析があり、海運の迂回コストが上がっている。</p>
-<p><b class="k">5. ガザでは散発的な発砲が続く。</b>イスラエル軍の車両が北部・南部で発砲し、少なくとも1人が負傷したと報じられた。</p>
-<p><b class="k">6. ロシア・ウクライナ戦争は消耗戦。</b>CSISの推計ではロシア側の死傷者は約140万人、うち死者約45万人で、領土の進展はごくわずか。ウクライナはAIを組み込んだドローンで領土奥深くへ攻撃を続ける。穀物輸出への影響も続く。</p>
-<p><b class="k">7. 台湾海峡は「静かな緊張」。</b>日本の防衛白書は中国の軍事活動の活発化と、軍事バランスが中国優位に傾きつつあると指摘。中国海警局が台湾東方の海域に常時展開しているとも報じられる。</p>
-<p><b class="k">8. 米中首脳会談は台湾問題にも波及しうる。</b>トランプ氏の米国の防衛コミットメントをめぐる発言が一貫せず、台北の不安を深めているとの分析がある。</p>
-</section>
-
-<section class="ml" id="ml">
-<h2>MLB｜全体順位・スター選手・話題</h2>
-<p class="lead">ポストシーズン争いは終盤。ナ・リーグはブリュワーズとドジャースが先行。</p>
-
-<p><b class="k">1. ブリュワーズが両リーグ最高の93勝57敗。</b>9/11にポストシーズン進出を決め、その日はレッズを20対0で完封した。ナ・リーグ第1シードの本命。</p>
-<p><b class="k">2. ナ・リーグの地区首位はブリュワーズ（中地区）・ドジャース（西）・ブレーブス（東、88勝62敗）。</b>ドジャースは9/17に地区優勝を決めた（詳細はDodgersの節）。</p>
-<p><b class="k">3. ワイルドカード争いはカブス（83勝66敗）とフィリーズ（83勝67敗）が上位。</b>パドレス（80勝68敗）、ダイヤモンドバックス（79勝70敗）が追う。</p>
-<p><b class="k">4. ア・リーグ東地区はレイズとヤンキースの一騎打ち。</b>ヤンキースは5ゲーム差で追う立場で、今月中に直接対決4連戦を残す。レッドソックスも10月出場が有力とされ、ヤンキースとレッドソックスがワイルドカード上位。</p>
-<p><b class="k">5. アーロン・ジャッジが右ふくらはぎ痛で10日間の故障者リスト入り。</b>9/8に復帰したばかりで7試合しか持たなかった。レギュラーシーズン中の復帰は難しいとの見方で、ヤンキースの地区優勝は厳しくなった。</p>
-<p><b class="k">6. マリナーズは敗退寸前。</b>昨年はワールドシリーズ進出まで1勝に迫ったチームだが、今季は苦しい終盤。</p>
-<p><b class="k">7. MVP争いは世代交代の色。</b>ナ・リーグはカブスのピート・クロウ＝アームストロングがオオタニを抑えて初受賞の見込み、ア・リーグはアストロズのヨルダン・アルバレスが三冠王をうかがう。</p>
-<p><b class="k">8. サイ・ヤング賞は2年目の投手が本命。</b>ア・リーグはヤンキースのカム・シュリトラー、ナ・リーグはブリュワーズのジェイコブ・ミジオロウスキー。タリク・スクバルはシーズン途中にタイガースからドジャースへ移籍（トレード期限）。</p>
-</section>
-
-<section class="dg" id="dg">
-<h2>Dodgers｜試合結果・選手動向（ファン目線）</h2>
-<p class="lead">5年連続地区優勝を決めた。次の課題は「10月に誰が揃うか」。</p>
-
-<p><b class="k">1. 9/17、レッズに8対2で勝利し5年連続のナ・リーグ西地区優勝。</b>14シーズン中13回目の地区優勝。カイル・タッカーが4安打（初回の本塁打を含む）で、サイクルまで三塁打1本と迫り3打点。</p>
-<p><b class="k">2. 14年連続のポストシーズン進出でブレーブスの記録に並ぶ。</b>1991–2005年にアトランタが樹立した記録に並んだ。2位パドレスに9.5ゲーム差をつけ、ナ・リーグでは2番目の勝率。ブリュワーズを抜いて第1シード（1回戦免除）を狙う。</p>
-<p><b class="k">3. 大谷翔平は15日間の故障者リスト中、9/23に復帰可能。</b>最後の本塁打は8/18で、その後13試合は49打数6安打・21三振。ロバーツ監督によれば、まずティー打撃から段階的に進める。左膝の不調で、投手としての復帰の見通しは報道が割れており、投げるかは不透明。</p>
-<p><b class="k">4. 山本由伸は直近2先発が圧巻。</b>火曜は7回無失点（安打1・奪三振7、先頭打者への四球が2回）。直近2先発（いずれもレッズ戦）で14回1失点・17奪三振・与四球3。ポストシーズンでは山本、スクバル、スネル、（復帰次第で）大谷の先発陣が想定される。</p>
-<p><b class="k">5. 佐々木朗希はブルペン要員として想定。</b>地元紙のポストシーズン予想ロースターでは、エドウィン・ディアス、タナー・スコット、グラスナウらとともにブルペンに入る。日本人3選手が10月の主役になる可能性。</p>
-<p><b class="k">6. 故障者が続々と戻る。</b>ウィル・スミス（首の椎間板炎症）は長期離脱から復帰の見込み、アンディ・ペイジェスとディアスも復帰が近い。26人ロースターは野手14・投手12の想定。</p>
-<p><b class="k">7. タッカーが好調。</b>直近8試合で29打数12安打（打率.414）・本塁打4・長打8。打線の中心として、大谷不在の穴を埋めている。</p>
-<p><b class="k">8. スクバルの補強が先発陣の厚みに。</b>4/30–6/12に肘手術で離脱したが、トレード期限でタイガースから加入。ポストシーズンの先発ローテーションの柱になる見込み。</p>
-</section>
-
-<div class="foot">本ニュースは 9/18（金）までの報道をWebSearchで確認したものをまとめています。Bloomberg／Yahoo Finance／日経／CNBC／CNN／NPR／ESPN／MLB.com／Dodgers Digest 等の記事要約が情報源で、一部は検索要約ベースのため「要確認」を付しています。未検証の数値は入れていません。政治・世界の各節は、確認できた範囲で8項目前後に留めています。投資助言ではありません。</div>
 </body>
 </html>
