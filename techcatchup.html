@@ -37,8 +37,8 @@ body{font-size:17px !important;line-height:1.8 !important;-webkit-text-size-adju
 .diagram,pre{font-size:14px !important;}
 body{max-width:1100px !important;}
 img,svg{max-width:100%;height:auto;}
-table{display:block;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;}
-table>tbody,table>thead{display:table;width:100%;}
+table:not(.vt){display:block;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+table:not(.vt)>tbody,table:not(.vt)>thead{display:table;width:calc(100% - 2px);}
 @media (max-width:700px){
   body{padding:12px !important;}
   th,td{padding:6px 8px !important;}
