@@ -180,6 +180,28 @@ footer { text-align: center; color: #555; font-size: 12px; margin-top: 32px; pad
     </div>
 
     <div class="topic">
+      <div class="topic-label">今の最新モデル一覧（2026年9月23日時点・この1か月の新版に🆕）</div>
+      <p>各社の「今いちばん新しい版」をまとめました。9月は、Anthropic・OpenAI・Google・xAI・DeepSeekの主要5社がそろって新版を出した月です。</p>
+      <table class="chip-table">
+        <tr><th>会社</th><th>最新モデル（版）</th><th>出た日</th><th>どんなモデルか・何が変わったか</th></tr>
+        <tr><td rowspan="4"><b>Anthropic</b><br><span style="font-size:12px;color:#9aa4b2;">（Claude）</span></td><td>🆕 <b>Claude Fable 5.1</b></td><td>9/1</td><td>いちばん賢い最上位。難しい推論・長時間のエージェント・資料作り向け。料金は据え置き（入力$10・出力$50／100万トークン）</td></tr>
+        <tr><td>🆕 <b>Claude Opus 5.5</b></td><td>9/22</td><td>Opus 5の後継。多くの作業でFable 5.1並み、動かすコストは約4割減、料金は約2割下げ（$4・$20）</td></tr>
+        <tr><td><b>Claude Sonnet 5</b></td><td>—</td><td>速さと性能のバランス型。ふだん使いの標準（あなたが主に使っているモデル）</td></tr>
+        <tr><td><b>Claude Haiku 4.5</b></td><td>—</td><td>いちばん速く、安い</td></tr>
+        <tr><td rowspan="2"><b>OpenAI</b><br><span style="font-size:12px;color:#9aa4b2;">（ChatGPT）</span></td><td>🆕 <b>GPT-6 Sol</b></td><td>9/22</td><td>プログラム作成など複雑な作業向け。前の世代（GPT-5.6）の半額（$2・$10）</td></tr>
+        <tr><td>🆕 <b>GPT-6 Luna</b></td><td>9/22</td><td>要約など大量の処理向け。OpenAI史上でも最安クラス（$0.10・$0.50）</td></tr>
+        <tr><td rowspan="2"><b>Google</b><br><span style="font-size:12px;color:#9aa4b2;">（Gemini）</span></td><td>🆕 <b>Gemini 3.8 Flash</b></td><td>9/2</td><td>速さ重視の最新版。開発者向けに「新しい案件はこれを使う」と推奨</td></tr>
+        <tr><td><b>Gemini 3.1 Pro</b></td><td>—</td><td>難しい推論向けの上位版（3.5 Proはまだ出ていない）</td></tr>
+        <tr><td rowspan="2"><b>xAI</b><br><span style="font-size:12px;color:#9aa4b2;">（Grok・マスク氏）</span></td><td>🆕 <b>Grok 4.7</b></td><td>9/21</td><td>同社でいちばんプログラム作成に強い版。料金・速さはGrok 4.6と同じ</td></tr>
+        <tr><td>Grok 5</td><td>未定</td><td>学習中で、発売日は決まっていない</td></tr>
+        <tr><td rowspan="2"><b>DeepSeek</b><br><span style="font-size:12px;color:#9aa4b2;">（中国）</span></td><td>🆕 <b>DeepSeek V4.1 Flash</b></td><td>9/10</td><td>新しい設計の最小モデル。画像も理解できる。安さが武器で、米2社の値下げの背景に</td></tr>
+        <tr><td><b>DeepSeek V4 Pro</b></td><td>—</td><td>上位版。利用者の要望で提供を継続</td></tr>
+      </table>
+      <p><strong>読み方：</strong>9月の新版は、どれも「賢さ」だけでなく<strong>「安さ・速さ」</strong>を打ち出しています。1回あたりの料金が下がると、AIが使われる回数は増えやすく、その分の計算がデータセンターのチップとメモリの需要になります（下の「チップの表」を参照）。</p>
+      <div class="topic-source">出典：<a href="https://www.datastudios.org/post/claude-ai-available-models-supported-models-version-differences-capability-comparison-and-access" target="_blank" rel="noopener">Data Studios（Claudeの現行モデル）</a> ／ <a href="https://platform.claude.com/docs/en/models/fable-5/overview" target="_blank" rel="noopener">Claude公式ドキュメント</a> ／ <a href="https://9to5google.com/2026/09/22/claude-opus-5-5-and-openai-gpt-6-sol-luna-both-launch-today-with-lower-costs/" target="_blank" rel="noopener">9to5Google（Opus 5.5・GPT-6）</a> ／ <a href="https://ai.google.dev/gemini-api/docs/changelog" target="_blank" rel="noopener">Google Gemini API リリースノート</a> ／ <a href="https://sqmagazine.co.uk/xai-launches-grok-4-7-coding-model/" target="_blank" rel="noopener">SQ Magazine（Grok 4.7）</a> ／ <a href="https://api-docs.deepseek.com/updates/" target="_blank" rel="noopener">DeepSeek API 更新履歴</a></div>
+    </div>
+
+    <div class="topic">
       <div class="topic-label">流れ：「減速を」と訴えながら、上場へ向かうAnthropic</div>
       <p>9月12日、アモデイCEOは「今すぐAI開発のペースを落とさないと、数か月のうちに深刻な事態になりうる」と警告し、3段階の案を示しました。①外部の評価機関にモデルを開く、②先端企業で共通の安全基準を作る、③民主主義国が（可能な範囲で）権威主義国とも調整する、の3つです。一方で、中国の存在が「最も難しいジレンマ」だとも述べています。OpenAIのアルトマン氏らも、AIの進み方が速すぎるとの懸念を示しました。</p>
       <p>それでもAnthropicは、今年中の新規株式公開（IPO）の方針を変えていないと報じられています。6月に上場の書類を非公開で提出しており、早ければ来月にも上場するとの見方があります（企業価値は今年、約9,650億ドルと評価）。今回の値下げは「上場を控えて競争力を高める」動きだとBloombergは伝えています。<strong>「減速を呼びかける」と「競争に勝つ」を同時に進めている</strong>のが、今のAnthropicの姿です。</p>
