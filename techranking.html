@@ -2,37 +2,53 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=960">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AI技術の序列 — この1〜2年で何が急激に進化したか</title>
 <style>
 body{background:#0f1117;color:#e6e9ef;font-family:"Segoe UI","Hiragino Kaku Gothic ProN",sans-serif;margin:0;padding:24px;line-height:1.8;}
-h1{font-size:22px;border-bottom:2px solid #a371f7;padding-bottom:8px;}
-h2{font-size:19px;color:#a371f7;margin-top:36px;border-left:4px solid #a371f7;padding-left:10px;}
-h3{font-size:15px;color:#c3c8d4;margin-top:20px;}
+h1{font-size:24px;border-bottom:2px solid #a371f7;padding-bottom:8px;}
+h2{font-size:20px;color:#a371f7;margin-top:36px;border-left:4px solid #a371f7;padding-left:10px;}
+h3{font-size:17px;color:#c3c8d4;margin-top:20px;}
 .box{background:#141826;border:1px solid #2a2e3a;border-radius:10px;padding:16px 18px;margin:10px 0;}
 .section{background:#141826;border:1px solid #2a2e3a;border-radius:10px;padding:20px 22px;margin:16px 0;}
-.rank{display:inline-block;font-size:15px;font-weight:bold;border-radius:20px;padding:4px 14px;margin-bottom:10px;}
+.rank{display:inline-block;font-size:17px;font-weight:bold;border-radius:20px;padding:4px 14px;margin-bottom:10px;}
 .rank1{background:#3a2e0f;color:#e3b341;border:1px solid #e3b341;}
 .rank2{background:#1b2a3a;color:#9aa4b2;border:1px solid #9aa4b2;}
 .rank3{background:#2a1f14;color:#d29154;border:1px solid #d29154;}
 .rank4{background:#141826;color:#56d3f7;border:1px solid #56d3f7;}
-.tag{display:inline-block;background:#1b2030;color:#a371f7;font-size:11px;padding:2px 8px;border-radius:4px;margin-right:6px;}
-table{border-collapse:collapse;width:100%;margin:12px 0;font-size:13.5px;}
+.tag{display:inline-block;background:#1b2030;color:#a371f7;font-size:16px;padding:2px 8px;border-radius:4px;margin-right:6px;}
+table{border-collapse:collapse;width:100%;margin:12px 0;font-size:16px;}
 th,td{border:1px solid #2a2e3a;padding:8px 10px;text-align:left;}
 th{background:#1b2030;color:#9aa4b2;font-weight:normal;}
 .up{color:#3fb950;font-weight:bold;}
 .down{color:#f85149;font-weight:bold;}
-.note{color:#9aa4b2;font-size:12.5px;}
-.changed{background:#1b2030;color:#56d3f7;font-size:11px;padding:2px 8px;border-radius:4px;margin-left:8px;border:1px solid #2a3a4a;}
+.note{color:#9aa4b2;font-size:16px;}
+.changed{background:#1b2030;color:#56d3f7;font-size:16px;padding:2px 8px;border-radius:4px;margin-left:8px;border:1px solid #2a3a4a;}
 .conclusion{background:#141826;border:2px solid #a371f7;border-radius:10px;padding:22px 24px;margin:20px 0;}
-.conclusion-label{color:#a371f7;font-size:12px;font-weight:bold;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px;}
-footer{color:#6b7280;font-size:12px;margin-top:40px;border-top:1px solid #2a2e3a;padding-top:12px;}
+.conclusion-label{color:#a371f7;font-size:16px;font-weight:bold;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px;}
+footer{color:#6b7280;font-size:16px;margin-top:40px;border-top:1px solid #2a2e3a;padding-top:12px;}
 a{color:#a371f7;}
-code{background:#1b2030;padding:1px 6px;border-radius:4px;font-size:12.5px;color:#56d3f7;}
+code{background:#1b2030;padding:1px 6px;border-radius:4px;font-size:16px;color:#56d3f7;}
 .photo-box{background:#141826;border:1px solid #2a2e3a;border-radius:8px;padding:14px 16px;margin:10px 0;}
 .photo-box img{max-width:100%;border-radius:6px;}
-.photo-cap{font-size:12px;color:#9aa4b2;margin-top:6px;}
-.photo-src{font-size:10.5px;color:#6b7280;margin-top:4px;}
+.photo-cap{font-size:16px;color:#9aa4b2;margin-top:6px;}
+.photo-src{font-size:16px;color:#6b7280;margin-top:4px;}
+</style>
+<style id="readability">
+body{font-size:17px !important;line-height:1.8 !important;-webkit-text-size-adjust:100%;}
+.diagram,pre{font-size:14px !important;}
+body{max-width:1100px !important;}
+img,svg{max-width:100%;height:auto;}
+table{display:block;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+table>tbody,table>thead{display:table;width:100%;}
+@media (max-width:700px){
+  body{padding:12px !important;}
+  th,td{padding:6px 8px !important;}
+  .conclusion{padding:16px !important;}
+  .diagram,pre{font-size:12px !important;}
+  .bar{font-size:10px !important;overflow-x:auto;white-space:nowrap;}
+  [style*="min-width"]{min-width:0 !important;flex-basis:100% !important;}
+}
 </style>
 </head>
 <body>
