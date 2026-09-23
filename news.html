@@ -16,6 +16,10 @@ h1 { font-size: 24px; font-weight: 700; color: #fff; text-align: center; margin-
 .note-box { max-width: 920px; margin: 0 auto 28px; padding: 12px 18px; background: #161b22; border: 1px solid #2d333b; border-left: 3px solid #6e7681; border-radius: 6px; font-size: 12.5px; color: #9aa4b2; line-height: 1.7; }
 .note-box strong { color: #cdd3db; }
 .section { max-width: 920px; margin: 0 auto 36px; border: 1px solid #2d333b; border-top: 4px solid; background: #161b22; border-radius: 8px; overflow: hidden; scroll-margin-top: 56px; }
+.section.japan { border-top-color: #ff7b72; }
+.japan .section-title { color: #ff7b72; }
+.japan .topic-label { color: #ff7b72; background: rgba(255,123,114,0.12); }
+.japan .group-head { font-size: 13px; font-weight: 700; color: #ffb3ad; letter-spacing: 0.06em; margin: 8px 0 -8px 2px; }
 .section.bloomberg { border-top-color: #4a9eff; }
 .section.yahoo     { border-top-color: #a371f7; }
 .section.nikkei    { border-top-color: #f85149; }
@@ -76,6 +80,7 @@ footer { text-align: center; color: #555; font-size: 12px; margin-top: 32px; pad
 </head>
 <body>
 <div class="quicknav">
+  <a href="#sec-japan">🇯🇵 日本</a>
   <a href="#sec-bloomberg">Bloomberg</a>
   <a href="#sec-yahoo">Yahoo Finance</a>
   <a href="#sec-nikkei">日経</a>
@@ -89,6 +94,65 @@ footer { text-align: center; color: #555; font-size: 12px; margin-top: 32px; pad
 </div>
 <div class="note-box">
   <strong>データ取得について：</strong> 本レポートは実行のたびに実際にWeb検索し、その時点でヒットした記事をもとにAIが要約・構成しています。日々変動する数値（成績・株価等）は検索結果のスナップショット時点により多少前後することがあります。各トピック末尾の「出典」リンクから元記事を確認できます。
+</div>
+
+<!-- ============ 日本 ============ -->
+<div class="section japan" id="sec-japan">
+  <div class="section-header">
+    <div class="section-title">🇯🇵 日本 ─ 社会・暮らし・地元（大阪）</div>
+    <div class="point-summary">本日のポイント：連休中、台風25号が関東に記録的な大雨をもたらし、千葉・神奈川で8人が亡くなった。暮らしでは、お米が約2年ぶりに5キロ2,000円台に下がった一方、サンマは歴史的な不漁で高い。</div>
+  </div>
+  <div class="topics">
+
+    <div class="group-head">社会・災害</div>
+
+    <div class="topic">
+      <div class="topic-label">台風25号：千葉・神奈川で8人死亡、5人行方不明</div>
+      <p>台風25号の影響で、関東と伊豆諸島では記録的な大雨になり、土砂崩れや川の氾濫による浸水が相次ぎました。NHKのまとめでは、千葉県と神奈川県で<strong>8人が死亡、5人が行方不明</strong>です（9/22時点。被害の数字は時間とともに増えており、報道によって時点が異なります）。</p>
+      <p>千葉県鴨川市では21日夜、複数の場所で土砂崩れが起き、約10棟の住宅に土砂が流れ込みました。千葉県佐倉市では一部の地域で冠水が続き、県内では停電も出ました。</p>
+      <p>雨の量は観測史上1位の記録が並びます。伊豆大島は24時間で686.5ミリと、9月の記録を大きく更新しました。千葉県船橋市345.5ミリ、佐倉市322.0ミリ、東京・江戸川臨海282.5ミリも、それぞれ観測史上1位です。台風は22日朝には日本の東へ抜け、温帯低気圧に変わる見込みです。</p>
+      <div class="topic-source">出典：<a href="https://news.web.nhk/newsweb/na/nd-20260922de51926" target="_blank" rel="noopener">NHK（8人死亡 5人不明）</a> ／ <a href="https://news.web.nhk/newsweb/na/nd-20260922de51871" target="_blank" rel="noopener">NHK（鴨川の土砂崩れ）</a> ／ <a href="https://weathernews.jp/news/202609/220021/" target="_blank" rel="noopener">ウェザーニュース</a> ／ <a href="https://news.yahoo.co.jp/articles/bb12bd62d2d9a322c04206e852542fffd94a6933" target="_blank" rel="noopener">毎日新聞</a></div>
+    </div>
+
+    <div class="topic">
+      <div class="topic-label">その他の事件・事故（9/22）</div>
+      <p>滋賀県の琵琶湖では、行方不明になっていた水上バイクの男性を捜索中に、男性の遺体が見つかりました。青森県深浦町では22日夕方、全焼した住宅から男性2人の遺体が見つかっています。</p>
+      <div class="topic-source">出典：<a href="https://news.web.nhk/newsweb/na/nd-20260921de51718" target="_blank" rel="noopener">NHK（Pickup NEWS 9/22）</a> ／ <a href="https://www.jiji.com/jc/archives?g=soc_archive_0" target="_blank" rel="noopener">時事ドットコム（社会）</a></div>
+    </div>
+
+    <div class="group-head">暮らし・季節の話題</div>
+
+    <div class="topic">
+      <div class="topic-label">お米：5キロの平均が約2年ぶりに2,000円台へ</div>
+      <p>農林水産省の調査で、スーパーでのお米5キロの平均価格が<strong>2,971円</strong>（9月7〜13日、税込）になり、約2年ぶりに3,000円を下回りました。銘柄米は2,988円、ブレンド米などは2,866円です。</p>
+      <p>9月からは新米が出回り始めたので、さらに下がる可能性があるとみられています。一方で、「一転してコメ余りになり、新米より古米の方が高い」というねじれた状況を指摘する報道もあります。</p>
+      <div class="topic-source">出典：<a href="https://www.jiji.com/jc/article?k=2026091800854&amp;g=flash" target="_blank" rel="noopener">時事通信（9/18 速報）</a> ／ <a href="https://smartagri-jp.com/agriculture/14968" target="_blank" rel="noopener">SMART AGRI</a> ／ <a href="https://news.yahoo.co.jp/articles/c1793744bb182fdd97325e861cc673f643a0f970?page=2" target="_blank" rel="noopener">FRIDAY</a></div>
+    </div>
+
+    <div class="topic">
+      <div class="topic-label">サンマ：去年の豊漁から一転、歴史的な不漁</div>
+      <p>今年のサンマは、豊漁だった去年から一転して不漁です。豊洲市場の卸値（8月中旬〜9月上旬の平均）は1キロ約3,645円と、去年の同じ時期の<strong>約3.3倍</strong>。東京の鮮魚店では小ぶりのサンマが1匹486円と去年の約2倍で、大型は1匹700円、福岡では1匹1,000円を超える店もあります。</p>
+      <p>ただ、長野のように大型が1匹220円と去年より安い店もあり、仕入れ先によって差があります。水産庁は7月に「8〜12月の来遊量は前年を下回る」との予報を出していました。</p>
+      <div class="topic-source">出典：<a href="https://www.nikkei.com/article/DGXZQOUB08ANH0Y6A900C2000000/" target="_blank" rel="noopener">日本経済新聞</a> ／ <a href="https://s.mxtv.jp/tokyomxplus/mx/article/202609111020/detail/" target="_blank" rel="noopener">TOKYO MX</a> ／ <a href="https://news.yahoo.co.jp/articles/8e8f1eba89e78230e191995f45f275eb7ec59601" target="_blank" rel="noopener">FNN（福岡）</a> ／ <a href="https://www.nbs-tv.co.jp/news/articles/?cid=24986" target="_blank" rel="noopener">長野放送</a></div>
+    </div>
+
+    <div class="topic">
+      <div class="topic-label">野菜・ガソリン</div>
+      <p>キャベツやレタスなどの葉物は、年の初めの高値が落ち着いて、平年並みの値段に戻っています。</p>
+      <p>ガソリン（レギュラー）の全国平均は、9月14日時点で<strong>1リットル169.9円</strong>（前週比-0.1円）。米国ではディーゼル（軽油）が過去最高値になっていますが（Bloomberg欄）、日本のガソリンは政府の補助もあって落ち着いています。</p>
+      <div class="topic-source">出典：<a href="https://www.maff.go.jp/j/seisan/ryutu/yasai/otokuyasai.html" target="_blank" rel="noopener">農林水産省（今週のお手頃野菜 9/18）</a> ／ <a href="https://sasaru.media/article/money/20260904_004" target="_blank" rel="noopener">SASARU</a> ／ <a href="https://nenryo-teigakuhikisage.go.jp/current_graph.pdf" target="_blank" rel="noopener">燃料油価格定額引下げ措置（資源エネルギー庁）</a></div>
+    </div>
+
+    <div class="group-head">地元（大阪）</div>
+
+    <div class="topic">
+      <div class="topic-label">大阪：今日は大きなニュースなし</div>
+      <p>9月22〜23日の大阪で、新聞の1面・社会面に載るような大きなニュースは、検索では見つかりませんでした。連休中の話題としては、西淀川区のイズミヤショッピングセンター福町で「にしよどアフター万博2026」（22・23日）が開かれています。</p>
+      <p>続いている話として、吉村知事は2027年4月の府知事・市長選にそれぞれ出馬する意向を示しており、3度目となる「大阪都構想」の住民投票を任期中に行う考えです（2月の出直し選で当選）。</p>
+      <div class="topic-source">出典：<a href="https://www.walkerplus.com/event_list/today/ar0727/" target="_blank" rel="noopener">ウォーカープラス（大阪のイベント）</a> ／ <a href="https://www.nikkei.com/article/DGXZQOUF0640T0W6A200C2000000/" target="_blank" rel="noopener">日本経済新聞（出直し選）</a></div>
+    </div>
+
+  </div>
 </div>
 
 <!-- ============ Bloomberg ============ -->
