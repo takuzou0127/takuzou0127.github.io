@@ -16,6 +16,10 @@ h1 { font-size: 24px; font-weight: 700; color: #fff; text-align: center; margin-
 .note-box { max-width: 920px; margin: 0 auto 28px; padding: 12px 18px; background: #161b22; border: 1px solid #2d333b; border-left: 3px solid #6e7681; border-radius: 6px; font-size: 12.5px; color: #9aa4b2; line-height: 1.7; }
 .note-box strong { color: #cdd3db; }
 .section { max-width: 920px; margin: 0 auto 36px; border: 1px solid #2d333b; border-top: 4px solid; background: #161b22; border-radius: 8px; overflow: hidden; scroll-margin-top: 56px; }
+.section.japan { border-top-color: #ff7b72; }
+.japan .section-title { color: #ff7b72; }
+.japan .topic-label { color: #ff7b72; background: rgba(255,123,114,0.12); }
+.japan .group-head { font-size: 13px; font-weight: 700; color: #ffb3ad; letter-spacing: 0.06em; margin: 8px 0 -8px 2px; }
 .section.bloomberg { border-top-color: #4a9eff; }
 .section.yahoo     { border-top-color: #a371f7; }
 .section.nikkei    { border-top-color: #f85149; }
@@ -31,7 +35,7 @@ h1 { font-size: 24px; font-weight: 700; color: #fff; text-align: center; margin-
 .mlb       .section-title { color: #e3b341; }
 .dodgers   .section-title { color: #56d3f7; }
 .point-summary { font-size: 13px; font-style: italic; color: #aaa; line-height: 1.6; }
-.topics { padding: 16px 18px 20px; display: flex; flex-direction: column; gap: 12px; }
+.topics { padding: 16px 18px 20px; display: flex; flex-direction: column; gap: 26px; }
 .topic { background: #1c2128; border: 1px solid #30363d; border-radius: 6px; padding: 14px 16px; }
 .topic-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 9px; padding: 3px 8px; border-radius: 3px; display: inline-block; }
 .bloomberg .topic-label { color: #4a9eff; background: rgba(74,158,255,0.12); }
@@ -44,11 +48,11 @@ h1 { font-size: 24px; font-weight: 700; color: #fff; text-align: center; margin-
 .topic-source { margin-top: 10px; padding-top: 8px; border-top: 1px dashed #30363d; font-size: 11.5px; }
 .topic-source a { color: #7d8590; text-decoration: none; }
 .topic-source a:hover { color: #cdd3db; text-decoration: underline; }
-.politics-body { padding: 16px 18px 20px; display: flex; flex-direction: column; gap: 12px; }
+.politics-body { padding: 16px 18px 20px; display: flex; flex-direction: column; gap: 26px; }
 .politics-block { background: #1c2128; border: 1px solid #30363d; border-radius: 6px; padding: 14px 16px; }
 .sub-heading { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 9px; padding: 3px 8px; border-radius: 3px; display: inline-block; color: #bc8cff; background: rgba(188,140,255,0.12); }
 .politics-block p { font-size: 14px; line-height: 1.85; color: #cdd3db; margin: 0; }
-.politics-block p + p { margin-top: 10px; }
+.politics-block p + p { margin-top: 24px; }
 footer { text-align: center; color: #555; font-size: 12px; margin-top: 32px; padding-top: 16px; border-top: 1px solid #2d333b; max-width: 920px; margin-left: auto; margin-right: auto; }
 @media screen and (max-width: 1024px) {
   body { font-size: 17px; }
@@ -71,10 +75,12 @@ footer { text-align: center; color: #555; font-size: 12px; margin-top: 32px; pad
   .quicknav { padding: 8px 12px; gap: 6px; }
   .quicknav a { font-size: 11px; padding: 5px 10px; }
 }
+.topic p + p { margin-top: 24px; }
 </style>
 </head>
 <body>
 <div class="quicknav">
+  <a href="#sec-japan">🇯🇵 日本</a>
   <a href="#sec-bloomberg">Bloomberg</a>
   <a href="#sec-yahoo">Yahoo Finance</a>
   <a href="#sec-nikkei">日経</a>
@@ -88,6 +94,65 @@ footer { text-align: center; color: #555; font-size: 12px; margin-top: 32px; pad
 </div>
 <div class="note-box">
   <strong>データ取得について：</strong> 本レポートは実行のたびに実際にWeb検索し、その時点でヒットした記事をもとにAIが要約・構成しています。日々変動する数値（成績・株価等）は検索結果のスナップショット時点により多少前後することがあります。各トピック末尾の「出典」リンクから元記事を確認できます。
+</div>
+
+<!-- ============ 日本 ============ -->
+<div class="section japan" id="sec-japan">
+  <div class="section-header">
+    <div class="section-title">🇯🇵 日本 ─ 社会・暮らし・地元（大阪）</div>
+    <div class="point-summary">本日のポイント：連休中、台風25号が関東に記録的な大雨をもたらし、千葉・神奈川で8人が亡くなった。暮らしでは、お米が約2年ぶりに5キロ2,000円台に下がった一方、サンマは歴史的な不漁で高い。</div>
+  </div>
+  <div class="topics">
+
+    <div class="group-head">社会・災害</div>
+
+    <div class="topic">
+      <div class="topic-label">台風25号：千葉・神奈川で8人死亡、5人行方不明</div>
+      <p>台風25号の影響で、関東と伊豆諸島では記録的な大雨になり、土砂崩れや川の氾濫による浸水が相次ぎました。NHKのまとめでは、千葉県と神奈川県で<strong>8人が死亡、5人が行方不明</strong>です（9/22時点。被害の数字は時間とともに増えており、報道によって時点が異なります）。</p>
+      <p>千葉県鴨川市では21日夜、複数の場所で土砂崩れが起き、約10棟の住宅に土砂が流れ込みました。千葉県佐倉市では一部の地域で冠水が続き、県内では停電も出ました。</p>
+      <p>雨の量は観測史上1位の記録が並びます。伊豆大島は24時間で686.5ミリと、9月の記録を大きく更新しました。千葉県船橋市345.5ミリ、佐倉市322.0ミリ、東京・江戸川臨海282.5ミリも、それぞれ観測史上1位です。台風は22日朝には日本の東へ抜け、温帯低気圧に変わる見込みです。</p>
+      <div class="topic-source">出典：<a href="https://news.web.nhk/newsweb/na/nd-20260922de51926" target="_blank" rel="noopener">NHK（8人死亡 5人不明）</a> ／ <a href="https://news.web.nhk/newsweb/na/nd-20260922de51871" target="_blank" rel="noopener">NHK（鴨川の土砂崩れ）</a> ／ <a href="https://weathernews.jp/news/202609/220021/" target="_blank" rel="noopener">ウェザーニュース</a> ／ <a href="https://news.yahoo.co.jp/articles/bb12bd62d2d9a322c04206e852542fffd94a6933" target="_blank" rel="noopener">毎日新聞</a></div>
+    </div>
+
+    <div class="topic">
+      <div class="topic-label">その他の事件・事故（9/22）</div>
+      <p>滋賀県の琵琶湖では、行方不明になっていた水上バイクの男性を捜索中に、男性の遺体が見つかりました。青森県深浦町では22日夕方、全焼した住宅から男性2人の遺体が見つかっています。</p>
+      <div class="topic-source">出典：<a href="https://news.web.nhk/newsweb/na/nd-20260921de51718" target="_blank" rel="noopener">NHK（Pickup NEWS 9/22）</a> ／ <a href="https://www.jiji.com/jc/archives?g=soc_archive_0" target="_blank" rel="noopener">時事ドットコム（社会）</a></div>
+    </div>
+
+    <div class="group-head">暮らし・季節の話題</div>
+
+    <div class="topic">
+      <div class="topic-label">お米：5キロの平均が約2年ぶりに2,000円台へ</div>
+      <p>農林水産省の調査で、スーパーでのお米5キロの平均価格が<strong>2,971円</strong>（9月7〜13日、税込）になり、約2年ぶりに3,000円を下回りました。銘柄米は2,988円、ブレンド米などは2,866円です。</p>
+      <p>9月からは新米が出回り始めたので、さらに下がる可能性があるとみられています。一方で、「一転してコメ余りになり、新米より古米の方が高い」というねじれた状況を指摘する報道もあります。</p>
+      <div class="topic-source">出典：<a href="https://www.jiji.com/jc/article?k=2026091800854&amp;g=flash" target="_blank" rel="noopener">時事通信（9/18 速報）</a> ／ <a href="https://smartagri-jp.com/agriculture/14968" target="_blank" rel="noopener">SMART AGRI</a> ／ <a href="https://news.yahoo.co.jp/articles/c1793744bb182fdd97325e861cc673f643a0f970?page=2" target="_blank" rel="noopener">FRIDAY</a></div>
+    </div>
+
+    <div class="topic">
+      <div class="topic-label">サンマ：去年の豊漁から一転、歴史的な不漁</div>
+      <p>今年のサンマは、豊漁だった去年から一転して不漁です。豊洲市場の卸値（8月中旬〜9月上旬の平均）は1キロ約3,645円と、去年の同じ時期の<strong>約3.3倍</strong>。東京の鮮魚店では小ぶりのサンマが1匹486円と去年の約2倍で、大型は1匹700円、福岡では1匹1,000円を超える店もあります。</p>
+      <p>ただ、長野のように大型が1匹220円と去年より安い店もあり、仕入れ先によって差があります。水産庁は7月に「8〜12月の来遊量は前年を下回る」との予報を出していました。</p>
+      <div class="topic-source">出典：<a href="https://www.nikkei.com/article/DGXZQOUB08ANH0Y6A900C2000000/" target="_blank" rel="noopener">日本経済新聞</a> ／ <a href="https://s.mxtv.jp/tokyomxplus/mx/article/202609111020/detail/" target="_blank" rel="noopener">TOKYO MX</a> ／ <a href="https://news.yahoo.co.jp/articles/8e8f1eba89e78230e191995f45f275eb7ec59601" target="_blank" rel="noopener">FNN（福岡）</a> ／ <a href="https://www.nbs-tv.co.jp/news/articles/?cid=24986" target="_blank" rel="noopener">長野放送</a></div>
+    </div>
+
+    <div class="topic">
+      <div class="topic-label">野菜・ガソリン</div>
+      <p>キャベツやレタスなどの葉物は、年の初めの高値が落ち着いて、平年並みの値段に戻っています。</p>
+      <p>ガソリン（レギュラー）の全国平均は、9月14日時点で<strong>1リットル169.9円</strong>（前週比-0.1円）。米国ではディーゼル（軽油）が過去最高値になっていますが（Bloomberg欄）、日本のガソリンは政府の補助もあって落ち着いています。</p>
+      <div class="topic-source">出典：<a href="https://www.maff.go.jp/j/seisan/ryutu/yasai/otokuyasai.html" target="_blank" rel="noopener">農林水産省（今週のお手頃野菜 9/18）</a> ／ <a href="https://sasaru.media/article/money/20260904_004" target="_blank" rel="noopener">SASARU</a> ／ <a href="https://nenryo-teigakuhikisage.go.jp/current_graph.pdf" target="_blank" rel="noopener">燃料油価格定額引下げ措置（資源エネルギー庁）</a></div>
+    </div>
+
+    <div class="group-head">地元（大阪）</div>
+
+    <div class="topic">
+      <div class="topic-label">大阪：今日は大きなニュースなし</div>
+      <p>9月22〜23日の大阪で、新聞の1面・社会面に載るような大きなニュースは、検索では見つかりませんでした。連休中の話題としては、西淀川区のイズミヤショッピングセンター福町で「にしよどアフター万博2026」（22・23日）が開かれています。</p>
+      <p>続いている話として、吉村知事は2027年4月の府知事・市長選にそれぞれ出馬する意向を示しており、3度目となる「大阪都構想」の住民投票を任期中に行う考えです（2月の出直し選で当選）。</p>
+      <div class="topic-source">出典：<a href="https://www.walkerplus.com/event_list/today/ar0727/" target="_blank" rel="noopener">ウォーカープラス（大阪のイベント）</a> ／ <a href="https://www.nikkei.com/article/DGXZQOUF0640T0W6A200C2000000/" target="_blank" rel="noopener">日本経済新聞（出直し選）</a></div>
+    </div>
+
+  </div>
 </div>
 
 <!-- ============ Bloomberg ============ -->
@@ -116,6 +181,16 @@ footer { text-align: center; color: #555; font-size: 12px; margin-top: 32px; pad
       <div class="topic-label">AI：Meta「Muse」が火を付けたCPU需要の再評価</div>
       <p>21日、Metaの新AIエージェントアプリ「Muse」が米App Store無料首位となったことを受け、Metaは+11.4%（時価総額約1,900億ドル増）、AMDは+10%で初の時価総額1兆ドル超え、Intel+12%、Arm+17%、フィラデルフィア半導体指数（SOX）は+4.3%と急騰した。注目すべきは、チップ企業の発表ではなく消費者向けAIアプリの普及という「需要側」のシグナルで半導体全体が買われた点だ。自律型AIエージェントはGPUだけでなくCPU処理も大量に消費するという見方が広がり、NVIDIA一極だったAI投資の恩恵がCPU・メモリへと裾野を広げる可能性を示した。</p>
       <div class="topic-source">出典：<a href="https://www.bloomberg.com/news/articles/2026-09-21/amd-set-to-top-1-trillion-in-market-value-as-chip-stocks-soar" target="_blank" rel="noopener">Bloomberg（AMD 1兆ドル）</a> ／ <a href="https://finance.yahoo.com/markets/stocks/articles/arm-surges-13-meta-muse-152410038.html" target="_blank" rel="noopener">Yahoo Finance</a></div>
+    </div>
+    <div class="topic">
+      <div class="topic-label">経緯の補足：なぜ「Meta」が半導体株を動かしたのか（7月〜9月）</div>
+      <p>このページでは9/22に急にMetaが相場の主役として出てきましたが、その前の流れをほとんど書いていませんでした。順番に並べると次のとおりです。<strong>①7月：「GPUが余っているのでは」という話。</strong>BloombergがMetaは使い切れないGPUを外部に貸し出すクラウド事業（通称「Meta Compute」）を準備していると報じ、「ハイパースケーラーはGPUを買いすぎたのでは」という見方からAI関連株が売られました。ただしMetaは認めておらず、サービスも始まっていません。<strong>②9月8日：Museの発表（このページでは扱っていませんでした）。</strong>Metaが米国で個人向けAIエージェント「Muse」を公開。チャットで答えるだけのAIではなく、メール送信・旅行の予約・書類の記入・支払い（Stripe経由）などの作業を実際にこなし、<strong>アプリを閉じても裏で動き続ける</strong>のが特徴です。メール・カレンダー・支払い・健康・買い物・スマートホームの6分野とつながります。有料プランは月$20と$100で、無料枠もあります。<strong>③9月19〜21日：App Storeで3日連続1位。</strong>公開から約10日で米iPhoneの無料アプリ1位に。利用者1人ごとにクラウド上の専用の仮想マシン（CPU・メモリ・ストレージ）が常に動く仕組みなので、「エージェントが広がるとCPUとメモリが大量に要る」という連想が一気に広がり、9/21にArm+17%・Intel+12%・AMD+10%、Meta自身も約+11%上げました。9/22はマイクロン（メモリ）やクアルコム（スマホ側のエージェント）に広がっています。<strong>つまり、7月の「GPUは余っているのでは」という疑いに対して、9月は「GPU以外も含めて、使い道がもっと出てくる」という答えが出始めた形</strong>です（この二つを直接結びつけた報道は確認できておらず、流れの整理としての見方です）。</p>
+      <div class="topic-source">出典：<a href="https://www.bloomberg.com/news/articles/2026-09-08/meta-announces-muse-ai-agent-for-personal-tasks-and-organization" target="_blank" rel="noopener">Bloomberg（9/8 Muse発表）</a> ／ <a href="https://techcrunch.com/2026/09/08/meta-debuts-its-muse-ai-agent-will-consumers-trust-it/" target="_blank" rel="noopener">TechCrunch（9/8）</a> ／ <a href="https://www.axios.com/2026/09/08/meta-debuts-muse-personal-ai-agent" target="_blank" rel="noopener">Axios（9/8）</a> ／ <a href="https://www.tomshardware.com/tech-industry/meta-reportedly-plans-to-rent-out-its-ai-compute" target="_blank" rel="noopener">Tom's Hardware（7月 Meta Compute報道）</a> ／ <a href="https://www.bloomberg.com/news/articles/2026-09-21/amd-set-to-top-1-trillion-in-market-value-as-chip-stocks-soar" target="_blank" rel="noopener">Bloomberg（9/21）</a></div>
+    </div>
+    <div class="topic">
+      <div class="topic-label">AI：Claudeが開発元Anthropicの研究開発の26%を主導</div>
+      <p>Anthropic（Claudeの開発元。この文章を書いているAIの会社でもあります）は9月17日、社内のAI研究開発のうち<strong>約26%をClaude自身が「主導」している</strong>と、初めて詳しい計測結果を公表しました。「主導」とは、人間が大まかな指示と監督をするだけで、作業の大半をClaudeがこなす状態のことです。この比率は2月にはほぼゼロ（1%未満）で、半年ほどで急に上がりました。さらに研究開発の90%以上が、Claudeが研究者と協働するか主導する形になっており、8月時点では社内でもっとも使われている基盤の上で<strong>約3万のAIエージェントが同時に</strong>研究・開発作業をしていたといいます。本番のコードに取り込まれた変更の80%超は、2026年5月時点でClaudeによるものでした。一方で同社は、計測したどの分野でもClaudeが完全に自律して動いている例はなく、「Claudeが次のモデルを独力で作っている」わけではないとしています。AIが自分の後継を開発する「再帰的な自己改善」に近づいているかを追うための指標として公表されたもので、安全性の面からも注目されています。</p>
+      <div class="topic-source">出典：<a href="https://www.bloomberg.com/news/articles/2026-09-17/anthropic-says-claude-drives-26-of-its-research-and-development" target="_blank" rel="noopener">Bloomberg（9/17）</a> ／ <a href="https://qz.com/anthropic-claude-ai-research-development-automation-091826" target="_blank" rel="noopener">Quartz</a> ／ <a href="https://thehill.com/policy/technology/6098297-anthropic-claude-leads-ai-development/" target="_blank" rel="noopener">The Hill</a> ／ <a href="https://betanews.com/article/claude-ai-rd-development/" target="_blank" rel="noopener">BetaNews</a></div>
     </div>
     <div class="topic">
       <div class="topic-label">アジア：地域株は6日続伸の流れ</div>
