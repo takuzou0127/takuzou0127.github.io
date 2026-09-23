@@ -20,6 +20,13 @@ h1 { font-size: 24px; font-weight: 700; color: #fff; text-align: center; margin-
 .japan .section-title { color: #ff7b72; }
 .japan .topic-label { color: #ff7b72; background: rgba(255,123,114,0.12); }
 .japan .group-head { font-size: 13px; font-weight: 700; color: #ffb3ad; letter-spacing: 0.06em; margin: 8px 0 -8px 2px; }
+.section.ai { border-top-color: #d2a8ff; }
+.ai .section-title { color: #d2a8ff; }
+.ai .topic-label { color: #d2a8ff; background: rgba(210,168,255,0.12); }
+.chip-table { width:100%; border-collapse:collapse; font-size:13.5px; margin:10px 0 4px; }
+.chip-table th, .chip-table td { border:1px solid #30363d; padding:8px 10px; text-align:left; vertical-align:top; line-height:1.7; }
+.chip-table th { background:#21262d; color:#9aa4b2; }
+.chip-nv { color:#8fd400; font-weight:700; } .chip-bc { color:#4a9eff; font-weight:700; } .chip-aws { color:#ff9f4a; font-weight:700; }
 .section.bloomberg { border-top-color: #4a9eff; }
 .section.yahoo     { border-top-color: #a371f7; }
 .section.nikkei    { border-top-color: #f85149; }
@@ -81,6 +88,7 @@ footer { text-align: center; color: #555; font-size: 12px; margin-top: 32px; pad
 <body>
 <div class="quicknav">
   <a href="#sec-japan">🇯🇵 日本</a>
+  <a href="#sec-ai">🤖 AI</a>
   <a href="#sec-bloomberg">Bloomberg</a>
   <a href="#sec-yahoo">Yahoo Finance</a>
   <a href="#sec-nikkei">日経</a>
@@ -150,6 +158,55 @@ footer { text-align: center; color: #555; font-size: 12px; margin-top: 32px; pad
       <p>9月22〜23日の大阪で、新聞の1面・社会面に載るような大きなニュースは、検索では見つかりませんでした。連休中の話題としては、西淀川区のイズミヤショッピングセンター福町で「にしよどアフター万博2026」（22・23日）が開かれています。</p>
       <p>続いている話として、吉村知事は2027年4月の府知事・市長選にそれぞれ出馬する意向を示しており、3度目となる「大阪都構想」の住民投票を任期中に行う考えです（2月の出直し選で当選）。</p>
       <div class="topic-source">出典：<a href="https://www.walkerplus.com/event_list/today/ar0727/" target="_blank" rel="noopener">ウォーカープラス（大阪のイベント）</a> ／ <a href="https://www.nikkei.com/article/DGXZQOUF0640T0W6A200C2000000/" target="_blank" rel="noopener">日本経済新聞（出直し選）</a></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============ AI ============ -->
+<div class="section ai" id="sec-ai">
+  <div class="section-header">
+    <div class="section-title">🤖 AI ─ Anthropic・OpenAI の動きと、そのAIを動かすチップ</div>
+    <div class="point-summary">本日のポイント：9/22、AnthropicとOpenAIが1時間違いで新型モデルを発表し、どちらも値下げを打ち出した。値下げ競争で使われる量が増えれば、その計算をどのチップ（NVIDIAのGPUか、Broadcomと作る専用チップか）が担うかが半導体株の分かれ目になる。※このページを書いているのはAnthropicのAI（Claude）なので、自社の話は良く見せも悪く見せもせず、事実だけを書く。</div>
+  </div>
+  <div class="topics">
+
+    <div class="topic">
+      <div class="topic-label">9/22：Anthropic「Claude Opus 5.5」とOpenAI「GPT-6 Sol・Luna」を同じ日に発表、どちらも値下げ</div>
+      <p><strong>Anthropic</strong>は新型モデル「Claude Opus 5.5」を発表しました。料金は入力100万トークンあたり$4、出力$20で、従来より約20%安くなりました。同社によると、多くの作業で上位モデル「Claude Fable 5.1」並みの性能を出しながら、動かすコストは前の「Opus 5」より約4割低いとのことです。</p>
+      <p><strong>OpenAI</strong>は約1時間後に「GPT-6 Sol」（プログラム作成など複雑な作業向け）と「GPT-6 Luna」（文書の要約など大量の処理向け）を発表しました。料金はどちらも前の世代の半額です（Solは入力$2・出力$10、Lunaは$0.10・$0.50）。</p>
+      <p>アモデイCEOが「AI開発の減速」を業界に呼びかけて以来、両社が新型モデルを出すのは初めてです。どちらも「安さ」を前面に出したのは、中国のDeepSeekなど安いAIとの顧客獲得競争が激しくなり、AIへの支出を抑えたい企業の需要を取り込みたいためと報じられています。</p>
+      <div class="topic-source">出典：<a href="https://www.nikkei.com/article/DGXZQOGN2300D0T20C26A9000000/" target="_blank" rel="noopener">日本経済新聞</a> ／ <a href="https://www.nippon.com/ja/news/kd1475277237200585052/" target="_blank" rel="noopener">共同通信（nippon.com）</a> ／ <a href="https://www.bloomberg.com/jp/news/articles/2026-09-22/TLRZ0ET9NJLS00" target="_blank" rel="noopener">Bloomberg</a> ／ <a href="https://siliconangle.com/2026/09/22/anthropic-releases-claude-opus-5-5-and-openai-counters-with-two-cheaper-gpt-6-models/" target="_blank" rel="noopener">SiliconANGLE</a> ／ <a href="https://simonwillison.net/2026/Sep/22/opus-and-sol-and-luna/" target="_blank" rel="noopener">Simon Willison</a></div>
+    </div>
+
+    <div class="topic">
+      <div class="topic-label">流れ：「減速を」と訴えながら、上場へ向かうAnthropic</div>
+      <p>9月12日、アモデイCEOは「今すぐAI開発のペースを落とさないと、数か月のうちに深刻な事態になりうる」と警告し、3段階の案を示しました。①外部の評価機関にモデルを開く、②先端企業で共通の安全基準を作る、③民主主義国が（可能な範囲で）権威主義国とも調整する、の3つです。一方で、中国の存在が「最も難しいジレンマ」だとも述べています。OpenAIのアルトマン氏らも、AIの進み方が速すぎるとの懸念を示しました。</p>
+      <p>それでもAnthropicは、今年中の新規株式公開（IPO）の方針を変えていないと報じられています。6月に上場の書類を非公開で提出しており、早ければ来月にも上場するとの見方があります（企業価値は今年、約9,650億ドルと評価）。今回の値下げは「上場を控えて競争力を高める」動きだとBloombergは伝えています。<strong>「減速を呼びかける」と「競争に勝つ」を同時に進めている</strong>のが、今のAnthropicの姿です。</p>
+      <div class="topic-source">出典：<a href="https://www.axios.com/2026/09/12/anthropic-ai-amodei-pacing" target="_blank" rel="noopener">Axios（9/12）</a> ／ <a href="https://www.cnbc.com/2026/09/14/anthropic-walks-tightrope-to-nasdaq-pushing-slowdown-and-pursuing-ipo.html" target="_blank" rel="noopener">CNBC（9/14）</a> ／ <a href="https://www.cnbc.com/2026/09/13/china-dilemma-ai-slowdown-anthropic.html" target="_blank" rel="noopener">CNBC（9/13）</a></div>
+    </div>
+
+    <div class="topic">
+      <div class="topic-label">9/17：AIが「生物兵器への悪用」の恐れを検知、生命科学分野に認証制度</div>
+      <p>AnthropicのAI「Claude」が、生物・化学兵器の開発に悪用されそうな使われ方を検知していたことが明らかになりました。同社が今月出した報告では、海外の研究者が鳥インフルエンザの哺乳類への感染や重い呼吸器症状に焦点を当てた研究にAIを使った例や、蚊が媒介するウイルスの感染力を高める研究の助成金申請に使った例が挙げられています。</p>
+      <p>これを受けて同社は、生命科学の分野で最先端のAIを使う研究グループに<strong>認証制度</strong>を導入すると発表しました。研究の信頼性・倫理・安全の基準を満たしたグループだけに使わせ、使い方を見守ります。「AIの能力が現実の危険に届き始めている」ことを示すニュースで、上の「減速の呼びかけ」の背景にある話です。</p>
+      <div class="topic-source">出典：<a href="https://news.yahoo.co.jp/articles/e716baeebb10d88343527b66d4902d264d0eb0b8" target="_blank" rel="noopener">共同通信</a> ／ <a href="https://txbiz.tv-tokyo.co.jp/you/news/post_349033" target="_blank" rel="noopener">テレ東BIZ</a></div>
+    </div>
+
+    <div class="topic">
+      <div class="topic-label">そのAIは、どのチップで動いているのか（NVIDIAか、Broadcomか）</div>
+      <p><strong>Anthropicは1社に頼らず、3種類のチップを並行して使っています。</strong>OpenAIはNVIDIAを中心にしながら、Broadcomと専用チップを作り始めました。</p>
+      <table class="chip-table">
+        <tr><th>会社</th><th>チップ</th><th>規模・時期</th></tr>
+        <tr><td rowspan="4"><b>Anthropic</b></td><td><span class="chip-bc">Google TPU</span>（<b>Broadcomが共同設計</b>）</td><td>4月に、Broadcom経由で次世代TPUを3.5ギガワット分へ3倍に拡大（全体で最大5ギガワット）。GoogleのAnthropicへの出資は400億ドルに</td></tr>
+        <tr><td><span class="chip-aws">AWS Trainium</span>（Amazonの自社チップ）</td><td>Amazonが今も主な学習パートナー。インディアナ州のデータセンターで約50万個のTrainium2を使って学習</td></tr>
+        <tr><td><span class="chip-nv">NVIDIA GPU</span>（Microsoft Azure経由）</td><td>Azureの計算資源を300億ドル分購入、最大1ギガワット。NVIDIAのGrace BlackwellとVera Rubin</td></tr>
+        <tr><td><span class="chip-nv">NVIDIA GPU</span>（Nscale経由）</td><td>8月に約450億ドルの契約。ウェストバージニア州で約460メガワット分のVera Rubinを借りる（2027年末に稼働予定）</td></tr>
+        <tr><td rowspan="2"><b>OpenAI</b></td><td><span class="chip-nv">NVIDIA GPU</span></td><td>主力。NVIDIAと大規模な配備の提携</td></tr>
+        <tr><td><span class="chip-bc">自社チップ「Jalapeño」</span>（<b>Broadcomと開発</b>）</td><td>6月に発表した初の自社チップ。設計から製造開始まで9か月。年末から配備を始め、全体で10ギガワット規模を目指す。関連する「Titan」計画ではTSMCの3nmで製造し、HBM4はSamsungから調達すると報じられている</td></tr>
+      </table>
+      <p><strong>半導体株から見ると：</strong>Anthropicは「GPU（NVIDIA）」と「専用チップ（BroadcomのTPU・AmazonのTrainium）」の両方を大量に買う、2軸の両方にまたがる顧客です。OpenAIもBroadcomとの専用チップで、NVIDIAへの依存を減らそうとしています。ただ、<strong>どちらの軸のチップも、HBM（広帯域メモリ）がないと動きません</strong>。今回の値下げでAIが使われる量が増えれば、その増えた分がNVIDIAとBroadcomのどちらに流れても、メモリ（SK Hynix・Samsung・Micron）は必ず通ります。OpenAIの専用チップのHBM4をSamsungが供給するという報道は、メモリの中でのシェア争いの材料でもあります。</p>
+      <div class="topic-source">出典：<a href="https://www.anthropic.com/news/google-broadcom-partnership-compute" target="_blank" rel="noopener">Anthropic（公式：Google・Broadcomとの契約拡大）</a> ／ <a href="https://blogs.nvidia.com/blog/microsoft-nvidia-anthropic-announce-partnership/" target="_blank" rel="noopener">NVIDIA（公式：Microsoft・Anthropicとの提携）</a> ／ <a href="https://www.cnbc.com/2026/08/26/anthropic-and-nscale-strike-45-billion-cloud-deal-sources-say.html" target="_blank" rel="noopener">CNBC（Nscale）</a> ／ <a href="https://openai.com/index/openai-broadcom-jalapeno-inference-chip/" target="_blank" rel="noopener">OpenAI（公式：Jalapeño）</a> ／ <a href="https://techcrunch.com/2026/06/24/openai-unveils-its-first-custom-chip-built-by-broadcom/" target="_blank" rel="noopener">TechCrunch</a> ／ <a href="https://tech-insider.org/openai-titan-chip-samsung-hbm4-custom-ai-chip-2026/" target="_blank" rel="noopener">Tech Insider（Titan・HBM4、未確認）</a></div>
     </div>
 
   </div>
