@@ -18,6 +18,7 @@ import argparse
 import html
 import json
 import re
+import ssl
 import sys
 import urllib.parse
 import urllib.request
@@ -35,17 +36,18 @@ UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) news-fetch/1.0"
 LOCAL_AREAS = ["大阪府", "大阪市"]
 
 # ---- 配信元 -------------------------------------------------------------
-# NHK公式RSS（カテゴリ番号は2026-09時点の想定。初回実行で errors に出たら要確認）
-NHK_FEEDS = {
-    "jp_top":      ("https://www3.nhk.or.jp/rss/news/cat0.xml", "NHK 主要"),
-    "jp_society":  ("https://www3.nhk.or.jp/rss/news/cat1.xml", "NHK 社会"),
-    "jp_politics": ("https://www3.nhk.or.jp/rss/news/cat4.xml", "NHK 政治"),
-    "jp_economy":  ("https://www3.nhk.or.jp/rss/news/cat5.xml", "NHK 経済"),
+# 固定URLのRSS。NHK公式RSS（www3.nhk.or.jp/rss/news/catN.xml）は2026-09-23のPC実行で
+# 最新記事が2026-08-08で止まっていたため使わない。NHKの記事はGoogleニュース経由で入る。
+# Googleニュースの「国内」「ビジネス」トピック（URLは未確認。errors と件数で確かめる）
+FIXED_FEEDS = {
+    "jp_society":  ("https://news.google.com/rss/headlines/section/topic/NATION?hl=ja&gl=JP&ceid=JP:ja", "Googleニュース: 国内"),
+    "jp_economy":  ("https://news.google.com/rss/headlines/section/topic/BUSINESS?hl=ja&gl=JP&ceid=JP:ja", "Googleニュース: ビジネス"),
 }
 
 # Googleニュース検索RSS（日本語）。カテゴリ → 検索語のリスト
 GN_JA = {
     "jp_top":        [None],  # None = Googleニュース日本版のトップニュース
+    "jp_politics":   ["国会 OR 首相 OR 政府"],
     "jp_market":     ["日経平均", "日銀 金融政策", "円相場"],
     "jp_semicon":    ["東京エレクトロン", "アドバンテスト", "キオクシア", "ラピダス", "SKハイニックス", "マイクロン 半導体"],
     # 暮らし・季節の話題（サンマの豊漁、キャベツの値段など、食卓や家計に近い時事）
@@ -85,9 +87,22 @@ def gn_url(query, lang="ja", hours=36):
     return f"https://news.google.com/rss/search?q={q}&{params}"
 
 
+def _ssl_context():
+    # PCのPython標準の証明書ストアでは一部サイトの証明書を確認できなかった（2026-09-23）。
+    # certifi が入っていればその証明書一覧を使い、無ければ標準の挙動に任せる
+    try:
+        import certifi
+    except ImportError:
+        return None
+    return ssl.create_default_context(cafile=certifi.where())
+
+
+SSL_CONTEXT = _ssl_context()
+
+
 def fetch(url, timeout=20):
     req = urllib.request.Request(url, headers={"User-Agent": UA})
-    with urllib.request.urlopen(req, timeout=timeout) as r:
+    with urllib.request.urlopen(req, timeout=timeout, context=SSL_CONTEXT) as r:
         return r.read()
 
 
@@ -168,8 +183,8 @@ def main():
             it["feed"] = feed_label
             buckets.setdefault(category, []).append(it)
 
-    for cat, (url, label) in NHK_FEEDS.items():
-        add(cat, label, url, "NHK")
+    for cat, (url, label) in FIXED_FEEDS.items():
+        add(cat, label, url, "")
     for cat, queries in GN_JA.items():
         for q in queries:
             add(cat, f"Googleニュース: {q or 'トップ'}", gn_url(q, "ja", args.hours), "")
