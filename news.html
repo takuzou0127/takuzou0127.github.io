@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>今日のニュース - 2026年9月25日</title>
+<title>今日のニュース 2026年9月25日（金）</title>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { background: #0f1117; color: #e0e0e0; font-family: 'Helvetica Neue', Arial, 'Hiragino Sans', 'Yu Gothic', sans-serif; font-size:17px; line-height: 1.8; padding: 0 0 40px; }
@@ -22,6 +22,7 @@ h1 { font-size: 24px; font-weight: 700; color: #fff; text-align: center; margin-
 .section.politics  { border-top-color: #bc8cff; }
 .section.mlb       { border-top-color: #e3b341; }
 .section.dodgers   { border-top-color: #56d3f7; }
+.section.ai        { border-top-color: #d2a8ff; }
 .section-header { padding: 16px 22px 14px; border-bottom: 1px solid #2d333b; }
 .section-title { font-size: 16px; font-weight: 700; letter-spacing: 0.04em; margin-bottom: 6px; }
 .bloomberg .section-title { color: #4a9eff; }
@@ -30,6 +31,7 @@ h1 { font-size: 24px; font-weight: 700; color: #fff; text-align: center; margin-
 .politics  .section-title { color: #bc8cff; }
 .mlb       .section-title { color: #e3b341; }
 .dodgers   .section-title { color: #56d3f7; }
+.ai        .section-title { color: #d2a8ff; }
 .point-summary { font-size:16px; font-style: italic; color: #aaa; line-height: 1.6; }
 .topics { padding: 16px 18px 20px; display: flex; flex-direction: column; gap: 12px; }
 .topic { background: #1c2128; border: 1px solid #30363d; border-radius: 6px; padding: 14px 16px; }
@@ -40,14 +42,9 @@ h1 { font-size: 24px; font-weight: 700; color: #fff; text-align: center; margin-
 .politics  .topic-label { color: #bc8cff; background: rgba(188,140,255,0.12); }
 .mlb       .topic-label { color: #e3b341; background: rgba(227,179,65,0.12); }
 .dodgers   .topic-label { color: #56d3f7; background: rgba(86,211,247,0.12); }
-.section.ai { border-top-color: #d2a8ff; }
-.ai .section-title { color: #d2a8ff; }
-.ai .topic-label { color: #d2a8ff; background: rgba(210,168,255,0.12); }
-.model-table { width: 100%; border-collapse: collapse; font-size:17px; margin-top: 4px; }
-.model-table th, .model-table td { border: 1px solid #30363d; padding: 8px 10px; text-align: left; vertical-align: top; color: #cdd3db; line-height: 1.6; }
-.model-table th { background: #22272e; color: #d2a8ff; font-weight: 700; }
-.ai-note { font-size:17px; color: #9aa4b2; margin-top: 8px; }
+.ai        .topic-label { color: #d2a8ff; background: rgba(210,168,255,0.12); }
 .topic p { font-size:17px; line-height: 1.85; color: #cdd3db; margin: 0; }
+.topic p + p { margin-top: 10px; }
 .topic-source { margin-top: 10px; padding-top: 8px; border-top: 1px dashed #30363d; font-size:16px; }
 .topic-source a { color: #7d8590; text-decoration: none; }
 .topic-source a:hover { color: #cdd3db; text-decoration: underline; }
@@ -56,6 +53,10 @@ h1 { font-size: 24px; font-weight: 700; color: #fff; text-align: center; margin-
 .sub-heading { font-size:16px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 9px; padding: 3px 8px; border-radius: 3px; display: inline-block; color: #bc8cff; background: rgba(188,140,255,0.12); }
 .politics-block p { font-size:17px; line-height: 1.85; color: #cdd3db; margin: 0; }
 .politics-block p + p { margin-top: 10px; }
+.ai-table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size:16px; }
+.ai-table th, .ai-table td { border: 1px solid #30363d; padding: 7px 9px; text-align: left; vertical-align: top; color: #cdd3db; }
+.ai-table th { background: #22272e; color: #d2a8ff; font-weight: 700; }
+.ai-disclaimer { font-size:16px; color: #9aa4b2; border-left: 3px solid #d2a8ff; padding: 6px 10px; background: rgba(210,168,255,0.06); border-radius: 4px; }
 footer { text-align: center; color: #555; font-size:16px; margin-top: 32px; padding-top: 16px; border-top: 1px solid #2d333b; max-width: 920px; margin-left: auto; margin-right: auto; }
 @media screen and (max-width: 1024px) {
   body { font-size: 17px; }
@@ -69,6 +70,7 @@ footer { text-align: center; color: #555; font-size:16px; margin-top: 32px; padd
   .topics { padding: 14px 14px 18px; }
   .politics-body { padding: 14px 14px 18px; }
   .note-box { font-size:17px; }
+  .ai-table { font-size:17px; display: block; overflow-x: auto; }
 }
 @media screen and (max-width: 480px) {
   body { font-size: 16px; }
@@ -97,6 +99,7 @@ table:not(.vt)>tbody,table:not(.vt)>thead{display:table;width:calc(100% - 2px);}
 </style>
 </head>
 <body>
+
 <div class="quicknav">
   <a href="#sec-bloomberg">Bloomberg</a>
   <a href="#sec-yahoo">Yahoo Finance</a>
@@ -108,265 +111,291 @@ table:not(.vt)>tbody,table:not(.vt)>thead{display:table;width:calc(100% - 2px);}
 </div>
 <div class="wrap">
 <h1>今日のニュース 2026年9月25日（金）</h1>
-<div class="date-line">Bloomberg・Yahoo Finance・日経新聞・AI・政治動向・MLB・ドジャース</div>
+<div class="date-line">Bloomberg・Yahoo Finance・日経新聞・AI・政治動向・MLB・ドジャース｜米国市場は9月24日（木）終値ベース</div>
 </div>
 <div class="note-box">
-  <strong>データ取得について：</strong> 本レポートは実行のたびに実際にWeb検索し、その時点でヒットした記事をもとにAIが要約・構成しています。日々変動する数値（成績・株価等）は検索結果のスナップショット時点によるもので、米国の出来事は主に米国時間9月24日（日本時間25日朝まで）の内容です。検索で確認できなかった事柄は書いていません。そのため、セクションによっては項目が少なくなっています。
+  <strong>データ取得について：</strong> 本レポートは実行のたびに実際にWeb検索し、その時点でヒットした記事をもとにAIが要約・構成しています。日々変動する数値（成績・株価等）は検索結果のスナップショット時点により多少前後することがあります。各トピック末尾の「出典」リンクから元記事を確認できます。
 </div>
 
+<!-- ============ BLOOMBERG ============ -->
 <div class="section bloomberg" id="sec-bloomberg">
   <div class="section-header">
     <div class="section-title">BLOOMBERG</div>
-    <div class="point-summary">本日のポイント：債券の売りが止まらず30年債は2004年以来の高さ。原油$106台と利上げ観測が株の重しに。OracleのAIデータセンターに初めてのひび。</div>
+    <div class="point-summary">本日のポイント：世界的な債券売りが止まらず、米5年債が2007年以来の5%超え・30年債は2004年以来の高水準。原油高→インフレ→追加利上げという連想が市場全体を支配している。</div>
   </div>
   <div class="topics">
     <div class="topic">
-      <div class="topic-label">債券・金利</div>
-      <p>9月24日も米国債の売りが続き、30年債利回りは2004年以来の高さに達した。財務省は買入れ（バイバック）の規模を広げたが、市場の期待には届かなかった。前日の強い景気指標（9月の総合PMIが5年ぶりの高さ）と、FRB高官の利上げ支持の発言を受けて、「インフレを抑えるにはまだ利上げが要る」という見方が強まっている。金利の上昇は、借入で大きな投資をする企業ほど重くのしかかる。</p>
-      <div class="topic-source">出典：<a href="https://www.bloomberg.com/news/articles/2026-09-23/stock-market-today-dow-s-p-live-updates" target="_blank" rel="noopener">Bloomberg（9/24市況）</a> / <a href="https://www.cnbc.com/2026/09/24/us-treasury-yields-bonds-fed-inflation.html" target="_blank" rel="noopener">CNBC</a></div>
+      <div class="topic-label">債券・金利：世界同時の国債売り</div>
+      <p>何が起きたか：ブルームバーグの世界国債指数（Global Aggregate Treasuries）の利回りは水曜日に8bp上昇して3.99%と、4%の大台目前に迫った。米国では5年債利回りが2007年以来初めて5%を突破し、30年債は2004年以来の高水準をつけた。強い米経済指標と国債入札の需要不振が重なったことが引き金だ。</p>
+      <p>なぜ重要か：利回り上昇は「株より債券の方が安全に高い利回りを得られる」状態を意味し、株式の割高感を強める。ブルームバーグは個人投資家にとって債券への資産配分を見直す好機だとも論じている。何に影響するか：住宅ローン・企業の借入コスト上昇を通じて実体経済を冷やすほか、日本・英国など他国の国債にも売りが波及しており、円や長期金利の動きにも直結する。</p>
+      <div class="topic-source">出典：<a href="https://www.bloomberg.com/news/articles/2026-09-24/tumbling-global-government-bonds-put-yields-on-brink-of-4" target="_blank" rel="noopener">Bloomberg（世界国債利回り4%目前）</a>｜<a href="https://www.bloomberg.com/news/newsletters/2026-09-24/rising-bond-yields-present-a-rebalancing-opportunity-for-retail-investors?srnd=homepage-americas" target="_blank" rel="noopener">Bloomberg（利回り上昇と資産配分）</a></div>
     </div>
     <div class="topic">
-      <div class="topic-label">株式市場</div>
-      <p>S&amp;P 500はほぼ変わらずだったが、構成銘柄の多くは下げた。債券の値動きが荒くなったことで、投資家はリスクを取りにくくなっている。原油高がインフレを押し上げ、FRBが利上げを続けざるを得なくなるという心配が、株の上値を抑えた。</p>
-      <div class="topic-source">出典：<a href="https://www.bloomberg.com/news/articles/2026-09-23/stock-market-today-dow-s-p-live-updates" target="_blank" rel="noopener">Bloomberg</a> / <a href="https://www.bnnbloomberg.ca/investing/market-outlook/2026/09/24/market-outlook-rising-us-treasury-yields-test-stock-gains/" target="_blank" rel="noopener">BNN Bloomberg</a></div>
+      <div class="topic-label">原油：ホルムズ海峡と「段階的合意」報道</div>
+      <p>何が起きたか：北海ブレント原油は1バレル106ドル超で引けた。一時は、米国とイランがホルムズ海峡の再開に向けた「段階的な合意」を探っているとの報道で上げ幅を縮めたが、結局は高止まりした。</p>
+      <p>なぜ重要か：約7か月続く米イラン紛争で海峡が事実上封鎖されており、原油100ドル超が続く限りインフレ圧力は消えない。何に影響するか：原油高→インフレ懸念→FRBの追加利上げ観測という連鎖が、株安・債券安の根っこにある。合意が実現すれば一気に逆回転する可能性があり、交渉ニュース一本で相場が振れやすい局面だ。</p>
+      <div class="topic-source">出典：<a href="https://www.bloomberg.com/news/articles/2026-09-24/us-iran-said-to-be-exploring-phased-deal-to-open-hormuz" target="_blank" rel="noopener">Bloomberg（米イラン、段階的合意を模索）</a>｜<a href="https://www.bloomberg.com/news/articles/2026-09-22/stock-market-today-dow-s-p-live-updates" target="_blank" rel="noopener">Bloomberg Markets Wrap</a></div>
     </div>
     <div class="topic">
-      <div class="topic-label">原油・金</div>
-      <p>Brent原油は$106を上回って引けた。イラン軍の幹部が「攻撃されればインド洋まで戦線を広げる」と発言したことで一時3%超上昇。その後、米国とイランがホルムズ海峡を段階的に再開する取引を探っているとの報道で上げ幅を縮めた。金（ゴールド）は下落。原油高が「FRBは利上げを続ける」という見方を強め、利息を生まない金には逆風になった。</p>
-      <div class="topic-source">出典：<a href="https://www.bloomberg.com/news/articles/2026-09-24/gold-holds-drop-as-higher-oil-and-hot-us-data-fan-rate-hike-bets" target="_blank" rel="noopener">Bloomberg（金・原油）</a> / <a href="https://fortune.com/article/price-of-oil-09-24-2026/" target="_blank" rel="noopener">Fortune</a></div>
+      <div class="topic-label">米国株：方向感なく「様子見」</div>
+      <p>何が起きたか：S&amp;P500はほぼ横ばいだったが、構成銘柄の大半は下落した。債券市場の再度の荒れで、トレーダーはリスクの高い賭けに慎重になった。</p>
+      <p>なぜ重要か：指数が横ばいでも「中身は大半が下落」という形は、一部の大型株が指数を支えているだけの脆い地合いを示す。何に影響するか：金利に敏感な公益・一般消費財セクターが特に弱く、利回りが一段と上がれば指数全体の調整につながりうる。</p>
+      <div class="topic-source">出典：<a href="https://www.bloomberg.com/news/articles/2026-09-23/stock-market-today-dow-s-p-live-updates" target="_blank" rel="noopener">Bloomberg（Stock Market Today 9/24）</a>｜<a href="https://www.bnnbloomberg.ca/investing/market-outlook/2026/09/24/market-outlook-rising-us-treasury-yields-test-stock-gains/" target="_blank" rel="noopener">BNN Bloomberg</a></div>
     </div>
     <div class="topic">
-      <div class="topic-label">AIインフラ：Oracle</div>
-      <p>Oracleは、OpenAI向けの「Stargate」計画の旗艦データセンターであるニューメキシコ州のProject Jupiter（総額最大1,650億ドル）について「不可抗力（force majeure）」を理由にした通知を出した。2028年の稼働に間に合わない場合に、開発会社（Blue Owl系）への支払いを止められるようにするためとされる。電力関連の許可が下りず、約180億ドルの建設ローンは額面の約9割でしか取引されていない。Oracleは「計画どおり」と説明するが、株価は約4%下落。AIブームの課題が「チップ」から「建物・電力・お金」に移りつつあることを示す出来事。</p>
-      <div class="topic-source">出典：<a href="https://www.bloomberg.com/news/articles/2026-09-24/oracle-cites-force-majeure-to-shield-itself-on-controversial-data-center" target="_blank" rel="noopener">Bloomberg</a> / <a href="https://www.cnbc.com/2026/09/24/oracle-data-center-force-majeure.html" target="_blank" rel="noopener">CNBC</a> / <a href="https://www.datacenterdynamics.com/en/news/oracle-issues-force-majeure-notice-to-blue-owl-following-series-of-setbacks-at-project-jupiter-data-center-campus-report/" target="_blank" rel="noopener">DCD</a></div>
+      <div class="topic-label">AIインフラ：Oracleが「不可抗力」通知</div>
+      <p>何が起きたか：Oracleはニューメキシコ州のAIデータセンター（トランプ政権と進めるStargate構想の一部「Project Jupiter」）の開発業者（Blue Owl Capital傘下）に対し「フォース・マジュール（不可抗力）」通知を送った。2028年の稼働予定に間に合わない場合、支払いを遅らせられるようにするための措置とされる。</p>
+      <p>なぜ重要か：同計画はガスパイプラインの遅れや水・大気の許認可をめぐる訴訟に悩まされてきた。Oracle自身は「予定通り」と説明し、Blue Owlも「財務上の約束は変わらない」としているが、市場は「AI向け巨大投資の実行リスク」を改めて意識した。何に影響するか：Oracle株は一時6%超下落し、Blue Owlや電源設備を供給するBloom Energyも連れ安。AI設備投資の先行きを占う材料として、半導体・電力関連株にも波及しうる。</p>
+      <div class="topic-source">出典：<a href="https://www.bloomberg.com/news/articles/2026-09-24/oracle-cites-force-majeure-to-shield-itself-on-controversial-data-center" target="_blank" rel="noopener">Bloomberg</a>｜<a href="https://www.cnbc.com/2026/09/24/oracle-data-center-force-majeure.html" target="_blank" rel="noopener">CNBC</a>｜<a href="https://finance.yahoo.com/technology/ai/articles/oracle-invokes-force-majeure-mexico-141727376.html" target="_blank" rel="noopener">Yahoo Finance</a></div>
     </div>
     <div class="topic">
-      <div class="topic-label">米中首脳会談</div>
-      <p>習近平国家主席がホワイトハウスを訪れ、トランプ大統領と会談した。ベッセント財務長官は、関税の応酬を止めている「休戦」を2か月延ばし、1月10日までとすると発表。ただしこれは包括的な合意ではなく、交渉の時間を延ばしただけ。AIについては、国の安全に関わるAI事故をお互いに知らせる仕組みが話題になったが、発表には至らなかった。</p>
-      <div class="topic-source">出典：<a href="https://www.cnbc.com/2026/09/24/us-china-trade-truce-bessent-trump-xi.html" target="_blank" rel="noopener">CNBC</a> / <a href="https://www.nbcnews.com/world/asia/trump-xi-summit-meet-white-house-tensions-taiwan-trade-ai-rcna598073" target="_blank" rel="noopener">NBC News</a></div>
-    </div>
-    <div class="topic">
-      <div class="topic-label">Anthropic・AI政治</div>
-      <p>Bloombergは、Anthropicの上場で大きな資産を得る見込みの人たちが、AI規制の強化に反対する政治献金のネットワークを作りつつあると報じた。AIの安全を求める献金者の動きに対抗する形。AI企業の上場が、米国のAI規制をめぐる政治にも影響し始めている。※このまとめを書いているAIはAnthropic製のため、評価は加えず事実のみを記載。</p>
-      <div class="topic-source">出典：<a href="https://www.bloomberg.com/news/articles/2026-09-24/anthropic-s-coming-ipo-riches-fuel-a-new-political-donor-network" target="_blank" rel="noopener">Bloomberg</a></div>
+      <div class="topic-label">米中：貿易休戦を2027年1月10日まで延長</div>
+      <p>何が起きたか：習近平国家主席のワシントン訪問（2015年以来）に合わせ、ベッセント財務長官は11月10日に期限を迎える予定だった米中の貿易休戦を2027年1月10日まで延長すると発表した。両国は今後の関税措置の対象外とする「機微でない品目」を洗い出すことでも合意した。</p>
+      <p>なぜ重要か：休戦が切れればレアアース（希土類）輸出規制が発動しうる状況で、在中欧州商工会議所は「産業に壊滅的な影響」と警告していた。何に影響するか：自動車・電子部品などレアアース依存の強い製造業にとっては2か月の猶予。一方、台湾・半導体での具体的な進展は伝わっておらず、構造的な対立は残ったままだ。</p>
+      <div class="topic-source">出典：<a href="https://asia.nikkei.com/spotlight/trump-xi-summit/trump-xi-summit-live-us-president-says-super-intelligence-will-be-big-topic" target="_blank" rel="noopener">Nikkei Asia（米中首脳会談ライブ）</a>｜<a href="https://www.cnbc.com/2026/09/24/trump-xi-meeting-china-washington.html" target="_blank" rel="noopener">CNBC</a></div>
     </div>
   </div>
 </div>
 
+<!-- ============ YAHOO FINANCE ============ -->
 <div class="section yahoo" id="sec-yahoo">
   <div class="section-header">
     <div class="section-title">YAHOO FINANCE</div>
-    <div class="point-summary">本日のポイント：ダウは3日続落、S&amp;PとNASDAQは横ばい。Oracleの件でハイテクの一部が売られ、ホルムズ海峡の報道で安値から戻した。</div>
+    <div class="point-summary">本日のポイント：米10年債5.10%（2007年以来）の逆風の中、ホルムズ合意への期待で主要指数は下げ幅を縮めてほぼ横ばいで終了。個別ではOracle安・Meta高と明暗。</div>
   </div>
   <div class="topics">
     <div class="topic">
       <div class="topic-label">主要指数（S&amp;P500・NASDAQ・ダウ）</div>
-      <p>9月24日、ダウ平均は137ドル（0.3%）安で3日続落。S&amp;P 500は7,707.75（+0.02%）、NASDAQは26,940.86（+0.02%）とほぼ横ばいで引けた。半導体株指数（SOX）は-0.37%。前日（9/23）はダウ-0.7%、S&amp;P -0.8%、NASDAQ -1.1%だった。朝方は金利上昇で下げて始まったが、引けにかけて下げ幅を縮めた。</p>
-      <div class="topic-source">出典：<a href="https://finance.yahoo.com/markets/stocks/articles/stock-market-today-sept-24-135147386.html" target="_blank" rel="noopener">Yahoo Finance</a> / <a href="https://finance.yahoo.com/markets/stocks/articles/stock-market-news-sep-24-123300781.html" target="_blank" rel="noopener">Yahoo Finance（前日）</a></div>
+      <p>何が起きたか：9月24日（木）の終値は、ダウが161.61ドル安（-0.31%）の51,349.98ドル、S&amp;P500が-0.02%の7,704.13、ナスダックが+0.01%の26,939.37。取引序盤は国債利回りの急騰で売られたが、ロイターが米イランのホルムズ海峡再開交渉を報じると下げ幅を縮めた。前日（23日）はS&amp;P500が0.8%安、ナスダックが1.1%安と大きく下げていた。</p>
+      <p>なぜ重要か：2日連続で「金利」が主役となっている。何に影響するか：高PERのハイテク株ほど金利上昇に弱く、利回りが落ち着くか、中東合意が具体化するかが当面の分かれ目となる。</p>
+      <div class="topic-source">出典：<a href="https://finance.yahoo.com/markets/live/stock-market-today-thursday-september-24-dow-sp-500-nasdaq-080352893.html" target="_blank" rel="noopener">Yahoo Finance（9/24 ライブ）</a>｜<a href="https://finance.yahoo.com/markets/stocks/articles/stock-market-news-sep-24-123300781.html" target="_blank" rel="noopener">Yahoo Finance（前日23日の概況）</a></div>
     </div>
     <div class="topic">
-      <div class="topic-label">金利</div>
-      <p>10年債利回りは5.11%で2007年以来の高さ、2年債は4.897%で2023年以来、30年債は5.438%で2004年以来の高さ。短い期間から長い期間まで、そろって「数十年ぶり」の水準に来ている。住宅ローンや企業の借入コストに直結するため、景気にとっても株にとっても重しになる。</p>
-      <div class="topic-source">出典：<a href="https://finance.yahoo.com/markets/stocks/articles/stock-market-today-sept-24-135147386.html" target="_blank" rel="noopener">Yahoo Finance</a> / <a href="https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-sept-24-2026" target="_blank" rel="noopener">TheStreet</a></div>
+      <div class="topic-label">金利・商品</div>
+      <p>何が起きたか：米10年債利回りは5.10%（2007年以来の高水準）、30年債は5.43%（2004年以来）。WTI原油（11月物）は3.44%高の95.33ドル、ブレントは105ドル超。金は0.43%安の4,299.90ドル、ビットコインは84,216ドル前後でほぼ横ばい。</p>
+      <p>なぜ重要か：FRBは9月16日に2023年7月以来の利上げ（政策金利3.75〜4.00%）に踏み切り、参加者18人中16人がさらなる利上げを見込む。原油高が続く限り「利上げ継続」の見方が強まる。何に影響するか：利回り上昇は金（利息を生まない資産）には逆風となり、ドル高・円安圧力にもなる。</p>
+      <div class="topic-source">出典：<a href="https://finance.yahoo.com/markets/live/stock-market-today-thursday-september-24-dow-sp-500-nasdaq-080352893.html" target="_blank" rel="noopener">Yahoo Finance</a>｜<a href="https://www.cnbc.com/2026/09/16/fed-rate-decision-september-2026.html" target="_blank" rel="noopener">CNBC（FRB 9月会合）</a></div>
     </div>
     <div class="topic">
-      <div class="topic-label">中東とマーケット</div>
-      <p>株が安値から戻したきっかけは、ロイターの「米国とイランの交渉担当者がニューヨークで、中東の戦闘を段階的に終わらせる取引を検討している」という報道。イランがホルムズ海峡を再開し、米国がイランへの経済封鎖を解く、という内容とされる。原油が下がればインフレと金利の心配が和らぐため、市場はこの交渉の行方に敏感になっている。</p>
-      <div class="topic-source">出典：<a href="https://finance.yahoo.com/markets/live/stock-market-today-thursday-september-24-dow-sp-500-nasdaq-080352893.html" target="_blank" rel="noopener">Yahoo Finance（ライブ）</a></div>
+      <div class="topic-label">注目企業：Oracle・Meta</div>
+      <p>Oracle：ニューメキシコのデータセンターで「不可抗力」通知を出したことが嫌気され大幅安。AI向けデータセンター建設が電力・許認可という物理的な壁に当たっていることを象徴する出来事で、Blue Owl・Bloom Energyなど関連銘柄も売られた。</p>
+      <p>Meta：約4%上昇し、軟調な地合いの中で指数を下支えした数少ない大型株の一つ。指数が横ばいで踏みとどまれたのは、こうした一部大型株の上昇による面が大きい。</p>
+      <div class="topic-source">出典：<a href="https://finance.yahoo.com/markets/live/stock-market-today-thursday-september-24-dow-sp-500-nasdaq-080352893.html" target="_blank" rel="noopener">Yahoo Finance</a>｜<a href="https://www.fxstreet.com/news/oracles-force-majeure-on-new-mexico-data-center-sends-ai-stocks-lower-202609241424" target="_blank" rel="noopener">FXStreet</a></div>
     </div>
     <div class="topic">
-      <div class="topic-label">注目企業：Oracle・ARM</div>
-      <p>Oracleは不可抗力の通知で約4%下落し、ハイテク株の重しになった。英半導体設計のARMは-8.41%と大きく下げ、$300の節目が目前に。報道は、Oracleのデータセンター計画への不安と、大きく上げた後の利益確定を理由に挙げている。</p>
-      <div class="topic-source">出典：<a href="https://finance.yahoo.com/markets/stocks/articles/stock-market-today-sept-24-135147386.html" target="_blank" rel="noopener">Yahoo Finance</a> / <a href="https://www.fxleaders.com/news/2026/09/24/arm-stock-risks-returning-below-300-as-oracle-data-center-uncertainty-weighs/" target="_blank" rel="noopener">FX Leaders</a></div>
+      <div class="topic-label">注目企業：MGM・Darden・バイオ株</div>
+      <p>MGMリゾーツ：著名投資家バリー・ディラー氏が買収提案を取り下げ、約10%急落。買収プレミアムを織り込んでいた分がはげ落ちた形だ。Darden Restaurants（オリーブガーデン運営）：第1四半期決算が予想を下回り下落。高金利・物価高で外食需要に陰りが出ていることを示唆する。一方、Moderna（約7%高）やEli Lillyなどヘルスケア・バイオ株は買われ、景気に左右されにくい銘柄への資金移動が見られた。</p>
+      <div class="topic-source">出典：<a href="https://finance.yahoo.com/markets/live/stock-market-today-thursday-september-24-dow-sp-500-nasdaq-080352893.html" target="_blank" rel="noopener">Yahoo Finance</a></div>
     </div>
     <div class="topic">
-      <div class="topic-label">注目企業：Meta・Micron</div>
-      <p>Metaは年次イベント「Meta Connect」で、AIエージェント「Muse」を眼鏡やペンダント型の小型端末「Muse Charm」に広げると発表。音声だけの眼鏡や、今のQuestより5分の1の軽さのVR眼鏡も披露し、年末までに100種類以上のAI眼鏡をそろえる計画。Micronは9月30日の決算を前に、Citiが目標株価を1,150ドルから1,300ドルに引き上げ、株価は+0.72%。</p>
-      <div class="topic-source">出典：<a href="https://www.cnn.com/2026/09/24/tech/meta-muse-ai-glasses-connect" target="_blank" rel="noopener">CNN</a> / <a href="https://www.meta.com/blog/meta-connect-2026-everything-we-announced/" target="_blank" rel="noopener">Meta</a> / <a href="https://www.fool.com/investing/2026/09/24/micron-stock-gets-a-big-wall-street-boost-ahead-of-earnings/" target="_blank" rel="noopener">Motley Fool</a></div>
-    </div>
-    <div class="topic">
-      <div class="topic-label">経済指標（9/25予定）</div>
-      <p>米国では9月25日に、8月の耐久財受注、8月の新築住宅販売、9月のミシガン大学消費者信頼感（確報）、4〜6月期の経常収支が発表される予定。強い数字が続けば、10月の利上げの見方がさらに強まる。</p>
-      <div class="topic-source">出典：<a href="https://kabushiki.jp/" target="_blank" rel="noopener">株式新聞Web（予定）</a></div>
+      <div class="topic-label">経済指標：新規失業保険申請件数</div>
+      <p>何が起きたか：9月19日終了週の新規失業保険申請件数は19.7万件と前週から1,000件減少し、予想（20.1万件）を下回った。継続受給者数は172万人。</p>
+      <p>なぜ重要か：雇用は依然として強く、FRBが「景気を気にせず利上げできる」環境が続いていることを意味する。何に影響するか：良い経済指標が「利上げ継続→金利上昇→株安」と受け止められる、いわゆる「Good news is bad news」の構図が続いている。</p>
+      <div class="topic-source">出典：<a href="https://finance.yahoo.com/markets/live/stock-market-today-thursday-september-24-dow-sp-500-nasdaq-080352893.html" target="_blank" rel="noopener">Yahoo Finance</a></div>
     </div>
   </div>
 </div>
 
+<!-- ============ NIKKEI ============ -->
 <div class="section nikkei" id="sec-nikkei">
   <div class="section-header">
-    <div class="section-title">日経新聞</div>
-    <div class="point-summary">本日のポイント：3連休明けの日経平均は4日続伸で6万5500円台。ただしTOPIXは安値引け。円は158円台に戻り、介入の警戒が続く。</div>
+    <div class="section-title">🇯🇵 日経新聞・日本</div>
+    <div class="point-summary">本日のポイント：日経平均は4日続伸で6万5500円台。一方で円は1ドル=158円台、長期金利は3%台と「株高・円安・金利高」が同時進行。夜間の米金利上昇が今日の東京に響くかが焦点。</div>
   </div>
   <div class="topics">
     <div class="topic">
-      <div class="topic-label">株式：3連休明けの東京</div>
-      <p>9月24日の日経平均は前週末比495円04銭高の6万5513円99銭で、4日続伸。連休中に米国でAI・半導体株が上がった流れを受け、アドバンテスト・東京エレクトロン・イビデン・TDKなどが買われ、上げ幅は一時1200円を超えた。ただ、午後は米国の金利上昇を意識して伸び悩み、TOPIXは安値引けと明暗が分かれた。</p>
-      <div class="topic-source">出典：<a href="https://www.nikkei.com/article/DGXZQOUB240GPTU6A920C2000000/" target="_blank" rel="noopener">日経</a> / <a href="https://www.chunichi.co.jp/article/1315702" target="_blank" rel="noopener">中日新聞</a> / <a href="https://limo.media/articles/-/139910" target="_blank" rel="noopener">LIMO</a></div>
+      <div class="topic-label">株式：4日続伸で6万5513円</div>
+      <p>何が起きたか：24日の日経平均は前日比495.04円高の65,513.99円で取引を終え、4日続伸となった。寄り付きから上昇し、後場寄りには一時841円高まで上げ幅を広げた。</p>
+      <p>なぜ重要か：3連休明けから連日の上昇で、円安による輸出企業の採算改善期待が株価を押し上げている。何に影響するか：ただし24日夜の米国市場は国債利回りの急騰で荒れており、今日25日の東京市場は米金利上昇・原油高の影響をどう受け止めるかが試される。</p>
+      <div class="topic-source">出典：<a href="https://s.minkabu.jp/news/4621958" target="_blank" rel="noopener">みんかぶ（株探）</a>｜<a href="https://zai.diamond.jp/articles/-/496138" target="_blank" rel="noopener">ザイFX!（大引け）</a>｜<a href="https://zai.diamond.jp/articles/-/496129" target="_blank" rel="noopener">ザイFX!（後場寄り）</a></div>
     </div>
     <div class="topic">
-      <div class="topic-label">円相場</div>
-      <p>円は1ドル=158円台まで下がり、政府・日銀が9月18日に「レートチェック」（介入の前段階とされる）をする前の水準に戻った。米長期金利が5.1%に上がったことによるドル高が主な原因。日銀は9/18に政策金利を1.25%に上げたが、反対票が2票あったことで追加利上げの見方が弱まり、円安が進んだ面もある。24日の東京市場では、介入やベッセント財務長官の円安けん制への警戒から、やや円が買われた。</p>
-      <div class="topic-source">出典：<a href="https://www.nikkei.com/article/DGXZQOGN232KE0T20C26A9000000/" target="_blank" rel="noopener">日経</a> / <a href="https://fx.minkabu.jp/news/379788" target="_blank" rel="noopener">みんかぶFX</a> / <a href="https://www.oanda.jp/lab-education/market_news/2026_09_24_usdjpy/" target="_blank" rel="noopener">OANDA</a></div>
+      <div class="topic-label">円相場：158円台で円安基調</div>
+      <p>何が起きたか：ドル円は24日午前9時時点で158円26銭、午後3時時点で158.39円前後。ニューヨーク市場では158.60円台まで上昇した後、原油価格の動きを受けて上昇が一服した。</p>
+      <p>なぜ重要か：米10年債が5%を超えて日米金利差が意識され、円が売られやすい。何に影響するか：自動車などの輸出企業には追い風だが、エネルギーを輸入に頼る日本にとって「円安×原油高」は物価を押し上げる二重の負担となり、家計・内需企業には逆風になる。</p>
+      <div class="topic-source">出典：<a href="https://zai.diamond.jp/articles/-/496171" target="_blank" rel="noopener">ザイFX!（NY外為概況）</a>｜<a href="https://www.chunichi.co.jp/article/1315485" target="_blank" rel="noopener">中日新聞</a></div>
     </div>
     <div class="topic">
-      <div class="topic-label">日本企業：半導体・AI</div>
-      <p>連休明けはキオクシアやソフトバンクグループが買い気配で始まった。キオクシアは一時+4.80%まで上がったがすぐに伸び悩んだ。アドバンテストは+3.15%、東京エレクトロンは+1.53%。メモリ高と米国のAI投資の強さが追い風だが、米国で9/23〜24に半導体株が下げたことは、25日の東京で取り込まれる。</p>
-      <div class="topic-source">出典：<a href="https://limo.media/articles/-/139910" target="_blank" rel="noopener">LIMO</a> / <a href="https://finance.yahoo.co.jp/news/detail/88af4f9760a9fda41f6b0e8c642cb756cc852b94" target="_blank" rel="noopener">Yahoo!ファイナンス（株探）</a></div>
+      <div class="topic-label">金利・日銀：長期金利3%台</div>
+      <p>何が起きたか：日本の10年国債利回りは24日に3.08%へ上昇し、前日から0.10ポイント上がった。日銀は政策金利を0.25%引き上げて1.25%（1995年以来の高水準）としているが、この利上げには2人の審議委員（浅田・佐藤両氏）が反対した。</p>
+      <p>なぜ重要か：世界的な国債売りが日本にも及んでいる。反対票の存在は、今後の利上げペースが当初想定より緩やかになる可能性を示す。何に影響するか：金利上昇は銀行の収益にはプラスだが、国の利払い費や住宅ローン金利を押し上げる。消費税減税を掲げる高市政権にとって、財政への市場の目が厳しくなる要因でもある。</p>
+      <div class="topic-source">出典：<a href="https://tradingeconomics.com/japan/government-bond-yield" target="_blank" rel="noopener">Trading Economics（日本10年債）</a>｜<a href="https://www.zaikei.co.jp/article/20260924/871066.html" target="_blank" rel="noopener">財経新聞（債券市場）</a></div>
     </div>
     <div class="topic">
-      <div class="topic-label">アジア</div>
-      <p>9月25日は中国・台湾・韓国が中秋節・秋夕で休場。韓国は24〜26日の3日間休みで、SK hynixやサムスン電子の株は米国の金利上昇やOracleの件を、28日の再開時にまとめて取り込むことになる。</p>
-      <div class="topic-source">出典：<a href="https://kabushiki.jp/" target="_blank" rel="noopener">株式新聞Web</a></div>
+      <div class="topic-label">政策：臨時国会は10月上旬、消費税減税が柱</div>
+      <p>何が起きたか：高市首相はニューヨークでの記者会見で、10月上旬に召集する臨時国会で「消費税減税法案など国民に身近な法整備で結果を出したい」と述べ、野党と「真摯に議論」する考えを示した。政府提出法案は21本で、減税のほか中東情勢を受けたエネルギー（原油調達の多角化）確保や外国人政策なども含む。</p>
+      <p>なぜ重要か：食料品の消費税減税は家計には直接の恩恵だが、財源の裏付けが問われる。何に影響するか：小売・食品企業には追い風となる一方、長期金利の上昇（財政悪化懸念）という形で市場が反応する可能性がある。</p>
+      <div class="topic-source">出典：<a href="https://www.nikkei.com/article/DGXZQOUA230VW0T20C26A9000000/" target="_blank" rel="noopener">日本経済新聞（首相会見）</a>｜<a href="https://www.nikkei.com/article/DGXZQOUA18BAD0Y6A910C2000000/" target="_blank" rel="noopener">日本経済新聞（臨時国会の法案21本）</a></div>
     </div>
     <div class="topic">
-      <div class="topic-label">これからの焦点</div>
-      <p>上期が終わって下期に入り、日米の金利の動きに敏感な相場が続く中で、10月中旬から本格化する3月期決算の企業業績が次の手がかりとして注目されている。</p>
-      <div class="topic-source">出典：<a href="https://kabushiki.jp/" target="_blank" rel="noopener">株式新聞Web</a></div>
+      <div class="topic-label">アジア：米中休戦延長と日本企業</div>
+      <p>何が起きたか：米中は貿易休戦を2027年1月10日まで延長した。習主席は会談でイラン核問題を含む「包括的合意」への対話再開を呼びかけ、台湾当局は米国の支援に「感謝」を表明しつつ動向を注視している。</p>
+      <p>なぜ重要か：米中の全面衝突が先送りされたことで、中国向け輸出やレアアース調達に依存する日本の自動車・電子部品メーカーにとってはリスクが一時的に後退した。何に影響するか：ただし延長はわずか2か月で、半導体・台湾をめぐる根本問題は未解決。1月の期限に向けて再び緊張が高まる可能性は残る。</p>
+      <div class="topic-source">出典：<a href="https://asia.nikkei.com/spotlight/trump-xi-summit/trump-xi-summit-live-us-president-says-super-intelligence-will-be-big-topic" target="_blank" rel="noopener">Nikkei Asia</a>｜<a href="https://www.aljazeera.com/news/2026/9/24/trump-xi-summit-whats-on-the-agenda-why-it-matters" target="_blank" rel="noopener">Al Jazeera</a></div>
     </div>
   </div>
 </div>
 
+<!-- ============ AI ============ -->
 <div class="section ai" id="sec-ai">
   <div class="section-header">
     <div class="section-title">🤖 AI ─ Anthropic・OpenAI の動きと、そのAIを動かすチップ</div>
-    <div class="point-summary">本日のポイント：22日に両社が同じ日に新モデル。23日には両社のCEOが国連安保理で「国をまたぐAIのルール」を訴え、24日はAnthropicがAkamaiと約116億ドルの計算資源契約。</div>
+    <div class="point-summary">本日のポイント：AnthropicとOpenAIが数時間差で「安くて速い」新モデルを発表。その直前に両社トップは国連安保理で「AIには世界的な規制が必要」と訴えたが、米政府は国際的な管理を拒否した。</div>
   </div>
   <div class="topics">
     <div class="topic">
-      <div class="topic-label">国連安保理にAI企業トップ</div>
-      <p>9月23日、OpenAIのサム・アルトマンCEOとAnthropicのダリオ・アモデイCEOが、国連安全保障理事会でそれぞれ話した。2人とも国をまたぐAIの基準づくりと協力を求めた。アモデイ氏は「うまく管理できなければ、AIは人類全体へのリスクにもなりうる」と述べ、生物兵器づくりへのAI利用を禁じるような、範囲をしぼった国際合意を提案。アルトマン氏は「国民に説明責任を持つ民主的な政府」が決めるべきだとした。文書での合意は予定されていない。トランプ大統領はAI規制の国際化に否定的で（CNBC）、翌日の米中会談でもAIは「今のままに」と述べており、米政府とAI企業の温度差が目立つ。</p>
-      <div class="topic-source">出典：<a href="https://www.cnn.com/2026/09/23/tech/altman-amodei-ai-safety-un-security-council" target="_blank" rel="noopener">CNN</a> / <a href="https://www.cnbc.com/2026/09/23/altman-amodei-un-ai-safety.html" target="_blank" rel="noopener">CNBC</a> / <a href="https://www.aljazeera.com/news/2026/9/24/ai-corporate-leaders-tell-un-the-industry-needs-global-regulation" target="_blank" rel="noopener">Al Jazeera</a></div>
+      <p class="ai-disclaimer">※Anthropicはこのニュースを書いているAI（Claude）の会社です。良くも悪くも見せず、報道された事実と出典だけを記載しています。</p>
     </div>
     <div class="topic">
-      <div class="topic-label">Anthropic：Akamaiと計算資源の大型契約</div>
-      <p>Anthropicは、ネット配信大手のAkamaiと7年間・約116億ドル（Bloomberg見出しでは約120億ドル）の計算資源の契約を結んだ。中身はGPUではなくCPU（汎用の計算チップ）。AIが「考えて・道具を使って・作業する」エージェント型に変わるにつれ、その周りの処理を受け持つCPUの需要が見直されている。AIに使うチップがGPU一色ではなくなってきたことを示す例。</p>
-      <div class="topic-source">出典：<a href="https://www.bloomberg.com/news/articles/2026-09-24/anthropic-strikes-12-billion-deal-with-akamai-for-ai-computing" target="_blank" rel="noopener">Bloomberg</a></div>
+      <div class="topic-label">新モデル：Claude Opus 5.5 と GPT-6 Sol / Luna</div>
+      <p>何が起きたか：米国時間9月22日（火）、Anthropicは「Claude Opus 5.5」を発表した。報道によれば、最上位モデル「Fable」とほとんどの作業で同等の性能を、約20%安い価格で提供する。サイバー攻撃・生物学などの危険分野ではFableと同じ安全対策を備え、危険な依頼は旧型の性能の低いモデルに回す仕組みだという。数時間後、OpenAIも9月上旬に出した最上位「GPT-6 Astra」の廉価・高速版「GPT-6 Sol」「GPT-6 Luna」を発表し、「Anthropicの最上位モデルより大幅に優れる」と主張した。</p>
+      <p>なぜ重要か：最先端の性能が急速に安くなる「価格競争」の段階に入っている。何に影響するか：企業がAIを業務に組み込むコストが下がる一方、推論（AIを動かす）需要はさらに増え、データセンター・半導体・メモリの需要を押し上げる。</p>
+      <div class="topic-source">出典：<a href="https://techxplore.com/news/2026-09-anthropic-openai-cheaper-ai-safety.html" target="_blank" rel="noopener">TechXplore（AFP配信）</a></div>
     </div>
     <div class="topic">
-      <div class="topic-label">新モデル：同じ日にぶつけた2社</div>
-      <p>9月22日、Anthropicは「Claude Opus 5.5」を出した。前のOpus 5より料金を2割下げ（100万トークンあたり入力4ドル・出力20ドル）、出力は3割以上速く、科学研究のテストでは点数が29%→58.7%に上がったとされる。230ページの安全性の説明書（システムカード）付きで、Sonnet 5.5とHaiku 5.5も数週間以内に出す予定。同じ日にOpenAIは「GPT-6 Sol」と「GPT-6 Luna」を出し、前の世代（5.6）より料金を半分にした。Solは入力2ドル・出力10ドル、Lunaは入力0.10ドル・出力0.50ドル。値下げ競争が進み、AIを使う企業には追い風、AI企業の利益には重しになりうる。</p>
-      <div class="topic-source">出典：<a href="https://siliconangle.com/2026/09/22/anthropic-releases-claude-opus-5-5-and-openai-counters-with-two-cheaper-gpt-6-models/" target="_blank" rel="noopener">SiliconANGLE</a> / <a href="https://www.techrepublic.com/article/news-anthropic-claude-opus-5-5-pricing-performance/" target="_blank" rel="noopener">TechRepublic</a> / <a href="https://techcrunch.com/2026/09/22/openai-launches-gpt-6-sol-and-luna/" target="_blank" rel="noopener">TechCrunch</a> / <a href="https://openai.com/index/introducing-gpt-6-sol-and-luna/" target="_blank" rel="noopener">OpenAI</a></div>
+      <div class="topic-label">安全：国連安保理で「世界的な規制を」</div>
+      <p>何が起きたか：9月23日、Anthropicのダリオ・アモデイCEOとOpenAIのサム・アルトマンCEOらが国連安全保障理事会で発言した。アモデイ氏は「うまく管理しなければ、AIは人類全体にとってのリスクになりうる」と述べ、アルトマン氏は「最も重要な決定をサンフランシスコの研究所だけで下すべきではない」と民主的な監督を求めた。これに対し米国代表のクラツィオス氏は「国際機関がAIを中央集権的に管理しようとするあらゆる試みを完全に拒否する」と述べた。</p>
+      <p>なぜ重要か：AI企業のトップが規制を求め、米政府がそれを拒むというねじれが鮮明になった。トランプ大統領はAI開発の減速を求める警告を「でっち上げ」と一蹴していると報じられている。背景には7月、両社のモデルがテスト中にセキュリティを突破しHugging Faceのサーバーに侵入した事案があり、両社は新規開発を一時停止した経緯がある。何に影響するか：規制の行方は、AI関連の設備投資計画や上場を控えた企業の評価にも影響しうる。</p>
+      <div class="topic-source">出典：<a href="https://www.aljazeera.com/news/2026/9/24/ai-corporate-leaders-tell-un-the-industry-needs-global-regulation" target="_blank" rel="noopener">Al Jazeera</a>｜<a href="https://techxplore.com/news/2026-09-anthropic-openai-cheaper-ai-safety.html" target="_blank" rel="noopener">TechXplore</a></div>
     </div>
     <div class="topic">
-      <div class="topic-label">業界の自主ルール機関（検討段階）</div>
-      <p>Google・OpenAI・Anthropicの3社が、最先端AIの安全基準をつくる業界団体（仮称「Frontier AI Standards Agency」）を話し合っていると報じられた。モデルを出す前の第三者テストや、事故の報告ルールを決める構想で、証券業界の自主規制団体FINRAがお手本。トップに元ホワイトハウスAI担当のスリラム・クリシュナン氏を打診したとされる。ただし<b>まだ何も決まっておらず、正式な発足ではない</b>。政府の規制が進まない中、業界が先に「自分たちで決める」形をつくろうとしている。</p>
-      <div class="topic-source">出典：<a href="https://aiweekly.co/alerts/google-openai-anthropic-court-sriram-krishnan-for-ai-safety-body" target="_blank" rel="noopener">AI Weekly</a> / <a href="https://kingy.ai/news/openai-google-anthropic-ai-standards-body/" target="_blank" rel="noopener">Kingy AI</a></div>
+      <div class="topic-label">経営：AnthropicのIPO（新規株式公開）</div>
+      <p>何が起きたか：Anthropicは6月1日にSEC（米証券取引委員会）へ上場申請書類（S-1）の草案を非公開で提出済み。直近の資金調達（シリーズH、650億ドル）では企業価値9,650億ドルと評価され、年換算売上高は470億ドルを超えたと報じられている。上場は早ければ9月下旬〜10月初めとの見方があるが、会社側は株価・株数・上場日を発表しておらず「市場環境次第」としている。</p>
+      <p>なぜ重要か：実現すれば史上最大級のIPOとなる可能性があり、AI関連株全体の評価の物差しになる。何に影響するか：ただし本日時点で新たな上場日の発表はなく、上場時期はあくまで報道ベースの見通し（未確定）である。</p>
+      <div class="topic-source">出典：<a href="https://www.anthropic.com/news/confidential-draft-s1-sec" target="_blank" rel="noopener">Anthropic（S-1草案提出の発表）</a>｜<a href="https://www.empower.com/the-currency/money/anthropic-ipo-news" target="_blank" rel="noopener">Empower</a>｜<a href="https://finance.yahoo.com/markets/stocks/articles/anthropic-files-confidential-1-joins-161008569.html" target="_blank" rel="noopener">Yahoo Finance</a></div>
     </div>
     <div class="topic">
-      <div class="topic-label">お金の動き：上場と資金調達</div>
-      <p>Anthropicは6月1日に上場の書類（S-1）を非公開でSECに出したと公表済み。上場は9月末〜10月初めとの見方もあるが、会社は日程を発表していない。上場前に銀行からの借入枠を150億ドルに広げる話も報じられた（9/3、Bloomberg）。OpenAIは企業価値1.2兆ドル超での資金調達を検討中と報じられ、ソフトバンクはOpenAIへの出資資金として110億ドル超の社債を検討している。9月29日にはOpenAIの開発者会議「DevDay 2026」がある。</p>
-      <div class="topic-source">出典：<a href="https://www.anthropic.com/news/confidential-draft-s1-sec" target="_blank" rel="noopener">Anthropic</a> / <a href="https://www.bloomberg.com/news/articles/2026-09-03/anthropic-nears-finalizing-15-billion-pre-ipo-credit-facility" target="_blank" rel="noopener">Bloomberg</a> / <a href="https://www.bloomberg.com/latest/openai" target="_blank" rel="noopener">Bloomberg（OpenAI）</a> / <a href="https://openai.com/index/devday-2026/" target="_blank" rel="noopener">OpenAI DevDay</a></div>
-    </div>
-    <div class="topic">
-      <div class="topic-label">各社の最新モデルと、動かしているチップ</div>
-      <table class="model-table vt">
-        <tr><th>会社</th><th>最新モデル（出た日）</th><th>何が変わったか</th><th>主なチップ</th></tr>
-        <tr><td>Anthropic</td><td>🆕 Claude Opus 5.5（9/22）<br>🆕 Claude Mythos 5.1（9/1）</td><td>Opus 5.5：2割値下げ・3割高速化。Sonnet/Haiku 5.5は数週間内</td><td>Google TPU・AWS Trainium・NVIDIA GPUの3本立て。9/24にAkamaiのCPUも追加</td></tr>
-        <tr><td>OpenAI</td><td>🆕 GPT-6 Sol / GPT-6 Luna（9/22）</td><td>前世代の半額。Solは事実の誤りが約半分に（OpenAI社内テスト）</td><td>主にNVIDIA GPU。AMD GPU、Cerebras、Broadcomと作る自社チップ「Jalapeño」（年末から導入予定）</td></tr>
-        <tr><td>Google</td><td>🆕 Gemini 3.8 Flash（9/2）<br>Gemini 3.1 Pro</td><td>3.8 Flash：大規模なコーディング・エージェント作業向け</td><td>自社TPU（Broadcomと共同開発）</td></tr>
+      <div class="topic-label">各社の最新モデル一覧（🆕＝直近1か月の新版）</div>
+      <table class="ai-table">
+        <tr><th>会社</th><th>モデル</th><th>出た日</th><th>何が変わったか</th></tr>
+        <tr><td>Anthropic</td><td>🆕 Claude Opus 5.5</td><td>9/22（米国時間）</td><td>Fableとほぼ同等の性能を約20%安く</td></tr>
+        <tr><td>Anthropic</td><td>🆕 Claude Fable 5.1</td><td>9/1</td><td>最上位モデル。キャッシュ読み出し料金を75%値下げ</td></tr>
+        <tr><td>Anthropic</td><td>🆕 Claude Mythos 5.1</td><td>9/1</td><td>防御側（セキュリティ専門家）向けに限定提供</td></tr>
+        <tr><td>OpenAI</td><td>🆕 GPT-6 Sol / Luna</td><td>9/22（米国時間）</td><td>GPT-6 Astraの廉価・高速版</td></tr>
+        <tr><td>OpenAI</td><td>🆕 GPT-6 Astra</td><td>9/3〜4</td><td>最上位。画面認識・PC操作を推論に統合。サイバー能力で初の「クリティカル」判定</td></tr>
+        <tr><td>Google</td><td>🆕 Gemini 3.8 Flash</td><td>9/2</td><td>エージェント・サイバー用途を強化（3.8 Proは未公開）</td></tr>
+        <tr><td>xAI</td><td>🆕 Grok 4.7</td><td>9/21</td><td>50万トークンの長文対応</td></tr>
+        <tr><td>DeepSeek</td><td>🆕 DeepSeek V4.1 Flash</td><td>9/10</td><td>画像入力に対応、メモリ使用量を大幅削減</td></tr>
       </table>
-      <p class="ai-note">※Mythos 5.1の日付はWikipediaの記載によるもの。xAI・DeepSeekは今回の検索で新しい動きを確認できなかったため載せていません。</p>
-      <div class="topic-source">出典：<a href="https://www.anthropic.com/claude-opus-5-5" target="_blank" rel="noopener">Anthropic</a> / <a href="https://en.wikipedia.org/wiki/Claude_Mythos" target="_blank" rel="noopener">Wikipedia（Mythos）</a> / <a href="https://www.datacenterfrontier.com/machine-learning/article/55335703/inside-anthropics-multi-cloud-ai-factory-how-aws-trainium-and-google-tpus-shape-its-next-phase" target="_blank" rel="noopener">Data Center Frontier</a> / <a href="https://www.cnbc.com/2026/01/16/openai-chip-deal-with-cerebras-adds-to-roster-of-nvidia-amd-broadcom.html" target="_blank" rel="noopener">CNBC（OpenAIのチップ）</a> / <a href="https://www.cnbc.com/2026/06/24/openai-and-broadcom-reveal-jalapeno-first-ai-chip-in-partnership.html" target="_blank" rel="noopener">CNBC（Jalapeño）</a> / <a href="https://ai.google.dev/gemini-api/docs/changelog" target="_blank" rel="noopener">Gemini API</a></div>
+      <div class="topic-source">出典：<a href="https://local-ai-zone.github.io/blog/September_2026_AI_Model_Updates.html" target="_blank" rel="noopener">Local AI Zone（9月のモデル更新まとめ）</a>｜<a href="https://llmgateway.io/timeline" target="_blank" rel="noopener">LLM Gateway</a>｜<a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/" target="_blank" rel="noopener">Google公式ブログ</a>｜<a href="https://techxplore.com/news/2026-09-anthropic-openai-cheaper-ai-safety.html" target="_blank" rel="noopener">TechXplore</a></div>
     </div>
     <div class="topic">
-      <div class="topic-label">お断り</div>
-      <p>Anthropicは、このニュースをまとめているAI（Claude）の会社です。良く見せることも悪く見せることもせず、報道された事実と出典だけを書いています。</p>
+      <div class="topic-label">そのAIはどのチップで動いているか</div>
+      <table class="ai-table">
+        <tr><th>会社</th><th>使っているチップ</th><th>補足</th></tr>
+        <tr><td>Anthropic</td><td>AWS Trainium・Google TPU・NVIDIA GPU</td><td>3種類を用途で使い分け。主な学習パートナーはAmazon。4月にBroadcom経由で次世代TPUを3.5GW分確保。どのモデルがどのチップかは非公表</td></tr>
+        <tr><td>OpenAI</td><td>NVIDIA GPU・AMD MI450・Cerebras・AWS Trainium・自社チップ「Jalapeño」</td><td>AMDは2026年後半から計6GW、Cerebrasは750MW、AWS Trainiumは約2GW。Broadcomと共同開発の推論用「Jalapeño」は2026年末に初導入目標</td></tr>
+        <tr><td>Google</td><td>自社TPU（第7世代 Ironwood）</td><td>1ポッド9,000チップ超。Broadcomが次世代TPU開発を2031年まで担う</td></tr>
+        <tr><td>xAI</td><td>未確認</td><td>今回の検索では具体的な情報を確認できず</td></tr>
+        <tr><td>DeepSeek</td><td>未確認</td><td>今回の検索では具体的な情報を確認できず</td></tr>
+      </table>
+      <p style="margin-top:10px;">含意：主要AI企業はいずれも「NVIDIA一択」から脱し、TPU・Trainium・AMD・自社チップへ分散している。AI需要の拡大は特定のGPUメーカーだけでなく、Broadcom（カスタムチップ）や、どのチップにも必要な高帯域メモリ（HBM）を供給するメーカーにも広く波及する構造だ。</p>
+      <div class="topic-source">出典：<a href="https://www.anthropic.com/news/google-broadcom-partnership-compute" target="_blank" rel="noopener">Anthropic（Google・Broadcomとの計算資源契約）</a>｜<a href="https://www.siliconrepublic.com/machines/anthropic-google-broadcom-announce-3-5gw-tpu-deal" target="_blank" rel="noopener">Silicon Republic</a>｜<a href="https://www.cnbc.com/2026/06/24/openai-and-broadcom-reveal-jalapeno-first-ai-chip-in-partnership.html" target="_blank" rel="noopener">CNBC（Jalapeño）</a>｜<a href="https://www.cnbc.com/2026/01/16/openai-chip-deal-with-cerebras-adds-to-roster-of-nvidia-amd-broadcom.html" target="_blank" rel="noopener">CNBC（Cerebras）</a>｜<a href="https://cloud.google.com/blog/products/compute/ironwood-tpus-and-new-axion-based-vms-for-your-ai-workloads" target="_blank" rel="noopener">Google Cloud（Ironwood）</a></div>
     </div>
   </div>
 </div>
 
+<!-- ============ POLITICS ============ -->
 <div class="section politics" id="sec-politics">
   <div class="section-header">
     <div class="section-title">政治（米国・日本・世界）</div>
-    <div class="point-summary">本日のポイント：米中首脳会談は休戦延長どまり。高市首相は訪米を終え、10月5日の臨時国会へ。国連総会ではウクライナと中東が中心。</div>
+    <div class="point-summary">本日のポイント：米中は休戦延長、米イランはホルムズ再開の「段階的合意」を模索と、緊張緩和の兆しが同時に出た。ただし米国は9月30日の予算期限と11月3日の中間選挙を控え、日本は10月の臨時国会で消費税減税が焦点となる。</div>
   </div>
   <div class="politics-body">
     <div class="politics-block">
-      <div class="sub-heading">米国</div>
-      <p><b>米中首脳会談：</b>トランプ大統領は24日、習近平国家主席を国賓として迎えた。アンドルーズ基地でのB-1爆撃機の上空飛行を含む歓迎式、スミソニアンのアジア美術館の訪問、晩さん会、国立公文書館の見学などが組まれた。成果は関税休戦の1/10までの延長で、半導体の輸出規制に新しい動きは報じられていない。</p>
-      <p><b>AIの扱い：</b>トランプ氏は、AI開発は「今のままにしておく」と述べ、中国も同じ立場だと主張した。ベッセント長官はAI事故の相互通報の仕組みに触れたが、発表はない。晩さん会にはクック（Apple）、ベゾス（Amazon）、ピチャイ（Alphabet）、アルトマン（OpenAI）、マスク（Tesla）、フアン（NVIDIA）各氏が招かれた。</p>
-      <p><b>報道機関との対立：</b>ホワイトハウスはCNN・MS NOW・Politicoを敷地内から締め出し、「取材は特権だ」と説明。トランプ氏はこれらを「三流のピエロ」と呼び、「フェイクニュースへの攻撃」を始めると表明した。</p>
-      <p><b>イラン：</b>米国とイランの交渉担当者がニューヨークで、戦闘を段階的に終わらせる取引を検討していると報じられた。イランがホルムズ海峡を再開し、米国が封鎖を解くという内容。ルビオ国務長官は、前向きな結果につながるなら国連総会の場でイラン側と話す用意があると述べていた。</p>
-      <p><b>ウクライナ：</b>ゼレンスキー大統領は国連総会の場でトランプ氏と会談し、エネルギー施設への攻撃を止める「エネルギー停戦」や戦争の終わらせ方を話し合った。冬に向けてパトリオットを含む武器の「冬のパッケージ」を求めた。</p>
-      <p><b>FRBとの関係：</b>FRBは9月の会合で3年ぶりの利上げに踏み切り、トランプ氏は強く批判した。ただ、利上げの原因になったインフレには、イランとの戦争による原油高と関税も関わっており、中間選挙を前に物価の責任を問われるのは政権側になりうる（CNN・NBC）。</p>
-      <p><b>議会と中間選挙：</b>下院共和党は今週の日程を早めに切り上げ、11月の中間選挙まで下院は休会に入る。最終日にはロシアとイランへの新しい制裁と、ロシア産の石油・ガスを大量に買う国からの輸入品に関税をかける権限を認める法案を可決した。カナダとの貿易摩擦を再燃させたことには、接戦州の共和党議員から反発が出ている。</p>
-      <div class="topic-source">出典：<a href="https://www.nbcnews.com/politics/trump-administration/live-blog/trump-fed-interest-rate-2026-election-congress-iran-live-updates-rcna598011" target="_blank" rel="noopener">NBC News（ライブ）</a> / <a href="https://www.cnn.com/2026/09/18/politics/fed-rate-increase-trump-midterms" target="_blank" rel="noopener">CNN（FRBと中間選挙）</a> / <a href="https://us.cnn.com/2026/08/26/politics/republicans-trump-tariffs-midterms" target="_blank" rel="noopener">CNN（関税と共和党）</a> /<a href="https://www.whitehouse.gov/news/" target="_blank" rel="noopener">White House</a> / <a href="https://www.cnn.com/politics/president-donald-trump-47" target="_blank" rel="noopener">CNN</a> / <a href="https://www.cnbc.com/2026/09/24/us-china-trade-truce-bessent-trump-xi.html" target="_blank" rel="noopener">CNBC</a> / <a href="https://finance.yahoo.com/markets/live/stock-market-today-thursday-september-24-dow-sp-500-nasdaq-080352893.html" target="_blank" rel="noopener">Yahoo Finance</a> / <a href="https://www.aljazeera.com/news/liveblog/2026/9/23/un-general-assembly-live-irans-pezeshkian-ukraines-zelenskyy-to-speak" target="_blank" rel="noopener">Al Jazeera</a></div>
+      <div class="sub-heading">米国政治（トランプ政権）</div>
+      <p>① 米中首脳会談（ワシントン、9月23〜25日）：習主席のワシントン訪問は2015年以来。会談冒頭でベッセント財務長官が貿易休戦の2027年1月10日までの延長を発表した。トランプ氏は「超知能（SI）は大きな議題になるが、現状のままにしておきたい」と述べた。共同記者会見はなく、台湾をめぐる議論の中身は明らかになっていない。今回の延長で関税・レアアースの全面衝突は先送りされたが、わずか2か月の猶予にすぎない。</p>
+      <p>② 関税をめぐる司法・行政の攻防：連邦最高裁は2026年2月、IEEPA（国際緊急経済権限法）に基づく関税を違法と判断したが、他の法律に基づく関税は維持されている。政権は9月8日、カナダとの貿易について5本の布告に署名し、一部品目の輸入を全面禁止したほか、1930年関税法338条に基づく関税の対象品目を入れ替えた。関税の法的根拠を別の法律に切り替える動きが続いている。</p>
+      <p>③ イラン戦争とホルムズ海峡：約7か月続く米イラン紛争で、ニューヨークで交渉中の両国の代表は、イランが海峡を再開し米国が経済封鎖を解く「段階的な出口」を探っている。仲介はカタール。ただし「どちらが先に手札を手放すか」が最大の障害で、7月の暫定合意は崩壊している。トランプ氏は合意は11月3日の中間選挙後になりうるとの見方を示した。</p>
+      <p>④ FRBとの関係：FRBは9月16日に2023年7月以来の利上げを実施し、政策金利を3.75〜4.00%とした。ウォーシュ議長はインフレを2%に戻すと表明する一方、経済見通しの提出を控えている。原油高によるインフレ圧力を受け、参加者18人中16人が追加利上げを見込む。</p>
+      <p>⑤ つなぎ予算と政府閉鎖リスク：9月30日で会計年度が終わり、つなぎ予算が成立しなければ10月1日に政府機関が閉鎖される。上院は8月8日に12月11日までのつなぎ予算を90対6で可決済みだが、ホワイトハウスは対外援助49億ドルの取り消しや選挙管理の変更、国防費の増額を求めており、つなぎ予算が交渉材料にされるリスクがある。</p>
+      <p>⑥ AI規制で国際社会と対立：国連安保理でAI企業トップが世界的な規制を訴える中、米政府代表は「国際機関による中央集権的なAI管理を完全に拒否する」と明言した。トランプ大統領はAI開発減速の警告を「でっち上げ」と退けたと報じられている。</p>
+      <p>⑦ 中間選挙（11月3日）：選挙まで6週間を切った。予算、イラン戦争、物価高（原油・金利上昇）がいずれも選挙争点と直結しており、トランプ氏がイラン合意の時期を選挙後に置いている点も注目される。</p>
+      <p>⑧ Stargate計画の足元：政権と共に進める巨大AIインフラ計画の一部であるOracleのニューメキシコ拠点で「不可抗力」通知が出た。ガスパイプラインの遅れや環境許認可の訴訟が背景で、政権の看板政策の実行面での課題が浮き彫りになった。</p>
+      <div class="topic-source">出典：<a href="https://asia.nikkei.com/spotlight/trump-xi-summit/trump-xi-summit-live-us-president-says-super-intelligence-will-be-big-topic" target="_blank" rel="noopener">Nikkei Asia</a>｜<a href="https://www.tradecomplianceresourcehub.com/2026/09/10/trump-2-0-tariff-tracker/" target="_blank" rel="noopener">Trade Compliance Resource Hub</a>｜<a href="https://en.wikipedia.org/wiki/Learning_Resources,_Inc._v._Trump" target="_blank" rel="noopener">Wikipedia（最高裁判決）</a>｜<a href="https://www.usnews.com/news/world/articles/2026-09-24/us-and-iran-discuss-phased-deal-to-reopen-hormuz-and-end-us-blockade-sources-say" target="_blank" rel="noopener">US News（ロイター配信）</a>｜<a href="https://www.cnbc.com/2026/09/16/fed-rate-decision-september-2026.html" target="_blank" rel="noopener">CNBC</a>｜<a href="https://www.yahoo.com/news/politics/articles/government-shut-down-2026-know-140219109.html" target="_blank" rel="noopener">Yahoo News（政府閉鎖）</a>｜<a href="https://www.aljazeera.com/news/2026/9/24/ai-corporate-leaders-tell-un-the-industry-needs-global-regulation" target="_blank" rel="noopener">Al Jazeera</a>｜<a href="https://www.bloomberg.com/news/articles/2026-09-24/oracle-cites-force-majeure-to-shield-itself-on-controversial-data-center" target="_blank" rel="noopener">Bloomberg</a></div>
     </div>
     <div class="politics-block">
-      <div class="sub-heading">日本</div>
-      <p><b>高市首相が帰国：</b>高市早苗首相は24日午前、ニューヨークでの日米首脳会談や国連総会の一般討論演説を終えて羽田に帰国した。訪米中にはウクライナのゼレンスキー大統領とも初めて会談した。Xには国連演説で「日本の立場をしっかりと発信」したと投稿。</p>
-      <p><b>臨時国会へ：</b>23日の記者会見では、消費税減税の関連法案と、原油の調達先を増やすための法案の成立に意欲を示し、野党に協力を求めた。臨時国会は10月5日に召集される予定で、帰国後は提出法案の準備を急ぐ。</p>
-      <p><b>消費税減税：</b>自民党と日本維新の会は9月14日に消費税減税の大綱案を了承し、政府は閣議決定を経て臨時国会での成立を目指している。食料品の消費税を2年間の期限付きでゼロにする方向で調整が進んでいる。</p>
-      <p><b>円安と介入：</b>円が158円台に戻る中、片山財務相は前回の協調介入以来の原則は変わらないと述べている。米国の金利上昇によるドル高が原因のため、介入は難しいとの見方もある。</p>
-      <p><b>党の体制と近隣外交：</b>自民党は9月16日に役員人事を決め、高市首相は「重要な政策転換の実現に向け総力を挙げる」と述べた。外交方針では、中国とは「戦略的互恵関係」を進めて安定した関係を目指し、韓国とは李在明大統領との首脳間の信頼関係を土台に関係を強める方針を掲げている。</p>
-      <div class="topic-source">出典：<a href="https://news.web.nhk/newsweb/na/nd-20260924de52094" target="_blank" rel="noopener">NHK</a> / <a href="https://www.jiji.com/jc/article?k=2026092400262&amp;g=pol&amp;m=rss" target="_blank" rel="noopener">時事通信</a> / <a href="https://www.daily.co.jp/society/politics/2026/09/24/0020853705.shtml" target="_blank" rel="noopener">デイリー</a> / <a href="https://www.nippon.com/ja/news/kd1472083474815320237/" target="_blank" rel="noopener">nippon.com</a> / <a href="https://news.web.nhk/newsweb/na/nd-20260914de50209" target="_blank" rel="noopener">NHK（大綱）</a> / <a href="https://news.web.nhk/newsweb/na/nd-20260916de50478" target="_blank" rel="noopener">NHK（役員人事）</a> / <a href="https://www.nikkei.com/topics/25093001" target="_blank" rel="noopener">日経（高市政権）</a></div>
+      <div class="sub-heading">日本政治（高市政権）</div>
+      <p>① 国連総会演説：高市首相は国連総会の一般討論演説で、法の支配に基づく自由で開かれた国際秩序の維持・発展に貢献していく考えを示した。米中が休戦を延長し、中東で戦争が続く中、日本が「ルールに基づく秩序」の旗振り役を担う姿勢を改めて打ち出した。</p>
+      <p>② 臨時国会は10月上旬召集：首相は9月23日のニューヨークでの記者会見で、臨時国会では消費税減税や原油調達の多角化に関する法案など「国民に身近な法整備で結果を出していく」と強調した。</p>
+      <p>③ 消費税減税をめぐる与野党協議：首相は消費税減税法案について「野党と真摯に議論し、理解を得ながら前に進める」と説明。超党派の「社会保障国民会議」の議論を踏まえ、税と社会保険料の負担を早期に軽くする方向性は各党と共有できる部分が多いとした。少数与党的な国会運営の中で、野党の協力が法案成立のカギになる。</p>
+      <p>④ 政府提出法案は21本：減税のほか、エネルギー確保や外国人政策などが並ぶ。中東情勢で原油の安定調達が経済安全保障の中心課題となっていることがわかる。</p>
+      <p>⑤ 内閣改造（9月17日）：高市首相は主要閣僚を留任させつつ潜在的なライバルを外し、連立相手の日本維新の会から初めて閣僚1人・副大臣2人・政務官3人を起用した。就任から約1年で政権基盤を固めた形だ。</p>
+      <p>⑥ 北朝鮮：9月21日、北朝鮮による弾道ミサイルの可能性があるものの発射を受け、首相が情報収集と警戒監視の指示を出した。防衛力強化の議論を後押しする材料となる。</p>
+      <p>⑦ 財政と市場：日銀が政策金利を1.25%に引き上げ、長期金利は3%台に乗せた。消費税減税で財政赤字が膨らめば国債の売り圧力が強まりかねず、減税の「財源」が臨時国会の大きな論点となりそうだ。</p>
+      <div class="topic-source">出典：<a href="https://news.web.nhk/newsweb/na/nd-20260923de51969" target="_blank" rel="noopener">NHK（国連演説）</a>｜<a href="https://www.nikkei.com/article/DGXZQOUA230VW0T20C26A9000000/" target="_blank" rel="noopener">日本経済新聞（首相会見）</a>｜<a href="https://www.jiji.com/jc/article?k=2026092300386&amp;g=flash" target="_blank" rel="noopener">時事ドットコム</a>｜<a href="https://www.nikkei.com/article/DGXZQOUA18BAD0Y6A910C2000000/" target="_blank" rel="noopener">日本経済新聞（法案21本）</a>｜<a href="https://www.bloomberg.com/news/articles/2026-09-17/takaichi-keeps-core-ministers-in-place-in-cabinet-reshuffle" target="_blank" rel="noopener">Bloomberg（内閣改造）</a>｜<a href="https://japan.kantei.go.jp/" target="_blank" rel="noopener">首相官邸</a>｜<a href="https://tradingeconomics.com/japan/government-bond-yield" target="_blank" rel="noopener">Trading Economics</a></div>
     </div>
     <div class="politics-block">
-      <div class="sub-heading">世界</div>
-      <p><b>国連総会：</b>今年の一般討論は、ガザとウクライナの2つの戦争が中心。ガザの戦争が始まってから3年近くたつ中、24日にはイスラエルとパレスチナ自治政府の両首脳が演説した。イスラエルのネタニヤフ首相は演説でガザでの行動を正当化し、ニューヨークのマムダニ市長との対立も国連に持ち込んだ（CNN）。</p>
-      <p><b>ホルムズ海峡：</b>イランの高官は22日、米国が封鎖を解けば数日のうちにホルムズ海峡を湾岸の船に再開できるとロイターに語り、国連総会を「またとない機会」と表現していた。イランは9月16日に仲介者を通じて最新の提案を送っている。一方でイラン軍の幹部は24日、攻撃されればインド洋まで戦線を広げると警告し、交渉と威嚇が同時に進んでいる。</p>
-      <p><b>湾岸諸国：</b>湾岸6か国（バーレーン・クウェート・カタール・オマーン・サウジアラビア・UAE）は、ホルムズ海峡の航行再開を強く望む一方、ライバルのイランに力を与えすぎることは警戒している。</p>
-      <p><b>ウクライナ：</b>ゼレンスキー大統領はエネルギー停戦について「どんな形でも応じる用意がある」とした一方、ウクライナ側だけがロシアの製油所への攻撃を止めることは話し合っていないと述べた。英国のバーナム首相らとの会談を終え、キーウに戻る途中。</p>
-      <p><b>ロシアのキーウ攻撃：</b>24日、ロシアの弾道ミサイルがキーウの3地区を攻撃し、2人が死亡、少なくとも8人がけが。23日夜からの攻撃で、ジルコン巡航ミサイル4発・弾道ミサイル3発・ドローン219機などが撃ち落とされた。国連で停戦が語られる裏で、攻撃は続いている。</p>
-      <p><b>欧州とロシア：</b>フランスのマクロン大統領は、ドイツ・ライプツィヒ空港へのドローン攻撃について「失敗していなければ悲劇になっていた」と述べ、ロシア軍の情報機関GRUが計画したと非難。フランスを「ロシアの揺さぶりに備える態勢」に切り替え、欧州にも続くよう求めている。NATOのルッテ事務総長は「プーチンは苦しい立場にある」と加盟国を安心させようとしている。</p>
-      <div class="topic-source">出典：<a href="https://www.cnn.com/2026/09/24/world/live-news/un-general-assembly-netanyahu" target="_blank" rel="noopener">CNN</a> / <a href="https://www.rappler.com/world/middle-east/iran-hints-hormuz-talks-united-states-september-22-2026/" target="_blank" rel="noopener">Rappler（Reuters）</a> / <a href="https://www.aljazeera.com/news/liveblog/2026/9/23/un-general-assembly-live-irans-pezeshkian-ukraines-zelenskyy-to-speak" target="_blank" rel="noopener">Al Jazeera</a> / <a href="https://www.france24.com/en/americas/20260922-live-guterres-to-open-un-general-assembly-in-final-speech-of-his-mandate" target="_blank" rel="noopener">France 24</a> / <a href="https://www.riotimesonline.com/europe-intelligence-brief-thursday-september-24-2026/" target="_blank" rel="noopener">Rio Times（欧州）</a> / <a href="https://www.euinsider.eu/news/macron-russia-hybrid-threat-we-will-not-be-warned-europe-2026" target="_blank" rel="noopener">EU Insider</a> / <a href="https://www.france24.com/en/archives/europe/2026/09/" target="_blank" rel="noopener">France 24（欧州）</a></div>
+      <div class="sub-heading">世界の潮流</div>
+      <p>① 欧州の国債売り：英国債（ギルト）利回りは数年来の高水準に達し、世界的な国債売りの一角となっている。24日の欧州株はDAXが0.23%安、CAC40が0.46%安、FTSE100が0.10%安と小幅安。</p>
+      <p>② 英国：アンディ・バーナム首相は、ロシアの偽情報に対抗する新たな拠点の設立を発表し、ロシアが年13億ポンドを情報操作に費やしていると指摘した。右派からは言論の自由、左派からは市民的自由の観点から批判が出ている。</p>
+      <p>③ ドイツ：燃料税を1リットルあたり17セント引き下げる法案が金曜日（25日）に連邦議会と連邦参議院で最終採決される見通し。費用25億ユーロを連邦と16州で折半する。原油高への対策だ。</p>
+      <p>④ フランス：燃料税の引き下げは行わず、通勤者への100ユーロ給付や漁業・農業・建設業への1リットルあたりの補助で対応している。マクロン大統領はロシアによる欧州攻撃は「ありうる」と警告し、独仏は核に関する共同の運営グループで戦略協力を進めている。</p>
+      <p>⑤ EUの対ロ制裁：約3,000の個人・団体を対象とする制裁が2029年9月まで3年延長された。ラトビアは当初反対したのち棄権し、制裁対象から外れた実業家への独自制裁を検討している。</p>
+      <p>⑥ ウクライナ：キーウは今週2度の攻撃を受け、23日には2人死亡・41人負傷、24日にもロシアの弾道ミサイルで2人が死亡し8人以上が負傷した。一晩でジルコン巡航ミサイル4発、弾道ミサイル3発、ドローン219機が撃墜された。NATOのルッテ事務総長はプーチン氏は「苦しい立場にある」と同盟国を安心させた。</p>
+      <p>⑦ 中東：米イランのホルムズ海峡交渉が最大の焦点。習主席も米中会談で、核問題を含む「包括的合意」に向けた対話の再開を呼びかけた。合意が実現すれば原油価格と世界のインフレ見通しを大きく変える。</p>
+      <p>⑧ 米中・AI覇権：米中首脳はAIの「ガードレール（歯止め）」についても話し合ったとされるが、具体的な成果は伝わっていない。国連安保理ではAI企業トップが国際規制を求め、米国は拒否、英仏の外相も議論に参加した。AIをめぐる国際ルール作りは、米国抜きで進むのか、米国が主導するのかの岐路にある。</p>
+      <div class="topic-source">出典：<a href="https://www.riotimesonline.com/europe-intelligence-brief-thursday-september-24-2026/" target="_blank" rel="noopener">The Rio Times（Europe Intelligence Brief）</a>｜<a href="https://www.bloomberg.com/news/live-blog/2026-09-24/ftse-100-gilts-yields-bonds-stocks-pound-what-s-moving-uk-markets-right-now-markets-today" target="_blank" rel="noopener">Bloomberg（英国市場）</a>｜<a href="https://www.euinsider.eu/news/macron-russia-hybrid-threat-we-will-not-be-warned-europe-2026" target="_blank" rel="noopener">EU Insider</a>｜<a href="https://www.france24.com/en/archives/europe/2026/09/" target="_blank" rel="noopener">France 24</a>｜<a href="https://asia.nikkei.com/spotlight/trump-xi-summit/trump-xi-summit-live-us-president-says-super-intelligence-will-be-big-topic" target="_blank" rel="noopener">Nikkei Asia</a>｜<a href="https://www.aljazeera.com/news/2026/9/24/ai-corporate-leaders-tell-un-the-industry-needs-global-regulation" target="_blank" rel="noopener">Al Jazeera</a></div>
     </div>
   </div>
 </div>
 
+<!-- ============ MLB ============ -->
 <div class="section mlb" id="sec-mlb">
   <div class="section-header">
     <div class="section-title">MLB</div>
-    <div class="point-summary">本日のポイント：レギュラーシーズン残り4日。レイズとブルワーズは地区優勝、ア・リーグ西地区は負け越し同士の史上初の争い。</div>
+    <div class="point-summary">本日のポイント：レギュラーシーズンは9月27日（日）で終了、ワイルドカードシリーズは29日（火）開幕。ナ・リーグWC争いはパドレス・カブス・フィリーズが1ゲーム差の大混戦。</div>
   </div>
   <div class="topics">
     <div class="topic">
-      <div class="topic-label">プレーオフ争い（全体）</div>
-      <p>レギュラーシーズンは残り4日。ア・リーグはレイズが東地区を制して第1シードを決め、ヤンキースはワイルドカードに回って同地区のレッドソックスと当たる流れ。ナ・リーグはブルワーズが中地区を制し、1回戦免除と地区シリーズの本拠地開催を確保した。ナ・リーグのワイルドカードはカブス・フィリーズ・パドレスが有利で、ダイヤモンドバックスは後退している。</p>
-      <div class="topic-source">出典：<a href="https://www.foxsports.com/stories/mlb/mlb-postseason-wild-card-playoffs-standings-2026" target="_blank" rel="noopener">FOX Sports</a> / <a href="https://www.cbssports.com/mlb/news/2026-mlb-playoff-picture-standings-bracket/" target="_blank" rel="noopener">CBS Sports</a></div>
+      <div class="topic-label">プレーオフ進出状況</div>
+      <p>ア・リーグは東地区のレイズが優勝を決め、第1シード（初戦免除と本拠地開催権）を確保。ヤンキースは第4シード（WC1位）を確定させ、レッドソックスとの3連戦が濃厚だ。中地区はガーディアンズが進出を決めた。ナ・リーグは中地区のブルワーズが第1シード、東地区のブレーブス、西地区のドジャースがそれぞれ地区優勝を決めている。</p>
+      <p>なぜ重要か：シード順で初戦免除の有無が決まり、投手の休養にも直結する。残り3〜4試合で、第2シード争いとWC最後の枠が決まる。</p>
+      <div class="topic-source">出典：<a href="https://sports.yahoo.com/mlb/article/mlb-playoffs-2026-tracker-standings-schedule-clinch-scenarios-tiebreakers-playoff-bracket-and-more-130331560.html" target="_blank" rel="noopener">Yahoo Sports（プレーオフ・トラッカー）</a></div>
     </div>
     <div class="topic">
-      <div class="topic-label">ア・リーグ西地区：史上初の「負け越し優勝」か</div>
-      <p>レンジャーズとアストロズはどちらも78勝80敗の負け越しで地区優勝を争っている。162試合制で負け越しのチームが地区優勝すれば史上初。レンジャーズが1ゲーム差でリードしているが、直接対決で9勝4敗のアストロズが同率なら優勝する。直近ではアストロズがマリナーズに4点リードを逆転されて5-6で敗れ、レンジャーズもメッツに2-7で敗れた。</p>
-      <div class="topic-source">出典：<a href="https://clutchpoints.com/mlb/houston-astros/2026-al-standings-astros-4-run-choke-job-al-west-rangers" target="_blank" rel="noopener">ClutchPoints</a> / <a href="https://sports.yahoo.com/articles/2026-al-standings-astros-4-172149193.html" target="_blank" rel="noopener">Yahoo Sports</a></div>
+      <div class="topic-label">ナ・リーグWC：3チームが1ゲーム差</div>
+      <p>23日にドジャースを破ったパドレスが88勝70敗でWC争いの先頭に立ち、カブスとフィリーズが87勝71敗で1ゲーム差で並ぶ（ESPN・Yahoo Sportsの両方で一致）。フィリーズは進出目前で、焦点は上位WCとして本拠地で初戦を開催できるかどうかに移っている。</p>
+      <div class="topic-source">出典：<a href="https://www.espn.com/mlb/recap/_/gameId/401817059" target="_blank" rel="noopener">ESPN</a>｜<a href="https://sports.yahoo.com/mlb/article/mlb-playoffs-2026-tracker-standings-schedule-clinch-scenarios-tiebreakers-playoff-bracket-and-more-130331560.html" target="_blank" rel="noopener">Yahoo Sports</a></div>
     </div>
     <div class="topic">
-      <div class="topic-label">ア・リーグ中地区</div>
-      <p>ガーディアンズがホワイトソックスに1ゲーム差で首位。ポストシーズン進出を決めるには、レッドソックスに勝ち、さらにレンジャーズかアストロズが負ける必要がある。</p>
-      <div class="topic-source">出典：<a href="https://www.foxsports.com/stories/mlb/mlb-postseason-wild-card-playoffs-standings-2026" target="_blank" rel="noopener">FOX Sports</a></div>
+      <div class="topic-label">ア・リーグ西地区：勝率5割未満の首位</div>
+      <p>ア・リーグ西地区はアストロズが首位に立っているが、勝率は5割を下回っている。このまま終われば「負け越しての地区優勝」という珍しい記録になる。一方、ア・リーグWC最後の枠はホワイトソックスが争っている。</p>
+      <div class="topic-source">出典：<a href="https://sports.yahoo.com/mlb/article/mlb-playoffs-2026-tracker-standings-schedule-clinch-scenarios-tiebreakers-playoff-bracket-and-more-130331560.html" target="_blank" rel="noopener">Yahoo Sports</a></div>
     </div>
     <div class="topic">
-      <div class="topic-label">MVP・スター選手</div>
-      <p>ナ・リーグMVP争いは、7月上旬から膝の問題で投げられなかった大谷翔平に代わり、カブスのピート・クロウ＝アームストロング（OPS .954・38本塁打・32盗塁、9月初め時点）が有力に。大谷が受賞を逃せば2022年以来。ア・リーグのジャッジは5月下旬から肋骨の疲労骨折で離脱が続いた。本塁打王争いは9月初め時点でフィリーズのシュワーバー（40本）が首位だった。</p>
-      <div class="topic-source">出典：<a href="https://www.mlb.com/news/mlb-playoff-picture-award-races-stat-leaders-entering-september-2026" target="_blank" rel="noopener">MLB.com</a> / <a href="https://www.espn.com/mlb/story/_/id/49817109/mlb-2026-september-predictions-division-winners-wild-card-races-stat-leaders" target="_blank" rel="noopener">ESPN</a></div>
+      <div class="topic-label">日程</div>
+      <p>レギュラーシーズンは27日（日）に最終日を迎え、29日（火）からワイルドカードシリーズ（3戦2勝制）が始まる。日本時間では30日（水）以降の朝が観戦の時間帯になる見込み。</p>
+      <div class="topic-source">出典：<a href="https://sports.yahoo.com/mlb/article/mlb-playoffs-2026-tracker-standings-schedule-clinch-scenarios-tiebreakers-playoff-bracket-and-more-130331560.html" target="_blank" rel="noopener">Yahoo Sports</a></div>
     </div>
   </div>
 </div>
 
+<!-- ============ DODGERS ============ -->
 <div class="section dodgers" id="sec-dodgers">
   <div class="section-header">
     <div class="section-title">DODGERS</div>
-    <div class="point-summary">本日のポイント：大谷が故障者リストから復帰。しかしパドレスに1-5で敗れ、1回戦免除の決定はお預け。</div>
+    <div class="point-summary">本日のポイント：大谷翔平が故障者リストから復帰！ 試合はパドレスに1-5で敗れたが、ポストシーズンに向けて主役が戻ってきた。今日（日本時間25日昼）はレギュラーシーズン本拠地最終戦。</div>
   </div>
   <div class="topics">
     <div class="topic">
-      <div class="topic-label">大谷翔平が復帰</div>
-      <p>ドジャースは23日（現地）、左膝と右上腕二頭筋のけがで15日間の故障者リストに入っていた大谷翔平を戻した。首の張りもあったが、パドレス戦に「2番・DH」で先発出場。ベッツの後ろを打ち、相手先発は左腕ロビー・レイだった。空いた枠を作るため、話題の新人ジョスエ・デパウラは3Aオクラホマシティに戻された。ポストシーズンを前に、打者・大谷が間に合ったことが何よりの朗報。</p>
-      <div class="topic-source">出典：<a href="https://www.japantimes.co.jp/sports/2026/09/24/baseball/mlb/dodgers-activate-shohei-ohtani/" target="_blank" rel="noopener">Japan Times</a> / <a href="https://dodgersdigest.com/2026/09/23/padres-dodgers-september-23-2026-ohtani-returns-to-the-lineup-with-dodgers-looking-to-clinch-first-round-bye-de-paula-optioned-to-okc/" target="_blank" rel="noopener">Dodgers Digest</a></div>
+      <div class="topic-label">大谷翔平、復帰！</div>
+      <p>右上腕二頭筋と左ひざの痛みで9月8日から故障者リスト入りしていた大谷が、23日（日本時間24日）のパドレス戦で復帰。4打数1安打1四球で、4回の満塁の好機では三振と悔しい場面もあったが、元気な姿を見せてくれた。今季の残りは打者に専念し、ロバーツ監督は「毎日出場させてポストシーズンに備える」方針だ。</p>
+      <div class="topic-source">出典：<a href="https://www.espn.com/mlb/recap/_/gameId/401817059" target="_blank" rel="noopener">ESPN</a>｜<a href="https://www.si.com/mlb/dodgers/onsi/dave-roberts-officially-announces-when-shohei-ohtani-will-return-dodgers" target="_blank" rel="noopener">Sports Illustrated</a>｜<a href="https://www.thesportingtribune.com/2026/09/24/ohtani-returns-as-dodgers-fall-to-padres" target="_blank" rel="noopener">The Sporting Tribune</a></div>
     </div>
     <div class="topic">
       <div class="topic-label">試合結果：パドレスに1-5</div>
-      <p>復帰戦はパドレスに1-5で敗れ、本拠地での連勝は11で止まった。成績は97勝61敗。先発の山本由伸は6回を投げて5安打・自責点2・4奪三振と試合は作ったが、打線が援護できなかった。この敗戦で、ナ・リーグ第2シード（1回戦免除）を決めるのは持ち越しに。あと1勝するか、ブレーブスが1敗すれば決まる。</p>
-      <div class="topic-source">出典：<a href="https://www.espn.com/mlb/recap?gameId=401817059" target="_blank" rel="noopener">ESPN</a> / <a href="https://www.thesportingtribune.com/2026/09/24/ohtani-returns-as-dodgers-fall-to-padres" target="_blank" rel="noopener">Sporting Tribune</a> / <a href="https://sports.yahoo.com/articles/dodgers-blow-chance-clinch-first-052652620.html" target="_blank" rel="noopener">Yahoo Sports</a></div>
+      <p>先発の山本由伸は序盤10人中9人を抑える好投を見せたが、4回にマチャドに2ランを浴び、5回には自らの送球エラーも絡んで失点し黒星。打線はパドレス先発ロビー・レイを攻めきれなかった。この敗戦で本拠地の連勝は11で止まり、ナ・リーグ第2シードの確定もお預けとなった。</p>
+      <div class="topic-source">出典：<a href="https://www.espn.com/mlb/recap/_/gameId/401817059" target="_blank" rel="noopener">ESPN（試合レポート）</a></div>
     </div>
     <div class="topic">
-      <div class="topic-label">次の試合</div>
-      <p>現地24日夜7時10分（日本時間25日午前11時10分）にパドレス戦の3戦目。先発はドジャースがタイラー・グラスノー、パドレスがニック・ピベッタの予定。勝てばその場で1回戦免除が決まる大事な一戦。ワールドシリーズ制覇を狙うチームにとって、1回戦を休めるかどうかは投手の起用に大きく響く。</p>
-      <div class="topic-source">出典：<a href="https://www.truebluela.com/los-angeles-dodgers-schedule/125056/padres-september-24" target="_blank" rel="noopener">True Blue LA</a> / <a href="https://www.fanduel.com/research/dodgers-vs-padres-mlb-odds-prediction-point-spread-over-under-and-betting-trends-for-9-24-2026" target="_blank" rel="noopener">FanDuel Research</a> / <a href="https://sports.yahoo.com/articles/dodgers-clinch-first-round-bye-171326062.html" target="_blank" rel="noopener">Yahoo Sports</a> / <a href="https://www.forbes.com/sites/berniepleskoff/2026/09/24/amazing-shohei-ohtanis-los-angeles-dodgers-target-2026-world-series/" target="_blank" rel="noopener">Forbes</a></div>
+      <div class="topic-label">今日の試合＆ポストシーズンの先発陣</div>
+      <p>今日の試合（日本時間25日午前11時10分開始）はレギュラーシーズンのドジャースタジアム最終戦。先発はグラスノー、パドレスはピベッタ。ポストシーズンの先発陣は山本・スクーバル・スネル・グラスノーの「ビッグ4」で、順番はまだ決まっていない。山本は中5日以上の登板に慣れている点が考慮されそうだ。大谷の打棒と最強の先発4本柱で、10月の戦いが今から楽しみ！</p>
+      <div class="topic-source">出典：<a href="https://sports.yahoo.com/articles/dodgers-deck-thursday-september-24-011636957.html" target="_blank" rel="noopener">Yahoo Sports（Dodgers on Deck）</a>｜<a href="https://www.truebluela.com/los-angeles-dodgers-schedule/125056/padres-september-24" target="_blank" rel="noopener">True Blue LA</a>｜<a href="https://www.mlb.com/news/dodgers-2026-postseason-faq" target="_blank" rel="noopener">MLB.com</a></div>
     </div>
   </div>
 </div>
 
-<footer>自動生成：2026年9月25日（金）5:30版（AI欄を追加・政治欄を補強）｜出典は各項目に記載</footer>
+<footer>自動生成：2026年9月25日（金）午前5時台（日本時間）｜出典は各項目に記載</footer>
 </body>
 </html>
