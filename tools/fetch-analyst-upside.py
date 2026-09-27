@@ -183,6 +183,31 @@ def pct(a, b):
     return round((a / b - 1) * 100, 1) if a and b else None
 
 
+def load_params_module():
+    """同じフォルダの stock-params.py（②-Bと同じ物差しの計算）を読み込む。無ければ None"""
+    import importlib.util
+    path = HERE / "stock-params.py"
+    if not path.exists():
+        return None
+    spec = importlib.util.spec_from_file_location("stock_params", path)
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+
+def add_params(yf, rows, mod, cache, sleep):
+    """表に出す銘柄だけ、予想EPS修正・PER変化・分類などを足す（全社に取ると時間がかかるため）"""
+    for r in rows:
+        sym = r["symbol"]
+        if sym not in cache:
+            try:
+                cache[sym] = mod.compute(yf, sym)
+            except Exception as e:
+                cache[sym] = {"error": str(e)[:200]}
+            time.sleep(sleep)
+        r["params"] = cache[sym]
+
+
 def rank_market(rows, min_analysts):
     """上昇余地（平均目標÷現在値−1）の高い順。人数が下限未満・目標なしは別に数える"""
     ok, few, no_target = [], [], []
@@ -229,7 +254,14 @@ def run_market(key, args, yf):
     ranked, few, no_target = rank_market(rows, args.min_analysts)
     watch = [{"symbol": s, "label": WATCH[s], **next((r for r in rows if r["symbol"] == s), {})}
              for s in WATCH if s.endswith(m["suffix"])]
+    mod = load_params_module()
+    if mod:
+        print(f"  {m['label']} 表に出す銘柄の予想EPS修正・PER変化を取得中…", file=sys.stderr)
+        cache = {}
+        add_params(yf, ranked[:TOP_N], mod, cache, args.sleep)
+        add_params(yf, watch, mod, cache, args.sleep)
     return {
+        "params_note": None if mod else "stock-params.py が同じフォルダに無いため、予想EPS修正・PER変化・分類は出していない",
         "label": m["label"], "universe": universe_label or m["universe"], "currency_mark": m["cur"],
         "universe_count": len(uni), "fetched": len(rows),
         "ranked_count": len(ranked), "excluded_few_analysts": len(few), "no_target": len(no_target),
@@ -242,7 +274,7 @@ CSS = """
 body{background:#0f1117;color:#e6e6e6;font-family:-apple-system,"Hiragino Sans","Noto Sans JP",sans-serif;font-size:17px;line-height:1.8;margin:0;padding:16px;}
 h1{font-size:24px;margin:8px 0 4px;} h2{font-size:22px;margin:36px 0 8px;}
 .note{font-size:16px;color:#9aa4b2;} .box{background:#181b24;border:1px solid #2a2e3a;border-radius:8px;padding:14px 16px;margin:14px 0;}
-.tbl-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;} table{border-collapse:collapse;min-width:900px;width:100%;}
+.tbl-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;} table{border-collapse:collapse;min-width:1500px;width:100%;}
 th,td{padding:8px 10px;border-bottom:1px solid #2a2e3a;white-space:nowrap;text-align:right;} th{color:#9aa4b2;font-weight:normal;font-size:16px;}
 td.l,th.l{text-align:left;} .up{color:#3fb950;font-weight:bold;} .down{color:#f85149;font-weight:bold;} .muted{color:#9aa4b2;}
 tr.watch td{background:#2a2410;} .warn{color:#e3b341;}
@@ -262,22 +294,55 @@ def fmt_pct(v):
     return f'<span class="{cls}">{v:+.1f}%</span>'
 
 
+CLASS_COLOR = {"①": "#3fb950", "②": "#3fb950", "④": "#56d3f7", "⑤": "#e3b341", "⑥": "#9aa4b2",
+               "⑦": "#f0883e", "⑧": "#f85149", "⑨": "#7ee787"}
+
+
+def class_html(p):
+    c = p.get("classification")
+    if not c:
+        return '<span class="muted">—</span>'
+    color = CLASS_COLOR.get(c[0], "#9aa4b2")
+    extra = f'<br><span class="note">＋③賭け型の前提（予想EPSが実績の{p["jump"]:.1f}倍）</span>' if p.get("bet_type") else ""
+    return f'<span style="color:{color};font-weight:bold">{html.escape(c)}</span>{extra}'
+
+
 def row_html(r, cur, rank_text):
     name = r.get("name_local") or r.get("name_en") or r["symbol"]
     # ティッカーは銘柄名のすぐ下に出す（横にスクロールしなくても見えるように）
     sub = " ｜ ".join(x for x in (r["symbol"], r.get("name_en") if r.get("name_en") != name else None) if x)
     name_cell = html.escape(name) + f'<br><span class="note">{html.escape(sub)}</span>'
     cls = ' class="watch"' if r["symbol"] in WATCH else ""
-    # スマホで最初に見える位置に「上昇余地・人数」を置く
+    p = r.get("params") or {}
+    col = {"+1y": "来年度", "0y": "今年度"}.get(p.get("column"), "")
+    eps_cell = (fmt_pct(p.get("eps_rev_30d")) +
+                f'<br><span class="note">{col}・60日{fmt_pct(p.get("eps_rev_60d")) if p.get("eps_rev_60d") is not None else "—"}</span>'
+                if p and "error" not in p else '<span class="muted">—</span>')
+    peg = f'{p["peg"]:.2f}' if p.get("peg") else "—"
+    up, down = p.get("rev_up_30d"), p.get("rev_down_30d")
+    revs = f"↑{up if up is not None else '—'}／↓{down if down is not None else '—'}" if p else "—"
+    n_eps = p.get("eps_analysts")
+    # ②-Bと同じ列の順：予想EPS修正 → PER変化 → 予想株価（人数）→ 上昇余地 → PEG → 分類
     return (f"<tr{cls}><td>{rank_text}</td><td class=l>{name_cell}</td>"
-            f"<td>{fmt_pct(r.get('upside_pct'))}</td><td>{r.get('analysts') or '—'}人</td>"
-            f"<td>{fmt_price(r.get('price'), cur)}</td><td>{fmt_price(r.get('target_mean'), cur)}</td>"
-            f"<td>{fmt_pct(r.get('upside_median_pct'))}</td><td>{fmt_pct(r.get('upside_low_pct'))}</td>"
-            f"<td class=l>{r['symbol']}</td><td>{r.get('price_date') or '—'}</td></tr>")
+            f"<td>{eps_cell}</td><td>{fmt_pct(p.get('per_chg_30d'))}</td>"
+            f"<td>{fmt_price(r.get('target_mean'), cur)}<br><span class=\"note\">{r.get('analysts') or '—'}人</span></td>"
+            f"<td>{fmt_pct(r.get('upside_pct'))}</td><td>{peg}</td><td class=l>{class_html(p)}</td>"
+            f"<td>{revs}<br><span class=\"note\">EPS予想{n_eps if n_eps is not None else '—'}人</span></td>"
+            f"<td>{fmt_price(r.get('price'), cur)}</td><td>{fmt_pct(r.get('upside_median_pct'))}</td>"
+            f"<td>{fmt_pct(r.get('upside_low_pct'))}</td><td>{r.get('price_date') or '—'}</td></tr>")
 
 
-HEAD = ("<tr><th>順位</th><th class=l>銘柄</th><th>上昇余地</th><th>人数</th><th>現在値</th><th>平均目標</th>"
-        "<th>中央値まで</th><th>最低目標まで</th><th class=l>コード</th><th>株価の日付</th></tr>")
+HEAD = ("<tr><th>順位</th><th class=l>銘柄</th><th>予想EPS修正<br>（30日）</th><th>PER変化<br>（30日）</th>"
+        "<th>予想株価<br>（人数）</th><th>上昇余地</th><th>PEG</th><th class=l>分類</th>"
+        "<th>修正人数<br>（30日 上げ／下げ）</th><th>現在値</th><th>中央値まで</th><th>最低目標まで</th><th>株価の日付</th></tr>")
+
+LEGEND = ('<div class="box"><b>分類（ブリーフィング②-Bと同じ）</b>：EPS修正（30日）とPER変化（30日）で決める<br>'
+          "①実績あり・反応未追随：EPS修正+2%以上・PER変化+5%未満／②緩やかな再評価型：EPS修正+2%以上・PER変化+5〜15%／"
+          "④業績・期待の同時加速型：EPS修正+2%以上・PER変化+15%以上／⑤期待先行型：EPS修正±2%・PER変化+10%以上／"
+          "⑥様子見型：EPS修正±2%・PER変化-5〜+10%／⑦期待後退型：EPS修正±2%・PER変化-5%以下／⑧下方修正型：EPS修正-2%以下／"
+          "⑨キャッチアップ型：EPS修正(30日)+2%未満だが60日+5%以上・PER変化+5%以上。"
+          "＋③賭け型の前提：予想EPSが実績の2倍以上。<br>"
+          '<span class="note">EPSは年度末まで4か月以内なら来年度の列（12月決算は9月から来年度）。EPS予想が5人以下の銘柄は分類しない。</span></div>')
 
 
 def render_html(data):
@@ -286,7 +351,9 @@ def render_html(data):
              '<div class="box">上昇余地＝アナリスト平均目標株価 ÷ 現在値 − 1。'
              "<b>上昇余地が大きい＝上がりやすい、ではありません。</b>株価が下がったのに目標株価がまだ下がっていない銘柄ほど大きく出ます。"
              "「最低目標まで」がマイナスでなければ、一番弱気のアナリストの目標にも届いていないということです。"
-             "目標株価は株価の後を追って修正されやすく、先の値動きを当てる指標ではありません。</div>"]
+             "目標株価は株価の後を追って修正されやすく、先の値動きを当てる指標ではありません。"
+             "予想EPS修正とPER変化を見ると、上昇余地が「業績の上方修正」から来ているのか、「株価の下落」から来ているのかを分けられます。</div>",
+             LEGEND]
     for key in ("kr", "jp"):
         mk = data["markets"].get(key)
         if not mk:
@@ -295,6 +362,8 @@ def render_html(data):
             parts.append(f'<h2>{MARKETS[key]["label"]}</h2><div class="box warn">{html.escape(mk["error"])}</div>')
             continue
         cur = mk["currency_mark"]
+        if mk.get("params_note"):
+            parts.append(f'<div class="box warn">{html.escape(mk["params_note"])}</div>')
         parts.append(f'<h2>{mk["label"]}（{mk["universe"]}）</h2>')
         parts.append(f'<div class="note">対象{mk["universe_count"]}社 → 取得{mk["fetched"]}社 → 順位づけ{mk["ranked_count"]}社'
                      f'（人数不足で除外{mk["excluded_few_analysts"]}社・目標なし{mk["no_target"]}社・取得失敗{len(mk["errors"])}社）'
