@@ -80,11 +80,10 @@ def main_column(info):
     return "0y", f"今年度（{label}）"
 
 
-def show(yf, symbol):
+def compute(yf, symbol):
+    """②-Bと同じ物差しを計算して dict で返す（上昇余地ランキングからも使う）"""
     t = yf.Ticker(symbol)
     info = t.info or {}
-    name = info.get("longName") or info.get("shortName") or symbol
-    cur = info.get("currency") or ""
     col, col_note = main_column(info)
     other = "0y" if col == "+1y" else "+1y"
 
@@ -92,7 +91,6 @@ def show(yf, symbol):
     tr, tr_other = row_of(trend, col), row_of(trend, other)
     eps30 = pct(tr.get("current"), tr.get("30daysAgo"))
     eps60 = pct(tr.get("current"), tr.get("60daysAgo"))
-    eps30_other = pct(tr_other.get("current"), tr_other.get("30daysAgo"))
     rv, es = row_of(rev, col), row_of(est, col)
     n_eps = es.get("numberOfAnalysts")
 
@@ -100,37 +98,58 @@ def show(yf, symbol):
     px30 = pct(price, price_30)
     per30 = ((1 + px30 / 100) / (1 + eps30 / 100) - 1) * 100 if px30 is not None and eps30 is not None else None
 
-    tgt, n_tgt = info.get("targetMeanPrice"), info.get("numberOfAnalystOpinions")
+    tgt = info.get("targetMeanPrice")
     peg = info.get("trailingPegRatio") or info.get("pegRatio")
     trailing_eps, fwd_eps = info.get("trailingEps"), tr.get("current")
     jump = fwd_eps / trailing_eps if fwd_eps and trailing_eps and trailing_eps > 0 else None
-    fwd_pe = price / fwd_eps if price and fwd_eps and fwd_eps > 0 else None
 
     few = n_eps is not None and n_eps < MIN_ANALYSTS
-    cls = "⚠ 予想5人以下のため分類しない" if few else classify(eps30, eps60, per30, peg)
+    return {
+        "name": info.get("longName") or info.get("shortName") or symbol,
+        "currency": info.get("currency") or "",
+        "column": col, "column_note": col_note, "other_column": other,
+        "eps_30daysAgo": tr.get("30daysAgo"), "eps_current": fwd_eps,
+        "eps_rev_30d": eps30, "eps_rev_60d": eps60,
+        "eps_rev_30d_other": pct(tr_other.get("current"), tr_other.get("30daysAgo")),
+        "price": price, "price_date": f"{last_day:%Y-%m-%d}" if last_day is not None else None,
+        "price_chg_30d": px30, "per_chg_30d": per30,
+        "classification": "⚠ 予想5人以下のため分類しない" if few else classify(eps30, eps60, per30, peg),
+        "bet_type": bool(jump and jump >= 2), "jump": jump,
+        "target_mean": tgt, "target_analysts": info.get("numberOfAnalystOpinions"),
+        "upside_pct": pct(tgt, price), "peg": peg,
+        "fwd_pe": price / fwd_eps if price and fwd_eps and fwd_eps > 0 else None,
+        "eps_analysts": n_eps, "rev_up_30d": rv.get("upLast30days"), "rev_down_30d": rv.get("downLast30days"),
+    }
 
+
+def show(yf, symbol):
+    c = compute(yf, symbol)
+    cur, col = c["currency"], c["column"]
     print("=" * 64)
-    print(f"{name}（{symbol}）")
-    print(f"  株価 {cur} {price:,.0f}（{last_day:%Y-%m-%d} 終値）" if price else "  株価 取得できず")
-    print(f"  使った年度の列：{col_note}")
+    print(f"{c['name']}（{symbol}）")
+    print(f"  株価 {cur} {c['price']:,.0f}（{c['price_date']} 終値）" if c["price"] else "  株価 取得できず")
+    print(f"  使った年度の列：{c['column_note']}")
     print("-" * 64)
-    print(f"  予想EPS修正（30日）: {fmt(eps30)}   （60日: {fmt(eps60)}）"
-          f"   EPS {tr.get('30daysAgo') or 0:,.0f} → {fwd_eps or 0:,.0f}")
-    print(f"     参考：もう一方の年度の列（{other}）の30日修正: {fmt(eps30_other)}")
-    print(f"  株価の30日騰落    : {fmt(px30)}")
-    print(f"  PER変化（30日）   : {fmt(per30)}")
-    print(f"  分類              : {cls}")
-    if jump and jump >= 2:
-        print(f"     ＋③賭け型の前提：予想EPSが実績の {jump:.1f} 倍（外れると実質のPERが跳ね上がる）")
+    print(f"  予想EPS修正（30日）: {fmt(c['eps_rev_30d'])}   （60日: {fmt(c['eps_rev_60d'])}）"
+          f"   EPS {c['eps_30daysAgo'] or 0:,.0f} → {c['eps_current'] or 0:,.0f}")
+    print(f"     参考：もう一方の年度の列（{c['other_column']}）の30日修正: {fmt(c['eps_rev_30d_other'])}")
+    print(f"  株価の30日騰落    : {fmt(c['price_chg_30d'])}")
+    print(f"  PER変化（30日）   : {fmt(c['per_chg_30d'])}")
+    print(f"  分類              : {c['classification']}")
+    if c["bet_type"]:
+        print(f"     ＋③賭け型の前提：予想EPSが実績の {c['jump']:.1f} 倍（外れると実質のPERが跳ね上がる）")
     print("-" * 64)
-    print(f"  予想株価（平均）  : {cur} {tgt:,.0f}（{n_tgt}人）" if tgt else "  予想株価          : 取得できず")
-    print(f"  上昇余地          : {fmt(pct(tgt, price))}")
-    print(f"  PEG               : {peg:.2f}" if peg else "  PEG               : —")
-    print(f"  予想PER（{col}）   : {fwd_pe:.1f}倍" if fwd_pe else f"  予想PER（{col}）   : —")
-    print(f"  EPS予想の人数     : {n_eps if n_eps is not None else '—'}人"
-          f"   直近30日に上げた人 {rv.get('upLast30days', '—')}・下げた人 {rv.get('downLast30days', '—')}")
-    if jump:
-        print(f"  ジャンプ倍率      : {jump:.2f}倍（予想EPS÷実績EPS）")
+    print(f"  予想株価（平均）  : {cur} {c['target_mean']:,.0f}（{c['target_analysts']}人）"
+          if c["target_mean"] else "  予想株価          : 取得できず")
+    print(f"  上昇余地          : {fmt(c['upside_pct'])}")
+    print(f"  PEG               : {c['peg']:.2f}" if c["peg"] else "  PEG               : —")
+    print(f"  予想PER（{col}）   : {c['fwd_pe']:.1f}倍" if c["fwd_pe"] else f"  予想PER（{col}）   : —")
+    n = c["eps_analysts"]
+    print(f"  EPS予想の人数     : {n if n is not None else '—'}人"
+          f"   直近30日に上げた人 {c['rev_up_30d'] if c['rev_up_30d'] is not None else '—'}"
+          f"・下げた人 {c['rev_down_30d'] if c['rev_down_30d'] is not None else '—'}")
+    if c["jump"]:
+        print(f"  ジャンプ倍率      : {c['jump']:.2f}倍（予想EPS÷実績EPS）")
 
 
 def main():
