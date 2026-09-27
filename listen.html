@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ブリーフィングを聞く</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0f1117;color:#e0e0e0;font-family:'Segoe UI','Hiragino Kaku Gothic ProN',sans-serif;padding:16px;max-width:560px;margin:0 auto;padding-bottom:40px}
+h1{font-size:1.15rem;color:#fff;margin-bottom:4px}
+.sub{font-size:0.78rem;color:#666;margin-bottom:16px}
+a{color:#4a9eff}
+.player{background:#13161f;border-radius:14px;padding:16px;border-left:4px solid #4a9eff;position:sticky;top:8px;z-index:2}
+.now{font-size:0.8rem;color:#4a9eff;margin-bottom:6px;min-height:1.2em}
+.line{font-size:0.95rem;line-height:1.7;min-height:5.1em;color:#fff}
+.btns{display:flex;gap:8px;margin-top:14px}
+.btns button{flex:1;padding:14px 0;border:none;border-radius:10px;background:#1f2330;color:#e0e0e0;font-size:1.05rem;cursor:pointer}
+.btns button.main{background:#4a9eff;color:#0f1117;font-weight:700;flex:1.6}
+.btns button:active{opacity:0.65}
+.opts{display:flex;gap:10px;margin-top:12px;font-size:0.8rem;color:#888;align-items:center;flex-wrap:wrap}
+.opts select{background:#1f2330;color:#e0e0e0;border:1px solid #2a2e3a;border-radius:6px;padding:5px;font-size:0.85rem;max-width:100%}
+.bar{height:4px;background:#1f2330;border-radius:2px;margin-top:12px;overflow:hidden}
+.bar div{height:100%;width:0;background:#4a9eff;transition:width .3s}
+h2{font-size:0.85rem;color:#666;margin:20px 0 8px}
+.ch{display:block;width:100%;text-align:left;background:#13161f;border:none;border-radius:10px;padding:11px 14px;margin-bottom:6px;color:#bbb;font-size:0.9rem;cursor:pointer}
+.ch.on{background:#1b2436;color:#fff;border-left:3px solid #4a9eff}
+.ch small{color:#555;margin-left:6px}
+.msg{font-size:0.8rem;color:#e3b341;margin-top:10px;line-height:1.6}
+</style>
+</head>
+<body>
+
+<h1>&#x1F3A7; ブリーフィングを聞く</h1>
+<div class="sub" id="src">読み込み中…</div>
+
+<div class="player">
+  <div class="now" id="now"></div>
+  <div class="line" id="line">▶ を押すと、今日の棚卸（半導体ブリーフィング）を最初から読み上げます。</div>
+  <div class="bar"><div id="prog"></div></div>
+  <div class="btns">
+    <button id="prev" aria-label="前の章">⏮</button>
+    <button id="back" aria-label="一文戻る">↺</button>
+    <button id="play" class="main" aria-label="再生">▶</button>
+    <button id="fwd" aria-label="一文進む">↻</button>
+    <button id="next" aria-label="次の章">⏭</button>
+  </div>
+  <div class="opts">
+    速さ <select id="rate">
+      <option value="0.9">0.9</option><option value="1" selected>1.0</option>
+      <option value="1.15">1.15</option><option value="1.3">1.3</option><option value="1.5">1.5</option>
+    </select>
+    声 <select id="voice"></select>
+  </div>
+  <div class="msg" id="msg"></div>
+</div>
+
+<h2>章（タップでそこから再生）</h2>
+<div id="chapters"></div>
+
+<p class="sub" style="margin-top:20px">元のページ：<a href="briefing.html">今日の棚卸</a>｜<a href="index.html">ダッシュボード</a><br>
+画面を消すと止まる端末があります（特にiPhone）。聞いている間は画面を点けたままにしてください。</p>
+
+<script>
+const $ = id => document.getElementById(id);
+const synth = window.speechSynthesis;
+let chapters = [];   // [{title, lines:[...]}]
+let ci = 0, li = 0, playing = false, token = 0;
+
+// ---- 読み上げ用に文字を整える ----
+const NAMES = [
+  [/000660/g, 'SKハイニックス現地株'], [/005930/g, 'サムスン電子現地株'],
+  [/\bSKHY\b/g, 'SKハイニックスADR'], [/\bMU\b/g, 'マイクロン'], [/\bNVDA\b/g, 'エヌビディア'],
+  [/NVIDIA/gi, 'エヌビディア'], [/\bAVGO\b/g, 'ブロードコム'], [/\bLRCX\b/g, 'ラムリサーチ'],
+  [/\bAMAT\b/g, 'アプライド・マテリアルズ'], [/\bTSM\b/g, 'TSMC'], [/\bAMZN\b/g, 'アマゾン'],
+  [/\bGOOGL\b/g, 'グーグル'], [/\bMSFT\b/g, 'マイクロソフト'], [/\bMETA\b/g, 'メタ'],
+  [/\bSOX\b/g, 'ソックス'], [/\bADR\b/g, 'エーディーアール'], [/\bPEG\b/g, 'ペグ'],
+  [/\bJST\b/g, '日本時間'], [/\bNISA\b/g, 'ニーサ'], [/\bCEO\b/g, 'シーイーオー'],
+  [/S&P ?500/g, 'エスアンドピー500'], [/S&P/g, 'エスアンドピー'], [/SK ?Hynix/gi, 'SKハイニックス'], [/Samsung/g, 'サムスン'], [/\bFRB\b/g, 'エフアールビー'], [/\bPCE\b/g, 'ピーシーイー']
+];
+function money(n, unit) {
+  n = n.replace(/,/g, '');
+  if (unit === 'B') return (parseFloat(n) * 10).toLocaleString('ja-JP', {maximumFractionDigits: 1}) + '億ドル';
+  if (unit === 'M') return (parseFloat(n) * 100).toLocaleString('ja-JP', {maximumFractionDigits: 1}) + '万ドル';
+  if (unit === 'T') return n + '兆ドル';
+  return n + 'ドル';
+}
+function speakable(t) {
+  t = t.replace(/[\u{1F000}-\u{1FAFF}\u{2600}-\u{27BF}\u{FE0F}\u{200D}\u{E0000}-\u{E007F}]/gu, '');
+  t = t.replace(/FQ(\d)'(\d\d)/g, '20$2年度第$1四半期').replace(/\bQ([1-4])\b/g, '第$1四半期');
+  for (const [re, s] of NAMES) t = t.replace(re, s);
+  t = t.replace(/\$([\d,]+(?:\.\d+)?)\s*[〜~～]\s*\$?([\d,]+(?:\.\d+)?)\s*([BMT])?\b/g, (m, a, b, u) => money(a, u).replace(/ドル$/, '') + 'から' + money(b, u));
+  t = t.replace(/([+\-−]?)\$([\d,]+(?:\.\d+)?)\s*([BMT])?\b/g, (m, s, n, u) => s + money(n, u));
+  t = t.replace(/([\d,]+(?:\.\d+)?)\s*[〜~～]\s*(?=[\d,]+(?:\.\d+)?)/g, '$1から');
+  t = t.replace(/[\w.]+\.json[／/]?/g, '').replace(/(20\d\d)\/(\d{1,2})(?![\d\/])/g, '$1年$2月');
+  t = t.replace(/(?<![\d\/])(\d{1,2})\/(\d{1,2})(?![\d])/g, '$1月$2日');
+  t = t.replace(/([^\d\w]|^)\+(?=\d)/g, '$1プラス').replace(/([^\d\w]|^)[\-−](?=\d)/g, '$1マイナス');
+  t = t.replace(/%/g, 'パーセント').replace(/×\s*(\d+)/g, ' $1');
+  t = t.replace(/▲/g, '上昇、').replace(/▼/g, '下落、');
+  t = t.replace(/\s*[→⇒➡]\s*/g, '、そして、').replace(/[↗↘↙↖↑↓]/g, '');
+  t = t.replace(/[｜|│]/g, '、').replace(/[【】「」『』★☆◆◇■□●○※＊*#＃]/g, ' ');
+  t = t.replace(/[⓪]/g, '0').replace(/[①-⑳]/g, c => String(c.charCodeAt(0) - 0x245F));
+  t = t.replace(/([^\s、。（(]+)\s*[（(]([^）)]+)[）)]/g, (m, a, b) => a.includes(b.replace(/\s/g, '')) ? a : m);
+  t = t.replace(/[（(]\s*[／/、\s]*[）)]/g, '').replace(/\s+/g, ' ').replace(/(、\s*)+/g, '、').trim();
+  return t.replace(/^、|、$/g, '');
+}
+function splitLines(t) {
+  const out = [];
+  for (let s of t.split(/(?<=[。！？!?])/)) {
+    s = s.trim();
+    while (s.length > 160) {       // 長すぎる文は途中で切れる端末があるので読点で分ける
+      const cut = s.lastIndexOf('、', 150);
+      const at = cut > 40 ? cut + 1 : 150;
+      out.push(s.slice(0, at)); s = s.slice(at).trim();
+    }
+    if (s) out.push(s);
+  }
+  return out;
+}
+
+// ---- briefing.html から章ごとの文を取り出す ----
+function blockText(el) {
+  if (el.tagName === 'TABLE') {
+    const rows = [...el.rows];
+    const head = rows[0] && rows[0].querySelector('th') ? [...rows.shift().cells].map(c => c.textContent.trim()) : null;
+    return rows.map(r => [...r.cells].map((c, i) => {
+      const v = c.textContent.trim();
+      return head && i > 0 && head[i] ? head[i] + ' ' + v : v;
+    }).filter(Boolean).join('、') + '。').join('\n');
+  }
+  const c = el.cloneNode(true);
+  c.querySelectorAll('br').forEach(b => b.replaceWith('。'));
+  c.querySelectorAll('div,p,li,tr').forEach(d => d.append('。'));
+  return c.textContent;
+}
+function parse(html) {
+  const doc = new DOMParser().parseFromString(html, 'text/html');
+  doc.querySelectorAll('script,style,svg,img,figure,figcaption,.diagram,pre,canvas,iframe').forEach(e => e.remove());
+  const res = [];
+  let cur = {title: '冒頭', raw: []};
+  const h1 = doc.querySelector('h1');
+  if (h1) { cur.raw.push(h1.textContent + '。'); h1.remove(); }
+  const walk = node => {
+    for (const el of [...node.children]) {
+      if (el.tagName === 'H2') {
+        if (cur.raw.length) res.push(cur);
+        cur = {title: el.textContent.trim(), raw: [el.textContent.trim() + '。']};
+      } else if (/^H[3-6]$/.test(el.tagName)) {
+        cur.raw.push(el.textContent.trim() + '。');
+      } else if (!el.querySelector('h2')) {
+        cur.raw.push(blockText(el));
+      } else walk(el);
+    }
+  };
+  walk(doc.body);
+  if (cur.raw.length) res.push(cur);
+  return res.map(c => ({
+    title: c.title,
+    lines: splitLines(speakable(c.raw.join('\n').replace(/。(\s*。)+/g, '。').replace(/\n+/g, '。')))
+      .filter(s => s.replace(/[。、\s]/g, '').length > 1)
+  })).filter(c => c.lines.length);
+}
+
+// ---- 再生 ----
+function jaVoices() { return synth.getVoices().filter(v => /^ja/i.test(v.lang)); }
+function fillVoices() {
+  const vs = jaVoices(), sel = $('voice'), saved = load('voice');
+  sel.innerHTML = vs.length ? '' : '<option value="">端末の標準</option>';
+  vs.forEach(v => { const o = new Option(v.name, v.name); if (v.name === saved) o.selected = true; sel.add(o); });
+}
+function speakNow() {
+  const my = ++token;
+  const ch = chapters[ci];
+  if (!ch) { stop(); $('line').textContent = '最後まで読み終えました。'; ci = 0; li = 0; save(); return; }
+  if (li >= ch.lines.length) { ci++; li = 0; return speakNow(); }
+  render();
+  const u = new SpeechSynthesisUtterance(ch.lines[li]);
+  u.lang = 'ja-JP';
+  u.rate = parseFloat($('rate').value);
+  const v = jaVoices().find(v => v.name === $('voice').value);
+  if (v) u.voice = v;
+  u.onend = () => { if (my !== token || !playing) return; li++; save(); speakNow(); };
+  u.onerror = e => { if (my !== token || !playing || e.error === 'interrupted' || e.error === 'canceled') return; li++; speakNow(); };
+  synth.speak(u);
+}
+function play() {
+  if (!chapters.length) return;
+  playing = true; $('play').textContent = '⏸'; $('msg').textContent = '';
+  synth.cancel(); speakNow();
+}
+function stop() { playing = false; token++; synth.cancel(); $('play').textContent = '▶'; }
+function jump(c, l) {
+  ci = Math.max(0, Math.min(c, chapters.length - 1)); li = Math.max(0, l);
+  save(); render();
+  if (playing) play();
+}
+function render() {
+  const ch = chapters[ci]; if (!ch) return;
+  $('now').textContent = ch.title + '（' + (li + 1) + '/' + ch.lines.length + '）';
+  $('line').textContent = ch.lines[Math.min(li, ch.lines.length - 1)];
+  const total = chapters.reduce((a, c) => a + c.lines.length, 0);
+  const done = chapters.slice(0, ci).reduce((a, c) => a + c.lines.length, 0) + li;
+  $('prog').style.width = (100 * done / total) + '%';
+  document.querySelectorAll('.ch').forEach((b, i) => b.classList.toggle('on', i === ci));
+}
+
+// ---- 位置の記憶（同じ日のブリーフィングなら続きから） ----
+let docKey = '';
+function load(k) { try { return localStorage.getItem('listen.' + k); } catch (e) { return null; } }
+function store(k, v) { try { localStorage.setItem('listen.' + k, v); } catch (e) {} }
+function save() { store('pos', JSON.stringify({key: docKey, ci, li})); }
+
+$('play').onclick = () => playing ? stop() : play();
+$('prev').onclick = () => jump(li > 0 ? ci : ci - 1, 0);
+$('next').onclick = () => jump(ci + 1, 0);
+$('back').onclick = () => li > 0 ? jump(ci, li - 1) : jump(ci - 1, (chapters[ci - 1] || {lines: [0]}).lines.length - 1);
+$('fwd').onclick = () => jump(ci, li + 1);
+$('rate').onchange = () => { store('rate', $('rate').value); if (playing) play(); };
+$('voice').onchange = () => { store('voice', $('voice').value); if (playing) play(); };
+
+if (!synth) {
+  $('msg').textContent = 'このブラウザは読み上げに対応していません。Safari・Chromeで開いてください。';
+} else {
+  fillVoices();
+  synth.onvoiceschanged = fillVoices;
+  const r = load('rate'); if (r) $('rate').value = r;
+}
+
+fetch('briefing.html', {cache: 'no-store'}).then(r => r.text()).then(html => {
+  chapters = parse(html);
+  const title = (html.match(/<title>(.*?)<\/title>/) || [])[1] || '今日のブリーフィング';
+  docKey = title;
+  $('src').textContent = title + '｜' + chapters.length + '章';
+  const box = $('chapters');
+  chapters.forEach((c, i) => {
+    const b = document.createElement('button');
+    b.className = 'ch';
+    b.append(c.title);
+    const s = document.createElement('small'); s.textContent = c.lines.length + '文'; b.append(s);
+    b.onclick = () => { jump(i, 0); if (!playing) play(); };
+    box.append(b);
+  });
+  try {
+    const p = JSON.parse(load('pos') || 'null');
+    if (p && p.key === docKey && chapters[p.ci]) {
+      ci = p.ci; li = p.li;
+      $('msg').textContent = '前回の続き（' + chapters[ci].title + '）から再生します。最初からは章の一覧で「' + chapters[0].title + '」をタップ。';
+    }
+  } catch (e) {}
+  render();
+  if (!load('pos') || JSON.parse(load('pos')).key !== docKey) $('line').textContent = '▶ を押すと、今日の棚卸を最初から読み上げます。';
+}).catch(() => { $('src').textContent = 'briefing.html を読み込めませんでした。'; });
+</script>
+</body>
+</html>
