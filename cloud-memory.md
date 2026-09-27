@@ -121,3 +121,9 @@
 - index.html に「🎯 上昇余地ランキング（韓国株・日本株）」のカード（手動更新）を追加。リンク先は analyst_upside.html
 - 表はPCでしか作れない（クラウドからYahooにつながらない）。PCで github_repo\tools\fetch-analyst-upside.py を `--html github_repo\analyst_upside.html` で実行し、その1ファイルを git add・commit・push すると公開される。PCで実行するまでは「まだ公開された表がありません」の仮ページ
 - 日本株は、日経平均の構成ページを読めない時に東証の時価総額上位225社へ切り替える予備を入れた（切り替えた時は表の見出しにそう書く）
+
+## 2026-09-27：ブリーフィングに「HBMの需要の比（GPU：ASIC）と主な供給元」の枠を追加（ユーザー依頼）
+- 経緯：2軸の比（NVDA：AVGO 約84：16）は「チップの売上の比」でユーザー数の比ではない、と答えた流れで、ユーザーが「まさしくその比（HBMの需要のうちASICが占める割合）に興味がある」「ブリーフィングにも入れて」と依頼
+- 値（9/27）：HBMの需要 GPU：ASIC ≒ 67：33（2026年予想、Goldman Sachsを引用した記事の抜粋・確からしさ中〜低）。主な供給元：NVIDIA（Vera Rubin HBM4）はSK Hynix 約2/3〜70%、Google TPU（HBM3E）はSamsung 60%超（どちらも報道）
+- **ユーザーの理解：「NVIDIA：SKハイニックス、グーグル：サムスン電子と顧客のメインが異なる」**（独占ではない）。ASICの割合が上がるほどSamsungに追い風、000660には配分で中立〜やや逆風
+- 9/28版 briefing.html の①-Bの2軸の比の直下に手で入れた。context.json にも節を追加。PCのSKILL.md（①-B）は未修正
