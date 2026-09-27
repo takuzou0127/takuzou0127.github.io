@@ -176,6 +176,7 @@ def fetch_one(yf, symbol):
         "target_high": info.get("targetHighPrice"),
         "analysts": info.get("numberOfAnalystOpinions"),
         "recommendation": info.get("recommendationKey"),
+        "high_52w": info.get("fiftyTwoWeekHigh"),
     }
 
 
@@ -218,6 +219,7 @@ def rank_market(rows, min_analysts):
         r["upside_pct"] = pct(r["target_mean"], r["price"])
         r["upside_median_pct"] = pct(r.get("target_median"), r["price"])
         r["upside_low_pct"] = pct(r.get("target_low"), r["price"])
+        r["from_high_pct"] = pct(r["price"], r.get("high_52w"))
         (ok if (r.get("analysts") or 0) >= min_analysts else few).append(r)
     ok.sort(key=lambda r: r["upside_pct"], reverse=True)
     for i, r in enumerate(ok, 1):
@@ -274,7 +276,7 @@ CSS = """
 body{background:#0f1117;color:#e6e6e6;font-family:-apple-system,"Hiragino Sans","Noto Sans JP",sans-serif;font-size:17px;line-height:1.8;margin:0;padding:16px;}
 h1{font-size:24px;margin:8px 0 4px;} h2{font-size:22px;margin:36px 0 8px;}
 .note{font-size:16px;color:#9aa4b2;} .box{background:#181b24;border:1px solid #2a2e3a;border-radius:8px;padding:14px 16px;margin:14px 0;}
-.tbl-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;} table{border-collapse:collapse;min-width:1500px;width:100%;}
+.tbl-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;} table{border-collapse:collapse;min-width:1800px;width:100%;}
 th,td{padding:8px 10px;border-bottom:1px solid #2a2e3a;white-space:nowrap;text-align:right;} th{color:#9aa4b2;font-weight:normal;font-size:16px;}
 td.l,th.l{text-align:left;} .up{color:#3fb950;font-weight:bold;} .down{color:#f85149;font-weight:bold;} .muted{color:#9aa4b2;}
 tr.watch td{background:#2a2410;} .warn{color:#e3b341;}
@@ -307,6 +309,31 @@ def class_html(p):
     return f'<span style="color:{color};font-weight:bold">{html.escape(c)}</span>{extra}'
 
 
+# 上昇余地の出どころ：業績予想が上がったからか、株価が下がったからか
+BIG_DROP = -25  # 52週高値から25%以上下がっていれば「株価が大きく下がった」とみなす
+
+
+def source_of_upside(r):
+    """（ラベル, 色）を返す。分類（①〜⑨）とは別に、上昇余地が何から来ているかを一言で"""
+    p = r.get("params") or {}
+    eps, cls = p.get("eps_rev_30d"), p.get("classification") or ""
+    drop = r.get("from_high_pct")
+    fell = drop is not None and drop <= BIG_DROP
+    if not p or "error" in p or eps is None or cls.startswith("⚠"):
+        if fell:
+            return "判定できない（EPS予想の人数不足・未取得）／株価は高値から大きく下落", "#9aa4b2"
+        return "判定できない（EPS予想の人数不足・未取得）", "#9aa4b2"
+    if cls.startswith("①"):
+        return "業績の上方修正が先・株価が未追随", "#3fb950"
+    if eps >= 2 or cls.startswith("⑨"):
+        return "業績の上方修正あり・株価も上昇中", "#3fb950"
+    if eps <= -2:
+        return "業績予想は下方修正中・目標株価が下がりきっていない可能性", "#f85149"
+    if fell:
+        return "業績予想は横ばい・株価の下落が先（目標株価が追いついていない）", "#f0883e"
+    return "業績予想は横ばい・株価の上下で上昇余地が動いている", "#9aa4b2"
+
+
 def row_html(r, cur, rank_text):
     name = r.get("name_local") or r.get("name_en") or r["symbol"]
     # ティッカーは銘柄名のすぐ下に出す（横にスクロールしなくても見えるように）
@@ -326,15 +353,23 @@ def row_html(r, cur, rank_text):
     return (f"<tr{cls}><td>{rank_text}</td><td class=l>{name_cell}</td>"
             f"<td>{eps_cell}</td><td>{fmt_pct(p.get('per_chg_30d'))}</td>"
             f"<td>{fmt_price(r.get('target_mean'), cur)}<br><span class=\"note\">{r.get('analysts') or '—'}人</span></td>"
-            f"<td>{fmt_pct(r.get('upside_pct'))}</td><td>{peg}</td><td class=l>{class_html(p)}</td>"
+            f"<td>{fmt_pct(r.get('upside_pct'))}</td>{source_cell(r)}<td>{peg}</td><td class=l>{class_html(p)}</td>"
             f"<td>{revs}<br><span class=\"note\">EPS予想{n_eps if n_eps is not None else '—'}人</span></td>"
-            f"<td>{fmt_price(r.get('price'), cur)}</td><td>{fmt_pct(r.get('upside_median_pct'))}</td>"
+            f"<td>{fmt_price(r.get('price'), cur)}</td><td>{fmt_pct(r.get('from_high_pct'))}</td>"
+            f"<td>{fmt_pct(r.get('upside_median_pct'))}</td>"
             f"<td>{fmt_pct(r.get('upside_low_pct'))}</td><td>{r.get('price_date') or '—'}</td></tr>")
 
 
+def source_cell(r):
+    label, color = source_of_upside(r)
+    px = (r.get("params") or {}).get("price_chg_30d")
+    sub = f'<br><span class="note">株価30日 {fmt_pct(px)}・高値から {fmt_pct(r.get("from_high_pct"))}</span>'
+    return f'<td class=l style="white-space:normal;min-width:260px"><span style="color:{color};font-weight:bold">{label}</span>{sub}</td>'
+
+
 HEAD = ("<tr><th>順位</th><th class=l>銘柄</th><th>予想EPS修正<br>（30日）</th><th>PER変化<br>（30日）</th>"
-        "<th>予想株価<br>（人数）</th><th>上昇余地</th><th>PEG</th><th class=l>分類</th>"
-        "<th>修正人数<br>（30日 上げ／下げ）</th><th>現在値</th><th>中央値まで</th><th>最低目標まで</th><th>株価の日付</th></tr>")
+        "<th>予想株価<br>（人数）</th><th>上昇余地</th><th class=l>上昇余地の出どころ</th><th>PEG</th><th class=l>分類</th>"
+        "<th>修正人数<br>（30日 上げ／下げ）</th><th>現在値</th><th>52週高値から</th><th>中央値まで</th><th>最低目標まで</th><th>株価の日付</th></tr>")
 
 LEGEND = ('<div class="box"><b>分類（ブリーフィング②-Bと同じ）</b>：EPS修正（30日）とPER変化（30日）で決める<br>'
           "①実績あり・反応未追随：EPS修正+2%以上・PER変化+5%未満／②緩やかな再評価型：EPS修正+2%以上・PER変化+5〜15%／"
@@ -352,7 +387,13 @@ def render_html(data):
              "<b>上昇余地が大きい＝上がりやすい、ではありません。</b>株価が下がったのに目標株価がまだ下がっていない銘柄ほど大きく出ます。"
              "「最低目標まで」がマイナスでなければ、一番弱気のアナリストの目標にも届いていないということです。"
              "目標株価は株価の後を追って修正されやすく、先の値動きを当てる指標ではありません。"
-             "予想EPS修正とPER変化を見ると、上昇余地が「業績の上方修正」から来ているのか、「株価の下落」から来ているのかを分けられます。</div>",
+             "<br><br><b>「上昇余地の出どころ」の列で、次の2つを分けています。</b><br>"
+             '<span style="color:#3fb950;font-weight:bold">業績の上方修正が先・株価が未追随</span>'
+             "＝アナリストが業績予想（EPS）を上げたのに、株価がまだ追いついていない（①実績あり・反応未追随）。<br>"
+             '<span style="color:#f0883e;font-weight:bold">業績予想は横ばい・株価の下落が先</span>'
+             f"＝業績予想はほぼ変わらず、株価が52週高値から{-BIG_DROP}%以上下がったため、目標株価との差が開いた。<br>"
+             '<span class="note">上昇余地の数字が同じでも、前者は「実績が出ている」、後者は「目標株価が後から下がる」ことがある。'
+             "EPS予想が5人以下・取れなかった銘柄は「判定できない」と書き、推定で埋めない。</span></div>",
              LEGEND]
     for key in ("kr", "jp"):
         mk = data["markets"].get(key)
