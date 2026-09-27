@@ -7,7 +7,7 @@
 数値はすべて Yahoo Finance（yfinance）から取った実データ。取れなかった銘柄は errors に残し、推定で埋めない。
 
 対象（その日の構成をネットから取る）：
-  韓国：KOSPIの時価総額上位200社（Naver Finance の時価総額順の一覧。KOSPI200 そのものではない）
+  韓国：KOSPI＋KOSDAQ の時価総額上位300社（Yahoo の銘柄検索で時価総額順。取れない時は Naver の一覧）
   日本：日経平均225社（日経の公式構成銘柄ページ）
   構成を取れない時は --kr-file / --jp-file にコードを1行1つ書いたテキストを渡す（例：005930 / 7203）
 
@@ -49,7 +49,7 @@ WATCH = {
 }
 
 MARKETS = {
-    "kr": {"label": "🇰🇷 韓国株", "universe": "KOSPI 時価総額上位200社", "suffix": ".KS", "cur": "₩"},
+    "kr": {"label": "🇰🇷 韓国株", "universe": "KOSPI＋KOSDAQ 時価総額上位300社", "suffix": ".KS", "cur": "₩"},
     "jp": {"label": "🇯🇵 日本株", "universe": "日経平均225社", "suffix": ".T", "cur": "¥"},
 }
 
@@ -63,21 +63,57 @@ def fetch_text(url, encoding=None, timeout=20):
 
 
 # ---- 対象銘柄 -------------------------------------------------------------
-def universe_kr(n=200):
-    """Naver Finance の KOSPI 時価総額順（1ページ50社）から上位 n 社。[(code, 韓国語名)]"""
+KR_COUNT = 300
+
+
+def universe_kr_yahoo(yf, n=KR_COUNT):
+    """Yahoo の銘柄検索で、韓国の KOSPI(KSC)・KOSDAQ(KOE) を時価総額の大きい順に n 社。[(symbol, 名前)]"""
+    q = yf.EquityQuery("and", [yf.EquityQuery("eq", ["region", "kr"]),
+                               yf.EquityQuery("is-in", ["exchange", "KSC", "KOE"])])
     out, seen = [], set()
-    for page in range(1, n // 50 + 2):
-        text = fetch_text(f"https://finance.naver.com/sise/sise_market_sum.naver?sosok=0&page={page}",
-                          encoding="euc-kr")
-        for code, name in re.findall(r'/item/main\.naver\?code=(\d{6})"\s+class="tltle">([^<]+)</a>', text):
-            if code not in seen:
-                seen.add(code)
-                out.append((code, html.unescape(name).strip()))
-        if len(out) >= n:
+    for offset in range(0, n, 250):
+        res = yf.screen(q, sortField="intradaymarketcap", sortAsc=False, size=min(250, n - offset), offset=offset)
+        quotes = (res or {}).get("quotes") or []
+        for x in quotes:
+            sym = x.get("symbol")
+            if sym and sym not in seen and x.get("quoteType", "EQUITY") == "EQUITY":
+                seen.add(sym)
+                out.append((sym, x.get("shortName") or x.get("longName")))
+        if not quotes:
             break
     if len(out) < 100:
-        raise RuntimeError(f"Naverの一覧から{len(out)}社しか読めなかった（ページの形が変わった可能性）")
+        raise RuntimeError(f"Yahooの銘柄検索から{len(out)}社しか取れなかった")
     return out[:n]
+
+
+def universe_kr_naver(n=KR_COUNT):
+    """Naver Finance の時価総額順（KOSPI・KOSDAQ、1ページ50社）。[(symbol, 韓国語名)]"""
+    rows = []
+    for sosok, suffix in ((0, ".KS"), (1, ".KQ")):
+        for page in range(1, n // 50 + 2):
+            text = fetch_text(f"https://finance.naver.com/sise/sise_market_sum.naver?sosok={sosok}&page={page}",
+                              encoding="euc-kr")
+            found = re.findall(r'href="/item/main\.naver\?code=(\d{6})"[^>]*>([^<]+)</a>', text)
+            if not found:
+                (HERE / "naver_debug.html").write_text(text, encoding="utf-8")
+                break
+            rows += [(code + suffix, html.unescape(name).strip()) for code, name in found]
+    out, seen = [], set()
+    for sym, name in rows:
+        if sym not in seen:
+            seen.add(sym)
+            out.append((sym, name))
+    if len(out) < 100:
+        raise RuntimeError(f"Naverの一覧から{len(out)}社しか読めなかった（読んだページは naver_debug.html に保存）")
+    return out  # KOSPI と KOSDAQ を別々に時価総額順で読むので、ここでは件数を切らない
+
+
+def universe_kr(yf):
+    try:
+        return universe_kr_yahoo(yf)
+    except Exception as e:
+        print(f"  Yahooの銘柄検索に失敗（{e}）→ Naverの一覧を使う", file=sys.stderr)
+        return universe_kr_naver()
 
 
 def universe_jp():
@@ -148,7 +184,7 @@ def run_market(key, args, yf):
     errors = []
     file_arg = getattr(args, f"{key}_file")
     try:
-        uni = universe_from_file(file_arg) if file_arg else (universe_kr() if key == "kr" else universe_jp())
+        uni = universe_from_file(file_arg) if file_arg else (universe_kr(yf) if key == "kr" else universe_jp())
     except Exception as e:
         return {"error": f"対象銘柄の一覧を取れなかった：{e}（--{key}-file でコード一覧を渡せます）"}
     rows = []
@@ -201,8 +237,9 @@ def fmt_pct(v):
 
 def row_html(r, cur, rank_text):
     name = r.get("name_local") or r.get("name_en") or r["symbol"]
-    sub = r.get("name_en") if r.get("name_local") else None
-    name_cell = html.escape(name) + (f'<br><span class="note">{html.escape(sub)}</span>' if sub else "")
+    # ティッカーは銘柄名のすぐ下に出す（横にスクロールしなくても見えるように）
+    sub = " ｜ ".join(x for x in (r["symbol"], r.get("name_en") if r.get("name_en") != name else None) if x)
+    name_cell = html.escape(name) + f'<br><span class="note">{html.escape(sub)}</span>'
     cls = ' class="watch"' if r["symbol"] in WATCH else ""
     # スマホで最初に見える位置に「上昇余地・人数」を置く
     return (f"<tr{cls}><td>{rank_text}</td><td class=l>{name_cell}</td>"
