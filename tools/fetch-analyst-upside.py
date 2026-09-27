@@ -238,7 +238,7 @@ def fmt_pct(v):
 def row_html(r, cur, rank_text):
     name = r.get("name_local") or r.get("name_en") or r["symbol"]
     # ティッカーは銘柄名のすぐ下に出す（横にスクロールしなくても見えるように）
-    sub = " ｜ ".join(x for x in (r["symbol"], r.get("name_en") if r.get("name_local") else None) if x)
+    sub = " ｜ ".join(x for x in (r["symbol"], r.get("name_en") if r.get("name_en") != name else None) if x)
     name_cell = html.escape(name) + f'<br><span class="note">{html.escape(sub)}</span>'
     cls = ' class="watch"' if r["symbol"] in WATCH else ""
     # スマホで最初に見える位置に「上昇余地・人数」を置く
