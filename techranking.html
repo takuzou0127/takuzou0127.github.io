@@ -57,8 +57,8 @@ table:not(.vt)>tbody,table:not(.vt)>thead{display:table;width:calc(100% - 2px);}
 <p class="note">これはハイパースケーラーやチップメーカーという「企業」ではなく、AIそのものの「技術」を主役に、進化の度合いでランキングした独立ページです。AnthropicもOpenAIも、体感的な進化の速さの正体は、複数の技術がほぼ同時に噛み合ったことにあります。</p>
 
 <div class="conclusion">
-<div class="conclusion-label">★ 結論を先に(2026-09-26更新)</div>
-今週も<b>順位の入れ替わりはなし</b>。ただし4つの技術すべてに共通する、はっきりした潮目が見えた——<b>「もっと多く」から「もっと賢く・安く」へ</b>。推論(1位)では9月22日のClaude Opus 5.5が「推論オフ」のスイッチ自体を廃止し、難しさに応じて思考量を自動配分する方式で、前世代より約40%安く同等以上の性能を出した。エージェント化(2位)では「何手で終わるか」が新しい評価軸になり、Opus 5.5は前世代の半分未満のステップで多くの課題を解いた。MoE(3位)ではXiaomiが1兆パラメータ・稼働4.1%のモデルをオープン公開し、「1兆級・稼働数%」が業界の標準形に。拡散型LLM(4位)はMoEとの融合研究まで出てきた。ランク外では<b>投機的デコーディング</b>と<b>テスト時訓練</b>を注目枠として新設した。
+<div class="conclusion-label">★ 結論を先に(2026-09-27更新)</div>
+前回(9/26)から1日しか経っていないので、<b>順位の入れ替わりはなし</b>。ただ、先週見えた潮目<b>「もっと多く」から「もっと賢く・安く」へ</b>を裏付ける材料が2つ加わった。1つ目は推論(1位)。9月23日のFireworks <b>Ember-1</b>がオープンモデルのKimi K3を再訓練し、<b>推論トークンを約40%削りながら、主要ベンチの精度を維持または向上</b>させた——effortの設定を変えるのではなく、訓練で「答えを変えない無駄な思考」を落とした。2つ目は拡散型LLM(4位)。アントグループ系のinclusionAIが、<b>拡散型×MoE×GUIエージェント</b>を1つにまとめた<b>LLaDA-UI</b>の重みを公開し、2位・3位・4位の技術の合体が論文から実物へ進んだ。ランク外の注目枠に<b>「推論の圧縮」</b>を追加した。
 </div>
 
 <h2><span class="rank rank1">🥇 第1位</span> 推論(Reasoning)/テスト時間スケーリング——これが全ての起点</h2>
@@ -77,6 +77,7 @@ table:not(.vt)>tbody,table:not(.vt)>thead{display:table;width:calc(100% - 2px);}
 <p>核となる手法は変わらず<b>RLVR(Reinforcement Learning with Verifiable Rewards、検証可能な報酬による強化学習)</b>。数学の証明問題やテスト可能なコードのように「答えが機械的に正誤判定できる」タスクに対し、モデルに長い思考過程(Chain-of-Thought)を生成させ、最終的な正解率を報酬として強化学習で鍛える。代表的なアルゴリズムが<code>GRPO(Group Relative Policy Optimization)</code>——PPOを土台に、同じ問題への複数の解答例をグループ化し、その中の相対的な優劣から学習信号を計算する手法で、これがDeepSeekの大きな貢献の一つ。さらに<b>PRM(Process Reward Model)</b>という"検証者"が思考過程の一歩一歩を採点する。</p>
 <p><span class="tag">論点①ハーネス問題</span>ARC Prizeの検証で、GPT-6 Astraが専用の「プロバイダアダプター・ハーネス」(行動間で推論状態を保持し続ける実行環境)では<b>99.9%</b>、他モデルと同条件の標準ハーネスでは<b>62.7%</b>だった。推論の強さはモデルの重みだけでなく、状態を保持し続ける"実行環境"の設計で大きく変わる。Astraは未知の環境を探索しながら、その場でコンパクトな「シンボリック世界モデル」を組み立てて行動を選んでいると分析されている。</p>
 <p><span class="tag">論点②「長考」から「配分」へ</span>Opus 5.5の「適応的思考+effort」方式は、問題の難しさに応じてモデル自身が思考トークンの量を配分する仕組みだ。身近な例えで言えば、将棋の棋士が<b>序盤の定跡は即指し、終盤の難所だけ長考する</b>ように、持ち時間(計算量)を難所に集中させる。その結果、GitHubの計測では前世代の<b>半分未満のステップ数</b>でより多くのターミナル課題を解き、Anthropicは「同じ仕事で約40%安く、出力は30%以上速い」としている。テスト時間スケーリングの主戦場は「とにかく長く考える」から「賢く配分して考える」へ移り始めた。研究側でも、GRPOの弱点(二値報酬だけに頼ると「ゼロアドバンテージ崩壊」や「幻覚的確信」が起きる)を補う<code>SC-GRPO</code>や<code>SRPO</code>などの改良アルゴリズムの提案が続いている。</p>
+<p><span class="tag">今週の新展開 論点③「削る」という第3の道</span>9月23日、Fireworks Researchが<b>Ember-1</b>を公開した。中身はMoonshotのオープンウェイトモデル<b>Kimi K3</b>を再訓練(ポストトレーニング)したもので、目標は1つ——<b>「最終的な答えを変えない思考」だけを削ること</b>。数学・コーディング・ツール使用・ソフトウェア開発などで50回を超える訓練実験と200回以上の評価を回した。面白いのは、Fireworksが最初にKimi K3の<code>effort</code>を下げる方法を試し、<b>品質が落ちすぎて使えなかった</b>と報告している点だ。effortは「持ち時間を一律に減らす」粗いダイヤルで、難所の長考まで削ってしまう。Ember-1の主張は、再訓練なら<b>「悩む必要のない場所で悩む癖」だけを狙って直せる</b>というもの。将棋の例えで言えば、持ち時間を短くするのではなく、<b>定跡の局面で無駄に考え込む癖</b>を直すことにあたる。Opus 5.5の「自動配分」とEmber-1の「再訓練で削る」は、同じ潮目の2つの表れだ。</p>
 
 <h3>数字で見る衝撃度</h3>
 <table>
@@ -84,9 +85,11 @@ table:not(.vt)>tbody,table:not(.vt)>thead{display:table;width:calc(100% - 2px);}
 <tr><td>ARC-AGI-3(2026年9月24日時点・標準ハーネス)</td><td>GPT-6 Astra <span class="up">62.7%</span>(専用アダプターでは99.9%・比較不可)、Claude Opus 5 30.2%、Gemini 3.8 Flash 10.4%、GPT-5.6 Sol 7.8%、Grok 4.6 2.1%(計15モデル)</td></tr>
 <tr><td>FrontierCode v1.1 Main(最大effort)<span class="changed">NEW</span></td><td>Claude Opus 5.5 <span class="up">54.4%</span>、GPT-6 Astra 53.3%、Fable 5.1 50.3%、Opus 5 48.0%、GPT-5.6 Sol 47.5%</td></tr>
 <tr><td>Artificial Analysis Intelligence Index<span class="changed">NEW</span></td><td>Opus 5.5が<span class="up">58</span>で首位(10項目中6項目でトップ)、Humanity's Last Exam 61.4%</td></tr>
+<tr><td>Fireworks Ember-1(9月23日・Kimi K3を再訓練)<span class="changed">NEW</span></td><td>推論トークン<span class="up">約40%削減</span>(ベンチ7種と本番で35〜50%)、本番A/Bで総トークン39%減。Terminal Bench 2.1 82.0%(元のK3の最大設定80.9%)、DeepSWE 1.1 75.2%(同66.4%)、SWE-bench Verified 92.2%(同93.2%)</td></tr>
+<tr><td>GPT-6 Sol/Luna(9月22日)<span class="changed">NEW</span></td><td>GPT-5.6相当比で<span class="up">価格50%減</span>(Sol $2/$10、Luna $0.10/$0.50・百万トークンあたり)、SolはDeepSWE v1.1 68.8%</td></tr>
 <tr><td>DeepSeek-R1(2025年1月)</td><td>純粋な強化学習だけでo1に匹敵する推論能力を<span class="up">70%低いコスト</span>で実現</td></tr>
 </table>
-<p class="note">なぜ第1位か：この技術の急伸がそのまま半導体需要の根っこにある。アナリストは2030年までに推論が全AI計算資源の75%を占めると予測。ただしOpus 5.5の「同等以上の性能を約40%安く」が示すように、推論は『量』から『効率』の競争へ移り始めた。1タスクあたりの計算量が下がれば、より多くのタスクにAIが使われる——効率化がむしろ総需要を押し上げる「ジェボンズのパラドックス」型の拡大が起きうる局面に入った。</p>
+<p class="note">なぜ第1位か：この技術の急伸がそのまま半導体需要の根っこにある。アナリストは2030年までに推論が全AI計算資源の75%を占めると予測。ただしOpus 5.5の「同等以上の性能を約40%安く」が示すように、推論は『量』から『効率』の競争へ移り始めた。Ember-1は推論トークンを約40%削り、GPT-6 Sol/Lunaは前世代相当の半額になった。1タスクあたりの計算量が下がれば、より多くのタスクにAIが使われる——効率化がむしろ総需要を押し上げる「ジェボンズのパラドックス」型の拡大が起きうる局面に入った。</p>
 </div>
 
 <h2><span class="rank rank2">🥈 第2位</span> エージェント化——「答える」AIから「実行する」AIへ</h2>
@@ -110,12 +113,14 @@ table:not(.vt)>tbody,table:not(.vt)>thead{display:table;width:calc(100% - 2px);}
 <tr><th>指標</th><th>結果</th></tr>
 <tr><td>OSWorld 2.0(完走率・所要時間)</td><td>GPT-6 Astra 72.6%(約40分/タスク)、Claude Opus 5 70.6%、GPT-5.6 Sol 65.7%(約75分/タスク)</td></tr>
 <tr><td>OSWorld 2.0(500ステップ予算・二値完走)</td><td>Claude Opus 5 <span class="up">31.43%</span>(部分スコア68.31%)、GPT-5.6 Sol 27.34%(部分62.72%)</td></tr>
-<tr><td>Terminal-Bench-Science<span class="changed">NEW</span></td><td>Claude Opus 5 29.0% → Opus 5.5 <span class="up">58.7%</span></td></tr>
-<tr><td>Claude Opus 5.5 その他<span class="changed">NEW</span></td><td>SWE-bench Pro 89.9%、Terminal-Bench 66.4%</td></tr>
-<tr><td>Grok 4.7(9月21日)<span class="changed">NEW</span></td><td>Terminal-Bench 38.0%、DeepSWE 71.0%</td></tr>
+<tr><td>OSWorld 2.0(部分評価トラック)<span class="changed">NEW</span></td><td>Claude Opus 5.5 <span class="up">81.8%</span>(Anthropic発表。途中の達成段階ごとに採点する方式で、Astraの72.6%とは尺度が違うため<b>直接比較不可</b>)</td></tr>
+<tr><td>Terminal-Bench-Science</td><td>Claude Opus 5 29.0% → Opus 5.5 <span class="up">58.7%</span></td></tr>
+<tr><td>Claude Opus 5.5 その他</td><td>SWE-bench Pro 89.9%、Terminal-Bench 66.4%</td></tr>
+<tr><td>Grok 4.7(9月21日)</td><td>Terminal-Bench 38.0%、DeepSWE 71.0%</td></tr>
+<tr><td>LLaDA-UI(9月6日・拡散型MoE GUIエージェント)<span class="changed">NEW</span></td><td>AndroidWorld 53.5(Qwen3-VL-8Bは47.9)、WebVoyager 56.9(同45.2)、同モデル比3.6〜9倍高速(ベンダー発表・未検証)</td></tr>
 <tr><td>Model Context Protocol(MCP)導入件数</td><td>2026年3月時点で9,700万件超</td></tr>
 </table>
-<p class="note">OSWorld 2.1(9月16日のバグ修正版、人間の中央値で約1.6時間かかる長期タスク108件)での各モデルの新スコアはまだ公表されていない。</p>
+<p class="note">OSWorld 2.1(9月16日のバグ修正版、人間の中央値で約1.6時間かかる長期タスク108件)での各モデルの新スコアは、9月27日時点でもまだ公表されていない。各社が自前の採点方式で数字を出しているため、ベンチの「数字」ではなく「採点方式」を確認して読む必要がある。</p>
 
 <h3>なぜこれが重要か</h3>
 <p>これはAIが「質問に答える道具」から「仕事を代行する存在」へと役割そのものが変わった転換点。<b>完走率・速度・手数</b>の三方向で同時に改善が進んでおり、業務代行としての実用化ラインを越えつつある。一方で評価軸によって順位が入れ替わる現状は、「デモでは動くが本番の最後まで任せきれない」という最後の壁をそのまま映し出している。</p>
@@ -125,7 +130,7 @@ table:not(.vt)>tbody,table:not(.vt)>thead{display:table;width:calc(100% - 2px);}
 
 <div class="section">
 <h3>何が起きたか</h3>
-<p><b>DeepSeek-V4</b>の登場で、MoEのスパース化が新たな極限に到達した。V4 Proは総パラメータ1.6兆のうち実際に動くのはわずか約490億——<b>3.1%</b>。9月10日には後継の<b>DeepSeek-V4.1 Flash</b>がマルチモーダル対応MoEとして投入され、Hugging Faceで<b>60万ダウンロード</b>を突破、旧V4 Flashは廃止されV4.1へ自動ルーティングされるようになった。<span class="tag">今週の新展開</span>9月21日にはXiaomiが<b>MiMo-V2.6-Pro</b>(総パラメータ<b>1.02兆</b>・稼働<b>420億=4.1%</b>)をMITライセンスのオープンウェイトで公開した。「1兆パラメータ級なのに、1回に動かすのは数%だけ」という設計が、もはやDeepSeek一社の特技ではなく<b>業界の標準形</b>になったことがはっきりした。なお噂されるDeepSeek V4.1 Proは、9月26日時点で公式には未発表だ。</p>
+<p><b>DeepSeek-V4</b>の登場で、MoEのスパース化が新たな極限に到達した。V4 Proは総パラメータ1.6兆のうち実際に動くのはわずか約490億——<b>3.1%</b>。9月10日には後継の<b>DeepSeek-V4.1 Flash</b>がマルチモーダル対応MoEとして投入され、Hugging Faceで<b>60万ダウンロード</b>を突破、旧V4 Flashは廃止されV4.1へ自動ルーティングされるようになった。<span class="tag">今週の新展開</span>9月21日にはXiaomiが<b>MiMo-V2.6-Pro</b>(総パラメータ<b>1.02兆</b>・稼働<b>420億=4.1%</b>)をMITライセンスのオープンウェイトで公開した。「1兆パラメータ級なのに、1回に動かすのは数%だけ」という設計が、もはやDeepSeek一社の特技ではなく<b>業界の標準形</b>になったことがはっきりした。なお噂されるDeepSeek V4.1 Proは、9月27日時点でもモデルカード・価格・日付のいずれも出ていない。V4 ProからV4.1 Flashへの強制切り替え(9月14日予定)は開発者の反発を受けて撤回され、V4 Proの提供は続いている。「小さな新アーキテクチャ機に巨大な旧世代機の仕事を任せる」のは、まだ早かったということだ。</p>
 
 <div class="photo-box">
 <img src="https://upload.wikimedia.org/wikipedia/commons/a/a0/Deepseek_Android_UI.jpg" alt="DeepSeekアプリのAndroid UI画面">
@@ -144,9 +149,11 @@ table:not(.vt)>tbody,table:not(.vt)>thead{display:table;width:calc(100% - 2px);}
 <tr><td>DeepSeek-V4 Pro</td><td>1.6兆</td><td>約490億<span class="down">(3.1%)</span></td></tr>
 <tr><td>DeepSeek-V4 Flash(廃止・V4.1へ移行)</td><td>2,840億</td><td>約130億(4.6%)</td></tr>
 <tr><td>DeepSeek-V4.1 Flash(マルチモーダル・9月10日)</td><td>5,520億</td><td>プリフィル80億/デコード160億</td></tr>
-<tr><td>Xiaomi MiMo-V2.6-Pro(9月21日・MIT)<span class="changed">NEW</span></td><td>1.02兆</td><td>420億(4.1%)</td></tr>
+<tr><td>Xiaomi MiMo-V2.6-Pro(9月21日・MIT)</td><td>1.02兆</td><td>420億(4.1%)</td></tr>
+<tr><td>Upstage Solar Mini 4(9月22日)<span class="changed">NEW</span></td><td>350億</td><td>30億(約8.6%)</td></tr>
+<tr><td>inclusionAI LLaDA-UI(9月6日・拡散型)<span class="changed">NEW</span></td><td>約167億</td><td>一部のみ(比率非公表)</td></tr>
 </table>
-<p class="note">1Mトークン文脈下でV3.2比、推論FLOPs27%・KVキャッシュ10%まで圧縮(2026年8月GA版・V4-Pro-0813)。</p>
+<p class="note">MiMo-V2.6のRL(強化学習)費用はPro版で約262万ドル、Flash版で約85万ドル(ベンダー報告)。DeepSWEはProが58.4→72.6、Flashが48.8→65.7に上がった——1兆級MoEの後段の訓練は、もはや数百万ドル規模で回せる。<br>1Mトークン文脈下でV3.2比、推論FLOPs27%・KVキャッシュ10%まで圧縮(2026年8月GA版・V4-Pro-0813)。</p>
 <p class="note">なぜ重要か：推論(1位)がどれだけ計算資源を食おうとも、MoEがなければ今のAIの価格でサービス提供すること自体が成立しない。しかも1兆級MoEがオープンウェイトで次々に出てくることで、「巨大な総パラメータを置いておくメモリ容量」と「稼働する一部だけを高速に動かす演算」の両方が同時に要求される——病院の例えで言えば、診察する医師は数人でも<b>1,000人分の診察室(メモリ)</b>は常に用意しておく必要がある。これはHBMなどメモリ需要の構造に直結する話だ。</p>
 </div>
 
@@ -155,6 +162,7 @@ table:not(.vt)>tbody,table:not(.vt)>thead{display:table;width:calc(100% - 2px);}
 <div class="section">
 <h3>何が起きたか</h3>
 <p>2025年まで学術的な好奇心の域を出なかった拡散型言語モデル(dLLM)が、2026年に入り一気に商用インフラ化した。Inception Labsの<b>Mercury 2</b>(2月)は単一のNVIDIA Blackwell GPU上で<b>1,009トークン/秒</b>を記録し、9月投入の<b>Mercury 2.5</b>は<b>1,107トークン/秒</b>を維持したまま知能を前世代比<b>40%向上</b>、コンテキスト窓を128Kから260Kへ倍増し、チューナブル推論・ネイティブなツール呼び出し・JSONモードまで実装した。<span class="tag">研究の熱量</span>主要なdLLM論文リストには2026年6〜8月だけで<b>169本</b>が追加され、9月には「連続拡散は離散拡散と同等にスケールする」ことを示す論文や、拡散ブロックをスパースMoE上で効率よく動かすコンパイラ研究(<code>Epoch</code>)も登場——3位のMoEと4位の拡散型という<b>2つの効率化技術の合体</b>が研究テーマになり始めた。</p>
+<p><span class="tag">今週の新展開</span>その「合体」はすでに実物の重みとして出てきていた。アントグループ系の研究所<b>inclusionAI</b>は9月5日に<b>LLaDA2.2-mini</b>(160億)、9月6日には<b>LLaDA-UI</b>を、どちらも告知なしでHugging Faceに公開した。LLaDA-UIは<b>拡散型言語モデル×MoE×画面操作エージェント</b>という構成で、画面を見て次の操作を決める。そのとき「クリック座標」や「行動タグ」を1トークンずつ書くのではなく、<b>32トークンのブロックを32ステップのノイズ除去でまとめて仕上げる</b>。ベンダー発表(未検証)では、AndroidWorldで53.5(Qwen3-VL-8Bは47.9)、同モデル比3.6〜9倍の速度だ。エージェント化(2位)の最大のボトルネックは「ループ1周ごとの遅延」だったから、1周を速くする拡散型との相性はいい。ただしライセンスは未記載で、論文もまだ出ていない。</p>
 
 <div class="photo-box">
 <img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Jensen_Huang_-_RTX_Blackwell_-_Nvidia_Keynote_-_CES_2025_Las_Vegas_%283%29.jpg" alt="CES 2025でBlackwell世代GPUを紹介するNVIDIA CEOジェンスン・フアン">
@@ -171,13 +179,16 @@ table:not(.vt)>tbody,table:not(.vt)>thead{display:table;width:calc(100% - 2px);}
 <tr><td>GPT-5 Mini(自己回帰)</td><td>約71</td></tr>
 <tr><td>Claude 4.5 Haiku Reasoning(自己回帰)</td><td>約89</td></tr>
 <tr><td>Mercury 2(拡散型・2026年2月)</td><td><span class="up">1,009</span></td></tr>
+<tr><td>LLaDA-UI(拡散型MoE・9月6日)<span class="changed">NEW</span></td><td>Qwen3-VL-8B比<span class="up">3.6〜9倍</span>(ベンダー発表)</td></tr>
 <tr><td>Mercury 2.5(拡散型・2026年9月)</td><td><span class="up">1,107</span>／知能40%向上・コンテキスト窓260K・$0.20/$0.75(百万トークン)</td></tr>
 </table>
 <p class="note">なぜ重要か：推論(1位)・エージェント化(2位)が「より長く考える」方向に計算資源を積み増す一方で、拡散型LLMは真逆の「同じ知能をより少ない計算で速く出す」方向から切り込む伏兵技術。検索・音声・コーディング支援など低遅延が命の用途で置き換えが始まっている。Inception自身はGPT-5.6 Luna(Low)・Gemini 3.5 Flash-Lite・Claude Haiku 4.5級の低コストモデル帯に並んだと主張しており、次の焦点は「フロンティア級の高度推論」に届くかどうかだ。</p>
 </div>
 
-<h2>👀 ランク外の注目枠(新設)</h2>
+<h2>👀 ランク外の注目枠</h2>
 <div class="section">
+<h3>推論の圧縮(Reasoning Compression)——「考える量」を再訓練で削る<span class="changed">NEW</span></h3>
+<p>1位の推論の中で生まれている新しい流れ。Fireworks <b>Ember-1</b>(9月23日)は、Kimi K3の推論トークンを<b>約40%</b>削減しながら、Terminal Bench 2.1(82.0%)とDeepSWE 1.1(75.2%)では元のモデルの最大設定を上回った。本番のA/Bテストでも総トークンは<span class="up">39%減</span>。推論が長くなるほど、エージェントのように何ターンも文脈が積み上がる用途ではコストが雪だるま式に増える。だから「同じ答えをより短い思考で出す」技術の価値は大きい。独立した技術としてトップ4に入るのか、推論技術の一部として吸収されるのかを見ていく。</p>
 <h3>投機的デコーディング(Speculative Decoding)——「下書き係」で3倍速</h3>
 <p>Liquid AIが9月18日に重みを公開(ブログは9月24日)した<b>LFM2.5-VL-3B-DSpark</b>は、わずか<b>2.8億パラメータ</b>の小さな"下書きモデル"が先回りで数トークンを提案し、30億パラメータの本体がそれを<b>まとめて一括検証</b>する方式。本体が全トークンを検証するので<b>出力は本体単独と完全に同一</b>のまま、デコードをApple M5 Maxで最大<span class="up">3.13倍</span>、H100で<span class="up">2.66倍</span>高速化した。新人が下書きを書き、ベテランが赤ペンで一気にチェックする方が、ベテランが一から全部書くより速い——という発想で、テキスト用の手法が画像+テキストのモデルにそのまま効くことを示した点が新しい。</p>
 <h3>テスト時訓練(Test-Time Training)/継続学習——「使いながら賢くなる」</h3>
@@ -187,12 +198,12 @@ table:not(.vt)>tbody,table:not(.vt)>thead{display:table;width:calc(100% - 2px);}
 <h2>まとめ：4つがどう噛み合っているか</h2>
 <div class="section">
 <p>推論(1位)がより多くの計算を要求し、エージェント化(2位)がその推論を実世界の一連の作業に展開し、MoE(3位)がそれらのコストを極限まで切り詰め、拡散型言語モデル(4位)は「速く・安く」という全く別角度から効率化に挑む——性質の異なる4つの技術が、この1〜2年でせめぎ合っている。</p>
-<p>今週いちばん大事な変化は、<b>「もっと計算を」側だったはずの推論とエージェント化まで、効率化の方向へ舵を切り始めた</b>ことだ。Opus 5.5は思考量を自動配分して約40%安くなり、エージェントは手数を半分未満に減らした。しかしこれは半導体需要の減速を意味しない。1回あたりが安く速くなるほど、AIに任せられる仕事の範囲が広がり、総使用量はむしろ増える——蒸気機関の効率が上がって石炭消費が増えた「ジェボンズのパラドックス」と同じ構図だ。加えて1兆級MoEの普及は「使わないパラメータも置いておくメモリ」の需要を押し上げる。計算の<b>中身</b>は効率化しても、計算とメモリの<b>総量</b>は増え続ける、という読み方がいまのところ最も筋が通っている。</p>
+<p>先週から続くいちばん大事な変化は、<b>「もっと計算を」側だったはずの推論とエージェント化まで、効率化の方向へ舵を切り始めた</b>ことだ。Opus 5.5は思考量を自動配分して約40%安くなり、Ember-1は再訓練で推論トークンを約40%削り、エージェントは手数を半分未満に減らした。しかしこれは半導体需要の減速を意味しない。1回あたりが安く速くなるほど、AIに任せられる仕事の範囲が広がり、総使用量はむしろ増える——蒸気機関の効率が上がって石炭消費が増えた「ジェボンズのパラドックス」と同じ構図だ。加えて1兆級MoEの普及は「使わないパラメータも置いておくメモリ」の需要を押し上げる。計算の<b>中身</b>は効率化しても、計算とメモリの<b>総量</b>は増え続ける、という読み方がいまのところ最も筋が通っている。</p>
 </div>
 
 <footer>
 本ページは投資助言ではなく、AI技術そのものの進化を追う学びの場です。<br>
-生成：2026-09-26｜データソース：ARC Prize/BenchLM(ARC-AGI-3、9月24日時点)、VentureBeat・Vellum(Claude Opus 5.5)、llm-stats.com、OSWorld-V2(GitHub)、DeepSeek API Docs、Artificial Analysis・Hugging Face(MiMo-V2.6-Pro)、Inception Labs/Business Wire(Mercury 2.5)、Liquid AI/MarkTechPost(DSpark)、arXiv・ICLR(TTT)(WebSearch)、写真はWikimedia Commons(各出典明記)
+生成：2026-09-27｜データソース：Fireworks AI(Ember-1)、Digital Applied(9月モデルリリース一覧)、orcarouter.ai(LLaDA-UI・DeepSeek V4.1 Pro)、Vellum/Digital Applied(OSWorld 2.0比較)、ARC Prize/BenchLM(ARC-AGI-3、9月24日時点)、VentureBeat・Vellum(Claude Opus 5.5)、llm-stats.com、OSWorld-V2(GitHub)、DeepSeek API Docs、Artificial Analysis・Hugging Face(MiMo-V2.6-Pro)、Inception Labs/Business Wire(Mercury 2.5)、Liquid AI/MarkTechPost(DSpark)、arXiv・ICLR(TTT)(WebSearch)、写真はWikimedia Commons(各出典明記)
 </footer>
 
 </body>
