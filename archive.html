@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>過去のブリーフィング</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{background:#0f1117;color:#e0e0e0;font-family:'Segoe UI','Hiragino Kaku Gothic ProN',sans-serif;display:flex;flex-direction:column}
+.top{padding:12px 16px 10px;background:#13161f;border-bottom:1px solid #1f2330}
+.head{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+h1{font-size:20px;color:#fff}
+.head a{font-size:16px;color:#4a9eff;text-decoration:none;white-space:nowrap}
+.nav{display:flex;gap:8px;margin-top:10px;align-items:stretch}
+.nav button{flex:0 0 auto;padding:10px 14px;border:none;border-radius:10px;background:#1f2330;color:#e0e0e0;font-size:17px;cursor:pointer}
+.nav button:disabled{opacity:0.3}
+.nav button:active{opacity:0.65}
+.nav select{flex:1;min-width:0;background:#1f2330;color:#fff;border:1px solid #2a2e3a;border-radius:10px;padding:8px;font-size:17px;font-weight:bold}
+.vers{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;align-items:center;font-size:16px;color:#888}
+.vers button{padding:5px 10px;border:1px solid #2a2e3a;border-radius:8px;background:#0f1117;color:#bbb;font-size:16px;cursor:pointer}
+.vers button.on{background:#4a9eff;color:#0f1117;border-color:#4a9eff;font-weight:bold}
+.msg{padding:24px 16px;font-size:17px;line-height:1.8;color:#bbb}
+.msg a{color:#4a9eff}
+iframe{flex:1;width:100%;border:0;background:#0f1117}
+</style>
+</head>
+<body>
+<div class="top">
+  <div class="head">
+    <h1>📚 過去のブリーフィング</h1>
+    <a href="index.html">← 戻る</a>
+  </div>
+  <div class="nav">
+    <button id="older" aria-label="前の日">◀ 前日</button>
+    <select id="day" aria-label="日付"></select>
+    <button id="newer" aria-label="次の日">翌日 ▶</button>
+  </div>
+  <div class="vers" id="vers"></div>
+</div>
+<div class="msg" id="msg">読み込み中…</div>
+<iframe id="view" title="その日のブリーフィング" hidden></iframe>
+
+<script>
+// 公開リポジトリの履歴から、日ごとの briefing.html を読み込む（ファイルの追加や日次の作業は不要）
+const REPO = 'takuzou0127/takuzou0127.github.io';
+const FILE = 'briefing.html';
+const SITE = 'https://takuzou0127.github.io/';
+const CACHE_KEY = 'archive-commits-v1';
+const WD = ['日','月','火','水','木','金','土'];
+
+const $ = id => document.getElementById(id);
+let days = [];      // [{date:'2026-09-27', versions:[{sha, time}] (新しい順)}] 新しい日が先
+let cur = 0;        // days の添字
+let curVer = 0;
+
+function store(get, key, val) {
+  try {
+    if (get) return localStorage.getItem(key);
+    localStorage.setItem(key, val);
+  } catch (e) { return null; }
+}
+
+function jst(iso) {
+  const d = new Date(new Date(iso).getTime() + 9 * 3600 * 1000);
+  return {
+    date: d.toISOString().slice(0, 10),
+    time: d.toISOString().slice(11, 16),
+    wd: WD[d.getUTCDay()]
+  };
+}
+
+async function loadCommits() {
+  const cached = store(true, CACHE_KEY);
+  if (cached) {
+    try {
+      const c = JSON.parse(cached);
+      if (Date.now() - c.at < 10 * 60 * 1000) return c.list;
+    } catch (e) {}
+  }
+  const list = [];
+  for (let page = 1; page <= 10; page++) {
+    const r = await fetch(`https://api.github.com/repos/${REPO}/commits?path=${FILE}&per_page=100&page=${page}`);
+    if (!r.ok) throw new Error('GitHub ' + r.status);
+    const a = await r.json();
+    a.forEach(c => list.push({ sha: c.sha, iso: c.commit.author.date }));
+    if (a.length < 100) break;
+  }
+  store(false, CACHE_KEY, JSON.stringify({ at: Date.now(), list }));
+  return list;
+}
+
+function group(list) {
+  const map = new Map();
+  list.forEach(c => {
+    const t = jst(c.iso);
+    if (!map.has(t.date)) map.set(t.date, { date: t.date, wd: t.wd, versions: [] });
+    map.get(t.date).versions.push({ sha: c.sha, time: t.time });
+  });
+  const out = [...map.values()];
+  out.forEach(d => d.versions.sort((a, b) => b.time.localeCompare(a.time)));
+  out.sort((a, b) => b.date.localeCompare(a.date));
+  return out;
+}
+
+function label(d) {
+  const [y, m, dd] = d.date.split('-');
+  return `${+m}/${+dd}（${d.wd}）`;
+}
+
+async function show(i, v) {
+  cur = i; curVer = v || 0;
+  const d = days[cur];
+  $('day').value = d.date;
+  $('older').disabled = cur >= days.length - 1;
+  $('newer').disabled = cur <= 0;
+  location.replace('#' + d.date);
+  store(false, 'archive-last-day', d.date);
+
+  const vers = $('vers');
+  vers.innerHTML = '';
+  if (d.versions.length > 1) {
+    const s = document.createElement('span');
+    s.textContent = 'この日の版：';
+    vers.appendChild(s);
+    d.versions.forEach((ver, k) => {
+      const b = document.createElement('button');
+      b.textContent = ver.time + (k === 0 ? '（最終）' : '');
+      if (k === curVer) b.className = 'on';
+      b.onclick = () => show(cur, k);
+      vers.appendChild(b);
+    });
+  }
+
+  const ver = d.versions[curVer];
+  $('msg').hidden = false;
+  $('msg').textContent = `${label(d)} ${ver.time} の版を読み込み中…`;
+  $('view').hidden = true;
+  try {
+    const r = await fetch(`https://raw.githubusercontent.com/${REPO}/${ver.sha}/${FILE}`);
+    if (!r.ok) throw new Error(r.status);
+    let html = await r.text();
+    // 画像や相対リンクがサイト上と同じように開けるようにする
+    html = html.replace(/<head([^>]*)>/i, `<head$1><base href="${SITE}" target="_top">`);
+    if (days[cur] !== d || d.versions[curVer] !== ver) return;  // 途中で別の日に切り替えた
+    $('view').srcdoc = html;
+    $('view').hidden = false;
+    $('msg').hidden = true;
+  } catch (e) {
+    $('msg').innerHTML = `読み込めませんでした（${e.message}）。<br>`
+      + `<a href="https://github.com/${REPO}/blob/${ver.sha}/${FILE}" target="_blank" rel="noopener">GitHubで見る</a>`;
+  }
+}
+
+async function init() {
+  try {
+    days = group(await loadCommits());
+  } catch (e) {
+    $('msg').innerHTML = `履歴を読み込めませんでした（${e.message}）。しばらくしてから開き直してください。<br>`
+      + `<a href="https://github.com/${REPO}/commits/main/${FILE}" target="_blank" rel="noopener">GitHubの履歴を見る</a>`;
+    return;
+  }
+  const sel = $('day');
+  days.forEach(d => {
+    const o = document.createElement('option');
+    o.value = d.date;
+    o.textContent = label(d);
+    sel.appendChild(o);
+  });
+  sel.onchange = () => show(days.findIndex(d => d.date === sel.value));
+  $('older').onclick = () => show(cur + 1);
+  $('newer').onclick = () => show(cur - 1);
+
+  const want = decodeURIComponent(location.hash.slice(1)) || store(true, 'archive-last-day');
+  const i = days.findIndex(d => d.date === want);
+  show(i >= 0 ? i : 0);
+}
+init();
+</script>
+</body>
+</html>
