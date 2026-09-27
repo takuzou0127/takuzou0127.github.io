@@ -116,6 +116,27 @@ def universe_kr(yf):
         return universe_kr_naver()
 
 
+def universe_jp_yahoo(yf, n=225):
+    """Yahoo の銘柄検索で、東証(JPX)の時価総額上位 n 社。[(symbol, 名前)]"""
+    q = yf.EquityQuery("and", [yf.EquityQuery("eq", ["region", "jp"]),
+                               yf.EquityQuery("eq", ["exchange", "JPX"])])
+    res = yf.screen(q, sortField="intradaymarketcap", sortAsc=False, size=n)
+    out = [(x["symbol"], x.get("shortName") or x.get("longName"))
+           for x in (res or {}).get("quotes") or [] if x.get("symbol") and x.get("quoteType", "EQUITY") == "EQUITY"]
+    if len(out) < 100:
+        raise RuntimeError(f"Yahooの銘柄検索から{len(out)}社しか取れなかった")
+    return out
+
+
+def universe_jp_or_yahoo(yf):
+    """日経平均225社。構成ページを読めない時は東証の時価総額上位225社に切り替え、表の見出しにもそう書く"""
+    try:
+        return universe_jp(), None
+    except Exception as e:
+        print(f"  日経の構成銘柄ページを読めなかった（{e}）→ Yahooの銘柄検索で東証の時価総額上位225社を使う", file=sys.stderr)
+        return universe_jp_yahoo(yf), "東証 時価総額上位225社（日経平均の構成ページを読めなかったため）"
+
+
 def universe_jp():
     """日経の公式構成銘柄ページから225社のコード。[(code, 名前 or None)]"""
     text = fetch_text("https://indexes.nikkei.co.jp/nkave/index/component?idx=nk225")
@@ -184,7 +205,13 @@ def run_market(key, args, yf):
     errors = []
     file_arg = getattr(args, f"{key}_file")
     try:
-        uni = universe_from_file(file_arg) if file_arg else (universe_kr(yf) if key == "kr" else universe_jp())
+        universe_label = None
+        if file_arg:
+            uni, universe_label = universe_from_file(file_arg), f"{Path(file_arg).name} の銘柄"
+        elif key == "kr":
+            uni = universe_kr(yf)
+        else:
+            uni, universe_label = universe_jp_or_yahoo(yf)
     except Exception as e:
         return {"error": f"対象銘柄の一覧を取れなかった：{e}（--{key}-file でコード一覧を渡せます）"}
     rows = []
@@ -203,7 +230,7 @@ def run_market(key, args, yf):
     watch = [{"symbol": s, "label": WATCH[s], **next((r for r in rows if r["symbol"] == s), {})}
              for s in WATCH if s.endswith(m["suffix"])]
     return {
-        "label": m["label"], "universe": m["universe"], "currency_mark": m["cur"],
+        "label": m["label"], "universe": universe_label or m["universe"], "currency_mark": m["cur"],
         "universe_count": len(uni), "fetched": len(rows),
         "ranked_count": len(ranked), "excluded_few_analysts": len(few), "no_target": len(no_target),
         "top": ranked[:TOP_N], "watch": watch, "errors": errors,
