@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>期待値ランキング</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0f1117;color:#e0e0e0;font-family:'Segoe UI','Hiragino Kaku Gothic ProN',sans-serif;padding:16px;max-width:640px;margin:0 auto;padding-bottom:40px;font-size:16px;line-height:1.6}
+h1{font-size:1.25rem;color:#fff;margin-bottom:4px}
+h2{font-size:1.05rem;color:#f0883e;margin:24px 0 8px}
+.sub{font-size:15px;color:#8b93a1;margin-bottom:14px}
+a{color:#4a9eff}
+.tabs{display:flex;gap:8px;margin:10px 0 14px}
+.tabs button{flex:1;padding:12px 6px;border:none;border-radius:10px;background:#1f2330;color:#c9d1d9;font-size:15px;cursor:pointer}
+.tabs button.on{background:#f0883e;color:#0f1117;font-weight:700}
+.row{background:#13161f;border-radius:12px;padding:12px 14px;margin-bottom:8px;border-left:4px solid #333}
+.row.top{border-left-color:#f0883e}
+.row .hd{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.rk{font-size:1.3rem;font-weight:700;color:#fff;min-width:2.2em}
+.nm{font-size:1.05rem;color:#fff;font-weight:600}
+.mv{font-size:15px}
+.ev{margin-left:auto;font-size:1.15rem;font-weight:700}
+.dt{font-size:15px;color:#9aa4b2;margin-top:4px}
+.up{color:#3fb950}.down{color:#f85149}.warn{color:#e3b341}
+.box{background:#13161f;border-radius:12px;padding:12px 14px;font-size:15px;color:#c9d1d9}
+.box li{margin-left:1.2em;margin-bottom:4px}
+.msg{color:#e3b341;font-size:15px;margin:10px 0}
+</style>
+</head>
+<body>
+
+<h1>&#x1F3AF; 期待値ランキング</h1>
+<div class="sub" id="src">読み込み中…</div>
+
+<div class="tabs">
+  <button id="tEv" class="on">期待値順<br>（リターン重視）</button>
+  <button id="tSt">安定順<br>（振れ幅を考慮）</button>
+</div>
+<div id="list"></div>
+<div class="msg" id="msg"></div>
+
+<h2>計算のしかた</h2>
+<div class="box">
+<ul>
+<li><b>期待値 ＝ 上がる確率の目安 × 上昇余地</b>（アナリスト平均目標まで）</li>
+<li>上がる確率の目安は表の数字から機械的に出す：<br>
+分類の基準点（①②65・④60・⑨55・⑥50・⑤45・⑦40・⑧30）<br>
+＋ 業績予想の修正人数の向き（(↑−↓)÷(↑+↓)×10、合計3人以上の時）<br>
+− 5（③賭け型の前提がある時）<br>
+− 5（⑤で⚠決算リスク＝PEG≧1.2の時）<br>
+20〜80の範囲に収める</li>
+<li>安定順は、ダッシュボードの「S&amp;P比÷振れ幅」（指数を上回る見込みを、値動きの大きさで割った値）の高い順</li>
+<li>前日比：前の日の最終版のブリーフィングで同じ計算をした順位との差（▲上がった／▼下がった）</li>
+<li>数字は毎朝のブリーフィング（②-Bの表）から読む。ブリーフィングが更新されれば、このページも自動で変わる</li>
+<li>SKHY（ADR）は売却済みで000660と同じ会社のため除いている</li>
+<li>確率の点数は目安で、統計から出したものではない。分類の答え合わせが溜まったら点数を見直す</li>
+</ul>
+</div>
+
+<p class="sub" style="margin-top:20px">元のページ：<a href="briefing.html">今日の棚卸（②-B）</a>｜<a href="index.html">ダッシュボード</a></p>
+
+<script>
+const REPO = 'takuzou0127/takuzou0127.github.io';
+const FILE = 'briefing.html';
+const BASE = {'①':65,'②':65,'④':60,'⑨':55,'⑥':50,'⑤':45,'⑦':40,'⑧':30};
+
+function num(s){ const m = (s||'').replace(/,/g,'').match(/[-+]?\d+(\.\d+)?/); return m ? parseFloat(m[0]) : null; }
+
+function parse(html){
+  const doc = new DOMParser().parseFromString(html, 'text/html');
+  const table = doc.querySelector('table.vt');
+  if (!table) return null;
+  const out = [];
+  table.querySelectorAll('tbody tr').forEach(tr => {
+    if (tr.classList.contains('grp')) return;
+    const td = [...tr.children].map(c => c.textContent.trim());
+    if (td.length < 15) return;
+    const name = td[0];
+    if (/SKHY/.test(name)) return;              // ADRは売却済み・000660と同じ会社
+    const cls = td[5];
+    const key = Object.keys(BASE).find(k => cls.startsWith(k));
+    const upsideCell = tr.children[12];
+    const upside = num(upsideCell.querySelector('span') ? upsideCell.querySelector('span').textContent : td[12]);
+    if (key === undefined || upside === null) return;
+    const rev = td[7].match(/↑(\d+)／↓(\d+)/);
+    const u = rev ? +rev[1] : 0, d = rev ? +rev[2] : 0;
+    let p = BASE[key];
+    if (u + d >= 3) p += (u - d) / (u + d) * 10;
+    const bet = /③賭け型/.test(cls);
+    if (bet) p -= 5;
+    const earnRisk = key === '⑤' && /決算リスク/.test(cls);
+    if (earnRisk) p -= 5;
+    p = Math.max(20, Math.min(80, p));
+    const rng = (td[12].match(/予想の幅\s*([-+]?\d+%)〜([-+]?\d+%)/) || []);
+    out.push({
+      name: name.replace(/★/g,'').replace(/\s+/g,' '),
+      cls: cls.split('＋')[0].replace(/⚠.*$/,''),
+      key, upside, u, d, p, bet, earnRisk,
+      ev: p / 100 * upside,
+      stab: num(td[14]),
+      vol: td[13].split(/\s/)[0],
+      low: rng[1] || '', high: rng[2] || '',
+      stale: /目標が古い/.test(td[12]),
+      earn: td[10]
+    });
+  });
+  return out;
+}
+
+function rankMap(rows, field){
+  const m = {};
+  [...rows].sort((a,b) => (b[field] ?? -1e9) - (a[field] ?? -1e9)).forEach((r,i) => m[r.name] = i + 1);
+  return m;
+}
+
+let cur = [], prev = null, mode = 'ev';
+
+function render(){
+  const field = mode === 'ev' ? 'ev' : 'stab';
+  const rows = [...cur].sort((a,b) => (b[field] ?? -1e9) - (a[field] ?? -1e9));
+  const pm = prev ? rankMap(prev, field) : null;
+  const el = document.getElementById('list');
+  el.innerHTML = rows.map((r,i) => {
+    let mv = '';
+    if (pm) {
+      const was = pm[r.name];
+      if (was === undefined) mv = '<span class="mv warn">新</span>';
+      else if (was > i + 1) mv = `<span class="mv up">▲${was - (i + 1)}</span>`;
+      else if (was < i + 1) mv = `<span class="mv down">▼${(i + 1) - was}</span>`;
+      else mv = '<span class="mv" style="color:#666">→</span>';
+    }
+    const main = mode === 'ev'
+      ? `<span class="ev ${r.ev >= 0 ? 'up' : 'down'}">${r.ev >= 0 ? '+' : ''}${r.ev.toFixed(1)}%</span>`
+      : `<span class="ev ${r.stab >= 0 ? 'up' : 'down'}">${r.stab === null ? '—' : r.stab.toFixed(2)}</span>`;
+    const flags = [
+      r.bet ? '<span class="warn">③賭け型</span>' : '',
+      r.earnRisk ? '<span class="warn">⚠決算リスク</span>' : '',
+      r.stale ? '<span class="warn">⚠目標が古い可能性</span>' : ''
+    ].filter(Boolean).join('・');
+    return `<div class="row ${i < 3 ? 'top' : ''}">
+      <div class="hd"><span class="rk">${i + 1}位</span><span class="nm">${r.name}</span>${mv}${main}</div>
+      <div class="dt">確率の目安 ${Math.round(r.p)}% × 上昇余地 ${r.upside >= 0 ? '+' : ''}${r.upside}%｜${r.cls}｜修正 ↑${r.u}／↓${r.d}</div>
+      <div class="dt">1年の振れ幅 ${r.vol}｜予想の幅 ${r.low}〜${r.high}｜S&amp;P比÷振れ幅 ${r.stab ?? '—'}｜決算 ${r.earn}${flags ? '<br>' + flags : ''}</div>
+    </div>`;
+  }).join('');
+}
+
+document.getElementById('tEv').onclick = () => { mode = 'ev'; tab(); };
+document.getElementById('tSt').onclick = () => { mode = 'st'; tab(); };
+function tab(){
+  document.getElementById('tEv').classList.toggle('on', mode === 'ev');
+  document.getElementById('tSt').classList.toggle('on', mode === 'st');
+  render();
+}
+
+function jstDate(iso){ return new Date(new Date(iso).getTime() + 9 * 3600e3).toISOString().slice(0,10); }
+
+async function loadPrev(){
+  try {
+    const r = await fetch(`https://api.github.com/repos/${REPO}/commits?path=${FILE}&per_page=30`);
+    if (!r.ok) throw new Error(r.status);
+    const commits = await r.json();
+    const today = jstDate(commits[0].commit.committer.date);
+    const p = commits.find(c => jstDate(c.commit.committer.date) !== today);
+    if (!p) return;
+    const h = await (await fetch(`https://raw.githubusercontent.com/${REPO}/${p.sha}/${FILE}`)).text();
+    prev = parse(h);
+    document.getElementById('src').innerHTML += `<br>前日比は ${jstDate(p.commit.committer.date)} の版と比べています`;
+    render();
+  } catch (e) {
+    document.getElementById('msg').textContent = '前日の版を読めなかったため、前日比は出していません（GitHubの読み込み制限の可能性。しばらくして開き直してください）';
+  }
+}
+
+fetch(FILE, {cache: 'no-store'}).then(r => r.text()).then(html => {
+  cur = parse(html);
+  if (!cur || !cur.length) { document.getElementById('msg').textContent = 'ブリーフィングの②-Bの表を読めませんでした。表の形が変わった可能性があります。'; return; }
+  const m = html.match(/データ取得：([^（]+?)（/);
+  document.getElementById('src').innerHTML = `今日のブリーフィング（②-B）から計算｜データ取得 ${m ? m[1] : '不明'}｜${cur.length}銘柄`;
+  render();
+  loadPrev();
+}).catch(() => { document.getElementById('msg').textContent = 'ブリーフィングを読み込めませんでした。'; });
+</script>
+</body>
+</html>
