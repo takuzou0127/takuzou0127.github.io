@@ -32,6 +32,27 @@ a{color:#4a9eff}
 .px b.up{color:#3fb950}.px b.down{color:#f85149}
 .px small{display:block;font-size:15px;color:#8b93a1}
 .msg{color:#e3b341;font-size:15px;margin:10px 0}
+.tabs button{font-size:16px}
+.guide{background:#13161f;border-radius:10px;padding:10px 12px;font-size:16px;color:#c9d1d9;margin-bottom:10px;line-height:1.55}
+.guide b{color:#fff}
+.lst{background:#13161f;border-radius:12px;padding:4px 0}
+.it{padding:10px 12px;border-bottom:1px solid #1f2330;cursor:pointer}
+.it:last-child{border-bottom:none}
+.it.open{background:#171b26}
+.l1{display:flex;align-items:baseline;gap:8px}
+.l1 .rk2{font-size:17px;font-weight:700;color:#fff;min-width:2.4em}
+.l1 .nm2{font-size:17px;color:#fff;font-weight:600;flex:1;min-width:0}
+.l1 .vl{font-size:18px;font-weight:700;white-space:nowrap}
+.l2{display:flex;align-items:center;gap:8px;margin-top:6px}
+.bar{position:relative;flex:1;height:14px;background:#0f1117;border-radius:4px}
+.bar .f{position:absolute;top:0;bottom:0;border-radius:4px}
+.bar .z{position:absolute;top:-3px;bottom:-3px;width:1px;background:#555}
+.bar .sp{position:absolute;top:-5px;bottom:-5px;width:0;border-left:2px dashed #e3b341;z-index:2}
+.l2 .sub2{font-size:15px;color:#9aa4b2;white-space:nowrap;min-width:5.6em;text-align:right}
+.det{display:none;margin-top:8px}
+.it.open .det{display:block}
+.chev{color:#666;font-size:14px}
+.axis{display:flex;justify-content:space-between;font-size:15px;color:#8b93a1;padding:6px 12px 0}
 </style>
 </head>
 <body>
@@ -40,10 +61,13 @@ a{color:#4a9eff}
 <div class="sub" id="src">読み込み中…</div>
 
 <div class="tabs">
-  <button id="tEv" class="on">期待値順<br>（リターン重視）</button>
-  <button id="tSt">安定順<br>（振れ幅を考慮）</button>
+  <button id="tEv" class="on">期待値</button>
+  <button id="tUp">上昇余地<br>（S&amp;P比）</button>
+  <button id="tSt">安定</button>
 </div>
-<div id="list"></div>
+<div class="guide" id="guide"></div>
+<div class="lst" id="list"></div>
+<div class="sub" style="margin-top:8px">行をタップすると、今の株価・平均／最低／最高目標が開きます</div>
 <div class="msg" id="msg"></div>
 
 <h2>計算のしかた</h2>
@@ -59,7 +83,8 @@ a{color:#4a9eff}
 20〜80の範囲に収める</li>
 <li><b>最低目標／平均目標／最高目標</b>：アナリストが出している目標株価の最低・平均・最高（Yahoo Finance集計）。最低・最高はブリーフィングの「予想の幅」の%から計算した値</li>
 <li><b>値動きの大きさ</b>：1年の振れ幅。約6回に1回はこれ以上下がる（上がる）年がある目安。株価の数字には混ぜていない</li>
-<li>安定順は、ダッシュボードの「S&amp;P比÷振れ幅」（指数を上回る見込みを、値動きの大きさで割った値）の高い順</li>
+<li>「上昇余地（S&amp;P比）」は、アナリスト平均目標までの上昇率の高い順。黄色の点線はS&amp;P500全体の上昇余地（ブリーフィング②-Bの基準行・FactSet）。S&amp;P比＝銘柄の上昇余地 − S&amp;P500の上昇余地</li>
+<li>「安定」は、ブリーフィングの「S&amp;P比÷振れ幅」（指数を上回る見込みを、値動きの大きさで割った値）の高い順</li>
 <li>前日比：前の日の最終版のブリーフィングで同じ計算をした順位との差（▲上がった／▼下がった）</li>
 <li>数字は毎朝のブリーフィング（②-Bの表）から読む。ブリーフィングが更新されれば、このページも自動で変わる</li>
 <li>SKHY（ADR）は売却済みで000660と同じ会社のため除いている</li>
@@ -115,6 +140,7 @@ function parse(html){
       vol: td[13].split(/\s/)[0],
       low: rng[1] || '', high: rng[2] || '',
       stale,
+      sp: (() => { const m = td[12].match(/S&P比\s*([-+]?\d+(\.\d+)?)pt/); return m ? parseFloat(m[1]) : null; })(),
       earn: td[10],
       cur, price, target,
       volN,
@@ -139,50 +165,76 @@ function rankMap(rows, field){
   return m;
 }
 
-let cur = [], prev = null, mode = 'ev';
+let cur = [], prev = null, mode = 'ev', spBase = null, opened = {};
+
+const MODES = {
+  ev: { field: 'ev',     unit: '%', dp: 1,
+        guide: () => '<b>期待値 ＝ 上がる確率の目安 × 上昇余地</b>。上がる確率まで割り引いた「見込みのリターン」の順。' },
+  up: { field: 'upside', unit: '%', dp: 1,
+        guide: () => '<b>予想株価（アナリスト平均目標）までの上昇率</b>の順。' +
+          (spBase !== null ? `黄色の点線＝S&amp;P500全体の上昇余地 <b>+${spBase}%</b>。<b>線より右（緑）＝指数より上がる見込み</b>、灰色＝指数以下。右の「S&amp;P比」はその差（pt）。` : '') },
+  st: { field: 'stab',   unit: '',  dp: 2,
+        guide: () => '<b>安定 ＝ S&amp;P比 ÷ 1年の振れ幅</b>の順。指数を上回る見込みを、値動きの大きさで割った値。0より右＝指数より有利、大きいほど「振れ幅のわりに見込みが大きい」。' }
+};
+
+function sign(v, dp){ return (v >= 0 ? '+' : '') + v.toFixed(dp); }
 
 function render(){
-  const field = mode === 'ev' ? 'ev' : 'stab';
+  const M = MODES[mode], field = M.field;
+  document.getElementById('guide').innerHTML = M.guide() + (cur.some(r => r.stale) ? '<br><span class="warn">⚠</span>＝目標が古い可能性（業績予想を下げた人が多いのに、目標株価がまだ直されていない）' : '');
   const rows = [...cur].sort((a,b) => (b[field] ?? -1e9) - (a[field] ?? -1e9));
   const pm = prev ? rankMap(prev, field) : null;
+  const vals = rows.map(r => r[field]).filter(v => v !== null && !isNaN(v));
+  if (mode === 'up' && spBase !== null) vals.push(spBase);
+  const lo = Math.min(0, ...vals), hi = Math.max(0, ...vals), span = (hi - lo) || 1;
+  const x = v => (v - lo) / span * 100;
   const el = document.getElementById('list');
   el.innerHTML = rows.map((r,i) => {
+    const v = r[field];
     let mv = '';
     if (pm) {
       const was = pm[r.name];
       if (was === undefined) mv = '<span class="mv warn">新</span>';
       else if (was > i + 1) mv = `<span class="mv up">▲${was - (i + 1)}</span>`;
       else if (was < i + 1) mv = `<span class="mv down">▼${(i + 1) - was}</span>`;
-      else mv = '<span class="mv" style="color:#666">→</span>';
     }
-    const main = mode === 'ev'
-      ? `<span class="ev ${r.ev >= 0 ? 'up' : 'down'}">${r.ev >= 0 ? '+' : ''}${r.ev.toFixed(1)}%</span>`
-      : `<span class="ev ${r.stab >= 0 ? 'up' : 'down'}">${r.stab === null ? '—' : r.stab.toFixed(2)}</span>`;
+    const ok = v !== null && !isNaN(v);
+    const left = ok ? Math.min(x(0), x(v)) : 0, w = ok ? Math.abs(x(v) - x(0)) : 0;
+    // 上昇余地のタブでは、S&P500以下（指数を買うのと変わらない）を灰色にする
+    const col = !ok || v < 0 ? '#f85149' : (mode === 'up' && spBase !== null && v < spBase) ? '#6e7681' : '#3fb950';
+    const spLine = (mode === 'up' && spBase !== null) ? `<span class="sp" style="left:${x(spBase)}%"></span>` : '';
+    let sub = '';
+    if (mode === 'ev') sub = `${Math.round(r.p)}%×${sign(r.upside,0)}%`;
+    if (mode === 'up' && r.sp !== null) sub = `<span class="${r.sp >= 0 ? 'up' : 'down'}">S&amp;P比 ${sign(r.sp,0)}pt</span>`;
+    if (mode === 'st') sub = r.sp !== null ? `${sign(r.sp,0)}pt÷±${r.volN ?? '—'}%` : '';
     const flags = [
       r.bet ? '<span class="warn">③賭け型</span>' : '',
       r.earnRisk ? '<span class="warn">⚠決算リスク</span>' : '',
       r.stale ? '<span class="warn">⚠目標が古い可能性</span>' : ''
     ].filter(Boolean).join('・');
-    return `<div class="row ${i < 3 ? 'top' : ''}">
-      <div class="hd"><span class="rk">${i + 1}位</span><span class="nm">${r.name}</span>${mv}${main}</div>
-      <div class="dt">確率の目安 ${Math.round(r.p)}% × 上昇余地 ${r.upside >= 0 ? '+' : ''}${r.upside}%｜${r.cls}｜修正 ↑${r.u}／↓${r.d}</div>
-      <div class="px">
-        <div><span>今の株価</span><b>${fmt(r.cur, r.price)}</b><small>±0%</small></div>
-        <div><span>平均目標${r.nAn ? '（' + r.nAn + '人）' : ''}</span><b>${fmt(r.cur, r.target)}</b><small>${r.target ? pct(r.target, r.price) : ''}</small></div>
-        <div><span>最低目標</span><b class="${r.lowP !== null && r.lowP < r.price ? 'down' : 'up'}">${r.lowP !== null ? fmt(r.cur, r.lowP) : '—'}</b><small>${r.lowP !== null ? pct(r.lowP, r.price) : ''}</small></div>
-        <div><span>最高目標</span><b class="up">${r.highP !== null ? fmt(r.cur, r.highP) : '—'}</b><small>${r.highP !== null ? pct(r.highP, r.price) : ''}</small></div>
+    return `<div class="it ${opened[r.name] ? 'open' : ''}" data-n="${r.name}">
+      <div class="l1"><span class="rk2">${i + 1}位</span><span class="nm2">${r.name} ${mv}${r.stale ? ' <span class="warn">⚠</span>' : ''}</span>
+        <span class="vl ${!ok || v < 0 ? 'down' : (mode === 'up' && spBase !== null && v < spBase) ? '' : 'up'}">${ok ? sign(v, M.dp) + M.unit : '—'}</span></div>
+      <div class="l2"><div class="bar"><span class="z" style="left:${x(0)}%"></span><span class="f" style="left:${left}%;width:${w}%;background:${col}"></span>${spLine}</div><span class="sub2">${sub}</span></div>
+      <div class="det">
+        <div class="dt">確率の目安 ${Math.round(r.p)}% × 上昇余地 ${sign(r.upside,1)}% ＝ 期待値 ${sign(r.ev,1)}%｜${r.cls}｜修正 ↑${r.u}／↓${r.d}</div>
+        <div class="px">
+          <div><span>今の株価</span><b>${fmt(r.cur, r.price)}</b><small>±0%</small></div>
+          <div><span>平均目標${r.nAn ? '（' + r.nAn + '人）' : ''}</span><b>${fmt(r.cur, r.target)}</b><small>${r.target ? pct(r.target, r.price) : ''}</small></div>
+          <div><span>最低目標</span><b class="${r.lowP !== null && r.lowP < r.price ? 'down' : 'up'}">${r.lowP !== null ? fmt(r.cur, r.lowP) : '—'}</b><small>${r.lowP !== null ? pct(r.lowP, r.price) : ''}</small></div>
+          <div><span>最高目標</span><b class="up">${r.highP !== null ? fmt(r.cur, r.highP) : '—'}</b><small>${r.highP !== null ? pct(r.highP, r.price) : ''}</small></div>
+        </div>
+        <div class="dt">値動きの大きさ：1年で±${r.volN ?? '—'}%動くのが普通の銘柄</div>
+        <div class="dt">S&amp;P比 ${r.sp !== null ? sign(r.sp,0) + 'pt' : '—'}｜S&amp;P比÷振れ幅 ${r.stab ?? '—'}｜決算 ${r.earn}${flags ? '<br>' + flags : ''}</div>
       </div>
-      <div class="dt">値動きの大きさ：1年で±${r.volN ?? '—'}%動くのが普通の銘柄</div>
-      <div class="dt">S&amp;P比÷振れ幅 ${r.stab ?? '—'}｜決算 ${r.earn}${flags ? '<br>' + flags : ''}</div>
     </div>`;
   }).join('');
+  el.querySelectorAll('.it').forEach(d => d.onclick = () => { opened[d.dataset.n] = !opened[d.dataset.n]; d.classList.toggle('open'); });
 }
 
-document.getElementById('tEv').onclick = () => { mode = 'ev'; tab(); };
-document.getElementById('tSt').onclick = () => { mode = 'st'; tab(); };
+[['tEv','ev'],['tUp','up'],['tSt','st']].forEach(([id,m]) => document.getElementById(id).onclick = () => { mode = m; tab(); });
 function tab(){
-  document.getElementById('tEv').classList.toggle('on', mode === 'ev');
-  document.getElementById('tSt').classList.toggle('on', mode === 'st');
+  [['tEv','ev'],['tUp','up'],['tSt','st']].forEach(([id,m]) => document.getElementById(id).classList.toggle('on', mode === m));
   render();
 }
 
@@ -207,6 +259,8 @@ async function loadPrev(){
 
 fetch(FILE, {cache: 'no-store'}).then(r => r.text()).then(html => {
   cur = parse(html);
+  const sb = html.match(/S&amp;P 500全体の12か月上昇余地\s*<b[^>]*>\+?([-\d.]+)%/);
+  spBase = sb ? parseFloat(sb[1]) : null;
   if (!cur || !cur.length) { document.getElementById('msg').textContent = 'ブリーフィングの②-Bの表を読めませんでした。表の形が変わった可能性があります。'; return; }
   const m = html.match(/データ取得：([^（]+?)（/);
   document.getElementById('src').innerHTML = `今日のブリーフィング（②-B）から計算｜データ取得 ${m ? m[1] : '不明'}｜${cur.length}銘柄`;

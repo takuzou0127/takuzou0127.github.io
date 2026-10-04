@@ -380,6 +380,82 @@ LEGEND = ('<div class="box"><b>分類（ブリーフィング②-Bと同じ）</
           '<span class="note">EPSは年度末まで4か月以内なら来年度の列（12月決算は9月から来年度）。EPS予想が5人以下の銘柄は分類しない。</span></div>')
 
 
+# スマホ用：表の前に「順位・銘柄・上昇余地」の1列リスト（棒グラフつき）をページ内のJSで作る。元の表は折りたたみに残す
+LIST_SNIPPET = r"""<style>
+.rk-list{background:#181b24;border:1px solid #2a2e3a;border-radius:10px;margin:10px 0 6px;}
+.rk-it{padding:10px 12px;border-bottom:1px solid #2a2e3a;}
+.rk-it:last-child{border-bottom:none;}
+.rk-it.watch{background:#2a2410;}
+.rk-l1{display:flex;align-items:baseline;gap:8px;line-height:1.4;}
+.rk-n{font-weight:bold;min-width:2.6em;color:#fff;}
+.rk-nm{flex:1;min-width:0;color:#fff;font-weight:600;}
+.rk-nm small{display:block;font-size:15px;color:#9aa4b2;font-weight:normal;}
+.rk-v{font-size:18px;font-weight:bold;white-space:nowrap;}
+.rk-bar{position:relative;height:12px;background:#0f1117;border-radius:4px;margin-top:6px;}
+.rk-bar i{position:absolute;top:0;bottom:0;border-radius:4px;}
+.rk-sub{font-size:15px;color:#9aa4b2;margin-top:4px;line-height:1.5;}
+details.rk-full{margin:6px 0 4px;} details.rk-full summary{cursor:pointer;color:#4a9eff;font-size:16px;padding:6px 0;}
+</style>
+<script>
+// スマホで読めるように：各表の「順位・銘柄・上昇余地」を、横スクロールなしの1列のリスト（棒グラフつき）にして表の前に置く。
+// 元の表は「全部の列を見る」の中に残す。列は見出しの文字で探すので、表の列の並びが変わっても動く。
+(function(){
+  function txt(c){ return c ? c.textContent.trim() : ''; }
+  function num(s){ var m = (s||'').replace(/,/g,'').match(/[-+]?\d+(\.\d+)?/); return m ? parseFloat(m[0]) : null; }
+  var built = [];
+  document.querySelectorAll('div.tbl-scroll').forEach(function(wrap){
+    var table = wrap.querySelector('table'); if (!table) return;
+    var rows = Array.prototype.slice.call(table.querySelectorAll('tr'));
+    var head = rows.shift(); if (!head) return;
+    var hs = Array.prototype.map.call(head.children, function(c){ return c.textContent.replace(/\s/g,''); });
+    function col(re){ for (var i = 0; i < hs.length; i++) if (re.test(hs[i])) return i; return -1; }
+    var iR = col(/^順位/), iN = col(/^銘柄/), iU = col(/^上昇余地$/), iS = col(/出どころ/),
+        iL = col(/最低目標まで/), iP = col(/^現在値/), iT = col(/平均目標|予想株価/), iK = col(/^分類/);
+    if (iN < 0 || iU < 0) return;
+    var items = rows.map(function(tr){
+      var td = tr.children, nm = td[iN];
+      var main = nm ? (nm.childNodes[0] ? nm.childNodes[0].textContent : txt(nm)) : '';
+      var sub = nm && nm.querySelector('.note') ? txt(nm.querySelector('.note')) : '';
+      var src = iS >= 0 && td[iS] ? td[iS].querySelector('span') : null;
+      return { rank: iR >= 0 ? txt(td[iR]).replace(/\s+/g,' ') : '', main: main, sub: sub, up: num(txt(td[iU])),
+        src: src ? src.outerHTML : '', low: iL >= 0 ? txt(td[iL]) : '', price: iP >= 0 ? txt(td[iP]) : '',
+        target: iT >= 0 ? txt(td[iT]).replace(/\s+/g,'') : '', cls: iK >= 0 && td[iK] ? td[iK].innerHTML : '',
+        watch: tr.classList.contains('watch') };
+    });
+    built.push({wrap: wrap, items: items});
+  });
+  // 棒の長さはページ内の全リストで同じ物差し（ベスト20と保有・注目の行を見比べられるように）
+  var vals = [];
+  built.forEach(function(b){ b.items.forEach(function(r){ if (r.up !== null) vals.push(r.up); }); });
+  var lo = Math.min.apply(null, [0].concat(vals)), hi = Math.max.apply(null, [0].concat(vals)), span = (hi - lo) || 1;
+  function x(v){ return (v - lo) / span * 100; }
+  built.forEach(function(b){
+    var wrap = b.wrap, items = b.items;
+    var list = document.createElement('div'); list.className = 'rk-list';
+    list.innerHTML = items.map(function(r){
+      var v = r.up, ok = v !== null, l = ok ? Math.min(x(0), x(v)) : 0, w = ok ? Math.abs(x(v) - x(0)) : 0;
+      var c = ok && v >= 0 ? '#3fb950' : '#f85149';
+      var subs = [];
+      if (r.price || r.target) subs.push('今 ' + r.price + ' → 平均目標 ' + r.target);
+      if (r.low) subs.push('最低目標まで ' + r.low);
+      return '<div class="rk-it' + (r.watch ? ' watch' : '') + '"><div class="rk-l1"><span class="rk-n">' + (/^\d+$/.test(r.rank) ? r.rank + '位' : r.rank) + '</span>' +
+        '<span class="rk-nm">' + r.main + (r.sub ? '<small>' + r.sub + '</small>' : '') + '</span>' +
+        '<span class="rk-v ' + (ok && v >= 0 ? 'up' : 'down') + '">' + (ok ? (v >= 0 ? '+' : '') + v.toFixed(1) + '%' : '—') + '</span></div>' +
+        '<div class="rk-bar"><i style="left:' + l + '%;width:' + w + '%;background:' + c + '"></i></div>' +
+        '<div class="rk-sub">' + subs.join('｜') + (r.src ? '<br>' + r.src : '') + (r.cls && r.cls.indexOf('—') < 0 ? '<br>' + r.cls : '') + '</div></div>';
+    }).join('');
+    var det = document.createElement('details'); det.className = 'rk-full';
+    det.innerHTML = '<summary>全部の列を見る（表・横にスクロール）</summary>';
+    wrap.parentNode.insertBefore(list, wrap);
+    wrap.parentNode.insertBefore(det, wrap);
+    det.appendChild(wrap);
+  });
+  document.querySelectorAll('.note').forEach(function(n){ n.innerHTML = n.innerHTML.replace('｜↔ 表は横にスクロールできます', ''); });
+})();
+</script>
+"""
+
+
 def render_html(data):
     parts = [f"<h1>アナリスト目標株価までの上昇余地 ベスト{TOP_N}</h1>",
              f'<div class="note">取得：{data["generated_at"]}（Yahoo Finance）｜対象はアナリスト{data["min_analysts"]}人以上の銘柄</div>',
@@ -428,7 +504,7 @@ def render_html(data):
     return ('<!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8">'
             '<meta name="viewport" content="width=device-width, initial-scale=1">'
             f"<title>上昇余地ランキング</title><style>{CSS}</style></head><body>{body}"
-            '<p class="note">本ページは投資助言ではありません。</p></body></html>')
+            '<p class="note">本ページは投資助言ではありません。</p>' + LIST_SNIPPET + '</body></html>')
 
 
 def main():
