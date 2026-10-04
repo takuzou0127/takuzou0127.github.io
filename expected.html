@@ -25,6 +25,12 @@ a{color:#4a9eff}
 .up{color:#3fb950}.down{color:#f85149}.warn{color:#e3b341}
 .box{background:#13161f;border-radius:12px;padding:12px 14px;font-size:15px;color:#c9d1d9}
 .box li{margin-left:1.2em;margin-bottom:4px}
+.px{display:grid;grid-template-columns:repeat(2,1fr);gap:4px;margin-top:8px;text-align:center}
+.px div{background:#0f1117;border-radius:8px;padding:6px 2px}
+.px span{display:block;font-size:15px;color:#8b93a1;line-height:1.3}
+.px b{display:block;font-size:17px;color:#fff;word-break:break-all}
+.px b.up{color:#3fb950}.px b.down{color:#f85149}
+.px small{display:block;font-size:15px;color:#8b93a1}
 .msg{color:#e3b341;font-size:15px;margin:10px 0}
 </style>
 </head>
@@ -50,6 +56,7 @@ a{color:#4a9eff}
 − 5（③賭け型の前提がある時）<br>
 − 5（⑤で⚠決算リスク＝PEG≧1.2の時）<br>
 20〜80の範囲に収める</li>
+<li><b>下に振れた時／上に振れた時</b>：目標株価から、1年の振れ幅ぶん下・上の株価（今の株価×(1＋上昇余地∓振れ幅)）。1年後に「下に振れた時」を下回るのは約6回に1回、「上に振れた時」を上回るのも約6回に1回が目安。0未満になる時は0と表示</li>
 <li>安定順は、ダッシュボードの「S&amp;P比÷振れ幅」（指数を上回る見込みを、値動きの大きさで割った値）の高い順</li>
 <li>前日比：前の日の最終版のブリーフィングで同じ計算をした順位との差（▲上がった／▼下がった）</li>
 <li>数字は毎朝のブリーフィング（②-Bの表）から読む。ブリーフィングが更新されれば、このページも自動で変わる</li>
@@ -92,6 +99,8 @@ function parse(html){
     const earnRisk = key === '⑤' && /決算リスク/.test(cls);
     if (earnRisk) p -= 5;
     p = Math.max(20, Math.min(80, p));
+    const priceTxt = td[2], cur = (priceTxt.match(/[₩$¥]/) || [''])[0];
+    const price = num(priceTxt), target = num(td[11]), volN = num(td[13]);
     const rng = (td[12].match(/予想の幅\s*([-+]?\d+%)〜([-+]?\d+%)/) || []);
     out.push({
       name: name.replace(/★/g,'').replace(/\s+/g,' '),
@@ -102,11 +111,21 @@ function parse(html){
       vol: td[13].split(/\s/)[0],
       low: rng[1] || '', high: rng[2] || '',
       stale: /目標が古い/.test(td[12]),
-      earn: td[10]
+      earn: td[10],
+      cur, price, target,
+      lowP: (price && volN !== null) ? price * Math.max(0, 1 + upside / 100 - volN / 100) : null,
+      highP: (price && volN !== null) ? price * (1 + upside / 100 + volN / 100) : null
     });
   });
   return out;
 }
+
+function fmt(cur, v){
+  if (v === null || v === undefined || isNaN(v)) return '—';
+  const d = cur === '$' ? 2 : 0;
+  return cur + v.toLocaleString('ja-JP', {minimumFractionDigits: d, maximumFractionDigits: d});
+}
+function pct(v, base){ const x = (v / base - 1) * 100; return (x >= 0 ? '+' : '') + x.toFixed(0) + '%'; }
 
 function rankMap(rows, field){
   const m = {};
@@ -141,6 +160,12 @@ function render(){
     return `<div class="row ${i < 3 ? 'top' : ''}">
       <div class="hd"><span class="rk">${i + 1}位</span><span class="nm">${r.name}</span>${mv}${main}</div>
       <div class="dt">確率の目安 ${Math.round(r.p)}% × 上昇余地 ${r.upside >= 0 ? '+' : ''}${r.upside}%｜${r.cls}｜修正 ↑${r.u}／↓${r.d}</div>
+      <div class="px">
+        <div><span>今の株価</span><b>${fmt(r.cur, r.price)}</b><small>±0%</small></div>
+        <div><span>目標株価</span><b>${fmt(r.cur, r.target)}</b><small>${r.target ? pct(r.target, r.price) : ''}</small></div>
+        <div><span>下に振れた時</span><b class="down">${fmt(r.cur, r.lowP)}</b><small>${r.lowP !== null ? pct(r.lowP, r.price) : ''}</small></div>
+        <div><span>上に振れた時</span><b class="up">${fmt(r.cur, r.highP)}</b><small>${r.highP !== null ? pct(r.highP, r.price) : ''}</small></div>
+      </div>
       <div class="dt">1年の振れ幅 ${r.vol}｜予想の幅 ${r.low}〜${r.high}｜S&amp;P比÷振れ幅 ${r.stab ?? '—'}｜決算 ${r.earn}${flags ? '<br>' + flags : ''}</div>
     </div>`;
   }).join('');
