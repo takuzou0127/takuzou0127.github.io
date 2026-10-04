@@ -55,6 +55,7 @@ a{color:#4a9eff}
 ＋ 業績予想の修正人数の向き（(↑−↓)÷(↑+↓)×10、合計3人以上の時）<br>
 − 5（③賭け型の前提がある時）<br>
 − 5（⑤で⚠決算リスク＝PEG≧1.2の時）<br>
+− 10（⚠目標が古い可能性＝この30日で業績予想を下げた人が上げた人より多い。目標株価がまだ直されていない分を割り引く）<br>
 20〜80の範囲に収める</li>
 <li><b>最低目標／平均目標／最高目標</b>：アナリストが出している目標株価の最低・平均・最高（Yahoo Finance集計）。最低・最高はブリーフィングの「予想の幅」の%から計算した値</li>
 <li><b>値動きの大きさ</b>：1年の振れ幅。約6回に1回はこれ以上下がる（上がる）年がある目安。株価の数字には混ぜていない</li>
@@ -99,6 +100,8 @@ function parse(html){
     if (bet) p -= 5;
     const earnRisk = key === '⑤' && /決算リスク/.test(cls);
     if (earnRisk) p -= 5;
+    const stale = /目標が古い/.test(td[12]);   // 業績予想の下方修正が上方より多いのに、目標株価がまだ直されていない可能性
+    if (stale) p -= 10;
     p = Math.max(20, Math.min(80, p));
     const priceTxt = td[2], cur = (priceTxt.match(/[₩$¥]/) || [''])[0];
     const price = num(priceTxt), target = num(td[11]), volN = num(td[13]);
@@ -111,7 +114,7 @@ function parse(html){
       stab: num(td[14]),
       vol: td[13].split(/\s/)[0],
       low: rng[1] || '', high: rng[2] || '',
-      stale: /目標が古い/.test(td[12]),
+      stale,
       earn: td[10],
       cur, price, target,
       volN,
