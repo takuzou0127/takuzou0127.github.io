@@ -56,7 +56,8 @@ a{color:#4a9eff}
 − 5（③賭け型の前提がある時）<br>
 − 5（⑤で⚠決算リスク＝PEG≧1.2の時）<br>
 20〜80の範囲に収める</li>
-<li><b>下に振れた時／上に振れた時</b>：目標株価から、1年の振れ幅ぶん下・上の株価（今の株価×(1＋上昇余地∓振れ幅)）。1年後に「下に振れた時」を下回るのは約6回に1回、「上に振れた時」を上回るのも約6回に1回が目安。0未満になる時は0と表示</li>
+<li><b>最低目標／平均目標／最高目標</b>：アナリストが出している目標株価の最低・平均・最高（Yahoo Finance集計）。最低・最高はブリーフィングの「予想の幅」（四捨五入した%）から逆算しているため「約」を付けている</li>
+<li><b>値動きの大きさ</b>：1年の振れ幅。約6回に1回はこれ以上下がる（上がる）年がある目安。株価の数字には混ぜていない</li>
 <li>安定順は、ダッシュボードの「S&amp;P比÷振れ幅」（指数を上回る見込みを、値動きの大きさで割った値）の高い順</li>
 <li>前日比：前の日の最終版のブリーフィングで同じ計算をした順位との差（▲上がった／▼下がった）</li>
 <li>数字は毎朝のブリーフィング（②-Bの表）から読む。ブリーフィングが更新されれば、このページも自動で変わる</li>
@@ -113,8 +114,10 @@ function parse(html){
       stale: /目標が古い/.test(td[12]),
       earn: td[10],
       cur, price, target,
-      lowP: (price && volN !== null) ? price * Math.max(0, 1 + upside / 100 - volN / 100) : null,
-      highP: (price && volN !== null) ? price * (1 + upside / 100 + volN / 100) : null
+      volN,
+      nAn: (td[11].match(/（(\d+)人）/) || [])[1] || '',
+      lowP: (price && rng[1]) ? price * (1 + num(rng[1]) / 100) : null,
+      highP: (price && rng[2]) ? price * (1 + num(rng[2]) / 100) : null
     });
   });
   return out;
@@ -162,11 +165,12 @@ function render(){
       <div class="dt">確率の目安 ${Math.round(r.p)}% × 上昇余地 ${r.upside >= 0 ? '+' : ''}${r.upside}%｜${r.cls}｜修正 ↑${r.u}／↓${r.d}</div>
       <div class="px">
         <div><span>今の株価</span><b>${fmt(r.cur, r.price)}</b><small>±0%</small></div>
-        <div><span>目標株価</span><b>${fmt(r.cur, r.target)}</b><small>${r.target ? pct(r.target, r.price) : ''}</small></div>
-        <div><span>下に振れた時</span><b class="down">${fmt(r.cur, r.lowP)}</b><small>${r.lowP !== null ? pct(r.lowP, r.price) : ''}</small></div>
-        <div><span>上に振れた時</span><b class="up">${fmt(r.cur, r.highP)}</b><small>${r.highP !== null ? pct(r.highP, r.price) : ''}</small></div>
+        <div><span>平均目標${r.nAn ? '（' + r.nAn + '人）' : ''}</span><b>${fmt(r.cur, r.target)}</b><small>${r.target ? pct(r.target, r.price) : ''}</small></div>
+        <div><span>最低目標</span><b class="${r.lowP !== null && r.lowP < r.price ? 'down' : 'up'}">${r.lowP !== null ? '約' + fmt(r.cur, r.lowP) : '—'}</b><small>${r.lowP !== null ? pct(r.lowP, r.price) : ''}</small></div>
+        <div><span>最高目標</span><b class="up">${r.highP !== null ? '約' + fmt(r.cur, r.highP) : '—'}</b><small>${r.highP !== null ? pct(r.highP, r.price) : ''}</small></div>
       </div>
-      <div class="dt">1年の振れ幅 ${r.vol}｜予想の幅 ${r.low}〜${r.high}｜S&amp;P比÷振れ幅 ${r.stab ?? '—'}｜決算 ${r.earn}${flags ? '<br>' + flags : ''}</div>
+      <div class="dt">値動きの大きさ：1年で±${r.volN ?? '—'}%動くのが普通の銘柄</div>
+      <div class="dt">S&amp;P比÷振れ幅 ${r.stab ?? '—'}｜決算 ${r.earn}${flags ? '<br>' + flags : ''}</div>
     </div>`;
   }).join('');
 }
