@@ -36,7 +36,7 @@ a{color:#4a9eff}
 .guide{background:#13161f;border-radius:10px;padding:10px 12px;font-size:16px;color:#c9d1d9;margin-bottom:10px;line-height:1.55}
 .guide b{color:#fff}
 .lst{background:#13161f;border-radius:12px;padding:4px 0}
-.it{padding:10px 12px;border-bottom:1px solid #1f2330;cursor:pointer}
+.it{padding:12px 12px 14px;border-bottom:1px solid #2a2e3a}
 .it:last-child{border-bottom:none}
 .it.open{background:#171b26}
 .l1{display:flex;align-items:baseline;gap:8px}
@@ -49,8 +49,16 @@ a{color:#4a9eff}
 .bar .z{position:absolute;top:-3px;bottom:-3px;width:1px;background:#555}
 .bar .sp{position:absolute;top:-5px;bottom:-5px;width:0;border-left:2px dashed #e3b341;z-index:2}
 .l2 .sub2{font-size:15px;color:#9aa4b2;white-space:nowrap;min-width:5.6em;text-align:right}
-.det{display:none;margin-top:8px}
-.it.open .det{display:block}
+.det{margin-top:6px}
+.now{font-size:16px;color:#c9d1d9}
+.now b{color:#fff;font-size:17px}
+.k{color:#8b93a1}
+.tg{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:6px 0 4px;text-align:center}
+.tg div{background:#0f1117;border-radius:8px;padding:6px 2px;line-height:1.35}
+.tg span,.tg b{display:block}
+.tg .k{font-size:15px}
+.tg b{color:#fff;font-size:16px;font-weight:600;white-space:nowrap}
+.tg span.up,.tg span.down{font-size:16px;font-weight:600}
 .chev{color:#666;font-size:14px}
 .axis{display:flex;justify-content:space-between;font-size:15px;color:#8b93a1;padding:6px 12px 0}
 </style>
@@ -67,7 +75,7 @@ a{color:#4a9eff}
 </div>
 <div class="guide" id="guide"></div>
 <div class="lst" id="list"></div>
-<div class="sub" style="margin-top:8px">行をタップすると、今の株価・平均／最低／最高目標が開きます</div>
+
 <div class="msg" id="msg"></div>
 
 <h2>計算のしかた</h2>
@@ -165,7 +173,7 @@ function rankMap(rows, field){
   return m;
 }
 
-let cur = [], prev = null, mode = 'ev', spBase = null, opened = {};
+let cur = [], prev = null, mode = 'ev', spBase = null;
 
 const MODES = {
   ev: { field: 'ev',     unit: '%', dp: 1,
@@ -212,24 +220,21 @@ function render(){
       r.earnRisk ? '<span class="warn">⚠決算リスク</span>' : '',
       r.stale ? '<span class="warn">⚠目標が古い可能性</span>' : ''
     ].filter(Boolean).join('・');
-    return `<div class="it ${opened[r.name] ? 'open' : ''}" data-n="${r.name}">
+    return `<div class="it">
       <div class="l1"><span class="rk2">${i + 1}位</span><span class="nm2">${r.name} ${mv}${r.stale ? ' <span class="warn">⚠</span>' : ''}</span>
         <span class="vl ${!ok || v < 0 ? 'down' : (mode === 'up' && spBase !== null && v < spBase) ? '' : 'up'}">${ok ? sign(v, M.dp) + M.unit : '—'}</span></div>
       <div class="l2"><div class="bar"><span class="z" style="left:${x(0)}%"></span><span class="f" style="left:${left}%;width:${w}%;background:${col}"></span>${spLine}</div><span class="sub2">${sub}</span></div>
       <div class="det">
-        <div class="dt">確率の目安 ${Math.round(r.p)}% × 上昇余地 ${sign(r.upside,1)}% ＝ 期待値 ${sign(r.ev,1)}%｜${r.cls}｜修正 ↑${r.u}／↓${r.d}</div>
-        <div class="px">
-          <div><span>今の株価</span><b>${fmt(r.cur, r.price)}</b><small>±0%</small></div>
-          <div><span>平均目標${r.nAn ? '（' + r.nAn + '人）' : ''}</span><b>${fmt(r.cur, r.target)}</b><small>${r.target ? pct(r.target, r.price) : ''}</small></div>
-          <div><span>最低目標</span><b class="${r.lowP !== null && r.lowP < r.price ? 'down' : 'up'}">${r.lowP !== null ? fmt(r.cur, r.lowP) : '—'}</b><small>${r.lowP !== null ? pct(r.lowP, r.price) : ''}</small></div>
-          <div><span>最高目標</span><b class="up">${r.highP !== null ? fmt(r.cur, r.highP) : '—'}</b><small>${r.highP !== null ? pct(r.highP, r.price) : ''}</small></div>
+        <div class="now"><span class="k">今の株価</span> <b>${fmt(r.cur, r.price)}</b></div>
+        <div class="tg">
+          <div><span class="k">最低目標</span><b>${r.lowP !== null ? fmt(r.cur, r.lowP) : '—'}</b><span class="${r.lowP !== null && r.lowP < r.price ? 'down' : 'up'}">${r.lowP !== null ? pct(r.lowP, r.price) : ''}</span></div>
+          <div><span class="k">平均${r.nAn ? '（' + r.nAn + '人）' : ''}</span><b>${fmt(r.cur, r.target)}</b><span class="${r.target && r.target >= r.price ? 'up' : 'down'}">${r.target ? pct(r.target, r.price) : ''}</span></div>
+          <div><span class="k">最高目標</span><b>${r.highP !== null ? fmt(r.cur, r.highP) : '—'}</b><span class="up">${r.highP !== null ? pct(r.highP, r.price) : ''}</span></div>
         </div>
-        <div class="dt">値動きの大きさ：1年で±${r.volN ?? '—'}%動くのが普通の銘柄</div>
-        <div class="dt">S&amp;P比 ${r.sp !== null ? sign(r.sp,0) + 'pt' : '—'}｜S&amp;P比÷振れ幅 ${r.stab ?? '—'}｜決算 ${r.earn}${flags ? '<br>' + flags : ''}</div>
+        <div class="dt">${r.cls}｜修正 ↑${r.u}／↓${r.d}｜1年で±${r.volN ?? '—'}%動く｜決算 ${r.earn}${flags ? '<br>' + flags : ''}</div>
       </div>
     </div>`;
   }).join('');
-  el.querySelectorAll('.it').forEach(d => d.onclick = () => { opened[d.dataset.n] = !opened[d.dataset.n]; d.classList.toggle('open'); });
 }
 
 [['tEv','ev'],['tUp','up'],['tSt','st']].forEach(([id,m]) => document.getElementById(id).onclick = () => { mode = m; tab(); });
