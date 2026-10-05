@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>半導体ランキング</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0f1117;color:#e0e0e0;font-family:'Segoe UI','Hiragino Kaku Gothic ProN',sans-serif;padding:16px;max-width:640px;margin:0 auto;padding-bottom:40px;font-size:16px;line-height:1.6}
+h1{font-size:1.25rem;color:#fff;margin-bottom:4px}
+h2{font-size:1.05rem;color:#f0883e;margin:24px 0 8px}
+.sub{font-size:15px;color:#8b93a1;margin-bottom:12px}
+a{color:#4a9eff}
+.up{color:#3fb950}.down{color:#f85149}.warn{color:#e3b341}
+.tabs{display:flex;gap:8px;margin:10px 0 12px}
+.tabs button{flex:1;padding:12px 6px;border:none;border-radius:10px;background:#1f2330;color:#c9d1d9;font-size:16px;cursor:pointer;line-height:1.35}
+.tabs button.on{background:#f0883e;color:#0f1117;font-weight:700}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.chips button{padding:6px 12px;border:1px solid #2a2e3a;border-radius:16px;background:#13161f;color:#c9d1d9;font-size:15px;cursor:pointer}
+.chips button.on{border-color:#4a9eff;color:#fff;background:#1a2433}
+.guide{background:#13161f;border-radius:10px;padding:10px 12px;font-size:16px;color:#c9d1d9;margin-bottom:10px;line-height:1.55}
+.guide b{color:#fff}
+.notice{background:#2a2410;border-radius:10px;padding:10px 12px;font-size:15px;color:#e3b341;margin-bottom:10px;line-height:1.55}
+.lst{background:#13161f;border-radius:12px}
+.it{padding:12px 12px 14px;border-bottom:1px solid #2a2e3a}
+.it:last-child{border-bottom:none}
+.it.hold{background:#1a1d10}
+.l1{display:flex;align-items:baseline;gap:8px}
+.rk{font-size:17px;font-weight:700;color:#fff;min-width:2.6em}
+.nm{font-size:17px;color:#fff;font-weight:600;flex:1;min-width:0}
+.gp{font-size:13px;color:#8b93a1;border:1px solid #2a2e3a;border-radius:6px;padding:0 5px;margin-left:4px;white-space:nowrap;font-weight:normal}
+.vl{font-size:18px;font-weight:700;white-space:nowrap}
+.l2{display:flex;align-items:center;gap:8px;margin-top:6px}
+.bar{position:relative;flex:1;height:14px;background:#0f1117;border-radius:4px}
+.bar .f{position:absolute;top:0;bottom:0;border-radius:4px}
+.bar .z{position:absolute;top:-3px;bottom:-3px;width:1px;background:#555}
+.bar .sp{position:absolute;top:-5px;bottom:-5px;width:0;border-left:2px dashed #e3b341;z-index:2}
+.s2{font-size:15px;color:#9aa4b2;white-space:nowrap;text-align:right}
+.now{font-size:16px;color:#c9d1d9;margin-top:6px}
+.now b{color:#fff;font-size:17px}
+.k{color:#8b93a1}
+.tg{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:6px 0 4px;text-align:center}
+.tg div{background:#0f1117;border-radius:8px;padding:6px 2px;line-height:1.35}
+.tg span,.tg b{display:block}
+.tg .k{font-size:15px}
+.tg b{color:#fff;font-size:16px;font-weight:600;white-space:nowrap}
+.tg span.up,.tg span.down{font-size:16px;font-weight:600}
+.dt{font-size:15px;color:#9aa4b2;margin-top:4px}
+.box{background:#13161f;border-radius:12px;padding:12px 14px;font-size:15px;color:#c9d1d9}
+.box li{margin-left:1.2em;margin-bottom:4px}
+.miss{font-size:15px;color:#9aa4b2;margin-top:10px;line-height:1.6}
+</style>
+</head>
+<body>
+
+<h1>&#x1F3C6; 半導体ランキング</h1>
+<div class="sub" id="src">読み込み中…</div>
+
+<div class="tabs">
+  <button id="tUp" class="on">❶ 上昇余地<br>を主眼</button>
+  <button id="tSt">❷ 安定<br>を主眼</button>
+</div>
+<div class="chips" id="chips"></div>
+<div class="notice" id="notice" style="display:none"></div>
+<div class="guide" id="guide"></div>
+<div class="lst" id="list"></div>
+<div class="miss" id="miss"></div>
+
+<h2>計算のしかた</h2>
+<div class="box">
+<ul>
+<li><b>対象</b>：SOX指数の構成銘柄・日経半導体株指数のウエート上位10社・SKハイニックス（000660）・サムスン電子（005930）</li>
+<li><b>❶ 上昇余地</b>＝アナリスト平均目標株価 ÷ 今の株価 − 1。黄色の点線はS&amp;P500全体の上昇余地。線より右（緑）＝指数より上がる見込み、灰色＝指数以下。右の「S&amp;P比」はその差（pt）</li>
+<li><b>❷ 安定</b>＝S&amp;P比 ÷ 1年の振れ幅。指数を上回る見込みを、値動きの大きさで割った値。0より右＝指数より有利、大きいほど「振れ幅のわりに見込みが大きい」</li>
+<li><b>期待値</b>（参考）＝上がる確率の目安 × 上昇余地。確率の目安は期待値ランキングと同じ式（分類の基準点＋修正人数の向き−賭け型・決算リスク・目標が古い可能性の減点）</li>
+<li><b>⚠</b>＝目標が古い可能性（この30日で業績予想を下げた人が上げた人より多いのに、目標株価がまだ直されていない）</li>
+<li>最低・平均・最高目標はYahoo Finance集計。韓国株・日本株は「出た時点の既知の値」（何日の値かは各行）</li>
+</ul>
+</div>
+
+<p class="sub" style="margin-top:20px"><a href="expected.html">🎯 期待値ランキング（ブリーフィングの23銘柄）</a>｜<a href="index.html">ダッシュボード</a></p>
+
+<script>
+const BASE = {'①':65,'②':65,'④':60,'⑨':55,'⑥':50,'⑤':45,'⑦':40,'⑧':30};
+const CUR = {USD:'$', KRW:'₩', JPY:'¥'};
+// 対象の一覧（tools/fetch-semi-ranking.py と同じ）。ブリーフィングだけで出す時、何が足りないかを示すのに使う
+const SOX = ['NVDA','AVGO','MU','ASML','MRVL','TSM','AMAT','LRCX','KLAC','AMD','ADI','TXN','INTC','QCOM','MPWR','NXPI','TER','COHR','ALAB','MCHP','ARM','CRDO','ON','GFS','ENTG','MTSI','RMBS','LSCC','AMKR'];
+const NIKKEI = ['キオクシア','東京エレクトロン','アドバンテスト','ルネサス','ディスコ','レーザーテック','JX金属','信越化学','HOYA','（10位）'];
+// ブリーフィング②-Bの表の銘柄名 → [グループ, 表示名, ティッカー]
+const MAP = [
+  [/SK Hynix 本株/, '韓国', 'SKハイニックス（000660）', '000660.KS'],
+  [/Samsung 本株/, '韓国', 'サムスン電子（005930）', '005930.KS'],
+  [/TEL/, '日経半導体', '東京エレクトロン', '8035.T'],
+  [/アドバンテスト/, '日経半導体', 'アドバンテスト', '6857.T'],
+  [/キオクシア/, '日経半導体', 'キオクシア', '285A.T'],
+  [/TSMC/, 'SOX', 'TSMC（ADR）', 'TSM'],
+  [/Teradyne/, 'SOX', 'Teradyne', 'TER'],
+];
+const HOLD = ['MU', '000660.KS'];
+
+function num(s){ const m = (s||'').replace(/,/g,'').match(/[-+]?\d+(\.\d+)?/); return m ? parseFloat(m[0]) : null; }
+
+// PCの semi_ranking.json が無い間：今日のブリーフィング②-Bの表から、対象に入る銘柄だけで計算する
+function fromBriefing(html){
+  const doc = new DOMParser().parseFromString(html, 'text/html');
+  const table = doc.querySelector('table.vt');
+  if (!table) return null;
+  const sb = html.match(/S&amp;P 500全体の12か月上昇余地\s*<b[^>]*>\+?([-\d.]+)%/);
+  const sp = sb ? parseFloat(sb[1]) : null;
+  const rows = [];
+  table.querySelectorAll('tbody tr').forEach(tr => {
+    if (tr.classList.contains('grp')) return;
+    const td = [...tr.children].map(c => c.textContent.trim());
+    if (td.length < 15 || /SKHY/.test(td[0])) return;
+    const raw = td[0].replace(/★/g,'').trim();
+    let grp = null, name = raw, sym = raw;
+    const m = MAP.find(x => x[0].test(raw));
+    if (m) { grp = m[1]; name = m[2]; sym = m[3]; }
+    else if (SOX.includes(raw)) { grp = 'SOX'; }
+    if (!grp) return;   // Camtek など対象外
+    const cls = td[5];
+    const key = Object.keys(BASE).find(k => cls.startsWith(k));
+    const upC = tr.children[12];
+    const up = num(upC.querySelector('span') ? upC.querySelector('span').textContent : td[12]);
+    const rev = td[7].match(/↑(\d+)／↓(\d+)/);
+    const u = rev ? +rev[1] : 0, d = rev ? +rev[2] : 0;
+    const stale = /目標が古い/.test(td[12]);
+    let p = null;
+    if (key) {
+      p = BASE[key];
+      if (u + d >= 3) p += (u - d) / (u + d) * 10;
+      if (/③賭け型/.test(cls)) p -= 5;
+      if (key === '⑤' && /決算リスク/.test(cls)) p -= 5;
+      if (stale) p -= 10;
+      p = Math.max(20, Math.min(80, p));
+    }
+    const priceTxt = td[2], cur = (priceTxt.match(/[₩$¥]/) || [''])[0], price = num(priceTxt);
+    const rng = td[12].match(/予想の幅\s*([-+]?\d+)%〜([-+]?\d+)%/) || [];
+    const spm = td[12].match(/S&P比\s*([-+]?\d+(\.\d+)?)pt/);
+    rows.push({
+      sym, name, group: grp, cur, price, hold: HOLD.includes(sym),
+      target: num(td[11]), nAn: (td[11].match(/（(\d+)人）/) || [])[1] || '',
+      low: rng[1] ? price * (1 + num(rng[1]) / 100) : null,
+      high: rng[2] ? price * (1 + num(rng[2]) / 100) : null,
+      upside: up, sp: spm ? parseFloat(spm[1]) : (up !== null && sp !== null ? up - sp : null),
+      vol: num(td[13]), stab: num(td[14]),
+      cls: cls.split('＋')[0].replace(/⚠.*$/,''), u, d, stale, p,
+      ev: p !== null && up !== null ? p / 100 * up : null, date: ''
+    });
+  });
+  return { rows, sp, when: (html.match(/データ取得：([^（]+?)（/) || [])[1] || '不明' };
+}
+
+function fromJson(j){
+  const rows = j.rows.map(r => ({
+    sym: r.symbol, name: r.name, group: r.group, cur: CUR[r.currency] || '', price: r.price, hold: r.holding,
+    target: r.target_mean, nAn: r.analysts || '', low: r.target_low, high: r.target_high,
+    upside: r.upside_pct, sp: r.sp_diff_pt, vol: r.vol_1y_pct, stab: r.stability,
+    cls: (r.classification || '').replace(/（⚠.*$/,''), u: r.rev_up_30d ?? 0, d: r.rev_down_30d ?? 0,
+    stale: r.stale_target, p: r.prob, ev: r.expected_pct, date: r.price_date || ''
+  }));
+  return { rows, sp: j.sp500_upside_pct, when: j.generated_at, json: j };
+}
+
+function fmt(cur, v){
+  if (v === null || v === undefined || isNaN(v)) return '—';
+  const d = cur === '$' && v < 1000 ? 2 : 0;
+  return cur + v.toLocaleString('ja-JP', {minimumFractionDigits: d, maximumFractionDigits: d});
+}
+function pct(v, base){ if (!v || !base) return ''; const x = (v / base - 1) * 100; return (x >= 0 ? '+' : '') + x.toFixed(0) + '%'; }
+function sign(v, dp){ return (v >= 0 ? '+' : '') + v.toFixed(dp); }
+
+let D = null, mode = 'up', grp = 'すべて';
+
+function render(){
+  const field = mode === 'up' ? 'upside' : 'stab', sp = D.sp;
+  document.getElementById('guide').innerHTML = mode === 'up'
+    ? '<b>❶ 予想株価（アナリスト平均目標）までの上昇率</b>の高い順。' + (sp !== null ? `黄色の点線＝S&amp;P500全体 <b>+${sp}%</b>。<b>線より右（緑）＝指数より上がる見込み</b>、灰色＝指数以下。` : '') + '右下は期待値（確率の目安×上昇余地）。'
+    : '<b>❷ 安定 ＝ S&amp;P比 ÷ 1年の振れ幅</b>の高い順。指数を上回る見込みを、値動きの大きさで割った値。<b>0より右＝指数より有利</b>、大きいほど「振れ幅のわりに見込みが大きい」。';
+  const rows = D.rows.filter(r => grp === 'すべて' || r.group === grp)
+    .sort((a,b) => (b[field] ?? -1e9) - (a[field] ?? -1e9));
+  const vals = rows.map(r => r[field]).filter(v => v !== null && !isNaN(v));
+  if (mode === 'up' && sp !== null) vals.push(sp);
+  const lo = Math.min(0, ...vals), hi = Math.max(0, ...vals), span = (hi - lo) || 1;
+  const x = v => (v - lo) / span * 100;
+  document.getElementById('list').innerHTML = rows.map((r,i) => {
+    const v = r[field], ok = v !== null && !isNaN(v);
+    const below = mode === 'up' && sp !== null && ok && v >= 0 && v < sp;
+    const col = !ok || v < 0 ? '#f85149' : below ? '#6e7681' : '#3fb950';
+    const left = ok ? Math.min(x(0), x(v)) : 0, w = ok ? Math.abs(x(v) - x(0)) : 0;
+    const spLine = mode === 'up' && sp !== null ? `<span class="sp" style="left:${x(sp)}%"></span>` : '';
+    const vtxt = !ok ? '—' : mode === 'up' ? sign(v,1) + '%' : sign(v,2);
+    const s2 = mode === 'up'
+      ? (r.sp !== null ? `<span class="${r.sp >= 0 ? 'up' : 'down'}">S&amp;P比 ${sign(r.sp,0)}pt</span>` : '')
+      : (r.sp !== null && r.vol ? `${sign(r.sp,0)}pt÷±${r.vol}%` : '');
+    return `<div class="it ${r.hold ? 'hold' : ''}">
+      <div class="l1"><span class="rk">${i + 1}位</span><span class="nm">${r.name}${r.hold ? ' ★' : ''}${r.stale ? ' <span class="warn">⚠</span>' : ''}<span class="gp">${r.group}</span></span>
+        <span class="vl ${!ok || v < 0 ? 'down' : below ? '' : 'up'}">${vtxt}</span></div>
+      <div class="l2"><div class="bar"><span class="z" style="left:${x(0)}%"></span><span class="f" style="left:${left}%;width:${w}%;background:${col}"></span>${spLine}</div><span class="s2">${s2}</span></div>
+      <div class="now"><span class="k">今の株価</span> <b>${fmt(r.cur, r.price)}</b>${r.date ? ' <span class="k">（' + r.date + '）</span>' : ''}</div>
+      <div class="tg">
+        <div><span class="k">最低目標</span><b>${fmt(r.cur, r.low)}</b><span class="${r.low !== null && r.low < r.price ? 'down' : 'up'}">${pct(r.low, r.price)}</span></div>
+        <div><span class="k">平均${r.nAn ? '（' + r.nAn + '人）' : ''}</span><b>${fmt(r.cur, r.target)}</b><span class="${r.target >= r.price ? 'up' : 'down'}">${pct(r.target, r.price)}</span></div>
+        <div><span class="k">最高目標</span><b>${fmt(r.cur, r.high)}</b><span class="up">${pct(r.high, r.price)}</span></div>
+      </div>
+      <div class="dt">${r.cls || '分類なし'}｜修正 ↑${r.u}／↓${r.d}｜1年で±${r.vol ?? '—'}%動く｜期待値 ${r.ev !== null && r.ev !== undefined ? sign(r.ev,1) + '%' : '—'}${r.p ? '（確率' + Math.round(r.p) + '%）' : ''}</div>
+    </div>`;
+  }).join('');
+}
+
+function setup(){
+  const groups = ['すべて', 'SOX', '日経半導体', '韓国'];
+  const ch = document.getElementById('chips');
+  ch.innerHTML = groups.map(g => `<button data-g="${g}" class="${g === grp ? 'on' : ''}">${g}（${g === 'すべて' ? D.rows.length : D.rows.filter(r => r.group === g).length}）</button>`).join('');
+  ch.querySelectorAll('button').forEach(b => b.onclick = () => { grp = b.dataset.g; ch.querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); render(); });
+  [['tUp','up'],['tSt','st']].forEach(([id,m]) => document.getElementById(id).onclick = () => {
+    mode = m; ['tUp','tSt'].forEach(t => document.getElementById(t).classList.toggle('on', t === id)); render();
+  });
+  render();
+}
+
+function showMissing(){
+  const have = new Set(D.rows.map(r => r.sym));
+  const names = new Set(D.rows.map(r => r.name));
+  const sox = SOX.filter(s => !have.has(s));
+  const nk = NIKKEI.filter(n => !names.has(n));
+  document.getElementById('miss').innerHTML = '<b>まだ入っていない銘柄</b>（PCで取得すると入る）<br>' +
+    `SOX ${sox.length}社：${sox.join('・')}<br>日経半導体 ${nk.length}社：${nk.join('・')}`;
+}
+
+fetch('semi_ranking.json', {cache: 'no-store'}).then(r => { if (!r.ok) throw 0; return r.json(); }).then(j => {
+  D = fromJson(j);
+  document.getElementById('src').innerHTML = `取得 ${D.when}（Yahoo Finance）｜${D.rows.length}銘柄` +
+    (j.errors && j.errors.length ? `｜取得失敗 ${j.errors.map(e => e.symbol).join('・')}` : '') +
+    `<br>${j.sox_note}。${j.nikkei_note}。${j.vol_note}`;
+  setup();
+}).catch(() => fetch('briefing.html', {cache: 'no-store'}).then(r => r.text()).then(h => {
+  D = fromBriefing(h);
+  if (!D || !D.rows.length) { document.getElementById('guide').textContent = 'データを読めませんでした。'; return; }
+  document.getElementById('src').innerHTML = `今日のブリーフィング（②-B）から計算｜データ取得 ${D.when}｜${D.rows.length}銘柄`;
+  const n = document.getElementById('notice');
+  n.style.display = 'block';
+  n.innerHTML = '<b>暫定版</b>：PCでの全銘柄の取得がまだのため、今日のブリーフィングに載っている銘柄だけで順位を出しています。足りない銘柄はページの下に一覧があります。';
+  setup();
+  showMissing();
+}));
+</script>
+</body>
+</html>
