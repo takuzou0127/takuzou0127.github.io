@@ -8,7 +8,7 @@
  "rows": [
   {
    "symbol": "NVDA",
-   "name": "NVIDIA Corporation",
+   "name": "エヌビディア",
    "group": "SOX",
    "holding": false,
    "currency": "USD",
@@ -36,7 +36,7 @@
   },
   {
    "symbol": "AVGO",
-   "name": "Broadcom Inc.",
+   "name": "ブロードコム",
    "group": "SOX",
    "holding": false,
    "currency": "USD",
@@ -64,7 +64,7 @@
   },
   {
    "symbol": "MU",
-   "name": "Micron Technology, Inc.",
+   "name": "マイクロン",
    "group": "SOX",
    "holding": true,
    "currency": "USD",
@@ -92,7 +92,7 @@
   },
   {
    "symbol": "ASML",
-   "name": "ASML Holding N.V. - New York Re",
+   "name": "ASML",
    "group": "SOX",
    "holding": false,
    "currency": "USD",
@@ -120,7 +120,7 @@
   },
   {
    "symbol": "MRVL",
-   "name": "Marvell Technology, Inc.",
+   "name": "マーベル",
    "group": "SOX",
    "holding": false,
    "currency": "USD",
@@ -148,7 +148,7 @@
   },
   {
    "symbol": "TSM",
-   "name": "Taiwan Semiconductor Manufactur",
+   "name": "TSMC",
    "group": "SOX",
    "holding": false,
    "currency": "USD",
@@ -176,7 +176,7 @@
   },
   {
    "symbol": "AMAT",
-   "name": "Applied Materials, Inc.",
+   "name": "アプライド・マテリアルズ",
    "group": "SOX",
    "holding": false,
    "currency": "USD",
@@ -204,7 +204,7 @@
   },
   {
    "symbol": "LRCX",
-   "name": "Lam Research Corporation",
+   "name": "ラムリサーチ",
    "group": "SOX",
    "holding": false,
    "currency": "USD",
@@ -232,7 +232,7 @@
   },
   {
    "symbol": "KLAC",
-   "name": "KLA Corporation",
+   "name": "KLA",
    "group": "SOX",
    "holding": false,
    "currency": "USD",
@@ -260,7 +260,7 @@
   },
   {
    "symbol": "AMD",
-   "name": "Advanced Micro Devices, Inc.",
+   "name": "AMD",
    "group": "SOX",
    "holding": false,
    "currency": "USD",
@@ -288,7 +288,7 @@
   },
   {
    "symbol": "ADI",
-   "name": "Analog Devices, Inc.",
+   "name": "アナログ・デバイセズ",
    "group": "SOX",
    "holding": false,
    "currency": "USD",
@@ -316,7 +316,7 @@
   },
   {
    "symbol": "TXN",
-   "name": "Texas Instruments Incorporated",
+   "name": "テキサス・インスツルメンツ",
    "group": "SOX",
    "holding": false,
    "currency": "USD",
@@ -344,7 +344,7 @@
   },
   {
    "symbol": "INTC",
-   "name": "Intel Corporation",
+   "name": "インテル",
    "group": "SOX",
    "holding": false,
    "currency": "USD",
@@ -372,7 +372,7 @@
   },
   {
    "symbol": "QCOM",
-   "name": "QUALCOMM Incorporated",
+   "name": "クアルコム",
    "group": "SOX",
    "holding": false,
    "currency": "USD",
@@ -400,7 +400,7 @@
   },
   {
    "symbol": "MPWR",
-   "name": "Monolithic Power Systems, Inc.",
+   "name": "モノリシック・パワー",
    "group": "SOX",
    "holding": false,
    "currency": "USD",
@@ -428,7 +428,7 @@
   },
   {
    "symbol": "NXPI",
-   "name": "NXP Semiconductors N.V.",
+   "name": "NXP",
    "group": "SOX",
    "holding": false,
    "currency": "USD",
@@ -456,7 +456,7 @@
   },
   {
    "symbol": "TER",
-   "name": "Teradyne, Inc.",
+   "name": "テラダイン",
    "group": "SOX",
    "holding": false,
    "currency": "USD",
@@ -484,7 +484,7 @@
   },
   {
    "symbol": "COHR",
-   "name": "Coherent Corp.",
+   "name": "コヒレント",
    "group": "SOX",
    "holding": false,
    "currency": "USD",
@@ -512,7 +512,7 @@
   },
   {
    "symbol": "ALAB",
-   "name": "Astera Labs, Inc.",
+   "name": "アステラ・ラボ",
    "group": "SOX",
    "holding": false,
    "currency": "USD",
@@ -540,7 +540,7 @@
   },
   {
    "symbol": "MCHP",
-   "name": "Microchip Technology Incorporat",
+   "name": "マイクロチップ",
    "group": "SOX",
    "holding": false,
    "currency": "USD",
@@ -568,7 +568,7 @@
   },
   {
    "symbol": "ARM",
-   "name": "Arm Holdings plc",
+   "name": "アーム",
    "group": "SOX",
    "holding": false,
    "currency": "USD",
@@ -596,7 +596,7 @@
   },
   {
    "symbol": "CRDO",
-   "name": "Credo Technology Group Holding ",
+   "name": "クレド",
    "group": "SOX",
    "holding": false,
    "currency": "USD",
@@ -624,7 +624,7 @@
   },
   {
    "symbol": "ON",
-   "name": "ON Semiconductor Corporation",
+   "name": "オン・セミコンダクター",
    "group": "SOX",
    "holding": false,
    "currency": "USD",
@@ -652,7 +652,7 @@
   },
   {
    "symbol": "GFS",
-   "name": "GlobalFoundries Inc.",
+   "name": "グローバルファウンドリーズ",
    "group": "SOX",
    "holding": false,
    "currency": "USD",
@@ -680,7 +680,7 @@
   },
   {
    "symbol": "ENTG",
-   "name": "Entegris, Inc.",
+   "name": "インテグリス",
    "group": "SOX",
    "holding": false,
    "currency": "USD",
@@ -708,7 +708,7 @@
   },
   {
    "symbol": "MTSI",
-   "name": "MACOM Technology Solutions Hold",
+   "name": "MACOM",
    "group": "SOX",
    "holding": false,
    "currency": "USD",
@@ -736,7 +736,7 @@
   },
   {
    "symbol": "RMBS",
-   "name": "Rambus, Inc.",
+   "name": "ランバス",
    "group": "SOX",
    "holding": false,
    "currency": "USD",
@@ -764,7 +764,7 @@
   },
   {
    "symbol": "LSCC",
-   "name": "Lattice Semiconductor Corporati",
+   "name": "ラティス",
    "group": "SOX",
    "holding": false,
    "currency": "USD",
@@ -792,7 +792,7 @@
   },
   {
    "symbol": "AMKR",
-   "name": "Amkor Technology, Inc.",
+   "name": "アムコー",
    "group": "SOX",
    "holding": false,
    "currency": "USD",

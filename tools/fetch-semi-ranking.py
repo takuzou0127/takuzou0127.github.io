@@ -46,6 +46,15 @@ NIKKEI_10TH_CANDIDATES = {"7735.T": "SCREEN", "6526.T": "ソシオネクスト",
                           "6963.T": "ローム", "3436.T": "SUMCO", "7729.T": "東京精密",
                           "6323.T": "ローツェ", "4186.T": "東京応化"}
 KOREA = {"000660.KS": "SKハイニックス", "005930.KS": "サムスン電子"}
+# SOXの表示名（Yahooの shortName は長い上に途中で切れるため）。無い銘柄は shortName のまま
+US_NAMES = {"NVDA": "エヌビディア", "AVGO": "ブロードコム", "MU": "マイクロン", "ASML": "ASML",
+            "MRVL": "マーベル", "TSM": "TSMC", "AMAT": "アプライド・マテリアルズ", "LRCX": "ラムリサーチ",
+            "KLAC": "KLA", "AMD": "AMD", "ADI": "アナログ・デバイセズ", "TXN": "テキサス・インスツルメンツ",
+            "INTC": "インテル", "QCOM": "クアルコム", "MPWR": "モノリシック・パワー", "NXPI": "NXP",
+            "TER": "テラダイン", "COHR": "コヒレント", "ALAB": "アステラ・ラボ", "MCHP": "マイクロチップ",
+            "ARM": "アーム", "CRDO": "クレド", "ON": "オン・セミコンダクター", "GFS": "グローバルファウンドリーズ",
+            "ENTG": "インテグリス", "MTSI": "MACOM", "RMBS": "ランバス", "LSCC": "ラティス",
+            "AMKR": "アムコー"}
 HOLDINGS = {"MU", "000660.KS"}
 
 # 確率の目安（expected.html・context.json の期待値ランキングと同じ式）
@@ -154,7 +163,7 @@ def main():
             pr, stale = prob(p)
             spd = round(up - sp, 1) if up is not None and sp is not None else None
             rows.append({
-                "symbol": sym, "name": local or info.get("shortName") or sym, "group": grp,
+                "symbol": sym, "name": local or US_NAMES.get(sym) or info.get("shortName") or sym, "group": grp,
                 "holding": sym in HOLDINGS, "currency": info.get("currency"),
                 "price": price, "price_date": p.get("price_date"),
                 "target_mean": tgt, "target_low": lo, "target_high": hi,
