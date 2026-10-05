@@ -223,3 +223,4 @@
 - データ：クラウドからYahooに接続できないため、**PCで `python tools\fetch-semi-ranking.py`（github_repoで実行）→ semi_ranking.json を commit・push** すると全41銘柄になる。それまでは briefing.html の②-Bに載っている21銘柄だけの暫定版（足りない銘柄はページ下に一覧）。PCの push-to-github.ps1 の git add に semi_ranking.json を足す必要あり（未着手）
 - 1年の振れ幅はPC版では過去1年の日次の値動きから計算（全銘柄同じ方法）。②-Bのオプション由来の値とは少し違う
 - 10/5の暫定版（10/2終値・21銘柄）：❶ 1位 サムスン +73.0%・2位 000660 +70.6%・3位 AVGO +49.6%・4位 MU・5位 NVDA／❷ 1位 サムスン 0.68・2位 AVGO 0.65・3位 000660 0.54・4位 NVDA 0.50・5位 MU 0.37
+- 追記（同日・ユーザー「これをしたい。どうしたらいい？」）：PCのClaudeに **「半導体ランキングを入れて」** と一言で頼めば、①今すぐ1回実行して semi_ranking.json を push ②毎朝の自動実行と push-to-github.ps1 への追加、の2つをPCのClaudeが自分でやるよう context.json に節を追加した（「期待値ランキングを入れて」と同じ方式）
