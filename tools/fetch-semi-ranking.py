@@ -111,7 +111,7 @@ def pct(a, b):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", default=str(DEFAULT_OUT))
-    ap.add_argument("--sp", type=float, default=None, help="S&P500全体の上昇余地(%)")
+    ap.add_argument("--sp", type=float, default=None, help="S&P500全体の上昇余地(%%)")
     ap.add_argument("--sox-file", help="SOXのティッカーを1行1つ書いたファイル（一覧の差し替え）")
     ap.add_argument("--sleep", type=float, default=0.4)
     args = ap.parse_args()
