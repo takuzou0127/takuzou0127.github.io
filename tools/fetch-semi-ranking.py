@@ -71,15 +71,62 @@ def load_params_module():
     return mod
 
 
-def sp_benchmark(arg):
-    """S&P500全体の12か月上昇余地(%)。--sp が無ければ briefing.html の②-Bの基準行から読む"""
+SPY_HOLDINGS = ("https://www.ssga.com/us/en/intermediary/library-content/products/fund-data/"
+                "etfs/us/holdings-daily-us-en-spy.xlsx")
+
+
+def sp500_bottom_up(yf, sleep):
+    """S&P500全体の12か月上昇余地(%)をこのスクリプトだけで計算する（ブリーフィングに頼らない）。
+    SPYの構成銘柄と比率（State Street 公開の日次ファイル）×各銘柄の Yahoo 平均目標株価までの上昇率、の加重平均。
+    個別銘柄と同じ物差し（Yahooの平均目標）で比べるため。目標が取れた銘柄の比率が9割未満なら None"""
+    import io
+    import urllib.request
+    import pandas as pd
+    req = urllib.request.Request(SPY_HOLDINGS, headers={"User-Agent": "Mozilla/5.0"})
+    raw = urllib.request.urlopen(req, timeout=60).read()
+    df = pd.read_excel(io.BytesIO(raw), header=None)
+    as_of = str(df.iloc[2, 1]).replace("As of", "").strip()
+    hdr = df.index[df[0] == "Name"][0]
+    h = df.iloc[hdr + 1:, [1, 4]].dropna()
+    h.columns = ["ticker", "weight"]
+    h = h[h["ticker"].astype(str).str.match(r"^[A-Z][A-Z.]*$")]
+    total = covered = acc = 0.0
+    for tk, w in zip(h["ticker"], h["weight"].astype(float)):
+        total += w
+        try:
+            info = yf.Ticker(tk.replace(".", "-")).info or {}
+            tgt = info.get("targetMeanPrice")
+            px = info.get("currentPrice") or info.get("regularMarketPrice")
+            if tgt and px:
+                covered += w
+                acc += w * (tgt / px - 1)
+        except Exception:
+            pass
+        time.sleep(sleep)
+    cov = covered / total if total else 0
+    if cov < 0.9:
+        print(f"  S&P500：目標が取れた比率が{cov:.0%}しかないため使わない", file=sys.stderr)
+        return None, None
+    return round(acc / covered * 100, 1), \
+        f"自前計算：SPY構成{len(h)}銘柄（{as_of}時点の比率）×Yahoo平均目標までの上昇率の加重平均（比率の{cov:.0%}をカバー）"
+
+
+def sp_benchmark(arg, yf, sleep, out_path):
+    """S&P500全体の12か月上昇余地(%)。--sp ＞ 自前計算 ＞ 前回の semi_ranking.json の値（日付付き）の順"""
     if arg is not None:
         return arg, "手入力（--sp）"
-    b = REPO / "briefing.html"
-    if b.exists():
-        m = re.search(r"S&amp;P 500全体の12か月上昇余地\s*<b[^>]*>\+?([-\d.]+)%", b.read_text(encoding="utf-8"))
-        if m:
-            return float(m.group(1)), "briefing.html の②-B基準行（FactSet）"
+    try:
+        v, src = sp500_bottom_up(yf, sleep)
+        if v is not None:
+            return v, src
+    except Exception as e:
+        print(f"  S&P500の計算に失敗：{e}", file=sys.stderr)
+    try:
+        prev = json.loads(Path(out_path).read_text(encoding="utf-8"))
+        if prev.get("sp500_upside_pct") is not None:
+            return prev["sp500_upside_pct"], f"前回の値（{prev.get('generated_at')}取得）※今回は計算できず"
+    except Exception:
+        pass
     return None, "未取得"
 
 
@@ -123,6 +170,7 @@ def main():
     ap.add_argument("--sp", type=float, default=None, help="S&P500全体の上昇余地(%%)")
     ap.add_argument("--sox-file", help="SOXのティッカーを1行1つ書いたファイル（一覧の差し替え）")
     ap.add_argument("--sleep", type=float, default=0.4)
+    ap.add_argument("--sp-sleep", type=float, default=0.15, help="S&P500構成銘柄（約500）の取得間隔（秒）")
     args = ap.parse_args()
 
     import yfinance as yf
@@ -147,7 +195,7 @@ def main():
 
     universe = [(s, None, "SOX") for s in sox] + [(s, n, "日経半導体") for s, n in nikkei.items()] + \
                [(s, n, "韓国") for s, n in KOREA.items()]
-    sp, sp_src = sp_benchmark(args.sp)
+    sp, sp_src = sp_benchmark(args.sp, yf, args.sp_sleep, args.out)
 
     rows, errors = [], []
     for i, (sym, local, grp) in enumerate(universe, 1):

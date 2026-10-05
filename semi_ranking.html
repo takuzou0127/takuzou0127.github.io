@@ -70,7 +70,7 @@ a{color:#4a9eff}
 <div class="box">
 <ul>
 <li><b>対象</b>：SOX指数の構成銘柄・日経半導体株指数のウエート上位10社・SKハイニックス（000660）・サムスン電子（005930）</li>
-<li><b>❶ 上昇余地</b>＝アナリスト平均目標株価 ÷ 今の株価 − 1。黄色の点線はS&amp;P500全体の上昇余地。線より右（緑）＝指数より上がる見込み、灰色＝指数以下。右の「S&amp;P比」はその差（pt）</li>
+<li><b>❶ 上昇余地</b>＝アナリスト平均目標株価 ÷ 今の株価 − 1。黄色の点線はS&amp;P500全体の上昇余地（このページ専用に計算：S&amp;P500の全構成銘柄について、Yahooの平均目標株価までの上昇率を指数の比率で加重平均。個別銘柄と同じ物差しで比べるため）。線より右（緑）＝指数より上がる見込み、灰色＝指数以下。右の「S&amp;P比」はその差（pt）</li>
 <li><b>❷ 安定</b>＝S&amp;P比 ÷ 1年の振れ幅。指数を上回る見込みを、値動きの大きさで割った値。0より右＝指数より有利、大きいほど「振れ幅のわりに見込みが大きい」。⚠の銘柄は値に関係なく⚠なしの銘柄の後ろに並べる</li>
 <li><b>期待値</b>（参考）＝上がる確率の目安 × 上昇余地。確率の目安は期待値ランキングと同じ式（分類の基準点＋修正人数の向き−賭け型・決算リスク・目標が古い可能性の減点）</li>
 <li><b>⚠</b>＝目標が古い可能性（この30日で業績予想を下げた人が上げた人より多いのに、目標株価がまだ直されていない）</li>
@@ -81,75 +81,7 @@ a{color:#4a9eff}
 <p class="sub" style="margin-top:20px"><a href="expected.html">🎯 期待値ランキング（ブリーフィングの23銘柄）</a>｜<a href="index.html">ダッシュボード</a></p>
 
 <script>
-const BASE = {'①':65,'②':65,'④':60,'⑨':55,'⑥':50,'⑤':45,'⑦':40,'⑧':30};
 const CUR = {USD:'$', KRW:'₩', JPY:'¥'};
-// 対象の一覧（tools/fetch-semi-ranking.py と同じ）。ブリーフィングだけで出す時、何が足りないかを示すのに使う
-const SOX = ['NVDA','AVGO','MU','ASML','MRVL','TSM','AMAT','LRCX','KLAC','AMD','ADI','TXN','INTC','QCOM','MPWR','NXPI','TER','COHR','ALAB','MCHP','ARM','CRDO','ON','GFS','ENTG','MTSI','RMBS','LSCC','AMKR'];
-const NIKKEI = ['キオクシア','東京エレクトロン','アドバンテスト','ルネサス','ディスコ','レーザーテック','JX金属','信越化学','HOYA','（10位）'];
-// ブリーフィング②-Bの表の銘柄名 → [グループ, 表示名, ティッカー]
-const MAP = [
-  [/SK Hynix 本株/, '韓国', 'SKハイニックス（000660）', '000660.KS'],
-  [/Samsung 本株/, '韓国', 'サムスン電子（005930）', '005930.KS'],
-  [/TEL/, '日経半導体', '東京エレクトロン', '8035.T'],
-  [/アドバンテスト/, '日経半導体', 'アドバンテスト', '6857.T'],
-  [/キオクシア/, '日経半導体', 'キオクシア', '285A.T'],
-  [/TSMC/, 'SOX', 'TSMC（ADR）', 'TSM'],
-  [/Teradyne/, 'SOX', 'Teradyne', 'TER'],
-];
-const HOLD = ['MU', '000660.KS'];
-
-function num(s){ const m = (s||'').replace(/,/g,'').match(/[-+]?\d+(\.\d+)?/); return m ? parseFloat(m[0]) : null; }
-
-// PCの semi_ranking.json が無い間：今日のブリーフィング②-Bの表から、対象に入る銘柄だけで計算する
-function fromBriefing(html){
-  const doc = new DOMParser().parseFromString(html, 'text/html');
-  const table = doc.querySelector('table.vt');
-  if (!table) return null;
-  const sb = html.match(/S&amp;P 500全体の12か月上昇余地\s*<b[^>]*>\+?([-\d.]+)%/);
-  const sp = sb ? parseFloat(sb[1]) : null;
-  const rows = [];
-  table.querySelectorAll('tbody tr').forEach(tr => {
-    if (tr.classList.contains('grp')) return;
-    const td = [...tr.children].map(c => c.textContent.trim());
-    if (td.length < 15 || /SKHY/.test(td[0])) return;
-    const raw = td[0].replace(/★/g,'').trim();
-    let grp = null, name = raw, sym = raw;
-    const m = MAP.find(x => x[0].test(raw));
-    if (m) { grp = m[1]; name = m[2]; sym = m[3]; }
-    else if (SOX.includes(raw)) { grp = 'SOX'; }
-    if (!grp) return;   // Camtek など対象外
-    const cls = td[5];
-    const key = Object.keys(BASE).find(k => cls.startsWith(k));
-    const upC = tr.children[12];
-    const up = num(upC.querySelector('span') ? upC.querySelector('span').textContent : td[12]);
-    const rev = td[7].match(/↑(\d+)／↓(\d+)/);
-    const u = rev ? +rev[1] : 0, d = rev ? +rev[2] : 0;
-    const stale = /目標が古い/.test(td[12]);
-    let p = null;
-    if (key) {
-      p = BASE[key];
-      if (u + d >= 3) p += (u - d) / (u + d) * 10;
-      if (/③賭け型/.test(cls)) p -= 5;
-      if (key === '⑤' && /決算リスク/.test(cls)) p -= 5;
-      if (stale) p -= 10;
-      p = Math.max(20, Math.min(80, p));
-    }
-    const priceTxt = td[2], cur = (priceTxt.match(/[₩$¥]/) || [''])[0], price = num(priceTxt);
-    const rng = td[12].match(/予想の幅\s*([-+]?\d+)%〜([-+]?\d+)%/) || [];
-    const spm = td[12].match(/S&P比\s*([-+]?\d+(\.\d+)?)pt/);
-    rows.push({
-      sym, name, group: grp, cur, price, hold: HOLD.includes(sym),
-      target: num(td[11]), nAn: (td[11].match(/（(\d+)人）/) || [])[1] || '',
-      low: rng[1] ? price * (1 + num(rng[1]) / 100) : null,
-      high: rng[2] ? price * (1 + num(rng[2]) / 100) : null,
-      upside: up, sp: spm ? parseFloat(spm[1]) : (up !== null && sp !== null ? up - sp : null),
-      vol: num(td[13]), stab: num(td[14]),
-      cls: cls.split('＋')[0].replace(/⚠.*$/,''), u, d, stale, p,
-      ev: p !== null && up !== null ? p / 100 * up : null, date: ''
-    });
-  });
-  return { rows, sp, when: (html.match(/データ取得：([^（]+?)（/) || [])[1] || '不明' };
-}
 
 function fromJson(j){
   const rows = j.rows.map(r => ({
@@ -220,31 +152,19 @@ function setup(){
   render();
 }
 
-function showMissing(){
-  const have = new Set(D.rows.map(r => r.sym));
-  const names = new Set(D.rows.map(r => r.name));
-  const sox = SOX.filter(s => !have.has(s));
-  const nk = NIKKEI.filter(n => !names.has(n));
-  document.getElementById('miss').innerHTML = '<b>まだ入っていない銘柄</b>（PCで取得すると入る）<br>' +
-    `SOX ${sox.length}社：${sox.join('・')}<br>日経半導体 ${nk.length}社：${nk.join('・')}`;
-}
-
 fetch('semi_ranking.json', {cache: 'no-store'}).then(r => { if (!r.ok) throw 0; return r.json(); }).then(j => {
   D = fromJson(j);
   document.getElementById('src').innerHTML = `取得 ${D.when}（Yahoo Finance）｜${D.rows.length}銘柄` +
     (j.errors && j.errors.length ? `｜取得失敗 ${j.errors.map(e => e.symbol).join('・')}` : '') +
-    `<br>${j.sox_note}。${j.nikkei_note}。${j.vol_note}`;
+    `<br>${j.sox_note}。${j.nikkei_note}。${j.vol_note}` +
+    `<br>S&amp;P500の基準：${j.sp500_source}`;
   setup();
-}).catch(() => fetch('briefing.html', {cache: 'no-store'}).then(r => r.text()).then(h => {
-  D = fromBriefing(h);
-  if (!D || !D.rows.length) { document.getElementById('guide').textContent = 'データを読めませんでした。'; return; }
-  document.getElementById('src').innerHTML = `今日のブリーフィング（②-B）から計算｜データ取得 ${D.when}｜${D.rows.length}銘柄`;
+}).catch(() => {
+  document.getElementById('src').textContent = '';
   const n = document.getElementById('notice');
   n.style.display = 'block';
-  n.innerHTML = '<b>暫定版</b>：PCでの全銘柄の取得がまだのため、今日のブリーフィングに載っている銘柄だけで順位を出しています。足りない銘柄はページの下に一覧があります。';
-  setup();
-  showMissing();
-}));
+  n.innerHTML = '<b>データを読めませんでした</b>：semi_ranking.json が見つかりません。PCの毎朝の取得（04:55）が動いたかを確認してください。';
+});
 </script>
 </body>
 </html>
