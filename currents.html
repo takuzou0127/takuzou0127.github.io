@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>時代のうねり</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0f1117;color:#e0e0e0;font-family:'Segoe UI','Hiragino Kaku Gothic ProN',sans-serif;padding:16px;max-width:640px;margin:0 auto;padding-bottom:40px;font-size:16px;line-height:1.65}
+h1{font-size:1.25rem;color:#fff;margin-bottom:4px}
+h2{font-size:1.05rem;color:#f0883e;margin:24px 0 8px}
+.sub{font-size:15px;color:#8b93a1;margin-bottom:14px}
+a{color:#4a9eff}
+.guide{background:#13161f;border-radius:10px;padding:10px 12px;font-size:16px;color:#c9d1d9;margin-bottom:14px}
+.guide b{color:#fff}
+.wave{background:#13161f;border-radius:12px;padding:14px;margin-bottom:12px;border-left:4px solid #4a9eff}
+.wave.hot{border-left-color:#f85149}
+.wave.mix{border-left-color:#e3b341}
+.wave h3{font-size:1.08rem;color:#fff;margin-bottom:6px;line-height:1.45}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
+.tags span{font-size:14px;background:#0f1117;border-radius:6px;padding:2px 8px;color:#c9d1d9}
+.tags .s-up{color:#f85149}.tags .s-flat{color:#e3b341}.tags .s-dn{color:#3fb950}
+.num{background:#0f1117;border-radius:8px;padding:8px 10px;margin:6px 0 8px;font-size:16px;color:#fff}
+.num b{font-size:17px}
+.wave p{margin:4px 0;color:#c9d1d9}
+.wave p .k{color:#8b93a1;font-weight:600}
+.me{background:#171b26;border-radius:8px;padding:8px 10px;margin-top:8px;color:#c9d1d9}
+.me .k{color:#f0883e;font-weight:700}
+.up{color:#3fb950}.down{color:#f85149}.warn{color:#e3b341}
+.src{font-size:14px;color:#8b93a1;margin-top:6px}
+.chain{background:#13161f;border-radius:12px;padding:12px 14px;font-size:16px;color:#c9d1d9}
+.chain div{margin:4px 0}
+.chain b{color:#fff}
+.msg{color:#8b93a1;font-size:14px;margin:14px 0}
+</style>
+</head>
+<body>
+
+<h1>&#x1F30A; 時代のうねり</h1>
+<div class="sub" id="src">読み込み中…</div>
+
+<div class="guide">毎日のニュースの奥で、<b>数か月〜数年かけて動いている大きな流れ</b>を並べたページです。1つの流れごとに「数字で今どこにいるか」「強まっているか」「自分の保有（MU・000660・005930）にとって何か」を書きます。</div>
+
+<div id="body"></div>
+
+<div class="msg" id="msg"></div>
+
+<template id="base">
+<div id="currents">
+<h2>流れ同士のつながり</h2>
+<div class="chain">
+  <div><b>戦争</b> → <b>原油高</b> → 物価が下がらない → <b>金利が上がる</b> → 高PERの株（ハイテク）に重し</div>
+  <div><b>AIの需要</b> → データセンター建設 → <b>電気が足りない</b> → 据え付けが遅れる → チップの出荷の時期がずれる</div>
+  <div>この2本が、いまの株式市場を引っぱり合っています（AIの利益の伸び 対 金利の重し）。</div>
+</div>
+
+<h2>いま動いている7つのうねり</h2>
+
+<div class="wave hot">
+  <h3>① 戦争と原油 ─ 1バレル70ドル台の時代が終わった</h3>
+  <div class="tags"><span>始まり：2026年2月末</span><span class="s-up">強まっている</span><span>保有には：逆風</span></div>
+  <div class="num">ブレント原油 <b>約$72</b>（開戦前・2/27）→ 最高 <b>$126</b>（4/30）→ 一時 <b>約$70</b>（7/1）→ <b class="down">$100〜102</b>（10/6〜7）</div>
+  <p><span class="k">何が起きている：</span>米国・イランの戦争が200日を超え、ホルムズ海峡（世界の原油の通り道）の再開をめぐる条件交渉が続いています。この1か月で約20隻の商船が攻撃を受けました。</p>
+  <p><span class="k">なぜ大事：</span>原油は物価の土台です。原油が高いままだと物価が下がらず、中央銀行は金利を下げられません（②につながる）。日本は円安（1ドル158円前後）も重なり、輸入物価が二重に上がります。</p>
+  <p><span class="k">分かれ目：</span>海峡が再開すれば「原油安→物価が落ち着く→金利低下→ハイテク株に追い風」。交渉が決裂すれば、原油と金利が一緒に上がる危険が戻ります。夏に一度$70まで戻った後に$100へ戻ったので、「和平の報道」だけで判断しないことが大事です。</p>
+  <div class="me"><span class="k">保有にとって：</span>直接の影響ではなく、②の金利を通して効きます。9/28の000660の-5.05%も、休場中の米国の金利上昇と原油高（$106）が理由の一つとして報じられました。</div>
+  <div class="src">出典：CNBC（戦争と原油の年表）・Trading Economics・Fortune（10/6）・日次ニュース（10/7）</div>
+</div>
+
+<div class="wave hot">
+  <h3>② 金利の時代が戻った ─ 「利下げを待つ相場」から「利上げを警戒する相場」へ</h3>
+  <div class="tags"><span>始まり：2026年夏〜</span><span class="s-up">強まっている</span><span>保有には：逆風</span></div>
+  <div class="num">米10年債 <b class="down">5.27%</b>（10/5に5.31%＝2002年以来の高さ）／30年債 <b class="down">5.64%</b></div>
+  <p><span class="k">何が起きている：</span>FRBは9月に利上げしました（ウォーシュ議長のもとで2023年以来）。市場は2027年半ばまでにさらに少なくとも3回の利上げを見込んでいます（ロイター）。日銀も利上げを続ける姿勢です。</p>
+  <p><span class="k">なぜ大事：</span>金利が上がると、何年も先の利益を見込んで買われている株ほど値段がつきにくくなります。いまの株の最高値は「AIの利益の伸びが金利の重しを上回る」前提の上にあります。</p>
+  <p><span class="k">今の綱引き：</span>9月の雇用統計が弱かった（+2.9万人）ことで「利上げが遠のく」と読まれ、株はむしろ上がりました。景気が悪いニュースが株の追い風になる、ねじれた状態です。</p>
+  <div class="me"><span class="k">保有にとって：</span>メモリ株は値動きが大きいので、金利が跳ねた日に大きく下げやすい側です。次の山は FOMC議事要旨（今週）と FOMC（10/27〜28）。</div>
+  <div class="src">出典：CNBC・ロイター（日次ニュース 10/7）・ブリーフィング10/7版</div>
+</div>
+
+<div class="wave mix">
+  <h3>③ AIの足りないものが「チップ」から「電気」へ</h3>
+  <div class="tags"><span>始まり：2025年〜、今年後半に鮮明</span><span class="s-up">強まっている</span><span>保有には：両方</span></div>
+  <div class="num">米国のAIデータセンター向け電力は2028年までに <b class="down">32GW不足</b>（必要量の34%。Morgan Stanley）</div>
+  <p><span class="k">何が起きている：</span>Googleが原子力の電気を20年契約（約43億ドル。Constellation株+13%）。2026年に計画された米国のデータセンターの約半分が遅延・中止の恐れという集計もあります（集計元により幅）。</p>
+  <p><span class="k">なぜ大事：</span>お金もチップもあるのに、電気と変圧器が足りない。電力会社・送電網・原子力が「AIの二次受益者」として買われ始めています。</p>
+  <div class="me"><span class="k">保有にとって：</span>支え＝大手が20年先の電気を押さえる＝AI投資を長く続ける意思表示。逆＝置き場所が間に合わないと、メモリの出荷の<b>時期</b>がずれる。テーゼ崩れのシグナル③（設備投資の減額）はまだ点いていません。</div>
+  <div class="src">出典：Igor's Lab（Morgan Stanley）・Yahoo Finance（10/6）</div>
+</div>
+
+<div class="wave">
+  <h3>④ AIチップの「NVIDIA一択」が終わり、分け合う時代へ</h3>
+  <div class="tags"><span>始まり：2025年〜</span><span class="s-up">強まっている</span><span>保有には：中立〜追い風</span></div>
+  <div class="num">NVDA：AVGO の売上の比 <b>約89：11</b>（1年前）→ <b>約84：16</b>（直近）／MRVLの長期目標 FY2031売上 <b>$70〜90B</b>（予想$47B）</div>
+  <p><span class="k">何が起きている：</span>GoogleはBroadcomとMarvellの両方と組み、OpenAIはNVIDIA・AMD・Broadcomを併用。買い手が1社に頼らなくなっています。</p>
+  <p><span class="k">なぜ大事：</span>お金は「需要の大きさを自分の口で言える会社」（設計会社・最大手）に集まり、メモリは決算で数字が出るまで「待たされる側」になっています。</p>
+  <div class="me"><span class="k">保有にとって：</span>GPUでもASICでも、チップの横にはHBMが載ります。ただしHBMの主な買い手は「NVIDIA→SKハイニックス、Google→サムスン」と分かれているので、ASICが伸びるほどサムスンに追い風、000660は配分で中立〜やや逆風。</div>
+  <div class="src">出典：ブリーフィング10/7版（①-B）・Yahoo Finance・TIKR</div>
+</div>
+
+<div class="wave mix">
+  <h3>⑤ 一握りの会社に集中する市場</h3>
+  <div class="tags"><span>始まり：2023年〜</span><span class="s-flat">高止まり</span><span>保有には：両方</span></div>
+  <div class="num">NVDA・Apple・Microsoftの3社で <b>S&amp;P500の21%超</b>／KOSPIの約 <b>47%</b> がサムスン＋SKハイニックス</div>
+  <p><span class="k">何が起きている：</span>米国も韓国も日本も、指数の上げの大部分を数社が作っています（日経平均の2025年の上げの約7割はアドバンテスト・SBG・東京エレクトロン）。</p>
+  <p><span class="k">なぜ大事：</span>指数を買っても実は同じ数社に賭けている状態です。流れが逆回転すると、指数ごと大きく下げます。</p>
+  <div class="me"><span class="k">保有にとって：</span>000660と005930を持つのは「KOSPIの半分」を持つのとほぼ同じ向き。KOSPI連動の投信を足しても分散にはなりにくいです。外国人の売買で大きく動きます（9/28は外国人が3.24兆ウォン売り越し）。</div>
+  <div class="src">出典：ブリーフィング10/7版・BigGo Finance・日経</div>
+</div>
+
+<div class="wave">
+  <h3>⑥ 政治の季節 ─ 米中間選挙と日本の財政</h3>
+  <div class="tags"><span>山場：11/3（米中間選挙）</span><span class="s-up">近づいている</span><span>保有には：間接</span></div>
+  <div class="num">民主党の支持のリード <b>+8.9ポイント</b>（今回の選挙で最大）／日本の臨時国会 <b>12/12まで</b></div>
+  <p><span class="k">何が起きている：</span>米国では物価（原油高）への不満が選挙の争点になり、下院は民主党が多数を取り戻すとの見方が優勢。2月に最高裁が包括関税を違憲としたため、政権は品目別の関税に切り替えています。日本は食料品の消費税減税が焦点です。</p>
+  <p><span class="k">なぜ大事：</span>選挙の後、イランへの方針（①）や関税が変わりうるからです。日本は減税＝国の借金が増える→長期金利・円安の論点になります。</p>
+  <div class="me"><span class="k">保有にとって：</span>半導体への関税・輸出規制の変化に注意。直接の材料が出たらブリーフィングで書きます。</div>
+  <div class="src">出典：Nate Silver Bulletin・NPR・日次ニュース（10/7）</div>
+</div>
+
+<div class="wave">
+  <h3>⑦ 中国のAIの自前化</h3>
+  <div class="tags"><span>始まり：2023年の輸出規制〜</span><span class="s-flat">じわじわ</span><span>保有には：長期の逆風候補</span></div>
+  <div class="num">DeepSeekが少なくとも <b>800億元（約$12B）</b>の資金調達に近づく（Tencentが支援・2027年初めの上場を視野）</div>
+  <p><span class="k">何が起きている：</span>中国は米国のチップを買えない分を、国産のチップ（Huawei Ascend）と国産のメモリ（CXMT）で埋めようとしています。</p>
+  <p><span class="k">なぜ大事：</span>CXMTがHBMを作れるようになると、いまの3社（SKハイニックス・サムスン・マイクロン）の寡占が崩れる道ができます。</p>
+  <div class="me"><span class="k">保有にとって：</span>CXMTのHBMは今日も新しい動きなし。HBMの3社寡占の評価は変わっていません。時間軸は2027年以降。</div>
+  <div class="src">出典：Bloomberg（10/7）・ブリーフィング10/7版</div>
+</div>
+</div>
+</template>
+
+<script>
+// ブリーフィングに「時代のうねり」の節（id="currents"）があればそれを出し、無ければこのページに書いた版を出す
+(function(){
+  var base = document.getElementById('base').content.cloneNode(true);
+  var body = document.getElementById('body');
+  var src = document.getElementById('src');
+  var BASE_DATE = '2026年10月7日版（クラウドで作成）';
+  function showBase(){
+    body.innerHTML = '';
+    body.appendChild(base);
+    src.textContent = BASE_DATE;
+  }
+  fetch('briefing.html', {cache:'no-store'}).then(function(r){
+    if(!r.ok) throw 0;
+    return r.text();
+  }).then(function(t){
+    var doc = new DOMParser().parseFromString(t, 'text/html');
+    var sec = doc.getElementById('currents');
+    if(!sec){ showBase(); return; }
+    var title = doc.querySelector('title');
+    body.innerHTML = '';
+    body.appendChild(document.importNode(sec, true));
+    src.textContent = '今日のブリーフィングから' + (title ? '（' + title.textContent.trim() + '）' : '');
+  }).catch(showBase);
+})();
+</script>
+</body>
+</html>
