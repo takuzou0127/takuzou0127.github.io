@@ -267,3 +267,4 @@
 - **今後：** `cloud-backup.md` の手順で、クラウドのルーチンが毎朝6:40（briefing・news・bignews）と土日11:20（techcatchup・techranking）に確認し、PCが出していなければ代わりに出す。PCが出していれば何もしない
 - PC側の根本修正（context.json肥大の原因の rescue_context_rules.py・未pushの巨大コミットの破棄）は**まだ**。10/11の項のPCへの一言をユーザーに再度伝えた
 - 追記（同日）：新しいセッションを毎回立ち上げる形はpushが403で拒否された（そのセッションにリポジトリの書き込み権限が付かない）。**代行のルーチンは、このリポジトリに書き込めるセッション session_01KzokeSoCTNNqtuc6DgaXs9 に毎回届く形**で作り直した（朝 trig_01RMBwLK8yUaBBpa6fWva7gg・週末 trig_017nNn6F3d1SKMid8CYwacgv）。止める時はこの2つを無効にする
+- 追記（10/12 16:14〜）：PCで直した（原因の本体は push-to-github.ps1 の `-replace '\\','\\\\'` でpushのたびに `\` が倍。ログイン切れも重なっていた）。PCのpushで briefing・news は10/12のPC版になり context.json は220KB。ただし同じpushで **bignews・techcatchup・techranking がPCのデスクトップの古い版（9/27〜9/29）で上書き**されたので、クラウドで10/12版に戻した。push-to-github.ps1 が「その日に更新していないファイル」もコピーして上書きするため。PCで直す必要あり
