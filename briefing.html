@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>半導体投資ブリーフィング 2026年10月12日</title>
+<title>半導体投資ブリーフィング 2026年10月12日（15時更新）</title>
 <style>
 body{background:#0f1117;color:#e6e6e6;font-family:"Segoe UI","Hiragino Kaku Gothic ProN",sans-serif;font-size:17px;line-height:1.7;max-width:960px;margin:0 auto;padding:20px;}
 h1{font-size:24px;border-bottom:2px solid #2a2e3a;padding-bottom:10px;}
@@ -51,105 +51,251 @@ table:not(.vt)>tbody,table:not(.vt)>thead{display:table;width:calc(100% - 2px);}
   [style*="min-width"]{min-width:0 !important;flex-basis:100% !important;}
 }
 </style>
+</head>
 
-</head><body>
-<h1>半導体投資戦略ブリーフィング ― 2026年10月12日（月・祝）</h1>
-<div class="box" style="border-color:#e3b341;">
-<p class="warn" style="font-size:17px;margin:0;"><b>⚠ クラウド代行版</b>（14時台作成）。PCの朝の自動作業が10/8から公開できていないため、クラウドのClaudeがWeb検索だけで作りました。</p>
-<p class="note" style="margin:6px 0 0;">・株価は検索で確かめられた値だけ（米国＝10/9終値、韓国＝10/8終値と10/12の取引中の値、日本＝10/9終値。東京は今日休場）。見つからなかった銘柄は「未取得」とし、推定で埋めていません。<br>
-・②-Bの表（EPS修正・目標株価など）はPCのデータ（yfinance）が必要なので、<b>10/7朝のPC版（10/6終値）をそのまま載せています</b>（②-Bのデータ取得：2026-10-07 04:55 JST（PC最終版））。期待値ランキング・半導体ランキングもこの表から計算されるので、数字は10/6時点です。<br>
-・止まった原因：context.json が日次更新のたびに倍に膨らみ、GitHubの1ファイル上限（100MB）を超えてPCからのpushが拒否された（10/11に特定。GitHub側は修正済み、PC側は未修正）。</p>
-</div>
+<body>
+
+<h1>半導体投資戦略ブリーフィング ― 2026年10月12日（月）<span class="note">　15時更新版</span></h1>
+<div class="box" style="border-color:#e3b341;"><b>🕒 15時更新で変わったところ（16:12）</b><ul style="margin:6px 0 0 0;"><li><b>韓国本株の再開結果</b>：SK Hynix ₩1,605,000（<span class="down">-4.52%</span>）、Samsung ₩250,500（<span class="down">-4.39%</span>）、KOSPI 6,384.24（<span class="down">-3.65%</span>）。保有カード・比較枠・②・⑥を差し替え</li><li><b>追加報告（今朝版で拾えなかった事実）</b>：Samsungが<b>10/8に3Q26の暫定実績</b>（営業利益107.4兆ウォン・売上約195兆ウォン）を出していた。予想比の表と、メモリ3社の「驚きの推移」を⓪-Cに追加</li><li>NLCS第1戦の結果（⑦-A）。米国株はまだ取引前のため、米国・日本の株価は今朝と同じ10/9終値のまま</li></ul></div>
+<p class="note">月曜朝のため、株価は週末版と同じ<b>10/9（金）の米国・日本の確定終値</b>（アフターマーケット除外）。データ：stock_data.json／valuation_data.json（2026-10-12 04:55 JST、Yahoo Finance）。SK Hynix・Samsung本株は<b>10/8の値</b>（10/9休場）。<b>本日10/12：韓国は9:00に4日ぶりの取引再開／日本は休場（スポーツの日）／米国株式は取引あり（債券の現物市場のみ休み）</b>。週末（10/10〜11）に半導体・保有銘柄に関する新しい報道は検索で確認できなかった。新しく分かったのは、Reutersの週間展望（FRBが9月に2023年以来の利上げをしていたこと、9月CPIの市場予想3.6%）と、先週OpenAIがGPT-6をChatGPT全体に広げたことの2点。</p>
 
 <h2>保有ポートフォリオ</h2>
-<table>
-<tr><th>銘柄</th><th>最新の値</th><th>取得単価からの損益</th><th>アナリスト目標まで（10/7のPCデータ）</th></tr>
-<tr><td><b>MU（マイクロン）×2</b>｜NISA｜取得$1,138</td><td><b class="down">$1,029.00</b>（10/9終値・−0.66%）<br><span class="note">10/8 −4.79%（$1,035.84）</span></td><td class="down">−$218（−9.6%）<br><span class="note">評価額 $2,058</span></td><td>目標$1,535.57（46人）→ 今の株価から <b class="up">+49.2%</b><br><span class="note">取得単価からは+34.9%</span></td></tr>
-<tr><td><b>SK Hynix 本株（000660）×1</b>｜NISA｜取得₩1,843,067</td><td><b class="down">₩1,681,000</b>（10/8終値・−2.44%）<br><span class="note">10/7は₩1,723,000（−2.82%）。<b>10/12は取引中に約−3.8%（約₩1,617,000）</b>・終値は未確認</span></td><td class="down">−₩162,067（−8.8%）※10/8終値<br><span class="note">今日の取引中の値なら約−12%</span></td><td>目標₩3,141,025（38人）→ 10/8終値から <b class="up">+86.9%</b></td></tr>
-<tr><td><b>Samsung 本株（005930）×1</b>｜NISA｜取得₩287,891（手数料込み）</td><td><b class="down">₩262,000</b>（10/8終値・−2.4%）<br><span class="note"><b>10/12は取引中に₩255,500（−2.48%）</b>・終値は未確認</span></td><td class="down">−₩25,891（−9.0%）※10/8終値<br><span class="note">₩255,500なら−11.3%</span></td><td>目標₩477,517（36人・⚠目標が古い可能性）→ 10/8終値から <b class="up">+82.3%</b></td></tr>
-</table>
-<p class="note">韓国は10/9（ハングルの日）休場。円換算は為替（1ドル158円台）を含め未計算——SBIの画面の値を正としてください。売買の推奨はしません。</p>
+<div style="display:flex;gap:16px;flex-wrap:wrap;">
 
-<h2>主要指数</h2>
+  <div class="box" style="flex:1;min-width:260px;">
+    <div class="note">MU（マイクロン）× 2株｜取得 $1,138｜ホールド確定 2027/4</div>
+    <div style="font-size:26px;font-weight:bold;">$1,029.00 <span class="down">▼ -0.66%</span></div>
+    <div style="margin-top:8px;">含み損：<span class="down">-$218.00 (-9.58%)</span> <span class="note">（取得$2,276比）</span></div>
+    <div class="note">評価額：$2,058.00｜前日比 <span class="down">約-$13.7</span>（10/9）</div>
+    <div class="target-hl">🎯 アナリスト目標：<b>$1,555.13</b>（46人集計）｜乖離 <span class="up">+51.1%</span></div>
+    <div class="note" style="margin-top:4px;">次の注目：10/14 ASML・10/15 TSMC決算（装置・AI需要の答え）／10/19 台北の労組集会／10/22 台中労組の調停／12/24予定 FQ1'27決算</div>
+  </div>
+
+  <div class="box" style="flex:1;min-width:260px;">
+    <div class="note">SK Hynix 本株（000660.KS）× 1株｜NISA｜取得 ₩1,843,054（約21.8万円）</div>
+    <div style="font-size:26px;font-weight:bold;">₩1,605,000 <span class="down">▼ -4.52%</span> <span class="note">（10/12・16:12取得の終値、前営業日10/8比）</span></div>
+    <div style="margin-top:8px;">含み損：<span class="down">-238,054ウォン（約-28,295円）(-12.92%)</span></div>
+    <div class="note">評価額：₩1,605,000（約190,770円）｜前日比 <span class="down">-76,000ウォン（約-9,033円）</span></div>
+    <div class="target-hl">🎯 アナリスト目標（現地株）：<b>₩3,141,025</b>（38人集計・今朝の集計）｜乖離 <span class="up">+95.7%</span></div>
+    <div class="note" style="margin-top:4px;">レート：1ウォン≈0.1189円（KRWJPY=X）｜<b>10/27予定 Q3決算（あと15日）</b></div>
+  </div>
+</div>
+
+<div class="box">
+<div style="font-weight:bold;">🇰🇷🇺🇸 同じSK Hynix、2つの買い方（参考：ADRは売却済み）</div>
 <table>
-<tr><th>指数</th><th>10/9（金）終値</th><th>前日比</th><th>10/6（PC最終版）からの変化</th></tr>
-<tr><td>SOX指数</td><td>12,572.42</td><td class="down">−0.41%</td><td class="down">−4.8%（13,207.04→）<br><span class="note">10/8に−3.4〜3.7%</span></td></tr>
-<tr><td>NASDAQ</td><td>27,366.17</td><td class="up">+0.64%</td><td class="down">−0.8%</td></tr>
-<tr><td>S&amp;P 500</td><td>7,811.54</td><td class="up">+0.59%</td><td class="flat">−0.1%（最高値の目前）</td></tr>
-<tr><td>日経平均</td><td>69,030.92</td><td class="down">−0.02%</td><td class="note">12日は休場</td></tr>
-<tr><td>KOSPI</td><td>10/12 取引中 6,420〜6,475</td><td class="down">−2〜3%</td><td class="down">4日続落。先週7,000超から</td></tr>
+<tr><th></th><th>前日比</th><th>本株取得日(9/28)からの騰落</th><th>最終取引日</th></tr>
+<tr><td>ADR（SKHY・参考）</td><td class="down">-0.86%（$169.03）</td><td class="down">約-7.1%（9/28終値 約$181.92比）</td><td>10/9（米国）</td></tr>
+<tr><td>本株（000660・保有）</td><td class="down">-4.52%（₩1,605,000）</td><td class="down">-12.9%（対₩1,843,054）</td><td>10/12（韓国）</td></tr>
 </table>
-<p class="note">出典：<a href="https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-oct-09-2026">TheStreet</a>・<a href="https://indexes.nasdaqomx.com/Index/History/SOX">Nasdaq（SOX）</a>・<a href="https://tbladvisory.com/20261009nk/">日経平均の概況</a>・<a href="https://en.sedaily.com/news/2026/10/12/kospi-slips-below-6500-as-foreign-investors-keep-selling">Seoul Economic Daily</a></p>
+<p><b>差がどこから来たか（15時更新）：</b> <b>③時差の答え合わせ</b>：休場中の米国2日分（10/8・10/9）でADRは合わせて約-5%、SOXは約-4%。今日再開した本株は<b>-4.52%</b>で、ADRの「予告」と同じ向き・やや小さい幅だった。<b>②為替</b>：ウォンは1ドル≈1,331ウォン（10/9は約1,343）と少しウォン高で、ADRには小さなプラス。<b>①プレミアム</b>：ADRはまだ10/9の値（$169.03）なので、今日の本株と並べたプレミアムは約+40%と見かけ上広がっているが、時点のずれた比較で意味は薄い。プレミアムが今朝の+35.0%のままなら、今夜のADRは約$163（-3.7%）が目安になる（<b>推定</b>）。今日の下げは、報道では外国人の売り越し（KED Global等によると朝9:55時点で約4,580億ウォン）と、AI投資への過熱感・中東の原油高が理由とされる。売買の推奨はしない。</p>
+<div class="box" style="margin-top:8px;background:#141826;">
+  <div style="font-weight:bold;">🇰🇷 ADRと現地株の比較軸</div>
+  <div class="note">（現地株がアナリスト目標₩3,141,025に届いた場合のADRのリターン）</div>
+  <div class="note">※この枠は今朝の値（本株₩1,681,000）で計算。本株安で各数字は数pt大きくなるが、ADR側が今夜動くまで更新しない。</div>
+  <div>プレミアム35%のまま <span class="up">+87%</span>｜上場時の16%に戻る <span class="up">+61%</span>｜0%まで消える <span class="up">+38%</span></div>
+  <div class="note">ADRのアナリスト目標$252.21（14人）はプレミアム約8%（7.8%）を前提にした値。ADRの「上昇余地+49.2%」はプレミアムがほぼ消える前提の数字で、上限ではない。現地株・為替が動かずプレミアムだけ0に戻ると、ADRは<span class="down">-26%</span>。ADR＝現地株＋プレミアムの両方への賭け。</div>
+</div>
+</div>
+
+<h2>主要指数（10/9 確定終値）</h2>
+<table>
+<tr><th>指数</th><th>終値</th><th>前日比</th></tr>
+<tr><td>NASDAQ</td><td>27,366.17</td><td class="up">▲ +0.64%</td></tr>
+<tr><td>S&amp;P 500</td><td>7,811.54</td><td class="up">▲ +0.59%</td></tr>
+<tr><td>SOX指数</td><td>12,572.42</td><td class="down">▼ -0.41%</td></tr>
+</table>
+<p class="note">Bloombergは週末前の記事で「S&amp;P 500の上昇が、その下で広がる金利ショックを覆い隠している」と書き、10年債利回りは今週一時5.4%近く（2002年以来の高さ）まで上がった（<a href="https://www.bloomberg.com/news/articles/2026-10-09/wall-street-s-rate-shock-spreads-beneath-ai-fueled-market-rally">Bloomberg</a>）。金曜の引けは5.2%台（Yahoo Finance・Saxo、時点で数字に幅）。Reutersの週間展望によると、S&amp;P 500は年初来+13%超で史上最高値圏（<a href="https://www.kitco.com/news/off-the-wire/2026-10-09/wall-st-week-ahead-bank-earnings-cpi-headline-busy-markets-week-sp-500">Reuters via Kitco</a>）。</p>
 
 <h2>⓪-A 本日の結論</h2>
+<div class="conclusion" style="border-color:#e3b341;">
+  <div class="conclusion-label" style="color:#e3b341;">★ 15時追記</div>
+  <div class="conclusion-headline">韓国本株はADRの予告どおり下落（-4.5%）——決算の驚きは縮んでいる</div>
+  <div class="conclusion-body">SK Hynix本株は休場明けで-4.52%、取得単価比-12.9%。Samsungも-4.39%。一方、今朝版で見落としていた<b>Samsungの3Q26暫定実績（10/8）は営業利益107.4兆ウォンで予想（LSEG 106.1兆）を+1.2%上回った</b>が、予想比は+21%→+18%→+3.5%→+2.4%→+1.2%と5四半期続けて縮んだ。「良い決算」でも驚きが小さくなると株価は上がりにくい——10/27のSK Hynix（予想 営業利益74.1兆ウォン）もこの物差しで見る。需要の答え（ASML 10/14・TSMC 10/15）は変わらず今週。</div>
+</div>
+<p class="note">↓ 以下は今朝5:35時点の結論（変更なし）</p>
 <div class="conclusion">
-  <div class="conclusion-label">★ 本日の結論（10/8〜10/12の4日分）</div>
-  <div class="conclusion-headline">サムスンは「予想どおりの最高益」で売られ、翌日にOpenAIの売上の報道で半導体全体が売られた</div>
-  <div class="conclusion-body">
-  <div style="display:flex;gap:14px;flex-wrap:wrap;margin:8px 0 12px;">
-    <div class="box" style="flex:1;min-width:220px;margin:0;"><div class="note">SOX（10/6→10/9）</div><div style="font-size:26px;font-weight:bold;" class="down">−4.8%</div><div class="note">同じ期間のS&amp;P 500は−0.1%</div></div>
-    <div class="box" style="flex:1;min-width:220px;margin:0;"><div class="note">サムスンQ3 営業利益の予想比</div><div style="font-size:26px;font-weight:bold;">+0.4〜1.9%</div><div class="note">+21→+18→+3.5→+2.4→<b>+0.4〜1.9%</b>（集計元で幅）</div></div>
-    <div class="box" style="flex:1;min-width:220px;margin:0;"><div class="note">OpenAIの年換算売上（9月）</div><div style="font-size:26px;font-weight:bold;">約$50B</div><div class="note">伝わっていた約$70Bより約$20B少ない（FT）</div></div>
+  <div class="conclusion-label">★ 本日の結論</div>
+  <div class="conclusion-headline">答え合わせの週が始まる——今朝は韓国本株、水曜CPIとASML、木曜TSMC</div>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin:10px 0;">
+    <div class="box" style="flex:1;min-width:150px;margin:0;"><div class="note">ASML 第3四半期の会社見通し</div><div style="font-size:24px;font-weight:bold;"><span class="up">売上 前年比+53%</span></div><div class="note">粗利率56%へ（Saxoの事前整理）。10/14発表。注目は2027年分の受注</div></div>
+    <div class="box" style="flex:1;min-width:150px;margin:0;"><div class="note">TSMC 9月の月次売上</div><div style="font-size:24px;font-weight:bold;"><span class="up">前年比+54.6%</span></div><div class="note">ただし前月比<span class="down">-0.6%</span>。10/15に7-9月期決算</div></div>
+    <div class="box" style="flex:1;min-width:150px;margin:0;"><div class="note">今週のSOX vs S&amp;P（10/8〜9の2日）</div><div style="font-size:24px;font-weight:bold;"><span class="down">約-4%</span> vs <span class="flat">約+0.1%</span></div><div class="note">半導体だけが戻らないまま週末へ</div></div>
   </div>
-  保有の3銘柄は、この4日でどれも取得単価から約−9〜12%。理由は2つで、①サムスンの結果が「予想は超えたが、超え方が小さくなり続けている」こと（売上は予想を約3%下回った）、②10/8のFTの報道で「AI会社は本当に稼げているのか」という疑いが半導体全体に広がったこと。ただし②の差の多くは<b>売上の数え方の違い</b>（Anthropicはクラウド経由の売上を総額で数え、OpenAIは純額）から来ていると報じられており、TSMCの9月売上（前年比+54.6%）など<b>作る側の数字は強いまま</b>。テーゼ崩れの3シグナルの判定は、韓国2社の決算説明会（10月下旬）を待つ（下の⑥）。
-  </div>
+  <div class="conclusion-body">週末に新しい材料はなく、問いは先週と同じ2つ——<b>「金利はどこまで上がるか」と「AIの買い手は払い続けられるか」</b>。前者にはCPI（10/14、市場予想は前年比+3.6%で前月の3.4%から加速。FRBは9月に2023年以来の利上げ済み）、後者にはASML（10/14、2027年の受注）とTSMC（10/15、AI顧客の注文）が答える。その前に今朝、<b>4日ぶりに再開する韓国で、保有中のSK Hynix本株が米国2日分の下げ（ADR約-5%）をどこまで受けるか</b>が分かる。テーゼ崩れの3シグナルは変化なし。</div>
 </div>
 
-<h2>🌊 時代のうねり ─ 今週どう動いたか</h2>
+
+<h2>⓪-C 追加報告：Samsung 3Q26 暫定実績（10/8発表・今朝版で未掲載）</h2>
 <div class="box">
-<p>① <b>戦争と原油：</b>変わらず強い。ブレント$104前後（10/8 $104.28）。フーシ派のリヤド空港攻撃で米国が報復への参加を検討。一方でトランプ大統領は「ロシア・ウクライナのエネルギー停戦」を発表（当事国は未確認）。</p>
-<p>② <b>金利の時代：</b>米10年債5.24%（10/9）。5.3%台からは一服したが、高いまま。</p>
-<p>③ <b>AIの稼ぐ力への疑い（今週の新しい動き）：</b>OpenAIの年換算売上が約$50Bと報じられ、半導体が売られた。「AIの需要」の流れの中に、<b>「AI会社が設備に払い続けられるか」</b>という問いがはっきり出た週。数え方の違いが大きいので、11月以降の各社の決算での実数が答えになる。</p>
-<p>④ <b>メモリの好況はいつまで：</b>サムスンの最高益が「予想どおり」で売られたのは、市場の関心が「今の利益」から「この好況の長さ」に移った印。ユーザーの中心仮説（供給が需要に追いつかず、極端なサイクルは起きにくい）を確かめる材料は、10月下旬の決算説明会の2027年の契約・設備投資の話。</p>
-<p class="note">全体の流れは <a href="currents.html">🌊 時代のうねり</a>（10/7版）。</p>
+<p class="note">今朝の版を作った時点で検索すれば拾えた事実だったので、ルールどおり事実として追加する。株価が動くのは暫定の日（10/8）。部門別の確定値は<b>10/29予定</b>（Yahoo Finance。従来の表の10/28から訂正）。</p>
+<div style="display:flex;gap:12px;flex-wrap:wrap;">
+  <div class="box" style="flex:1;min-width:200px;background:#141826;"><div class="note">① 営業利益 1年前＝100</div><div style="font-size:24px;font-weight:bold;">100→165→473→739→<span class="up">888</span></div><div class="note">前の四半期比の伸び：+65%→+186%→+56%→<b>+20%</b>。水準は記録更新、伸びは鈍化。売上は前年比+127%（2.3倍）。同じ1年でMUの売上は約4.8倍</div></div>
+  <div class="box" style="flex:1;min-width:200px;background:#141826;"><div class="note">② 営業利益率</div><div style="font-size:24px;font-weight:bold;">約55%</div><div class="note">107.4兆÷約195兆。SK Hynixは2Q26で約76%（60.54兆÷79.32兆）。Samsungはスマホ（赤字）・ファウンドリ（赤字見込み）を抱える分、メモリ専業より低く出る。メモリ部門単独の利益率は約76%で横ばいの見立て（SK証券）</div></div>
+  <div class="box" style="flex:1;min-width:200px;background:#141826;"><div class="note">③ 予想比（営業利益）</div><div style="font-size:24px;font-weight:bold;"><span class="up">+1.2%</span></div><div class="note">LSEG SmartEstimate 106.1兆比。予想は8月の約114兆から約7.7%下げられていた（ウォン高：3Q中に対ドルで約14%上昇）。下げた後の予想をわずかに超えた形</div></div>
 </div>
+<table>
+<tr><th>項目</th><th>アナリスト予想</th><th>暫定実績</th><th>予想比</th></tr>
+<tr><td>売上</td><td>199.1兆ウォン（FnGuide 9/25）</td><td>約195兆ウォン</td><td class="down">約-2.1%</td></tr>
+<tr><td>営業利益</td><td>106.1兆（LSEG SmartEstimate）／105.6兆（FnGuide 9/25）</td><td><b>107.4兆ウォン</b>（初の100兆超・前年比+783%）</td><td class="up">+1.2%／+1.7%</td></tr>
+</table>
+<p class="note">部門別（報道ベース・確定は10/29）：メモリはHBMの出荷量が前の四半期比で約5割増との報道／ファウンドリは赤字継続の見込み／モバイルは部品高で10億ドル超の赤字見込み。数値の見通し（次の四半期）は出していない。</p>
+<p><b>上振れ幅の推移と株価の反応（暫定の日）</b>：3Q25 +21%（株価-1.8%）→4Q25 +18%→1Q26 +3.5%（別集計なら+35%前後で割れた）→2Q26 +2.4%（-6.9%）→<b>3Q26 +1.2%（10/8終値 -2.42%、stock_data.json。報道では発表直後は-0.2%）</b>。<b>驚きが縮むほど、発表日の株価は上がらなくなっている。</b></p>
+<p style="font-weight:bold;margin-bottom:4px;">メモリ3社：決算の予想比（%）の推移</p>
+<svg viewBox="0 0 680 300" width="100%" role="img" aria-label="メモリ3社 決算の予想比の推移" style="background:#181b24;border-radius:8px;">
+<line x1="50" x2="570" y1="260.0" y2="260.0" stroke="#2a2e3a" stroke-width="1"/><text x="42" y="265.0" fill="#9aa4b2" font-size="14" text-anchor="end">-10%</text>
+<line x1="50" x2="570" y1="206.7" y2="206.7" stroke="#6b7280" stroke-width="1"/><text x="42" y="211.7" fill="#9aa4b2" font-size="14" text-anchor="end">+0%</text>
+<line x1="50" x2="570" y1="153.3" y2="153.3" stroke="#2a2e3a" stroke-width="1"/><text x="42" y="158.3" fill="#9aa4b2" font-size="14" text-anchor="end">+10%</text>
+<line x1="50" x2="570" y1="100.0" y2="100.0" stroke="#2a2e3a" stroke-width="1"/><text x="42" y="105.0" fill="#9aa4b2" font-size="14" text-anchor="end">+20%</text>
+<line x1="50" x2="570" y1="46.7" y2="46.7" stroke="#2a2e3a" stroke-width="1"/><text x="42" y="51.7" fill="#9aa4b2" font-size="14" text-anchor="end">+30%</text>
+<text x="50.0" y="288" fill="#9aa4b2" font-size="14" text-anchor="middle">3Q25</text>
+<text x="180.0" y="288" fill="#9aa4b2" font-size="14" text-anchor="middle">4Q25</text>
+<text x="310.0" y="288" fill="#9aa4b2" font-size="14" text-anchor="middle">1Q26</text>
+<text x="440.0" y="288" fill="#9aa4b2" font-size="14" text-anchor="middle">2Q26</text>
+<text x="570.0" y="288" fill="#9aa4b2" font-size="14" text-anchor="middle">3Q26</text>
+<polyline fill="none" stroke="#3987e5" stroke-width="2" points="50.0,94.7 180.0,110.7 310.0,188.0 440.0,193.9 570.0,200.3"/>
+<circle cx="50.0" cy="94.7" r="5" fill="#3987e5" stroke="#181b24" stroke-width="2"><title>Samsung 3Q25：予想比 +21.0%</title></circle>
+<circle cx="180.0" cy="110.7" r="5" fill="#3987e5" stroke="#181b24" stroke-width="2"><title>Samsung 4Q25：予想比 +18.0%</title></circle>
+<circle cx="310.0" cy="188.0" r="5" fill="#3987e5" stroke="#181b24" stroke-width="2"><title>Samsung 1Q26：予想比 +3.5%</title></circle>
+<circle cx="440.0" cy="193.9" r="5" fill="#3987e5" stroke="#181b24" stroke-width="2"><title>Samsung 2Q26：予想比 +2.4%</title></circle>
+<circle cx="570.0" cy="200.3" r="5" fill="#3987e5" stroke="#181b24" stroke-width="2"><title>Samsung 3Q26：予想比 +1.2%</title></circle>
+<text x="580.0" y="218.3" fill="#e6e6e6" font-size="14">Samsung +1.2%</text>
+<polyline fill="none" stroke="#d95926" stroke-width="2" points="50.0,207.2 180.0,162.4 310.0,210.9 440.0,235.5"/>
+<circle cx="50.0" cy="207.2" r="5" fill="#d95926" stroke="#181b24" stroke-width="2"><title>SK Hynix 3Q25：予想比 -0.1%</title></circle>
+<circle cx="180.0" cy="162.4" r="5" fill="#d95926" stroke="#181b24" stroke-width="2"><title>SK Hynix 4Q25：予想比 +8.3%</title></circle>
+<circle cx="310.0" cy="210.9" r="5" fill="#d95926" stroke="#181b24" stroke-width="2"><title>SK Hynix 1Q26：予想比 -0.8%</title></circle>
+<circle cx="440.0" cy="235.5" r="5" fill="#d95926" stroke="#181b24" stroke-width="2"><title>SK Hynix 2Q26：予想比 -5.4%</title></circle>
+<text x="450.0" y="241.5" fill="#e6e6e6" font-size="14">SK Hynix -5.4%</text>
+<polyline fill="none" stroke="#199e70" stroke-width="2" points="180.0,94.7 310.0,30.7 440.0,94.7 570.0,180.0"/>
+<circle cx="180.0" cy="94.7" r="5" fill="#199e70" stroke="#181b24" stroke-width="2"><title>MU 4Q25：予想比 +21.0%</title></circle>
+<circle cx="310.0" cy="30.7" r="5" fill="#199e70" stroke="#181b24" stroke-width="2"><title>MU 1Q26：予想比 +33.0%</title></circle>
+<circle cx="440.0" cy="94.7" r="5" fill="#199e70" stroke="#181b24" stroke-width="2"><title>MU 2Q26：予想比 +21.0%</title></circle>
+<circle cx="570.0" cy="180.0" r="5" fill="#199e70" stroke="#181b24" stroke-width="2"><title>MU 3Q26：予想比 +5.0%</title></circle>
+<text x="580.0" y="170.0" fill="#e6e6e6" font-size="14">MU +5.0%</text>
+</svg>
+<p class="note">凡例：<span style="color:#3987e5;">●</span>Samsung（営業利益）　<span style="color:#d95926;">●</span>SK Hynix（営業利益。3Q26は10/27発表）　<span style="color:#199e70;">●</span>MU（EPS。会計四半期を近い暦四半期に置いた：FQ1'26→4Q25 … FQ4'26→3Q26）。点に触れると値が出る。韓国2社は営業利益、MUはEPSで物差しが違うため、比べるのは「向き」まで。</p>
+<p><b>MU・SK Hynixにとって：</b> 事実として、Samsungの利益の水準は過去最高を更新し、HBM出荷も増えた。同時に、3社とも「予想に対する上振れ」は縮む方向にある（SK Hynixは2Q26で-5.4%と下振れ）。これはテーゼ崩れのシグナル①〜③のどれにも当たらない（減速の見通し・値下がり・設備投資の減額ではない）。ただ、アナリストの予想が実績に追いついてきた＝<b>「良い決算」が当たり前になった段階</b>という読み方はできる（解釈）。10/27のSK Hynixは、営業利益の予想比（74.1兆ウォン比）と2027年分のHBM契約の2点で見る。</p>
+<p class="note">出典：<a href="https://finance.yahoo.com/markets/stocks/articles/samsung-q3-2026-earnings-80-113016465.html">Yahoo Finance</a>／<a href="https://www.cnbc.com/2026/10/08/samsung-q3-earnings.html">CNBC（10/8）</a>／<a href="https://www.techtimes.com/articles/328729/20261007/samsung-q3-2026-forecast-record-profit-stalled-chip-margins-won-headwind.htm">Tech Times（LSEG予想・ウォン高）</a>。過去の予想比はこれまでのブリーフィングの記録。</p>
+</div>
+
+<h2>⓪-B 写真：今週の主役、TSMCの最先端工場</h2>
+<div class="map-box">
+  <div class="map-grid">
+    <div class="map-item">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/TSMC_Fab_18_May_2025.jpg/960px-TSMC_Fab_18_May_2025.jpg" alt="TSMC Fab 18（台湾・南部科学園区）">
+      <div class="map-cap"><b>TSMC Fab 18（台湾南部・台南の南部科学園区）</b>。3nm・5nm世代の量産拠点で、NVIDIAのGPUやBroadcomのカスタムASIC（Google TPU等）など、2軸のチップの多くがここを含む台湾の先端工場で作られる。10/15の決算は、<b>NVIDIA軸とASIC軸の両方の注文量</b>を1社でまとめて映す。HBMはここで作られたチップの隣に「CoWoS」という先端パッケージで載る。</div>
+      <div class="map-src">出典：Wikimedia Commons「TSMC Fab 18 May 2025」撮影 4300streetcar（CC BY 4.0）</div>
+    </div>
+  </div>
+</div>
+<p class="note">エコシステム図は理解済みのため省略（構図は変化なし：HBMは2軸どちらを通っても必要）。</p>
 
 <h2>① マクロ・世界情勢</h2>
 <div class="box">
-<p><b>米国：</b>指数は週間でプラス（S&amp;P +1.2%・Nasdaq +0.6%）、S&amp;Pは最高値の目前。ただしSOXは週間で約−4.3%。「株全体は戻り、AI半導体だけ戻らない」形。10年債5.24%・2年債4.80%（<a href="https://www.etftrends.com/fixed-income-content-hub/treasury-yields-snapshot-october-9-2026/">ETF Trends</a>）。</p>
-<p><b>原油・地政学：</b>ブレントは10/8に$104.28で引け（<a href="https://www.cnbc.com/2026/10/08/oil-prices-today-brent-wti-hormuz.html">CNBC</a>）、12日朝は$103〜106（報道で幅）。ホルムズ海峡の通航は戦前より約30%少ない。トランプ大統領は「中間選挙（11/3）前にイランを攻撃しない」と発言。フーシ派のリヤド空港攻撃で死者（3人〜12人、報道で違う）、米国はサウジのフーシ派攻撃への参加を検討（<a href="https://www.timesofisrael.com/liveblog-october-11-2026/">Times of Israel</a>）。</p>
-<p><b>日本：</b>日経平均は10/9に69,030円（3日続落・−11円）だが、アドバンテスト（+1.66%・41,610円）と東エレク（+2.09%・12,445円）が値上がり寄与の1・2位。円は1ドル158円台。高市首相は体調を崩した後に公務を再開（時事の見出し）。</p>
-<p><b>韓国：</b>10/12は連休明けでKOSPIが4日続落・6,500割れ。外国人の売り、原油高、「AI株の過熱」への警戒（<a href="https://finance.biggo.com/news/c4e32d70-ef89-49e5-b7ce-c4145fd82560">BigGo</a>）。</p>
+<p><b>金利：</b> 10年債利回りは今週5.4%近くまで上がり2002年以来の高さを付けた後、金曜は5.2%台に戻した（<a href="https://www.bloomberg.com/news/articles/2026-10-09/wall-street-s-rate-shock-spreads-beneath-ai-fueled-market-rally">Bloomberg</a>、<a href="https://home.saxo/en-mena/content/articles/macro/market-quick-take---ai-revenue-doubts-hit-chipmakers-oil-and-yields-drop---09-october-2026-09102026">Saxo</a>）。<b>10/14（水）の米9月CPI</b>はクリーブランド連銀の予測で総合 前年比+3.6%・コア+2.4%（前月比+0.2%）。Reutersの集計でも市場予想は+3.6%（前月3.4%から加速）で、<b>FRBは9月に2023年以来の利上げをしており</b>、上振れなら「年内もう一度」が固まりうる。10月末のFOMC前の最後の主要指標の一つ（<a href="https://www.kitco.com/news/off-the-wire/2026-10-09/wall-st-week-ahead-bank-earnings-cpi-headline-busy-markets-week-sp-500">Reuters via Kitco</a>）。Saxoは「コアが+0.2%なら10月の利上げを見送り12月まで待てる。上振れなら10月の利上げもありうる」と整理（<a href="https://home.saxo/en-gb/content/articles/equities/week-ahead-12---16-oct-09102026">Saxo Week Ahead</a>）。10/16にはウォーシュFRB議長がIMF会合（バンコク）で対談。</p>
+<p><b>原油：</b> ブレントは$100超で高止まり。金曜は、トランプ大統領が「中間選挙（11/3）前はイランを攻撃しない」と述べたことで1%強下げた（<a href="https://finance.yahoo.com/markets/live/stock-market-today-friday-october-9-dow-sp-500-nasdaq-080148117.html">Yahoo Finance</a>）。</p>
+<p><b>円相場：</b> 10日3時時点で1ドル＝158円25銭前後（<a href="https://www.oanda.jp/lab-education/market_news/kn_2026101002000008/">共同通信配信・OANDA</a>）。介入の報道なし。本日は日本休場で、日本株は10/13（火）に米国の10/9・10/12の2日分をまとめて受ける。</p>
+<p><b>決算シーズン：</b> 10/13（火）JPモルガン・ゴールドマン・シティ・ウェルズ、10/14（水）BofA・モルガンS。大手行の利益は約+20%の見込みだが、注目は「金利5%台が資金調達・IPOをどれだけ冷やしたか」——Saxoは「話題のIPOのいくつかが棚上げ・延期された」と書いており、<b>AI企業の上場（Anthropic等）の資金調達環境</b>にもつながる論点。</p>
+<p><b>中国AI（層4）：</b> 本日の新しい動きなし。CXMTの国産HBMも新しい報道なし。3社寡占の評価は変化なし。</p>
 </div>
 
 <h2>①-B ハイパースケーラー動向</h2>
 <div class="box">
-<p><b>事実：</b>① TSMCの9月売上は前年比+54.6%・7〜9月は予想超え（<a href="https://www.cnbc.com/2026/10/08/tsmc-september-sales-hit-another-record-as-ai-boom-rolls-on.html">CNBC</a>）。② NVIDIAのRubin向けHBM4は12層のままの見込み（Counterpoint、10/8・<a href="https://www.sammyfans.com/2026/10/08/nvidia-rubin-ai-chips-to-retain-12-layer-hbm4-from-samsung-and-sk-hynix/">Sammy Fans</a>）——供給元はサムスン・SKハイニックス。③ 大手4社の設備投資の減額発表は<b>なし</b>（今日の検索の範囲）。</p>
-<p><b>構造：</b>今週の売りは「チップが売れない」ではなく「チップを買う側（AI会社）の売上は見込みどおりか」への疑い。チップを作る側（TSMC）とメモリの利益（サムスン）は過去最高。<b>需要の実数と、需要を払う側の財布の話が分かれた</b>のが今週の特徴。</p>
-<p><b>2軸の正規化比（NVDA：AVGO）：</b>新しい決算なし。約84：16のまま（10/7版と同じ。次はNVDA 11/18・AVGO 12/10）。</p>
+<p><b>事実：</b> 週末にMETA・AMZN・GOOGL・MSFT・Oracleの設備投資・自社チップ・HBM調達の新しい発表は<b>確認できなかった</b>。OpenAIについてはBloombergが「年末に年換算$70B以上の売上を見込む」と報じ、FT報道（年換算約$50B）で生まれた懸念を一部和らげた（<a href="https://www.bloomberg.com/news/articles/2026-10-09/us-stocks-set-to-rebound-as-oil-slips-ai-bubble-fears-recede">Bloomberg</a>）。</p>
+<p><b>構造：</b> 2軸モデルの最上段で動いているのは「支払い能力の見積もり」だけで、チップの割り当て（NVIDIA軸かASIC軸か）は変わっていない。今週木曜（10/15）のTSMC決算は、最上段の発注が<b>ファウンドリの注文として実際に減っていないか</b>を確かめる最初の材料になる。</p>
+
+<p style="font-weight:bold;margin-top:14px;">【2軸の正規化比（NVDA：AVGO）】 <span class="note">（前回決算ベース：NVDA 2026年8月決算・AVGO 2026/9/2決算。本日は新しい決算なし）</span></p>
+<table>
+<tr><th>時点</th><th>比率</th><th>内訳</th></tr>
+<tr><td>1年前</td><td>約89：11</td><td>―</td></tr>
+<tr><td>直近（水準）</td><td><b>約84：16</b></td><td>NVDAデータセンター$89.0B／AVGO AI半導体$16.7B</td></tr>
+<tr><td>1年間の純増分</td><td>約81：19</td><td>NVDA +$48.0B／AVGO +$11.5B</td></tr>
+<tr><td>先行き（会社目標ベース）</td><td>約85：15</td><td>NVDA FY2028 売上+70%ガイダンス／AVGO FY2027 AI売上目標$115B（NVDAが需要どおり2倍なら約87：13）</td></tr>
+<tr><td>ユーザー予想</td><td>80：20</td><td>―</td></tr>
+</table>
+<div class="bar"><span style="color:#76b900;">NVDA ██████████████████████████████████</span><span style="color:#444;">░░░░░░░</span> 84%<br><span style="color:#4a9eff;">AVGO ███████</span><span style="color:#444;">░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░</span> 16%</div>
+<p class="note">読み方：水準比は1年で約5pt動いただけ。増分の配分でもNVDAが約8割で、比は動きにくい。ユーザー予想との差（約4pt）は変わらず。</p>
+<p class="note">注意：①NVDAはシステム・ネットワーク込み、AVGOはXPU＋ネットワーク半導体のみで定義が非対称（ASIC側は小さく出やすい）。②AMD・Marvell等は含めない概算。③出典：NVDA直近決算・AVGO 2026/9/2決算。次の更新はNVDA決算（11/18予定）とAVGO決算（12/10予定）。</p>
+
+<p><b>判断：</b> MU・SK Hynixにとって、HBMは両軸どちらを通っても必要という構図は変わらない。論点は「最上段の支払い能力」で、答えは今週のTSMC（注文）→10月後半の大手4社決算（2027年の設備投資）の順に出る。シグナル③は未点灯のまま。</p>
 </div>
 
 <div class="ai">
 <h2>🤖 AI ─ Anthropic・OpenAI の動きと、そのAIを動かすチップ</h2>
 <div class="box">
-<p class="note">Anthropicはこのレポートを書いているAI（Claude）の会社。良く見せも悪く見せもせず、事実と出典だけを書く。</p>
-<p><b>OpenAI：</b>FTが9月の年換算売上を約$50B（伝わっていた約$70Bより約$20B少ない）と報道。差の多くは、Anthropicの数字（クラウド経由の売上を総額で計上）と並べるために数え方をそろえようとしたことから生じたとされる。Bloombergは「年末に$70B以上を見込む」と報道（<a href="https://www.thestar.com.my/tech/tech-news/2026/10/09/openai039s-annualized-revenue-20-billion-less-than-previously-signaled-ft-reports">The Star（Reuters）</a>・<a href="https://thenextweb.com/news/openai-revenue-70bn-year-end-50bn-september">The Next Web</a>）。ChatGPTでGPT-6の提供を拡大。</p>
-<p><b>Anthropic：</b>10/7にClaude Haiku 5.5を公開（Haiku 4.5より約75%安い）。年換算売上は7月に$65B超・年末$100Bの見込み（ロイターの以前の報道）。<b>公開版のS-1（目論見書）は今日も確認できない</b>。テスト中のモデルが想定外の動きをした件の開示に、ホワイトハウスの作業部会が透明性を求めている（集約サイト経由・一次発表は未確認）。</p>
-<p><b>どのチップで動いているか：</b>10/7版の表から変更なし（Anthropic＝Google TPU（AVGO）・AWS Trainium・NVIDIA／OpenAI＝NVIDIA GPU・自社チップJalapeño（AVGO）・Cerebras）。HBMを通らないのはCerebrasだけ、という構図も同じ。</p>
-<p><b>MU・000660・005930にとって：</b>AI会社の売上が「数え方」で小さく見えても、チップの注文の実数（TSMCの月次）は落ちていない。ただしAI会社の資金繰りへの疑いは、HBMの<b>2027年分の契約の値段</b>の交渉に効きうる——ここは10月下旬の決算説明会で確かめる。</p>
-</div>
-</div>
-
-<h2>② 株価一覧（確かめられた値のみ）</h2>
+<p class="note">毎日置く欄。Anthropicはこのレポートを書いているAI（Claude）の会社。良く見せも悪く見せもせず、事実と出典だけを書く。</p>
+<p><b>OpenAI：</b></p>
+<ul>
+<li>Bloomberg：年末に<b>年換算$70B以上</b>の売上を見込む（<a href="https://www.bloomberg.com/news/articles/2026-10-09/us-stocks-set-to-rebound-as-oil-slips-ai-bubble-fears-recede">Bloomberg</a>）。FT報道（約$50B）とは「今の実績」と「年末の見込み」で時点が違い、矛盾ではない点に注意。</li>
+<li><b>先週分で未掲載だった話：</b>10/7からChatGPTで<b>GPT-6</b>と新しい画面（回答の中にボタン・計算機・編集できるグラフを表示する「Intelligent UI」）の配信を開始。有料版は「GPT-6 Sol」、無料・Go版は10/8から「GPT-6 Luna」。会社は週12億人超の利用者に届くとしている（<a href="https://letsdatascience.com/news/openai-brings-gpt-6-and-intelligent-ui-to-chatgpt-4f0d797c">Let's Data Science（TechCrunchの取材を引用）</a>）。最上位の「GPT-6 Astra」は9月に一部の企業向けに限定公開（<a href="https://news.bgov.com/artificial-intelligence/openai-rolls-out-gpt-6-astra-model-with-cyber-guardrails-1">Bloomberg Government</a>）。AstraとSol/Lunaの関係は公式発表で確認できていない。</li>
+<li>週末（10/10〜11）の新しい発表は確認できなかった。</li>
+</ul>
+<p><b>Anthropic：</b></p>
+<ul>
+<li><b>本日の新しい動きなし。</b>公開版のS-1（目論見書）は引き続き確認できない。報道ではBloombergが「11/9の週から売り込み（ロードショー）」とし、そのためには<b>10月下旬までにS-1の公開が必要</b>（公開から15日以上空ける規則）（<a href="https://finance.yahoo.com/markets/stocks/articles/anthropic-public-1-still-missing-210349323.html">Yahoo Finance</a>）。上場先はNasdaqと報じられ、ティッカーは未公表。</li>
+<li>金利5%台でIPOの延期が出ている（Saxo）ことは、上場時期の外部要因として頭に置く。</li>
+</ul>
+<p><b>どのチップで動いているか（10/12時点）：</b></p>
 <table>
-<tr><th>銘柄</th><th>最新の値</th><th>メモ</th></tr>
-<tr><td>SOX指数</td><td>12,572.42（10/9・−0.41%）</td><td>10/8に−3.4〜3.7%</td></tr>
-<tr><td>NVDA</td><td>$229.28（10/9・−0.52%）</td><td>10/6の$239.30から−4.2%。10/8に約−3%</td></tr>
-<tr><td>MU★</td><td>$1,029.00（10/9・−0.66%）</td><td>10/8 −4.79%（$1,035.84）</td></tr>
-<tr><td>AVGO</td><td>10/9終値は未取得</td><td>10/8 −4.35%（報道）</td></tr>
-<tr><td>AMD</td><td>10/9終値は未取得</td><td>10/8 −3.90%（報道）。CNNの表示に$608.10（−2.03%）があるが日付が確かめられない</td></tr>
-<tr><td>SK Hynix 本株★</td><td>₩1,681,000（10/8・−2.44%）</td><td>10/12は取引中に約−3.8%</td></tr>
-<tr><td>SKHY（ADR・参考）</td><td>10/8に約$170.50（−4.3%・取引中の値）</td><td>終値・プレミアムは未計算</td></tr>
-<tr><td>Samsung 本株★</td><td>₩262,000（10/8・−2.4%）</td><td>10/12は取引中に₩255,500（−2.48%）</td></tr>
-<tr><td>アドバンテスト</td><td>¥41,610（10/9・+1.66%）</td><td>日経平均への値上がり寄与1位</td></tr>
-<tr><td>東京エレクトロン</td><td>¥12,445（10/9・+2.09%）</td><td></td></tr>
-<tr><td>TSMC・ASML・その他</td><td>未取得</td><td>PCが戻れば全銘柄を取得</td></tr>
+<tr><th>会社</th><th>チップ</th><th>規模・時期</th><th>関係する銘柄</th></tr>
+<tr><td>Anthropic</td><td>Google TPU（Broadcom共同設計）</td><td>3.5GW・全体で最大5GW｜TPUの計算能力リース 5年$125.2B</td><td>AVGO</td></tr>
+<tr><td>Anthropic</td><td>AWS Trainium2</td><td>約50万個｜S-1報道：Amazon向け約$110B</td><td>（Amazon自社）</td></tr>
+<tr><td>Anthropic</td><td>NVIDIA（Azure、Nscale・LambdaのVera Rubin）</td><td>Azure最大1GW｜S-1報道：Microsoft向け約$31B</td><td>NVDA</td></tr>
+<tr><td>OpenAI</td><td>NVIDIA GPU（主力。Stargate＝Oracle等の拠点）</td><td>アビリーン1.2GW稼働中</td><td>NVDA・ORCL</td></tr>
+<tr><td>OpenAI</td><td>AMD Instinct</td><td>6GW契約</td><td>AMD</td></tr>
+<tr><td>OpenAI</td><td>自社チップ「Jalapeño」（Broadcomと共同設計・推論用）</td><td>年末から配備、10GW規模</td><td>AVGO</td></tr>
+<tr><td>OpenAI</td><td>Cerebras（HBMを使わない設計）</td><td>アルトマン氏が「近いパートナー」と再確認（10/5）</td><td>（Cerebras）</td></tr>
 </table>
-<p class="note">出典：<a href="https://stockanalysis.com/stocks/mu/">StockAnalysis（MU）</a>・<a href="https://stockanalysis.com/quote/krx/000660/">StockAnalysis（000660）</a>・<a href="https://startupfortune.com/chip-stocks-sink-into-a-correction-even-as-samsung-posts-record-profit/">Startup Fortune（10/8）</a>・<a href="https://www.marketbeat.com/instant-alerts/price-sk-hynix-nasdaq-skhy-stock-price-down-43-should-you-sell-2026-10-08/">MarketBeat（SKHY）</a>・<a href="https://en.sedaily.com/finance/2026/10/10/samsung-shares-fall-despite-record-quarterly-profit">Seoul Economic Daily</a></p>
-
-<div class="box" style="border-color:#e3b341;">
-<p class="warn" style="margin:0;"><b>以下の②-Bは10/7朝のPC版（10/6終値）のままです。</b> 現在値・上昇余地は10/6の株価で計算されています。この4日で保有3銘柄は約−5〜9%下げたので、<b>今の株価で計算し直すと上昇余地はもっと大きく出ます</b>（上の保有ポートフォリオの表の「目標まで」が今の値での計算）。</p>
+<p><b>変わったこと：</b> 表の中身の変更なし。</p>
+<p><b>MU・SKHY・Samsungにとって：</b> Cerebras以外はすべてHBMを積む。GPT-6を無料版を含む全利用者に広げたことは、推論（AIが答えを出す処理）の計算量を増やす方向の動き。それが売上の伸び（年末$70Bの見込み）につながるかが、先週の「財布」の疑問への答えになる（推定）。</p>
 </div>
+</div>
+
+<h2>② 株価一覧（10/9 確定終値・韓国は10/8）</h2>
+<div class="box">
+<p><b>【インデックス】</b><br>
+🔴 SOX指数 12,572.42 前日比 -0.41%<br>
+🟢 NASDAQ 27,366.17 前日比 +0.64%</p>
+
+<p><b>【川上：装置】</b><br>
+🟢 ASML $1,780.34 前日比 +0.60% | 目標$2,102.18（乖離+18.1%・16人）｜<b>10/14決算</b><br>
+🔴 AMAT $507.03 前日比 -0.50% | 目標$638.94（+26.0%・36人）<br>
+🔴 LRCX★ $318.84 前日比 -0.55% | 目標$375.81（乖離+17.9%・31人）| 本日判断: 見送り（優先度低）<br>
+🟢 TEL(東京エレク) ¥12,445 前日比 +2.09% | 目標¥15,275（+22.7%・23人）</p>
+
+<p><b>【川上：検査（後工程ATE二強＋欠陥検査・計測）】</b><br>
+🟢 アドバンテスト ¥41,610 前日比 +1.66% | 後工程SoCテスト世界首位・目標¥42,686（+2.6%・21人）<br>
+🟢 Teradyne $402.68 前日比 +0.99% | ATE二番手・産業ロボット併営<br>
+🔴 KLAC $195.57 前日比 -0.58% | ウェーハ欠陥検査・CD計測の王者・目標$232.77（+19.0%・26人）<br>
+🟢 Camtek $152.81 前日比 +1.53% | 先端パッケージング(HBM)検査専業・目標$182.70（+19.6%・10人）</p>
+
+<p><b>【川中：ファブレス設計】</b><br>
+🔴 NVDA $229.28 前日比 -0.52% | 目標$328.72（+43.4%・59人）。EPS上方修正46人・下方0人、PER変化+0.1%——業績予想は上がり、評価は横ばい<br>
+🔴 AMD $608.10 前日比 -2.03% | 目標$636.21（+4.6%・50人）。分類が②→<b>⑤期待先行型</b>に（EPS修正+1.4%、PER変化+15.1%）<br>
+🟢 AVGO $361.54 前日比 +0.39% | 目標$531.31（+47.0%・47人）。EPS修正↓27＞↑12で⚠目標が古い可能性<br>
+🔴 ARM $266.28 前日比 -3.27%<br>
+🔴 QCOM $175.50 前日比 -0.29%</p>
+
+<p><b>【川中：IDM】</b><br>
+🔴 INTC $104.70 前日比 -2.22%｜10/23決算<br>
+🔴 TXN $283.74 前日比 -1.55%<br>
+🔴 STM $52.06 前日比 -1.23%</p>
+
+<p><b>【川下：ファウンドリ】</b><br>
+🔴 TSMC(ADR) $453.31 前日比 -1.02% | 目標$555.01（+22.4%・20人）。ADRプレミアム+13.5%。<b>10/15決算</b>・9月売上 前年比+54.6%</p>
+
+<p><b>【川下：メモリ・HBM】</b><br>
+🔴 MU★ $1,029.00 前日比 -0.66% | 目標$1,555.13（乖離+51.1%・46人）| 本日判断: 待機（保有分はホールド継続）<br>
+🔴 SK Hynix ₩1,605,000  前日比 -4.52%（10/12・15時更新）| 目標₩3,141,025（+95.7%・38人）<br>
+🔴 SKHY(ADR・参考) $169.03 前日比 -0.86% | 目標$252.21（+49.2%・14人）・プレミアム+35.0%<br>
+🔴 Samsung ₩250,500  前日比 -4.39%（10/12・15時更新）| 目標₩478,906（+91.2%・36人）｜10/8 3Q暫定：営業利益107.4兆（予想比+1.2%）</p>
+
+<p><b>【NVDA以外の注目】</b><br>
+🟢 COHR $312.62 前日比 +3.40% | 光配線。目標$412.52（+32.0%・23人）<br>
+🟢 MRVL $275.28 前日比 +0.25% | 目標$337.99（+22.8%・44人）<br>
+🔴 AMKR $49.12 前日比 -3.69% | 先端パッケージング</p>
+</div>
+
 <h2>②-B 割安度：現在値 → アナリスト予想株価（再評価の勢いが主軸）</h2>
 <style>
 .vt-wrap{max-height:80vh;overflow:auto;border:1px solid #2a2e3a;border-radius:8px;margin:10px 0;-webkit-overflow-scrolling:touch;}
@@ -169,74 +315,169 @@ table:not(.vt)>tbody,table:not(.vt)>thead{display:table;width:calc(100% - 2px);}
 <thead><tr><th>銘柄</th><th>領域</th><th>現在値</th><th>EPS修正<br>30日</th><th>PER変化<br>30日</th><th>分類</th><th>再評価の<br>勢い</th><th>修正人数<br>↑／↓</th><th>来期EPS<br>修正</th><th>ジャンプ<br>倍率</th><th>決算まで</th><th>予想株価<br>（人数）</th><th>上昇<br>余地</th><th>1年の<br>振れ幅</th><th>S&amp;P比<br>÷振れ幅</th><th>予想<br>PER</th><th>PEG</th><th>外れた時<br>のリスク</th></tr></thead><tbody>
 <tr class="grp"><td colspan="18"><span>📏 基準：S&amp;P 500全体の12か月上昇余地 <b class="up">+21.3%</b>（目標9,281／直前営業日（日付はレポートで要確認）終値7,652・FactSetボトムアップ・2026-10-02時点）── 各銘柄の「S&amp;P比」はこれとの差</span></td></tr>
 <tr class="grp"><td colspan="18"><span>▼ 保有・注目の銘柄（韓国現地株→MU→SKHY→MRVL→アドバンテスト→Camtek→NVDA→AVGO）</span></td></tr>
-<tr><td>SK Hynix 本株(000660)★</td><td>メモリ</td><td>₩1,773,000</td><td><span class="up">+0.6%</span><br><span class="note" style="font-size:16px;">FY27・40人<br>併記 FY26 +0.6%</span></td><td class="up">+7.1%</td><td class="cls"><span style="color:#9aa4b2;font-weight:bold;">⑥様子見型</span></td><td>—</td><td>↑7／↓4</td><td class="note">同左</td><td>—</td><td>あと20日（10/27）</td><td>₩3,141,025<span class="note">（38人）</span></td><td class="cls"><span class="up">+77.2%</span><br><span style="font-size:16px;"><span class="up">S&amp;P比 +56pt</span><br><span class="note">予想の幅 -13%〜+199%</span></span></td><td>±90%<br><span class="note" style="font-size:16px;">実績</span></td><td class="up"><b>+0.62</b><br><span class="note" style="font-size:16px;">中身あり</span></td><td>3.8</td><td>0.20</td><td>—</td></tr>
-<tr><td>Samsung 本株(005930)</td><td>メモリ</td><td>₩272,000</td><td><span class="up">+1.9%</span><br><span class="note" style="font-size:16px;">FY27・33人<br>併記 FY26 -1.3%</span></td><td class="up">+4.4%</td><td class="cls"><span style="color:#9aa4b2;font-weight:bold;">⑥様子見型</span></td><td style="background:rgba(74,158,255,0.30);font-weight:bold;">45</td><td>↑5／↓11</td><td class="note">同左</td><td>—</td><td>あと21日（10/28）</td><td>₩477,517<span class="note">（36人）</span></td><td class="cls"><span class="up">+75.6%</span><br><span style="font-size:16px;"><span class="up">S&amp;P比 +54pt</span><br><span class="note">予想の幅 +7%〜+167%</span><br><span class="warn">⚠目標が古い可能性（修正↓11＞↑5）</span></span></td><td>±76%<br><span class="note" style="font-size:16px;">実績</span></td><td class="up"><b>+0.72</b><br><span class="note" style="font-size:16px;">中身あり</span></td><td>3.9</td><td>0.13</td><td style="background:rgba(63,185,80,0.55);font-weight:bold;">100</td></tr>
-<tr><td>MU★</td><td>メモリ</td><td>$1,048.12</td><td><span class="up">+12.7%</span><br><span class="note" style="font-size:16px;">FY27・36人</span></td><td class="down">-8.5%</td><td class="cls"><span style="color:#3fb950;font-weight:bold;">①実績あり・反応未追随</span><br><span class="note">＋③賭け型の前提（ジャンプ2.8倍・決算あと78日）</span></td><td style="background:rgba(74,158,255,0.33);font-weight:bold;">50</td><td>↑5／↓1</td><td class="up">+20.6%</td><td>2.8倍 ⚠</td><td>あと78日（12/24）</td><td>$1,535.57<span class="note">（46人）</span></td><td class="cls"><span class="up">+46.5%</span><br><span style="font-size:16px;"><span class="up">S&amp;P比 +25pt</span><br><span class="warn">⚠予想の幅 -66%〜+110%</span></span></td><td>±50%<br><span class="note" style="font-size:16px;">オプション</span></td><td class="up"><b>+0.51</b><br><span class="note" style="font-size:16px;">中身あり</span></td><td>5.1</td><td>0.16</td><td style="background:rgba(63,185,80,0.53);font-weight:bold;">95</td></tr>
-<tr><td>SKHY(SK Hynix ADR)</td><td>メモリ</td><td>$182.35</td><td><span class="up">+0.6%</span><br><span class="note" style="font-size:16px;">000660.KS・FY27・40人<br>併記 FY26 +0.6%</span></td><td class="up">+7.1%</td><td class="cls"><span style="color:#9aa4b2;font-weight:bold;">⑥様子見型</span></td><td style="background:rgba(74,158,255,0.30);font-weight:bold;">45</td><td>↑7／↓4</td><td class="note">同左</td><td>—</td><td>あと21日（10/28）</td><td>$252.21<span class="note">（14人）</span></td><td class="cls"><span class="up">+38.3%</span><br><span style="font-size:16px;"><span class="up">S&amp;P比 +17pt</span><br><span class="note">予想の幅 -17%〜+95%</span></span></td><td>±54%<br><span class="note" style="font-size:16px;">オプション</span></td><td class=""><b>+0.31</b><br><span class="note" style="font-size:16px;">誤差の範囲</span></td><td>5.3</td><td>0.28</td><td style="background:rgba(63,185,80,0.49);font-weight:bold;">86</td></tr>
-<tr><td>MRVL</td><td>その他</td><td>$286.42</td><td><span class="up">+0.5%</span><br><span class="note" style="font-size:16px;">FY28・42人<br>併記 FY27 +0.3%</span></td><td class="up">+27.5%</td><td class="cls"><span style="color:#7ee787;font-weight:bold;">⑨キャッチアップ型</span><br><span class="note">＋③賭け型の前提（ジャンプ2.2倍・決算あと56日）</span></td><td style="background:rgba(74,158,255,0.44);font-weight:bold;">75</td><td>↑35／↓1</td><td class="note">同左</td><td>2.2倍 ⚠</td><td>あと56日（12/2）</td><td>$293.88<span class="note">（43人）</span></td><td class="cls"><span class="up">+2.6%</span><br><span style="font-size:16px;"><span class="down">S&amp;P比 -19pt</span><br><span class="note">予想の幅 -27%〜+57%</span></span></td><td>±63%<br><span class="note" style="font-size:16px;">オプション</span></td><td class="down"><b>-0.30</b><br><span class="note" style="font-size:16px;">指数以下</span></td><td>42.4</td><td>0.91</td><td style="background:rgba(63,185,80,0.22);font-weight:bold;">26</td></tr>
-<tr><td>アドバンテスト</td><td>検査</td><td>¥41,850</td><td><span class="up">+1.8%</span><br><span class="note" style="font-size:16px;">FY27・21人</span></td><td class="up">+24.2%</td><td class="cls"><span style="color:#7ee787;font-weight:bold;">⑨キャッチアップ型</span></td><td style="background:rgba(74,158,255,0.48);font-weight:bold;">84</td><td>↑1／↓0</td><td class="up">+5.5%</td><td>0.5倍</td><td>あと21日（10/28）</td><td>¥42,686<span class="note">（21人）</span></td><td class="cls"><span class="up">+2.0%</span><br><span style="font-size:16px;"><span class="down">S&amp;P比 -19pt</span><br><span class="warn">⚠予想の幅 -45%〜+31%</span></span></td><td>±73%<br><span class="note" style="font-size:16px;">実績</span></td><td class="down"><b>-0.26</b><br><span class="note" style="font-size:16px;">指数以下</span></td><td>176.0 ⚠</td><td>1.86</td><td style="background:rgba(63,185,80,0.15);font-weight:bold;">11</td></tr>
-<tr><td>Camtek(CAMT)</td><td>検査</td><td>$154.10</td><td><span class="down">-0.7%</span><br><span class="note" style="font-size:16px;">FY27・9人<br>併記 FY26 +0.0%</span></td><td class="up">+6.5%</td><td class="cls"><span style="color:#7ee787;font-weight:bold;">⑨キャッチアップ型</span><br><span class="note">＋③賭け型の前提（ジャンプ7.4倍・決算あと40日）</span></td><td style="background:rgba(74,158,255,0.17);font-weight:bold;">16</td><td>↑12／↓0</td><td class="note">同左</td><td>7.4倍 ⚠</td><td>あと40日（11/16）</td><td>$182.70<span class="note">（10人）</span></td><td class="cls"><span class="up">+18.6%</span><br><span style="font-size:16px;"><span class="down">S&amp;P比 -3pt</span><br><span class="note">予想の幅 -1%〜+30%</span></span></td><td>±69%<br><span class="note" style="font-size:16px;">オプション</span></td><td class="down"><b>-0.04</b><br><span class="note" style="font-size:16px;">指数以下</span></td><td>32.2</td><td>2.40</td><td style="background:rgba(63,185,80,0.23);font-weight:bold;">28</td></tr>
-<tr><td>NVDA</td><td>ファブレス</td><td>$239.21</td><td><span class="up">+2.2%</span><br><span class="note" style="font-size:16px;">FY28・53人<br>併記 FY27 +0.1%</span></td><td class="up">+1.7%</td><td class="cls"><span style="color:#3fb950;font-weight:bold;">①実績あり・反応未追随</span><br><span class="note">＋③賭け型の前提（ジャンプ2.0倍・決算あと42日）</span></td><td style="background:rgba(74,158,255,0.32);font-weight:bold;">48</td><td>↑46／↓0</td><td class="note">同左</td><td>2.0倍 ⚠</td><td>あと42日（11/18）</td><td>$328.72<span class="note">（59人）</span></td><td class="cls"><span class="up">+37.4%</span><br><span style="font-size:16px;"><span class="up">S&amp;P比 +16pt</span><br><span class="note">予想の幅 -25%〜+115%</span></span></td><td>±38%<br><span class="note" style="font-size:16px;">オプション</span></td><td class=""><b>+0.43</b><br><span class="note" style="font-size:16px;">誤差の範囲</span></td><td>15.1</td><td>0.29</td><td style="background:rgba(63,185,80,0.46);font-weight:bold;">80</td></tr>
-<tr><td>AVGO</td><td>ファブレス</td><td>$375.74</td><td><span class="down">-0.9%</span><br><span class="note" style="font-size:16px;">FY27・48人<br>併記 FY26 +0.2%</span></td><td class="up">+6.1%</td><td class="cls"><span style="color:#9aa4b2;font-weight:bold;">⑥様子見型</span><br><span class="note">＋③賭け型の前提（ジャンプ2.5倍・決算あと64日）</span></td><td style="background:rgba(74,158,255,0.14);font-weight:bold;">9</td><td>↑12／↓27</td><td class="note">同左</td><td>2.5倍 ⚠</td><td>あと64日（12/10）</td><td>$531.31<span class="note">（47人）</span></td><td class="cls"><span class="up">+41.4%</span><br><span style="font-size:16px;"><span class="up">S&amp;P比 +20pt</span><br><span class="warn">⚠予想の幅 -43%〜+90%</span><br><span class="warn">⚠目標が古い可能性（修正↓27＞↑12）</span></span></td><td>±44%<br><span class="note" style="font-size:16px;">オプション</span></td><td class=""><b>+0.45</b><br><span class="note" style="font-size:16px;">誤差の範囲</span></td><td>19.4</td><td>0.36</td><td style="background:rgba(63,185,80,0.45);font-weight:bold;">77</td></tr>
+<tr><td>SK Hynix 本株(000660)★</td><td>メモリ</td><td>₩1,681,000</td><td><span class="up">+0.2%</span><br><span class="note" style="font-size:16px;">FY27・40人<br>併記 FY26 +0.8%</span></td><td class="down">-6.4%</td><td class="cls"><span style="color:#f0883e;font-weight:bold;">⑦期待後退型</span></td><td>—</td><td>↑7／↓4</td><td class="note">同左</td><td>—</td><td>あと15日（10/27）</td><td>₩3,141,025<span class="note">（38人）</span></td><td class="cls"><span class="up">+86.9%</span><br><span style="font-size:16px;"><span class="up">S&amp;P比 +66pt</span><br><span class="note">予想の幅 -9%〜+215%</span></span></td><td>±90%<br><span class="note" style="font-size:16px;">実績</span></td><td class="up"><b>+0.73</b><br><span class="note" style="font-size:16px;">中身あり</span></td><td>3.6</td><td>0.18</td><td>—</td></tr>
+<tr><td>Samsung 本株(005930)</td><td>メモリ</td><td>₩262,000</td><td><span class="up">+4.2%</span><br><span class="note" style="font-size:16px;">FY27・33人<br>併記 FY26 -1.2%</span></td><td class="down">-6.7%</td><td class="cls"><span style="color:#3fb950;font-weight:bold;">①実績あり・反応未追随</span></td><td style="background:rgba(74,158,255,0.32);font-weight:bold;">48</td><td>↑5／↓11</td><td class="note">同左</td><td>—</td><td>あと16日（10/28）</td><td>₩478,906<span class="note">（36人）</span></td><td class="cls"><span class="up">+82.8%</span><br><span style="font-size:16px;"><span class="up">S&amp;P比 +62pt</span><br><span class="note">予想の幅 +11%〜+177%</span><br><span class="warn">⚠目標が古い可能性（修正↓11＞↑5）</span></span></td><td>±75%<br><span class="note" style="font-size:16px;">実績</span></td><td class="up"><b>+0.82</b><br><span class="note" style="font-size:16px;">中身あり</span></td><td>3.6</td><td>0.12</td><td style="background:rgba(63,185,80,0.55);font-weight:bold;">100</td></tr>
+<tr><td>MU★</td><td>メモリ</td><td>$1,029.00</td><td><span class="up">+12.7%</span><br><span class="note" style="font-size:16px;">FY27・36人</span></td><td class="down">-11.2%</td><td class="cls"><span style="color:#3fb950;font-weight:bold;">①実績あり・反応未追随</span><br><span class="note">＋③賭け型の前提（ジャンプ2.8倍・決算あと73日）</span></td><td style="background:rgba(74,158,255,0.33);font-weight:bold;">50</td><td>↑5／↓1</td><td class="up">+20.6%</td><td>2.8倍 ⚠</td><td>あと73日（12/24）</td><td>$1,555.13<span class="note">（46人）</span></td><td class="cls"><span class="up">+51.1%</span><br><span style="font-size:16px;"><span class="up">S&amp;P比 +30pt</span><br><span class="warn">⚠予想の幅 -65%〜+192%</span></span></td><td>±50%<br><span class="note" style="font-size:16px;">オプション</span></td><td class="up"><b>+0.59</b><br><span class="note" style="font-size:16px;">中身あり</span></td><td>5.0</td><td>0.16</td><td style="background:rgba(63,185,80,0.51);font-weight:bold;">92</td></tr>
+<tr><td>SKHY(SK Hynix ADR)</td><td>メモリ</td><td>$169.03</td><td><span class="up">+0.2%</span><br><span class="note" style="font-size:16px;">000660.KS・FY27・40人<br>併記 FY26 +0.8%</span></td><td class="down">-6.4%</td><td class="cls"><span style="color:#f0883e;font-weight:bold;">⑦期待後退型</span></td><td style="background:rgba(74,158,255,0.24);font-weight:bold;">30</td><td>↑7／↓4</td><td class="note">同左</td><td>—</td><td>あと16日（10/28）</td><td>$252.21<span class="note">（14人）</span></td><td class="cls"><span class="up">+49.2%</span><br><span style="font-size:16px;"><span class="up">S&amp;P比 +28pt</span><br><span class="note">予想の幅 -10%〜+110%</span></span></td><td>±55%<br><span class="note" style="font-size:16px;">オプション</span></td><td class="up"><b>+0.51</b><br><span class="note" style="font-size:16px;">中身あり</span></td><td>4.9</td><td>0.24</td><td style="background:rgba(63,185,80,0.50);font-weight:bold;">89</td></tr>
+<tr><td>MRVL</td><td>その他</td><td>$275.28</td><td><span class="up">+8.4%</span><br><span class="note" style="font-size:16px;">FY28・43人<br>併記 FY27 +0.5%</span></td><td class="up">+8.1%</td><td class="cls"><span style="color:#3fb950;font-weight:bold;">②緩やかな再評価型</span><br><span class="note">＋③賭け型の前提（ジャンプ2.4倍・決算あと51日）</span></td><td style="background:rgba(74,158,255,0.51);font-weight:bold;">91</td><td>↑35／↓1</td><td class="note">同左</td><td>2.4倍 ⚠</td><td>あと51日（12/2）</td><td>$337.99<span class="note">（44人）</span></td><td class="cls"><span class="up">+22.8%</span><br><span style="font-size:16px;"><span class="up">S&amp;P比 +2pt</span><br><span class="note">予想の幅 -24%〜+63%</span></span></td><td>±62%<br><span class="note" style="font-size:16px;">オプション</span></td><td class=""><b>+0.02</b><br><span class="note" style="font-size:16px;">誤差の範囲</span></td><td>37.8</td><td>0.68</td><td style="background:rgba(63,185,80,0.31);font-weight:bold;">47</td></tr>
+<tr><td>アドバンテスト</td><td>検査</td><td>¥41,610</td><td><span class="up">+1.8%</span><br><span class="note" style="font-size:16px;">FY27・21人</span></td><td class="up">+24.5%</td><td class="cls"><span style="color:#7ee787;font-weight:bold;">⑨キャッチアップ型</span></td><td style="background:rgba(74,158,255,0.50);font-weight:bold;">89</td><td>↑1／↓0</td><td class="up">+5.5%</td><td>0.4倍</td><td>あと16日（10/28）</td><td>¥42,686<span class="note">（21人）</span></td><td class="cls"><span class="up">+2.6%</span><br><span style="font-size:16px;"><span class="down">S&amp;P比 -19pt</span><br><span class="warn">⚠予想の幅 -45%〜+32%</span></span></td><td>±73%<br><span class="note" style="font-size:16px;">実績</span></td><td class="down"><b>-0.26</b><br><span class="note" style="font-size:16px;">指数以下</span></td><td>175.0 ⚠</td><td>1.92</td><td style="background:rgba(63,185,80,0.12);font-weight:bold;">5</td></tr>
+<tr><td>Camtek(CAMT)</td><td>検査</td><td>$152.81</td><td><span class="down">-0.7%</span><br><span class="note" style="font-size:16px;">FY27・9人<br>併記 FY26 +0.0%</span></td><td class="up">+3.5%</td><td class="cls"><span style="color:#9aa4b2;font-weight:bold;">⑥様子見型</span><br><span class="note">＋③賭け型の前提（ジャンプ7.4倍・決算あと35日）</span></td><td style="background:rgba(74,158,255,0.24);font-weight:bold;">32</td><td>↑12／↓0</td><td class="note">同左</td><td>7.4倍 ⚠</td><td>あと35日（11/16）</td><td>$182.70<span class="note">（10人）</span></td><td class="cls"><span class="up">+19.6%</span><br><span style="font-size:16px;"><span class="down">S&amp;P比 -2pt</span><br><span class="note">予想の幅 -1%〜+31%</span></span></td><td>±69%<br><span class="note" style="font-size:16px;">オプション</span></td><td class="down"><b>-0.02</b><br><span class="note" style="font-size:16px;">指数以下</span></td><td>31.9</td><td>2.22</td><td style="background:rgba(63,185,80,0.20);font-weight:bold;">23</td></tr>
+<tr><td>NVDA</td><td>ファブレス</td><td>$229.28</td><td><span class="up">+2.5%</span><br><span class="note" style="font-size:16px;">FY28・52人<br>併記 FY27 +0.1%</span></td><td class="up">+0.1%</td><td class="cls"><span style="color:#3fb950;font-weight:bold;">①実績あり・反応未追随</span><br><span class="note">＋③賭け型の前提（ジャンプ2.0倍・決算あと37日）</span></td><td style="background:rgba(74,158,255,0.36);font-weight:bold;">57</td><td>↑46／↓0</td><td class="note">同左</td><td>2.0倍 ⚠</td><td>あと37日（11/18）</td><td>$328.72<span class="note">（59人）</span></td><td class="cls"><span class="up">+43.4%</span><br><span style="font-size:16px;"><span class="up">S&amp;P比 +22pt</span><br><span class="note">予想の幅 -21%〜+125%</span></span></td><td>±38%<br><span class="note" style="font-size:16px;">オプション</span></td><td class="up"><b>+0.58</b><br><span class="note" style="font-size:16px;">中身あり</span></td><td>14.4</td><td>0.28</td><td style="background:rgba(63,185,80,0.45);font-weight:bold;">78</td></tr>
+<tr><td>AVGO</td><td>ファブレス</td><td>$361.54</td><td><span class="down">-0.9%</span><br><span class="note" style="font-size:16px;">FY27・48人<br>併記 FY26 +0.2%</span></td><td class="up">+0.3%</td><td class="cls"><span style="color:#9aa4b2;font-weight:bold;">⑥様子見型</span><br><span class="note">＋③賭け型の前提（ジャンプ2.5倍・決算あと59日）</span></td><td style="background:rgba(74,158,255,0.17);font-weight:bold;">16</td><td>↑12／↓27</td><td class="note">同左</td><td>2.5倍 ⚠</td><td>あと59日（12/10）</td><td>$531.31<span class="note">（47人）</span></td><td class="cls"><span class="up">+47.0%</span><br><span style="font-size:16px;"><span class="up">S&amp;P比 +26pt</span><br><span class="warn">⚠予想の幅 -40%〜+98%</span><br><span class="warn">⚠目標が古い可能性（修正↓27＞↑12）</span></span></td><td>±45%<br><span class="note" style="font-size:16px;">オプション</span></td><td class="up"><b>+0.58</b><br><span class="note" style="font-size:16px;">中身あり</span></td><td>18.6</td><td>0.36</td><td style="background:rgba(63,185,80,0.44);font-weight:bold;">75</td></tr>
 <tr class="grp"><td colspan="18"><span>▼ その他（再評価の勢いの高い順）</span></td></tr>
-<tr><td>AMD</td><td>ファブレス</td><td>$649.84</td><td><span class="up">+2.6%</span><br><span class="note" style="font-size:16px;">FY27・50人<br>併記 FY26 +0.2%</span></td><td class="up">+32.7%</td><td class="cls"><span style="color:#56d3f7;font-weight:bold;">④業績・期待の同時加速型</span><br><span class="note">＋③賭け型の前提（ジャンプ4.0倍・決算あと28日）</span></td><td style="background:rgba(74,158,255,0.54);font-weight:bold;">98</td><td>↑3／↓1</td><td class="note">同左</td><td>4.0倍 ⚠</td><td>あと28日（11/4）</td><td>$636.21<span class="note">（50人）</span></td><td class="cls"><span class="down">-2.1%</span><br><span style="font-size:16px;"><span class="down">S&amp;P比 -23pt</span><br><span class="warn">⚠予想の幅 -44%〜+92%</span></span></td><td>±53%<br><span class="note" style="font-size:16px;">オプション</span></td><td class="down"><b>-0.44</b><br><span class="note" style="font-size:16px;">指数以下</span></td><td>41.3</td><td>0.64</td><td style="background:rgba(63,185,80,0.24);font-weight:bold;">31</td></tr>
-<tr><td>TEL(東京エレク)</td><td>装置</td><td>¥12,805</td><td><span class="up">+1.5%</span><br><span class="note" style="font-size:16px;">FY27・21人</span></td><td class="up">+22.4%</td><td class="cls"><span style="color:#e3b341;font-weight:bold;">⑤期待先行型</span><br><span class="warn">⚠決算リスク（PEG≧1.2）</span></td><td style="background:rgba(74,158,255,0.45);font-weight:bold;">77</td><td>↑1／↓1</td><td class="up">+7.2%</td><td>1.0倍</td><td>あと23日（10/30）</td><td>¥15,275<span class="note">（23人）</span></td><td class="cls"><span class="up">+19.3%</span><br><span style="font-size:16px;"><span class="down">S&amp;P比 -2pt</span><br><span class="warn">⚠予想の幅 -34%〜+59%</span></span></td><td>±57%<br><span class="note" style="font-size:16px;">実績</span></td><td class="down"><b>-0.04</b><br><span class="note" style="font-size:16px;">指数以下</span></td><td>10.0</td><td>1.76</td><td style="background:rgba(63,185,80,0.34);font-weight:bold;">54</td></tr>
-<tr><td>INTC</td><td>IDM</td><td>$112.90</td><td><span class="up">+2.0%</span><br><span class="note" style="font-size:16px;">FY27・47人<br>併記 FY26 +0.5%</span></td><td class="up">+15.6%</td><td class="cls"><span style="color:#56d3f7;font-weight:bold;">④業績・期待の同時加速型</span><span class="note">（境界上）</span></td><td style="background:rgba(74,158,255,0.44);font-weight:bold;">75</td><td>↑4／↓1</td><td class="note">同左</td><td>—</td><td>あと16日（10/23）</td><td>$118.05<span class="note">（43人）</span></td><td class="cls"><span class="up">+4.6%</span><br><span style="font-size:16px;"><span class="down">S&amp;P比 -17pt</span><br><span class="note">予想の幅 -29%〜+77%</span></span></td><td>±60%<br><span class="note" style="font-size:16px;">オプション</span></td><td class="down"><b>-0.28</b><br><span class="note" style="font-size:16px;">指数以下</span></td><td>54.2</td><td>1.36</td><td style="background:rgba(63,185,80,0.18);font-weight:bold;">18</td></tr>
-<tr><td>AMKR</td><td>その他</td><td>$53.40</td><td><span class="up">+1.6%</span><br><span class="note" style="font-size:16px;">FY27・9人<br>併記 FY26 -0.2%</span></td><td class="up">+10.0%</td><td class="cls"><span style="color:#7ee787;font-weight:bold;">⑨キャッチアップ型</span><span class="note">（境界上）</span></td><td style="background:rgba(74,158,255,0.37);font-weight:bold;">59</td><td>↑5／↓0</td><td class="note">同左</td><td>1.3倍</td><td>あと20日（10/27）</td><td>$76.40<span class="note">（10人）</span></td><td class="cls"><span class="up">+43.1%</span><br><span style="font-size:16px;"><span class="up">S&amp;P比 +22pt</span><br><span class="note">予想の幅 +22%〜+72%</span></span></td><td>±66%<br><span class="note" style="font-size:16px;">オプション</span></td><td class=""><b>+0.33</b><br><span class="note" style="font-size:16px;">誤差の範囲</span></td><td>19.0</td><td>0.76</td><td style="background:rgba(63,185,80,0.45);font-weight:bold;">77</td></tr>
-<tr><td>COHR</td><td>その他</td><td>$337.01</td><td><span class="up">+0.1%</span><br><span class="note" style="font-size:16px;">FY27・23人</span></td><td class="up">+19.5%</td><td class="cls"><span style="color:#7ee787;font-weight:bold;">⑨キャッチアップ型</span><br><span class="note">＋③賭け型の前提（ジャンプ3.4倍・決算あと29日）</span></td><td style="background:rgba(74,158,255,0.36);font-weight:bold;">57</td><td>↑19／↓1</td><td class="up">+0.7%</td><td>3.4倍 ⚠</td><td>あと29日（11/5）</td><td>$412.52<span class="note">（23人）</span></td><td class="cls"><span class="up">+22.4%</span><br><span style="font-size:16px;"><span class="up">S&amp;P比 +1pt</span><br><span class="note">予想の幅 -17%〜+48%</span></span></td><td>±73%<br><span class="note" style="font-size:16px;">オプション</span></td><td class=""><b>+0.02</b><br><span class="note" style="font-size:16px;">誤差の範囲</span></td><td>24.0</td><td>0.92</td><td style="background:rgba(63,185,80,0.36);font-weight:bold;">57</td></tr>
-<tr><td>TSMC(ADR)</td><td>ファウンドリ</td><td>$482.10</td><td><span class="up">+0.9%</span><br><span class="note" style="font-size:16px;">FY27・13人<br>併記 FY26 +0.3%</span></td><td class="up">+11.7%</td><td class="cls"><span style="color:#e3b341;font-weight:bold;">⑤期待先行型</span></td><td style="background:rgba(74,158,255,0.36);font-weight:bold;">57</td><td>↑2／↓0</td><td class="note">同左</td><td>1.6倍</td><td>あと8日（10/15）</td><td>$555.01<span class="note">（20人）</span></td><td class="cls"><span class="up">+15.1%</span><br><span style="font-size:16px;"><span class="down">S&amp;P比 -6pt</span><br><span class="note">予想の幅 -9%〜+45%</span></span></td><td>±38%<br><span class="note" style="font-size:16px;">オプション</span></td><td class="down"><b>-0.16</b><br><span class="note" style="font-size:16px;">指数以下</span></td><td>22.0</td><td>0.92</td><td style="background:rgba(63,185,80,0.33);font-weight:bold;">51</td></tr>
-<tr><td>AMAT</td><td>装置</td><td>$529.18</td><td><span class="up">+0.1%</span><br><span class="note" style="font-size:16px;">FY27・35人<br>併記 FY26 -0.1%</span></td><td class="up">+16.3%</td><td class="cls"><span style="color:#7ee787;font-weight:bold;">⑨キャッチアップ型</span></td><td style="background:rgba(74,158,255,0.33);font-weight:bold;">50</td><td>↑3／↓1</td><td class="note">同左</td><td>1.6倍</td><td>あと37日（11/13）</td><td>$638.94<span class="note">（36人）</span></td><td class="cls"><span class="up">+20.7%</span><br><span style="font-size:16px;"><span class="down">S&amp;P比 -1pt</span><br><span class="warn">⚠予想の幅 -32%〜+70%</span></span></td><td>±55%<br><span class="note" style="font-size:16px;">オプション</span></td><td class="down"><b>-0.01</b><br><span class="note" style="font-size:16px;">指数以下</span></td><td>28.7</td><td>1.08</td><td style="background:rgba(63,185,80,0.31);font-weight:bold;">46</td></tr>
-<tr><td>Teradyne</td><td>検査</td><td>$430.13</td><td><span class="">+0.0%</span><br><span class="note" style="font-size:16px;">FY27・18人<br>併記 FY26 +0.0%</span></td><td class="up">+20.5%</td><td class="cls"><span style="color:#e3b341;font-weight:bold;">⑤期待先行型</span></td><td style="background:rgba(74,158,255,0.32);font-weight:bold;">48</td><td>↑15／↓1</td><td class="note">同左</td><td>1.6倍</td><td>あと15日（10/22）</td><td>$446.47<span class="note">（15人）</span></td><td class="cls"><span class="up">+3.8%</span><br><span style="font-size:16px;"><span class="down">S&amp;P比 -18pt</span><br><span class="note">予想の幅 -19%〜+28%</span></span></td><td>±71%<br><span class="note" style="font-size:16px;">オプション</span></td><td class="down"><b>-0.25</b><br><span class="note" style="font-size:16px;">指数以下</span></td><td>36.9</td><td>0.81</td><td style="background:rgba(63,185,80,0.24);font-weight:bold;">32</td></tr>
-<tr><td>ARM</td><td>ファブレス</td><td>$301.52</td><td><span class="">-0.0%</span><br><span class="note" style="font-size:16px;">FY27・39人</span></td><td class="up">+19.6%</td><td class="cls"><span style="color:#e3b341;font-weight:bold;">⑤期待先行型</span><br><span class="warn">⚠決算リスク（PEG≧1.2）</span><br><span class="note">＋③賭け型の前提（ジャンプ3.2倍・決算あと29日）</span></td><td style="background:rgba(74,158,255,0.32);font-weight:bold;">48</td><td>↑1／↓3</td><td class="up">+0.1%</td><td>3.2倍 ⚠</td><td>あと29日（11/5）</td><td>$290.70<span class="note">（40人）</span></td><td class="cls"><span class="down">-3.6%</span><br><span style="font-size:16px;"><span class="down">S&amp;P比 -25pt</span><br><span class="warn">⚠予想の幅 -59%〜+66%</span><br><span class="warn">⚠目標が古い可能性（修正↓3＞↑1）</span></span></td><td>±67%<br><span class="note" style="font-size:16px;">オプション</span></td><td class="down"><b>-0.37</b><br><span class="note" style="font-size:16px;">指数以下</span></td><td>98.4</td><td>2.49</td><td style="background:rgba(63,185,80,0.10);font-weight:bold;">0</td></tr>
-<tr><td>STM</td><td>IDM</td><td>$58.72</td><td><span class="">+0.0%</span><br><span class="note" style="font-size:16px;">FY27・9人<br>併記 FY26 -1.0%</span></td><td class="up">+12.5%</td><td class="cls"><span style="color:#e3b341;font-weight:bold;">⑤期待先行型</span><br><span class="note">＋③賭け型の前提（ジャンプ63.5倍・決算あと22日）</span></td><td style="background:rgba(74,158,255,0.28);font-weight:bold;">41</td><td>↑1／↓0</td><td class="note">同左</td><td>63.5倍 ⚠</td><td>あと22日（10/29）</td><td>$75.04<span class="note">（12人）</span></td><td class="cls"><span class="up">+27.8%</span><br><span style="font-size:16px;"><span class="up">S&amp;P比 +6pt</span><br><span class="note">予想の幅 -11%〜+67%</span></span></td><td>±54%<br><span class="note" style="font-size:16px;">オプション</span></td><td class=""><b>+0.12</b><br><span class="note" style="font-size:16px;">誤差の範囲</span></td><td>23.1</td><td>0.21</td><td style="background:rgba(63,185,80,0.43);font-weight:bold;">74</td></tr>
-<tr><td>TXN</td><td>IDM</td><td>$296.66</td><td><span class="">+0.0%</span><br><span class="note" style="font-size:16px;">FY27・28人<br>併記 FY26 +0.0%</span></td><td class="up">+14.8%</td><td class="cls"><span style="color:#e3b341;font-weight:bold;">⑤期待先行型</span></td><td style="background:rgba(74,158,255,0.28);font-weight:bold;">41</td><td>↑23／↓0</td><td class="note">同左</td><td>1.6倍</td><td>あと15日（10/22）</td><td>$324.71<span class="note">（31人）</span></td><td class="cls"><span class="up">+9.5%</span><br><span style="font-size:16px;"><span class="down">S&amp;P比 -12pt</span><br><span class="note">予想の幅 -24%〜+35%</span></span></td><td>±42%<br><span class="note" style="font-size:16px;">オプション</span></td><td class="down"><b>-0.28</b><br><span class="note" style="font-size:16px;">指数以下</span></td><td>27.9</td><td>1.05</td><td style="background:rgba(63,185,80,0.28);font-weight:bold;">40</td></tr>
-<tr><td>LRCX</td><td>装置</td><td>$333.34</td><td><span class="up">+0.1%</span><br><span class="note" style="font-size:16px;">FY27・30人</span></td><td class="up">+8.3%</td><td class="cls"><span style="color:#9aa4b2;font-weight:bold;">⑥様子見型</span><br><span class="note">＋③賭け型の前提（ジャンプ2.0倍・決算あと15日）</span></td><td style="background:rgba(74,158,255,0.28);font-weight:bold;">39</td><td>↑3／↓0</td><td class="up">+1.7%</td><td>2.0倍 ⚠</td><td>あと15日（10/22）</td><td>$375.65<span class="note">（31人）</span></td><td class="cls"><span class="up">+12.7%</span><br><span style="font-size:16px;"><span class="down">S&amp;P比 -9pt</span><br><span class="note">予想の幅 -13%〜+50%</span></span></td><td>±57%<br><span class="note" style="font-size:16px;">オプション</span></td><td class="down"><b>-0.15</b><br><span class="note" style="font-size:16px;">指数以下</span></td><td>28.3</td><td>1.61</td><td style="background:rgba(63,185,80,0.25);font-weight:bold;">34</td></tr>
-<tr><td>ASML</td><td>装置</td><td>$1,833.80</td><td><span class="up">+0.4%</span><br><span class="note" style="font-size:16px;">FY27・33人<br>併記 FY26 +0.4%</span></td><td class="up">+6.5%</td><td class="cls"><span style="color:#9aa4b2;font-weight:bold;">⑥様子見型</span></td><td style="background:rgba(74,158,255,0.26);font-weight:bold;">36</td><td>↑4／↓0</td><td class="note">同左</td><td>1.9倍</td><td>あと7日（10/14）</td><td>$2,110.34<span class="note">（16人）</span></td><td class="cls"><span class="up">+15.1%</span><br><span style="font-size:16px;"><span class="down">S&amp;P比 -6pt</span><br><span class="warn">⚠予想の幅 -52%〜+60%</span></span></td><td>±45%<br><span class="note" style="font-size:16px;">オプション</span></td><td class="down"><b>-0.14</b><br><span class="note" style="font-size:16px;">指数以下</span></td><td>31.5</td><td>1.15</td><td style="background:rgba(63,185,80,0.25);font-weight:bold;">34</td></tr>
-<tr><td>KLAC</td><td>検査</td><td>$197.40</td><td><span class="up">+0.2%</span><br><span class="note" style="font-size:16px;">FY27・24人</span></td><td class="up">+6.1%</td><td class="cls"><span style="color:#9aa4b2;font-weight:bold;">⑥様子見型</span></td><td style="background:rgba(74,158,255,0.24);font-weight:bold;">30</td><td>↑2／↓0</td><td class="up">+0.8%</td><td>1.8倍</td><td>あと22日（10/29）</td><td>$232.77<span class="note">（26人）</span></td><td class="cls"><span class="up">+17.9%</span><br><span style="font-size:16px;"><span class="down">S&amp;P比 -3pt</span><br><span class="note">予想の幅 -11%〜+65%</span></span></td><td>±57%<br><span class="note" style="font-size:16px;">オプション</span></td><td class="down"><b>-0.06</b><br><span class="note" style="font-size:16px;">指数以下</span></td><td>29.4</td><td>1.98</td><td style="background:rgba(63,185,80,0.24);font-weight:bold;">31</td></tr>
-<tr><td>QCOM</td><td>ファブレス</td><td>$180.94</td><td><span class="down">-0.2%</span><br><span class="note" style="font-size:16px;">FY27・34人</span></td><td class="up">+7.5%</td><td class="cls"><span style="color:#9aa4b2;font-weight:bold;">⑥様子見型</span></td><td style="background:rgba(74,158,255,0.20);font-weight:bold;">23</td><td>↑1／↓1</td><td class="note">同左</td><td>1.2倍</td><td>あと29日（11/5）</td><td>$194.13<span class="note">（30人）</span></td><td class="cls"><span class="up">+7.3%</span><br><span style="font-size:16px;"><span class="down">S&amp;P比 -14pt</span><br><span class="warn">⚠予想の幅 -45%〜+121%</span></span></td><td>±49%<br><span class="note" style="font-size:16px;">オプション</span></td><td class="down"><b>-0.29</b><br><span class="note" style="font-size:16px;">指数以下</span></td><td>17.7</td><td>0.80</td><td style="background:rgba(63,185,80,0.35);font-weight:bold;">56</td></tr>
+<tr><td>TEL(東京エレク)</td><td>装置</td><td>¥12,445</td><td><span class="up">+1.5%</span><br><span class="note" style="font-size:16px;">FY27・21人</span></td><td class="up">+18.2%</td><td class="cls"><span style="color:#e3b341;font-weight:bold;">⑤期待先行型</span><br><span class="warn">⚠決算リスク（PEG≧1.2）</span><br><span class="note">＋③賭け型の前提（ジャンプ4.7倍・決算あと18日）</span></td><td style="background:rgba(74,158,255,0.47);font-weight:bold;">82</td><td>↑1／↓1</td><td class="up">+7.2%</td><td>4.7倍 ⚠</td><td>あと18日（10/30）</td><td>¥15,275<span class="note">（23人）</span></td><td class="cls"><span class="up">+22.7%</span><br><span style="font-size:16px;"><span class="up">S&amp;P比 +1pt</span><br><span class="warn">⚠予想の幅 -32%〜+64%</span></span></td><td>±57%<br><span class="note" style="font-size:16px;">実績</span></td><td class=""><b>+0.02</b><br><span class="note" style="font-size:16px;">誤差の範囲</span></td><td>9.7</td><td>1.71</td><td style="background:rgba(63,185,80,0.34);font-weight:bold;">53</td></tr>
+<tr><td>AMD</td><td>ファブレス</td><td>$608.10</td><td><span class="up">+1.4%</span><br><span class="note" style="font-size:16px;">FY27・50人<br>併記 FY26 +0.3%</span></td><td class="up">+15.1%</td><td class="cls"><span style="color:#e3b341;font-weight:bold;">⑤期待先行型</span><br><span class="note">＋③賭け型の前提（ジャンプ4.0倍・決算あと23日）</span></td><td style="background:rgba(74,158,255,0.45);font-weight:bold;">77</td><td>↑3／↓1</td><td class="note">同左</td><td>4.0倍 ⚠</td><td>あと23日（11/4）</td><td>$636.21<span class="note">（50人）</span></td><td class="cls"><span class="up">+4.6%</span><br><span style="font-size:16px;"><span class="down">S&amp;P比 -17pt</span><br><span class="warn">⚠予想の幅 -40%〜+106%</span></span></td><td>±53%<br><span class="note" style="font-size:16px;">オプション</span></td><td class="down"><b>-0.32</b><br><span class="note" style="font-size:16px;">指数以下</span></td><td>38.7</td><td>0.61</td><td style="background:rgba(63,185,80,0.23);font-weight:bold;">29</td></tr>
+<tr><td>TXN</td><td>IDM</td><td>$283.74</td><td><span class="up">+0.3%</span><br><span class="note" style="font-size:16px;">FY27・29人<br>併記 FY26 -0.1%</span></td><td class="up">+8.1%</td><td class="cls"><span style="color:#9aa4b2;font-weight:bold;">⑥様子見型</span></td><td style="background:rgba(74,158,255,0.41);font-weight:bold;">68</td><td>↑23／↓0</td><td class="note">同左</td><td>1.6倍</td><td>あと10日（10/22）</td><td>$324.71<span class="note">（31人）</span></td><td class="cls"><span class="up">+14.4%</span><br><span style="font-size:16px;"><span class="down">S&amp;P比 -7pt</span><br><span class="note">予想の幅 -21%〜+41%</span></span></td><td>±42%<br><span class="note" style="font-size:16px;">オプション</span></td><td class="down"><b>-0.16</b><br><span class="note" style="font-size:16px;">指数以下</span></td><td>26.7</td><td>1.01</td><td style="background:rgba(63,185,80,0.28);font-weight:bold;">39</td></tr>
+<tr><td>AMAT</td><td>装置</td><td>$507.03</td><td><span class="up">+0.1%</span><br><span class="note" style="font-size:16px;">FY27・35人<br>併記 FY26 -0.1%</span></td><td class="up">+8.0%</td><td class="cls"><span style="color:#7ee787;font-weight:bold;">⑨キャッチアップ型</span></td><td style="background:rgba(74,158,255,0.36);font-weight:bold;">57</td><td>↑3／↓1</td><td class="note">同左</td><td>1.6倍</td><td>あと32日（11/13）</td><td>$635.33<span class="note">（36人）</span></td><td class="cls"><span class="up">+25.3%</span><br><span style="font-size:16px;"><span class="up">S&amp;P比 +4pt</span><br><span class="note">予想の幅 -29%〜+78%</span></span></td><td>±55%<br><span class="note" style="font-size:16px;">オプション</span></td><td class=""><b>+0.07</b><br><span class="note" style="font-size:16px;">誤差の範囲</span></td><td>27.4</td><td>1.07</td><td style="background:rgba(63,185,80,0.31);font-weight:bold;">46</td></tr>
+<tr><td>ASML</td><td>装置</td><td>$1,780.34</td><td><span class="up">+0.9%</span><br><span class="note" style="font-size:16px;">FY27・33人<br>併記 FY26 +0.7%</span></td><td class="up">+2.0%</td><td class="cls"><span style="color:#9aa4b2;font-weight:bold;">⑥様子見型</span><span class="note">（境界上）</span></td><td style="background:rgba(74,158,255,0.35);font-weight:bold;">55</td><td>↑4／↓0</td><td class="note">同左</td><td>1.9倍</td><td>あと2日（10/14）</td><td>$2,102.18<span class="note">（16人）</span></td><td class="cls"><span class="up">+18.1%</span><br><span style="font-size:16px;"><span class="down">S&amp;P比 -3pt</span><br><span class="warn">⚠予想の幅 -51%〜+63%</span></span></td><td>±44%<br><span class="note" style="font-size:16px;">オプション</span></td><td class="down"><b>-0.07</b><br><span class="note" style="font-size:16px;">指数以下</span></td><td>30.6</td><td>1.11</td><td style="background:rgba(63,185,80,0.24);font-weight:bold;">32</td></tr>
+<tr><td>TSMC(ADR)</td><td>ファウンドリ</td><td>$453.31</td><td><span class="up">+0.1%</span><br><span class="note" style="font-size:16px;">FY27・12人<br>併記 FY26 +0.0%</span></td><td class="up">+4.3%</td><td class="cls"><span style="color:#9aa4b2;font-weight:bold;">⑥様子見型</span></td><td style="background:rgba(74,158,255,0.33);font-weight:bold;">52</td><td>↑2／↓0</td><td class="note">同左</td><td>1.6倍</td><td>あと3日（10/15）</td><td>$555.01<span class="note">（20人）</span></td><td class="cls"><span class="up">+22.4%</span><br><span style="font-size:16px;"><span class="up">S&amp;P比 +1pt</span><br><span class="note">予想の幅 -3%〜+54%</span></span></td><td>±38%<br><span class="note" style="font-size:16px;">オプション</span></td><td class=""><b>+0.03</b><br><span class="note" style="font-size:16px;">誤差の範囲</span></td><td>20.7</td><td>0.86</td><td style="background:rgba(63,185,80,0.33);font-weight:bold;">52</td></tr>
+<tr><td>COHR</td><td>その他</td><td>$312.62</td><td><span class="up">+0.1%</span><br><span class="note" style="font-size:16px;">FY27・23人</span></td><td class="up">+2.9%</td><td class="cls"><span style="color:#9aa4b2;font-weight:bold;">⑥様子見型</span><br><span class="note">＋③賭け型の前提（ジャンプ3.4倍・決算あと24日）</span></td><td style="background:rgba(74,158,255,0.33);font-weight:bold;">50</td><td>↑19／↓1</td><td class="up">+0.7%</td><td>3.4倍 ⚠</td><td>あと24日（11/5）</td><td>$412.52<span class="note">（23人）</span></td><td class="cls"><span class="up">+32.0%</span><br><span style="font-size:16px;"><span class="up">S&amp;P比 +11pt</span><br><span class="note">予想の幅 -10%〜+60%</span></span></td><td>±71%<br><span class="note" style="font-size:16px;">オプション</span></td><td class=""><b>+0.15</b><br><span class="note" style="font-size:16px;">誤差の範囲</span></td><td>22.3</td><td>0.92</td><td style="background:rgba(63,185,80,0.35);font-weight:bold;">55</td></tr>
+<tr><td>INTC</td><td>IDM</td><td>$104.70</td><td><span class="up">+2.0%</span><br><span class="note" style="font-size:16px;">FY27・47人<br>併記 FY26 +0.5%</span></td><td class="down">-3.3%</td><td class="cls"><span style="color:#3fb950;font-weight:bold;">①実績あり・反応未追随</span><span class="note">（境界上）</span></td><td style="background:rgba(74,158,255,0.33);font-weight:bold;">50</td><td>↑4／↓1</td><td class="note">同左</td><td>—</td><td>あと18日（10/30）</td><td>$118.05<span class="note">（43人）</span></td><td class="cls"><span class="up">+12.7%</span><br><span style="font-size:16px;"><span class="down">S&amp;P比 -9pt</span><br><span class="note">予想の幅 -24%〜+91%</span></span></td><td>±58%<br><span class="note" style="font-size:16px;">オプション</span></td><td class="down"><b>-0.15</b><br><span class="note" style="font-size:16px;">指数以下</span></td><td>50.3</td><td>1.36</td><td style="background:rgba(63,185,80,0.18);font-weight:bold;">18</td></tr>
+<tr><td>Teradyne</td><td>検査</td><td>$402.68</td><td><span class="">+0.0%</span><br><span class="note" style="font-size:16px;">FY27・18人<br>併記 FY26 +0.0%</span></td><td class="up">+4.9%</td><td class="cls"><span style="color:#9aa4b2;font-weight:bold;">⑥様子見型</span></td><td style="background:rgba(74,158,255,0.32);font-weight:bold;">48</td><td>↑15／↓1</td><td class="note">同左</td><td>1.6倍</td><td>あと10日（10/22）</td><td>$446.47<span class="note">（15人）</span></td><td class="cls"><span class="up">+10.9%</span><br><span style="font-size:16px;"><span class="down">S&amp;P比 -10pt</span><br><span class="note">予想の幅 -13%〜+37%</span></span></td><td>±66%<br><span class="note" style="font-size:16px;">オプション</span></td><td class="down"><b>-0.16</b><br><span class="note" style="font-size:16px;">指数以下</span></td><td>34.6</td><td>0.74</td><td style="background:rgba(63,185,80,0.25);font-weight:bold;">34</td></tr>
+<tr><td>AMKR</td><td>その他</td><td>$49.12</td><td><span class="up">+1.6%</span><br><span class="note" style="font-size:16px;">FY27・9人<br>併記 FY26 -0.2%</span></td><td class="down">-5.9%</td><td class="cls"><span style="color:#f0883e;font-weight:bold;">⑦期待後退型</span></td><td style="background:rgba(74,158,255,0.29);font-weight:bold;">43</td><td>↑5／↓0</td><td class="note">同左</td><td>1.3倍</td><td>あと15日（10/27）</td><td>$76.40<span class="note">（10人）</span></td><td class="cls"><span class="up">+55.5%</span><br><span style="font-size:16px;"><span class="up">S&amp;P比 +34pt</span><br><span class="note">予想の幅 +32%〜+87%</span></span></td><td>±66%<br><span class="note" style="font-size:16px;">オプション</span></td><td class="up"><b>+0.52</b><br><span class="note" style="font-size:16px;">中身あり</span></td><td>17.5</td><td>0.76</td><td style="background:rgba(63,185,80,0.44);font-weight:bold;">75</td></tr>
+<tr><td>KLAC</td><td>検査</td><td>$195.57</td><td><span class="down">-0.3%</span><br><span class="note" style="font-size:16px;">FY27・25人</span></td><td class="up">+7.3%</td><td class="cls"><span style="color:#9aa4b2;font-weight:bold;">⑥様子見型</span></td><td style="background:rgba(74,158,255,0.28);font-weight:bold;">41</td><td>↑2／↓0</td><td class="up">+0.5%</td><td>1.8倍</td><td>あと17日（10/29）</td><td>$232.77<span class="note">（26人）</span></td><td class="cls"><span class="up">+19.0%</span><br><span style="font-size:16px;"><span class="down">S&amp;P比 -2pt</span><br><span class="note">予想の幅 -11%〜+66%</span></span></td><td>±56%<br><span class="note" style="font-size:16px;">オプション</span></td><td class="down"><b>-0.04</b><br><span class="note" style="font-size:16px;">指数以下</span></td><td>29.0</td><td>1.87</td><td style="background:rgba(63,185,80,0.23);font-weight:bold;">29</td></tr>
+<tr><td>STM</td><td>IDM</td><td>$52.06</td><td><span class="">+0.0%</span><br><span class="note" style="font-size:16px;">FY27・9人<br>併記 FY26 -1.0%</span></td><td class="up">+1.1%</td><td class="cls"><span style="color:#9aa4b2;font-weight:bold;">⑥様子見型</span><br><span class="note">＋③賭け型の前提（ジャンプ63.5倍・決算あと17日）</span></td><td style="background:rgba(74,158,255,0.28);font-weight:bold;">39</td><td>↑1／↓0</td><td class="note">同左</td><td>63.5倍 ⚠</td><td>あと17日（10/29）</td><td>$75.04<span class="note">（12人）</span></td><td class="cls"><span class="up">+44.1%</span><br><span style="font-size:16px;"><span class="up">S&amp;P比 +23pt</span><br><span class="note">予想の幅 -0%〜+88%</span></span></td><td>±54%<br><span class="note" style="font-size:16px;">オプション</span></td><td class=""><b>+0.42</b><br><span class="note" style="font-size:16px;">誤差の範囲</span></td><td>20.5</td><td>0.19</td><td style="background:rgba(63,185,80,0.45);font-weight:bold;">77</td></tr>
+<tr><td>LRCX</td><td>装置</td><td>$318.84</td><td><span class="">+0.0%</span><br><span class="note" style="font-size:16px;">FY27・30人</span></td><td class="up">+1.0%</td><td class="cls"><span style="color:#9aa4b2;font-weight:bold;">⑥様子見型</span><br><span class="note">＋③賭け型の前提（ジャンプ2.0倍・決算あと10日）</span></td><td style="background:rgba(74,158,255,0.24);font-weight:bold;">32</td><td>↑3／↓0</td><td class="up">+0.9%</td><td>2.0倍 ⚠</td><td>あと10日（10/22）</td><td>$375.81<span class="note">（31人）</span></td><td class="cls"><span class="up">+17.9%</span><br><span style="font-size:16px;"><span class="down">S&amp;P比 -3pt</span><br><span class="note">予想の幅 -9%〜+57%</span></span></td><td>±56%<br><span class="note" style="font-size:16px;">オプション</span></td><td class="down"><b>-0.06</b><br><span class="note" style="font-size:16px;">指数以下</span></td><td>27.1</td><td>1.48</td><td style="background:rgba(63,185,80,0.24);font-weight:bold;">32</td></tr>
+<tr><td>ARM</td><td>ファブレス</td><td>$266.28</td><td><span class="down">-0.1%</span><br><span class="note" style="font-size:16px;">FY27・39人</span></td><td class="up">+0.9%</td><td class="cls"><span style="color:#9aa4b2;font-weight:bold;">⑥様子見型</span><br><span class="note">＋③賭け型の前提（ジャンプ3.2倍・決算あと24日）</span></td><td style="background:rgba(74,158,255,0.22);font-weight:bold;">27</td><td>↑1／↓3</td><td class="down">-0.2%</td><td>3.2倍 ⚠</td><td>あと24日（11/5）</td><td>$290.70<span class="note">（40人）</span></td><td class="cls"><span class="up">+9.2%</span><br><span style="font-size:16px;"><span class="down">S&amp;P比 -12pt</span><br><span class="warn">⚠予想の幅 -53%〜+88%</span><br><span class="warn">⚠目標が古い可能性（修正↓3＞↑1）</span></span></td><td>±64%<br><span class="note" style="font-size:16px;">オプション</span></td><td class="down"><b>-0.19</b><br><span class="note" style="font-size:16px;">指数以下</span></td><td>86.9</td><td>2.19</td><td style="background:rgba(63,185,80,0.12);font-weight:bold;">5</td></tr>
+<tr><td>QCOM</td><td>ファブレス</td><td>$175.50</td><td><span class="down">-0.2%</span><br><span class="note" style="font-size:16px;">FY27・34人</span></td><td class="down">-0.3%</td><td class="cls"><span style="color:#9aa4b2;font-weight:bold;">⑥様子見型</span></td><td style="background:rgba(74,158,255,0.18);font-weight:bold;">18</td><td>↑1／↓1</td><td class="note">同左</td><td>1.2倍</td><td>あと24日（11/5）</td><td>$194.13<span class="note">（30人）</span></td><td class="cls"><span class="up">+10.6%</span><br><span style="font-size:16px;"><span class="down">S&amp;P比 -11pt</span><br><span class="warn">⚠予想の幅 -43%〜+128%</span></span></td><td>±49%<br><span class="note" style="font-size:16px;">オプション</span></td><td class="down"><b>-0.22</b><br><span class="note" style="font-size:16px;">指数以下</span></td><td>17.2</td><td>0.78</td><td style="background:rgba(63,185,80,0.32);font-weight:bold;">48</td></tr>
 </tbody></table></div>
-<h2>⑥ 保有・購入候補 専用判断</h2>
-<table>
-<tr><th>銘柄</th><th>今週分かったこと</th><th>判定</th></tr>
-<tr><td><b>MU×2（NISA）</b></td><td>10/8に−4.79%。理由はOpenAIの売上報道による半導体全体の売りで、MU固有の悪材料は報じられていない。HBM4 36GBをRubin向けに量産中（報道）。今の株価から目標まで+49.2%</td><td>ホールド継続（判断はユーザー）。シグナル①は前回判定（🟢未点灯・🟡注意）から変化なし。次はFQ1'27決算（12月）</td></tr>
-<tr><td><b>000660×1（NISA）</b></td><td>10/7 −2.8%・10/8 −2.4%・10/12取引中 約−3.8%で3日続落。サムスンの結果（予想超えが小さい）と外国人の売りが重なった。Rubin向けHBM4は12層のまま（Counterpoint）＝今の供給の形が続く見込み</td><td>テーゼ崩れの3シグナルは<b>まだ判定できない</b>。答えは10/27の決算（予想：売上94.1兆・営業利益74.1兆ウォン）の次四半期の見通しと2027年分のHBM契約</td></tr>
-<tr><td><b>005930×1（NISA）</b></td><td>Q3暫定：営業利益107.4兆ウォン（予想比+0.4〜1.9%）・売上195兆（予想比 約−3%）。予想比の縮小は5四半期連続。「材料出尽くし」で売られた。6月高値から約−25%</td><td>シグナル①（A）は韓国2社では「決算説明会の次四半期の見通し」で代用する案（クラウドの提案・<b>ユーザー未確認</b>）。説明会（10/28予定）まで判定保留</td></tr>
-</table>
-<p class="note">「えらい高いポジションで買っている」（10/6のユーザーの言葉）——2銘柄とも連休明けの寄り付きで約定した形で、その後も下げが続いている。数字は事実として書くだけで、売買の推奨はしません。</p>
+<p style="font-size:16px;color:#9aa4b2;line-height:1.6;"><b>並び順</b>：先頭に保有・注目の銘柄（SK Hynix本株→Samsung本株→MU→SKHY(ADR・参考)→MRVL→アドバンテスト→Camtek→NVDA→AVGO）、その下は「再評価の勢い」の高い順。<b>再評価の勢い</b>＝EPS修正とPER変化（高いほど良）を全銘柄内で順位正規化した平均。<b>予想EPS修正</b>＝Yahoo Finance「EPS Trend」の年度列で Current Estimate÷30 Days Ago−1。年度末まで4か月以内の列は使わず次の年度を主に使う（例：MUはFY27、12月期のSK Hynix・Samsung・AMD等は9月からFY27。今年度は併記）。SKHYは現地株000660.KS、サムスンは005930.KSのEPS予想（ウォン）で計算。EPS予想が5人以下の銘柄は⚠を付け分類しない。<b>PER変化</b>＝（1＋同じ株・同じ通貨の株価30日騰落率）÷（1＋EPS修正）−1。<b>分類</b>：表の上の凡例のとおり（EPS修正・PER変化の組み合わせ）。<b>ジャンプ倍率</b>＝予想EPS÷実績EPS。<b>予想株価</b>＝アナリスト平均目標（人数）。<b>EPS修正の人数</b>＝使った年度列で直近30日に上方／下方修正した人数。<b>来期EPS修正</b>＝+1y列（使った列が+1yなら同左）。<b>外れた時のリスク</b>（0〜100・高いほど下げ幅が小さく済みやすい）＝目標乖離・予想PER・PEGの順位平均（補助）。③賭け型は予想EPSが崩れると実質PERが跳ね上がるため、低PERでも身を守らない。目標株価はアナリストの平均値で、株価の後を追って修正されやすい。<b>上昇余地の読み方</b>：S&amp;P比＝S&amp;P 500全体の上昇余地との差（マイナスならアナリスト予想上は指数を持つ方が有利）。予想の幅＝最低目標〜最高目標の現在値比（最低が-30%以下なら⚠）。平均の裏で予想は大きく割れている。⚠目標が古い可能性＝EPS予想の下方修正の人数が上方より多い（目標が後から下がって余地が縮みやすい）。<b>1年の振れ幅</b>＝年率ボラティリティ（約68%の確率で1年後の株価がこの範囲に収まる目安）。米国株は満期約1年のオプションのIV＝市場の見込み、日本・韓国株はオプションが取れないため過去1年の実績。<b>S&amp;P比÷振れ幅</b>＝指数を上回る見込みを振れ幅で割った値。0.5以上＝差に中身あり、0〜0.5＝振れ幅に埋もれる誤差の範囲、マイナス＝指数以下（しきい値は目安）。上昇余地の数字だけで銘柄を比べないための列。<b>韓国現地株</b>（SK Hynix 000660・Samsung 005930）はウォン建て。000660はSKHY(ADR)と同じ会社のため、割安度・再評価の勢いの順位付けには入れていない（表示のみ）。<br>これらは予測ではなく、今日の市場の評価の変化を読むもの。データ取得：2026-10-12 04:55:03 JST（Yahoo Finance集計）。<br>⚠ 採点から除外した指標：アドバンテスト：予想PERが実績PERより高く不自然（予想EPSの期ズレ等）</p>
+<div class="box">
+<p><b>読み方（保有・注目銘柄）：</b></p>
+<p class="note">📏 基準：S&amp;P 500全体の12か月上昇余地 +21.3%（FactSet 10/2号）。<b>7日を超えたためWebSearchで10/9号を探したが見つからず</b>（見つかったのは9/25号の+20.4%）。今朝も再検索したが10/9号は見つからず、<b>基準値は10/2時点のまま</b>。</p>
+<p class="note">今日の表は週末版とほぼ同じ（株価が動いていないため）。変わったのはTSMC（EPS修正+0.6%→+0.1%、PER変化+3.8%→+4.3%）とASML（+0.6%→+0.9%、+2.3%→+2.0%）の小さな動きだけで、分類の変化はなし。</p>
+<p>① <b>MU：$1,029 → $1,555（+51.1%）。</b> S&amp;P比+30pt、「S&amp;P比÷振れ幅」約+0.60＝中身あり。来年度（FY27）のEPS予想は30日で+12.7%上がったのに、株価は+0.1%、PERは-11.2%（①実績あり・反応未追随）。ただし<b>予想の幅は-65%〜+192%</b>（最低$361・最高$3,000）で見方は大きく割れたまま。予想PER約5倍は「この利益が続くか」への疑いを織り込んだ値で、<b>安い＝安全ではない</b>。</p>
+<p>② <b>SK Hynix本株：₩1,681,000 → ₩3,141,025（+86.9%）。</b> 再開前で数字は週末版と同じ。⑦期待後退型（来年度EPS修正+0.2%、PER変化-6.4%）。<b>Samsung本株</b>は来年度EPS修正+4.2%で①のまま。ただし修正の人数は↓11＞↑5で⚠目標が古い可能性。</p>
+<p>③ <b>NVDA（+43.4%）とAVGO（+47.0%）：</b> 2軸ともアナリストが見る上値は同程度。修正の向きはNVDAが上方46・下方0、AVGOが下方27＞上方12——<b>AVGOの+47%は目標が後から下がって縮みやすい</b>。MRVLは+22.8%でS&amp;P比+1.5pt、振れ幅（約62%）で割ると誤差の範囲。</p>
+<p>④ <b>決算直前の2社（ASML・TSMC）：</b> どちらも⑥様子見型で、EPS予想もPERもほぼ動いていない（ASML +0.9%／+2.0%、TSMC +0.1%／+4.3%）。<b>市場は決算の前に賭けていない</b>。上昇余地はASML +18.1%（S&amp;P比-3pt）、TSMC +22.4%（+1pt）で、どちらも振れ幅で割ると誤差の範囲。決算で動くのは「目標」より先に「EPS予想」の方で、決算翌日以降のこの表で修正の向きが出る。</p>
+<p>⑤ <b>「安く見える罠」とガイダンスを待つ原則：</b> メモリ4銘柄の予想PERは3.6〜5.0倍。市場は「来年の利益の高さ」でなく「2028年以降も続くか」に値段を付けている。次の答えは10/14 ASML（2027年の受注）、10/15 TSMC（AI顧客の注文）、10/27 SK Hynix（営業利益の予想比と2027年分のHBM契約）。</p>
+<p class="note">答え合わせ（score_history.py）：記録はまだ答えが出る日数に達していない（10/29頃から開始予定）。順位を買い候補・予想ランキングとしては読まない。</p>
+</div>
 
-<h2>⑦-A 今週の注目イベント</h2>
+<h2>③ バリューチェーン動向</h2>
+<div class="box">
+<p><b>【領域別 10/9の騰落（平均・強い順・確定値）】</b> <span class="note">月曜朝のため週末版と同じデータ</span></p>
+<table>
+<tr><th>順位</th><th>領域</th><th>平均</th><th>取得数</th><th>内訳</th></tr>
+<tr><td>1</td><td>🟢 検査・テスト装置</td><td class="up">+0.90%</td><td>4/4</td><td>アドバンテスト +1.66／Camtek +1.53／Teradyne +0.99／KLAC -0.58</td></tr>
+<tr><td>2</td><td>🟢 装置</td><td class="up">+0.41%</td><td>4/4</td><td>TEL +2.09／ASML +0.60／AMAT -0.50／LRCX -0.55</td></tr>
+<tr><td>3</td><td>⚪ その他</td><td class="flat">-0.01%</td><td>3/3</td><td>COHR +3.40／MRVL +0.25／AMKR -3.69</td></tr>
+<tr><td>4</td><td>🔴 メモリー・HBM</td><td class="down">-0.76%</td><td>2/4</td><td>MU -0.66／SKHY -0.86（韓国2社は休場のため除外）</td></tr>
+<tr><td>5</td><td>🔴 ファウンドリ</td><td class="down">-1.02%</td><td>1/1</td><td>TSMC(ADR) -1.02</td></tr>
+<tr><td>6</td><td>🔴 設計・ファブレス</td><td class="down">-1.14%</td><td>5/5</td><td><b>内 NVDA -0.52% / AMD -2.03%</b>／AVGO +0.39／ARM -3.27／QCOM -0.29</td></tr>
+<tr><td>7</td><td>🔴 IDM</td><td class="down">-1.67%</td><td>3/3</td><td>INTC -2.22／TXN -1.55／STM -1.23</td></tr>
+</table>
+<p><b>読み方：</b> 上位2つは<b>日本の銘柄（アドバンテスト・TEL）が押し上げた</b>（日本は米国より先に取引が終わり、午後の買い戻しを反映）。米国だけで見ると装置（ASML・AMAT・LRCX）は平均約-0.15%、検査（Teradyne・KLAC・Camtek）は約+0.65%。米国内で弱かったのはIDM・ARM・AMD。</p>
+<p><b>逆行の整理（10/9分・継続）：</b> 同じ「その他」で光配線のCOHR（+3.40%）と先端パッケージングのAMKR（-3.69%）が逆に動いた。COHRは前日の大幅安（約-9.6%）の戻しと見られるが、AMKRは単一の理由を示す報道は見つからなかった。<b>業界共通の材料では説明できない差</b>で、固有の要因を疑う（未確認）。メモリ内はMUとSKHYがほぼ同じ下げで逆行なし。</p>
+<p><b>HBMサプライチェーン：</b> 値下がりの報道なし。MUの台湾・桃園労組はスト権を確立（賛成99%・1,994人）したが日程は未定。労組は「恒久的な利益配分の仕組み」を求め、10/19の台北集会は「ストではない」と説明。台中労組とは今月後半に調停（<a href="https://www.thestar.com.my/tech/tech-news/2026/10/07/micron039s-taoyuan-union-in-taiwan-secures-authorisation-to-strike">The Star（Reuters）</a>）。週末に新しい動きは確認できなかった。</p>
+</div>
+
+<h2>③-B 注目チャート：SKHY・MU（起点=100・約1か月）</h2>
+<div class="box">
+<svg viewBox="0 0 680 280" width="100%" style="max-width:680px;display:block;">
+  <rect x="0" y="0" width="680" height="280" fill="#181b24" rx="6"/>
+  <line x1="44" x2="590" y1="206.6" y2="206.6" stroke="#2a2e3a" stroke-width="1.25"/>
+  <text x="596" y="209.6" font-size="10" fill="#9aa4b2">100(基準)</text>
+  <text x="44" y="274" font-size="9" fill="#9aa4b2">09-14</text>
+  <text x="590" y="274" font-size="9" fill="#9aa4b2" text-anchor="end">10-09</text>
+  <polyline points="44.0,206.6 72.7,210.7 101.5,210.5 130.2,169.4 158.9,146.6 187.7,139.7 216.4,106.8 245.2,137.6 273.9,152.3 302.6,126.1 331.4,174.8 360.1,150.7 388.8,163.5 417.6,116.3 446.3,108.0 475.1,108.6 503.8,171.6 532.5,193.4 561.3,232.6 590.0,240.0" fill="none" stroke="#4a9eff" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="590.0" cy="240.0" r="3.5" fill="#4a9eff" stroke="#181b24" stroke-width="1.5"/>
+  <text x="598.0" y="244.0" font-size="11" fill="#4a9eff" font-weight="bold">SKHY(SK Hynix ADR) -4%</text>
+  <polyline points="44.0,206.6 72.7,203.2 101.5,204.2 130.2,155.2 158.9,118.4 187.7,91.4 216.4,41.2 245.2,64.5 273.9,56.2 302.6,54.5 331.4,81.7 360.1,71.1 388.8,71.0 417.6,40.0 446.3,61.6 475.1,72.1 503.8,89.8 532.5,49.0 561.3,99.2 590.0,105.7" fill="none" stroke="#ff9f4a" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="590.0" cy="105.7" r="3.5" fill="#ff9f4a" stroke="#181b24" stroke-width="1.5"/>
+  <text x="598.0" y="109.7" font-size="11" fill="#ff9f4a" font-weight="bold">Micron +11%</text>
+</svg>
+<p class="note">今朝は韓国本株の再開が焦点なので、保有2銘柄に絞り、<b>直近約1か月（9/14〜10/9、20営業日）</b>で比べる。起点=100：MU <b>+11%</b>、SKHY（ADR）<b>-4%</b>。同じHBMの会社で約15ptの差が開いた。差の中身は一つではなく、①SKHYにはADRプレミアムの縮小（9月下旬の約39%→35%）が混ざる、②MUは9/30決算で会社の見通しが出て、EPS予想が30日で+12.7%上がった（SK Hynixは+0.2%）——の2つが重なっている（どちらが大きいかは分けられない）。今朝の本株の動きで、ADRの下げのうち「本株の下げ」と「プレミアムの縮み」がそれぞれどれだけだったかが少し見えてくる。</p>
+</div>
+
+<h2>④ 本日フォーカス企業：ASML ─ 10/14決算は「2027年の装置の注文」を最初に映す</h2>
+<div class="box">
+<p><b>現値と目標：</b> $1,780.34 → 平均目標$2,102.18（16人）、乖離 +18.1%（S&amp;P比 -3pt＝指数並み）。予想の幅は<span class="warn">-51%〜+63%</span>（最低$867・最高$2,900）で、16人の見方が大きく割れている。</p>
+<div style="display:flex;gap:10px;flex-wrap:wrap;margin:10px 0;">
+  <div class="box" style="flex:1;min-width:150px;margin:0;"><div class="note">① 会社見通し：7-9月期売上 前年比</div><div style="font-size:24px;font-weight:bold;"><span class="up">+53%</span></div><div class="note">粗利率56%へ（Saxoの事前整理）</div></div>
+  <div class="box" style="flex:1;min-width:150px;margin:0;"><div class="note">② EPS予想の修正</div><div style="font-size:24px;font-weight:bold;"><span class="flat">30日 +0.9%</span></div><div class="note">ただし90日では<span class="up">+18.6%</span>。夏に大きく上がり、直近は止まっている</div></div>
+  <div class="box" style="flex:1;min-width:150px;margin:0;"><div class="note">③ 予想PER</div><div style="font-size:24px;font-weight:bold;">30.6倍</div><div class="note">TSMC 20.7・NVDA 14.4・MU 5.0倍。装置の中でもLRCX 27.1・AMAT 27.4より高い</div></div>
+</div>
+<p><b>期待値ギャップ行列：</b> 「業績予想→横ばい（直近30日）・評価→横ばい」の⑥様子見型。90日でEPS予想が+18.6%上がった分は、すでに株価に入っている。PER30倍は「2027年もEUVの注文が続く」ことを前提にした値段。</p>
+<p><b>なぜ保有2銘柄に関係するか：</b> HBMは普通のDRAMより多くのウェーハを使う（同じ容量で約3倍とされる）ため、メモリ各社は増産にEUVなどの装置を追加で買う。<b>ASMLの受注にメモリ向けがどれだけあるか</b>は、SK Hynix・MU・Samsungが2027年にどれだけ増産するつもりか＝「HBMの供給が需要に追いつく時期」（シグナル②）の先行指標になる。受注が強すぎるのはメモリにとって「将来の供給過剰」の種にもなる、という両面がある。</p>
+<p><b>「製品最強≠株最強」：</b> ASMLはEUV露光装置を作れる世界で唯一の会社だが、上昇余地はS&amp;P並みで、予想の幅は最低-51%まで割れている。独占でも株価は「注文の波」で上下する。<b>決算の判定は株価の反応ではなく、受注額とメモリ向けの比率、2027年への言及</b>で行う。</p>
+</div>
+
+<h2>⑤ 本日の考察</h2>
+<div class="box">
+<p><b>5層で見た全体感：</b> 層1は長期金利（10年債5.2%台）と原油$100超、そして<b>FRBが9月に利上げを再開していた</b>という事実が外から評価を押す。層2のボトルネックは「買い手の財布」で週末も変化なし。層3はMUの「EPS↑・PER↓」が続き、決算直前のASML・TSMCは「誰も先に賭けていない」状態。層4は変化なし。層5は半導体が2日続けて指数に負けて週をまたいだ。</p>
+<p><b>ボトルネックはどこか・お金はどこに向かっているか：</b> S&amp;P 500が史上最高値圏なのに半導体だけ弱い、という形は「AIから資金が逃げた」より「金利が上がる中でPERの高い銘柄から先に売られた」と読む方が数字と合う（AMD・ARMが大きく下げ、PERの低いメモリは小さな下げ。推定）。今週のCPIが上振れれば同じ形が続き、下振れれば半導体の戻りが先に来やすい。<b>需要の問いと金利の問いを分けて見る</b>のが今週のコツ。</p>
+<p><b>NVDAを中心に見ると見えなくなるもの：</b> GPT-6が無料版を含む12億人規模に広がったことは、学習（作る）より<b>推論（使う）</b>の計算が増える話。推論は専用チップ（TPU・Trainium・OpenAIのJalapeño）に向きやすく、NVIDIA以外の軸にも需要が流れる。それでもHBMはどの軸でも必要——2軸モデルの「収束点」はここでも変わらない。</p>
+<p><b>人間はナンバーワンを必ずしも必要としない：</b> GPT-6の無料版は最上位のAstraではなく、軽い「Luna」。多くの人に必要なのは最強のモデルではなく、<b>十分に良くて安く速いモデル</b>。チップでも同じで、推論の大部分は「最強のGPU」でなくても回る。この広がり方が、HBMの総量を押し上げつつ、NVIDIAの取り分は動きにくくする（推定）。</p>
+</div>
+
+<h2>⑥ 保有・購入候補 専用判断</h2>
+<div class="box">
+<h3>🔴 MU（マイクロン）★保有中×2</h3>
+<p>現値 $1,029.00｜目標 $1,555.13（46人）｜乖離 +51.1%</p>
+<p>HBMサイクル上の現在地：長期契約$32B、経営陣は供給制約がFY2028まで続くと見る。「上り坂の中盤〜後半」（推定）の見方は変わらない。注意点は台湾の労務（桃園はスト権確立・日程未定、10/19集会、台中の調停は今月後半）。週末に新しい動きの報道はなし（最新は10/7のロイター）。</p>
+<p><b>判断：ホールド継続。</b> 2027/4までのホールド方針どおり。週末に新しい悪材料は見つからない。EPS予想の上方修正（+12.7%）が続いていることは、テーゼを支える側の事実。</p>
+
+<h3>🔴 SK Hynix ★保有中（本株000660×1。ADRのSKHYは売却済み）</h3>
+<p>本株 現値 ₩1,605,000（10/12、-4.52%）｜目標 ₩3,141,025（38人）｜乖離 +95.7%<br>
+<span class="note">参考：ADR $169.03｜目標 $252.21｜上昇余地 +49.2%｜プレミアム +35.0%</span></p>
+<p><b>判断：ホールド継続。</b> 取得単価から-12.9%（15時更新）。休場中の米国2日分を受けて-4.52%。新しい悪材料の報道ではなく、外国人の売り越しと地合いによる下げと報じられている。Samsungの暫定実績（⓪-C）は需要の強さを示す一方、予想比の縮小という形で「驚きの減少」を示した。判定は株価の反応ではなく、10/27の営業利益の予想比（予想74.1兆ウォン・FnGuide 9/25）と2027年分のHBM契約で行う。</p>
+
+<p style="font-weight:bold;margin-top:14px;">🚦 テーゼ崩れの3シグナル（MU・SK Hynix共通）— 前回判定（10/2）から変化なし（10/12確認）</p>
+<table>
+<tr><th>シグナル</th><th>判定</th><th>根拠の数字</th></tr>
+<tr><td>① ガイダンスが減速に転じる</td><td class="warn"><b>🟡 読み方で割れる</b>（変化なし）</td><td>MUの見通しの<b>水準</b>は$50B→$61.5Bと上昇。<b>直前の実績からの伸び</b>は+20.6%→+13.4%と縮小。アナリストはFY27のEPS予想を30日で+12.7%上げた</td></tr>
+<tr><td>② HBMの供給が需要に追いつき値下がり</td><td class="up">🟢 未点灯</td><td>値下がりの報道なし。台湾のスト懸念はむしろ供給を締める方向</td></tr>
+<tr><td>③ ハイパースケーラーが設備投資を減らす</td><td class="up">🟢 未点灯</td><td>減額の発表なし。<span class="warn">注意メモ（継続）：OpenAIの売上報道（FT約$50B／Bloomberg年末$70B見込み）。支払い能力の疑問で、減額の発表ではない。10/15 TSMC・10月後半の大手4社決算で確認</span></td></tr>
+</table>
+<p class="warn"><b>再掲・決めてほしいこと：</b> シグナル①の「伸び」を、(A)「見通しの金額が前回の見通しを下回ったら点灯」にするか、(B)「直前の実績からの伸び率が縮んだら点灯」にするか。おすすめは<b>(A)で点灯を判定し、伸び率の縮小は🟡注意として記録する</b>2段構え（決まるまでは2段構えで仮に判定）。</p>
+<p class="note">株価が上がった・上がらなかったで良し悪しは判定しない。売買の推奨はしない。</p>
+
+<h3>🔴 LRCX（ラムリサーチ）※優先度低</h3>
+<p>現値 $318.84｜目標 $375.81（31人）｜乖離 +17.9%｜決算 10/22予定</p>
+<p>EPS修正+0.0%・PER変化+1.0%で⑥様子見型。S&amp;P比 約-3.4pt。10/14のASMLの受注が装置全体の先行指標になる。本日判断：見送り。</p>
+</div>
+
+<h2>⑦-A 今週の注目イベント（10/12〜10/18）</h2>
 <table>
 <tr><th>日付</th><th>イベント</th><th>注目点</th></tr>
-<tr><td><b>10/12（月）</b></td><td>韓国 連休明け／東京は休場（スポーツの日）／米国は開場（債券は休場）</td><td>000660・005930の引け。今夜の米国半導体が戻るか</td></tr>
-<tr><td>10/13（火）〜</td><td>米国の決算シーズン（銀行から）／NLCS第2戦（山本由伸が先発の見込み）</td><td>ドジャースは0勝1敗</td></tr>
-<tr><td><b>10/14（水）</b></td><td><b>ASML決算</b>（日付は二次情報）</td><td>2027年の受注・High-NA・中国比率（約20%）</td></tr>
-<tr><td><b>10/15（木）</b></td><td><b>TSMC決算</b></td><td>9月売上+54.6%の後の10〜12月の見通し・CoWoS・設備投資</td></tr>
-<tr><td>今週</td><td>OpenAI売上報道の続報</td><td>「数え方の違い」がどこまで説明として受け入れられるか</td></tr>
-<tr><td>今週</td><td>中東（フーシ派・ホルムズ）</td><td>米国がイエメン攻撃に加わるか。原油$100台が続くか</td></tr>
+<tr><td><b>10/12（月）</b></td><td>韓国 4日ぶり取引再開／日本 休場（スポーツの日）</td><td>【結果】SK Hynix本株 -4.52%・Samsung -4.39%・KOSPI -3.65%。ADRの予告どおりの向き</td></tr>
+<tr><td>10/12（月）朝9時（日本時間）</td><td>NLCS第1戦 ドジャース@ブルワーズ</td><td>【結果】ブルワーズ 2-1 ドジャース。大谷は四球から唯一の得点。第2戦は10/13（火）朝6時、山本由伸 vs ヘンダーソン</td></tr>
+<tr><td>10/12（月）</td><td>米国 コロンブス・デー（株式は取引あり、債券の現物は休み）</td><td>AMATの新施設（EPIC Center）公開、10/13に投資家向け説明</td></tr>
+<tr><td>10/13（火）</td><td>日本 連休明け／JPモルガン・ゴールドマン・シティ・ウェルズ決算</td><td>東京エレク・アドバンテストが米2日分を受ける。銀行は金利5%台がIPO・資金調達をどれだけ冷やしたか</td></tr>
+<tr><td><b>10/14（水）</b></td><td>米9月CPI／ASML決算／BofA・モルガンS決算</td><td>CPI予想+3.6%（前月3.4%）。ASMLは受注額とメモリ向けの比率、2027年への言及</td></tr>
+<tr><td><b>10/15（木）</b></td><td>TSMC決算／米PPI・小売売上高</td><td>AI向けの伸びとCoWoS。注文の先送りの言及があるか</td></tr>
+<tr><td>10/16（金）</td><td>ウォーシュFRB議長 IMF会合で対談／FactSet金曜号</td><td>利上げの示唆。②-Bの基準値を更新</td></tr>
 </table>
 
 <h2>⑦-B 今月の大イベント（決算・経済）</h2>
 <table>
 <tr><th>日付</th><th>イベント</th><th>注目点</th></tr>
-<tr><td>10/14・10/15</td><td>ASML・TSMC決算</td><td>上記</td></tr>
-<tr><td>10月中旬〜</td><td>Anthropic 上場の売り込み開始（報道）</td><td>公開版S-1のチップ調達先別の支払い</td></tr>
-<tr><td>10/22前後</td><td>LRCX・Teradyne・TXN決算</td><td></td></tr>
+<tr><td>10/14・10/15</td><td>米CPI・ASML・TSMC決算</td><td>HBM・先端パッケージの需要確認の最初の答え</td></tr>
+<tr><td>10/19</td><td>MU桃園労組の台北集会</td><td>労組は「ストではない」と説明。スト権は確立済み（日程未定）</td></tr>
+<tr><td>10月中</td><td>MU 新しい賞与制度（IPP）の発表</td><td>労組の要求（恒久的な利益配分）との距離</td></tr>
+<tr><td><b>10/22前後</b></td><td>MU台中労組の調停／LRCX・Teradyne・TXN決算</td><td>生産リスクの分かれ目／PERの拡大を業績が追うか</td></tr>
 <tr><td>10/23</td><td>INTC決算</td><td>ファウンドリ事業</td></tr>
-<tr><td>10月後半</td><td>Alphabet・Amazon・Microsoft・Meta決算</td><td>2027年の設備投資＝シグナル③。AI会社の支払い能力への疑いに答えが出る</td></tr>
-<tr><td><b>10/27</b></td><td><b>SK Hynix決算</b></td><td>予想比・次四半期の見通し・2027年分のHBM契約</td></tr>
-<tr><td>10/27〜28</td><td>FOMC</td><td>9月の利上げの後、続けるか</td></tr>
-<tr><td><b>10/28</b></td><td><b>Samsung 確定決算・説明会</b>／アドバンテスト決算</td><td>部門別（メモリ）・メモリの好況の長さ・株主還元</td></tr>
-<tr><td>10/29頃〜</td><td>②-Bの答え合わせ開始</td><td></td></tr>
-<tr><td>11/3</td><td>米中間選挙</td><td>選挙後のイラン政策</td></tr>
-<tr><td>11/18</td><td>NVDA決算</td><td>2軸の比の更新</td></tr>
+<tr><td>10月後半</td><td>Alphabet・Amazon・Microsoft・Meta決算</td><td>2027年の設備投資の見通し＝シグナル③</td></tr>
+<tr><td>10月下旬まで</td><td>Anthropic 公開版S-1（報道上の期限）</td><td>11/9の週のロードショーには15日前の公開が必要</td></tr>
+<tr><td><b>10/27</b></td><td>SK Hynix Q3決算</td><td>予想：売上94.1兆・営業利益74.1兆ウォン（FnGuide 9/25）。前回-5.4%の下振れから戻るか</td></tr>
+<tr><td>10/27〜28</td><td>FOMC</td><td>CPI次第で10月の追加利上げ</td></tr>
+<tr><td>10/28〜29</td><td>アドバンテスト決算（10/28）・Samsung 確定値（10/29予定に訂正）</td><td>Samsungの部門別（メモリ・ファウンドリ黒字化・モバイル）</td></tr>
+<tr><td>10/29頃〜</td><td>②-Bの答え合わせ開始</td><td>どの物差しが30日後の騰落と合っていたか</td></tr>
+<tr><td>11/3</td><td>米中間選挙</td><td>トランプ氏は「選挙前はイランを攻撃しない」</td></tr>
+<tr><td>11/4</td><td>AMD決算</td><td>⑤期待先行型に移った評価を業績が支えるか</td></tr>
+<tr><td>11/18</td><td>NVDA決算</td><td>2軸の正規化比（NVDA：AVGO）の更新</td></tr>
+<tr><td>12/10</td><td>AVGO決算</td><td>AI売上とFY2027目標$115Bの進み具合</td></tr>
+<tr><td>12/24</td><td>MU FQ1'27決算</td><td>EPS予想の上方修正（+12.7%）に株価の評価が追いつくか</td></tr>
 </table>
 
 <h2>今日の一言</h2>
 <div class="conclusion">
-  <div class="conclusion-headline" style="font-size:24px;">「作る側の数字は過去最高、払う側の数字に疑い。」</div>
-  <div class="conclusion-body">TSMCもサムスンも最高の数字を出した週に、半導体は売られた。市場が見ているのはもう「今どれだけ売れたか」ではなく「AIを使う会社が、この先も払い続けられるか」。その答えは10月後半のハイパースケーラー4社と、10/27・28の韓国2社の説明会で出る。</div>
+  <div class="conclusion-headline" style="font-size:24px;">「需要の問いと金利の問いを、混ぜずに見る週。」</div>
+  <div class="conclusion-body">先週の半導体の弱さには「AIの買い手は払えるか」と「金利はどこまで上がるか」の2つが混ざっていた。今週はCPIが後者に、ASMLとTSMCが前者に、別々に答える。株価が下がっても、その理由がどちらから来たかを分けて読めば、テーゼ（HBMはどの軸でも必要）が揺らいだのかどうかは判定できる。</div>
 </div>
 
-<p class="foot">クラウド代行版（Claude Code・Web検索のみ）｜2026-10-12 14時台作成｜PCの作業が戻れば、通常版に置き換わります｜<a href="index.html">ダッシュボード</a></p>
+<p class="foot">*本ブリーフィングは投資助言ではありません。株価：stock_data.json（Yahoo Finance、2026-10-12 04:55 JST）。韓国本株・KOSPI・為替は15時更新でYahoo Finance（16:12取得）。目標株価・EPS修正：valuation_data.json。ニュース：本文中のリンク先。写真：Wikimedia Commons（CC BY 4.0）。</p>
+
 </body>
 </html>
