@@ -268,3 +268,4 @@
 - PC側の根本修正（context.json肥大の原因の rescue_context_rules.py・未pushの巨大コミットの破棄）は**まだ**。10/11の項のPCへの一言をユーザーに再度伝えた
 - 追記（同日）：新しいセッションを毎回立ち上げる形はpushが403で拒否された（そのセッションにリポジトリの書き込み権限が付かない）。**代行のルーチンは、このリポジトリに書き込めるセッション session_01KzokeSoCTNNqtuc6DgaXs9 に毎回届く形**で作り直した（朝 trig_01RMBwLK8yUaBBpa6fWva7gg・週末 trig_017nNn6F3d1SKMid8CYwacgv）。止める時はこの2つを無効にする
 - 追記（10/12 16:14〜）：PCで直した（原因の本体は push-to-github.ps1 の `-replace '\\','\\\\'` でpushのたびに `\` が倍。ログイン切れも重なっていた）。PCのpushで briefing・news は10/12のPC版になり context.json は220KB。ただし同じpushで **bignews・techcatchup・techranking がPCのデスクトップの古い版（9/27〜9/29）で上書き**されたので、クラウドで10/12版に戻した。push-to-github.ps1 が「その日に更新していないファイル」もコピーして上書きするため。PCで直す必要あり
+- 追記（10/12 19:36）：**復旧完了。** PCの push-to-github.ps1 は「デスクトップの版がGitHub側の最終コミットより新しい時だけコピー」に直った。19:03のPC自動実行で bignews が更新され、techcatchup・techranking は10/12版のまま残った（古い版への逆戻りなし）。PC側の「Stop hook error（JSONの \U）」は作業に影響なし・未修正
