@@ -20,6 +20,7 @@ PCの朝の作業が公開できない日に、クラウドのルーチンがこ
 - `bignews.html` が2日以上古ければ、頭に「今週の大ネタ」の節を足す（各社の欄は古いまま残し、そう書く）
 
 ## 週末（土・日 11:20 JST）：techcatchup.html・techranking.html
+- **注意（2026-10-14追記）**：ルーチンの指示文は「techcatchup が今日なら何もせず終わる」と書いてあるが、**土曜は先に下の「currents.html の週次更新」の判定もしてから終わる**。techcatchup が最新でも currents.html は別に判定する（指示文はこの会話からは書き換えられなかったため、ここで補う）
 - `techcatchup.html` の title が今週末の日付でなければ作る（前回からの差分・スコアボード・論点・来週の見どころ）
 - `techranking.html` は頭の「結論を先に」の上に、その日の更新の枠を足す（順位表そのものはPCの ai_tech_ranking.json が正なので書き換えない）
 
