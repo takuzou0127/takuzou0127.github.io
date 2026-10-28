@@ -55,6 +55,8 @@ h1{font-size:1.2rem;color:#fff;margin-bottom:3px}
 .yf-free{display:flex;gap:6px;margin-top:12px}
 .yf-free input{flex:1;min-width:0;padding:10px;border-radius:8px;border:1px solid #2a2e3d;background:#0f1117;color:#e0e0e0;font-size:16px}
 .yf-go{padding:10px 14px;border:none;border-radius:8px;background:#7b5cff;color:#fff;font-weight:700;font-size:0.85rem}
+.yf-how{font-size:0.76rem;color:#aaa;line-height:1.6;margin:0 0 12px 18px}
+.yf-how b{color:#b9a8ff;font-weight:600}
 .yf-note{font-size:0.7rem;color:#555;margin-top:10px;line-height:1.5}
 
 .divider{border:none;border-top:1px solid #1a1d27;margin:6px 0 14px}
@@ -139,10 +141,15 @@ h1{font-size:1.2rem;color:#fff;margin-bottom:3px}
   <p>推論・エージェント化・長コンテキスト・MoE——この1〜2年で急激に進化した技術をランキング形式で深掘り</p>
 </a>
 
-<!-- Yahoo Finance 英語版を日本語訳で開く（Google翻訳経由） -->
+<!-- Yahoo Finance 英語版を開く（日本語化はSafariの翻訳） -->
 <div class="yf">
   <h2>&#x1F310; Yahoo Finance（英語版を日本語で）</h2>
-  <p>米国版Yahoo Financeを、最初から日本語に翻訳した状態で開く</p>
+  <p>米国版Yahoo Financeを開く。開いたらSafariの翻訳で日本語に</p>
+  <ol class="yf-how">
+    <li>画面の一番下をタップしてアドレスバーを出す</li>
+    <li>左の<b>「ぁあ」</b>（無ければ<b>「…」</b>）を押す</li>
+    <li><b>「翻訳」→「日本語に翻訳」</b></li>
+  </ol>
   <a class="yf-top" data-yf="">トップページ（市場全体）</a>
   <div class="yf-row"><div class="yf-name">マイクロン<small>MU ★保有</small></div><a data-yf="quote/MU/">概要</a><a data-yf="quote/MU/analysis/">アナリスト</a></div>
   <div class="yf-row"><div class="yf-name">SKハイニックス<small>000660.KS ★保有</small></div><a data-yf="quote/000660.KS/">概要</a><a data-yf="quote/000660.KS/analysis/">アナリスト</a></div>
@@ -153,7 +160,7 @@ h1{font-size:1.2rem;color:#fff;margin-bottom:3px}
     <input id="yfTicker" placeholder="ティッカー（例 NVDA, 8035.T）" autocapitalize="characters" autocorrect="off">
     <button class="yf-go" onclick="openYf()">開く</button>
   </div>
-  <div class="yf-note">開けない・表示が崩れる時は、Safariで finance.yahoo.com を開き、アドレスバー左の「ぁあ」→「日本語に翻訳」</div>
+  <div class="yf-note">Yahoo Financeのアプリで開いてしまう時は、ボタンを長押し→「新規タブで開く」でSafariで開く（アプリには翻訳機能がない）</div>
 </div>
 
 <hr class="divider">
@@ -176,9 +183,9 @@ document.getElementById('dt').textContent =
   d.getFullYear() + '年' + (d.getMonth()+1) + '月' + d.getDate() +
   '日（' + days[d.getDay()] + '）';
 
-// Yahoo Finance（Google翻訳経由で日本語表示）
+// Yahoo Finance（米国版。日本語化はSafariの翻訳で）
 function yfUrl(path) {
-  return 'https://finance-yahoo-com.translate.goog/' + path + '?_x_tr_sl=en&_x_tr_tl=ja&_x_tr_hl=ja';
+  return 'https://finance.yahoo.com/' + path;
 }
 document.querySelectorAll('[data-yf]').forEach(a => { a.href = yfUrl(a.dataset.yf); });
 function openYf() {
