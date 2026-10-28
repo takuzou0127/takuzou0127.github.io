@@ -42,6 +42,21 @@ h1{font-size:1.2rem;color:#fff;margin-bottom:3px}
 #copyBtn.done{background:#3fb950;color:#fff}
 #copyStatus{font-size:0.78rem;color:#3fb950;margin-top:8px;min-height:18px;text-align:center}
 
+/* Yahoo Finance（日本語訳） */
+.yf{background:#13161f;border-radius:14px;padding:18px 20px;margin-bottom:12px;border-left:4px solid #7b5cff}
+.yf h2{font-size:0.97rem;color:#9d86ff;margin-bottom:6px}
+.yf p{font-size:0.78rem;color:#666;margin-bottom:12px;line-height:1.5}
+.yf-top{display:block;text-align:center;padding:12px;border-radius:9px;background:#7b5cff;color:#fff;font-weight:700;text-decoration:none;margin-bottom:12px}
+.yf-row{display:flex;align-items:center;gap:6px;margin-bottom:8px}
+.yf-name{flex:1;font-size:0.82rem;color:#ccc;min-width:0}
+.yf-name small{display:block;font-size:0.68rem;color:#555}
+.yf-row a{flex:none;padding:8px 10px;border-radius:8px;background:#1f2333;color:#b9a8ff;font-size:0.76rem;text-decoration:none}
+.yf-row a:active,.yf-top:active,.yf-go:active{opacity:0.6}
+.yf-free{display:flex;gap:6px;margin-top:12px}
+.yf-free input{flex:1;min-width:0;padding:10px;border-radius:8px;border:1px solid #2a2e3d;background:#0f1117;color:#e0e0e0;font-size:16px}
+.yf-go{padding:10px 14px;border:none;border-radius:8px;background:#7b5cff;color:#fff;font-weight:700;font-size:0.85rem}
+.yf-note{font-size:0.7rem;color:#555;margin-top:10px;line-height:1.5}
+
 .divider{border:none;border-top:1px solid #1a1d27;margin:6px 0 14px}
 .update{font-size:0.7rem;color:#2a2a3a;text-align:center;margin-top:18px}
 </style>
@@ -124,6 +139,23 @@ h1{font-size:1.2rem;color:#fff;margin-bottom:3px}
   <p>推論・エージェント化・長コンテキスト・MoE——この1〜2年で急激に進化した技術をランキング形式で深掘り</p>
 </a>
 
+<!-- Yahoo Finance 英語版を日本語訳で開く（Google翻訳経由） -->
+<div class="yf">
+  <h2>&#x1F310; Yahoo Finance（英語版を日本語で）</h2>
+  <p>米国版Yahoo Financeを、最初から日本語に翻訳した状態で開く</p>
+  <a class="yf-top" data-yf="">トップページ（市場全体）</a>
+  <div class="yf-row"><div class="yf-name">マイクロン<small>MU ★保有</small></div><a data-yf="quote/MU/">概要</a><a data-yf="quote/MU/analysis/">アナリスト</a></div>
+  <div class="yf-row"><div class="yf-name">SKハイニックス<small>000660.KS ★保有</small></div><a data-yf="quote/000660.KS/">概要</a><a data-yf="quote/000660.KS/analysis/">アナリスト</a></div>
+  <div class="yf-row"><div class="yf-name">サムスン電子<small>005930.KS ★保有</small></div><a data-yf="quote/005930.KS/">概要</a><a data-yf="quote/005930.KS/analysis/">アナリスト</a></div>
+  <div class="yf-row"><div class="yf-name">SOX指数<small>^SOX</small></div><a data-yf="quote/%5ESOX/">概要</a></div>
+  <div class="yf-row"><div class="yf-name">半導体ETF<small>SMH・SOXX</small></div><a data-yf="quote/SMH/">SMH</a><a data-yf="quote/SOXX/">SOXX</a></div>
+  <div class="yf-free">
+    <input id="yfTicker" placeholder="ティッカー（例 NVDA, 8035.T）" autocapitalize="characters" autocorrect="off">
+    <button class="yf-go" onclick="openYf()">開く</button>
+  </div>
+  <div class="yf-note">開けない・表示が崩れる時は、Safariで finance.yahoo.com を開き、アドレスバー左の「ぁあ」→「日本語に翻訳」</div>
+</div>
+
 <hr class="divider">
 
 <!-- Claude.aiへのコンテキストコピー -->
@@ -143,6 +175,17 @@ const days = ['日','月','火','水','木','金','土'];
 document.getElementById('dt').textContent =
   d.getFullYear() + '年' + (d.getMonth()+1) + '月' + d.getDate() +
   '日（' + days[d.getDay()] + '）';
+
+// Yahoo Finance（Google翻訳経由で日本語表示）
+function yfUrl(path) {
+  return 'https://finance-yahoo-com.translate.goog/' + path + '?_x_tr_sl=en&_x_tr_tl=ja&_x_tr_hl=ja';
+}
+document.querySelectorAll('[data-yf]').forEach(a => { a.href = yfUrl(a.dataset.yf); });
+function openYf() {
+  const t = document.getElementById('yfTicker').value.trim().toUpperCase();
+  if (t) location.href = yfUrl('quote/' + encodeURIComponent(t) + '/');
+}
+document.getElementById('yfTicker').addEventListener('keydown', e => { if (e.key === 'Enter') openYf(); });
 
 // コンテキストコピー
 async function copyContext() {
