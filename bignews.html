@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>半導体ビッグニュース 10月29日（木）19時更新</title>
+<title>半導体ビッグニュース 10月30日（金）12時更新</title>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { background: #0f1117; color: #e0e0e0; font-family: 'Helvetica Neue', Arial, 'Hiragino Sans', 'Yu Gothic', sans-serif; font-size:17px; line-height: 1.8; padding: 0 0 40px; }
@@ -15,15 +15,28 @@ h1 { font-size: 24px; font-weight: 700; color: #fff; text-align: center; margin-
 .quicknav a:hover { background: #262c36; }
 .note-box { max-width: 920px; margin: 0 auto 28px; padding: 12px 18px; background: #161b22; border: 1px solid #2d333b; border-left: 3px solid #6e7681; border-radius: 6px; font-size:16px; color: #9aa4b2; line-height: 1.7; }
 .note-box strong { color: #cdd3db; }
-.section { max-width: 920px; margin: 0 auto 36px; border: 1px solid #2d333b; border-top: 4px solid #4a9eff; background: #161b22; border-radius: 8px; overflow: hidden; scroll-margin-top: 56px; }
+.section { max-width: 920px; margin: 0 auto 36px; border: 1px solid #2d333b; border-top: 4px solid; background: #161b22; border-radius: 8px; overflow: hidden; scroll-margin-top: 56px; }
+.section.tsmc     { border-top-color: #f85149; }
+.section.nvidia   { border-top-color: #3fb950; }
+.section.amd      { border-top-color: #ff7b72; }
+.section.asml     { border-top-color: #4a9eff; }
+.section.broadcom { border-top-color: #e3b341; }
+.section.amazon   { border-top-color: #f0883e; }
+.section.meta     { border-top-color: #56d3f7; }
+.section.apple    { border-top-color: #cdd3db; }
+.section.others   { border-top-color: #bc8cff; }
 .section-header { padding: 16px 22px 14px; border-bottom: 1px solid #2d333b; }
-.section-title { font-size: 16px; font-weight: 700; letter-spacing: 0.04em; margin-bottom: 6px; color: #4a9eff; }
+.section-title { font-size: 16px; font-weight: 700; letter-spacing: 0.04em; margin-bottom: 6px; }
+.tsmc .section-title { color: #f85149; } .nvidia .section-title { color: #3fb950; } .amd .section-title { color: #ff7b72; }
+.asml .section-title { color: #4a9eff; } .broadcom .section-title { color: #e3b341; } .amazon .section-title { color: #f0883e; }
+.meta .section-title { color: #56d3f7; } .apple .section-title { color: #cdd3db; } .others .section-title { color: #bc8cff; }
 .point-summary { font-size:16px; font-style: italic; color: #aaa; line-height: 1.6; }
 .topics { padding: 16px 18px 20px; display: flex; flex-direction: column; gap: 12px; }
 .topic { background: #1c2128; border: 1px solid #30363d; border-radius: 6px; padding: 14px 16px; }
-.topic-label { font-size:16px; font-weight: 700; letter-spacing: 0.1em; margin-bottom: 9px; padding: 3px 8px; border-radius: 3px; display: inline-block; color: #4a9eff; background: rgba(74,158,255,0.12); }
+.topic-label { font-size:16px; font-weight: 700; letter-spacing: 0.1em; margin-bottom: 9px; padding: 3px 8px; border-radius: 3px; display: inline-block; color: #e0e0e0; background: rgba(255,255,255,0.08); }
 .topic p { font-size:17px; line-height: 1.85; color: #cdd3db; margin: 0; }
 .topic p + p { margin-top: 8px; }
+.why { color: #e3b341; font-weight: 700; }
 .topic-source { margin-top: 10px; padding-top: 8px; border-top: 1px dashed #30363d; font-size:16px; }
 .topic-source a { color: #7d8590; text-decoration: none; }
 .topic-source a:hover { color: #cdd3db; text-decoration: underline; }
@@ -76,218 +89,211 @@ table:not(.vt)>tbody,table:not(.vt)>thead{display:table;width:calc(100% - 2px);}
   <a href="#sec-others">その他</a>
 </div>
 <div class="wrap">
-<h1>半導体ビッグニュース 10月29日（木）19時更新</h1>
-<div class="date-line">2026年10月29日（木）19:00 日本時間</div>
+<h1>半導体ビッグニュース 10月30日（金）12時更新</h1>
+<div class="date-line">2026年10月30日（金）12:00 JST 時点の検索結果より</div>
 </div>
 <div class="note-box">
-  <strong>これは投資判断ではなく、人と話す時のネタ用の速報まとめです。</strong> 実行のたびにWeb検索し、その時点でヒットした記事をもとにAIが要約しています。数値は記事時点のもので、報道ベース・未確認のものはその旨を書いています。🆕は12時版以降に加わった話題です。各トピック末尾の「出典」から元記事を確認できます。
+  <strong>これは投資判断ではなく、人と話す時のネタ用の速報まとめです。</strong> 実行のたびにWeb検索し、その時点でヒットした記事をAIが要約しています。数値は検索スナップショット時点のもので、各トピック末尾の「出典」から元記事を確認できます。報道ベース・未確認の話はその旨を書いています。
 </div>
-<div class="wrap">
-<div class="section" id="sec-tsmc">
+
+<!-- TSMC -->
+<div class="section tsmc" id="sec-tsmc">
   <div class="section-header">
     <div class="section-title">TSMC</div>
-    <div class="point-summary">ひとことで：12時以降の新しい大型発表はなし。7〜9月期の「粗利66%」が引き続き鉄板ネタ</div>
+    <div class="point-summary">ポイント：利益率66%という「製造業らしくない」決算と、パッケージング値上げの報道</div>
   </div>
   <div class="topics">
     <div class="topic">
-      <div class="topic-label">7〜9月期決算：売上+51%、純利益+69%</div>
-      <p><strong>何が起きたか：</strong>10月15日発表の7〜9月期は、売上高約1.49兆台湾ドル（前年同期比+51%）、純利益約7,630億台湾ドル（同+69%）、粗利率66.4%。9月単月の売上も約5,119億台湾ドルで前年同月比+54.6%、1〜9月累計は+41.1%でした。</p>
-      <p><strong>なぜ話題になるか：</strong>製造業で粗利66%は普通ありえない水準で、「工場なのにソフトウェア会社並みに儲かる」と言えるのがネタ。NVIDIAもAppleもAMDも、そして今回TPUの販売が好調なGoogleも、最先端チップはここに頼るしかないという独占ぶりが数字に出ています。</p>
-      <div class="topic-source">出典：<a href="https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-10/526b65af7305df2dde6b9ece6812b1fdf1e49f9b/3Q26%20EarningsRelease.pdf" target="_blank" rel="noopener">TSMC 3Q26 Earnings Release</a>／<a href="https://pr.tsmc.com/english/news/3343" target="_blank" rel="noopener">TSMC September 2026 Revenue Report</a></div>
+      <div class="topic-label">7〜9月期決算：売上+51%、粗利率66.4%</div>
+      <p>10月15日発表の7〜9月期は、売上高1兆4942億台湾ドル（前年比約+51%）、純利益7631億台湾ドル（同約+69%）。粗利率66.4%、営業利益率58.7%。ウエハー売上のうち3nmが33%、最新の2nmもすでに8%を占めた。</p>
+      <p><span class="why">なぜ話題か：</span>工場を持つ「製造業」なのに、売上の約半分が純利益として残る異常な儲かり方。2nmが立ち上がって早くも1割近くに届いたのは「最先端はTSMCしか作れない」構図がさらに強まったことを示す。</p>
+      <div class="topic-source">出典：<a href="https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-10/526b65af7305df2dde6b9ece6812b1fdf1e49f9b/3Q26%20EarningsRelease.pdf" target="_blank" rel="noopener">TSMC 3Q26 Earnings Release</a></div>
+    </div>
+    <div class="topic">
+      <div class="topic-label">CoWoS（先端パッケージ）最大20%値上げの報道</div>
+      <p>台湾・工商時報の報道として、TSMCがAIチップの組み立てに使う先端パッケージング「CoWoS」の価格を最大20%引き上げる準備をしていると伝えられた（会社側の正式発表ではない）。9月の月次売上は5119億台湾ドルで前年比約+55%。</p>
+      <p><span class="why">なぜ話題か：</span>AIチップの本当のボトルネックは「チップを作る」より「HBMとくっつけて組み立てる」工程。そこで値上げできるのは、NVIDIAやBroadcomの顧客側に交渉力がないことの裏返し。</p>
+      <div class="topic-source">出典：<a href="https://stocktwits.com/symbol/TSM" target="_blank" rel="noopener">Stocktwits（工商時報報道の紹介）</a>／<a href="https://pr.tsmc.com/english/news/3343" target="_blank" rel="noopener">TSMC September 2026 Revenue Report</a></div>
     </div>
   </div>
 </div>
-<div class="section" id="sec-nvidia">
+
+<!-- NVIDIA -->
+<div class="section nvidia" id="sec-nvidia">
   <div class="section-header">
     <div class="section-title">NVIDIA</div>
-    <div class="point-summary">ひとことで：Metaに30億ドル出資、Hugging Face買収には独禁法の目。「お金をぐるぐる回している」批判も</div>
+    <div class="point-summary">ポイント：Hugging Face買収に米司法省のメス、欧州で「Vera Rubin」本格稼働</div>
   </div>
   <div class="topics">
     <div class="topic">
-      <div class="topic-label">🆕 Metaの株式発行に30億ドル出資、MetaはVera Rubinを追加購入</div>
-      <p><strong>何が起きたか：</strong>NVIDIAはMetaの大型株式発行に30億ドルを投じると発表（10月26〜27日の報道。発行全体の規模は報道で数字が食い違っています）。同時にMetaは次世代のVera Rubin・Vera CPU・ネットワーク機器を追加で導入し、MetaのAIモデル「Muse」を両社で最適化するとしています。</p>
-      <p><strong>なぜ話題になるか：</strong>「最大級の顧客にお金を出して、そのお金で自社のチップを買ってもらう」形なので、OpenAIへの出資のときと同じく“循環取引ではないか”という声が出ています。顧客が株主にもなる関係はAIブームならではの構図として話題にしやすいネタです。</p>
-      <div class="topic-source">出典：<a href="https://www.datacenterdynamics.com/en/news/nvidia-to-invest-3bn-in-metas-975bn-equity-offering-as-social-media-giant-plans-to-deploy-more-nvidia-hardware/" target="_blank" rel="noopener">DCD</a>／<a href="https://hothardware.com/news/nvidia-bets-3-billion-meta-muse-ai-moves-vera-rubin" target="_blank" rel="noopener">HotHardware</a>／<a href="https://www.techtimes.com/articles/329589/20261027/nvidia-takes-3b-meta-equity-stake-turning-biggest-customer-strategic-partner.htm" target="_blank" rel="noopener">Tech Times</a></div>
+      <div class="topic-label">Hugging Face買収（約129億ドル）に米司法省が調査</div>
+      <p>10月28日、ロイター報道として、米司法省（DOJ）がNVIDIAによる約129億ドルのHugging Face買収計画を、AI分野の競争に与える影響の観点から調べていると伝わった。株価は同日1.2%安の215.38ドル。</p>
+      <p><span class="why">なぜ話題か：</span>Hugging Faceは「AIモデル版GitHub」とも呼ばれるオープンなAIの集積地。チップの覇者がソフトの交差点まで押さえることに当局が待ったをかけるかどうかは、「NVIDIAは大きくなりすぎたか」という議論そのもの。</p>
+      <div class="topic-source">出典：<a href="https://heygotrade.com/en/news/nvidia-nvda-stock-news-october-29-2026" target="_blank" rel="noopener">heygotrade（ロイター報道の要約）</a></div>
     </div>
     <div class="topic">
-      <div class="topic-label">🆕 Hugging Face買収（約129億ドル）に米司法省が注目とReuters</div>
-      <p><strong>何が起きたか：</strong>NVIDIAが9月に発表した、AIモデル共有サイトHugging Faceの約129.3億ドルでの買収について、米司法省（DOJ）がNVIDIAの商慣行をめぐる独禁法調査の一環として調べているとReutersが10月28日に報道。同日、NVIDIA株は約1〜2%下げました（記事により数字に差）。</p>
-      <p><strong>なぜ話題になるか：</strong>Hugging Faceは世界中の開発者がAIモデルを公開・共有する“AI版GitHub”。チップの覇者が開発者の集まる場所まで握ってよいのか、という点が争点です。NVIDIAは2022年にArm買収（400億ドル）を規制当局の反対で断念した過去があり、「二の舞になるか」が話のつかみになります。</p>
-      <div class="topic-source">出典：<a href="https://www.investing.com/news/stock-market-news/nvidia-faces-doj-antitrust-scrutiny-over-129b-hugging-face-deal-reuters-says-4980539" target="_blank" rel="noopener">Investing.com（Reuters）</a>／<a href="https://semafor.com/article/09/03/2026/nvidia-to-buy-hugging-face-for-nearly-13-billion" target="_blank" rel="noopener">Semafor（買収発表時）</a>／<a href="https://www.mlex.com/mlex/articles/2521456/nvidia-s-hugging-face-openness-pledge-identifies-us-eu-antitrust-fault-line" target="_blank" rel="noopener">MLex</a></div>
-    </div>
-    <div class="topic">
-      <div class="topic-label">GTC Berlinでフアン氏「GPUの寿命は8年以上」</div>
-      <p><strong>何が起きたか：</strong>10月21日のGTC Berlinで、ジェンスン・フアンCEOはBlackwellや次世代Vera Rubinが7〜8年使えると発言。1ギガワット分のAI計算設備は約500億ドルかかるが、年に約400億ドルの売上を生む、という自社試算も示しました。次の山場は11月18日の決算です。</p>
-      <p><strong>なぜ話題になるか：</strong>一見マニアックですが「AIバブルかどうか」の核心。データセンターは通常GPUを4〜6年で減価償却しており、寿命が長いほど担保価値が上がり借金で買いやすくなる。一方、マイケル・バーリ氏らは「長い償却は利益を水増しする」と批判しており、売る側の社長の主張である点も含めて賛否が割れる話題です。</p>
-      <div class="topic-source">出典：<a href="https://digitimes.com/news/a20261027PD203/nvidia-financing-gtc-berlin-ceo.html" target="_blank" rel="noopener">Digitimes</a>／<a href="https://cloudnews.tech/jensen-huang-nvidia-gpus-now-last-eight-years-or-more-reviving-the-amortization-debate/" target="_blank" rel="noopener">CloudNews</a></div>
+      <div class="topic-label">GTC Berlin：Google CloudでVera Rubinが一般提供開始</div>
+      <p>10月下旬のGTC Berlinで、Google CloudとNVIDIAが次世代基盤「Vera Rubin」の一般提供（GA）を発表。欧州向けAI工場「DSX POD」の立ち上げや、欧州への投資拡大も打ち出した。なお次の決算は11月17日（日本時間18日朝）。</p>
+      <p><span class="why">なぜ話題か：</span>Blackwellの次の世代が「発表」から「クラウドで誰でも借りられる」段階に入った節目。欧州の“AI主権”需要をNVIDIAが取りに行っている構図でもある。</p>
+      <div class="topic-source">出典：<a href="https://www.storagenewsletter.com/?p=306375" target="_blank" rel="noopener">StorageNewsletter Week 43まとめ</a>／<a href="https://heygotrade.com/en/news/nvidia-nvda-stock-news-october-29-2026" target="_blank" rel="noopener">heygotrade</a></div>
     </div>
   </div>
 </div>
-<div class="section" id="sec-amd">
+
+<!-- AMD -->
+<div class="section amd" id="sec-amd">
   <div class="section-header">
     <div class="section-title">AMD</div>
-    <div class="point-summary">ひとことで：新しい大型発表はなし。11月3日（米国時間）の決算待ち</div>
+    <div class="point-summary">ポイント：11月3日の決算待ち。MI450がOpenAI・Oracle向けに立ち上がる局面</div>
   </div>
   <div class="topics">
     <div class="topic">
-      <div class="topic-label">決算は11月3日</div>
-      <p><strong>何が起きたか：</strong>AMDは7〜9月期決算を11月3日（米国時間）の取引終了後に発表すると告知済み。10月28日の米市場では半導体株の上昇に乗って約3.2%上がりました。</p>
-      <p><strong>なぜ話題になるか：</strong>ラック型サーバー「Helios」などAIデータセンター向けの売上が、NVIDIAの対抗馬としてどこまで伸びたかが見どころ。今週はGoogleのTPUやAmazonのTrainiumなど「NVIDIA以外」の話題が多く、AMDがその中で存在感を示せるかも注目点です。</p>
-      <div class="topic-source">出典：<a href="https://ir.amd.com/news-events/press-releases/detail/1300" target="_blank" rel="noopener">AMD IR</a>／<a href="https://finance.yahoo.com/markets/article/nvidia-amd-and-micron-stocks-lead-chip-sector-higher-for-third-day-in-a-row-124044569.html" target="_blank" rel="noopener">Yahoo Finance</a></div>
+      <div class="topic-label">MI450の本格出荷フェーズと、11/3決算</div>
+      <p>OpenAI向け6GW契約のうち最初の1GW（MI450）が2026年後半から稼働開始の予定で、Oracle Cloudも5万基のMI450をラック型「Helios」で導入する計画。株価は1年前の約2.2倍（10/28終値ベース）だが、最高値からは13%ほど下。7〜9月期決算は11月3日（日本時間4日朝）。</p>
+      <p><span class="why">なぜ話題か：</span>「NVIDIA一強に風穴を開けられるか」の答え合わせが、まさに今四半期から数字に出始める。期待が高い分、少しの見通し未達で大きく動きやすい銘柄としても話題。</p>
+      <div class="topic-source">出典：<a href="https://www.trefis.com/stock/amd/articles/621305/was-there-any-sign-amd-stock-would-run/2026-10-29" target="_blank" rel="noopener">Trefis</a>／<a href="https://uk.investing.com/analysis/nvidias-profitability-gap-puts-amds-premium-valuation-under-pressure-200629055" target="_blank" rel="noopener">Investing.com</a>／<a href="https://ir.amd.com/news-events/press-releases/detail/1300" target="_blank" rel="noopener">AMD IR（決算日程）</a></div>
     </div>
   </div>
 </div>
-<div class="section" id="sec-asml">
+
+<!-- ASML -->
+<div class="section asml" id="sec-asml">
   <div class="section-header">
     <div class="section-title">ASML</div>
-    <div class="point-summary">ひとことで：「2027〜28年は作っても作っても足りない」と露光装置の独占企業が宣言（新しい動きはなし）</div>
+    <div class="point-summary">ポイント：「2027〜28年も装置が足りない」、2030年分の注文の打診まで</div>
   </div>
   <div class="topics">
     <div class="topic">
-      <div class="topic-label">7〜9月期は売上117億ユーロ、通年見通しも引き上げ</div>
-      <p><strong>何が起きたか：</strong>10月14日発表の7〜9月期は売上高117億ユーロ、純利益50億ユーロ。2026年通年の売上見通しを440〜450億ユーロに引き上げ、2027・28年に予定している生産能力でも需要を満たしきれないとの見方を示しました。2029〜30年分の注文の相談まで来ているとのこと。</p>
-      <p><strong>なぜ話題になるか：</strong>最先端チップ用のEUV露光装置は世界でASMLしか作れないので、「ASMLが足りないと言えば、世界の最先端チップが足りない」という話になる。一方で中国向け売上は今年大きく減ると警告しており、米中対立の影響が見える点もネタになります。</p>
-      <div class="topic-source">出典：<a href="https://mfn.se/one/a/asml-holding/asml-reports-eu11-7-billion-total-net-sales-and-eu5-0-billion-net-income-in-q3-2026-6f2ccf27" target="_blank" rel="noopener">ASML Q3 2026 発表（MFN）</a>／<a href="https://www.rttnews.com/story.aspx?Id=3698871" target="_blank" rel="noopener">RTTNews</a>／<a href="https://www.benzinga.com/news/26/10/62356129" target="_blank" rel="noopener">Benzinga（決算説明会）</a></div>
+      <div class="topic-label">7〜9月期：売上117億ユーロ、通期見通しを上方修正</div>
+      <p>10月14日発表の7〜9月期は売上約117億ユーロ、純利益約50億ユーロ、粗利率57.5%。10〜12月期は142〜152億ユーロ、2026年通期は440〜450億ユーロを見込む。フーケCEOは「2027年・2028年の供給計画では顧客需要を満たしきれない」と述べ、すでに表明した30%増産以上の能力拡大を検討中。2029年、2030年分を発注したいという顧客もいるという。</p>
+      <p><span class="why">なぜ話題か：</span>EUV露光装置は世界でASMLしか作れない。その会社が「4年先まで足りない」と言うのは、AI向け半導体投資が一過性ではないと業界が見ている証拠。一方で中国向け売上は大きく減る見通しで、輸出規制の影響もはっきり出ている。</p>
+      <div class="topic-source">出典：<a href="https://mfn.se/one/a/asml-holding/asml-reports-eu11-7-billion-total-net-sales-and-eu5-0-billion-net-income-in-q3-2026-6f2ccf27" target="_blank" rel="noopener">ASMLプレスリリース（MFN）</a>／<a href="https://www.benzinga.com/news/26/10/62356129" target="_blank" rel="noopener">Benzinga 決算説明会トランスクリプト</a></div>
     </div>
   </div>
 </div>
-<div class="section" id="sec-broadcom">
+
+<!-- Broadcom -->
+<div class="section broadcom" id="sec-broadcom">
   <div class="section-header">
-    <div class="section-title">Broadcom（＋Google TPU）</div>
-    <div class="point-summary">ひとことで：OpenAIまでGoogleのTPUを買う方向へ。TPUを裏で作るBroadcomの存在感がさらに増した</div>
+    <div class="section-title">Broadcom</div>
+    <div class="point-summary">ポイント：Anthropic向けチップを630億ドルの金融スキームで調達</div>
   </div>
   <div class="topics">
     <div class="topic">
-      <div class="topic-label">🆕 OpenAIがGoogleのAIチップ（TPU）購入を計画とBloomberg</div>
-      <p><strong>何が起きたか：</strong>Bloombergは10月28日、OpenAIがAI計算能力の拡大策の一つとしてGoogleのチップを買う計画だと報道。The InformationはTPUの購入だと伝えています。最終的な条件はまだ分かっていません。</p>
-      <p><strong>なぜ話題になるか：</strong>OpenAIはNVIDIAの最大級の顧客で、Googleとは生成AIで真っ向からのライバル。その会社が「ライバルのチップ」を買うという意外性が最大のネタです。TPUの設計・製造を担うのはBroadcomで、AnthropicのTPU大口契約（2027年から約3.5ギガワット）に続く追い風になります。</p>
-      <div class="topic-source">出典：<a href="https://bloomberg.com/news/articles/2026-10-28/openai-plans-to-buy-google-s-chips-as-part-of-its-ai-build-out" target="_blank" rel="noopener">Bloomberg</a>／<a href="https://247wallst.com/investing/2026/10/28/openai-is-buying-googles-ai-chips-a-hit-to-nvidias-biggest-customer-bond" target="_blank" rel="noopener">24/7 Wall St.</a></div>
+      <div class="topic-label">Anthropic向け630億ドルのチップ・リース枠組み</div>
+      <p>10月26日、バンク・オブ・アメリカ、ブラックストーン、シティ、モルガン・スタンレーが出資する630億ドル規模のビークルが、BroadcomのAIチップを購入してAnthropicにリースする枠組みが発表された（納入は2027年から）。Broadcomはチップの残存価値を保証する立場で、最大負担額は報道により約290億〜430億ドルと幅がある。DA Davidsonは27日に投資判断を「買い」に引き上げ。</p>
+      <p><span class="why">なぜ話題か：</span>AIチップが「住宅ローン」のように金融商品化され始めたという象徴的な案件。AI企業がチップを自前で買わずにウォール街の資金で借りる時代になった一方、チップの価値が下がった時のリスクを誰が負うのか、という議論も呼んでいる。株価は6月の最高値から約29%下。</p>
+      <div class="topic-source">出典：<a href="https://www.fool.com/investing/2026/10/28/broadcom-stock-is-29-below-its-record-after-its-new-anthropic-deal-i-d-consider-buying-it-a-little-at-a-time/" target="_blank" rel="noopener">The Motley Fool</a>／<a href="https://www.autobound.ai/companies/broadcom" target="_blank" rel="noopener">Autobound（Broadcomニュース一覧）</a></div>
     </div>
     <div class="topic">
-      <div class="topic-label">AI半導体売上が前年の3倍超、来期1,150億ドル目標</div>
-      <p><strong>何が起きたか：</strong>直近の5〜7月期（FQ3）は売上約296億ドル（+86%）、うちAI半導体が167億ドル（+221%）。8〜10月期はAIだけで217億ドルを見込み、2027年度のAI売上は約1,150億ドルという強気の見通しを示しています。決算は12月10日予定。</p>
-      <p><strong>なぜ話題になるか：</strong>GoogleのTPUやOpenAIの自社チップを裏で設計しているのがBroadcom。「NVIDIAを買わずに自前チップを作る」流れの最大の受け皿で、ホック・タンCEOはAnthropicが「最大のカスタムチップ顧客になる見込み」と発言したと報じられています。</p>
-      <div class="topic-source">出典：<a href="https://www.unite.ai/nl/broadcom-posts-record-q3-revenue-as-ai-chip-sales-reach-16-7b/" target="_blank" rel="noopener">Unite.AI</a>／<a href="https://www.tomshardware.com/tech-industry/broadcom-expands-anthropic-deal-to-3-5gw-of-google-tpu-capacity-from-2027" target="_blank" rel="noopener">Tom&#x27;s Hardware</a></div>
+      <div class="topic-label">AI売上は来期1150億ドルへ倍増の見通し</div>
+      <p>会社側は2027年度のAI半導体売上を約1150億ドル（ほぼ倍増）と見込み、AnthropicのTPU（2027年に5GW）、OpenAIの自社チップ（2028年までに5GW）が二大顧客になる見通しと伝えられている。次の決算は12月。</p>
+      <p><span class="why">なぜ話題か：</span>Google・Anthropic・OpenAI・Metaの「NVIDIAに頼らない自社チップ」は、ほぼ全部Broadcomが設計を手伝っている。“もう一つのAIチップ王者”としての存在感。</p>
+      <div class="topic-source">出典：<a href="https://www.tradingkey.com/analysis/stocks/us-stocks/262207856-broadcom-avgo-stock-forecast-october-9-2026-tradingkey" target="_blank" rel="noopener">TradingKey</a>／<a href="https://www.itiger.com/news/1139448922" target="_blank" rel="noopener">Tiger Brokers</a></div>
     </div>
   </div>
 </div>
-<div class="section" id="sec-amazon">
+
+<!-- Amazon -->
+<div class="section amazon" id="sec-amazon">
   <div class="section-header">
-    <div class="section-title">Amazon（AWS/Trainium）</div>
-    <div class="point-summary">ひとことで：今夜（日本時間30日朝）決算。CUDAの壁に挑むTorchNeuronも話題</div>
+    <div class="section-title">Amazon（AWS / Trainium）</div>
+    <div class="point-summary">ポイント：AWSが約5年ぶりの高成長、なのに株価は9%安</div>
   </div>
   <div class="topics">
     <div class="topic">
-      <div class="topic-label">🆕 決算は日本時間30日朝6時ごろ</div>
-      <p><strong>何が起きたか：</strong>Amazonは10月29日（米国時間）午後2時（太平洋時間）に7〜9月期の決算説明会を開催。会社の売上見通しは1,970〜2,020億ドルで、市場予想（約2,046億ドル）はその上限を上回っています。</p>
-      <p><strong>なぜ話題になるか：</strong>前日にGoogle Cloudが+103%、MicrosoftのAzureが+48%と爆発的な数字を出したばかりなので、「AWSはどこまで伸びたか」が最大の比較ポイント。Anthropicに最大5ギガワットの計算能力を提供する契約もあり、自社チップTrainiumの話がどれだけ出るかも注目です。結果は次回更新で。</p>
-      <div class="topic-source">出典：<a href="https://www.aboutamazon.com/md/news/company-news/amazon-earnings-q3-2026-report" target="_blank" rel="noopener">About Amazon</a>／<a href="https://www.marketbeat.com/stocks/NASDAQ/AMZN/earnings/" target="_blank" rel="noopener">MarketBeat</a></div>
+      <div class="topic-label">7〜9月期：AWS +39%、受注残5780億ドル</div>
+      <p>10月29日（米国時間）の決算で、全社売上2019億ドル（+12%）、営業利益281億ドル（+61%）。AWSは売上460億ドル（+39.3%）とほぼ5年ぶりの伸びで、受注残は5780億ドル。経営陣はAWSが2027年・2028年とも40%超の成長と見通した。それでもEPSが予想に届かず、株価は時間外で9%超下落。</p>
+      <p><span class="why">なぜ話題か：</span>「本業は絶好調なのに株価が下がる」典型例。市場が見ているのは成長率より、AI投資で出ていくお金の大きさ。</p>
+      <div class="topic-source">出典：<a href="https://www.cnbc.com/2026/10/29/aws-q3-earnings-report-2026.html" target="_blank" rel="noopener">CNBC</a>／<a href="https://finance.yahoo.com/markets/stocks/live/amazon-earnings-live-q3-earnings-miss-sends-stock-lower-203345870.html" target="_blank" rel="noopener">Yahoo Finance</a></div>
     </div>
     <div class="topic">
-      <div class="topic-label">TorchNeuron公開：PyTorchのコードがそのままTrainiumで動く</div>
-      <p><strong>何が起きたか：</strong>AmazonはPyTorch Conference（10月20日）に合わせ、ソフト「TorchNeuron」をオープンソース（Apache 2.0）で公開。既存のPyTorchのコードを、設定1か所の変更だけで自社AIチップTrainium2/3で動かせるとしています（公開ベータ）。</p>
-      <p><strong>なぜ話題になるか：</strong>NVIDIAが強い本当の理由はチップよりも、開発者がCUDA向けに書いた大量のコード資産。そこを「書き直し不要」で乗り換えさせようという一手です。ただし初版は約2.2万件のテストをスキップしており、まだ完成品ではありません。</p>
-      <div class="topic-source">出典：<a href="https://aboutamazon.com/news/innovation-at-amazon/torchneuron-pytorch-aws-trainium-chips-ai" target="_blank" rel="noopener">About Amazon</a>／<a href="https://thenextweb.com/news/amazon-torchneuron-pytorch-trainium" target="_blank" rel="noopener">The Next Web</a></div>
+      <div class="topic-label">Trainiumを「AWSの外」にも売る、時期は2027年後半</div>
+      <p>自社チップTrainium・Gravitonの受注額はいずれも前年の20倍超に増え、自社チップを使った顧客は四半期で20億ドル以上を節約したという。ジャシーCEOは、TrainiumをAWS以外にも販売する計画について「2027年後半に実施する」と時期を明言した。</p>
+      <p><span class="why">なぜ話題か：</span>Amazonが“チップを外販する半導体メーカー”にもなる宣言。NVIDIAやBroadcomの直接のライバルが一社増える可能性がある。</p>
+      <div class="topic-source">出典：<a href="https://www.marketbeat.com/instant-alerts/transcript-amazoncom-q3-earnings-call-highlights-2026-10-29/" target="_blank" rel="noopener">MarketBeat 決算説明会ハイライト</a></div>
     </div>
   </div>
 </div>
-<div class="section" id="sec-meta">
+
+<!-- Meta -->
+<div class="section meta" id="sec-meta">
   <div class="section-header">
     <div class="section-title">Meta</div>
-    <div class="point-summary">ひとことで：設備投資が「稼いだ現金」を上回り、NVIDIAからの出資まで受け入れる</div>
+    <div class="point-summary">ポイント：設備投資が現金収入を上回り、議決権なし株式という奇策</div>
   </div>
   <div class="topics">
     <div class="topic">
-      <div class="topic-label">7〜9月期：売上+26%、でもフリーキャッシュフローは赤字</div>
-      <p><strong>何が起きたか：</strong>Metaの7〜9月期は売上646億ドル（+26%）と好調でしたが、設備投資が約349億ドルに膨らみ、営業キャッシュフロー（約328億ドル）を上回ってフリーキャッシュフローは約21億ドルのマイナスに。2026年の設備投資見通しは1,350〜1,450億ドルに絞り込みました。</p>
-      <p><strong>なぜ話題になるか：</strong>「広告で稼いだお金を全部AIのデータセンターにつぎ込んでも足りない」状態に。大型の株式発行に踏み切り、そこにNVIDIAが30億ドル出す（NVIDIA欄参照）という流れまでセットで話すと、AI投資の過熱ぶりが伝わります。</p>
-      <div class="topic-source">出典：<a href="https://letsdatascience.com/news/meta-narrows-2026-capital-spending-range-to-135-billion-145-46f12e07" target="_blank" rel="noopener">Let&#x27;s Data Science</a>／<a href="https://fourweekmba.com/ai-metas-q3-explained-capex-outran-its-cash-by-2-1-billion/" target="_blank" rel="noopener">FourWeekMBA</a>／<a href="https://www.datacenterdynamics.com/en/news/nvidia-to-invest-3bn-in-metas-975bn-equity-offering-as-social-media-giant-plans-to-deploy-more-nvidia-hardware/" target="_blank" rel="noopener">DCD</a></div>
+      <div class="topic-label">7〜9月期：売上+26%、フリーキャッシュフローは赤字</div>
+      <p>10月21日の決算で売上646億ドル（+26%）。州司法長官らとの和解関連で98.9億ドルの費用を計上し、EPSは3.83ドルと予想を下回った（費用除きなら7.40ドル）。四半期の設備投資は349億ドルで、営業キャッシュフロー328億ドルを上回りフリーキャッシュフローはマイナス。2026年の設備投資は1350〜1450億ドルに下限を引き上げ、2027年の数字は示さなかった。</p>
+      <p><span class="why">なぜ話題か：</span>あの“お金が余って仕方ない”Metaが、AI投資で稼ぎ以上に使い始めた。2027年はアナリスト予想で約1930億ドルとさらに膨らむ見込み。</p>
+      <div class="topic-source">出典：<a href="https://www.cnbc.com/2026/10/21/meta-earnings-q3-2026-live-updates.html" target="_blank" rel="noopener">CNBC</a>／<a href="https://www.sec.gov/Archives/edgar/data/0001326801/000162828026066700/meta-09302026xexhibit991.htm" target="_blank" rel="noopener">Meta 8-K（決算資料）</a></div>
     </div>
     <div class="topic">
-      <div class="topic-label">自社チップMTIAは「2年で4世代」の計画（背景）</div>
-      <p><strong>何が起きたか：</strong>Metaは3月に、自社AIチップMTIAを2年で4世代出す計画を発表。MTIA 300はすでに稼働、MTIA 400も配備に向かい、残り2つは2027年稼働予定で、製造はTSMCです。</p>
-      <p><strong>なぜ話題になるか：</strong>一方で今週はNVIDIAのVera Rubinの追加導入も決めており、「自社チップで脱NVIDIA」と「NVIDIAとの関係強化」を同時に進めている二面作戦が見どころです。</p>
-      <div class="topic-source">出典：<a href="https://www.streetinsider.com/Investing/Meta+unveils+four+custom+AI+chips+for+data+center+growth/26144256.html" target="_blank" rel="noopener">StreetInsider</a>／<a href="https://hothardware.com/news/nvidia-bets-3-billion-meta-muse-ai-moves-vera-rubin" target="_blank" rel="noopener">HotHardware</a></div>
+      <div class="topic-label">議決権のない「クラスC株」を新設</div>
+      <p>Metaは議決権のない新しいクラスC株を作り、2027年1月19日付で全株主に1回限りの株式配当として配る方針。資金調達に使える株式を、ザッカーバーグ氏の支配権を薄めずに用意する狙いとみられる。</p>
+      <p><span class="why">なぜ話題か：</span>Googleが2014年に使ったのと同じ手法。「AI投資の資金を株でまかなう準備では」と受け止められている。自社AIチップMTIAはBroadcomと共同開発で、本格量産は2027年の話とされる。</p>
+      <div class="topic-source">出典：<a href="https://www.aichatdaily.com/ai-business/meta-narrows-2026-capex-135b-145b-plans-nonvoting" target="_blank" rel="noopener">AI Chat Daily</a>／<a href="https://www.heygotrade.com/en/blog/meta-q1-2026-earnings-reaction" target="_blank" rel="noopener">heygotrade（MTIAロードマップ）</a></div>
     </div>
   </div>
 </div>
-<div class="section" id="sec-apple">
+
+<!-- Apple -->
+<div class="section apple" id="sec-apple">
   <div class="section-header">
     <div class="section-title">Apple</div>
-    <div class="point-summary">ひとことで：中国でAI解禁。ただし「Siriなし」・中国企業と組む形（12時以降の新しい動きはなし）</div>
+    <div class="point-summary">ポイント：メモリ不足で「中国製メモリ」をめぐり揺れる。決算は11月2日</div>
   </div>
   <div class="topics">
     <div class="topic">
-      <div class="topic-label">Apple Intelligenceが中国で承認、12月にも開始の報道</div>
-      <p><strong>何が起きたか：</strong>ティム・クックCEOは10月15日に上海で、Apple Intelligenceが中国で承認されたと表明。試験版を今月中に出すが、新しいSiriは含まれません。Bloombergは一般向け開始を12月（iOS 27.3）と報じていますが、Appleは日付を公表していません。中国版はアリババ・百度と組み、政府がAIの更新を承認できる仕組みが入るとされます。</p>
-      <p><strong>なぜ話題になるか：</strong>「iPhoneのAIが国ごとに中身が違う」「中国では政府のフィルター付き」という点が、米中のテック分断を象徴する話として使えます。</p>
-      <div class="topic-source">出典：<a href="https://247wallst.com/investing/2026/10/15/apple-is-reportedly-bringing-ai-to-china-in-december-but-not-the-new-siri/" target="_blank" rel="noopener">247 Wall St.</a>／<a href="https://news.bgov.com/artificial-intelligence/apple-gets-approval-for-iphone-ai-in-china-with-alibaba-baidu" target="_blank" rel="noopener">Bloomberg Government</a></div>
+      <div class="topic-label">中国メモリ：CXMTは試験継続、YMTCは見送りと報道</div>
+      <p>8月にWSJが、AppleがiPhoneやMacBook向けに中国CXMT（長鑫存儲）のDRAMを試験していると報道。中国で売る製品への採用にはホワイトハウスの承認が必要とされる。一方、日経アジアは10月17日、NAND大手YMTC（長江存儲）の採用計画をAppleが棚上げしたと報じた。</p>
+      <p><span class="why">なぜ話題か：</span>米政府が規制対象にしてきた中国メモリを、米国を代表する企業が「使いたい」と言わざるを得ないほどメモリ不足が深刻だということ。米中対立とサプライチェーンの板挟みの象徴。</p>
+      <div class="topic-source">出典：<a href="https://www.dealstreetasia.com/stories/apple-tests-chinas-cxmt-memory-chips-for-iphones-macbooks-491608/" target="_blank" rel="noopener">DealStreetAsia</a>／<a href="https://theprint.in/world/apple-holds-plan-to-use-chips-from-top-chinese-company-report/1171716" target="_blank" rel="noopener">ThePrint（日経アジア報道）</a>／<a href="https://news.bloomberglaw.com/tech-and-telecom-law/apple-seeks-to-buy-chinese-made-memory-chips-with-lobbying-push" target="_blank" rel="noopener">Bloomberg Law</a></div>
     </div>
     <div class="topic">
-      <div class="topic-label">中国製メモリCXMTの採用検討（8月報道の続き）</div>
-      <p><strong>何が起きたか：</strong>WSJは8月、AppleがiPhone・MacBook向けに中国CXMTのメモリを試験していると報道。メモリ不足への対策で、中国向け製品に限る想定、ホワイトハウスの承認待ちとされます。その後の大きな進展は確認できていません。</p>
-      <p><strong>なぜ話題になるか：</strong>今日のSamsung決算でも「2027年分のHBMは売り切れ」と出たばかり。メモリ大手が空前の利益を出す裏で「Appleですら中国製に手を伸ばすほど足りない」という対比が面白いところです。</p>
-      <div class="topic-source">出典：<a href="https://www.foxbusiness.com/markets/apple-testing-chinese-made-cxmt-memory-chips-iphones-macbooks-amid-global-shortage.amp" target="_blank" rel="noopener">Fox Business</a>／<a href="https://www.dealstreetasia.com/stories/apple-tests-chinas-cxmt-memory-chips-for-iphones-macbooks-491608/" target="_blank" rel="noopener">DealStreetAsia</a></div>
+      <div class="topic-label">256GB→512GBの差額部品が15ドル→66ドルに</div>
+      <p>WSJによると、iPhoneの容量を256GBから512GBに上げるためのフラッシュメモリのコストが15ドルから66ドルへ約4倍に。Appleはすでに一部のMacBookやiPadを値上げしている。7〜9月期決算は11月2日（日本時間3日朝）で、メモリ高による利益率の圧迫が最大の焦点。</p>
+      <p><span class="why">なぜ話題か：</span>「Appleは部品メーカーを買い叩ける」という常識が逆転。AIデータセンターがメモリを吸い上げ、そのツケがスマホやPCの値段に回ってきている、という身近な話にできる。</p>
+      <div class="topic-source">出典：<a href="https://finance.yahoo.com/markets/stocks/articles/ai-made-flash-memory-5-124321564.html" target="_blank" rel="noopener">Yahoo Finance</a>／<a href="https://pepperstone.com/en-au/insights/market-analysis/equities/apple-q4-2026-earnings-preview-rising-memory-costs-test-margins-can-premium-products-support-the-share-price" target="_blank" rel="noopener">Pepperstone 決算プレビュー</a></div>
     </div>
   </div>
 </div>
-<div class="section" id="sec-others">
+
+<!-- Others -->
+<div class="section others" id="sec-others">
   <div class="section-header">
-    <div class="section-title">その他（Google・Microsoft・Samsung・SKハイニックス・Anthropic・Intelほか）</div>
-    <div class="point-summary">ひとことで：ビッグテック決算で明暗。Microsoftは上昇、Googleはクラウド倍増なのに時間外で急落</div>
+    <div class="section-title">その他（Samsung・SKハイニックス・Intel・Microsoft・Alphabet）</div>
+    <div class="point-summary">ポイント：メモリ2社が史上最高益を更新、ハイパースケーラーは「使いすぎ」を問われる</div>
   </div>
   <div class="topics">
     <div class="topic">
-      <div class="topic-label">🆕 Alphabet：Google Cloudが+103%なのに株は時間外で約8〜10%安</div>
-      <p><strong>何が起きたか：</strong>10月28日発表の7〜9月期は売上1,276億ドル（+25%）、Google Cloudは307億ドルで前年の2倍超（+103%）。TPUシステムの販売も伸びに大きく貢献したと会社が説明しました。一方、設備投資は約514億ドルに達してフリーキャッシュフローは約91億ドルのマイナス、投資の評価損もあって1株利益は予想を下回り、株価は時間外で約8〜10%下落（記事により数値に差）。2026年の設備投資見通しは1,950〜2,050億ドル。</p>
-      <p><strong>なぜ話題になるか：</strong>「クラウドが倍になったのに株は暴落」という逆説がネタの核心。市場の関心が“どれだけ伸びたか”から“いくら現金を燃やしているか”へ移り始めた象徴として話せます。GoogleがTPUを“売る側”に回り、NVIDIAの競合になりつつある点も見逃せません。</p>
-      <div class="topic-source">出典：<a href="https://s206.q4cdn.com/479360582/files/doc_news/2026/Oct/28/attachments/2026q3-alphabet-earnings-release.pdf" target="_blank" rel="noopener">Alphabet 決算リリース</a>／<a href="https://www.benzinga.com/markets/earnings/26/10/62676053/alphabet-stock-tumbles-on-q3-miss-google-cloud-revenues-surge" target="_blank" rel="noopener">Benzinga</a>／<a href="https://www.fxstreet.com/news/why-google-stock-fell-while-microsoft-rose-after-q3-earnings-202610290619" target="_blank" rel="noopener">FXStreet</a></div>
+      <div class="topic-label">Samsung：四半期営業利益107兆ウォン、世界初の100兆超え</div>
+      <p>10月29日発表の7〜9月期は売上195.25兆ウォン（+127%）、営業利益107.44兆ウォン（+783%）。四半期営業利益で100兆ウォン（約10兆円超）を超えた世界初のテック企業に。HBM4の売上は前期比3倍超で、2027年分のHBMはすでに完売。30兆ウォンの現金配当も決めたが、株価は4.1%下落。</p>
+      <p><span class="why">なぜ話題か：</span>「HBMでSKハイニックスに出遅れたSamsung」という物語が反転しつつある。過去最高益でも株価が下がる“好材料出尽くし”の典型でもある。</p>
+      <div class="topic-source">出典：<a href="https://www.koreaherald.com/article/10919169" target="_blank" rel="noopener">The Korea Herald</a>／<a href="https://www.cnbc.com/2026/10/29/samsung-electronics-third-quarter-earnings.html" target="_blank" rel="noopener">CNBC</a>／<a href="https://www.asiae.co.kr/en/article/enterprise-CEO/2026102911191454019" target="_blank" rel="noopener">Asia Business Daily</a></div>
     </div>
     <div class="topic">
-      <div class="topic-label">🆕 Microsoft：Azureが+48%で自社予想超え、株は上昇</div>
-      <p><strong>何が起きたか：</strong>10月28日発表の7〜9月期（2027年度第1四半期）は売上923億ドル（+19%）、Azureは+48%（為替一定）で会社予想の44〜45%を上回りました。受注残（商業RPO）は+73%の6,770億ドル。次の四半期はAzure+49〜50%を見込み、株は時間外で3〜4%上昇しました。</p>
-      <p><strong>なぜ話題になるか：</strong>同じ夜に決算を出したGoogleとMicrosoftで株価の反応が真逆になったのが話題。「伸び率が会社自身の予想を毎回超える」Azureの安定感と、フリーキャッシュフローが前年比27%減という投資の重さを並べると、AI投資の“勝ち負け”の基準が見えてきます。</p>
-      <div class="topic-source">出典：<a href="https://www.cnbc.com/2026/10/28/microsoft-msft-q1-earnings-report-2027.html" target="_blank" rel="noopener">CNBC</a>／<a href="https://siliconangle.com/2026/10/28/microsofts-stock-rises-on-solid-earnings-and-revenue-beat-with-azure-growing-48/" target="_blank" rel="noopener">SiliconANGLE</a></div>
+      <div class="topic-label">SKハイニックス：営業利益率80%、売上100兆ウォン突破</div>
+      <p>7〜9月期は売上104.6兆ウォン（前年比+328%）、営業利益83.3兆ウォンで営業利益率は約80%。6四半期連続の過去最高で、HBM4の量産出荷が本格化し歩留まりも目標超えと説明した。</p>
+      <p><span class="why">なぜ話題か：</span>売上の8割が営業利益になるのは、ソフトウェア企業でも珍しい水準。メモリが「市況に振り回される商品」から「AIの必需品」に変わったことを数字で示した。</p>
+      <div class="topic-source">出典：<a href="https://www.investing.com/news/transcripts/earnings-call-transcript-sk-hynix-posts-record-q3-2026-results-shares-jump-after-hours-93CH-4977343" target="_blank" rel="noopener">Investing.com</a>／<a href="https://www.gurufocus.com/news/9150253/sk-hynix-inc-skhy-q3-2026-earnings-call-highlights-record-krw1046-trillion-revenue-and-80-operating-margin-as-hbm4-ramps" target="_blank" rel="noopener">GuruFocus</a></div>
     </div>
     <div class="topic">
-      <div class="topic-label">🆕 Samsung本決算：半導体部門の営業利益106.5兆ウォン、HBMは2027年分まで完売</div>
-      <p><strong>何が起きたか：</strong>Samsung電子は10月29日、7〜9月期の確定値を発表。売上195.3兆ウォン、営業利益107.4兆ウォンで、半導体（DS）部門だけで営業利益106.5兆ウォン。一方スマホ・家電（DX）部門は0.8兆ウォンの赤字でした。決算説明会では、HBM4の売上が前期の3倍超、2027年分のHBMは合意した価格ですでに売り切れ、DRAMの平均価格は前期比約20%上昇と説明しています。</p>
-      <p><strong>なぜ話題になるか：</strong>「会社の利益のほぼ全部が半導体、スマホ・家電は部品高で赤字」という極端な偏りが話のネタ。メモリが高すぎて、自社のスマホ部門の利益まで食っている構図です。</p>
-      <div class="topic-source">出典：<a href="https://news.samsung.com/global/samsung-electronics-announces-third-quarter-2026-results" target="_blank" rel="noopener">Samsung Newsroom</a>／<a href="https://www.gurufocus.com/news/9150265/samsung-electronics-co-ltd-wbossun-q3-2026-earnings-call-highlights-record-100-trillion-won-operating-profit-hbm4-sold-out-through-2027" target="_blank" rel="noopener">GuruFocus（説明会要旨）</a>／<a href="https://www.digitaltoday.co.kr/en/view/121375/samsung-electronics-operating-profit-100-trillion-won-era-memory-lifts-profit-set-cost-burden-persists" target="_blank" rel="noopener">Digital Today</a></div>
+      <div class="topic-label">Intel：売上+21%も、14Aの顧客名は出ず株価下落</div>
+      <p>10月29日発表の7〜9月期は売上165億ドル（+21%）で予想超え。ファウンドリー事業の外部顧客売上は4.11億ドルにとどまり、同事業は19億ドルの営業赤字。次世代14Aは「複数の有望顧客と順調」としつつ社名は明かさず、株価は時間外で下落した。</p>
+      <p><span class="why">なぜ話題か：</span>「米国のTSMCになれるか」の決め手は大口外部顧客の獲得。決算が良くても、その一言がない限り市場は納得しないという状況。</p>
+      <div class="topic-source">出典：<a href="https://www.sec.gov/Archives/edgar/data/0000050863/000005086326000188/q326earningsrelease.htm" target="_blank" rel="noopener">Intel 8-K（決算リリース）</a>／<a href="https://www.investing.com/news/transcripts/earnings-call-transcript-intel-beats-q3-2026-estimates-but-stock-sinks-93CH-4985498" target="_blank" rel="noopener">Investing.com</a></div>
     </div>
     <div class="topic">
-      <div class="topic-label">SKハイニックス：売上が初の100兆ウォン超え、利益率80%</div>
-      <p><strong>何が起きたか：</strong>10月28日発表の7〜9月期（速報）は、売上高104.6兆ウォン、営業利益約83.3兆ウォン（前年同期比+632%）、営業利益率80%。2026年に約100兆ウォン（うち自社株買い20兆ウォン）の株主還元も発表し、メモリ不足は2030年まで続くとの見方を示しました。</p>
-      <p><strong>なぜ話題になるか：</strong>営業利益で世界のテック企業3位に入ったと韓国紙が報道。「売上の8割が利益」はTSMCも超える異次元の数字で、韓国株は約10.8%急騰しました。</p>
-      <div class="topic-source">出典：<a href="https://news.skhynix.com/en/q3-2026-business-results/" target="_blank" rel="noopener">SK hynix Newsroom</a>／<a href="https://qz.com/sk-hynix-record-operating-profit-memory-shortage-2030-102826" target="_blank" rel="noopener">Quartz</a>／<a href="https://en.sedaily.com/finance/2026/10/28/sk-hynix-q3-operating-profit-ranks-third-among-global-tech" target="_blank" rel="noopener">Seoul Economic Daily</a></div>
-    </div>
-    <div class="topic">
-      <div class="topic-label">🆕 AnthropicがIPO申請（S-1公開）、チップ調達の規模が明らかに</div>
-      <p><strong>何が起きたか：</strong>Anthropicは10月26日にS-1（上場申請書）を公開し、ナスダックに「ANT」で上場を目指すと報じられています。価格や調達額はまだ空欄。報道では、Amazonから最大5ギガワット、Google・BroadcomのTPUで5ギガワット、SpaceXのデータセンターのGPUなど、巨大な計算能力の契約が並びます。申請を受けて26日の米市場では半導体・AI株が上昇しました。</p>
-      <p><strong>なぜ話題になるか：</strong>OpenAIより先に上場する形になり、「AI企業の決算書が初めて丸見えになる」点が話題。チップの調達先がNVIDIA一本ではなくTPU・Trainiumに分散していることも、今週のニュース全体とつながります。※このまとめを書いているAIはAnthropic製です。良く見せも悪く見せもせず、報道の事実だけを書いています。</p>
-      <div class="topic-source">出典：<a href="https://www.investmentnews.com/equities/anthropic-files-for-ipo-as-ai-giant-nears-1t-valuation/266819" target="_blank" rel="noopener">InvestmentNews</a>／<a href="https://futurumgroup.com/insights/anthropic-files-for-ipo-looking-to-beat-openai-to-the-punch/" target="_blank" rel="noopener">Futurum</a>／<a href="https://www.heygotrade.com/en/news/anthropic-ipo-filing-sparks-ai-and-tech-rally-nasdaq-softbank-broadcom/" target="_blank" rel="noopener">Gotrade</a></div>
-    </div>
-    <div class="topic">
-      <div class="topic-label">Intelは今夜（日本時間30日早朝）決算</div>
-      <p><strong>何が起きたか：</strong>Intelは10月29日（米国時間）の取引終了後に7〜9月期決算を発表予定。会社予想は売上158〜168億ドルです。</p>
-      <p><strong>なぜ話題になるか：</strong>リップブー・タンCEOのもとで復活できるかが注目点。Amazonと同じ夜の発表なので、明日の朝は話題が多くなりそうです。結果は次回更新で。</p>
-      <div class="topic-source">出典：<a href="https://www.intc.com/news-events/press-releases/detail/1782/intel-to-report-third-quarter-2026-financial-results" target="_blank" rel="noopener">Intel IR</a></div>
-    </div>
-    <div class="topic">
-      <div class="topic-label">MarvellがLumentum買収を交渉中との報道（未確認）</div>
-      <p><strong>何が起きたか：</strong>光通信部品のLumentumについて、Marvellが買収交渉の最終段階にあり、早ければ来週発表との報道が出て株価が急騰しました。当事者の発表はまだありません。</p>
-      <p><strong>なぜ話題になるか：</strong>AIデータセンターでは「チップ同士を光でつなぐ」部品が次のボトルネックと言われており、その分野の大型買収になれば話題性大。ただし現時点では報道ベースです。</p>
-      <div class="topic-source">出典：<a href="https://investing.com/news/stock-market-news/why-is-lumentum-stock-surging-today-93CH-4981083" target="_blank" rel="noopener">Investing.com</a></div>
-    </div>
-    <div class="topic">
-      <div class="topic-label">FRBは金利据え置き（10対2）</div>
-      <p><strong>何が起きたか：</strong>10月28日のFOMCは政策金利を据え置き。2人が反対票を投じました。</p>
-      <p><strong>なぜ話題になるか：</strong>インフレが高止まりする中での据え置きで、ハイテク株の追い風・逆風どちらにもなりうる背景情報です。</p>
-      <div class="topic-source">出典：<a href="https://finance.yahoo.com/markets/live/stock-market-today-wednesday-october-28-dow-sp-500-nasdaq-fed-meeting-decision-big-tech-earnings-130508769.html" target="_blank" rel="noopener">Yahoo Finance</a></div>
+      <div class="topic-label">Alphabet 11%安・Microsoftは「GPU供給遅れ」で投資額を下方修正</div>
+      <p>10月28日の決算で、Alphabetは四半期の設備投資514億ドルでフリーキャッシュフローが再び赤字（約−91億ドル）となり、株価は11%下落。2027年はさらに大幅増と予告した。Microsoftは設備投資452億ドルと予想（507億ドル）を下回り、年間見通しを1750億→1700億ドルへ引き下げ。理由の一部は外部GPU供給業者の遅れで、一部の能力が2027年前半にずれ込むという。Azureは+48%。</p>
+      <p><span class="why">なぜ話題か：</span>「お金はあるのにGPUが届かなくて使えない」という、AIブームならではの珍しい下方修正。来年はハイパースケーラーの設備投資合計が1兆ドルを超えるとの見方も。</p>
+      <div class="topic-source">出典：<a href="https://www.cnbc.com/2026/10/29/microsoft-google-ai-capex-estimates.html" target="_blank" rel="noopener">CNBC</a>／<a href="https://247wallst.com/investing/2026/10/29/alphabet-sinks-11-as-ai-spending-pushes-cash-flow-negative-again-microsoft-and-meta-edge-higher-amazon-slips/" target="_blank" rel="noopener">24/7 Wall St.</a>／<a href="https://rbnenergy.com/daily-posts/analyst-insight/q3-2026-earnings-calls-alphabet-microsoft-report-record-capex-data" target="_blank" rel="noopener">RBN Energy</a></div>
     </div>
   </div>
 </div>
-<footer>自動生成：daily-semicon-bignews（毎日12:00・19:00更新）／10月29日（木）19時更新</footer>
-</div>
+
+<footer>半導体ビッグニュース（会話ネタ用）｜2026年10月30日（金）12:00 JST 更新｜投資助言ではありません</footer>
 </body>
 </html>
