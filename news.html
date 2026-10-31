@@ -55,14 +55,15 @@ h1 { font-size: 24px; font-weight: 700; color: #fff; text-align: center; margin-
 .politics-block p + p { margin-top: 10px; }
 .topic-en { font-size:16px; color: #8b949e; font-style: italic; margin: -4px 0 8px; }
 .q-up { color: #3fb950; } .q-down { color: #f85149; }
-.tbl { overflow-x: auto; margin: 4px 0 8px; }
-.tbl table { border-collapse: collapse; width: 100%; font-size:17px; }
-.tbl th, .tbl td { border-bottom: 1px solid #30363d; padding: 6px 8px; text-align: left; white-space: nowrap; }
-.tbl th { color: #9aa4b2; font-weight: 600; }
-.tbl td.num { text-align: right; font-variant-numeric: tabular-nums; }
-.headline-list { list-style: none; }
-.headline-list li { padding: 6px 0; border-bottom: 1px dashed #30363d; font-size:17px; color: #cdd3db; }
-.headline-list li a { color: #7d8590; font-size:16px; }
+.tbl-wrap { overflow-x: auto; margin: 4px 0 10px; }
+table { border-collapse: collapse; width: 100%; font-size:16px; color: #cdd3db; }
+th, td { border-bottom: 1px solid #30363d; padding: 6px 8px; text-align: left; white-space: nowrap; }
+th { color: #8b949e; font-weight: 700; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+ul.hl { list-style: none; }
+ul.hl li { font-size:17px; color: #cdd3db; padding: 6px 0; border-bottom: 1px dashed #30363d; }
+ul.hl li .topic-en { display: block; margin: 0; }
+ul.hl li a { color: #7d8590; font-size:16px; }
 footer { text-align: center; color: #555; font-size:16px; margin-top: 32px; padding-top: 16px; border-top: 1px solid #2d333b; max-width: 920px; margin-left: auto; margin-right: auto; }
 @media screen and (max-width: 1024px) {
   body { font-size: 17px; }
@@ -76,8 +77,6 @@ footer { text-align: center; color: #555; font-size:16px; margin-top: 32px; padd
   .topics { padding: 14px 14px 18px; }
   .politics-body { padding: 14px 14px 18px; }
   .note-box { font-size:17px; }
-  .headline-list li { font-size: 16px; }
-  .tbl table { font-size:17px; }
 }
 @media screen and (max-width: 480px) {
   body { font-size: 16px; }
@@ -117,433 +116,452 @@ table:not(.vt)>tbody,table:not(.vt)>thead{display:table;width:calc(100% - 2px);}
 </div>
 <div class="wrap">
 <h1>今日のニュース ― 2026年11月1日（日）</h1>
-<div class="date-line">日曜朝版｜市場は週末休み（株価は10/30金曜の終値）｜米国は今日から冬時間（米国市場は日本時間23:30〜翌6:00）</div>
+<div class="date-line">日本時間 2026年11月1日（日）5:30 作成 ／ 市場は週末休み（株価は10月30日（金）の終値）／ 米国は今日から冬時間</div>
 </div>
 <div class="note-box">
-  <strong>データ取得について：</strong> 本レポートは実行のたびに実際にWeb検索し、その時点でヒットした記事をもとにAIが要約・構成しています。日々変動する数値（成績・株価等）は検索結果のスナップショット時点により多少前後することがあります。各トピック末尾の「出典」リンクから元記事を確認できます。Yahoo Finance英語版の欄は、今朝5:30（日本時間）に finance.yahoo.com のトップページから直接取得したデータです。週末のため、日本政治・欧州政治・OpenAIなどは新しい記事の確認が少なめでした。
+  <strong>データ取得について：</strong> 本レポートは実行のたびに実際にWeb検索し、その時点でヒットした記事をもとにAIが要約・構成しています。日々変動する数値（成績・株価等）は検索結果のスナップショット時点により多少前後することがあります。各トピック末尾の「出典」リンクから元記事を確認できます。Yahoo Finance欄の株価・見出しは、英語版 finance.yahoo.com から今朝5:30に自動取得したものです。
 </div>
 
-<!-- ===================== Bloomberg ===================== -->
+<!-- ====== Bloomberg ====== -->
 <div class="section bloomberg" id="sec-bloomberg">
   <div class="section-header">
     <div class="section-title">📘 Bloomberg 系：マクロ・金利・地政学・AI</div>
-    <div class="point-summary">本日のポイント：AIデータセンターがメモリを吸い上げた結果の「PC・スマホ側の痛み」が、Intelの決算で初めて大企業の数字になった。FRBは利上げ論、原油は100ドル超、イランは攻撃再開か外交かで情報が交錯。</div>
+    <div class="point-summary">本日のポイント：AI関連株から1日で1兆ドル超が消えた週。「AIへの巨額投資は本当に利益とお金になるのか」という問いが、決算の数字で突き付けられた。来週は中間選挙・Apple/AMD決算・雇用統計が1週間に集中する。</div>
   </div>
   <div class="topics">
     <div class="topic">
-      <div class="topic-label">半導体から1日で約1兆ドル、「メモリ高」が請求書になった週</div>
-      <p>10/30（金）、Intelが「メモリ不足でPCが値上がりし売れない」として10〜12月の見通しを予想より約1割低く出し、株価は-28.6%（1974年以来の下げ）。SOX指数は-7.2%、NASDAQは-2.9%だった。AIデータセンターがメモリを優先的に買うほど、PCやスマホ向けのメモリが高くなり、完成品メーカーの売れ行きと利益が削られる。AIブームの「裏側のコスト」が、大企業の決算の数字として出た週だった。</p>
-      <p>影響は二方向に出る。メモリを売る側（MU・SKハイニックス）にとっては値上がりが追い風のはずだが、この日はメモリ株も一緒に売られた（MU -5.3%、SKハイニックス -7.1%）。「メモリが高すぎて最終需要が壊れる」ことへの警戒が、メモリ株にも及んだ形だ。</p>
-      <div class="topic-source">出典：<a href="https://www.morningstar.com/markets/tech-stocks-sell-off-amazon-intel-earnings-spook-investors" target="_blank" rel="noopener">Morningstar</a>／株価は Yahoo Finance（yahoo_en_data.json）</div>
+      <div class="topic-label">AI株の急落：SOX −7.2%、インテル −28.6%</div>
+      <p>【何が起きたか】10月30日（金）、ナスダック総合は−2.9%、半導体指数SOXは−7.2%と、ともに6月5日以来最大の下げとなった。きっかけはインテルの弱い見通し（株価は1970年代以来最悪の1日）と、アマゾンの7〜9月期決算の未達・フリーキャッシュフローのマイナス。前日にはAlphabetが決算で−13%と過去最悪級の下げを演じていた。Yahoo Financeは、この日だけでAI関連の時価総額が1兆ドル超失われたと伝えている。</p>
+      <p>【なぜ重要か】これまで市場は「AI需要が強い」ことを買ってきた。今週は買い手側（Google・Amazon）の現金が設備投資で細り、売り手側（Intel）でもPC需要の弱さが出た。「投資が利益と現金に変わる証拠」を求める段階に入った。</p>
+      <p>【何に影響するか】メモリ（MU・SKハイニックス）は「AI投資の受け手」なので、買い手の支出に疑いが出ると真っ先に売られやすい。一方、アマゾンは2026年の設備投資見通し（約2,200億ドル）を維持しており、支出そのものが減ったわけではない点は区別して見る必要がある。</p>
+      <div class="topic-source">出典：<a href="https://www.cnbc.com/2026/10/30/amazon-intel-earnings-big-tech-ai-spending-concerns.html" target="_blank" rel="noopener">CNBC</a> ／ <a href="https://www.morningstar.com/markets/tech-stocks-sell-off-amazon-intel-earnings-spook-investors" target="_blank" rel="noopener">Morningstar</a> ／ <a href="https://www.marketscreener.com/news/semiconductor-stocks-fall-as-intel-earnings-trigger-broad-tech-selloff-ce785fdbdc8ffe23" target="_blank" rel="noopener">MarketScreener</a> ／ <a href="https://finance.yahoo.com/markets/article/tech-stock-meltdown-could-get-a-lot-of-worse-if-history-is-any-guide-161226786.html" target="_blank" rel="noopener">Yahoo Finance</a></div>
     </div>
     <div class="topic">
-      <div class="topic-label">FRBは据え置き、ただし2人が「利上げ」を主張</div>
-      <p>前週のFOMCは政策金利3.75〜4.00%を維持したが、クック理事とハマック・クリーブランド連銀総裁が利上げを求めて反対した。利下げではなく「利上げ」が議論になっていること自体が、原油高とインフレの根強さを示す。米10年債利回りは4.93%。市場では12月利上げの見方が強まっているが、確率の数字は報道によって幅がある。</p>
-      <p>金利が上がる方向の話は、将来の利益に期待して買われている成長株（AI・半導体）ほど重しになる。11/6の雇用統計が強すぎれば、利上げ観測がさらに強まりうる。</p>
-      <div class="topic-source">出典：<a href="https://www.tipranks.com/news/stock-market-week-ahead-big-tech-earnings-and-jobs-report-on-deck" target="_blank" rel="noopener">TipRanks</a>／<a href="https://tech-insider.org/wall-st-week-ahead-midterms-jobs-fed-hike-odds-ai-market-2026/" target="_blank" rel="noopener">Tech Insider</a></div>
+      <div class="topic-label">FRB：据え置きでも2人が「利上げ」を主張</div>
+      <p>【何が起きたか】10月28日のFOMCは政策金利を3.75〜4.00%で据え置いた（10対2）。クック理事とハマック・クリーブランド連銀総裁が0.25%の利上げを求めて反対した。FRBは9月に3年ぶりの利上げをしており、CME FedWatchでの12月利上げ確率は80〜85%程度と報じられている（媒体で幅あり）。米10年債利回りは5.0%前後。</p>
+      <p>【なぜ重要か】「利下げを待つ相場」ではなく「追加利上げを警戒する相場」になっている。原因は原油100ドル超が支えるしつこいインフレ。</p>
+      <p>【何に影響するか】高い金利は将来の利益を割り引くため、PERの高いハイテク・半導体株に不利。逆に市場が崩れれば、FRBが支えに回る「FRBプット」が復活するとの見方も出ている（Yahoo Finance欄参照）。</p>
+      <div class="topic-source">出典：<a href="https://www.cnn.com/2026/10/28/business/live-news/federal-reserve-interest-rate-october" target="_blank" rel="noopener">CNN</a> ／ <a href="https://www.cnbc.com/2026/10/28/fed-interest-rate-decision-october-2026.html" target="_blank" rel="noopener">CNBC</a> ／ <a href="https://www.schwab.com/learn/story/fomc-meeting" target="_blank" rel="noopener">Schwab</a></div>
     </div>
     <div class="topic">
-      <div class="topic-label">イラン：ルビオ氏「攻撃再開はまだ決めていない」</div>
-      <p>ルビオ国務長官は10/31、軍事行動の再開は未決定で外交にも開かれていると述べた。一方で、湾岸の同盟国に「11月中にも短期集中の攻撃」への備えを伝えたとの報道もあり、カタールの仲介でドーハでの米・イラン協議も報じられている。イラン側は「制限区域」を通ったタンカーが機雷に触れたと主張しており、ホルムズ海峡の通航リスクは消えていない。</p>
-      <p>原油（WTI）は約104ドルと高止まり。原油高はインフレ→利上げ観測→株安という経路で、半導体株にも間接的に効いている。</p>
-      <div class="topic-source">出典：<a href="https://www.haaretz.com/middle-east-news/iran/2026-10-31/ty-article/trump-yet-to-decide-on-iran-strikes-u-s-open-to-diplomacy-rubio-says/000001a1-92df-d03f-aded-daff49480000" target="_blank" rel="noopener">Haaretz</a>／<a href="https://www.foxnews.com/live-news/us-iran-war-trump-israel-strait-hormuz-10-31-26" target="_blank" rel="noopener">Fox News</a>／<a href="https://www.iranintl.com/en/liveblog/202610244311" target="_blank" rel="noopener">Iran International</a></div>
+      <div class="topic-label">原油：WTI 104ドル、10月は約15%上昇</div>
+      <p>【何が起きたか】WTIは10月30日に104.12ドル（+2.1%）で引け、10月の上昇率は約15%。ホルムズ海峡で小型船がタンカーを爆発物で攻撃した（英海事機関UKMTO）ことが材料になった。ブレントの1月限は113.43ドル。今日（日曜）にはOPEC+の会合があり、生産据え置きが予想されている。</p>
+      <p>【なぜ重要か】海峡の原油の流れは戦前並みに戻る日もあり、今の価格は「実際の不足」より「リスクの上乗せ」の色が濃い。米国が選挙後にイラン攻撃を再開するかどうかが最大の変数。</p>
+      <p>【何に影響するか】原油高→米インフレ→FRBの利上げ観測→ハイテク株安、という連鎖の起点。日本にとっては円安と重なって輸入物価を押し上げる。</p>
+      <div class="topic-source">出典：<a href="https://www.thenationalnews.com/business/markets/2026/10/30/oil-prices-set-for-sharp-monthly-rise-on-hormuz-strikes-and-us-threat-to-hit-iran/" target="_blank" rel="noopener">The National</a> ／ <a href="https://financefeeds.com/brent-crude-oil-price-113-saturday-week-ahead-after-october-13-6-percent-gain-hormuz-mines-midterms-jobs-report-bull-120-bear-106/" target="_blank" rel="noopener">FinanceFeeds</a> ／ <a href="https://unbiasednews.substack.com/p/oil-monitor-weekly-summary-october" target="_blank" rel="noopener">Oil Monitor Weekly</a></div>
     </div>
     <div class="topic">
-      <div class="topic-label">メモリ2社、過去最大の装置投資でも「供給が増えるのは2028年」</div>
-      <p>Samsung電子とSKハイニックスは2026年に合計約110兆ウォンという過去最大の製造装置投資を行うが、実際にメモリの供給が増えるのは2028年になる見通しと台湾Digitimesが報じた。工場を建て、装置を入れ、歩留まりを上げるまでに約2年かかるためだ。</p>
-      <p>つまりメモリ不足とPC・スマホの値上がりは来年いっぱい続く可能性が高い。メモリメーカーにとっては値段が保たれる材料だが、Intelのような「買う側」の苦しさも続くことになる。装置メーカー（東京エレクトロン等）には受注の追い風。</p>
-      <div class="topic-source">出典：<a href="https://www.digitimes.com/news/a20261029PD208/samsung-sk-hynix-2028-equipment-2026.html" target="_blank" rel="noopener">Digitimes</a>（見出し・リードのみ確認）</div>
+      <div class="topic-label">イラン：ルビオ国務長官「攻撃再開は未決定」</div>
+      <p>【何が起きたか】ルビオ国務長官は10月31日、トランプ大統領は新たな対イラン攻撃をまだ決めていないと述べつつ、軍事行動の選択肢は否定しなかった。「大統領は外交での解決を好む」「協議は一度も止まっていない」とも語った。31日にはイランの交渉団がドーハでカタールの仲介者と協議。米代表団の合流も報じられたが、公式確認はない。イランの最高指導者は「いかなる脅しにも無制限の対応」と警告した。</p>
+      <p>【なぜ重要か】攻撃再開なら原油とインフレに直結し、交渉前進なら原油の「リスク上乗せ」がはがれる。どちらに転ぶかで市場の前提が変わる。</p>
+      <p>【何に影響するか】原油・米金利・ドル円。選挙（11/3）後の判断に注目が集まる。</p>
+      <div class="topic-source">出典：<a href="https://english.aawsat.com/world/5336063-rubio-says-us-yet-decide-new-iran-strikes" target="_blank" rel="noopener">Asharq Al-Awsat</a> ／ <a href="https://www.thenationalnews.com/news/us/2026/10/31/us-iran-strikes-g20-rubio/" target="_blank" rel="noopener">The National</a> ／ <a href="https://aa.com.tr/en/americas/rubio-says-iran-talks-have-never-stopped-stresses-us-preference-for-diplomacy/4107578" target="_blank" rel="noopener">Anadolu</a> ／ <a href="https://www.newarab.com/news/exclusive-us-delegation-join-iran-talks-war-fears-grow" target="_blank" rel="noopener">The New Arab</a></div>
     </div>
     <div class="topic">
-      <div class="topic-label">Samsung・SKハイニックス、中国工場も先端DRAM向けに更新</div>
-      <p>ロイター報道として、両社が中国の工場を先端DRAMを作れるよう改修していると伝わった。中国CXMTなどの追い上げに対し、汎用DRAMの市場を守るための動きとみられる。米国の対中輸出規制との兼ね合いが、今後の論点になる。</p>
-      <div class="topic-source">出典：<a href="https://www.tomshardware.com/pc-components/dram/samsung-and-sk-hynix-are-upgrading-chinese-factories-to-produce-advanced-ram-chips-as-ai-data-center-competition-ramps-up" target="_blank" rel="noopener">Tom's Hardware</a></div>
+      <div class="topic-label">アルトマン氏「PCにDRAMはもったいない」→2日後にSamsung訪問</div>
+      <p>【何が起きたか】OpenAIのサム・アルトマンCEOはポッドキャスト「Cheeky Pint」で、「世界の限られたDRAMを各自のPCに置き、5%しか使わないのは配分としてかなりひどい」と発言し、反発を受けた。その2日後の10月31日、韓国・龍仁のSamsung研修センターで同グループの社長級約50人と「AIが変える次の10年」を議論した。発言内容は公表されていない。</p>
+      <p>【なぜ重要か】インテルの「PCが売れない」と、AI側の「メモリはデータセンターへ」は同じ現象の裏表。メモリの奪い合いが、技術の話から「誰に配るか」の社会の話に変わってきた。</p>
+      <p>【何に影響するか】AIデータセンター向けの長期契約が優先されるほど、メモリ会社の価格交渉力は保たれやすい。一方でPC・スマホの需要減は、汎用メモリの先行きリスクにもなる。</p>
+      <div class="topic-source">出典：<a href="https://thenextweb.com/news/sam-altman-dram-samsung-presidents-cheeky-pint" target="_blank" rel="noopener">The Next Web</a> ／ <a href="https://www.tomshardware.com/tech-industry/data-centers/openai-ceo-says-its-quite-terrible-for-your-pc-to-have-ram-sam-altman-says-data-centers-offer-better-utilization" target="_blank" rel="noopener">Tom's Hardware</a></div>
+    </div>
+    <div class="topic">
+      <div class="topic-label">来週は「答え合わせ」の1週間</div>
+      <p>【何が起きたか】11/2（月）Apple決算（米国引け後）、11/3（火）米中間選挙とAMD決算、11/6（金）10月の雇用統計（予想+5.5万人、失業率4.2%）。ナスダックは先週1週間で−2%。BofAはAppleを最良銘柄リストから外した。</p>
+      <p>【なぜ重要か】AMDはインテルの失速直後に「AIチップとPC向けCPUの両方」の答えを出す。半導体全体のムードを左右しやすい。</p>
+      <p>【何に影響するか】強すぎる雇用統計は12月利上げを固め、成長株の重しになりうる。選挙・決算・雇用が重なり値動きが荒くなりやすい週。</p>
+      <div class="topic-source">出典：<a href="https://www.cnbc.com/2026/10/30/stock-market-next-week-outlook-for-nov-2-6-2026.html" target="_blank" rel="noopener">CNBC</a> ／ <a href="https://www.cnbc.com/2026/10/30/jim-cramer-week-ahead-apple-amd-jobs-report.html" target="_blank" rel="noopener">CNBC（Cramer）</a> ／ <a href="https://www.tipranks.com/news/stock-market-week-ahead-big-tech-earnings-and-jobs-report-on-deck" target="_blank" rel="noopener">TipRanks</a></div>
     </div>
   </div>
 </div>
 
-<!-- ===================== Yahoo Finance 英語版 ===================== -->
+<!-- ====== Yahoo Finance EN ====== -->
 <div class="section yahoo" id="sec-yahoo">
   <div class="section-header">
     <div class="section-title">🇺🇸 Yahoo Finance 英語版（日本語ダイジェスト）</div>
-    <div class="point-summary">本日のポイント：英語版トップは「AI投資は本当に利益と現金になるのか」一色。Alphabet・Amazonのフリーキャッシュフローがマイナスになり、10/6以降でAI関連株から約5兆ドルが消えた。Appleが時価総額首位をNVIDIAから奪還。</div>
+    <div class="point-summary">本日のポイント：英語版トップは「テック株の崩れは、歴史に照らせばまだ続くかもしれない」。インテル−28.6%、SOX−7.2%の翌朝（週末）の紙面。AnthropicとOpenAIの上場の話題も並ぶ。</div>
   </div>
   <div class="topics">
     <div class="topic">
-      <div class="topic-label">マーケット（10/30金曜の終値）</div>
-      <div class="tbl"><table>
-        <tr><th>銘柄・指数</th><th class="num">値</th><th class="num">騰落率</th></tr>
-        <tr><td>S&amp;P 500</td><td class="num">7,580.07</td><td class="num q-down">▼ −1.82%</td></tr>
-        <tr><td>ナスダック総合</td><td class="num">25,437.00</td><td class="num q-down">▼ −2.86%</td></tr>
-        <tr><td>ダウ平均</td><td class="num">51,770.31</td><td class="num q-down">▼ −1.09%</td></tr>
-        <tr><td>SOX（半導体指数）</td><td class="num">10,688.80</td><td class="num q-down">▼ −7.20%</td></tr>
-        <tr><td>KOSPI（韓国）</td><td class="num">5,730.74</td><td class="num q-down">▼ −3.49%</td></tr>
-        <tr><td>日経平均</td><td class="num">63,290.11</td><td class="num q-down">▼ −2.12%</td></tr>
-        <tr><td>ドル円</td><td class="num">157.52円</td><td class="num q-down">▼ −0.08%</td></tr>
-        <tr><td><strong>MU（保有）</strong></td><td class="num">$884.74</td><td class="num q-down">▼ −5.30%</td></tr>
-        <tr><td><strong>SKハイニックス 000660.KS（保有）</strong></td><td class="num">₩1,418,000</td><td class="num q-down">▼ −7.08%</td></tr>
-        <tr><td>NVDA（比較）</td><td class="num">$204.64</td><td class="num q-down">▼ −4.22%</td></tr>
-        <tr><td>AVGO（比較）</td><td class="num">$326.08</td><td class="num q-down">▼ −5.48%</td></tr>
-        <tr><td>INTC（比較）</td><td class="num">$65.76</td><td class="num q-down">▼ −28.58%</td></tr>
+      <div class="topic-label">マーケット（10月30日（金）終値）</div>
+      <div class="tbl-wrap"><table>
+        <tr><th>銘柄・指数</th><th>値</th><th>騰落率</th><th>取得時刻（日本時間）</th></tr>
+        <tr><td>S&amp;P 500</td><td class="num">7,580.07</td><td class="num q-down">▼ −1.82%</td><td>10/31 05:47</td></tr>
+        <tr><td>ナスダック総合</td><td class="num">25,437.00</td><td class="num q-down">▼ −2.86%</td><td>10/31 06:15</td></tr>
+        <tr><td>ダウ平均</td><td class="num">51,770.31</td><td class="num q-down">▼ −1.09%</td><td>10/31 05:47</td></tr>
+        <tr><td>SOX（半導体指数）</td><td class="num">10,688.80</td><td class="num q-down">▼ −7.20%</td><td>10/31 06:15</td></tr>
+        <tr><td>KOSPI（韓国）</td><td class="num">5,730.74</td><td class="num q-down">▼ −3.49%</td><td>10/30 20:05</td></tr>
+        <tr><td>日経平均</td><td class="num">63,290.11</td><td class="num q-down">▼ −2.12%</td><td>10/30 15:45</td></tr>
+        <tr><td>ドル円</td><td class="num">157.52</td><td class="num q-down">▼ −0.08%</td><td>10/31 05:59</td></tr>
+        <tr><td><strong>MU（マイクロン）※保有</strong></td><td class="num">$884.74</td><td class="num q-down">▼ −5.30%</td><td>10/31 05:00</td></tr>
+        <tr><td><strong>000660.KS（SKハイニックス）※保有</strong></td><td class="num">₩1,418,000</td><td class="num q-down">▼ −7.08%</td><td>10/30 15:30</td></tr>
+        <tr><td>NVDA（エヌビディア）</td><td class="num">$204.64</td><td class="num q-down">▼ −4.22%</td><td>10/31 05:00</td></tr>
+        <tr><td>AVGO（ブロードコム）</td><td class="num">$326.08</td><td class="num q-down">▼ −5.48%</td><td>10/31 05:00</td></tr>
+        <tr><td>INTC（インテル）</td><td class="num">$65.76</td><td class="num q-down">▼ −28.58%</td><td>10/31 05:00</td></tr>
       </table></div>
-      <p>取得時刻：米国株・指数は日本時間10/31 5:00〜6:15時点、KOSPI・SKハイニックス・日経は10/30の現地終値。</p>
-      <p><strong>ひとことで：</strong>全面安で、特に半導体（SOX −7.2%）が突出。Intelの見通し下方修正と、AlphabetとAmazonのフリーキャッシュフローがマイナスに転じたことが重なり「AI投資の回収」への疑いが一気に強まった（記事で確認）。MUとSKハイニックスも同じ流れで売られた。</p>
-      <div class="topic-source">出典：<a href="https://finance.yahoo.com/" target="_blank" rel="noopener">Yahoo Finance（英語版トップ・今朝5:30取得）</a></div>
+      <p><strong>ひとことで：</strong>全面安で、半導体（SOX −7.2%）が一番深い。インテルの弱い見通しとAlphabet・Amazonの「現金が細る決算」がAI投資の採算への疑いを強めた（記事で確認）。SKハイニックスの−7.1%は米国の急落より前の30日の韓国市場の数字で、Alphabet決算への反応。週明けの韓国・日本は金曜の米国の下げを受けて始まる。</p>
+      <div class="topic-source">出典：<a href="https://finance.yahoo.com/" target="_blank" rel="noopener">Yahoo Finance（英語版、自動取得 2026-11-01 05:30）</a></div>
     </div>
 
     <div class="topic">
-      <div class="topic-label">① ハイテク株の暴落、過去の例ならまだ序の口かも</div>
+      <div class="topic-label">① テック株の崩れ、歴史に照らせば「まだ序の口」かも</div>
       <div class="topic-en">Tech stock meltdown could get a lot of worse if history is any guide</div>
-      <p><strong>何が起きたか：</strong>金曜日、AI関連株から1日で1兆ドル超の時価総額が消えた。Truistのストラテジストによると、S&amp;P500のハイテク部門は2023年以降に10%以上の下落を6回経験しており（今回を含む）、そのうち4回は下げ幅が14〜27%に達した。</p>
-      <p><strong>なぜ重要か：</strong>「話はもうAI需要が強いかどうかではない。巨額の投資が持続的な利益と現金収入につながる証拠をウォール街は求めている」とTruistのラーナー氏。週半ばのGoogle（Alphabet）に続き、木曜夜のAmazonも7〜9月期のフリーキャッシュフローがマイナスだった。</p>
-      <p><strong>何に影響するか：</strong>ハイパースケーラーの現金が細れば、将来の設備投資の勢いにも疑問符がつく。MU・SKハイニックスにとっては「Capexが続くか」というテーゼの根っこに関わる論点で、今後の決算で各社が2027年Capexをどう語るかが焦点になる（現時点ではAmazonは2027年Capex「大幅増」と表明）。</p>
-      <div class="topic-source">出典：<a href="https://finance.yahoo.com/markets/article/tech-stock-meltdown-could-get-a-lot-of-worse-if-history-is-any-guide-161226786.html" target="_blank" rel="noopener">Yahoo Finance（Brian Sozzi）</a></div>
+      <p>【何が起きたか】S&amp;P500のテック業種は2023年以降に10%以上の下落を6回経験し（今回を含む）、そのうち4回は14〜27%まで下げた、とTruistのストラテジストが指摘。金曜はAI関連で1兆ドル超の時価総額が消えた。Googleは7〜9月期にフリーキャッシュフローがマイナスとなり、木曜夜のAmazonも同じくマイナスを示した。</p>
+      <p>【なぜ重要か】「話はもうAI需要の強さだけではない。巨額投資が持続的な利益と現金に変わる証拠を、ウォール街は求め始めている」（Truistのラーナー氏）。</p>
+      <p>【何に影響するか】<strong>MU・SKハイニックスへの関係：</strong>ハイパースケーラーの現金が細れば、メモリへの発注の持続性が疑われる。過去の例どおりなら下げはまだ深くなりうるという警告で、短期の値動きの荒さに直結する。</p>
+      <div class="topic-source">出典：<a href="https://finance.yahoo.com/markets/article/tech-stock-meltdown-could-get-a-lot-of-worse-if-history-is-any-guide-161226786.html" target="_blank" rel="noopener">Yahoo Finance</a></div>
     </div>
-
     <div class="topic">
-      <div class="topic-label">② アナリスト人気株、2010年以来の不振</div>
-      <div class="topic-en">Wall Street's favorite stocks are in their worst slump since 2010: Chart of the Day</div>
-      <p><strong>何が起きたか：</strong>Piper Sandlerのカントロウィッツ氏によると、S&amp;P500のうちアナリストの「買い」推奨の比率が最も高い銘柄群が、最も低い銘柄群に今年の大半で負けている。前年比で見ると1995年以降のデータで3番目に悪い期間。Yahoo Financeの計算では、AI関連株は10/6以降で約5兆ドル（金曜だけで約1.6兆ドル）の時価総額を失い、NVIDIAとAlphabetがそれぞれ約8,350億ドル減った。</p>
-      <p><strong>なぜ重要か：</strong>一方で残り625の大型株は同期間に約1.3兆ドル増えた（イーライリリー、ウォルマート、エクソンが牽引）。市場全体が崩れているのではなく、「みんなが好きだったAI株」から資金が抜けている構図。</p>
-      <p><strong>何に影響するか：</strong>MU・SKハイニックスはAI株の中心に分類されるため、業績と関係なく「AIの束」として売られやすい局面が続く。</p>
-      <div class="topic-source">出典：<a href="https://finance.yahoo.com/markets/article/wall-streets-favorite-stocks-are-in-their-worst-slump-since-2010-chart-of-the-day-124436147.html" target="_blank" rel="noopener">Yahoo Finance（Jared Blikre）</a></div>
-    </div>
-
-    <div class="topic">
-      <div class="topic-label">③ Appleが時価総額首位をNVIDIAから奪還、5回目</div>
+      <div class="topic-label">⑦ AppleがNvidiaから時価総額首位を奪還（5回目）</div>
       <div class="topic-en">Apple is taking Wall Street's top spot back from Nvidia — for the fifth time</div>
-      <p><strong>何が起きたか：</strong>10/30の終値でAppleの時価総額は約5.03兆ドルとなり、NVIDIAを約1,000億ドル上回った。終値ベースで首位に立つのは7月以来。SOX指数が6月以来最悪の日になったことが背景。</p>
-      <p><strong>なぜ重要か：</strong>NVIDIAは2025年6月からほぼ途切れず首位を守ってきた。Appleは10/23に1,999ドルの「iPhone Duo」を発売した日にも一時首位に立っていた。</p>
-      <p><strong>何に影響するか：</strong>Appleは11/2（米国引け後）に決算。メモリ費用の上昇で粗利率見通しを下げており、「メモリ高を値上げで転嫁できるか」が、メモリ価格の持続性を測る試金石にもなる。</p>
-      <div class="topic-source">出典：<a href="https://finance.yahoo.com/markets/article/apple-is-taking-wall-streets-top-spot-back-from-nvidia--for-the-fifth-time-142810503.html" target="_blank" rel="noopener">Yahoo Finance（Jared Blikre）</a></div>
+      <p>【何が起きたか】10月30日の終値でAppleの時価総額は約5.03兆ドルとなり、Nvidiaを約1,000億ドル上回った。終値ベースでの首位は7月以来。SOXが6月以来最悪の1日となった日の出来事。</p>
+      <p>【なぜ重要か】これまでも首位交代は起きたが長続きしなかった。今回は「AIを作る側」から「AIを使う側」へ資金が一時的に移った象徴。</p>
+      <p>【何に影響するか】<strong>MU・SKハイニックスへの関係：</strong>Appleはメモリを「買う側」で、メモリ高は粗利の重し。11/2の決算で値上げで吸収できるかが、メモリ高の「請求書」が誰に回るかを示す。</p>
+      <div class="topic-source">出典：<a href="https://finance.yahoo.com/markets/article/apple-is-taking-wall-streets-top-spot-back-from-nvidia--for-the-fifth-time-142810503.html" target="_blank" rel="noopener">Yahoo Finance</a></div>
     </div>
-
     <div class="topic">
-      <div class="topic-label">④ Googleからの流入が消える――Redditとネット全体の苦境</div>
+      <div class="topic-label">⑧ アナリストの「推し株」が2010年以来の不振</div>
+      <div class="topic-en">Wall Street's favorite stocks are in their worst slump since 2010: Chart of the Day</div>
+      <p>【何が起きたか】2026年、アナリストは「買い」推奨をAI建設関連に積み上げたが、買い推奨の比率が最も高い銘柄群は、最も低い銘柄群に年の大半で負けている（Piper Sandlerのカントロウィッツ氏、1995年以来3番目に悪い局面）。今週はAlphabetが史上最悪の月、インテルが1974年以来最悪の日。AI関連は合計で約5兆ドルの時価総額を失った。</p>
+      <p>【なぜ重要か】みんなが同じ方向に賭けているほど、崩れたときの売りが大きくなる。</p>
+      <p>【何に影響するか】<strong>MU・SKハイニックスへの関係：</strong>両社ともアナリストの評価が極端に高い「混雑した銘柄」の代表格で、この逆風を受けやすい。</p>
+      <div class="topic-source">出典：<a href="https://finance.yahoo.com/markets/article/wall-streets-favorite-stocks-are-in-their-worst-slump-since-2010-chart-of-the-day-124436147.html" target="_blank" rel="noopener">Yahoo Finance</a></div>
+    </div>
+    <div class="topic">
+      <div class="topic-label">⑤ Googleからの流入が止まる「さびしいネット」、Redditが−29%</div>
       <div class="topic-en">Reddit (and everyone else) faces a bleak internet without Google traffic</div>
-      <p><strong>何が起きたか：</strong>Redditの決算で、検索経由の流入が前四半期に大きく減ったことが判明。GoogleのAIモードやAI要約が、リンクを貼る代わりにその場で答えてしまうためだ。ハフマンCEOは「GoogleはこれまでどおりRedditをクロールしているが、AIモードは流入を生まない。私たちにも、知る限り誰にも」と語った。株価は1日で−29%。</p>
-      <p><strong>なぜ重要か：</strong>痛手はGoogle自身にも及ぶ。Alphabetは中核の検索広告の減速（AI広告の利益率が低いことも一因）を報告し、時価総額を約5,000億ドル失った。</p>
-      <p><strong>何に影響するか：</strong>AIが既存の広告収入を食うなら、ハイパースケーラーの「AI投資の回収」はさらに難しくなる。Capex継続の前提を見るうえで、Google検索の収益性は重要な観察点。</p>
-      <div class="topic-source">出典：<a href="https://finance.yahoo.com/technology/article/reddit-and-everyone-else-faces-a-bleak-internet-without-google-traffic-100000669.html" target="_blank" rel="noopener">Yahoo Finance（Hamza Shaban）</a></div>
+      <p>【何が起きたか】Googleが検索結果をリンクではなくAIの要約や対話で返すようになり、Redditの決算では検索からの流入が大きく減った。ハフマンCEOは「人々はまだRedditを求めている。Googleが以前のように送ってくれないだけだ」と述べた。Reddit株は金曜−29.2%で値下がり率首位。</p>
+      <p>【なぜ重要か】AIの普及が、Googleの集客に頼ってきたウェブ企業の土台を崩している。AIの「勝者」の裏で「敗者」が数字で見え始めた。</p>
+      <p>【何に影響するか】広告とトラフィックで稼ぐネット企業全般の評価に波及しうる。</p>
+      <div class="topic-source">出典：<a href="https://finance.yahoo.com/technology/article/reddit-and-everyone-else-faces-a-bleak-internet-without-google-traffic-100000669.html" target="_blank" rel="noopener">Yahoo Finance</a></div>
     </div>
-
     <div class="topic">
-      <div class="topic-label">⑤ 「FRBプットは健在」――ストラテジストが読むFRBの次の一手</div>
+      <div class="topic-label">② 「FRBプットは完全に戻った」――次の一手を読む</div>
       <div class="topic-en">'The Fed put is very much back': Wall Street strategists weigh central bank's next move</div>
-      <p><strong>何が起きたか：</strong>原油が1バレル100ドルを超え、インフレがしつこい中でFRBが金利を据え置いたことに、疑問の声が出ている。ヤルデニ氏は「火災報知器が鳴り、ドアの下から煙が入ってくるのに、消防を呼ぶ前にもっと証拠がほしいと言っているようなもの」と表現。7〜9月期の米GDPは年率3.4%増だった。</p>
-      <p><strong>なぜ重要か：</strong>42 Macroのデール氏は「FRBプット（相場が崩れればFRBが支える）は戻ってきた」と述べ、今後はFRBと財務省が協調して国債市場に働きかけ、来年には国債の買い戻しで流動性を供給する可能性もあると見る。</p>
-      <p><strong>何に影響するか：</strong>「インフレでも利上げしない」なら株には支えだが、長期金利とドルの信認には不安材料。利上げ派の反対票（Bloomberg欄参照）との綱引きが続く。</p>
-      <div class="topic-source">出典：<a href="https://finance.yahoo.com/markets/article/the-fed-put-is-very-much-back-wall-street-strategists-weigh-central-banks-next-move-155353732.html" target="_blank" rel="noopener">Yahoo Finance（Ines Ferré）</a></div>
+      <p>【何が起きたか】原油100ドル超でインフレがしつこい中、FRBが据え置いたことに疑問の声。ヤルデニ氏は「火災報知器が鳴り、煙がドアの下から入ってくるのに、消防を呼ぶ前にもっと証拠を求めているようだ」と批判し、7〜9月のGDPが年率3.4%増だった点を挙げた。一方で42 Macroのデール氏は「FRBプット（市場が崩れれば中銀が支える）は完全に戻った」と述べた。</p>
+      <p>【なぜ重要か】ストラテジストの見方は「利上げが足りない」と「下げれば支えてくれる」に割れている。</p>
+      <p>【何に影響するか】FRBが株安を気にするなら下値は限られ、インフレを優先するなら金利上昇が続く。半導体株の評価倍率に直結する論点。</p>
+      <div class="topic-source">出典：<a href="https://finance.yahoo.com/markets/article/the-fed-put-is-very-much-back-wall-street-strategists-weigh-central-banks-next-move-155353732.html" target="_blank" rel="noopener">Yahoo Finance</a></div>
     </div>
-
     <div class="topic">
-      <div class="topic-label">⑥ Binanceの過去最大のハッキング、暗号資産から約1,000億ドル</div>
+      <div class="topic-label">③ Binanceハッキングで暗号資産1,000億ドル減――時期は「見覚えあり」</div>
       <div class="topic-en">The Binance hack wiped $100B off crypto — the timing is familiar</div>
-      <p><strong>何が起きたか：</strong>世界最大の暗号資産取引所Binanceで、木曜午後から約63億ドル分の資産が被害を受けるハッキングが発生（同社は利用者の損失を全額補償すると表明）。捜査当局は北朝鮮との関連を指摘。2025年2月のBybit（約15億ドル）の4倍超で過去最大。暗号資産の時価総額は約2.7兆ドルから2.6兆ドル未満に減った。</p>
-      <p><strong>なぜ重要か：</strong>市場は2025年10/7のピーク（約4.3兆ドル）から約39%下にある。過去3回の弱気相場はピークから11〜13か月で底を打っており、今回はちょうど13か月目。最も似ているのは2022年のFTX破綻で、その2週間後に底を打ち、半年後には時価総額が約18%回復した。</p>
-      <p><strong>何に影響するか：</strong>リスク資産全体の心理を冷やす材料。ただし記事は「過去なら底のタイミング」とも示唆しており、断定はできない。</p>
-      <div class="topic-source">出典：<a href="https://finance.yahoo.com/markets/crypto/article/the-binance-hack-knocked-about-100-billion-off-crypto--and-the-timing-has-a-familiar-ring-chart-of-the-day-120412412.html" target="_blank" rel="noopener">Yahoo Finance（Jared Blikre）</a></div>
+      <p>【何が起きたか】世界最大の暗号資産取引所Binanceで約63億ドル分の資産が被害を受けるハッキングが木曜午後に発生。捜査当局は北朝鮮と関連づけている。従来の最大（2025年2月のBybit、約15億ドル）の4倍超。同社は利用者の損失を全額補償するとした。暗号資産全体の時価総額は約2.7兆ドルから2.6兆ドル未満に減少。</p>
+      <p>【なぜ重要か】暗号資産の時価総額は2025年10月7日の最高値（約4.3兆ドル）から約39%下にあり、過去の弱気相場が底を打った水準に近いと記事は指摘。</p>
+      <p>【何に影響するか】取引所の安全性への信頼と、ETH・BNBなど個別トークンの値動き。</p>
+      <div class="topic-source">出典：<a href="https://finance.yahoo.com/markets/crypto/article/the-binance-hack-knocked-about-100-billion-off-crypto--and-the-timing-has-a-familiar-ring-chart-of-the-day-120412412.html" target="_blank" rel="noopener">Yahoo Finance</a></div>
     </div>
-
     <div class="topic">
-      <div class="topic-label">⑦ ベゾス氏出資のEV「Slate」、試乗ルポ</div>
+      <div class="topic-label">④ ベゾス氏出資のEV「Slate」を試乗</div>
       <div class="topic-en">Slate: Sneak peek and test drive of the Bezos-backed EV</div>
-      <p><strong>何が起きたか：</strong>ジェフ・ベゾス氏が出資する実用EVトラックのSlateが、2万5,000ドルのトラックを年内に顧客へ引き渡す直前。これまでに約14億ドルを調達した。</p>
-      <p><strong>なぜ重要か：</strong>タイヤなどを除く部品をすべて米国製にし、外板を高価なプレス機で打ち抜かず複合材にすることで、鉄鋼・アルミ関税を回避し、生産開始後すぐの黒字化を狙う。</p>
-      <p><strong>何に影響するか：</strong>関税時代の「安いEV」のつくり方の一例。大きさはフォード・ブロンコ程度で、SUVへの変換も可能。</p>
-      <div class="topic-source">出典：<a href="https://finance.yahoo.com/markets/article/slate-sneak-peek-and-test-drive-of-the-bezos-backed-ev-170107457.html" target="_blank" rel="noopener">Yahoo Finance（Pras Subramanian）</a></div>
+      <p>【何が起きたか】ジェフ・ベゾス氏が出資する実用EVトラックのSlateが、2万5,000ドルのトラックを年内に顧客へ納める直前にある。タイヤなどを除き部品は米国製で、外板はプレス機不要の複合材にして鉄鋼・アルミ関税を避けている。調達額は約14億ドル。</p>
+      <p>【なぜ重要か】安さと関税回避を設計段階から組み込んだ例で、生産開始後まもなく現金収支の黒字化を狙う。</p>
+      <p>【何に影響するか】低価格EV市場と、関税下の「米国内生産」の新しいモデルケースになりうる。</p>
+      <div class="topic-source">出典：<a href="https://finance.yahoo.com/markets/article/slate-sneak-peek-and-test-drive-of-the-bezos-backed-ev-170107457.html" target="_blank" rel="noopener">Yahoo Finance</a></div>
     </div>
-
     <div class="topic">
-      <div class="topic-label">⑧ ジャージー・マイクスCEO「株価は割安」</div>
+      <div class="topic-label">⑥ Jersey Mike's CEO「株は割安」――上場後の低迷</div>
       <div class="topic-en">Jersey Mike's CEO says the stock is 'undervalued' after post-IPO slump</div>
-      <p><strong>何が起きたか：</strong>7月に1株21ドルで上場したサンドイッチチェーンのジャージー・マイクス（JMKE）は、上場来約13%安の18ドル前後。7〜9月期の既存店売上は+3%（20四半期連続のプラス）だったが、年間見通しを引き下げた。1億ドルの自社株買いも発表。</p>
-      <p><strong>なぜ重要か：</strong>CEOは9〜10月の減速を「金利とガソリン価格の急上昇による消費者心理の悪化」と説明。</p>
-      <p><strong>何に影響するか：</strong>原油高・金利高が米国の外食消費にまで効いてきた兆し。ハーシーの「ハロウィン菓子の売れ行きが怖い」という警告（下の一覧）とも重なる。</p>
-      <div class="topic-source">出典：<a href="https://finance.yahoo.com/markets/stocks/article/jersey-mikes-ceo-says-the-stock-is-undervalued-after-post-ipo-slump-181146790.html" target="_blank" rel="noopener">Yahoo Finance（Brooke DiPalma）</a></div>
+      <p>【何が起きたか】サンドイッチチェーンJersey Mike's（JMKE）の株は7月下旬に21ドルで上場した後、約13%下落（10月上旬に一時16.09ドル）。7〜9月の既存店売上は+3%で20四半期連続の増加だが、通期見通しは引き下げた。モリソンCEOは「株は総じて割安」と述べた。</p>
+      <p>【なぜ重要か】既存店は伸びていても、9〜10月の消費の弱さが見通しに出た。</p>
+      <p>【何に影響するか】米国の外食・個人消費の勢いを測る材料の一つ。</p>
+      <div class="topic-source">出典：<a href="https://finance.yahoo.com/markets/stocks/article/jersey-mikes-ceo-says-the-stock-is-undervalued-after-post-ipo-slump-181146790.html" target="_blank" rel="noopener">Yahoo Finance</a></div>
     </div>
-
     <div class="topic">
-      <div class="topic-label">⑨ 住宅を買えず「賃貸」を考える人が増加</div>
+      <div class="topic-label">⑨ 家を買えず「賃貸のまま」を考える人が増加</div>
       <div class="topic-en">More would-be homebuyers are considering renting, unsure they'll ever be able to buy</div>
-      <p><strong>何が起きたか：</strong>住宅ローン金利が7%を超え、Zillowの賃貸需要指標は前年比+19%。米国の家賃の中央値は1,932ドル（+2.7%）だが、新規購入者の毎月の住居費は3,037ドル（+5%）と、持ち家のコストの方が速く上がっている。</p>
-      <p><strong>なぜ重要か：</strong>ニューヨーク連銀の調査で、賃貸の人が「いつか家を持てる」と考える確率は35%弱と、10年前の56%から大きく低下。</p>
-      <p><strong>何に影響するか：</strong>高金利が長引くほど、住宅関連の消費や若い世代の資産形成が細る。FRBの利上げ論とあわせて見たい論点。</p>
-      <div class="topic-source">出典：<a href="https://finance.yahoo.com/real-estate/article/more-would-be-homebuyers-are-considering-renting-instead-and-theyre-not-sure-theyll-ever-be-able-to-buy-140032785.html" target="_blank" rel="noopener">Yahoo Finance（Claire Boston）</a></div>
+      <p>【何が起きたか】住宅ローン金利が7%超の中、Zillowの賃貸需要指標は前年比+19%。家賃の中央値は1,932ドル（+2.7%）だが、新規購入者の月々の住宅費は3,037ドル（+5%）とより速く上がる。ニューヨーク連銀の調査では、賃貸世帯が「いつか家を持てる」と考える確率は35%弱と、10年前の56%から低下。</p>
+      <p>【なぜ重要か】高金利が長引くほど、住宅取得をあきらめる層が増える。</p>
+      <p>【何に影響するか】住宅関連需要や、選挙での「暮らしのコスト」への不満につながる。</p>
+      <div class="topic-source">出典：<a href="https://finance.yahoo.com/real-estate/article/more-would-be-homebuyers-are-considering-renting-instead-and-theyre-not-sure-theyll-ever-be-able-to-buy-140032785.html" target="_blank" rel="noopener">Yahoo Finance</a></div>
     </div>
-
     <div class="topic">
-      <div class="topic-label">⑩ オバマケア加入受付開始、2027年の保険料は平均約13%上昇</div>
+      <div class="topic-label">⑩ オバマケアの加入受付開始、2027年の保険料は平均約13%上昇</div>
       <div class="topic-en">ACA open enrollment: Premium hikes and what else to expect for 2027</div>
-      <p><strong>何が起きたか：</strong>2027年分のACA（オバマケア）の加入受付が今日（日曜）から多くの州で始まり、12/15まで。KFFの分析では、市場で売られる保険の定価は平均約13%上昇、多くは10〜20%の値上げ。州独自の窓口では+16%。</p>
-      <p><strong>なぜ重要か：</strong>医療費全体の上昇、インフレ、人手不足が原因。保険会社のプラン撤退も相次ぐ。</p>
-      <p><strong>何に影響するか：</strong>中間選挙（11/3）直前に家計の負担増が見えることになり、物価が選挙の争点であることを改めて示す。</p>
-      <div class="topic-source">出典：<a href="https://finance.yahoo.com/economy/article/aca-open-enrollment-premium-hikes-and-what-else-to-expect-for-2027-192108163.html" target="_blank" rel="noopener">Yahoo Finance（Kerry Hannon）</a></div>
+      <p>【何が起きたか】医療保険制度（ACA）の2027年分の加入受付が今日（日曜）から多くの州で始まる（1月1日開始の保険は12月15日まで）。KFFの分析では、定価ベースの保険料は平均約13%上昇、州運営の窓口では16%上昇。保険会社のプラン撤退も相次ぐ。</p>
+      <p>【なぜ重要か】医療費・インフレ・人手不足が保険料を押し上げ、物価高に苦しむ家計にさらに重しとなる。</p>
+      <p>【何に影響するか】中間選挙直前の「生活費」論争の材料の一つ。</p>
+      <div class="topic-source">出典：<a href="https://finance.yahoo.com/economy/article/aca-open-enrollment-premium-hikes-and-what-else-to-expect-for-2027-192108163.html" target="_blank" rel="noopener">Yahoo Finance</a></div>
     </div>
 
     <div class="topic">
-      <div class="topic-label">ランキング（10/30）</div>
+      <div class="topic-label">ランキング（10月30日（金））</div>
       <p><strong>値上がり上位</strong></p>
-      <div class="tbl"><table>
-        <tr><th>銘柄</th><th>業種</th><th class="num">株価</th><th class="num">騰落率</th></tr>
-        <tr><td>CDNA CareDx</td><td>臓器移植の検査</td><td class="num">$87.41</td><td class="num q-up">▲ +22.22%</td></tr>
-        <tr><td>FDXF FedEx Freight</td><td>トラック貨物輸送</td><td class="num">$126.04</td><td class="num q-up">▲ +14.91%</td></tr>
-        <tr><td>MEOH Methanex</td><td>メタノール製造</td><td class="num">$71.57</td><td class="num q-up">▲ +14.04%</td></tr>
-        <tr><td>REGN Regeneron</td><td>バイオ医薬品</td><td class="num">$927.89</td><td class="num q-up">▲ +13.33%</td></tr>
-        <tr><td>CVCO Cavco Industries</td><td>工場製住宅</td><td class="num">$619.00</td><td class="num q-up">▲ +13.11%</td></tr>
+      <div class="tbl-wrap"><table>
+        <tr><th>銘柄</th><th>会社（業種）</th><th>株価</th><th>騰落率</th><th>理由</th></tr>
+        <tr><td>CDNA</td><td>CareDx（臓器移植の検査・診断）</td><td class="num">$87.41</td><td class="num q-up">▲ +22.22%</td><td>理由は未確認</td></tr>
+        <tr><td>FDXF</td><td>FedEx Freight（トラック貨物輸送）</td><td class="num">$126.04</td><td class="num q-up">▲ +14.91%</td><td>理由は未確認</td></tr>
+        <tr><td>MEOH</td><td>Methanex（メタノール製造）</td><td class="num">$71.57</td><td class="num q-up">▲ +14.04%</td><td>理由は未確認</td></tr>
+        <tr><td>REGN</td><td>Regeneron（バイオ医薬品）</td><td class="num">$927.89</td><td class="num q-up">▲ +13.33%</td><td>理由は未確認</td></tr>
+        <tr><td>CVCO</td><td>Cavco Industries（工場生産住宅）</td><td class="num">$619.00</td><td class="num q-up">▲ +13.11%</td><td>理由は未確認</td></tr>
       </table></div>
-      <p>上昇の理由はいずれも記事で未確認。</p>
       <p><strong>値下がり上位</strong></p>
-      <div class="tbl"><table>
-        <tr><th>銘柄</th><th>業種</th><th class="num">株価</th><th class="num">騰落率</th></tr>
-        <tr><td>RDDT Reddit</td><td>ネット掲示板</td><td class="num">$91.73</td><td class="num q-down">▼ −29.22%</td></tr>
-        <tr><td>INTC Intel</td><td>半導体（CPU）</td><td class="num">$65.76</td><td class="num q-down">▼ −28.58%</td></tr>
-        <tr><td>CACC Credit Acceptance</td><td>自動車ローン</td><td class="num">$464.89</td><td class="num q-down">▼ −19.26%</td></tr>
-        <tr><td>ILMN Illumina</td><td>遺伝子解析装置</td><td class="num">$235.99</td><td class="num q-down">▼ −18.64%</td></tr>
-        <tr><td>RBLX Roblox</td><td>オンラインゲーム</td><td class="num">$42.99</td><td class="num q-down">▼ −18.05%</td></tr>
+      <div class="tbl-wrap"><table>
+        <tr><th>銘柄</th><th>会社（業種）</th><th>株価</th><th>騰落率</th><th>理由</th></tr>
+        <tr><td>RDDT</td><td>Reddit（ネット掲示板・広告）</td><td class="num">$91.73</td><td class="num q-down">▼ −29.22%</td><td>決算でGoogleからの流入減（記事⑤）</td></tr>
+        <tr><td>INTC</td><td>Intel（半導体・CPU）</td><td class="num">$65.76</td><td class="num q-down">▼ −28.58%</td><td>弱い見通し（1970年代以来最悪の日）</td></tr>
+        <tr><td>CACC</td><td>Credit Acceptance（自動車ローン）</td><td class="num">$464.89</td><td class="num q-down">▼ −19.26%</td><td>理由は未確認</td></tr>
+        <tr><td>ILMN</td><td>Illumina（遺伝子解析装置）</td><td class="num">$235.99</td><td class="num q-down">▼ −18.64%</td><td>理由は未確認</td></tr>
+        <tr><td>RBLX</td><td>Roblox（ゲーム基盤）</td><td class="num">$42.99</td><td class="num q-down">▼ −18.05%</td><td>理由は未確認</td></tr>
       </table></div>
-      <p>理由が確認できたもの：Reddit＝Google検索からの流入減（記事④）、Intel＝メモリ不足でPCが売れないとして見通しを下方修正（Bloomberg欄）。CACC・ILMN・RBLXは理由は未確認。</p>
       <p><strong>売買が多い</strong></p>
-      <div class="tbl"><table>
-        <tr><th>銘柄</th><th>業種</th><th class="num">株価</th><th class="num">騰落率</th></tr>
-        <tr><td>INTC Intel</td><td>半導体（CPU）</td><td class="num">$65.76</td><td class="num q-down">▼ −28.58%</td></tr>
-        <tr><td>NVDA NVIDIA</td><td>半導体（AI向けGPU）</td><td class="num">$204.64</td><td class="num q-down">▼ −4.22%</td></tr>
-        <tr><td>SPCX SpaceX</td><td>宇宙・衛星通信</td><td class="num">$134.72</td><td class="num q-down">▼ −6.37%</td></tr>
-        <tr><td>NU Nu Holdings</td><td>ブラジルのネット銀行</td><td class="num">$11.61</td><td class="num q-down">▼ −3.65%</td></tr>
-        <tr><td>NOK Nokia</td><td>通信機器</td><td class="num">$8.56</td><td class="num q-down">▼ −8.06%</td></tr>
+      <div class="tbl-wrap"><table>
+        <tr><th>銘柄</th><th>会社（業種）</th><th>株価</th><th>騰落率</th></tr>
+        <tr><td>INTC</td><td>Intel（半導体・CPU）</td><td class="num">$65.76</td><td class="num q-down">▼ −28.58%</td></tr>
+        <tr><td>NVDA</td><td>NVIDIA（AI向けGPU）</td><td class="num">$204.64</td><td class="num q-down">▼ −4.22%</td></tr>
+        <tr><td>SPCX</td><td>SpaceX（宇宙・衛星通信）</td><td class="num">$134.72</td><td class="num q-down">▼ −6.37%</td></tr>
+        <tr><td>NU</td><td>Nu Holdings（ブラジルのネット銀行）</td><td class="num">$11.61</td><td class="num q-down">▼ −3.65%</td></tr>
+        <tr><td>NOK</td><td>Nokia（通信機器）</td><td class="num">$8.56</td><td class="num q-down">▼ −8.06%</td></tr>
       </table></div>
-      <p>NVDAはAI株全体の売りの一部（記事①②）。SPCX・NU・NOKの理由は未確認。</p>
-      <div class="topic-source">出典：<a href="https://finance.yahoo.com/" target="_blank" rel="noopener">Yahoo Finance（英語版・ランキング）</a></div>
+      <div class="topic-source">出典：<a href="https://finance.yahoo.com/markets/stocks/gainers/" target="_blank" rel="noopener">Yahoo Finance（値上がり・値下がり・売買代金、自動取得）</a></div>
     </div>
 
     <div class="topic">
       <div class="topic-label">その他の見出し</div>
-      <ul class="headline-list">
-        <li>AT&amp;Tの和解金、対象の利用者は最大5,000ドル受け取れる可能性<br><span class="topic-en">AT&amp;T settlement payouts could reach $5,000 for eligible customers</span> <a href="https://finance.yahoo.com/personal-finance/banking/article/att-settlement-payouts-could-reach-5000-for-eligible-customers-170916715.html" target="_blank" rel="noopener">記事</a></li>
-        <li>数百万人の学生ローン返済者に、再び取り立てが来る可能性<br><span class="topic-en">Millions of student loan borrowers could face collections again. What to know.</span> <a href="https://finance.yahoo.com/personal-finance/student-loans/article/student-debt-collection-may-be-coming-back-5-steps-to-avoid-wage-garnishment-161330441.html" target="_blank" rel="noopener">記事</a></li>
-        <li>米国人の4割超が、老後に必要な資金額を知らない<br><span class="topic-en">Over 40% of Americans don't know how much they'll need for retirement</span> <a href="https://finance.yahoo.com/personal-finance/investing/article/over-40-of-americans-dont-know-how-much-theyll-need-for-retirement-140231657.html" target="_blank" rel="noopener">記事</a></li>
-        <li>ジム・クレイマー氏が「激怒」、Intelが約30%急落――筆頭株主は米政府<br><span class="topic-en">Jim Cramer 'furious' as Intel plunges nearly 30% — and Uncle Sam is its top shareholder</span> <a href="https://finance.yahoo.com/markets/stocks/articles/jim-cramer-furious-intel-crashes-212500271.html" target="_blank" rel="noopener">記事</a></li>
-        <li>ジェイミー・ダイモン氏、ワシントンの「ヘロイン」効果を米国の貯蓄者に警告<br><span class="topic-en">Jamie Dimon warns US savers about Washington's 'heroin' effect</span> <a href="https://finance.yahoo.com/economy/policy/articles/jamie-dimon-warns-us-savers-113500574.html" target="_blank" rel="noopener">記事</a></li>
-        <li>ベゾス氏の父は16歳でキューバを逃れ、のちにAmazonに出資した<br><span class="topic-en">Jeff Bezos' father fled Cuba at 16, later backed Amazon</span> <a href="https://finance.yahoo.com/small-business/articles/jeff-bezos-father-fled-cuba-093000674.html" target="_blank" rel="noopener">記事</a></li>
-        <li>ハーシーCEO「ハロウィン菓子の売れ行きは怖い状況」<br><span class="topic-en">Hershey CEO warns Halloween candy sales are looking scary</span> <a href="https://finance.yahoo.com/markets/stocks/article/hershey-ceo-offers-a-ghoulish-warning-on-how-halloween-candy-sales-are-going-125423251.html" target="_blank" rel="noopener">記事</a></li>
-        <li>Intel株の急落で、米政府の保有株の価値が120億ドル減少<br><span class="topic-en">Intel's stock crashes, knocking $12B from government's stake</span> <a href="https://finance.yahoo.com/markets/stocks/articles/intel-stock-crashes-knocking-12b-215434820.html" target="_blank" rel="noopener">記事</a></li>
-        <li>トランプ氏が誇った「過去最大のベネズエラ石油取引」、現実が見え始める<br><span class="topic-en">Trump touted a record Venezuela oil deal. Now reality is setting in</span> <a href="https://finance.yahoo.com/energy/articles/trump-touted-record-venezuela-oil-101849012.html" target="_blank" rel="noopener">記事</a></li>
-        <li>ベゾス氏、AIバブルについて「退職者は基本的にS&amp;P500を買えばいい」<br><span class="topic-en">Bezos on AI bubble: retirees should usually buy S&amp;P 500</span> <a href="https://finance.yahoo.com/markets/stocks/articles/hard-know-ai-bubble-jeff-013019732.html" target="_blank" rel="noopener">記事</a></li>
-        <li>弱気相場が来る？ バフェット氏の最良の備え方<br><span class="topic-en">Bear market ahead? Warren Buffett's best advice to prepare</span> <a href="https://finance.yahoo.com/markets/stocks/articles/prediction-bear-market-coming-heres-153500601.html" target="_blank" rel="noopener">記事</a></li>
-        <li>（動画）なぜ1杯27ドルも払うことになったのか：ジョン・タファー氏<br><span class="topic-en">Why you're suddenly paying $27 for a single drink: Jon Taffer</span> <a href="https://finance.yahoo.com/video/why-youre-suddenly-paying-27-for-a-single-drink-jon-taffer-151246526.html" target="_blank" rel="noopener">動画</a></li>
-        <li>（動画）経営者たちはAnthropicのS-1から何を読み取ったか<br><span class="topic-en">What C-suite leaders are taking away from Anthropic's S-1</span> <a href="https://finance.yahoo.com/video/what-c-suite-leaders-are-taking-away-from-anthropics-s-1-142548202.html" target="_blank" rel="noopener">動画</a></li>
-        <li>（動画）個人投資家がAnthropicとOpenAIの上場に投資する方法<br><span class="topic-en">How retail investors can gain exposure to Anthropic and OpenAI IPOs</span> <a href="https://finance.yahoo.com/video/how-retail-investors-can-gain-exposure-to-anthropic-and-openai-ipos-143035182.html" target="_blank" rel="noopener">動画</a></li>
-        <li>（動画）チェリオスがジップロックと組み、再封できるシリアル袋に<br><span class="topic-en">Cheerios teams up with Ziploc on resealable cereal bags — but why did it take this long?</span> <a href="https://finance.yahoo.com/video/cheerios-teams-up-with-ziploc-on-resealable-cereal-bags--but-why-did-it-take-this-long-141514652.html" target="_blank" rel="noopener">動画</a></li>
+      <ul class="hl">
+        <li>AT&amp;Tの和解金、対象者は最大5,000ドル受け取りも<span class="topic-en">AT&amp;T settlement payouts could reach $5,000 for eligible customers</span><a href="https://finance.yahoo.com/personal-finance/banking/article/att-settlement-payouts-could-reach-5000-for-eligible-customers-170916715.html" target="_blank" rel="noopener">記事</a></li>
+        <li>数百万人の学生ローン借り手に、取り立て再開の可能性<span class="topic-en">Millions of student loan borrowers could face collections again. What to know.</span><a href="https://finance.yahoo.com/personal-finance/student-loans/article/student-debt-collection-may-be-coming-back-5-steps-to-avoid-wage-garnishment-161330441.html" target="_blank" rel="noopener">記事</a></li>
+        <li>米国人の4割超が老後に必要な額を知らない<span class="topic-en">Over 40% of Americans don't know how much they'll need for retirement</span><a href="https://finance.yahoo.com/personal-finance/investing/article/over-40-of-americans-dont-know-how-much-theyll-need-for-retirement-140231657.html" target="_blank" rel="noopener">記事</a></li>
+        <li>インテル約30%急落にジム・クレイマー氏「激怒」――筆頭株主は米政府<span class="topic-en">Jim Cramer 'furious' as Intel plunges nearly 30% — and Uncle Sam is its top shareholder</span><a href="https://finance.yahoo.com/markets/stocks/articles/jim-cramer-furious-intel-crashes-212500271.html" target="_blank" rel="noopener">記事</a></li>
+        <li>ジェイミー・ダイモン氏、ワシントンの「ヘロイン効果」を預金者に警告<span class="topic-en">Jamie Dimon warns US savers about Washington's 'heroin' effect</span><a href="https://finance.yahoo.com/economy/policy/articles/jamie-dimon-warns-us-savers-113500574.html" target="_blank" rel="noopener">記事</a></li>
+        <li>ベゾス氏の父は16歳でキューバを脱出、後にAmazonに出資<span class="topic-en">Jeff Bezos' father fled Cuba at 16, later backed Amazon</span><a href="https://finance.yahoo.com/small-business/articles/jeff-bezos-father-fled-cuba-093000674.html" target="_blank" rel="noopener">記事</a></li>
+        <li>ハーシーCEO、ハロウィーンのお菓子の売れ行きに「怖い」警告<span class="topic-en">Hershey CEO warns Halloween candy sales are looking scary</span><a href="https://finance.yahoo.com/markets/stocks/article/hershey-ceo-offers-a-ghoulish-warning-on-how-halloween-candy-sales-are-going-125423251.html" target="_blank" rel="noopener">記事</a></li>
+        <li>インテル株急落で、政府保有分の価値が120億ドル減少<span class="topic-en">Intel's stock crashes, knocking $12B from government's stake</span><a href="https://finance.yahoo.com/markets/stocks/articles/intel-stock-crashes-knocking-12b-215434820.html" target="_blank" rel="noopener">記事</a></li>
+        <li>トランプ氏が誇った「過去最大のベネズエラ石油取引」、現実が見えてきた<span class="topic-en">Trump touted a record Venezuela oil deal. Now reality is setting in</span><a href="https://finance.yahoo.com/energy/articles/trump-touted-record-venezuela-oil-101849012.html" target="_blank" rel="noopener">記事</a></li>
+        <li>ベゾス氏、AIバブルについて「退職者は通常S&amp;P500を買うべき」<span class="topic-en">Bezos on AI bubble: retirees should usually buy S&amp;P 500</span><a href="https://finance.yahoo.com/markets/stocks/articles/hard-know-ai-bubble-jeff-013019732.html" target="_blank" rel="noopener">記事</a></li>
+        <li>弱気相場は来るか？ バフェット氏の備え方<span class="topic-en">Bear market ahead? Warren Buffett's best advice to prepare</span><a href="https://finance.yahoo.com/markets/stocks/articles/prediction-bear-market-coming-heres-153500601.html" target="_blank" rel="noopener">記事</a></li>
+        <li>なぜ1杯27ドルも払うことになったのか（ジョン・タファー氏）<span class="topic-en">Why you're suddenly paying $27 for a single drink: Jon Taffer</span><a href="https://finance.yahoo.com/video/why-youre-suddenly-paying-27-for-a-single-drink-jon-taffer-151246526.html" target="_blank" rel="noopener">動画</a></li>
+        <li>経営幹部はAnthropicのS-1から何を読み取ったか<span class="topic-en">What C-suite leaders are taking away from Anthropic's S-1</span><a href="https://finance.yahoo.com/video/what-c-suite-leaders-are-taking-away-from-anthropics-s-1-142548202.html" target="_blank" rel="noopener">動画</a></li>
+        <li>個人投資家がAnthropic・OpenAIの上場に投資する方法<span class="topic-en">How retail investors can gain exposure to Anthropic and OpenAI IPOs</span><a href="https://finance.yahoo.com/video/how-retail-investors-can-gain-exposure-to-anthropic-and-openai-ipos-143035182.html" target="_blank" rel="noopener">動画</a></li>
+        <li>シリアルのCheeriosがZiplocと組み再封できる袋に――なぜ今まで？<span class="topic-en">Cheerios teams up with Ziploc on resealable cereal bags — but why did it take this long?</span><a href="https://finance.yahoo.com/video/cheerios-teams-up-with-ziploc-on-resealable-cereal-bags--but-why-did-it-take-this-long-141514652.html" target="_blank" rel="noopener">動画</a></li>
       </ul>
-      <div class="topic-source">出典：<a href="https://finance.yahoo.com/" target="_blank" rel="noopener">Yahoo Finance（英語版トップ）</a></div>
+      <div class="topic-source">出典：<a href="https://finance.yahoo.com/" target="_blank" rel="noopener">Yahoo Finance トップページ（rank 11〜25）</a></div>
     </div>
 
     <div class="topic">
       <div class="topic-label">用語メモ</div>
-      <p><strong>free cash flow（フリーキャッシュフロー）</strong>＝本業で稼いだ現金から設備投資を引いた残り。マイナスは「稼ぎより投資の方が大きい」状態。<br>
-      <strong>pullback</strong>＝（高値からの）押し・下落局面。10%以上を correction（調整）と呼ぶことが多い。<br>
-      <strong>Fed put</strong>＝相場が崩れればFRBが利下げなどで支えてくれるという市場の期待。<br>
-      <strong>Buy rating</strong>＝アナリストの「買い」推奨。<br>
-      <strong>same-store sales</strong>＝既存店売上高（新規出店の影響を除いた売上の伸び）。<br>
-      <strong>lowered its outlook</strong>＝業績見通しを引き下げた（guidance cut とも）。</p>
+      <p><strong>free cash flow</strong>＝フリーキャッシュフロー（本業で稼いだ現金から設備投資を引いた、自由に使える現金）／<strong>pullback</strong>＝（上昇途中の）下落・調整／<strong>Fed put</strong>＝FRBプット（相場が大きく崩れれば中銀が利下げなどで支えてくれるという市場の期待）／<strong>open enrollment</strong>＝保険の加入受付期間／<strong>stake</strong>＝保有株（出資分）／<strong>S-1</strong>＝米国での上場申請書</p>
     </div>
   </div>
 </div>
 
-<!-- ===================== 日経 ===================== -->
+<!-- ====== 日経 ====== -->
 <div class="section nikkei" id="sec-nikkei">
   <div class="section-header">
     <div class="section-title">🗾 日経 系：日本経済・円相場・日本企業・アジア</div>
-    <div class="point-summary">本日のポイント：米国の半導体急落は日本の取引時間の後だったため、その分は11/2（月）の寄り付きで受ける。東京エレクトロンは最高益見通し＋自社株買いで、月曜の反応が注目。日銀は据え置き、円は157円台。</div>
+    <div class="point-summary">本日のポイント：東京エレクトロンが今期純利益51%増・3期連続最高益の見通しと1,500億円の自社株買い。ただし発表は金曜の米半導体急落の前で、反応は11/2（月）に出る。日銀は据え置き、ドル円は157円台。</div>
   </div>
   <div class="topics">
     <div class="topic">
-      <div class="topic-label">東京エレクトロン、2期ぶり最高益の見通し・自社株買い1,500億円</div>
-      <p>10/30の引け後に発表。2027年3月期の経常利益は1兆1,790億円（+87%）、純利益8,650億円（+51%）、配当523円、自社株買いは最大1,500億円。メモリ2社の過去最大の投資が装置の受注に回っている形だ。</p>
-      <p>ただし株価は発表前の10/30に−5.2%で、その夜には米SOX指数が−7.2%。「良い決算」と「半導体全体の売り」のどちらが勝つかが、11/2（月）に試される。</p>
-      <div class="topic-source">出典：<a href="https://www.nikkei.com/article/DGXZQOUB29AMC0Z21C26A0000000/" target="_blank" rel="noopener">日本経済新聞</a>／<a href="https://kabutan.jp/news/?b=k202610300239" target="_blank" rel="noopener">株探</a></div>
+      <div class="topic-label">東京エレクトロン：純利益51%増の見通し、自社株買い1,500億円</div>
+      <p>【何が起きたか】東京エレクトロンは10月30日、これまで「未定」としていた2027年3月期の見通しを初めて開示した。売上高3兆7,000億円、営業利益1兆1,690億円、純利益は前期比51%増の8,650億円で3期連続の最高益。アナリスト24人の純利益予想平均（7,769億円）を上回った。上期は売上高+41.3%、営業利益+67.2%。発行済み株式の1.1%・1,500億円を上限とする自社株買い（11月1日〜2027年3月末）も決めた。</p>
+      <p>【なぜ重要か】AI需要がGPUだけでなくHBM（AI向けメモリ）やCPUにまで広がり、半導体製造装置の受注に回っていることを数字で示した。</p>
+      <p>【何に影響するか】米国の「AI投資の採算」への疑いと、装置会社の「受注は強い」という現実のどちらが勝つか。11/2の東京市場の最大の焦点。</p>
+      <div class="topic-source">出典：<a href="https://www.nikkei.com/article/DGXZQOUB29AMC0Z21C26A0000000/" target="_blank" rel="noopener">日本経済新聞</a> ／ <a href="https://s.kabutan.jp/news/n202610301249/" target="_blank" rel="noopener">株探</a> ／ <a href="https://jp.investing.com/news/earnings/article-1734001" target="_blank" rel="noopener">Investing.com</a></div>
     </div>
     <div class="topic">
-      <div class="topic-label">日経平均は63,290円（−2.1%）、来週は日米の決算を見極め</div>
-      <p>10/30の日経平均は−2.1%。米国の半導体急落はその後に起きたため、週明けは追加の下げから始まる可能性がある。日経は来週の相場について、主要企業の決算で業績の底堅さが確認できれば買いが戻る展開を想定している。</p>
-      <div class="topic-source">出典：<a href="https://www.nikkei.com/article/DGXZQOFL27CLF0X21C26A0000000/" target="_blank" rel="noopener">日本経済新聞</a></div>
+      <div class="topic-label">韓国KOSPI −3.5%、SKハイニックス −7.1%、外国人1.6兆ウォン売り越し</div>
+      <p>【何が起きたか】10月30日のKOSPIは3.48%安の5,730.74。SKハイニックスは7.08%安の141万8,000ウォン、Samsung電子は3.02%安の22万5,000ウォン。外国人は約1.6兆ウォンを売り越した。取引中には一時5%超下げ、11営業日ぶりに売りの「サイドカー」（プログラム売買の一時停止）が発動した。</p>
+      <p>【なぜ重要か】きっかけはAlphabetの決算で、AI投資の採算への疑いが「AI投資の受け手」であるメモリ株に向かった。過去最高益の直後でも売られる局面。</p>
+      <p>【何に影響するか】金曜の米SOX −7.2%は韓国市場の終了後なので、週明けの韓国市場はもう一段の下押しを受ける可能性がある。保有のSKハイニックス本株に直結。</p>
+      <div class="topic-source">出典：<a href="https://en.sedaily.com/news/2026/10/30/kospi-plunges-35-percent-on-alphabet-shock-samsung-chip" target="_blank" rel="noopener">Seoul Economic Daily</a> ／ <a href="https://www.digitaltoday.co.kr/en/view/122026/kospi-slumps-3point5percent-on-alphabet-shock-foreigners-sell-1point6-trillion-won" target="_blank" rel="noopener">Digital Today</a> ／ <a href="https://news.jkn.co.kr/editions/english/post/1059045" target="_blank" rel="noopener">JKN</a></div>
     </div>
     <div class="topic">
-      <div class="topic-label">日銀は1.25%据え置き、円は157円台後半</div>
-      <p>10/30の決定会合で政策金利を1.25%に据え置いた。植田総裁は基調的な物価が2%目標とおおむね整合しているとしつつ、中東情勢・AI・為替の影響を点検して次の利上げを判断すると説明。据え置きで円は弱含み、12月会合での利上げ観測がくすぶる。</p>
-      <p>原油高と円安が重なると輸入物価が上がり、家計を圧迫する。日銀にとっては「利上げで円安を止めたいが、景気も気になる」という難しい局面が続く。</p>
-      <div class="topic-source">出典：<a href="https://www.bloomberg.com/jp/news/live-blog/2026-10-30/TNP702KGIFPO00" target="_blank" rel="noopener">Bloomberg</a>／<a href="https://fx.minkabu.jp/news/383088" target="_blank" rel="noopener">みんかぶ</a>／<a href="https://fx.minkabu.jp/news/383182" target="_blank" rel="noopener">みんかぶ</a></div>
+      <div class="topic-label">Samsung・SKハイニックス、過去最大の投資でも「供給増は2028年」</div>
+      <p>【何が起きたか】台湾Digitimesは、両社が2026年に合計約110兆ウォンという過去最大の製造装置投資をしているが、実際にメモリの供給が増えるのは2028年になる見通しだと報じた。その時期には中国CXMTの増産も重なり、汎用DRAMで値下げ競争が起きる可能性も指摘している（単一の業界紙の報道）。</p>
+      <p>【なぜ重要か】工場建設→装置導入→歩留まり向上に約2年かかる。短期の供給不足は続く一方、2028年が「次の供給過剰」の分岐点として意識され始めた。</p>
+      <p>【何に影響するか】2027年まではメモリ価格の支え、装置会社（東京エレクトロンなど）には受注増。2028年以降の価格見通しはメモリ株の評価に影響する。</p>
+      <div class="topic-source">出典：<a href="https://www.digitimes.com/news/a20261029PD208/samsung-sk-hynix-2028-equipment-2026.html" target="_blank" rel="noopener">Digitimes</a> ／ <a href="https://www.sec.gov/Archives/edgar/data/0002120882/000119312526339024/d13432d6k.htm" target="_blank" rel="noopener">SK hynix 6-K（SEC）</a></div>
     </div>
     <div class="topic">
-      <div class="topic-label">米「過剰生産関税」、日本も対象国に――選挙後の発動に警戒</div>
-      <p>米政府は中国・日本を含む十数か国への「過剰生産関税」の調査を終えたが、中間選挙前の物価への不満と、中国との休戦の壊れやすさから発動を控えている。選挙後に動けば、日本の装置・素材・自動車の輸出に新たな重しとなる。</p>
-      <div class="topic-source">出典：<a href="https://asia.nikkei.com/politics/u.s.-midterm-elections/trump-holds-off-overcapacity-tariffs-as-us-midterms-near" target="_blank" rel="noopener">Nikkei Asia</a></div>
+      <div class="topic-label">日銀は1.25%据え置き、「基調物価は2%とおおむね整合」</div>
+      <p>【何が起きたか】日銀は10月30日の会合で政策金利を1.25%程度に据え置いた。展望リポートでは基調的な物価上昇率が2%目標と「おおむね整合的な水準」に達したと判断。植田総裁は「持続的・安定的な達成の宣言ではない」と慎重に述べた。ドル円は発表直後に一時157.12円まで円高に振れたが、157円台半ばに戻った。</p>
+      <p>【なぜ重要か】市場は12月の利上げを約8割織り込んだままで、追加利上げの方向性は変わっていない。</p>
+      <p>【何に影響するか】ドル円は156〜159円のレンジが続き、抜けるかどうかは米国側（雇用統計・FRB）次第との見方。円安は輸出企業の利益を支える一方、輸入物価を押し上げる。</p>
+      <div class="topic-source">出典：<a href="https://www.gaitame.com/media/entry/2026/10/30/182040" target="_blank" rel="noopener">外為どっとコム</a> ／ <a href="https://www.bloomberg.com/jp/news/live-blog/2026-10-30/TNP702KGIFPO00" target="_blank" rel="noopener">Bloomberg（日本語）</a> ／ <a href="https://news.infoseek.co.jp/article/ntv_2026103002414497/" target="_blank" rel="noopener">日テレ（Infoseek）</a></div>
     </div>
     <div class="topic">
-      <div class="topic-label">韓国：KOSPIは−3.5%、Samsungは過去最高益でも弱い</div>
-      <p>10/30のKOSPIは5,731（−3.5%）。SKハイニックス−7.1%、Samsung−3.0%と外国人の売りが重なった。Samsungは7〜9月の営業利益107兆ウォンと過去最高でも株価は弱く、「金利の安定なしに半導体株の反発はない」との見方も出ている。過去最高益の直後でも下がる「良い決算で売られる」局面が続く。</p>
-      <div class="topic-source">出典：<a href="https://en.sedaily.com/news/2026/10/30/kospi-plunges-35-percent-on-alphabet-shock-samsung-chip" target="_blank" rel="noopener">Seoul Economic Daily</a>／<a href="https://www.benzinga.com/markets/tech/26/10/62729331/sk-hynix-samsung-tumble-in-south-korea-as-wall-streets-ai-sell-off-rattles-asian-markets-kospi-triggers-rare-sell-side-trading-halt" target="_blank" rel="noopener">Benzinga</a></div>
+      <div class="topic-label">キオクシア初配当、東京エレクトロンは増配――還元策を比較</div>
+      <p>【何が起きたか】キオクシアは上場後初の配当を決め、東京エレクトロンは中間配当の増額（分割考慮後の実質1株83円相当）と自社株買いを発表した。メモリ・装置の両方で、稼いだ現金を株主に返す動きが出ている。</p>
+      <p>【なぜ重要か】AI需要で利益が大きく増えた日本の半導体企業が、成長投資と株主還元を両立できる段階に来ていることを示す。</p>
+      <p>【何に影響するか】下げ相場の中で「還元策のある銘柄」が下支えされやすいかどうか、週明けの値動きで確認したい。</p>
+      <div class="topic-source">出典：<a href="https://www.zaikei.co.jp/article/20261031/875703.html" target="_blank" rel="noopener">財経新聞</a> ／ <a href="https://news.livedoor.com/article/detail/32699914/" target="_blank" rel="noopener">ライブドアニュース</a></div>
     </div>
     <div class="topic">
-      <div class="topic-label">来週の「答え合わせ」カレンダー</div>
-      <p>11/2 ISM製造業・Apple決算、11/3 米中間選挙・AMD決算、11/4 Qualcomm・ARM・Coherent決算、11/6 米雇用統計。さらに11/10は米中「休戦」の期限。選挙・決算・雇用・通商が1週間に詰まり、値動きが荒くなりやすい週。</p>
-      <div class="topic-source">出典：<a href="https://www.tipranks.com/news/stock-market-week-ahead-big-tech-earnings-and-jobs-report-on-deck" target="_blank" rel="noopener">TipRanks</a>／<a href="https://www.cnbc.com/2026/10/30/jim-cramer-week-ahead-apple-amd-jobs-report.html" target="_blank" rel="noopener">CNBC</a></div>
+      <div class="topic-label">日経平均 −2.1%、食品メーカーには「前乗り値上げ」の誘惑</div>
+      <p>【何が起きたか】10月30日の日経平均は63,290円（−2.1%）。金曜夜の米国の半導体急落はその後なので、11/2の寄り付きで受けることになる。一方、日経は食料品の消費税減税（8%→1%）を前に、食品メーカーが減税時の値下げの「原資」を確保するため、先に値上げする誘惑があると報じた。</p>
+      <p>【なぜ重要か】減税が消費者の負担軽減につながるかは、企業の価格設定次第。</p>
+      <p>【何に影響するか】物価統計と、減税の効果をめぐる政治論争（政治欄参照）。</p>
+      <div class="topic-source">出典：<a href="https://www.nikkei.com/article/DGXZQOCD270LI0X21C26A0000000/" target="_blank" rel="noopener">日本経済新聞</a> ／ <a href="https://finance.yahoo.com/" target="_blank" rel="noopener">Yahoo Finance（指数値）</a></div>
     </div>
   </div>
 </div>
 
-<!-- ===================== AI ===================== -->
+<!-- ====== AI ====== -->
 <div class="section ai" id="sec-ai">
   <div class="section-header">
     <div class="section-title">🤖 AI ─ Anthropic・OpenAI の動きと、そのAIを動かすチップ</div>
-    <div class="point-summary">本日のポイント：週末で新モデルの発表はなし。話題はAnthropicの上場の日程と、アルトマン氏のSamsung訪問・「PCにDRAMはもったいない」発言。※AnthropicはこのニュースをまとめているAI（Claude）の開発元のため、良く見せも悪く見せもせず、事実と出典のみを書いています。</div>
+    <div class="point-summary">本日のポイント：アンソロピックの上場は「11月16日の週」の取引開始が報道ベースの目標。OpenAIのアルトマン氏はSamsungの社長級と会談。週末で新モデルの発表はなし。※このレポートを書いているAI（Claude）はアンソロピック社のものです。良く見せも悪く見せもせず、事実と出典だけを書いています。</div>
   </div>
   <div class="topics">
     <div class="topic">
-      <div class="topic-label">Anthropic上場、取引開始は「早ければ11/16」との観測</div>
-      <p>10/26にS-1（上場申請書）を公開提出したAnthropic（ティッカー「ANT」、ナスダック上場予定と報道）は、まだ株数・価格の幅を公表していない。SECのルール上、投資家向け説明会（ロードショー）は公開提出から15日以上後になるため、取引開始は早くて11月中旬との見方。ロードショー開始は「11/9の週」「11/16の週」と報道が分かれており、日程は未確定。</p>
-      <p>Yahoo Financeの英語版トップにも「経営者はS-1から何を読み取ったか」「個人がAnthropicとOpenAIの上場に投資する方法」の動画が並び、米国での関心の高さがうかがえる。</p>
-      <div class="topic-source">出典：<a href="https://finance.yahoo.com/markets/article/anthropics-ipo-could-start-trading-as-soon-as-nov-16--heres-the-road-from-filing-to-first-trade-155405578.html" target="_blank" rel="noopener">Yahoo Finance</a>／<a href="https://www.cnbc.com/2026/10/27/-anthropic-ipo-investors-growth-losses-s-1.html" target="_blank" rel="noopener">CNBC</a>／<a href="https://tech-insider.org/anthropic-ipo-biggest-listings-ant-22-banks-542b-spend-2026/" target="_blank" rel="noopener">Tech Insider</a></div>
+      <div class="topic-label">アンソロピック：上場の日程は「報道ベース」で11月中旬</div>
+      <p>【何が起きたか】アンソロピックは10月26日にS-1（上場申請書）を公開し、ナスダックに「ANT」で上場する予定。株数・価格の幅・取引開始日はまだ発表されていない。SECのルール上、販売活動（ロードショー）は早くて11月10日から。WSJ（CNBC経由）は11月16日の週の取引開始を目指すと報じ、Motley Foolは11月9日の週に販売活動を始めうるとし、主幹事はゴールドマン・サックスとモルガン・スタンレーと伝えた。12月にずれ込む可能性を指摘する解説もある。</p>
+      <p>【なぜ重要か】調達資金の多くはチップとデータセンターに向かう見込み。BroadcomがGoogle TPUを借りるための630億ドル規模の資金枠を支えると報じられている（ニュースレター経由・未確認）。</p>
+      <p>【何に影響するか】AI株が売られている最中の大型上場で、需要の強さは「AI投資への市場の信頼度」を測る材料にもなる。</p>
+      <div class="topic-source">出典：<a href="https://www.fool.com/investing/2026/10/29/anthropic-could-begin-marketing-its-ipo-the-week-o/" target="_blank" rel="noopener">Motley Fool</a> ／ <a href="https://www.cnbc.com/2026/10/26/prediction-markets-think-anthropic-ipo-near-certain-in-2026.html" target="_blank" rel="noopener">CNBC</a> ／ <a href="https://leverageshares.com/us/anthropic-ipo-tracker/" target="_blank" rel="noopener">Leverage Shares</a> ／ <a href="https://siliconangle.com/2026/10/30/as-anthropic-finally-files-for-ipo-rising-risks-arent-slowing-the-ai-buildout-yet/" target="_blank" rel="noopener">SiliconANGLE</a> ／ <a href="https://rupakganguly.substack.com/p/latest-in-ai-news-anthropic-ipo-gemini" target="_blank" rel="noopener">AIニュースまとめ（Substack）</a></div>
     </div>
     <div class="topic">
-      <div class="topic-label">アルトマン氏がSamsungを再訪、社長級50人と会談</div>
-      <p>OpenAIのサム・アルトマンCEOが10/31、韓国・龍仁のSamsung研修センターで、グループの社長級約50人を前に「AIが変える次の10年」をテーマに議論した。SamsungはOpenAIの巨大データセンター計画「Stargate」向けのメモリ供給に取り組んでいる。AI企業のトップがメモリ会社に足を運ぶこと自体が、メモリが「AIの供給制約」になっていることを物語る。</p>
-      <div class="topic-source">出典：<a href="https://en.sedaily.com/finance/2026/10/31/openais-altman-returns-to-samsung-discusses-ai-future-with" target="_blank" rel="noopener">Seoul Economic Daily</a></div>
+      <div class="topic-label">OpenAI：アルトマン氏、DRAM発言の2日後にSamsung社長陣と会談</div>
+      <p>【何が起きたか】アルトマンCEOはポッドキャストで「PCにDRAMを置くのは配分としてかなりひどい」と述べて反発を受け、10月31日には韓国でSamsungの社長級約50人と会談した。OpenAIは2025年10月、巨大データセンター計画「Stargate」向けのメモリ供給でSamsung・SKハイニックスと基本合意している。一部報道は、ハイパースケーラーが世界のDRAM生産の最大40%を確保していると指摘する。</p>
+      <p>【なぜ重要か】AI企業のトップが、メモリ会社と直接関係を固めに動いている。</p>
+      <p>【何に影響するか】Stargate向けの長期契約は、メモリ2社のHBM・DRAMの需要の柱。AI株急落の中でも「物理的な需要」は続いていることを示す材料。</p>
+      <div class="topic-source">出典：<a href="https://thenextweb.com/news/sam-altman-dram-samsung-presidents-cheeky-pint" target="_blank" rel="noopener">The Next Web</a> ／ <a href="https://moneywise.com/news/top-stories/sam-altman-dram-pc-openai" target="_blank" rel="noopener">Moneywise</a></div>
     </div>
     <div class="topic">
-      <div class="topic-label">アルトマン氏「PCにDRAMを置くのはもったいない」発言に反発</div>
-      <p>同氏はポッドキャストで「世界の限られたDRAMを各自のPCに置いておくのは、配分としてかなりひどい」と発言し、消費者から反発を受けた。Intelが「メモリ高でPCが売れない」と言ったのと同じ現象を、AI側から見た説明といえる。メモリの配分が技術の話から社会の話に変わりつつある。</p>
-      <div class="topic-source">出典：<a href="https://tech.yahoo.com/ai/chatgpt/articles/openai-ceo-sam-altman-says-113000973.html" target="_blank" rel="noopener">Yahoo Tech</a></div>
+      <div class="topic-label">今週のモデル関連の動き（まとめ）</div>
+      <p>【何が起きたか】Googleは10月28日、サイバー防御と長時間作業に強いとする「Gemini 4 Carbon」を発表（まず限定提供、入力100万トークン2ドル・出力10ドルの導入価格）。同日、Search・Geminiに外部アプリをつなぐ仕組みもベータ公開した。OpenAIの「GPT-6.1 Terra」は、ある評価テストで上位版GPT-6 Astraに並ぶ成績を10分の1の価格で出したと同社は説明している（1つのテストでの比較）。OpenAIがGoogleのTPUを購入する計画とも報じられている（未確認）。</p>
+      <p>【なぜ重要か】「安いモデルで十分」になるほど、AIの利用は広がるが1回あたりの計算量は減る。Google TPUの外販は、NVIDIA以外のチップの存在感を高める。</p>
+      <p>【何に影響するか】NVIDIA・ブロードコム（TPUの設計パートナー）・メモリの需要の配分。本日（週末）は新しい発表は確認できなかった。</p>
+      <div class="topic-source">出典：<a href="https://rupakganguly.substack.com/p/latest-in-ai-news-anthropic-ipo-gemini" target="_blank" rel="noopener">AIニュースまとめ（Substack）</a> ／ <a href="https://techcrunch.com/2026/10/28/as-ai-agents-reshape-the-web-google-opens-gemini-and-search-to-more-apps" target="_blank" rel="noopener">TechCrunch</a> ／ <a href="https://ai2roi.substack.com/p/ai-to-roi-news-and-analysis-october-b1d" target="_blank" rel="noopener">AI to ROI（10/30）</a></div>
     </div>
     <div class="topic">
-      <div class="topic-label">OpenAI：上場は6月に非公開申請済み、公開の日程は未確認</div>
-      <p>OpenAIは6/8にS-1の草案を非公開でSECに提出したと報じられているが、公開の申請や上場日は検索で確認できなかった。新モデルについても、「10/7にGPT-6を全ユーザーに提供」とする記事と、「GPT-6.1 Astraは安全性の懸念で公開見送り（ロイター、9/28）」とする記事が混在しており、本欄では未確認として扱う。</p>
-      <div class="topic-source">出典：<a href="https://www.aljazeera.com/amp/economy/2026/6/8/tech-giant-openai-files-for-us-initial-public-offering" target="_blank" rel="noopener">Al Jazeera</a>／<a href="https://andrew.ooo/answers/what-changed-latest-openai-model-release-gpt-6-october-2026/" target="_blank" rel="noopener">andrew.ooo</a>／<a href="https://cryptobriefing.com/openai-highlights-ai-milestone-stresses-urgency-with-gpt-6-astra-launch/" target="_blank" rel="noopener">Crypto Briefing</a></div>
-    </div>
-    <div class="topic">
-      <div class="topic-label">各社の最新モデルと、動かしているチップ</div>
-      <div class="tbl"><table>
-        <tr><th>会社</th><th>モデル</th><th>出た日</th><th>何が変わったか</th><th>主なチップ</th></tr>
-        <tr><td>Anthropic</td><td>Claude Opus 5.5</td><td>2026/9/22</td><td>Fable 5.1並みの性能で、Opus 5より運用費約40%減</td><td rowspan="2">AWS（Trainium）・Google Cloud（TPU）・Azure（NVIDIA GPU）経由で提供</td></tr>
-        <tr><td>Anthropic</td><td>Claude Fable 5.1</td><td>日付は未確認</td><td>現行の最上位。「Fable 5.5」は公式発表なし（噂のみ）</td></tr>
-        <tr><td>OpenAI</td><td>GPT-6（未確認）</td><td>10/7とする記事あり 🆕？</td><td>報道が食い違うため未確認</td><td>NVIDIA GPU中心、Stargate向けにSamsung・SKがメモリ供給</td></tr>
-        <tr><td>Google</td><td>Gemini 3.5 Flash</td><td>2026/5/20</td><td>3.1 Proを多くの指標で上回り高速。3.5 Proは提携先で試験中、Gemini 4は年末と報道（未確認）</td><td>自社TPU（第8世代：学習用8t・推論用8i）</td></tr>
+      <div class="topic-label">各社の最新モデルと動かしているチップ</div>
+      <div class="tbl-wrap"><table>
+        <tr><th>会社</th><th>最新モデル（出た日）</th><th>何が変わったか</th><th>主なチップ</th></tr>
+        <tr><td>Anthropic</td><td>Claude Opus 5.5（最上位）／🆕 Claude Sonnet 5.5（10月上旬）／🆕 Claude Duet（研究プレビュー、10/21）</td><td>Duetは裏で自発的に動くエージェント型。日付は追跡サイト・まとめ記事による</td><td>Google TPU（ブロードコム製）、NVIDIA GPU、AWS Trainium</td></tr>
+        <tr><td>OpenAI</td><td>GPT-6 Astra（最上位）／🆕 GPT-6.1 Terra（10/15 または 10/26、ソースで食い違い）</td><td>Terraは日常的なPC操作の作業向けで低価格</td><td>NVIDIA GPU、ブロードコムと共同設計の自社チップ、Google TPU（購入は報道段階・未確認）</td></tr>
+        <tr><td>Google</td><td>🆕 Gemini 4 Carbon（10/28）／🆕 Gemini 4 Argon（10/13 一般提供）／🆕 Genie 4（10/27、世界モデル）</td><td>Carbonはサイバー防御・長時間作業に強いと主張。まず限定提供</td><td>自社TPU（Oracleへの外販も報道）</td></tr>
+        <tr><td>Meta</td><td>🆕 Muse Spark Open（10/15）</td><td>コーディング・エージェント向けの公開重みモデル</td><td>NVIDIA GPU、AMD GPU</td></tr>
+        <tr><td>xAI</td><td>主力Grokの新版は未確認</td><td>今回の検索では裏付けなし</td><td>NVIDIA GPU</td></tr>
+        <tr><td>DeepSeek</td><td>🆕 DeepSeek V4.1 Flash（10/17 更新）／V4.1 Flash Cyber（10/29、1社のみ記載・未確認）</td><td>速く短い回答の軽量版、公開重み</td><td>未確認</td></tr>
       </table></div>
-      <p>直近1か月（10/1以降）で公式に確認できた新版はなし。🆕？は未確認の報道。</p>
-      <div class="topic-source">出典：<a href="https://www.blogdumoderateur.com/claude-opus-5-5-anthropic/" target="_blank" rel="noopener">Blog du Modérateur</a>／<a href="https://af.net/realtime/anthropic-releases-claude-opus-5-5-fable-5-1-level-performance-at-40-lower-running-cost/" target="_blank" rel="noopener">AF</a>／<a href="https://emergent.sh/news/claude-fable-5-5-release-date" target="_blank" rel="noopener">Emergent</a>／<a href="https://hothardware.com/news/google-io-2026-gemini-35-flash-ai-search-and-more" target="_blank" rel="noopener">HotHardware</a>／<a href="https://www.dimsumdaily.hk/google-sets-sights-on-gemini-4-as-larger-frontier-model-while-3-5-pro-remains-in-testing/" target="_blank" rel="noopener">Dimsum Daily</a>／<a href="https://www.inkl.com/news/google-cloud-unveils-eighth-generation-tpus-built-to-support-an-agentic-era" target="_blank" rel="noopener">inkl</a></div>
+      <p>注：名称・日付の多くはモデル追跡サイトやまとめ記事の二次情報で、ソース間で食い違いがある。「未確認」は今回の検索で裏付けが取れなかったもの。</p>
+      <div class="topic-source">出典：<a href="https://llmgateway.io/timeline" target="_blank" rel="noopener">LLM Gateway</a> ／ <a href="https://opper.ai/model-releases" target="_blank" rel="noopener">Opper（AIモデル追跡）</a> ／ <a href="https://www.evertune.ai/resources/ai-model-tracker" target="_blank" rel="noopener">Evertune</a> ／ <a href="https://rupakganguly.substack.com/p/latest-in-ai-news-anthropic-ipo-gemini" target="_blank" rel="noopener">AIニュースまとめ（Substack）</a></div>
     </div>
   </div>
 </div>
 
-<!-- ===================== 政治 ===================== -->
+<!-- ====== 政治 ====== -->
 <div class="section politics" id="sec-politics">
   <div class="section-header">
-    <div class="section-title">🏛 政治：米国・日本・世界</div>
-    <div class="point-summary">本日のポイント：米中間選挙は11/3（火）。下院は民主党優勢、上院は接戦。関税とイラン戦争と物価が与党の重荷に。日本は「食料品の消費税1%」法案が臨時国会の焦点。</div>
+    <div class="section-title">🏛 政治動向 ─ 米国・日本・世界</div>
+    <div class="point-summary">本日のポイント：米中間選挙（11/3）まであと2日、下院は民主党優勢、上院も民主党がやや有利との予測が増えた。日本は食料品消費税1%法案の衆院採決が来週の焦点。イランは「攻撃再開か外交か」が未決定のまま。</div>
   </div>
   <div class="politics-body">
     <div class="politics-block">
       <div class="sub-heading">米国政治（トランプ政権）</div>
-      <p><strong>中間選挙は11/3（火）。</strong>DDHQのモデルでは民主党の下院奪還の確率は約80%、上院は約57%。一般投票の平均で民主党が約8ポイントリードしている。ただし上院は多くの州で明確なリードがなく、結果の幅は非常に大きい。共和党は区割り変更（ゲリマンダー）で数議席の上積みが見込まれる。下院を失えば、トランプ政権は予算・調査の両面で議会の抵抗を受けやすくなる。</p>
-      <p><strong>関税は「選挙の重荷」に。</strong>不人気なイランとの戦争と根強いインフレに加え、工場労働者の間でも関税への反発が出ているとAPは伝える。政権が新たな「過剰生産関税」の発動を選挙前に控えているのも、物価への不満を意識したものとみられる。選挙後に発動されれば、日本・中国など十数か国が対象になりうる。</p>
-      <p><strong>対中政策も選挙戦の争点に。</strong>大豆からデータセンターまで、対中国の議論が各地の選挙戦に入り込んでいる。民主党候補は広範な関税を批判しつつ、対中の個別措置は支持する例も。トランプ氏は「データセンターを作らなければ中国に行く」と建設推進を訴える。米中の「休戦」の期限は11/10で、11/18〜19には中国・深圳でAPEC首脳会議がある（トランプ氏の出席は検索した範囲では公式発表を確認できず）。</p>
-      <p><strong>イラン：攻撃再開を巡り情報が交錯。</strong>政権は湾岸諸国に11月中の攻撃への備えを伝えたと複数の報道。ホワイトハウス当局者は「選挙結果は判断に影響しない」とし、ルビオ氏は「未決定、外交にも開かれている」と述べた。イランの最高指導者は新たな攻撃があれば核ドクトリンが変わりうると警告している。</p>
-      <p><strong>FRBとの関係。</strong>FOMCは据え置いたが2人が利上げを主張。原油100ドル超のインフレ下で「据え置き」を選んだFRBに市場から疑問の声も出ており（Yahoo欄⑤）、選挙後の金融政策と政権の関係が注目される。</p>
-      <p><strong>医療・社会保障。</strong>HHSはカリフォルニア州の介護サービス向けメディケイド支払い12億ドルの繰り延べを発表（10/20）。今日からはACAの加入受付が始まり、保険料は平均約13%上がる。医療費も選挙直前の家計の論点になっている。</p>
-      <div class="topic-source">出典：<a href="https://thehill.com/homenews/campaign/6175621-midterm-elections-polls-close-results/" target="_blank" rel="noopener">The Hill</a>／<a href="https://www.cnn.com/2026/10/29/politics/senate-midterms-democrats-republicans" target="_blank" rel="noopener">CNN</a>／<a href="https://www.pbs.org/newshour/economy/republicans-face-midterm-backlash-from-factory-workers-over-trumps-tariffs" target="_blank" rel="noopener">PBS（AP）</a>／<a href="https://asia.nikkei.com/politics/u.s.-midterm-elections/trump-holds-off-overcapacity-tariffs-as-us-midterms-near" target="_blank" rel="noopener">Nikkei Asia</a>／<a href="https://www.voanews.com/a/from-soybeans-to-data-centers-china-debate-hits-us-midterm-campaigns-20261020/8213314.html" target="_blank" rel="noopener">VOA</a>／<a href="https://www.cbsnews.com/live-updates/iran-war-us-trump-diplomacy-threat-resume-attacks/" target="_blank" rel="noopener">CBS News</a>／<a href="https://www.presidency.ucsb.edu/documents/pool-reports-october-20-2026" target="_blank" rel="noopener">American Presidency Project</a>／<a href="https://global.hk01.com/即时中国/60363070/特朗普料今年11月深圳出席apec-将成首位任内访问广东的美国总统" target="_blank" rel="noopener">HK01</a></div>
+      <p><strong>① 中間選挙まで2日、下院は民主党が優勢。</strong> Decision Desk HQのモデルでは、民主党の下院奪還の確率は82%（予測239議席）。上院は62%（予測52議席）、Kalshiの予測市場では72%。民主党は上院で現在47議席で、過半数には4議席の純増が必要。メーン州では民主党のジャクソン氏が現職コリンズ氏を2〜7ポイントリードとの調査もある。議会の多数派が変われば、関税・予算・調査権限の使い方が大きく変わる。</p>
+      <p><strong>② ウォール街は「民主党の躍進」に備える。</strong> CNBCは、多くのアナリストが下院に加え上院でも民主党が過半数に届く可能性があるとみていると報じた。ねじれ議会になれば大型の財政出動や減税の延長は難しくなる一方、政策の急変は起きにくくなるという読み方もある。</p>
+      <p><strong>③ FRBは選挙直前でも「利上げ論」。</strong> ウォーシュ議長（トランプ氏が指名）は、据え置きの判断に政治は「何の役割も果たしていない」と述べた。2人が利上げを主張した事実は、政権の意向より物価を優先する姿勢を示す。住宅ローン金利7%超は有権者の不満の種。</p>
+      <p><strong>④ イラン：攻撃再開か外交か。</strong> ルビオ国務長官は「大統領は未決定、外交を好む」としつつ、軍事の選択肢を否定しなかった。Axiosは政権内でヘグセス国防長官とルビオ氏が合意に懐疑的だと伝えた（二次報道）。選挙後の判断が原油と同盟国の安全保障を左右する。</p>
+      <p><strong>⑤ 米中「休戦」は1月10日まで延長済み、ただし11/10に切れる措置も。</strong> 9月の延長で関税の休戦は2027年1月10日まで続く。ただ、178件の通商法301条の除外措置は11月10日に期限を迎えるとの分析があり（一次資料は未確認）、輸入企業には実務上の影響が出うる。</p>
+      <p><strong>⑥ インテル急落で、政府の保有株が120億ドル目減り。</strong> 米政府はインテルの筆頭株主。「国が株主になる」産業政策が、株価下落の痛みも抱えることを示した。</p>
+      <p><strong>⑦ ベネズエラ石油取引の「現実」。</strong> トランプ氏が「過去最大」と誇った取引について、Yahoo Financeは実際の効果に疑問が出ていると報じた。原油高の中で供給を増やす手段として注目されていた。</p>
+      <p><strong>⑧ 暮らしのコスト。</strong> オバマケアの2027年保険料は平均約13%上昇、学生ローンの取り立て再開も報じられている。物価・医療費・住宅費が選挙の最大の争点になっている。</p>
+      <div class="topic-source">出典：<a href="https://votes.decisiondeskhq.com/forecast/2026" target="_blank" rel="noopener">Decision Desk HQ</a> ／ <a href="https://www.cnbc.com/2026/10/30/2026-midterm-election-wall-street-prepares-for-democratic-gains.html" target="_blank" rel="noopener">CNBC</a> ／ <a href="https://www.yahoo.com/news/politics/article/the-2026-midterms-are-next-week-which-party-has-a-better-chance-of-winning-heres-what-the-latest-polls-say-155319308.html" target="_blank" rel="noopener">Yahoo News</a> ／ <a href="https://kalshi.com/markets/controls/senate-winner/controls-2026" target="_blank" rel="noopener">Kalshi</a> ／ <a href="https://finance.yahoo.com/economy/policy/live/fed-meeting-live-updates-interest-rates-held-steady-in-split-vote-warsh-says-politics-played-no-role-ahead-of-midterm-elections-191946928.html" target="_blank" rel="noopener">Yahoo Finance（FRB）</a> ／ <a href="https://www.thenationalnews.com/news/us/2026/10/31/us-iran-strikes-g20-rubio/" target="_blank" rel="noopener">The National</a> ／ <a href="https://www.nbcnews.com/business/economy/us-china-extend-trade-truce-trump-rcna599525" target="_blank" rel="noopener">NBC News</a> ／ <a href="https://tax.thomsonreuters.com/blog/section-301-exclusions-expiration/" target="_blank" rel="noopener">Thomson Reuters</a> ／ <a href="https://finance.yahoo.com/markets/stocks/articles/intel-stock-crashes-knocking-12b-215434820.html" target="_blank" rel="noopener">Yahoo Finance（インテル）</a> ／ <a href="https://finance.yahoo.com/energy/articles/trump-touted-record-venezuela-oil-101849012.html" target="_blank" rel="noopener">Yahoo Finance（ベネズエラ）</a></div>
     </div>
     <div class="politics-block">
       <div class="sub-heading">日本政治（高市政権）</div>
-      <p><strong>臨時国会の焦点は「食料品の消費税1%」法案。</strong>飲食料品の消費税率を2027年4月から2年間、8%から1%に下げる法案が衆院で審議入りしている。テレ東・日経の10月調査では、効果のある物価高対策として「食料品の消費税減税」が54%で最多、現金給付（33%）を上回った。一方で財政への不安を感じる人も多く、財源の議論が続く。</p>
-      <p><strong>支持率は調査で48〜62%と幅。</strong>テレ東・日経の10月調査は62%で横ばい。週次の調査（10/19〜25）では48.4%と、一時の「不支持が上回る」状態から1週で回復した。</p>
-      <p><strong>政権発足1年。</strong>高市首相は10/21、「公約を一つずつ実現することが使命」と語り、物価高対策の強化を掲げた。物価高対策と財政規律の両立が2年目の課題。</p>
-      <p><strong>外交日程。</strong>11/18〜19の深圳APECに出席予定とされる（日中首脳会談の有無は未確認）。米国の過剰生産関税で日本が対象国に入っていることもあり、選挙後の日米通商の動きが課題になる。</p>
-      <p>※週末のため、日本政治の新しい大きな動きは検索で確認できなかった。</p>
-      <div class="topic-source">出典：<a href="https://txbiz.tv-tokyo.co.jp/readings/2967" target="_blank" rel="noopener">テレ東BIZ</a>／<a href="https://txbiz.tv-tokyo.co.jp/original2/vod/post_351258" target="_blank" rel="noopener">テレ東BIZ</a>／<a href="https://news.yahoo.co.jp/expert/articles/53419fca0baac66338bab71b7bd7c99a88767d90" target="_blank" rel="noopener">Yahoo!ニュース エキスパート</a>／<a href="https://kumanichi.com/articles/2049024" target="_blank" rel="noopener">熊本日日新聞（共同）</a>／<a href="https://en.wikipedia.org/wiki/List_of_international_prime_ministerial_trips_made_by_Sanae_Takaichi" target="_blank" rel="noopener">Wikipedia</a></div>
+      <p><strong>① 食料品の消費税1%法案、来週に衆院採決の日程を探る。</strong> NHKによると、与党は審議時間が積み上がったとして来週の衆院採決を探り、野党は高市首相の出席による質疑を重ねて求めている。法案は飲食料品の軽減税率を2027年4月から2年間、8%から1%に下げる内容。参院は与党が過半数割れで、野党・無所属の協力が成否を分ける。</p>
+      <p><strong>② 「1%」と「ゼロ」の違い。</strong> 経産省の試算では、1%ならレジ改修は最大5〜6か月で2027年春に開始できるが、ゼロだと10〜12か月かかる。実務の速さを優先した設計で、政策の「悲願」をいつ形にできるかが政権の正念場。</p>
+      <p><strong>③ ガソリン補助に予備費1兆1,481億円。</strong> 政府はガソリン補助の継続のため予備費を支出した。原油100ドル超が続く中、物価対策の財政負担は膨らみ続けている。</p>
+      <p><strong>④ 日銀の据え置きと政権。</strong> 日銀は基調物価が2%と「おおむね整合」と判断し、12月利上げの観測が残る。円安・物価高対策を進める政権にとって、金融政策との足並みが問われる。</p>
+      <p><strong>⑤ 外交：APEC（中国・深圳）出席を調整。</strong> 茂木外相は、高市首相が11月に中国で開かれるAPEC首脳会議に出席する方向で調整していると述べた。個別の首脳会談は検討中で、日中首脳会談が実現するかが焦点。</p>
+      <p><strong>⑥ 米中間選挙後への備え。</strong> 選挙結果次第で、トランプ政権の対日通商・防衛の要求が変わりうる。上記⑤のAPECなど11月の首脳外交が、選挙後の米国との関係を探る場にもなる。</p>
+      <p>※週末のため、日本の政治で新しく確認できた動きは少なめ。参院選に向けた具体的な動きは今回の検索では確認できなかった。</p>
+      <div class="topic-source">出典：<a href="https://news.web.nhk/newsweb/na/nd-20261031de68800" target="_blank" rel="noopener">NHK（10/31）</a> ／ <a href="https://www.bloomberg.com/jp/news/articles/2026-10-05/TMBCV3T96OSH00" target="_blank" rel="noopener">Bloomberg（日本語）</a> ／ <a href="https://www.youtube.com/watch?v=FHmbEM26npw" target="_blank" rel="noopener">ANN/テレ朝（予備費）</a> ／ <a href="https://www.gaitame.com/media/entry/2026/10/30/165152" target="_blank" rel="noopener">外為どっとコム</a> ／ <a href="https://news.web.nhk/newsweb/na/nd-20261027de66484" target="_blank" rel="noopener">NHK（APEC）</a></div>
     </div>
     <div class="politics-block">
       <div class="sub-heading">世界の潮流</div>
-      <p><strong>ウクライナ：ドニプロ駅への攻撃で15人死亡。</strong>ロシアがドニプロ・チェルニヒウ・クレメンチュクを攻撃し、ウクライナは国連安保理の緊急会合を求めた。米国はパトリオット・ミサイル21億ドル分の売却を承認、カナダは支援融資に5億ユーロを拠出。一方でアブダビでの和平協議も再開に向かう。</p>
-      <p><strong>欧州：ロシアの「破壊工作」への警戒。</strong>欧州各地で相次ぐロシアによるとされる破壊工作が緊張の高まりへの懸念を強め、NATOとバルト3国は地域の防衛能力の強化を進める。フランス・ドイツの国内政治については、今週の新しい記事を検索で確認できなかった。</p>
-      <p><strong>中東：ホルムズの通航リスク。</strong>カタール仲介の米・イラン協議の報道と、攻撃再開への備えの報道が並び、原油は100ドル超で高止まり。エネルギーを輸入に頼る日本・韓国・欧州に最も重い影響が出る構図。</p>
-      <p><strong>米中・AI覇権。</strong>米中の休戦期限（11/10）とAPEC（11/18〜19、深圳）が続く。ロシアはプーチン氏の出席を表明し、米中ロ3首脳会談の構想は「開催国の中国次第」としている。Samsung・SKハイニックスの中国工場の先端DRAM化も、米国の輸出規制とのせめぎ合いの一部。</p>
-      <div class="topic-source">出典：<a href="https://kyivindependent.com/" target="_blank" rel="noopener">Kyiv Independent</a>／<a href="https://www.cnn.com/world/europe/ukraine" target="_blank" rel="noopener">CNN</a>／<a href="https://www.aljazeera.com/where/russia/" target="_blank" rel="noopener">Al Jazeera</a>／<a href="https://www.haaretz.com/middle-east-news/iran/2026-10-31/ty-article/trump-yet-to-decide-on-iran-strikes-u-s-open-to-diplomacy-rubio-says/000001a1-92df-d03f-aded-daff49480000" target="_blank" rel="noopener">Haaretz</a>／<a href="https://arynews.tv/putin-trump-discussed-idea-trilateral-summit-with-xi-kremlin" target="_blank" rel="noopener">ARY News</a></div>
+      <p><strong>① 中東：ドーハでの仲介協議と、イランの強硬発言。</strong> イランの交渉団は31日、ドーハでカタールの仲介者と戦争の出口を協議した。一方、最高指導者は「いかなる脅しにも無制限の対応」と述べ、外相は「今は米国と会う必要はない」とした。対話の窓と軍事的緊張が同時に存在する状態。</p>
+      <p><strong>② ホルムズ海峡：タンカー攻撃で原油は10月に約15%上昇。</strong> 小型船によるタンカーへの爆発物攻撃が報告された。今日はOPEC+の会合があり、生産据え置きが予想されている。</p>
+      <p><strong>③ フランス：燃料高への抗議が暴動に、極右が勢い。</strong> 10月中旬にパリで燃料価格・生活費への抗議が暴力化し、ここ数十年で最悪級の混乱と報じられた。来年の仏・伊・ポーランドの選挙を前に極右が支持を伸ばし、一部はロシア産エネルギーへの回帰を訴えている。</p>
+      <p><strong>④ ドイツ：AfDが全国世論調査で首位。</strong> 地方選での躍進を受け、極右のAfDが支持率で首位に立っている。購買力への不満が欧州全体のポピュリズムの原動力になっている。</p>
+      <p><strong>⑤ NATO：対ロシアの新戦略「封じる・鈍らせる・壊す」。</strong> NATOのグリンケウィッチ最高司令官が、ロシアが加盟国を攻撃した場合の計画を公表した。ルッテ事務総長は防衛的な同盟だと強調している。</p>
+      <p><strong>⑥ ウクライナ：次の和平協議から欧州を外すとロシア。</strong> クレムリンは次のウクライナ協議に欧州諸国は含まれないとし、英国・オランダは追加の軍事支援を表明した。黒海ではルーマニアの船がドローンで沈められ、ルーマニアはロシアを非難した。</p>
+      <p><strong>⑦ 米中・AI覇権：APECは深圳、アルトマン氏は韓国へ。</strong> 11月のAPEC首脳会議は中国・深圳で開かれる予定。AIの計算資源とメモリをめぐり、米企業が韓国企業との関係を固める動き（Samsung訪問）も続く。</p>
+      <div class="topic-source">出典：<a href="https://english.aawsat.com/world/5336063-rubio-says-us-yet-decide-new-iran-strikes" target="_blank" rel="noopener">Asharq Al-Awsat</a> ／ <a href="https://www.easternriverinachronicle.com.au/story/9383576/iran-envoys-meet-mediators-as-us-strike-threats-loom/" target="_blank" rel="noopener">AAP</a> ／ <a href="https://www.thenationalnews.com/business/markets/2026/10/30/oil-prices-set-for-sharp-monthly-rise-on-hormuz-strikes-and-us-threat-to-hit-iran/" target="_blank" rel="noopener">The National</a> ／ <a href="https://www.france24.com/en/france/20261020-anger-at-rising-fuel-prices-bolsters-europe-s-far-right-as-unrest-sweeps-france" target="_blank" rel="noopener">France 24</a> ／ <a href="https://carnegieendowment.org/europe/strategic-europe/2026/10/taking-the-pulse-does-the-eu-have-a-france-problem" target="_blank" rel="noopener">Carnegie</a> ／ <a href="https://www.aljazeera.com/news/2026/10/13/block-blunt-break-whats-in-natos-new-russia-war-plan" target="_blank" rel="noopener">Al Jazeera（NATO）</a> ／ <a href="https://www.aljazeera.com/tag/nato/" target="_blank" rel="noopener">Al Jazeera（NATO関連）</a> ／ <a href="https://www.jfir.or.jp/studygroup_article/12402/" target="_blank" rel="noopener">日本国際フォーラム（APEC深圳）</a></div>
     </div>
   </div>
 </div>
 
-<!-- ===================== MLB ===================== -->
+<!-- ====== MLB ====== -->
 <div class="section mlb" id="sec-mlb">
   <div class="section-header">
     <div class="section-title">⚾ MLB：全体の動き</div>
-    <div class="point-summary">本日のポイント：ブルワーズが球団史上初の世界一。シーズンは終了しオフに入ったため、順位表・タイトル争いの代わりにFA市場の動きを中心に。</div>
+    <div class="point-summary">本日のポイント：シーズンは終了し、ブルワーズが球団史上初の世界一。オフの主役はFAの目玉スクーバル。12月1日の労使協定切れ（ロックアウトの可能性）を前に、11月に動きが集中しそう。</div>
   </div>
   <div class="topics">
     <div class="topic">
-      <div class="topic-label">ブルワーズが球団史上初の世界一（4勝1敗）</div>
-      <p>ワールドシリーズはミルウォーキー・ブルワーズがタンパベイ・レイズを4勝1敗で下し、創設57年目で初の頂点に立った。第5戦（10/28）は4-1、最後の6アウトをトレバー・メギルが締めた。スター不在と言われた中小球団が、投手力と守備で勝ち切った意味は大きい。</p>
-      <div class="topic-source">出典：<a href="https://www.cnn.com/2026/10/28/sport/live-news/game-5-world-series" target="_blank" rel="noopener">CNN</a>／<a href="https://www.baseball-reference.com/postseason/2026_WS.shtml" target="_blank" rel="noopener">Baseball-Reference</a></div>
+      <div class="topic-label">ブルワーズが創設57年目で初の世界一</div>
+      <p>【何が起きたか】ワールドシリーズはミルウォーキー・ブルワーズがタンパベイ・レイズを4勝1敗で破った。10月28日の第5戦は4-1。球団創設57年目で初の優勝。</p>
+      <p>【なぜ重要か】大型補強に頼らない中規模球団が、投手力と守備で頂点に立った。</p>
+      <p>【何に影響するか】サラリーキャップ導入が議題になる次の労使交渉で、「お金をかけなくても勝てる」例として語られそう。なおシーズンは終了しているため、順位表・ワイルドカード争い・タイトル争いは確定済み。</p>
+      <div class="topic-source">出典：<a href="https://www.cnn.com/2026/10/28/sport/live-news/game-5-world-series" target="_blank" rel="noopener">CNN</a> ／ <a href="https://sports.yahoo.com/mlb/live/brewers-rays-world-series-game-5-box-score-live-updates-lineups-starting-pitchers-highlights-where-to-watch-230000010.html" target="_blank" rel="noopener">Yahoo Sports</a></div>
     </div>
     <div class="topic">
-      <div class="topic-label">シリーズMVPはウィリアム・コントレラス</div>
-      <p>捕手のコントレラスが攻守で活躍しMVPに。第1戦3-2、第2戦5-4と1点差を連取し、第3戦は10-1の大勝、第4戦は延長12回でレイズが4-3で一矢報いたが、第5戦で決着した。短期決戦の教科書のような5試合だった。</p>
-      <div class="topic-source">出典：<a href="https://www.cbssports.com/mlb/news/2026-mlb-playoff-bracket-schedule-scores-results-how-to-watch/" target="_blank" rel="noopener">CBS Sports</a></div>
+      <div class="topic-label">シリーズMVPはウィリアム・コントレラス捕手</div>
+      <p>【何が起きたか】コントレラスはシリーズ21打数8安打（.381）、4打点。守備でも9回の盗塁企図のうち4回を刺した。最終戦も適時二塁打。MVP争いでは.421を打ったクーパー・プラットを抑えての受賞。</p>
+      <p>【なぜ重要か】打って守れる捕手が短期決戦の主役になった。「最大5人がMVPに値した」（Yahoo Sports）という全員野球の象徴。</p>
+      <p>【何に影響するか】ブルワーズの来季の補強方針と、コントレラスの契約評価。</p>
+      <div class="topic-source">出典：<a href="https://www.foxsports.com/stories/mlb/world-series-mvp-william-contreras-milwaukee-brewers" target="_blank" rel="noopener">FOX Sports</a> ／ <a href="https://bleacherreport.com/articles/25526734-william-contreras-wins-2026-world-series-mvp-award-over-cooper-pratt-after-brewers-beat-rays" target="_blank" rel="noopener">Bleacher Report</a> ／ <a href="https://sports.yahoo.com/mlb/breaking-news/article/world-series-2026-brewers-catcher-william-contreras-wins-mvp-thanks-to-big-effort-with-his-bat-and-behind-the-plate-045946174.html" target="_blank" rel="noopener">Yahoo Sports</a></div>
     </div>
     <div class="topic">
-      <div class="topic-label">FA市場が本格化、目玉はスクーバル</div>
-      <p>今オフのFA最大の目玉はタリク・スクーバル（シーズン途中にドジャースへ移籍）。投手として史上最高額の契約が確実視される。ただし全体としては「近年でも弱いFAクラス」との評価で、2番手以下はマイケル・キング、フレディ・ペラルタ、ランディ・アロザレーナ、鈴木誠也、ジャズ・チザムらの名前が挙がる。</p>
-      <div class="topic-source">出典：<a href="https://www.mlb.com/news/ranking-the-free-agents-for-2026-27-offseason" target="_blank" rel="noopener">MLB.com</a>／<a href="https://www.cbssports.com/mlb/news/ranking-mlb-free-agency-top-10-2026-27-offseason-landing-spots/" target="_blank" rel="noopener">CBS Sports</a>／<a href="https://www.foxsports.com/stories/mlb/top-50-mlb-free-agents-2026-27-offseason-ranked" target="_blank" rel="noopener">Fox Sports</a></div>
+      <div class="topic-label">FA市場：スクーバルが満場一致の1位、4億ドル超の声も</div>
+      <p>【何が起きたか】FAの目玉はタリク・スクーバル（シーズン途中にドジャースへ移籍）。途中移籍のため、獲得球団にドラフト指名権を失う「クオリファイング・オファー」の負担がつかない。Baseball Americaは8年3億7,000万ドルを予想し、4億ドル超を予想する声もある。2位はフレディ・ペラルタ（同じく途中移籍でQOなし）。</p>
+      <p>【なぜ重要か】投手の契約総額の最高は3億2,500万ドル。これを更新するかが今オフ最大の焦点。</p>
+      <p>【何に影響するか】各球団の先発補強の連鎖。スクーバルの行き先が決まるまで、他の先発投手の市場も動きにくい。</p>
+      <div class="topic-source">出典：<a href="https://www.spotrac.com/news/_/id/3551/top-10-mlb-free-agents" target="_blank" rel="noopener">Spotrac</a> ／ <a href="https://www.baseballamerica.com/stories/2027-mlb-free-agent-rankings-top-50-players-available/" target="_blank" rel="noopener">Baseball America</a> ／ <a href="https://www.espn.com/mlb/story/_/id/50298871/free-agency-tarik-skubal-dodgers-mets-contract" target="_blank" rel="noopener">ESPN</a></div>
     </div>
     <div class="topic">
-      <div class="topic-label">鈴木誠也もFA市場の上位に</div>
-      <p>カブスの鈴木誠也がFAランキングの上位に名を連ねる。日本人野手の評価がどの水準の契約になるか、日本のファンにとってオフの大きな注目点。</p>
-      <div class="topic-source">出典：<a href="https://www.espn.com/mlb/story/_/id/50328768/free-agency-tracker-offseason-trades-moves-2026-2027" target="_blank" rel="noopener">ESPN</a></div>
+      <div class="topic-label">鈴木誠也はFAランキング5位、日本人選手も上位に</div>
+      <p>【何が起きたか】MLB Trade Rumorsの最終FAランキングで、カブスの鈴木誠也は5位。DraftKingsもマイケル・キング、ランディ・アロザレーナ、ブランドン・ロウと並ぶ注目選手に挙げた。NBC Sportsの上位100人には日本の佐藤輝明（阪神）の名前もある。</p>
+      <p>【なぜ重要か】日本人野手がFA市場の上位で評価されるのは、日本のファンにとって今オフの大きな注目点。</p>
+      <p>【何に影響するか】鈴木のQO（クオリファイング・オファー）の扱いは今回の検索では未確認。行き先・契約額は11月の動き次第。</p>
+      <div class="topic-source">出典：<a href="https://www.mlbtraderumors.com/2026/09/2026-27-mlb-free-agent-power-rankings-final-check-in.html" target="_blank" rel="noopener">MLB Trade Rumors</a> ／ <a href="https://dknetwork.draftkings.com/2026/10/29/top-mlb-free-agents-2027/" target="_blank" rel="noopener">DraftKings Network</a> ／ <a href="https://www.nbcsports.com/fantasy/baseball/news/mlb-free-agent-rankings-2026-27-tarik-skubal-freddy-peralta-teruaki-sato-headline-this-offseasons-top-100" target="_blank" rel="noopener">NBC Sports</a></div>
     </div>
     <div class="topic">
-      <div class="topic-label">次の労使協定で「サラリーキャップ」も議題に</div>
-      <p>ドジャースのフリードマン編成本部長は今オフの資金面は「通常通り」としつつ、次の労使協定で球界の経済構造が大きく変わる可能性（サラリーキャップ導入）に言及。高額契約が続く市場に、制度変更の影が差し始めている。</p>
-      <div class="topic-source">出典：<a href="https://www.newsbeep.com/us/890628/" target="_blank" rel="noopener">News Beep</a></div>
+      <div class="topic-label">12月1日の労使協定切れ、サラリーキャップが争点</div>
+      <p>【何が起きたか】オーナー側はサラリーキャップの導入を目指しており、12月1日にロックアウト（球団側の締め出し）が予想されている。NBC Sportsは、その前の11月に契約の動きが集中するとみている。</p>
+      <p>【なぜ重要か】キャップが入れば、ドジャースのような高額年俸球団の戦い方が根本から変わる。</p>
+      <p>【何に影響するか】スクーバルなど大型FAの契約時期と金額。ロックアウトになれば契約が年明け以降にずれ込む可能性もある。</p>
+      <div class="topic-source">出典：<a href="https://diamondcentric.net/mlb-top-free-agents-2026-2027/" target="_blank" rel="noopener">DiamondCentric</a> ／ <a href="https://www.nbcsports.com/fantasy/baseball/news/mlb-free-agent-rankings-2026-27-tarik-skubal-freddy-peralta-teruaki-sato-headline-this-offseasons-top-100" target="_blank" rel="noopener">NBC Sports</a> ／ <a href="https://sports.yahoo.com/articles/dodgers-andrew-friedman-speaks-tarik-180005301.html" target="_blank" rel="noopener">Yahoo Sports</a></div>
     </div>
   </div>
 </div>
 
-<!-- ===================== Dodgers ===================== -->
+<!-- ====== Dodgers ====== -->
 <div class="section dodgers" id="sec-dodgers">
   <div class="section-header">
     <div class="section-title">💙 ドジャース：大谷・山本・オフの動き</div>
-    <div class="point-summary">本日のポイント：大谷は「手術なし、来季も二刀流」。オフの焦点はブルペン再建とスクーバルの去就。</div>
+    <div class="point-summary">本日のポイント：大谷は手術なしで2027年も二刀流へ。スクーバルとの「独占交渉5日間」が始まった。山本由伸は新しいニュースなし＝静かなオフ。</div>
   </div>
   <div class="topics">
     <div class="topic">
-      <div class="topic-label">大谷翔平「手術はしない」、来季も二刀流で</div>
-      <p>フリードマン編成本部長はシーズン終了会見で、大谷の手術は「選択肢にない」と明言し、2027年も投げることを「完全に想定している」と語った。開幕からローテーションに入るかは検討中。来季も「投げて打つ大谷」が見られそうで、ファンには何よりのニュース。</p>
-      <div class="topic-source">出典：<a href="https://www.mlb.com/news/shohei-ohtani-health-updates-2026-offseason" target="_blank" rel="noopener">MLB.com</a>／<a href="https://sports.yahoo.com/articles/dodgers-reveal-whether-shohei-ohtani-225618499.html" target="_blank" rel="noopener">Yahoo Sports</a></div>
+      <div class="topic-label">大谷翔平：手術なし、2027年も投げる！</div>
+      <p>フリードマン編成本部長はシーズン終了会見で、大谷は今季抱えた故障（左ひざ・右腕）について手術の必要はないと明言し、2027年に投げることを「完全に想定している」と語った。後半戦からポストシーズンは左ひざ・右上腕・首の違和感と戦い続けていただけに、ファンには何よりの朗報。開幕からローテーションに入るか、打者で始めて徐々に投手に戻るかはまだ決めていない。</p>
+      <div class="topic-source">出典：<a href="https://www.espn.com/mlb/story/_/id/50242196/dodgers-shohei-ohtani-not-require-surgery-expected-pitch-2027" target="_blank" rel="noopener">ESPN</a> ／ <a href="https://www.japantimes.co.jp/sports/2026/10/22/baseball/mlb/shohei-ohtani-surgery-pitching-return/" target="_blank" rel="noopener">The Japan Times</a> ／ <a href="https://sports.yahoo.com/articles/shohei-ohtani-not-offseason-surgery-213040183.html" target="_blank" rel="noopener">Yahoo Sports</a></div>
     </div>
     <div class="topic">
-      <div class="topic-label">大谷と山本、ノブ・マツヒサ氏と寿司ディナー</div>
-      <p>オフに入り、大谷と山本由伸が料理人の松久信幸氏と寿司を囲む写真が話題に。シーズン中の緊張から解放された2人の素顔に、ファンから「いいオフを」の声。</p>
-      <div class="topic-source">出典：<a href="https://x.com/DodgersNation/status/2115889238126543202" target="_blank" rel="noopener">Dodgers Nation（X）</a></div>
+      <div class="topic-label">スクーバルとの独占交渉5日間がスタート</div>
+      <p>ワールドシリーズ終了でFA期間が始まり、ドジャースはスクーバルと5日間の独占交渉ができる。フリードマン氏は「オフの計画はまだ固めている途中」としつつ、「グラウンド内外で非常に尊敬している」とラブコール気味。ただThe Athleticの記者は「10年4億ドルを出すとは思えない」との見方で、ESPNも本人は市場に出るとみている。残留なるか、ドキドキの1週間。</p>
+      <div class="topic-source">出典：<a href="https://sports.yahoo.com/articles/dodgers-andrew-friedman-speaks-tarik-180005301.html" target="_blank" rel="noopener">Yahoo Sports</a> ／ <a href="https://www.espn.com/mlb/story/_/id/50298871/free-agency-tarik-skubal-dodgers-mets-contract" target="_blank" rel="noopener">ESPN</a> ／ <a href="https://dodgersnation.com/dodgers-get-boost-in-tarik-skubal-free-agency-pursuit/2026/10/29/" target="_blank" rel="noopener">Dodgers Nation</a></div>
     </div>
     <div class="topic">
-      <div class="topic-label">山本由伸は2035年まで、ローテの柱は不動</div>
-      <p>山本の契約は2035年まで（条件付きのオプトアウトあり）。スネル、グラスノーと並ぶ先発陣の中心で、来季もローテーションの軸になる。</p>
-      <div class="topic-source">出典：<a href="https://www.mlbtraderumors.com/2026/10/offseason-outlook-los-angeles-dodgers-15.html" target="_blank" rel="noopener">MLB Trade Rumors</a></div>
+      <div class="topic-label">9人がFAに、ブルペン再建が課題</div>
+      <p>スクーバルのほか、エバン・フィリップス、ブレイク・トライネン、ブルスダー・グラテロル、キケ・ヘルナンデス、クリス・ビュービック、エリック・ラウアーらがFAになったとファンサイトが伝えている（主要メディアでの全員分の裏取りは未完了）。リリーフ陣の顔ぶれが大きく入れ替わる可能性があり、救援の立て直しがオフの大きなテーマ。</p>
+      <div class="topic-source">出典：<a href="https://dodgers2080.com/dodgers-news-2026-10-30-07-01/" target="_blank" rel="noopener">dodgers2080（ファンサイト）</a> ／ <a href="https://bvmsports.com/2026/10/21/friedman-dodgers-plan-business-as-usual-offseason-for-2027/" target="_blank" rel="noopener">BVM Sports</a></div>
     </div>
     <div class="topic">
-      <div class="topic-label">最大の課題はブルペン、ベシアとフィリップスがFAへ</div>
-      <p>アレックス・ベシアとエバン・フィリップスがFAとなり、救援陣の立て直しが最優先課題。2〜3年契約での再契約が有力との見方もある。</p>
-      <div class="topic-source">出典：<a href="https://sports.yahoo.com/articles/dodgers-offseason-primer-bullpen-needs-110000861.html" target="_blank" rel="noopener">Yahoo Sports</a>／<a href="https://www.aol.com/articles/los-angeles-dodgers-offseason-outlook-031143000.html" target="_blank" rel="noopener">AOL</a></div>
-    </div>
-    <div class="topic">
-      <div class="topic-label">ロバーツ監督とコーチ陣は「現状維持」、スクーバルの去就が最大の判断</div>
-      <p>フリードマン氏は「現状維持を想定している」と述べ、ロバーツ監督以下のコーチ陣は来季も続投の見込み。シーズン途中に獲得したスクーバルはFAの目玉で、投手史上最高額が予想される中、再契約に動くかが今オフ最大の焦点（球団の判断は未発表）。</p>
-      <div class="topic-source">出典：<a href="https://dodgerblue.com/andrew-friedman-dodgers-coaching-staff-not-changing-next-season/2026/10/22/" target="_blank" rel="noopener">Dodger Blue</a>／<a href="https://www.mlb.com/news/ranking-the-free-agents-for-2026-27-offseason" target="_blank" rel="noopener">MLB.com</a></div>
+      <div class="topic-label">山本由伸：静かなオフ、来季もローテの軸</div>
+      <p>今回の検索では山本由伸の新しいニュースは見つからなかった。フリードマン氏は今オフを「いつも通り（business as usual）」と表現しており、山本は来季も先発ローテーションの中心として迎える見込み。大谷の起用法やスクーバルの去就と合わせ、2027年の先発陣の形が11月中に見えてきそう。</p>
+      <div class="topic-source">出典：<a href="https://bvmsports.com/2026/10/21/friedman-dodgers-plan-business-as-usual-offseason-for-2027/" target="_blank" rel="noopener">BVM Sports</a> ／ <a href="https://dodgerblue.com/shohei-ohtanis-2027-pitching-plan-and-dfs-outlook/2026/10/29/" target="_blank" rel="noopener">Dodger Blue</a></div>
     </div>
   </div>
 </div>
 
 <footer>
-  2026年11月1日（日）5:30 自動生成｜株価：Yahoo Finance英語版（yahoo_en_data.json、10/30終値）｜ニュース：WebSearchの結果（二次報道を含む）
+  今日のニュース ― 2026年11月1日（日）日本時間5:30作成 ／ 株価・指数・Yahoo Finance見出しは英語版 finance.yahoo.com の自動取得データ（10/30終値）／ ニュースはWebSearchの結果（二次報道を含む）
 </footer>
 </body>
 </html>
