@@ -416,3 +416,4 @@
 - クラウド→PC：PCの SessionStart フック（`~/.claude/session-start-cloud.py`）が、main の cloud-memory.md と handoff/ の「cloud」付き最新ファイルを `~/.claude/cloud-sync/` に取り出し、最初に読むようClaudeへ指示する。手動実行で確認済み、実際の会話の開始時に動くかは未確認
 - クラウドから控えを残す時は、ファイル名に `cloud` を入れる（例：`handoff/2026-11-04_cloud_半導体の仕込み銘柄.md`）
 - 注意：`session-handoff.py` は handoff/ の .md を名前の新しい順に15個だけ残すので、cloud 付きのファイルもPCの会話が増えると消える
+- 11/5 6:17：PCのStopフック登録が成功。クラウドで handoff/2026-11-05_0616_77bba6ab.md の到着を確認（PCの会話がiPhoneで読める）。残り：①Stopフックが2つあり、1つ（既存のChat同期フックとみられる）が「JSONのエスケープ不正（\U）」のエラーを出す ②PCのClaudeの質問「cloud付きファイルを15個の消去対象から外すか」→ クラウドも外すことを推奨
