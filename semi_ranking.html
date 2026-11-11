@@ -57,6 +57,18 @@ a{color:#4a9eff}
 .ix td.d{color:#8b93a1;font-size:13px;white-space:nowrap}
 .ix .cap{color:#fff;font-weight:600;margin-top:4px}
 .ix .nt{font-size:14px;color:#9aa4b2;line-height:1.55}
+
+.pos{color:#e6edf3}.neg{color:#f0a0a0}
+.fair{background:#1a1f2b;border:1px solid #3a4253;border-radius:10px;padding:10px 12px;font-size:15px;color:#c9d1d9;margin:10px 0 12px;line-height:1.6}
+.fair b{color:#fff}
+.tabs{flex-wrap:wrap}
+.tabs button{flex:1 1 40%;font-size:15px}
+.pc{margin-top:6px;font-size:15px;line-height:1.5}
+.pc div{display:flex;gap:6px;margin-top:2px}
+.pc .mk{flex:none;width:1.2em;text-align:center;font-weight:700}
+.pc .p .mk{color:#7ee2a8}.pc .m .mk{color:#f0a0a0}
+.pc .src{color:#8b93a1;font-size:13px}
+.fact{font-size:15px;color:#c9d1d9;margin-top:4px}
 </style>
 </head>
 <body>
@@ -64,10 +76,20 @@ a{color:#4a9eff}
 <h1>&#x1F3C6; 半導体ランキング</h1>
 <div class="sub" id="src">読み込み中…</div>
 
+<div class="fair" id="fair">
+<b>⚖ 読む前に（このページの偏り）</b><br>
+・アナリストの目標株価は<b>上に偏る</b>：このページの41社すべてで平均目標が今の株価より上。目標が上だから「上がる」とは言えない<br>
+・米国の研究では、12か月後に目標株価に届いていたのは<b>4割前後</b>。上昇率が大きい目標ほど外れやすい（Bradshawほか 2013、クラウドの記憶による）<br>
+・S&amp;P500でも、個別目標の積み上げ（<span id="fSp">+23%</span>）はストラテジストの見通し（真ん中<span id="fSt">+15%</span>）より高い<br>
+・各銘柄の<b>＋（強気の材料）と−（弱気の材料）を両方</b>見る。どちらも同じ基準で機械的に出し、報道は見つかった分を両側とも載せている<br>
+・<span id="fDate">データの日付</span>の値。その後の値動き・目標の変更は入っていない
+</div>
+
 <div class="tabs">
-  <button id="tUp" class="on">❶ 上昇余地<br>を主眼</button>
-  <button id="tSt">❷ 安定<br>を主眼</button>
-  <button id="tLo">❸ 最低目標<br>を主眼</button>
+  <button id="tRv" class="on">業績予想の向き<br>（30日）</button>
+  <button id="tUp">平均目標<br>までの上昇率</button>
+  <button id="tLo">最低目標<br>までの上昇率</button>
+  <button id="tSt">振れ幅あたり<br>の上昇率</button>
 </div>
 <div class="chips" id="chips"></div>
 <div class="notice" id="notice" style="display:none"></div>
@@ -81,13 +103,15 @@ a{color:#4a9eff}
 <h2>計算のしかた</h2>
 <div class="box">
 <ul>
-<li><b>対象</b>：SOX指数の構成銘柄・日経半導体株指数のウエート上位10社・SKハイニックス（000660）・サムスン電子（005930）</li>
-<li><b>❶ 上昇余地</b>＝アナリスト平均目標株価 ÷ 今の株価 − 1。黄色の点線はS&amp;P500全体の上昇余地（このページ専用に計算：S&amp;P500の全構成銘柄について、Yahooの平均目標株価までの上昇率を指数の比率で加重平均。個別銘柄と同じ物差しで比べるため）。線より右（緑）＝指数より上がる見込み、灰色＝指数以下。右の「S&amp;P比」はその差（pt）</li>
-<li><b>❷ 安定</b>＝S&amp;P比 ÷ 1年の振れ幅。指数を上回る見込みを、値動きの大きさで割った値。0より右＝指数より有利、大きいほど「振れ幅のわりに見込みが大きい」。⚠の銘柄は値に関係なく⚠なしの銘柄の後ろに並べる</li>
-<li><b>❸ 最低目標</b>＝一番弱気なアナリスト1人の目標株価 ÷ 今の株価 − 1。アナリストの目標はほぼいつも上を向く（平均目標が株価より下の銘柄はほとんど無い）ので、「弱気な人でも上を見ているか」で比べる。黄色の点線はS&amp;P500で同じ計算をした値（全構成銘柄の最低目標までの上昇率を指数の比率で加重平均）。1人の意見なので、人数が少ない銘柄ほどあてにならない</li>
-<li><b>期待値</b>（参考）＝上がる確率の目安 × 上昇余地。<b>確率の目安は自前で決めた数字で、出典は無く、過去のデータで当たるかを確かめていない</b>（分類ごとの基準点＋修正人数の向き−賭け型・決算リスク・目標が古い可能性の減点）。売り買いの判断には使わない</li>
+<li><b>対象</b>：SOX指数の構成銘柄・日経半導体株指数のウエート上位10社・SKハイニックス（000660）・サムスン電子（005930）。データはすべてYahoo Finance（PCが毎朝取得）</li>
+<li><b>業績予想の向き</b>＝この30日で、来期の1株利益（EPS）の予想が何%動いたか。並べ方の中で、その後の株価との関係が研究で一番確かめられている指標。ただし株価にすでに入っていることもある</li>
+<li><b>平均目標までの上昇率</b>＝アナリスト平均目標 ÷ 今の株価 − 1。黄色の点線はS&amp;P500で同じ計算をした値（全構成銘柄の加重平均）。株価が急に下がると、目標が直されるまで機械的に大きく出る</li>
+<li><b>最低目標までの上昇率</b>＝一番弱気なアナリスト1人の目標 ÷ 今の株価 − 1。人数が少ない銘柄ほどあてにならない</li>
+<li><b>振れ幅あたり</b>＝（平均目標までの上昇率 − S&amp;P500の値）÷ 1年の振れ幅。<b>値動きが小さいという意味ではない</b>。⚠の銘柄は⚠なしの後ろに並べる</li>
+<li><b>30日の株価</b>＝（1＋予想PERの30日の変化）×（1＋業績予想の30日の変化）−1 で逆算した値</li>
+<li><b>＋／−の基準</b>（全銘柄同じ）：業績予想を上げた人が多い＋／下げた人が多い−、一番弱気な目標が今より上＋／下−、1年の振れ幅が41社の下位1/4＋／上位1/4−、アナリスト10人未満−、⚠−</li>
 <li><b>⚠</b>＝目標が古い可能性（この30日で業績予想を下げた人が上げた人より多いのに、目標株価がまだ直されていない）</li>
-<li>最低・平均・最高目標はYahoo Finance集計。韓国株・日本株は「出た時点の既知の値」（何日の値かは各行）</li>
+<li>以前表示していた「確率」と「期待値」は、自前で決めた目安で当たるかを確かめていないため、表示をやめた</li>
 </ul>
 </div>
 
@@ -99,10 +123,12 @@ const CUR = {USD:'$', KRW:'₩', JPY:'¥'};
 function fromJson(j){
   const rows = j.rows.map(r => ({
     sym: r.symbol, name: r.name, group: r.group, cur: CUR[r.currency] || '', price: r.price, hold: r.holding,
-    target: r.target_mean, nAn: r.analysts || '', low: r.target_low, high: r.target_high,
+    target: r.target_mean, nAn: r.analysts || 0, low: r.target_low, high: r.target_high,
     upside: r.upside_pct, lowp: r.low_pct, sp: r.sp_diff_pt, vol: r.vol_1y_pct, stab: r.stability,
-    cls: (r.classification || '').replace(/（⚠.*$/,''), u: r.rev_up_30d ?? 0, d: r.rev_down_30d ?? 0,
-    stale: r.stale_target, p: r.prob, ev: r.expected_pct, date: r.price_date || ''
+    u: r.rev_up_30d ?? 0, d: r.rev_down_30d ?? 0, eps: r.eps_rev_30d ?? null,
+    px30: (r.per_chg_30d !== null && r.per_chg_30d !== undefined && r.eps_rev_30d !== null && r.eps_rev_30d !== undefined)
+      ? ((1 + r.per_chg_30d / 100) * (1 + r.eps_rev_30d / 100) - 1) * 100 : null,
+    fpe: r.forward_pe ?? null, stale: r.stale_target, date: r.price_date || ''
   }));
   return { rows, sp: j.sp500_upside_pct, spLow: j.sp500_low_pct ?? null, when: j.generated_at, json: j };
 }
@@ -115,18 +141,40 @@ function fmt(cur, v){
 function pct(v, base){ if (!v || !base) return ''; const x = (v / base - 1) * 100; return (x >= 0 ? '+' : '') + x.toFixed(0) + '%'; }
 function sign(v, dp){ return (v >= 0 ? '+' : '') + v.toFixed(dp); }
 
-let D = null, mode = 'up', grp = 'すべて';
+let D = null, NOTES = [], mode = 'rv', grp = 'すべて', VQ = [0, 1e9];
+
+function quart(a, q){ a = a.filter(v => v !== null && !isNaN(v)).sort((x,y) => x - y); return a.length ? a[Math.floor((a.length - 1) * q)] : null; }
+
+function prosCons(r){
+  const P = [], M = [];
+  if (r.u > r.d) P.push(`業績予想を上げた人が多い（↑${r.u}／↓${r.d}）`);
+  if (r.d > r.u) M.push(`業績予想を下げた人が多い（↑${r.u}／↓${r.d}）`);
+  if (r.lowp !== null && r.lowp > 0) P.push(`一番弱気な目標も今より上（${sign(r.lowp,0)}%）`);
+  if (r.lowp !== null && r.lowp < 0) M.push(`一番弱気な目標は今より下（${sign(r.lowp,0)}%）`);
+  if (r.vol !== null && r.vol <= VQ[0]) P.push(`1年の振れ幅が小さい方（±${r.vol}%）`);
+  if (r.vol !== null && r.vol >= VQ[1]) M.push(`1年の振れ幅が大きい方（±${r.vol}%）`);
+  if (r.nAn && r.nAn < 10) M.push(`アナリストが少ない（${r.nAn}人）`);
+  if (r.stale) M.push('⚠ 目標が古い可能性（予想は下がったのに目標が直っていない）');
+  const line = (cls, mk, t, src) => `<div class="${cls}"><span class="mk">${mk}</span><span>${t}${src ? ' <span class="src">' + src + '</span>' : ''}</span></div>`;
+  const notes = NOTES.filter(n => n.symbol === r.sym || n.symbol === r.sym.replace(/\..*$/, ''));
+  return '<div class="pc">' +
+    P.map(t => line('p', '＋', t)).join('') + notes.filter(n => n.side === '+').map(n => line('p', '＋', n.text, `${n.date}・${n.src}`)).join('') +
+    M.map(t => line('m', '−', t)).join('') + notes.filter(n => n.side === '-').map(n => line('m', '−', n.text, `${n.date}・${n.src}`)).join('') +
+    (P.length + M.length + notes.length === 0 ? '<div class="src">目立った材料なし</div>' : '') + '</div>';
+}
+
+const GUIDE = {
+  rv: '<b>この30日で、業績予想（来期EPS）がどれだけ動いたか</b>の順。並べ方の中で、研究で一番裏付けがある指標。ただし株価にすでに入っていることもあり、「上方修正なのに株価が下がった」銘柄は、市場が「利益は今が山」と見ている可能性もある。',
+  up: '<b>アナリスト平均目標までの上昇率</b>の順。目標は上に偏り、株価が急に下がると機械的に大きく出る。<b>順位が高い＝上がる、ではない</b>。',
+  lo: '<b>一番弱気なアナリスト1人の目標までの上昇率</b>の順。「弱気な人でも上を見ているか」を見る。人数が少ない銘柄・⚠の銘柄は割り引いて見る。',
+  st: '<b>（平均目標までの上昇率 − S&amp;P500）÷ 1年の振れ幅</b>の順。<b>値動きが小さいという意味ではない</b>（上昇率が大きければ振れ幅が大きくても上に来る）。⚠の銘柄は⚠なしの後ろ。'
+};
 
 function render(){
-  const field = mode === 'up' ? 'upside' : mode === 'lo' ? 'lowp' : 'stab';
-  const sp = mode === 'up' ? D.sp : mode === 'lo' ? D.spLow : null, line = sp !== null && mode !== 'st';
-  document.getElementById('guide').innerHTML = mode === 'up'
-    ? '<b>❶ 予想株価（アナリスト平均目標）までの上昇率</b>の高い順。' + (sp !== null ? `黄色の点線＝S&amp;P500全体 <b>+${sp}%</b>。<b>線より右（緑）＝指数より上がる見込み</b>、灰色＝指数以下。` : '') + '右下は期待値（確率の目安×上昇余地。確率は自前の目安で未検証）。'
-    : mode === 'lo'
-    ? '<b>❸ 一番弱気なアナリストの目標株価までの上昇率</b>の高い順。アナリストの目標はほぼいつも上を向くので、<b>「弱気な人でも上を見ているか」</b>で比べる。赤＝一番弱気な人は今より下を見ている。' + (sp !== null ? `黄色の点線＝S&amp;P500で同じ計算をした値 <b>${sign(sp,1)}%</b>。` : '<span class="warn">S&amp;P500の同じ計算はPCの次の更新から（下の「指数の見通し」を参照）。</span>') + '1人の意見なので、<b>人数が少ない銘柄・⚠の銘柄</b>（株価が急に下がり、目標が追いついていない可能性）は割り引いて見る。右は平均目標までの上昇率。'
-    : '<b>❷ 安定 ＝ S&amp;P比 ÷ 1年の振れ幅</b>の高い順。指数を上回る見込みを、値動きの大きさで割った値。<b>0より右＝指数より有利</b>、大きいほど「振れ幅のわりに見込みが大きい」。<b>⚠の銘柄は⚠なしの銘柄の後ろ</b>（目標株価が古い可能性があり、見込み自体があてにならないため）。値動きが小さいという意味ではない（キオクシアは1年で±115%）。';
+  const field = {rv: 'eps', up: 'upside', lo: 'lowp', st: 'stab'}[mode];
+  const sp = mode === 'up' ? D.sp : mode === 'lo' ? D.spLow : null, line = sp !== null;
+  document.getElementById('guide').innerHTML = GUIDE[mode] + (line ? ` 黄色の点線＝S&amp;P500で同じ計算をした値（${sign(sp,1)}%）。` : (mode === 'lo' ? ' <span class="warn">S&amp;P500の同じ計算はPCの次の更新から。</span>' : ''));
   const rows = D.rows.filter(r => grp === 'すべて' || r.group === grp)
-    // ❷は⚠（目標が古い可能性）の銘柄を⚠なしの銘柄の後ろに回す。その中では値の高い順
     .sort((a,b) => (mode === 'st' ? (a.stale ? 1 : 0) - (b.stale ? 1 : 0) : 0) || (b[field] ?? -1e9) - (a[field] ?? -1e9));
   const vals = rows.map(r => r[field]).filter(v => v !== null && !isNaN(v));
   if (line) vals.push(sp);
@@ -134,34 +182,30 @@ function render(){
   const x = v => (v - lo) / span * 100;
   document.getElementById('list').innerHTML = rows.map((r,i) => {
     const v = r[field], ok = v !== null && !isNaN(v);
-    const below = line && ok && v >= 0 && v < sp;
-    const col = !ok || v < 0 ? '#f85149' : below ? '#6e7681' : '#3fb950';
+    const col = !ok || v < 0 ? '#a05a5a' : '#5b7fb5';
     const left = ok ? Math.min(x(0), x(v)) : 0, w = ok ? Math.abs(x(v) - x(0)) : 0;
     const spLine = line ? `<span class="sp" style="left:${x(sp)}%"></span>` : '';
     const vtxt = !ok ? '—' : mode === 'st' ? sign(v,2) : sign(v,1) + '%';
-    const s2 = mode === 'up'
-      ? (r.sp !== null ? `<span class="${r.sp >= 0 ? 'up' : 'down'}">S&amp;P比 ${sign(r.sp,0)}pt</span>` : '')
-      : mode === 'lo'
-      ? (r.upside !== null ? `平均 ${sign(r.upside,0)}%（${r.nAn}人）` : '')
-      : (r.sp !== null && r.vol ? `${sign(r.sp,0)}pt÷±${r.vol}%` : '');
+    const nc = v => v === null || v === undefined ? '' : v < 0 ? 'neg' : 'pos';
     return `<div class="it ${r.hold ? 'hold' : ''}">
       <div class="l1"><span class="rk">${i + 1}位</span><span class="nm">${r.name}${r.hold ? ' ★' : ''}${r.stale ? ' <span class="warn">⚠</span>' : ''}<span class="gp">${r.group}</span></span>
-        <span class="vl ${!ok || v < 0 ? 'down' : below ? '' : 'up'}">${vtxt}</span></div>
-      <div class="l2"><div class="bar"><span class="z" style="left:${x(0)}%"></span><span class="f" style="left:${left}%;width:${w}%;background:${col}"></span>${spLine}</div><span class="s2">${s2}</span></div>
+        <span class="vl ${ok && v < 0 ? 'neg' : 'pos'}">${vtxt}</span></div>
+      <div class="l2"><div class="bar"><span class="z" style="left:${x(0)}%"></span><span class="f" style="left:${left}%;width:${w}%;background:${col}"></span>${spLine}</div></div>
       <div class="now"><span class="k">今の株価</span> <b>${fmt(r.cur, r.price)}</b>${r.date ? ' <span class="k">（' + r.date + '）</span>' : ''}</div>
+      <div class="fact"><span class="k">30日：</span>株価 <span class="${nc(r.px30)}">${r.px30 !== null ? sign(r.px30,0) + '%' : '—'}</span>｜業績予想 <span class="${nc(r.eps)}">${r.eps !== null ? sign(r.eps,1) + '%' : '—'}</span>${r.fpe ? '｜予想PER ' + r.fpe.toFixed(1) + '倍' : ''}｜1年で±${r.vol ?? '—'}%</div>
       <div class="tg">
-        <div><span class="k">最低目標</span><b>${fmt(r.cur, r.low)}</b><span class="${r.low !== null && r.low < r.price ? 'down' : 'up'}">${pct(r.low, r.price)}</span></div>
-        <div><span class="k">平均${r.nAn ? '（' + r.nAn + '人）' : ''}</span><b>${fmt(r.cur, r.target)}</b><span class="${r.target >= r.price ? 'up' : 'down'}">${pct(r.target, r.price)}</span></div>
-        <div><span class="k">最高目標</span><b>${fmt(r.cur, r.high)}</b><span class="up">${pct(r.high, r.price)}</span></div>
+        <div><span class="k">最低目標</span><b>${fmt(r.cur, r.low)}</b><span class="${r.low !== null && r.low < r.price ? 'neg' : 'pos'}">${pct(r.low, r.price)}</span></div>
+        <div><span class="k">平均${r.nAn ? '（' + r.nAn + '人）' : ''}</span><b>${fmt(r.cur, r.target)}</b><span class="${r.target >= r.price ? 'pos' : 'neg'}">${pct(r.target, r.price)}</span></div>
+        <div><span class="k">最高目標</span><b>${fmt(r.cur, r.high)}</b><span class="pos">${pct(r.high, r.price)}</span></div>
       </div>
-      <div class="dt">${r.cls || '分類なし'}｜修正 ↑${r.u}／↓${r.d}｜1年で±${r.vol ?? '—'}%動く｜期待値 ${r.ev !== null && r.ev !== undefined ? sign(r.ev,1) + '%' : '—'}${r.p ? '（確率' + Math.round(r.p) + '%）' : ''}</div>
+      ${prosCons(r)}
     </div>`;
   }).join('');
 }
 
 let IX = null;
 function avg(a){ a = a.filter(v => v !== null && v !== undefined && !isNaN(v)); return a.length ? a.reduce((x,y) => x + y, 0) / a.length : null; }
-function pc(v){ return v === null ? '—' : `<span class="${v >= 0 ? 'up' : 'down'}">${sign(v,0)}%</span>`; }
+function pc(v){ return v === null ? '—' : `<span class="${v >= 0 ? 'pos' : 'neg'}">${sign(v,0)}%</span>`; }
 function renderIndex(){
   const el = document.getElementById('ix');
   // ① このページの銘柄から、グループごとの単純平均（指数の比率ではない）
@@ -182,7 +226,7 @@ function renderIndex(){
   if (IX && IX.sox) {
     const x = IX.sox, f = v => v.toLocaleString('ja-JP', {maximumFractionDigits: 0});
     h += `<div class="cap" style="margin-top:14px">③ ストラテジストのSOX指数の見方</div>
-    <div class="nt" style="margin:4px 0 6px">今のSOX＝<b>${f(x.level)}</b>（${x.level_date}終値）。6月の山 ${f(x.peak)}（${x.peak_date}）から <span class="down">${sign((x.level / x.peak - 1) * 100, 0)}%</span>、11月の安値 ${f(x.low)}（${x.low_date}）から <span class="up">${sign((x.level / x.low - 1) * 100, 0)}%</span>。<a href="${x.valuation_url}" target="_blank" rel="noopener">${x.valuation}</a>。</div>
+    <div class="nt" style="margin:4px 0 6px">今のSOX＝<b>${f(x.level)}</b>（${x.level_date}終値）。6月の山 ${f(x.peak)}（${x.peak_date}）から <span class="neg">${sign((x.level / x.peak - 1) * 100, 0)}%</span>、11月の安値 ${f(x.low)}（${x.low_date}）から <span class="pos">${sign((x.level / x.low - 1) * 100, 0)}%</span>。<a href="${x.valuation_url}" target="_blank" rel="noopener">${x.valuation}</a>。</div>
     <table>` + x.calls.map(c => `<tr><td style="text-align:left"><a href="${c.url}" target="_blank" rel="noopener">${c.firm}</a><div class="d" style="color:#8b93a1;font-size:13px">${c.date}</div><div style="margin-top:2px">${c.view}</div></td></tr>`).join('') +
     `</table><div class="nt">${x.note}。</div>`;
   }
@@ -190,18 +234,28 @@ function renderIndex(){
 }
 
 function setup(){
+  VQ = [quart(D.rows.map(r => r.vol), 0.25), quart(D.rows.map(r => r.vol), 0.75)];
   const groups = ['すべて', 'SOX', '日経半導体', '韓国'];
   const ch = document.getElementById('chips');
   ch.innerHTML = groups.map(g => `<button data-g="${g}" class="${g === grp ? 'on' : ''}">${g}（${g === 'すべて' ? D.rows.length : D.rows.filter(r => r.group === g).length}）</button>`).join('');
   ch.querySelectorAll('button').forEach(b => b.onclick = () => { grp = b.dataset.g; ch.querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); render(); });
-  [['tUp','up'],['tSt','st'],['tLo','lo']].forEach(([id,m]) => document.getElementById(id).onclick = () => {
-    mode = m; ['tUp','tSt','tLo'].forEach(t => document.getElementById(t).classList.toggle('on', t === id)); render();
+  const T = [['tRv','rv'],['tUp','up'],['tLo','lo'],['tSt','st']];
+  T.forEach(([id,m]) => document.getElementById(id).onclick = () => {
+    mode = m; T.forEach(([t]) => document.getElementById(t).classList.toggle('on', t === id)); render();
   });
+  { const ds = [...new Set(D.rows.map(r => r.date).filter(Boolean))].sort(); document.getElementById('fDate').textContent = `株価は${ds[0] || '—'}${ds.length > 1 ? '〜' + ds[ds.length - 1] : ''}、目標は${D.when}取得`; }
+  if (D.sp !== null) document.getElementById('fSp').textContent = sign(D.sp,0) + '%';
   render();
   renderIndex();
 }
 
-fetch('index_forecast.json', {cache: 'no-store'}).then(r => r.ok ? r.json() : null).then(j => { IX = j; if (D) renderIndex(); }).catch(() => {});
+function fairIndex(){
+  if (!IX) return;
+  const ups = IX.calls.map(c => (c.target / IX.sp500_level - 1) * 100).sort((a,b) => a - b);
+  document.getElementById('fSt').textContent = sign(ups[Math.floor(ups.length / 2)], 0) + '%';
+}
+fetch('semi_notes.json', {cache: 'no-store'}).then(r => r.ok ? r.json() : null).then(j => { NOTES = (j && j.items) || []; if (D) render(); }).catch(() => {});
+fetch('index_forecast.json', {cache: 'no-store'}).then(r => r.ok ? r.json() : null).then(j => { IX = j; fairIndex(); if (D) renderIndex(); }).catch(() => {});
 fetch('semi_ranking.json', {cache: 'no-store'}).then(r => { if (!r.ok) throw 0; return r.json(); }).then(j => {
   D = fromJson(j);
   document.getElementById('src').innerHTML = `取得 ${D.when}（Yahoo Finance）｜${D.rows.length}銘柄` +

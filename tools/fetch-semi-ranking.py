@@ -224,6 +224,7 @@ def main():
                 "price": price, "price_date": p.get("price_date"),
                 "target_mean": tgt, "target_low": lo, "target_high": hi,
                 "analysts": info.get("numberOfAnalystOpinions"),
+                "forward_pe": info.get("forwardPE"),  # 市場の値段（予想利益の何倍か）。ページの「30日」の行に出す
                 "upside_pct": up, "low_pct": pct(lo, price), "high_pct": pct(hi, price),
                 "sp_diff_pt": spd, "vol_1y_pct": vol,
                 "stability": round(spd / vol, 2) if spd is not None and vol else None,
