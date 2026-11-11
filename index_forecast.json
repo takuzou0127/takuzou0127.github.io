@@ -5,12 +5,85 @@
  "sp500_level_date": "2026-11-09",
  "horizon": "2027年末（約13か月先）",
  "calls": [
-  {"firm": "Jefferies", "target": 9000, "date": "日付未確認", "url": "https://parameter.io/jefferies-projects-sp-500-could-hit-9000-by-end-of-2027-driven-by-ai-boom/"},
-  {"firm": "UBS", "target": 8900, "date": "2026-11-10", "url": "https://www.investing.com/news/stock-market-news/ubs-keeps-sp-500-end2027-target-at-8900-says-derating-sets-up-strong-returns-5015267"},
-  {"firm": "Barclays", "target": 8800, "date": "2026-06-23", "url": "https://www.roic.ai/news/barclays-sets-2027-sp-500-target-at-8800-citing-ai-led-earnings-growth-06-23-2026"},
-  {"firm": "Goldman Sachs（Ben Snider）", "target": 8700, "date": "日付未確認", "url": "https://finance.yahoo.com/markets/stocks/articles/p-500-keep-rising-2027-025118730.html"},
-  {"firm": "Wells Fargo Investment Institute", "target": 8700, "range": "8,600〜8,800", "date": "2026-06-16", "url": "https://sites.wf.com/outlook/"},
-  {"firm": "Canaccord Genuity", "target": 8325, "date": "2026-07-06", "url": "https://www.roic.ai/news/canaccord-genuity-sets-2027-year-end-target-for-sp-500-at-8325-07-06-2026"},
-  {"firm": "Panmure Liberum（Joachim Klement）", "target": 5000, "date": "2026年10月", "url": "https://www.hl.co.uk/news/panmure-liberum-forecasts-sp-500-falling-to-5000-warns-bull-run-nearing-end"}
- ]
+  {
+   "firm": "Jefferies",
+   "target": 9000,
+   "date": "日付未確認",
+   "url": "https://parameter.io/jefferies-projects-sp-500-could-hit-9000-by-end-of-2027-driven-by-ai-boom/"
+  },
+  {
+   "firm": "UBS",
+   "target": 8900,
+   "date": "2026-11-10",
+   "url": "https://www.investing.com/news/stock-market-news/ubs-keeps-sp-500-end2027-target-at-8900-says-derating-sets-up-strong-returns-5015267"
+  },
+  {
+   "firm": "Barclays",
+   "target": 8800,
+   "date": "2026-06-23",
+   "url": "https://www.roic.ai/news/barclays-sets-2027-sp-500-target-at-8800-citing-ai-led-earnings-growth-06-23-2026"
+  },
+  {
+   "firm": "Goldman Sachs（Ben Snider）",
+   "target": 8700,
+   "date": "日付未確認",
+   "url": "https://finance.yahoo.com/markets/stocks/articles/p-500-keep-rising-2027-025118730.html"
+  },
+  {
+   "firm": "Wells Fargo Investment Institute",
+   "target": 8700,
+   "range": "8,600〜8,800",
+   "date": "2026-06-16",
+   "url": "https://sites.wf.com/outlook/"
+  },
+  {
+   "firm": "Canaccord Genuity",
+   "target": 8325,
+   "date": "2026-07-06",
+   "url": "https://www.roic.ai/news/canaccord-genuity-sets-2027-year-end-target-for-sp-500-at-8325-07-06-2026"
+  },
+  {
+   "firm": "Panmure Liberum（Joachim Klement）",
+   "target": 5000,
+   "date": "2026年10月",
+   "url": "https://www.hl.co.uk/news/panmure-liberum-forecasts-sp-500-falling-to-5000-warns-bull-run-nearing-end"
+  }
+ ],
+ "sox": {
+  "level": 9998.33,
+  "level_date": "2026-11-10",
+  "peak": 14634,
+  "peak_date": "2026-06-22",
+  "low": 9011,
+  "low_date": "2026-11-05",
+  "note": "SOXは、S&P500のような「何年末に何ポイント」という目標を出しているストラテジストが見つからなかった（クラウドの検索）。出ているのは底の時期と下げ幅の見方",
+  "calls": [
+   {
+    "firm": "Bank of America（Vivek Arya）",
+    "date": "2026-11-08頃",
+    "view": "基本：あと約10%下げて、2027年1〜3月に底。弱気：AIの設備投資が鈍れば2027年半ばまで下げが続く。強気：AI投資が急回復すればメモリ・光通信などが一番上がる（MU・クレド・マーベル・AMD・アームの名前）。本当の底には2027年1〜3月の業績予想の下方修正が必要かもしれないとも",
+    "url": "https://www.investing.com/news/stock-market-news/buy-the-dip-or-wait-bofa-maps-out-3-scenarios-for-chip-stocks-and-top-picks-5010206"
+   },
+   {
+    "firm": "Morgan Stanley（Mike Wilson）",
+    "date": "10/30の急落より前",
+    "view": "あと10〜15%下げ、11月半ばに調整が終わる。底は9,500前後との報道（短期の見方で、2027年の目標ではない）",
+    "url": "https://www.tradingkey.com/analysis/stocks/us-stocks/262240448-philadelphia-semiconductor-index-sox-forecast-morgan-stanley-expects-decline-tradingkey"
+   },
+   {
+    "firm": "Cantor Fitzgerald",
+    "date": "11月",
+    "view": "半導体株は2028年の予想利益の約9倍まで下がり、押し目買いの場面",
+    "url": "https://finance.biggo.com/news/e067875f-f0b2-415d-b702-e840d34ecddd"
+   },
+   {
+    "firm": "Goldman Sachs（Delta Oneデスク）",
+    "date": "日付未確認",
+    "view": "2027年が半導体の山（ピーク）になる可能性がある（確実ではない、長期の用途には前向き）。証券会社のトレーディング部門の見方で、アナリストの目標ではない",
+    "url": "https://www.tradingview.com/news/seekingalpha:35e153658094b:0-2027-could-potentially-be-a-peak-for-semiconductors-goldman-sachs-delta-one/"
+   }
+  ],
+  "valuation": "SOXの予想PERは13.7倍で、S&P500より22%安い（AIブームの間で初めて）",
+  "valuation_url": "https://www.tradingview.com/news/benzinga:ff78bdc36094b:0-chip-stocks-are-now-cheaper-than-the-s-p-500-something-unseen-during-the-entire-ai-boom/"
+ }
 }
