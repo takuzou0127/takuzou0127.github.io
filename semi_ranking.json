@@ -1130,7 +1130,7 @@
    "symbol": "005930.KS",
    "name": "サムスン電子",
    "group": "韓国",
-   "holding": false,
+   "holding": true,
    "currency": "KRW",
    "price": 188700.0,
    "price_date": "2026-11-06",

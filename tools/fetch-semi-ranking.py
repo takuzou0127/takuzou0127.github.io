@@ -4,6 +4,7 @@
 
   ❶ 上昇余地を主眼：アナリスト平均目標株価までの上昇率の高い順（S&P500との差・期待値も併記）
   ❷ 安定を主眼    ：S&P比 ÷ 1年の振れ幅 の高い順（指数を上回る見込みを、値動きの大きさで割った値）
+  ❸ 最低目標を主眼：一番弱気なアナリストの目標株価までの上昇率の高い順（基準線＝S&P500の同じ計算 sp500_low_pct）
 
 数値はすべて Yahoo Finance（yfinance）の実データ。取れなかった銘柄は errors に残し、推定で埋めない。
 結果は semi_ranking.json に保存し、semi_ranking.html（公開ページ）がそれを読んで表示する。
@@ -55,7 +56,7 @@ US_NAMES = {"NVDA": "エヌビディア", "AVGO": "ブロードコム", "MU": "�
             "ARM": "アーム", "CRDO": "クレド", "ON": "オン・セミコンダクター", "GFS": "グローバルファウンドリーズ",
             "ENTG": "インテグリス", "MTSI": "MACOM", "RMBS": "ランバス", "LSCC": "ラティス",
             "AMKR": "アムコー"}
-HOLDINGS = {"MU", "000660.KS"}
+HOLDINGS = {"MU", "000660.KS", "005930.KS"}  # 005930は11月にNISAで1株（cloud-memory 11/11）
 
 # 確率の目安（expected.html・context.json の期待値ランキングと同じ式）
 BASE = {"①": 65, "②": 65, "④": 60, "⑨": 55, "⑥": 50, "⑤": 45, "⑦": 40, "⑧": 30}
@@ -91,6 +92,7 @@ def sp500_bottom_up(yf, sleep):
     h.columns = ["ticker", "weight"]
     h = h[h["ticker"].astype(str).str.match(r"^[A-Z][A-Z.]*$")]
     total = covered = acc = 0.0
+    cov_lo = acc_lo = 0.0  # 最低目標までの上昇率の加重平均（❸の基準線）
     for tk, w in zip(h["ticker"], h["weight"].astype(float)):
         total += w
         try:
@@ -100,34 +102,40 @@ def sp500_bottom_up(yf, sleep):
             if tgt and px:
                 covered += w
                 acc += w * (tgt / px - 1)
+            lo = info.get("targetLowPrice")
+            if lo and px:
+                cov_lo += w
+                acc_lo += w * (lo / px - 1)
         except Exception:
             pass
         time.sleep(sleep)
     cov = covered / total if total else 0
     if cov < 0.9:
         print(f"  S&P500：目標が取れた比率が{cov:.0%}しかないため使わない", file=sys.stderr)
-        return None, None
+        return None, None, None
+    low = round(acc_lo / cov_lo * 100, 1) if total and cov_lo / total >= 0.9 else None
     return round(acc / covered * 100, 1), \
-        f"自前計算：SPY構成{len(h)}銘柄（{as_of}時点の比率）×Yahoo平均目標までの上昇率の加重平均（比率の{cov:.0%}をカバー）"
+        f"自前計算：SPY構成{len(h)}銘柄（{as_of}時点の比率）×Yahoo平均目標までの上昇率の加重平均（比率の{cov:.0%}をカバー）", low
 
 
 def sp_benchmark(arg, yf, sleep, out_path):
     """S&P500全体の12か月上昇余地(%)。--sp ＞ 自前計算 ＞ 前回の semi_ranking.json の値（日付付き）の順"""
     if arg is not None:
-        return arg, "手入力（--sp）"
+        return arg, "手入力（--sp）", None
     try:
-        v, src = sp500_bottom_up(yf, sleep)
+        v, src, low = sp500_bottom_up(yf, sleep)
         if v is not None:
-            return v, src
+            return v, src, low
     except Exception as e:
         print(f"  S&P500の計算に失敗：{e}", file=sys.stderr)
     try:
         prev = json.loads(Path(out_path).read_text(encoding="utf-8"))
         if prev.get("sp500_upside_pct") is not None:
-            return prev["sp500_upside_pct"], f"前回の値（{prev.get('generated_at')}取得）※今回は計算できず"
+            return prev["sp500_upside_pct"], f"前回の値（{prev.get('generated_at')}取得）※今回は計算できず", \
+                prev.get("sp500_low_pct")
     except Exception:
         pass
-    return None, "未取得"
+    return None, "未取得", None
 
 
 def realized_vol_1y(yf, sym):
@@ -195,7 +203,7 @@ def main():
 
     universe = [(s, None, "SOX") for s in sox] + [(s, n, "日経半導体") for s, n in nikkei.items()] + \
                [(s, n, "韓国") for s, n in KOREA.items()]
-    sp, sp_src = sp_benchmark(args.sp, yf, args.sp_sleep, args.out)
+    sp, sp_src, sp_low = sp_benchmark(args.sp, yf, args.sp_sleep, args.out)
 
     rows, errors = [], []
     for i, (sym, local, grp) in enumerate(universe, 1):
@@ -231,7 +239,7 @@ def main():
 
     out = {
         "generated_at": datetime.now(JST).strftime("%Y-%m-%d %H:%M JST"),
-        "sp500_upside_pct": sp, "sp500_source": sp_src,
+        "sp500_upside_pct": sp, "sp500_source": sp_src, "sp500_low_pct": sp_low,
         "vol_note": "1年の振れ幅は過去1年の日次の値動きから計算（全銘柄同じ方法。②-Bのオプション由来の値とは少し違う）",
         "sox_note": f"SOXは検索で確認できた{len(sox)}社（2026年9月の入れ替え後）",
         "nikkei_note": "日経半導体株指数のウエート上位9社（2026年4月末の報道）＋10位は候補の中で時価総額が最大の" +

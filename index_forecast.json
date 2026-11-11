@@ -1,0 +1,16 @@
+{
+ "updated": "2026-11-11",
+ "note": "クラウドがWeb検索で集めた、S&P500の2027年末の目標（ストラテジスト）。全社の一覧ではない。日付が古いものは目標がその後変わった可能性がある。このファイルはPCの毎朝の更新では書き換わらない",
+ "sp500_level": 7549.94,
+ "sp500_level_date": "2026-11-09",
+ "horizon": "2027年末（約13か月先）",
+ "calls": [
+  {"firm": "Jefferies", "target": 9000, "date": "日付未確認", "url": "https://parameter.io/jefferies-projects-sp-500-could-hit-9000-by-end-of-2027-driven-by-ai-boom/"},
+  {"firm": "UBS", "target": 8900, "date": "2026-11-10", "url": "https://www.investing.com/news/stock-market-news/ubs-keeps-sp-500-end2027-target-at-8900-says-derating-sets-up-strong-returns-5015267"},
+  {"firm": "Barclays", "target": 8800, "date": "2026-06-23", "url": "https://www.roic.ai/news/barclays-sets-2027-sp-500-target-at-8800-citing-ai-led-earnings-growth-06-23-2026"},
+  {"firm": "Goldman Sachs（Ben Snider）", "target": 8700, "date": "日付未確認", "url": "https://finance.yahoo.com/markets/stocks/articles/p-500-keep-rising-2027-025118730.html"},
+  {"firm": "Wells Fargo Investment Institute", "target": 8700, "range": "8,600〜8,800", "date": "2026-06-16", "url": "https://sites.wf.com/outlook/"},
+  {"firm": "Canaccord Genuity", "target": 8325, "date": "2026-07-06", "url": "https://www.roic.ai/news/canaccord-genuity-sets-2027-year-end-target-for-sp-500-at-8325-07-06-2026"},
+  {"firm": "Panmure Liberum（Joachim Klement）", "target": 5000, "date": "2026年10月", "url": "https://www.hl.co.uk/news/panmure-liberum-forecasts-sp-500-falling-to-5000-warns-bull-run-nearing-end"}
+ ]
+}
