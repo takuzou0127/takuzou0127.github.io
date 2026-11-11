@@ -68,6 +68,7 @@ a{color:#4a9eff}
 .pc .mk{flex:none;width:1.2em;text-align:center;font-weight:700}
 .pc .p .mk{color:#7ee2a8}.pc .m .mk{color:#f0a0a0}
 .pc .src{color:#8b93a1;font-size:13px}
+.pc .vd{display:block;margin-top:6px;padding:6px 8px;background:#0f1117;border-radius:6px;color:#e6edf3}
 .fact{font-size:15px;color:#c9d1d9;margin-top:4px}
 </style>
 </head>
@@ -110,6 +111,7 @@ a{color:#4a9eff}
 <li><b>振れ幅あたり</b>＝（平均目標までの上昇率 − S&amp;P500の値）÷ 1年の振れ幅。<b>値動きが小さいという意味ではない</b>。⚠の銘柄は⚠なしの後ろに並べる</li>
 <li><b>30日の株価</b>＝（1＋予想PERの30日の変化）×（1＋業績予想の30日の変化）−1 で逆算した値</li>
 <li><b>＋／−の基準</b>（全銘柄同じ）：業績予想を上げた人が多い＋／下げた人が多い−、一番弱気な目標が今より上＋／下−、1年の振れ幅が41社の下位1/4＋／上位1/4−、アナリスト10人未満−、⚠−</li>
+<li><b>🧭 総合</b>＝＋と−を並べたうえでの、クラウドのトータルの判定（1年の見方）。重みは「会社の数字（売上・契約・業績予想の修正）＞専門家の目標・意見＞値動き・話題」。悪い材料があっても補って余りあればポジティブ。保有・注目の銘柄だけで、売り買いは拓造さんが決める</li>
 <li><b>⚠</b>＝目標が古い可能性（この30日で業績予想を下げた人が上げた人より多いのに、目標株価がまだ直されていない）</li>
 <li>以前表示していた「確率」と「期待値」は、自前で決めた目安で当たるかを確かめていないため、表示をやめた</li>
 </ul>
@@ -141,7 +143,7 @@ function fmt(cur, v){
 function pct(v, base){ if (!v || !base) return ''; const x = (v / base - 1) * 100; return (x >= 0 ? '+' : '') + x.toFixed(0) + '%'; }
 function sign(v, dp){ return (v >= 0 ? '+' : '') + v.toFixed(dp); }
 
-let D = null, NOTES = [], mode = 'rv', grp = 'すべて', VQ = [0, 1e9];
+let D = null, NOTES = [], VERD = {}, mode = 'rv', grp = 'すべて', VQ = [0, 1e9];
 
 function quart(a, q){ a = a.filter(v => v !== null && !isNaN(v)).sort((x,y) => x - y); return a.length ? a[Math.floor((a.length - 1) * q)] : null; }
 
@@ -160,7 +162,8 @@ function prosCons(r){
   return '<div class="pc">' +
     P.map(t => line('p', '＋', t)).join('') + notes.filter(n => n.side === '+').map(n => line('p', '＋', n.text, `${n.date}・${n.src}`)).join('') +
     M.map(t => line('m', '−', t)).join('') + notes.filter(n => n.side === '-').map(n => line('m', '−', n.text, `${n.date}・${n.src}`)).join('') +
-    (P.length + M.length + notes.length === 0 ? '<div class="src">目立った材料なし</div>' : '') + '</div>';
+    (P.length + M.length + notes.length === 0 ? '<div class="src">目立った材料なし</div>' : '') +
+    (VERD[r.sym] ? `<div class="vd"><b>🧭 総合：${VERD[r.sym].v}</b>（確度 ${VERD[r.sym].conf}）${VERD[r.sym].why}。<span class="src">変わる条件：${VERD[r.sym].flip}</span></div>` : '') + '</div>';
 }
 
 const GUIDE = {
@@ -254,7 +257,7 @@ function fairIndex(){
   const ups = IX.calls.map(c => (c.target / IX.sp500_level - 1) * 100).sort((a,b) => a - b);
   document.getElementById('fSt').textContent = sign(ups[Math.floor(ups.length / 2)], 0) + '%';
 }
-fetch('semi_notes.json', {cache: 'no-store'}).then(r => r.ok ? r.json() : null).then(j => { NOTES = (j && j.items) || []; if (D) render(); }).catch(() => {});
+fetch('semi_notes.json', {cache: 'no-store'}).then(r => r.ok ? r.json() : null).then(j => { NOTES = (j && j.items) || []; VERD = (j && j.verdicts) || {}; if (D) render(); }).catch(() => {});
 fetch('index_forecast.json', {cache: 'no-store'}).then(r => r.ok ? r.json() : null).then(j => { IX = j; fairIndex(); if (D) renderIndex(); }).catch(() => {});
 fetch('semi_ranking.json', {cache: 'no-store'}).then(r => { if (!r.ok) throw 0; return r.json(); }).then(j => {
   D = fromJson(j);
