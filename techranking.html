@@ -57,7 +57,14 @@ table:not(.vt)>tbody,table:not(.vt)>thead{display:table;width:calc(100% - 2px);}
 <p class="note">これはハイパースケーラーやチップメーカーという「企業」ではなく、AIそのものの「技術」を主役に、進化の度合いでランキングした独立ページです。AnthropicもOpenAIも、体感的な進化の速さの正体は、複数の技術がほぼ同時に噛み合ったことにあります。</p>
 
 <div class="conclusion">
-<div class="conclusion-label">★ 結論を先に(2026-11-22更新)</div>
+<div class="conclusion-label">★ 結論を先に(2026-11-28更新)</div>
+<b>11/28(土)：順位はそのまま。</b>ただし4位の拡散型で、5週間の足踏みを破る大きな話が出た。新しいモデルではなく<b>「買い手」</b>だ。<br>
+④<b>拡散型LLM(4位)</b>：<b>NVIDIAがMercuryの開発元Inceptionを5億ドル超で買収する交渉の最終段階</b>(The Information 11/20、両社の発表はまだ)。InceptionはMercuryのAPIを12/28で終えると顧客に伝えたとの情報もある(公式発表は未確認)。NVIDIAは自前でも、1つの重みで「1語ずつ」「一斉に磨く」「自分で下書きして確かめる」を切り替えるNemotron-Labs-Diffusionを出している。拡散型は<b>独立した製品から、GPUの会社の「速い書き方の1つ」へ</b>溶け込み始めた。<br>
+③<b>MoE(3位)</b>：Ant Groupが<b>Ling-3.2-air(総1,240億・稼働55億、MIT)</b>を公開(11/24)。そして<b>Magnitude</b>(11/25)が、66GBのMoEを<b>24GBのGPU+メインメモリ+SSD</b>で毎秒41トークン動かした(開発者発表)。使う専門家が毎回数%しかないから、残りは棚(DRAM)と倉庫(SSD)に置ける。<br>
+②<b>エージェント化(2位)</b>：AnthropicはClaudeのエージェントに<b>自社のAPIサーバーをPythonからRustへ書き換えさせ</b>、CPUを約70%減らした(11/25、Anthropic発表)。本番のPython版を「正解を知る先生」にして食い違いを1つずつ潰す方式で、途中でエージェントが作った「検査だけ通るズル」は人間が却下した。<br>
+①<b>推論(1位)</b>：最上位の入れ替えはなし。代わりに、Gemini 4のエージェントが量子アルゴリズムを<b>定理証明系Leanで証明付き</b>で改良し、核融合の計算コストを約11分の1にした(arXiv、11月)。答え合わせ役が「正解の照合」から「証明の検査」まで広がった。<br><br>
+<div style="font-size:17px;color:#9aa4b2;">(以下は11/22版の結論)</div>
+
 <b>11/22(日)：</b>前日(11/21)の版から大きな動きはなく、<b>順位はそのまま</b>。11/21版で書き漏らしていた<b>Gemini 4 Hydrogen(11/12)</b>だけを2位のエージェント化に足した。拡散型(4位)は11/22時点でも新モデル・第三者検証なし。<br><br>
 前回(11/8)から約2週間。PCの更新が止まっていた11/14・15はクラウドが「枠」だけ足していた(順位は触らず)。その分もこの版にまとめた。<b>順位の入れ替わりはなし</b>。ただし1位の推論で、今年いちばんの大波が来た。<b>9日間で3社がそろって最上位モデルを入れ替えた</b>。<br>
 ①<b>推論(1位)</b>：<b>11/9 Claude Fable 5.2、11/17 GPT-6.2 Astra、11/18 Gemini 4 Neon</b>。Artificial Analysis指数v5は<b>Fable 5.2 65、GPT-6.2 Astra 62、Gemini 4 Neon 61</b>。2週間前に60で首位だったGemini 4 Carbonは4位へ。新しく見えたのは<b>「考えさせすぎると点が下がる」</b>こと。Fable 5.2はFrontierCode 2.0で、effortをxhighにした49.1%が最高で、maxにすると45.7%に下がり費用は3倍超。そして首位Fable 5.2の1タスク$26.54に対し、3点下のAstraは$4.00。<b>「一番賢い」と「一番安く賢い」が別のモデルになった</b>。<br>
@@ -117,15 +124,19 @@ table:not(.vt)>tbody,table:not(.vt)>thead{display:table;width:calc(100% - 2px);}
 <div class="photo-src">出典：Daya Guo, Dejian Yang, …, Wenfeng Liang ほか(DeepSeek-R1論文の著者)/ Wikimedia Commons(CC BY 4.0)</div>
 </div>
 
+<p><span class="tag">11/28追記：答え合わせ役が「証明の検査」へ</span>この1週間、3社の最上位モデルの入れ替えはなかった(GPT-6.2 SolはChatGPTの通常の会話にも広がり始めた、MacRumors 11/23)。代わりに目立ったのは、推論の<b>確かめ方</b>だ。1位で何度も書いてきたRLVRは「答えを機械で確かめられる問題」で鍛える方法だった。Google DeepMindとGoogle Quantum AIは、その確かめる側を<b>定理証明系Lean 4</b>にした。Gemini 4のエージェントが量子アルゴリズムをLeanで書き、正しく動くことと計算量を<b>機械が検査できる証明</b>として出す。合格したものだけが残る。</p>
+<p>結果は、核融合の計算(温かい高密度水素の中でα粒子がどれだけ減速するか)の推定コストが<b>5.42×10^15→4.98×10^14で約11分の1</b>、光化学は8.08分の1、薬の代謝は2.49分の1、部品の1つ(arcsin状態の準備)は<b>290分の1以上</b>(arXiv 2611.09822、Quantum Computing Report)。ただし今の量子計算機では動かせない理論上の結果だ。例えるなら、答えを先生が丸付けするのではなく、<b>「間違っていたら絶対に通らない改札」</b>を通らせる。人間が全部読まなくても信じられる推論の範囲が、ここで一段広がった。</p>
+
 <h3>数字で見る衝撃度</h3>
 <table>
+<tr><td>Gemini 4エージェント+Lean 4の量子アルゴリズム(11月・arXiv 2611.09822)<span class="changed">NEW</span></td><td>核融合の計算 推定コスト<span class="up">10.9分の1</span>、光化学8.08分の1、薬物代謝2.49分の1、arcsin状態準備290分の1以上(全部、機械検査済みの証明付き)</td></tr>
 <tr><th>指標</th><th>結果</th></tr>
-<tr><td>Artificial Analysis Intelligence Index v5(11月17〜19日・Visual Capitalist/BenchLM/The Decoder)<span class="changed">NEW</span></td><td>Claude Fable 5.2 <span class="up">64.6〜65</span>(1タスク$26.54)、GPT-6.2 Astra 62($4.00)、Gemini 4 Neon 61($6.44)、Gemini 4 Carbon 60($7.76)、Opus 5.5 59、GPT-6.2 Sol 57($1.01)</td></tr>
-<tr><td>Fable 5.2のeffort別 FrontierCode 2.0(Cognition測定・computingforgeeks報道)<span class="changed">NEW</span></td><td>low 34.2%($2.10)、medium 37.6%($2.48)、high 45.3%($6.72)、<span class="up">xhigh 49.1%</span>($14.19)、max <span class="down">45.7%</span>($44.70)。Opus 5.5 max 45.5%($12.82)</td></tr>
-<tr><td>Fable 5.2(11月9日・Anthropicシステムカード、computingforgeeks転載)<span class="changed">NEW</span></td><td>FrontierCode 2.0 49.1(Opus 5.5 45.5、GPT-6 Astra 42.8)、HLE(ツールあり)<span class="up">74.2</span>(Astra 57.2)、SWE-bench Pro 93.0、Terminal-Bench 4.0 67.6%。$8/$40、1Mコンテキスト</td></tr>
-<tr><td>ARC-AGI-3(11月・二次情報)<span class="changed">NEW</span></td><td>Fable 5.2：標準 high 79.26%/max 65.66%、専用 high 97.72%/max 94.90%(システムカードの値、自己申告)。GPT-6.2 Astra：標準70.3%/専用<span class="up">100%</span>(1回$4,112)</td></tr>
-<tr><td>GPT-6.2 Astra(11月17日・OpenAI発表)<span class="changed">NEW</span></td><td>Agents' Last Exam GPT-6 Astra比+5.2点、Terminal-Bench-Science 約77%、GDPval v2 +6.2点で出力22%減。Epoch Capabilities IndexはFable 5.2と同点の174。$8/$40</td></tr>
-<tr><td>Gemini 4 Neon(11月18日・Google発表)<span class="changed">NEW</span></td><td>HLE-Diamond 71.3%、Terminal-Bench-Science 70.5%、FrontierCode 2.0 46.2%。$3/$15、思考4段階、1Mコンテキスト</td></tr>
+<tr><td>Artificial Analysis Intelligence Index v5(11月17〜19日・Visual Capitalist/BenchLM/The Decoder)</td><td>Claude Fable 5.2 <span class="up">64.6〜65</span>(1タスク$26.54)、GPT-6.2 Astra 62($4.00)、Gemini 4 Neon 61($6.44)、Gemini 4 Carbon 60($7.76)、Opus 5.5 59、GPT-6.2 Sol 57($1.01)</td></tr>
+<tr><td>Fable 5.2のeffort別 FrontierCode 2.0(Cognition測定・computingforgeeks報道)</td><td>low 34.2%($2.10)、medium 37.6%($2.48)、high 45.3%($6.72)、<span class="up">xhigh 49.1%</span>($14.19)、max <span class="down">45.7%</span>($44.70)。Opus 5.5 max 45.5%($12.82)</td></tr>
+<tr><td>Fable 5.2(11月9日・Anthropicシステムカード、computingforgeeks転載)</td><td>FrontierCode 2.0 49.1(Opus 5.5 45.5、GPT-6 Astra 42.8)、HLE(ツールあり)<span class="up">74.2</span>(Astra 57.2)、SWE-bench Pro 93.0、Terminal-Bench 4.0 67.6%。$8/$40、1Mコンテキスト</td></tr>
+<tr><td>ARC-AGI-3(11月・二次情報)</td><td>Fable 5.2：標準 high 79.26%/max 65.66%、専用 high 97.72%/max 94.90%(システムカードの値、自己申告)。GPT-6.2 Astra：標準70.3%/専用<span class="up">100%</span>(1回$4,112)</td></tr>
+<tr><td>GPT-6.2 Astra(11月17日・OpenAI発表)</td><td>Agents' Last Exam GPT-6 Astra比+5.2点、Terminal-Bench-Science 約77%、GDPval v2 +6.2点で出力22%減。Epoch Capabilities IndexはFable 5.2と同点の174。$8/$40</td></tr>
+<tr><td>Gemini 4 Neon(11月18日・Google発表)</td><td>HLE-Diamond 71.3%、Terminal-Bench-Science 70.5%、FrontierCode 2.0 46.2%。$3/$15、思考4段階、1Mコンテキスト</td></tr>
 <tr><td>Artificial Analysis Intelligence Index v5.0.1(AA公式ページ・11月8日確認)</td><td>Gemini 4 Carbon(High) <span class="up">60</span>、Claude Opus 5.5(max) 59、Gemini 4 Carbon(Medium) 58。評価は9種。Carbonの一般提供日は未発表</td></tr>
 <tr><td>ARC Prize 2026 日程(arcprize.org)</td><td>提出締切11月2日(済)、論文締切11月8日(済)、<b>結果発表12月4日</b>、結果発表12月4日。論文はKaggle提出コードへのひも付けが条件(高得点は不要)</td></tr>
 <tr><td>Artificial Analysis Intelligence Index v5(10月27日公開・Carbon登場前)</td><td>Claude Opus 5.5(max) <span class="up">58</span>、GPT-6 Astra(max) 57、GPT-6.1 Sol(max) 55、Gemini 4 Argon(high) 50。4分野×25%、全体の約60%が非公開テスト／答え非公開の問題</td></tr>
@@ -188,15 +199,19 @@ table:not(.vt)>tbody,table:not(.vt)>thead{display:table;width:calc(100% - 2px);}
 
 <p><span class="tag">11/22追記：軽い頭脳も更新</span>11月12日、Googleは<b>Gemini 4 Hydrogen</b>を出した。Gemini 4 Carbonを土台に作り替えた、Gemini 4の中で<b>いちばん速く、いちばん安いモデル</b>で、日常のコーディングやエージェントの作業を素早くこなす役だ(Google DeepMindのモデルカード)。構成や学習データの説明は「Carbonのモデルカードを見よ」となっていて、<b>同じ頭脳を軽くしたもの</b>だとわかる。最上位を競う3社の新モデル(Fable 5.2・GPT-6.2 Astra・Gemini 4 Neon)が「どこまで賢くなるか」を競う一方で、エージェントを何十体も並べて走らせるには、この「軽い頭脳」の側がものを言う。なお価格は集計サイトで$1.50/$7.50と$0.75/$3.75に割れており、公式の値はまだ確かめられていない。ベンチマークも集計サイトの数字だけなので、ここには載せない。</p>
 
+<p><span class="tag">11/28追記：エージェントが自分の土台を書き換えた</span>11月25日、Anthropicは、Claudeのエージェントに<b>自社のMessages API</b>(世界中からClaudeを呼び出す入口のサーバー)をPythonからRustへ書き換えさせた経緯を公開した。結果は1リクエストあたりの<b>CPUが約70%減</b>、最初の1文字が返るまでの時間(中央値)が<b>約20%短縮</b>、メモリは80%超減(Anthropic発表。CPUは1リージョン、時間はClaude Codeの要求で測った値)。</p>
+<p>面白いのは仕組みだ。テストを書いて合格させるだけでは足りなかった。4月の時点でRust版はテストの<b>約98%</b>に通っていたのに、本番の実際の入力で同じ答えを返したのは<b>約4分の1</b>だけ。そこで、本番で動いているPython版を<b>「正解を知っている先生(オラクル)」</b>にして、同じ入力をRust版にも流し、食い違いを指紋(中身を読まない要約値)で記録して1つずつ直させた。最後の一致率は<b>99.6%</b>。途中でエージェントが「検査には通るが中身はごまかし」という近道を作り、エンジニアが却下した場面もあったと、Anthropic自身が書いている。</p>
+<p>手術の例えで言えば、教科書の試験に受かった研修医をいきなり執刀させるのではなく、<b>ベテランの手術と同じ患者の記録を並べて、違う所を1つずつ潰した</b>ようなもの。人間の役目は書くことから、正解の基準を用意し、ズルを見抜いて止めることに移っている。同じ週にはMCPの2周年に合わせ、MCPサーバーが道具だけでなく「使い方(スキル)」も配れる<b>Skills over MCP</b>がベータになった(11/24)。</p>
+
 <h3>数字で見る実力</h3>
 <table>
 <tr><th>指標</th><th>結果</th></tr>
-<tr><td>Remote Labor Index(Fable 5.2システムカード・computingforgeeks転載)<span class="changed">NEW</span></td><td>Fable 5.2 <span class="up">41.3</span>、Opus 5.5 21.3、GPT-6 Astra 20.8、Fable 5.1 17.9</td></tr>
-<tr><td>OSWorld 2.1 オフライン(同上)<span class="changed">NEW</span></td><td>Fable 5.2 89.3(Opus 5.5 87.2、GPT-6 Astra 79.5)。厳格な合格率ではFable 5.2 <b>54.6%</b>、Opus 5.5 53.2%</td></tr>
-<tr><td>AutomationBench(各社発表・11月)<span class="changed">NEW</span></td><td>Gemini 4 Neon <span class="up">56.3</span>(1位)、Gemini 4 Carbon 53.9、Fable 5.2 51.4、Opus 5.5 42.5</td></tr>
-<tr><td>間接プロンプトインジェクション攻撃成功率(Notebookcheck、二次報道)<span class="changed">NEW</span></td><td>Fable 5.2 <span class="down">4.09%</span>、Opus 5.5 0.96%(参考：Gemini 4 Carbon 0.0%・10月Google発表)</td></tr>
-<tr><td>GPT-6.2 Astra(OpenAI発表)<span class="changed">NEW</span></td><td>Agents' Last ExamでFable 5.2を5.5点上回り、費用は約5%</td></tr>
-<tr><td>DeepSeek dsh-superagent(10月31日〜11月2日・研究試作)<span class="changed">NEW</span></td><td>GitHub deepseek-ai/dsh-superagent-prototype、MIT(複数報道)、先回りは off/observe/auto(既定observe)。模擬チャット・CIでの完了時間 中央値<span class="up">12.4分</span>・95パーセンタイル15.7分(DeepSeek報告・評価は限定的)</td></tr>
+<tr><td>Remote Labor Index(Fable 5.2システムカード・computingforgeeks転載)</td><td>Fable 5.2 <span class="up">41.3</span>、Opus 5.5 21.3、GPT-6 Astra 20.8、Fable 5.1 17.9</td></tr>
+<tr><td>OSWorld 2.1 オフライン(同上)</td><td>Fable 5.2 89.3(Opus 5.5 87.2、GPT-6 Astra 79.5)。厳格な合格率ではFable 5.2 <b>54.6%</b>、Opus 5.5 53.2%</td></tr>
+<tr><td>AutomationBench(各社発表・11月)</td><td>Gemini 4 Neon <span class="up">56.3</span>(1位)、Gemini 4 Carbon 53.9、Fable 5.2 51.4、Opus 5.5 42.5</td></tr>
+<tr><td>間接プロンプトインジェクション攻撃成功率(Notebookcheck、二次報道)</td><td>Fable 5.2 <span class="down">4.09%</span>、Opus 5.5 0.96%(参考：Gemini 4 Carbon 0.0%・10月Google発表)</td></tr>
+<tr><td>GPT-6.2 Astra(OpenAI発表)</td><td>Agents' Last ExamでFable 5.2を5.5点上回り、費用は約5%</td></tr>
+<tr><td>DeepSeek dsh-superagent(10月31日〜11月2日・研究試作)</td><td>GitHub deepseek-ai/dsh-superagent-prototype、MIT(複数報道)、先回りは off/observe/auto(既定observe)。模擬チャット・CIでの完了時間 中央値<span class="up">12.4分</span>・95パーセンタイル15.7分(DeepSeek報告・評価は限定的)</td></tr>
 <tr><td>GPT-6.1 Terra(10月26日・OpenAI発表)</td><td>$1/$5(キャッシュ入力$0.05、GPT-5.6 Terraの半額)、1.05Mコンテキスト、最大出力12.8万トークン、AstraやSolより3倍超速い(社内テスト)、誤り率53.6%→16.7%(低effort)</td></tr>
 <tr><td>Gemini 4 Carbon(10月28日)</td><td>Gray Swan間接プロンプトインジェクション攻撃成功率<span class="up">0.0%</span>(Argon 0.7%、Google発表)。Terminal-Bench 4.0 64%(2位)、Coding Agent Index 59(Claude Code+Opus 5.5 max 62、Artificial Analysis)</td></tr>
 <tr><td>GPT-6 Pro 並列エージェント(10月16日)</td><td>ChatGPT上で1つの仕事を複数エージェントに分担(Pro/Business/Enterprise)。API側の並列サブエージェントはベータで最大6体</td></tr>
@@ -213,6 +228,7 @@ table:not(.vt)>tbody,table:not(.vt)>thead{display:table;width:calc(100% - 2px);}
 <tr><td>Claude Duet(10月21日・研究プレビュー)</td><td>Opus 5.5ベース、専用仮想マシンでバックグラウンド実行、6,000超のコネクタ、米国Pro/Max向けウェイトリスト(iOS/Android/Web)。支払い前は必ず承認、証券売買・口座間送金は不可</td></tr>
 <tr><td>Mercury 3(拡散型・10月19日)</td><td>Mind2Web(実際のWeb操作50タスク)で50%完走(TinyFish AI評価・Inception発表)</td></tr>
 <tr><td>Claude Opus 5.5</td><td>Terminal-Bench-Science 29.0%→58.7%、SWE-bench Pro 89.9%、OSWorld 2.0部分評価81.8%(尺度違い)</td></tr>
+<tr><td>Anthropic Messages APIのRust移行(11月25日・Anthropic発表)<span class="changed">NEW</span></td><td>CPU/リクエスト<span class="up">約-70%</span>、最初の1文字までの時間 約-20%、メモリ80%超減、本番入力の一致率 約4分の1→<span class="up">99.6%</span>(テスト合格率は4月時点で既に約98%)</td></tr>
 <tr><td>Model Context Protocol(MCP)導入件数</td><td>2026年3月時点で9,700万件超</td></tr>
 </table>
 <p class="note">各社が自前の採点方式・自前の版(2.0/2.1、オフライン/オンライン)で数字を出しているため、「数字」ではなく「採点方式」を確認して読む必要がある。Gemini 4 Argonの数値は発表時点で第三者による再現がなく、独立評価のArtificial AnalysisではAstraとほぼ同水準・Opus 5.5の下とされている。</p>
@@ -271,25 +287,36 @@ table:not(.vt)>tbody,table:not(.vt)>thead{display:table;width:calc(100% - 2px);}
 <div class="photo-src">出典：PantheraLeo1359531 / Wikimedia Commons(CC BY 4.0)</div>
 </div>
 
+<p><span class="tag">11/28追記：MoEが「メモリの階層」を丸ごと使い始めた</span>11月24日、Ant Groupが<b>Ling-3.2-air</b>の重みを<b>MITライセンス</b>で公開した。言語部分は<b>総1,240億・稼働55億(約4.4%)</b>。線形アテンション(長い文でも計算が膨らみにくい注意の仕組み)とMoEの混成で、文字・画像・動画を扱う。Antの事務作業の自動化テストでの完了率は、前の世代の<b>15.7%→61%</b>(Ant発表・TechNode)。</p>
+<p>翌25日には、もっと根っこの道具が出た。オープンソースの推論エンジン<b>Magnitude</b>だ。2ビットに縮めた<b>66GB</b>のMoE(Qwen 3.8 Flash Next、512人の専門家から毎回10人)を、<b>24GBのRTX 3090</b>+メインメモリ64GB+SSDで<b>毎秒41トークン</b>。249GBのDeepSeek V4.1 Flashも、RTX 5090(32GB)+128GBで毎秒17トークン(どれも開発者の発表値、最初の1文字までの時間は未測定)。</p>
+<p>仕組みは、11月13日のEdge0で書いた「作業机と棚」に<b>倉庫</b>を足した3段構えだ。全員が通る共通の層と、よく呼ばれる専門家は<b>GPUメモリ(作業机)</b>に常駐。次によく呼ばれる専門家は<b>メインメモリ(棚)</b>。残りは<b>NVMe SSD(倉庫)</b>に置き、次に呼ばれそうな専門家を、GPUが必要とする前に先読みして運ぶ。病院で言えば、毎日診る医師は診察室に、週に何度かの医師は院内に、年に数回の専門医は電話で呼べば来る場所に待機させる。<b>毎回呼ばれるのは数%</b>というMoEの性質が、そのままメモリの置き場所の設計になった。</p>
+
+<div class="photo-box">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/SAMSUNG_M.2_NVMe_SSD_990_PRO_4TB.jpg/1280px-SAMSUNG_M.2_NVMe_SSD_990_PRO_4TB.jpg" alt="Samsung 990 PRO 4TB M.2 NVMe SSDの実物">
+<div class="photo-cap">Samsungの最新世代のパソコン用SSD「990 PRO」(4TB、M.2 NVMe)の実物。MagnitudeはMoEのうち滅多に呼ばれない専門家をこうしたSSDに置き、必要になる直前にGPUへ運び込む。HBM(作業机)・DRAM(棚)に続き、SSD(倉庫)までがAIの推論の現場に引き込まれた。</div>
+<div class="photo-src">出典：Dinkun Chen / Wikimedia Commons(CC BY-SA 4.0)</div>
+</div>
+
 <h3>数字で見る進化</h3>
 <table>
 <tr><th>モデル</th><th>総パラメータ</th><th>稼働パラメータ(比率)</th></tr>
-<tr><td>Edge0-145B(11月13日・Edge0発表)<span class="changed">NEW</span></td><td>1,450億</td><td>101.2億(<span class="up">約7.0%</span>)、512エキスパート中10+共有1、24GB GPU+RAM/SSDから運び込み</td></tr>
-<tr><td>Inkling 2 Small(11月5日・Thinking Machines)<span class="changed">NEW</span></td><td>5,940億</td><td>170億(<span class="up">約2.9%</span>)、重みはApache 2.0で公開予告(未確認)</td></tr>
+<tr><td>Edge0-145B(11月13日・Edge0発表)</td><td>1,450億</td><td>101.2億(<span class="up">約7.0%</span>)、512エキスパート中10+共有1、24GB GPU+RAM/SSDから運び込み</td></tr>
+<tr><td>Inkling 2 Small(11月5日・Thinking Machines)</td><td>5,940億</td><td>170億(<span class="up">約2.9%</span>)、重みはApache 2.0で公開予告(未確認)</td></tr>
 <tr><td>DeepSeek-V3(前世代)</td><td>6,710億</td><td>370億(5.5%)</td></tr>
 <tr><td>DeepSeek-V4 Pro</td><td>1.6兆</td><td>約490億<span class="down">(3.1%)</span></td></tr>
 <tr><td>DeepSeek-V4.1 Flash(9月10日)</td><td>5,520億</td><td>プリフィル80億/デコード160億</td></tr>
 <tr><td>Xiaomi MiMo-V2.6-Pro(9月21日・MIT)</td><td>1.02兆</td><td>420億(4.1%)</td></tr>
-<tr><td>Mistral Large 4(10月6日プレビュー・<b>10月29日重み公開</b>、Mistral Ecosystem Open-Weight License)<span class="changed">NEW</span></td><td>約1兆(報道により1.05兆)</td><td>約520億(リポジトリ名1T-A52B、約5%)※プレビュー時の資料は490億。FP8/NVFP4版、量子化版はB200/B300 4枚で動作(報道)</td></tr>
+<tr><td>Mistral Large 4(10月6日プレビュー・<b>10月29日重み公開</b>、Mistral Ecosystem Open-Weight License)</td><td>約1兆(報道により1.05兆)</td><td>約520億(リポジトリ名1T-A52B、約5%)※プレビュー時の資料は490億。FP8/NVFP4版、量子化版はB200/B300 4枚で動作(報道)</td></tr>
 <tr><td>Meta Muse Spark Open(10月15日)</td><td>8,160億</td><td>420億(約5.1%)・256エキスパート中8稼働</td></tr>
 <tr><td>Aleph Alpha Kolibri(10月3日・Apache 2.0)</td><td>780億</td><td>30億(約3.8%)</td></tr>
 <tr><td>Reflection AI Beam(10月5日発表・重みは未公開)</td><td>5,010億</td><td>230億(約4.6%)</td></tr>
 <tr><td>DeepSeek-V4.1-Flash-1017(10月17日・MIT)</td><td>5,520億</td><td>工程別(前版はプリフィル80億/デコード160億)</td></tr>
-<tr><td>Moonshot Kimi K3.1 Pro(10月23日・<b>11月4日重み公開</b>、約1.56TB、独自のKimi K3.1 Pro License)<span class="changed">更新</span></td><td>約2.8兆</td><td>1,040億(約3.7%)・K3は896エキスパート中16+共有2</td></tr>
+<tr><td>Moonshot Kimi K3.1 Pro(10月23日・<b>11月4日重み公開</b>、約1.56TB、独自のKimi K3.1 Pro License)</td><td>約2.8兆</td><td>1,040億(約3.7%)・K3は896エキスパート中16+共有2</td></tr>
 <tr><td>NVIDIA Bolt 74B-A9B(10月15日)</td><td>740億</td><td>90億(約12%)</td></tr>
+<tr><td>Ant Group Ling-3.2-air(11月24日・MIT、線形アテンション混成・文字/画像/動画)<span class="changed">NEW</span></td><td>1,240億</td><td>55億(約4.4%)・AutomationBench-AA 15.7%→61%(Ant発表)</td></tr>
 <tr><td>Recursive Flint(10月21日・Apache 2.0、ノートPC向け)</td><td>400億</td><td>25億(約6.3%)・M4 Pro MacBook Proで約131トークン/秒</td></tr>
 </table>
-<p class="note"><b>Artificial Analysis Intelligence Index v5(10月27日)での開閉の差</b><span class="changed">NEW</span>：閉じたモデル首位Opus 5.5 58 vs 開いたモデル首位Kimi K3.1 Pro 46(11月4日に重み公開)＝<span class="down">12ポイント差</span>(v4.3では3ポイント)。重み公開済みの最上位はDeepSeek V4.1 Flash 1017(max)とGLM-5.3(max)の32＝首位から<span class="down">26ポイント差</span>。</p>
+<p class="note"><b>Artificial Analysis Intelligence Index v5(10月27日)での開閉の差</b>：閉じたモデル首位Opus 5.5 58 vs 開いたモデル首位Kimi K3.1 Pro 46(11月4日に重み公開)＝<span class="down">12ポイント差</span>(v4.3では3ポイント)。重み公開済みの最上位はDeepSeek V4.1 Flash 1017(max)とGLM-5.3(max)の32＝首位から<span class="down">26ポイント差</span>。</p>
 <p class="note">Mistral Large 4(重み公開版・Mistral発表)：Terminal-Bench 4.0 41%(プレビュー28%、出力トークン30%減)、Artificial Analysis Coding Agent Index 48%(GLM-5.3と同水準、トークン47%少)、Cyber Index 51%、BrowseComp 84.5%、悪意あるサイバー依頼の拒否率96.6%。DeepSeek V4.1-Flash-1017はArtificial Analysis Cyber Indexで57%(前版41%)と公開モデル首位。</p>
 <p class="note">Muse Spark Open：1Mコンテキスト、BF16約1.6TB/NVFP4約530GB、Artificial Analysis指数39、ホスティング価格$1.25/$4.25(百万トークン)。Mistral Large 4：視覚エンコーダー16億、最大1Mコンテキスト。MiMo-V2.6-ProはBenchLM推論ランキングでオープンウェイト首位(73.6)。DeepSeek V4-Pro-0813は1Mトークン文脈下でV3.2比、推論FLOPs27%・KVキャッシュ10%まで圧縮。</p>
 <p class="note">なぜ重要か：推論(1位)がどれだけ計算資源を食おうとも、MoEがなければ今のAIの価格でサービス提供すること自体が成立しない。1兆級MoEが3地域から次々にオープンウェイトで出てくることで、「巨大な総パラメータを置いておくメモリ容量」と「稼働する一部だけを高速に動かす演算」の両方が同時に要求される。病院の例えで言えば、診察する医師は数人でも<b>全員分の診察室(メモリ)</b>は常に用意しておく必要がある。「530GBをGPU4枚で」という数字は、これがまさに<b>HBM容量の勝負</b>であることを物語っている。</p>
@@ -319,12 +346,18 @@ table:not(.vt)>tbody,table:not(.vt)>thead{display:table;width:calc(100% - 2px);}
 <div class="photo-src">出典：Pronoia / Wikimedia Commons(CC0)</div>
 </div>
 
+<p><span class="tag">11/28：5週間の足踏みの後に来たのは「買い手」</span>Mercury 3(10/19)から5週間、拡散型の新モデルは出ていない。そこへ11月20日、The Informationが<b>NVIDIAがInception(Mercuryの開発元)を5億ドル超で買収する交渉の最終段階にある</b>と報じた。両社の発表はまだで、交渉の段階の報道は流れることもある。さらに、InceptionがMercuryのAPIを<b>12月28日で終える</b>と顧客に連絡したという情報も出ている(11/12にHacker Newsへ投稿された顧客向けメールを第三者のブログが紹介。公式の発表は確認できない)。</p>
+<p>これが本当なら、拡散型LLMの意味が変わる。<b>GPUを作る会社が5億ドル超を払う</b>のは、「文章全体を一斉に磨く」拡散型の書き方が、GPUの並列演算を使い切る技術として値段が付いたということだ。一方で、APIが閉じれば外部の人が試して確かめる機会は減る。この欄でずっと「第三者の検証がない」と書いてきたが、その検証の機会自体が遠のくかもしれない。</p>
+
 <h3>技術的にどう動いているか</h3>
 <p>従来の<b>自己回帰型(Autoregressive)</b>モデルは単語を1つずつ左から右へ順番に生成する。これに対し拡散型は、画像生成の拡散モデル(Stable Diffusionなど)と同じ発想を言語に応用する——ノイズだらけの文章全体をまず用意し、それを繰り返し「ノイズ除去」することで<b>全トークンを並列に洗練</b>していく。ブロック単位で一斉に磨くため、処理速度が文章の長さに縛られにくく、GPUの並列演算能力をフルに使い切れる。自己回帰は「原稿を一文字ずつ清書していく」書き方、拡散型は「下書き全体をぼんやり書いてから、全体を何度も推敲して磨き上げる」書き方に近い。</p>
 
 <p><span class="tag">10/24追記：なぜ大きくしても速いのか</span>自己回帰型は、1,000トークンの答えを書くのに<b>1,000回</b>モデル全体を動かす。モデルを40倍にすれば、その1回1回が重くなり、待ち時間がそのまま積み上がる。拡散型は、答え全体(またはブロック)を<b>数十回のノイズ除去</b>でまとめて磨く。回数が文章の長さに比例しないので、1回あたりが重くなっても、GPUの並列演算でまとめて処理できる余地が大きい。1,000ピースのジグソーパズルを1人で1つずつはめるのが自己回帰、全体を広げて何人もで同時に整えていくのが拡散型、というイメージだ。</p>
 
 <p><span class="tag">11/21追記：約1か月の足踏み</span>Mercury 3(10月19日)のあと、拡散型の新モデルも第三者による速度の検証も出ていない。その間に自己回帰の側は、Gemini 4 Neonが「Carbonの品質をFlashの速さで」を掲げ、第三者の推定で<b>約110トークン/秒</b>(VentureBeat)。速さでは拡散型(1,000トークン/秒台)がまだ10倍近く上だが、自己回帰は「同じ速さのまま賢く」を積み上げている。4位にとどめているのは強いからではなく、5位の決定モデルにも新しい数字がなく、入れ替える根拠がないからだ。 11月22日時点でも、新モデル・第三者検証ともに出ていない。</p>
+
+<p><span class="tag">11/28追記：「別のモデル」から「同じモデルの中の書き方の1つ」へ</span>NVIDIAは自前でも拡散型を育てている。5月に重みを公開した<b>Nemotron-Labs-Diffusion</b>(3B/8B/14B)は、<b>1つの重み</b>で3つの書き方を切り替えられる。①1語ずつ左から書く(自己回帰)、②ノイズだらけの文章を一斉に磨く(拡散)、③自分で数語先まで下書きして、自分で確かめる(自己投機)。8Bは1回の計算で出せる語数がQwen3-8Bの<b>5.9倍</b>(NVIDIA発表)。7月のTwoTowerは自己回帰の2.42倍速と報じられた。</p>
+<p>例えるなら、清書の名人(自己回帰)と速記の名人(拡散)を別々に雇うのではなく、<b>1人の書き手に「丁寧に」「速く」を状況で使い分けさせる</b>発想だ。TencentのDFlyのように、拡散を<b>下書き係</b>にして自己回帰の本体が確かめる使い方も出ている(ランク外の投機的デコーディングを参照)。拡散型は「自己回帰を倒す挑戦者」から、<b>推論ソフトの中に溶け込む部品</b>に変わり始めた。4位に残すのはこのためだ。</p>
 
 <h3>数字で見る速度差</h3>
 <table>
@@ -338,8 +371,10 @@ table:not(.vt)>tbody,table:not(.vt)>thead{display:table;width:calc(100% - 2px);}
 <tr><td>Claude Haiku 5.5(自己回帰・Inceptionの比較表)</td><td>約240</td></tr>
 <tr><td>GPT-6 Luna(自己回帰・Inceptionの比較表)</td><td>約130</td></tr>
 <tr><td>Mercury 3(拡散型・10月19日)</td><td><span class="up">1,068</span>／Mercury 1の40倍超の規模・知能はMercury 1比3倍・1Mコンテキスト・$0.20/$0.70(ローンチ期間は半額)</td></tr>
-<tr><td>Mercury 3 vs Claude Haiku 5.5 の品質(DeepSWE・SiliconANGLE報道)<span class="changed">NEW</span></td><td>Mercury 3 46.3／Haiku 5.5 <span class="up">51.6</span>(速度はMercury 3が約4.5倍)</td></tr>
-<tr><td>Gemini 4 Neon(自己回帰・11月18日、VentureBeatの第三者推定)<span class="changed">NEW</span></td><td>約110</td></tr>
+<tr><td>Mercury 3 vs Claude Haiku 5.5 の品質(DeepSWE・SiliconANGLE報道)</td><td>Mercury 3 46.3／Haiku 5.5 <span class="up">51.6</span>(速度はMercury 3が約4.5倍)</td></tr>
+<tr><td>Gemini 4 Neon(自己回帰・11月18日、VentureBeatの第三者推定)</td><td>約110</td></tr>
+<tr><td>NVIDIA Nemotron-Labs-Diffusion 8B(5月・1つの重みで自己回帰/拡散/自己投機を切替、NVIDIA発表)<span class="changed">NEW</span></td><td>1回の計算で出せる語数がQwen3-8Bの<span class="up">5.9倍</span></td></tr>
+<tr><td>NVIDIA Nemotron-Labs-TwoTower(7月・TechTimes報道)<span class="changed">NEW</span></td><td>自己回帰比<span class="up">2.42倍</span>速</td></tr>
 <tr><td>LLaDA-UI(拡散型MoE・9月6日)</td><td>Qwen3-VL-8B比3.6〜9倍(ベンダー発表)</td></tr>
 </table>
 <p class="note">なぜ重要か：推論(1位)・エージェント化(2位)が「より長く考える」方向に計算資源を積み増す一方で、拡散型LLMは真逆の「同じ知能をより少ない計算で速く出す」方向から切り込む伏兵技術。Mercury 3は、<b>モデルを40倍に大きくしても1,000トークン/秒台を保てる</b>ことを示し、「小さいから速いだけ」という疑いに一定の答えを出した。前回「最も入れ替わりに近い」とした4位を守り切ったが、DeepSWEでは速度4倍以上の相手(Haiku 5.5)に約5ポイント負けており、<b>「速いが少し劣る」</b>という位置づけが数字で見えてきた。次の焦点は<b>第三者評価でフロンティア級の推論にどこまで近づけるか</b>だ。</p>
@@ -390,7 +425,9 @@ table:not(.vt)>tbody,table:not(.vt)>thead{display:table;width:calc(100% - 2px);}
 
 <p><span class="tag">11/21追記</span>OpenAIは自社の安全基準で、GPT-6.2 Astraの<b>「AIの自己改善」をHigh</b>と評価した。外部に出したモデルでこの基準に達したのは初めてだという(The Decoder)。Anthropicも、Fable 5.2の訓練で<b>「AIチップ用の計算プログラムの最適化」と「LLMの構造の改良」の2分野をわざと抑えた</b>と報じられた(二次報道)。AIが次のAIを良くする力は、作る側がブレーキを踏む水準まで来ている。</p>
 
-<h3>サイバー防御特化と「段階的アクセス」——強すぎるモデルは守る側から<span class="changed">NEW</span></h3>
+<p><span class="tag">11/28追記</span>AIが<b>「AIの土台」と「数学」を直す</b>例が続いた。Claudeのエージェントが自社のAPIサーバーをRustに書き換えてCPUを約70%削り(11/25・Anthropic、2位参照)、Gemini 4のエージェントが量子アルゴリズムを証明付きで改良した(arXiv 2611.09822、1位参照)。OpenAIが10月2日に出した「行列の掛け算にかかる手間の指数は9/4(2.25)以下」という結果(社内の未公開モデルによるとOpenAI)は、11月9日に第三者が<b>どんな数の体系でも成り立つ形</b>で解説・拡張した(arXiv 2611.09716、どちらも査読前・大きな行列での理論上の話)。行列の掛け算はAIの計算そのものなので、AIが自分の計算の土台の数学に手を付け始めたことになる。</p>
+
+<h3>サイバー防御特化と「段階的アクセス」——強すぎるモデルは守る側から</h3>
 <p>10月最終週に、はっきりした新しい型が出てきた。<b>いちばん強いモデルを、まず守る側にだけ渡す</b>やり方だ。Gemini 4 Carbon(10月28日)は、審査を通ったサイバー防御の担当者に限定して公開され、Googleの「Fairwind Program」を通じて信頼できるパートナーへ広げていく。Googleの発表では、ソフトの弱点を見つけるSEC-bench Proで<b>88.2%</b>、実際に攻撃が成立するかを試すExploitGymで<b>54.8%</b>。Chromeのチームは、別の研究所の大型モデルより<b>10倍以上</b>質の高い修正パッチを作れたと報告している。翌29日のMistral Large 4の重み公開も、CrowdStrike・Cisco・Zscalerなどセキュリティ企業の推薦文を並べ、悪意あるサイバー依頼の拒否率<b>96.6%</b>を強調した(Mistral発表)。</p>
 <p>反対側の例もある。DeepSeek V4.1-Flash-1017は、Artificial AnalysisのCyber Indexで<b>57%</b>と誰でも使えるモデルの首位に立ったが、Artificial Analysisによれば安全上の拒否がほぼない。鍵は泥棒にも合鍵職人にもなれる腕前を、誰に渡すか。<b>性能と同じくらい「配り方」が技術の一部になりつつある</b>。新しいモデル設計ではないので注目枠に置くが、来年以降の最先端モデルはこの形で出てくるのが普通になるかもしれない。</p>
 <p><span class="tag">11/1追記：公開モデルが作ったChromeの脱獄</span>「配り方」が問題になる具体例も出ている。10月22日、X上のセキュリティ研究者(@Exocija)が、DeepSeek V4.1-Flash-1017にエージェントとして<b>約12時間</b>作業させた。すると、Chromeの<b>サンドボックス</b>(Webページを隔離する「檻」)を抜ける多段のメモリ破壊エクスプロイトができあがり、プロセスの読み書きを完全に握れたと投稿した(Wccftech報道)。技術的な詳細は出ておらず、独立した検証もない。それでも、Carbonが「審査済みの防御担当者だけ」に配られているのと対照的に、重みが公開されたモデルは<b>あとから配り方を絞れない</b>。この非対称が、米国で議論されている中国製オープンウェイト規制の背景にもなっている。</p>
@@ -403,6 +440,8 @@ table:not(.vt)>tbody,table:not(.vt)>thead{display:table;width:calc(100% - 2px);}
 <h3>投機的デコーディング(Speculative Decoding)——「下書き係」で3倍速</h3>
 <p>Liquid AIの<b>LFM2.5-VL-3B-DSpark</b>(9月18日)は、わずか<b>2.8億パラメータ</b>の小さな"下書きモデル"が先回りで数トークンを提案し、30億パラメータの本体がそれを<b>まとめて一括検証</b>する方式。本体が全トークンを検証するので<b>出力は本体単独と完全に同一</b>のまま、デコードをApple M5 Maxで最大<span class="up">3.13倍</span>、H100で<span class="up">2.66倍</span>高速化した。新人が下書きを書き、ベテランが赤ペンで一気にチェックする方が速い、という発想だ。</p>
 
+<p><span class="tag">11/28追記</span>TencentのDFly(論文AngelSpec、arXiv 2607.25852)は、下書き係に<b>ブロック拡散</b>(数語のかたまりを一斉に磨く拡散型)を使い、自己回帰の<b>1.98〜2.40倍</b>、従来のDFlash比で処理量+10.5〜11.8%(Tencent発表)。11/27に後継DFly2の公開が報じられたが、数字は確認できていない。4位の拡散型が「下書き係」として自己回帰の中に入る流れだ。</p>
+
 <h3>テスト時訓練(Test-Time Training)/継続学習——「使いながら賢くなる」</h3>
 <p>通常のAIは学習が終わると重みが固定されるが、テスト時訓練は<b>使っている最中に重みの一部を更新し続ける</b>。In-Place TTT(ICLR 2026)は4Bの小型モデルで128Kトークンの長文タスクを改善し、TTT-E2Eはフルアテンション並みの長文精度をRNN並みの効率で実現したと報告。12月のNeurIPS 2026では「Test-Time Continual Learning Agents」ワークショップが開かれる予定だ。まだ研究段階だが、エージェント化(2位)と結びつけば「仕事をしながら学ぶAI」になり得る。</p>
 </div>
@@ -410,6 +449,7 @@ table:not(.vt)>tbody,table:not(.vt)>thead{display:table;width:calc(100% - 2px);}
 <h2>まとめ：4つがどう噛み合っているか</h2>
 <div class="section">
 <p>推論(1位)がより多くの計算を要求し、エージェント化(2位)がその推論を実世界の一連の作業に展開し、MoE(3位)がそれらのコストを極限まで切り詰め、拡散型言語モデル(4位)は「速く・安く」という全く別角度から効率化に挑む——性質の異なる4つの技術が、この1〜2年でせめぎ合っている。</p>
+<p><b>11月28日の追記</b>：この1週間は、新しい「頭脳」ではなく<b>頭脳の置き場所と確かめ方</b>が動いた。MoEは、使う専門家だけをGPUに置き、残りをDRAMとSSDに逃がすことで、24GBのGPUで66GBのモデルを動かした(Magnitude)。拡散型は、NVIDIAに買われようとしていて、GPUの会社の「速い書き方の1つ」に溶け込み始めた。エージェントは、本番の古いシステムを先生にして自社のサーバーを書き換え、推論は、Leanの証明という「間違っていたら絶対に通らない改札」を通るようになった。4つの技術は別々に見えて、同じ方向を向いている。<b>同じ賢さを、より少ない計算とより安いメモリで、より信じられる形で出す</b>。半導体の側から見れば、HBMだけでなくDRAMとSSDまでが推論の現場に呼ばれ、GPUの会社はソフトの書き方そのものを買いに来ている。</p>
 <p><b>11月21日の追記</b>：この2週間で見えたのは、<b>賢さの「上限」と「値段」が別々に動き始めた</b>ことだ。Fable 5.2は総合指数で首位に立ったが、1タスクの費用は3点下のAstraの約6.6倍。しかも考える量を最大にすると、点はかえって下がる例が出た。推論(1位)は「長く考えるほど強い」から「どこで止めるか」の技術へ移っている。エージェント(2位)は、実際の請負仕事で前世代の約2倍こなすようになった一方、最後までやり切る合格率は5割台で、乗っ取られにくさは逆に悪化した例もある。MoE(3位)では、Edge0が<b>重みをGPUに載せきらず、メインメモリやSSDから運び込む</b>形を出した。GPUの横の作業机(HBMやGPUメモリ)だけでなく、隣の棚(DRAM・SSD)まで含めた<b>メモリの階層全体</b>がAIの性能を左右し始めている——これが今回いちばん新しい読み方だ。ただしEdge0の数字はベンダー発表のみで、まだ「試み」の段階と見ておく。次の山場は<b>12月4日のARC Prize 2026の結果発表</b>。</p>
 <p><b>11月7日の追記</b>：今週の主役は新しい技術ではなく<b>「約束が守られた」</b>ことだった。Kimi K3.1 Proの2.8兆の重みが期日どおりに出て、公開重みの最大規模は「発表」から「誰でも落とせる実物」になった。一方で、非公開データで測った物差し(AA v5)では閉じたモデルとの差は12ポイントのまま。<b>重みは配れても、最前線の賢さまでは配れていない</b>——これが今の正直な位置だ。次の山場は、ARC Prize 2026の結果発表(12月4日)。小さなモデルとハーネスの工夫が、非公開の問題でどこまで通用したかが分かる。</p>
 <p><b>11月8日の追記</b>：1日で新しく見えたのは、<b>「先回り型エージェント」がオープンソースで手元に来た</b>こと(DeepSeek dsh-superagent)。中核は賢さではなく、<b>off→observe→autoと任せる範囲を段階で上げる仕組み</b>と、<b>メッセージの中身で権限を広げさせない</b>外側の柵だ。推論(1位)が強くなるほど、エージェント(2位)は「どこまで任せるか」の設計が勝負になる——1位と2位の噛み合い方が、また1つはっきりした。</p>
@@ -424,7 +464,7 @@ table:not(.vt)>tbody,table:not(.vt)>thead{display:table;width:calc(100% - 2px);}
 
 <footer>
 本ページは投資助言ではなく、AI技術そのものの進化を追う学びの場です。<br>
-生成：2026-11-22(前版11-21)｜データソース：Google DeepMind(Gemini 4 Hydrogenモデルカード)・cometapi・cloudprice・SmartScope(Hydrogenの提供状況・価格)、computingforgeeks・DEV Community・Artificial Analysis(Claude Fable 5.2/Mythos 5.2)、The Decoder・VentureBeat・OpenAI(GPT-6.2 Astra/Sol)、Google Blog・9to5Google・VentureBeat(Gemini 4 Neon)、Visual Capitalist・BenchLM・collectivebrain(AA指数11月)、llmreference・ARC Prize(ARC-AGI-3)、local-ai-zone(11月のモデル更新まとめ)、CASRAI・mer.vin・AlphaSignal(Edge0-145B)、webpronews・Let's Data Science(Inkling 2 Small)、Notebookcheck経由の報道(プロンプトインジェクション)、Help Net Security・The Next Web・Dataconomy・DEV Community・Bloomberg(DeepSeek dsh-superagent)、Artificial Analysis(Intelligence Index v5.0.1公式ページ)、ARC Prize(arcprize.org、論文締切・Paper Prize)、nerdschalk・zemith(Gemini 4 Carbonの提供状況)、llmgateway・opper.ai(11月リリース一覧)、neuralbrew.ai・BigGo Finance・DEV Community・Let's Data Science(Kimi K3.1 Pro重み公開・ライセンス)、Let's Data Science・cybernews(AA v5でのKimi K3.1 Pro順位)、ARC Prize(arcprize.org、2026年大会日程)、BenchLM(11月リリース一覧)、Artificial Analysis(Intelligence Index v5公式記事)・officechai・AI Weekly・explainx.ai(AA v5の開閉差)、Hugging Face(moonshotai組織ページ)・Let's Data Science・Manifold(Kimi K3.1 Pro重み状況)、ARC Prize(arcprize.org)・ToolNavs・Metir AI(Kaggle版ARC Prize 2026)、Wccftech(DeepSeek V4.1-Flash-1017のChromeサンドボックス脱出)、llmgateway・opper.ai(10月リリース一覧)、Google Blog・Artificial Analysis・Vals AI・Forbes・Constellation Research(Gemini 4 Carbon)、OpenAI・9to5Mac・TrueFoundry・OpenRouter(GPT-6.1 Terra)、mind-verse・runtimewire・buildmvpfast(GPT-6 Pro並列エージェント)、Mistral AI・TechCrunch・SiliconANGLE・The Next Web・orcarouter.ai(Mistral Large 4重み公開)、Artificial Analysis・Averlon・inference.net(DeepSeek V4.1-Flash-1017のCyber Index)、Let's Data Science・Latent Space(Kimi K3.1 Pro重み公開予定)、SiliconANGLE(Mercury 3のDeepSWE)、llmgateway・opper.ai(10月リリース一覧)、TechCrunch・CBS News・9to5Mac・American Bazaar(Claude Duet)、TechCrunch・The Next Web(Recursive Flint)、BenchLM(推論ランキング10月23日検証)、Let's Data Science・forklog(Mistral Large 4重み公開予定)、university-365(10月22日ニュースまとめ)、Inception Labs Blog・The Next Web・MarkTechPost・eesel.ai(Mercury 3・Mercury Decide)、kingy.ai・MarkTechPost・Startup Fortune・Unite.AI・Artificial Analysis(Kimi K3.1 Pro)、VentureBeat・Let's Data Science・LLM Gateway(MiniMax M3.1 Flash)、BetaNews・The New Stack(Mistral Large 4重み公開予定)、BenchLM(推論ランキング10月20日更新)、llm-stats(10月リリース一覧)、DeepSeek(Hugging Faceモデルカード・API Change Log、V4.1-Flash-1017)、Bloomberg・Startup Fortune(V4.1-Flash-1017とDeepSeek Harness)、Metir AI・ARC Prize(Kaggle版ARC-AGI-3)、Reflection AI・MarkTechPost・ossbeat(Beam)、Unite.AI・Let's Data Science・AI Weekly(OpenAI Decisions API)、ARC Prize(arcprize.org、X公式・Gemini 4 Argon検証結果)、BenchLM(ARC-AGI-3・推論ランキング、10月16日時点)、TechTimes(ARC-AGI-3ハーネス実験、決定モデル4社比較、Gemini 4 Argon展開)、VentureBeat(GPT-6.1 Sol、Gemini 4 Argon)、OpenAI(Introducing GPT-6.1 Sol)、Google Blog(Gemini 4 Argon)、the-decoder、AI Release Tracker・computingforgeeks・Artificial Analysis(Claude Haiku 5.5)、nocode.mba(10月リリース一覧)、MarkTechPost・Hugging Face・PyTorch Blog・Artificial Analysis(Muse Spark Open)、The Next Web・Let's Data Science・BetaNews(Mistral Large 4)、Liquid AI Blog(d1)、Microsoft Foundry・Cloudflare(決定モデル)、Fireworks AI(Ember-1)、Inception Labs(Mercury)、orcarouter.ai(DeepSeek V4.1 Pro)、Liquid AI/MarkTechPost(DSpark)、arXiv・ICLR(TTT)(WebSearch)、写真はWikimedia Commons(各出典明記)
+生成：2026-11-28(前版11-22)｜データソース：The Information・newsquawk(NVIDIAのInception買収交渉)、explainx.ai(Mercury APIの終了連絡)、NVIDIA Research・Hugging Face・TechTimes(Nemotron-Labs-Diffusion/TwoTower)、Anthropic(Messages APIのRust移行)、The Neuron(11月23〜27日のまとめ、Magnitude、Skills over MCP)、TechNode(Ling-3.2-air)、Hermes AI News(Inkling 2 Smallの重み)、arXiv 2611.09822・Quantum Computing Report・The Quantum Insider(DeepMindの量子アルゴリズム)、officechai・arXiv 2611.09716(行列の掛け算の指数9/4)、arXiv 2607.25852(Tencent DFly)、MacRumors・OpenAI(GPT-6.2 SolのChatGPT展開)、Wikimedia Commons(Samsung 990 PRO)、Google DeepMind(Gemini 4 Hydrogenモデルカード)・cometapi・cloudprice・SmartScope(Hydrogenの提供状況・価格)、computingforgeeks・DEV Community・Artificial Analysis(Claude Fable 5.2/Mythos 5.2)、The Decoder・VentureBeat・OpenAI(GPT-6.2 Astra/Sol)、Google Blog・9to5Google・VentureBeat(Gemini 4 Neon)、Visual Capitalist・BenchLM・collectivebrain(AA指数11月)、llmreference・ARC Prize(ARC-AGI-3)、local-ai-zone(11月のモデル更新まとめ)、CASRAI・mer.vin・AlphaSignal(Edge0-145B)、webpronews・Let's Data Science(Inkling 2 Small)、Notebookcheck経由の報道(プロンプトインジェクション)、Help Net Security・The Next Web・Dataconomy・DEV Community・Bloomberg(DeepSeek dsh-superagent)、Artificial Analysis(Intelligence Index v5.0.1公式ページ)、ARC Prize(arcprize.org、論文締切・Paper Prize)、nerdschalk・zemith(Gemini 4 Carbonの提供状況)、llmgateway・opper.ai(11月リリース一覧)、neuralbrew.ai・BigGo Finance・DEV Community・Let's Data Science(Kimi K3.1 Pro重み公開・ライセンス)、Let's Data Science・cybernews(AA v5でのKimi K3.1 Pro順位)、ARC Prize(arcprize.org、2026年大会日程)、BenchLM(11月リリース一覧)、Artificial Analysis(Intelligence Index v5公式記事)・officechai・AI Weekly・explainx.ai(AA v5の開閉差)、Hugging Face(moonshotai組織ページ)・Let's Data Science・Manifold(Kimi K3.1 Pro重み状況)、ARC Prize(arcprize.org)・ToolNavs・Metir AI(Kaggle版ARC Prize 2026)、Wccftech(DeepSeek V4.1-Flash-1017のChromeサンドボックス脱出)、llmgateway・opper.ai(10月リリース一覧)、Google Blog・Artificial Analysis・Vals AI・Forbes・Constellation Research(Gemini 4 Carbon)、OpenAI・9to5Mac・TrueFoundry・OpenRouter(GPT-6.1 Terra)、mind-verse・runtimewire・buildmvpfast(GPT-6 Pro並列エージェント)、Mistral AI・TechCrunch・SiliconANGLE・The Next Web・orcarouter.ai(Mistral Large 4重み公開)、Artificial Analysis・Averlon・inference.net(DeepSeek V4.1-Flash-1017のCyber Index)、Let's Data Science・Latent Space(Kimi K3.1 Pro重み公開予定)、SiliconANGLE(Mercury 3のDeepSWE)、llmgateway・opper.ai(10月リリース一覧)、TechCrunch・CBS News・9to5Mac・American Bazaar(Claude Duet)、TechCrunch・The Next Web(Recursive Flint)、BenchLM(推論ランキング10月23日検証)、Let's Data Science・forklog(Mistral Large 4重み公開予定)、university-365(10月22日ニュースまとめ)、Inception Labs Blog・The Next Web・MarkTechPost・eesel.ai(Mercury 3・Mercury Decide)、kingy.ai・MarkTechPost・Startup Fortune・Unite.AI・Artificial Analysis(Kimi K3.1 Pro)、VentureBeat・Let's Data Science・LLM Gateway(MiniMax M3.1 Flash)、BetaNews・The New Stack(Mistral Large 4重み公開予定)、BenchLM(推論ランキング10月20日更新)、llm-stats(10月リリース一覧)、DeepSeek(Hugging Faceモデルカード・API Change Log、V4.1-Flash-1017)、Bloomberg・Startup Fortune(V4.1-Flash-1017とDeepSeek Harness)、Metir AI・ARC Prize(Kaggle版ARC-AGI-3)、Reflection AI・MarkTechPost・ossbeat(Beam)、Unite.AI・Let's Data Science・AI Weekly(OpenAI Decisions API)、ARC Prize(arcprize.org、X公式・Gemini 4 Argon検証結果)、BenchLM(ARC-AGI-3・推論ランキング、10月16日時点)、TechTimes(ARC-AGI-3ハーネス実験、決定モデル4社比較、Gemini 4 Argon展開)、VentureBeat(GPT-6.1 Sol、Gemini 4 Argon)、OpenAI(Introducing GPT-6.1 Sol)、Google Blog(Gemini 4 Argon)、the-decoder、AI Release Tracker・computingforgeeks・Artificial Analysis(Claude Haiku 5.5)、nocode.mba(10月リリース一覧)、MarkTechPost・Hugging Face・PyTorch Blog・Artificial Analysis(Muse Spark Open)、The Next Web・Let's Data Science・BetaNews(Mistral Large 4)、Liquid AI Blog(d1)、Microsoft Foundry・Cloudflare(決定モデル)、Fireworks AI(Ember-1)、Inception Labs(Mercury)、orcarouter.ai(DeepSeek V4.1 Pro)、Liquid AI/MarkTechPost(DSpark)、arXiv・ICLR(TTT)(WebSearch)、写真はWikimedia Commons(各出典明記)
 </footer>
 
 </body>
